@@ -9,4 +9,8 @@ assert len(traces)>100
 assert len(list((root/'oracle_forms/modules').glob('*.spec.md')))>=10
 assert len(list((root/'rebuild_source/forms/all_window_specs').glob('*.rebuild.md')))==len(rows)
 assert (root/'rebuild_source/manifests/all_windows_rebuild_status.csv').stat().st_size>1000
+assert len(list((root/'rebuild_source/generated_code/plsql_specs').glob('*.pks.sql')))==len(rows)
+assert len(list((root/'rebuild_source/generated_code/plsql_bodies').glob('*.pkb.sql')))==len(rows)
+assert len(list((root/'rebuild_source/generated_code/forms_triggers').glob('*.triggers.sql')))==len(rows)
+assert (root/'rebuild_source/generated_code/metadata/generated_code_manifest.csv').stat().st_size>1000
 print({'windows':len(rows),'trace_records':len(traces),'module_specs':len(list((root/'oracle_forms/modules').glob('*.spec.md')))})
