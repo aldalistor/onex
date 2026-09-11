@@ -1,0 +1,135 @@
+# مواصفة إعادة بناء ERP_DBA_Cmp.fmx
+
+> هذه مواصفة Reverse Engineering قابلة للتتبع وليست ملف FMB ثنائيًا. إنشاء FMB مطابق يتطلب المصدر الأصلي أو Forms Builder.
+
+## تعريف الوحدة
+- اسم الوحدة: `ERP_DBA_Cmp.fmx.fmb`
+- الدليل: `reverse_engineering/focus_forms/ERP_DBA_Cmp.fmx.md`
+- النمط المستهدف: Oracle Forms 12c/Forms Builder مع قاعدة Oracle الحالية
+- RTL: العربية أولًا مع دعم الإنجليزية
+
+## الإجراءات المرصودة
+- `CALL_DOC_ALRT_PRC`
+- `CHECK_DATA_INSRT_PRC`
+- `CHK_CST_CR_LMT_PRC`
+- `CHK_DUP_FLD_FNC`
+- `CREATE_TS_PRC`
+- `DBA_CREATE_LGHT_PKG`
+- `FAS_COMMENT_PKG`
+- `FAS_CONSTRAINT_PKG`
+- `FAS_FUNCTION_PKG`
+- `FAS_INDEX_PKG`
+- `FAS_PACKAGE_PKG`
+- `FAS_POSTING_PKG`
+- `FAS_PROCEDURE_PKG`
+- `FAS_SEQUENCE_PKG`
+- `FAS_SYNONYM_PKG`
+- `FAS_TABLE_PKG`
+- `FAS_TRIGGER_PKG`
+- `FAS_VIEW_PKG`
+- `GEN_PKG`
+- `GET_DATA_FNC`
+- `GET_FRMT_FLD_FNC`
+- `GET_MSG_TXT_FNC`
+- `GRANT_MNU`
+- `HRS_COMMENT_PKG`
+- `HRS_CONSTRAINT_PKG`
+- `HRS_FUNCTION_PKG`
+- `HRS_INDEX_PKG`
+- `HRS_PACKAGE_PKG`
+- `HRS_POSTING_PKG`
+- `HRS_PROCEDURE_PKG`
+- `HRS_SEQUENCE_PKG`
+- `HRS_SYNONYM_PKG`
+- `HRS_TABLE_PKG`
+- `HRS_TRIGGER_PKG`
+- `HRS_VIEW_PKG`
+- `IAS_AC_CC_LMT_PKG`
+- `IAS_AUDIT_OTHR_PKG`
+- `IAS_AUDIT_PKG`
+- `IAS_AUD_SYS_PKG`
+- `IAS_BRN_PKG`
+- `IAS_CHECK_DBS_PKG`
+- `IAS_CHECK_SYS_PKG`
+- `IAS_CSHBNK_PKG`
+- `IAS_DBS_SYS_PKG`
+- `IAS_DRTMP_TRG`
+- `IAS_ENCDEC_PKG`
+- `IAS_GEN_PKG`
+- `IAS_GET_QUT_PRM_PRICE_PRC`
+- `IAS_GL_LMT_PKG`
+- `IAS_GL_TRNS_PKG`
+- `IAS_ITM_PKG`
+- `IAS_LGHT_DP_TRG`
+- `IAS_LGHT_SFLGS_TRG`
+- `IAS_LGHT_WCODE_TRG`
+- `IAS_MEASURMENTS_PKG`
+- `IAS_MSG_SP_PKG`
+- `IAS_POSTING_AP_PKG`
+- `IAS_POSTING_AR_PKG`
+- `IAS_POSTING_GL_PKG`
+- `IAS_POSTING_GRNT_PKG`
+- `IAS_POSTING_INV_PKG`
+- `IAS_POSTING_JRS_PKG`
+- `IAS_POSTING_PKG`
+- `IAS_POSTING_SHP_PKG`
+- `IAS_PRMTR_PKG`
+- `IAS_REPLICA_DATA_PKG`
+- `IAS_SMAN_PKG`
+- `IAS_SMS_MAIL_PKG`
+- `IAS_USR_PKG`
+- `INSRT_MSG_ALRT_PRC`
+- `INV_REP_COLS_AMT_TRG`
+- `LOGIN_PRC`
+- `LYSERP_LIB`
+- `PMS_COMMENT_PKG`
+- `PMS_CONSTRAINT_PKG`
+- `PMS_FUNCTION_PKG`
+- `PMS_INDEX_PKG`
+- `PMS_PACKAGE_PKG`
+- `PMS_PROCEDURE_PKG`
+- `PMS_SEQUENCE_PKG`
+- `PMS_SYNONYM_PKG`
+- `PMS_TABLE_PKG`
+- `PMS_TRIGGER_PKG`
+- `PMS_VIEW_PKG`
+- `REM_COMMENT_PKG`
+- `REM_CONSTRAINT_PKG`
+- `REM_FUNCTION_PKG`
+- `REM_INDEX_PKG`
+- `REM_PACKAGE_PKG`
+- `REM_PROCEDURE_PKG`
+- `REM_SEQUENCE_PKG`
+- `REM_SYNONYM_PKG`
+- `REM_TABLE_PKG`
+- `REM_TRIGGER_PKG`
+- `REM_VIEW_PKG`
+- `SHOW_BAT_COL1_IN_SCREEN`
+- `SHOW_BAT_COL2_IN_SCREEN`
+- `SHOW_BAT_COL3_IN_SCREEN`
+- `SHOW_BAT_COL4_IN_SCREEN`
+- `SHOW_BAT_COL5_IN_SCREEN`
+- `TABLESPACE_SCRIPT_PRC`
+- `TABLES_PKGS_PRC`
+- `YSERP_LIB`
+- `YS_AC_DTL_PKG`
+- `YS_APPRVD_PKG`
+- `YS_EMP_PKG`
+- `YS_GEN_PKG`
+- `YS_PRMTR_PKG`
+- `YS_SCR_PKG`
+- `YS_SRL_SCR_PKG`
+
+## المكونات المرتبطة
+- `ERP_DBA_DFLT_DATA.FMX`
+- `FAS_DBA.FMX`
+- `HRS_DBA.FMX`
+
+## حالة التنفيذ
+- تصميم/تتبع: جاهز كبداية.
+- كود PL/SQL المصدر: مطلوب من PKB/PKS أو قاعدة اختبار.
+- عناصر الواجهة والـBlocks: مطلوب تأكيدها من FMB أو لقطة تشغيلية.
+- اختبارات المطابقة: يجب تنفيذها مقابل النظام القديم.
+
+## قاعدة عدم التغيير
+- لا يتم تغيير قواعد الترحيل أو حالات المستند دون اختبار مقارنة مع Oracle Forms القديم.
