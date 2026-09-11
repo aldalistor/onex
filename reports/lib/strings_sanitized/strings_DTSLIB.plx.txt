@@ -1,0 +1,2601 @@
+ROS.60050
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+No namespace was supplied.
+No file was supplied.
+Operation aborted by user.
+File %[1]s is not a valid PL/SQL source file.
+A library with this name already exists. Overwrite it?
+Debug Actions
+- Displays detailed information about the specified debug action.
+Libraries
+- Displays detailed information about an attached library.
+Tables
+- Displays detailed information about database tables.
+Views
+- Displays detailed information about database views.
+Load Path
+- Displays detailed information about the current load path.
+Locals
+- Displays the name, type and value of a variable or parameter that is
+local to the current scope location.
+Program Units
+- Displays detailed information about a specific program unit instance.
+The information displayed includes the program unit name, its type,
+whether it is compiled, whether it is open for editing, and cross
+reference information.
+Version
+- Displays version information about the development environment.
+DESCRIBE <object>
+<object> ::=
+<program-unit> |
+<library> |
+<table> |
+<view> |
+<debug-action> |
+<local> |
+LOADPATH |
+VERSION |
+NAMESPACE
+<program-unit> ::= <pu-name-spec> [ SPECIFICATION | BODY ]
+<pu-name-spec> ::=
+{ PROGRAMUNIT <programunit-name> } |
+{ SUBPROGRAM <subprogram-name> } |
+{ FUNCTION <function-name> } |
+{ PROCEDURE <procedure-name> }
+{ PACKAGE <package-name> }
+<library> := { LIBRARY <library-name> }
+<table> := { TABLE <table-name> }
+<view> := { VIEW <view-name> }
+<debug-action> ::=
+{ ACTION <debug-action-id> } |
+{ BREAKPOINT <debug-action-id> } |
+{ TRIGGER <debug-action-id> }
+<local> ::=
+{ LOCAL <param-or-var-name> } |
+{ PARAMETER <param-name> } |
+{ VARIABLE <var-name> }
+DESCRIBE
+Breakpoint: %d
+Program Unit: %[1]s %[2]s
+Line: %d
+%[1]s: %[2]s
+Compiled: YES
+Compiled: NO
+Open: YES
+Open: NO
+References:
+%[1]s %[2]s
+IN/OUT
+NUMBER
+DATE
+CHAR(%d)
+UNKNOWN
+Bind Var :%[1]s %[2]s %[3]s
+Library: %s
+Mode: Attached (READONLY)
+Mode: Open (READWRITE)
+Contents:
+External Location: %s
+Current Directory
+Current DB Connection
+External Location: INTERPRETER
+Referenced by:
+Load Path:
+TOOL_MODULE
+COPYRIGHT
+DEX_PKG
+"DTS_
+PRC""
+INDEX_PRC
+DTS_FUNCTION_PKG
+"DTS_FUNCTION_PKG"FUNCTION_PRC""
+FUNCTION_PRC
+SEQUENCES_PRC
+CREATE SEQUENCE DTS_SEQ
+START WITH 1
+MAXVALUE 9999999999999999999999999999
+MINVALUE 0
+NOCYCLE
+NOCACHE
+ORDER
+PACKAGE_PRC
+Follow
+Complete Create Package DTS
+DTS Package_Script
+PL/SQL DE
+PL/SQL Library
+MINGUS
+TMP8
+&p'@.
+DTS_COMMENT_PKG
+)p*@6
+DTS_CONSTRAINT_PKG
+'p(@2
+$p%@.
+DTS_INDEX_PKG
+DTS_INSRT_DATA_PKG
+-p.@:
+DTS_INSRT_FORM_DTL_PKG
+DTS_PACKAGE_PKG
+IN_API_SHELL
+WIN_API_UTILITY
+%p&@2
+WIN_API_DIALOG
+*p+@2
+WIN_API_ENVIRONMENT
+#p$@.
+WIN_API_FILE
+WIN_API_PRELOAD
+WIN_API_SESSION
+WIN_API_SHELL
+/TMP8/DTS_COMMENT_PKG
+IAS20142
+USER_COL_COMMENTS
+PUBLIC
+STANDARD
+SQLFORMS
+FORMS40
+FORMS4W
+"DTS_COMMENT_PKG"COMMENT_TABELS_PRC"COMMENT_COLUMNS_PRC"TB_CV"<cursor ptr>"TABLE_NAME"COLUMN_NAME"I"COMMENTS""
+COMMENT_TABELS_PRC
+COMMENT_COLUMNS_PRC
+AD_U_ID
+COMMENT ON COLUMN
+'758 -
+AD_DATE
+'759 -
+UP_U_ID
+'760 -
+UP_DATE
+'761 -
+UP_CNT
+'1969 -
+PR_REP
+'1709 -
+AD_TRMNL_NM
+'1726 -
+BRN_NO
+'50 -
+CMP_NO
+'1583 -
+BRN_YEAR
+'41 -
+BRN_USR
+'3300 -
+DOC_BRN_NO
+'3823 -
+A_CODE
+AC_CODE
+'129 -
+A_CY
+CUR_CODE
+'8 -
+CC_CODE
+'728 -
+PJ_NO
+'2452 -
+ACTV_NO
+'2241 -
+C_CODE
+'388 -
+V_CODE
+'328 -
+CASH_NO
+'1220 -
+AS_CODE
+'4070 -
+EMP_NO
+'1928 -
+ARTCL_NO
+'1598 -
+LOC_CODE
+'4044 -
+RCRD_NO
+'1971 -
+INACTIVE
+'1457 -
+INACTIVE_DATE
+'1641 -
+INAC
+TIVE_U_ID
+'4066 -
+INACTIVE_RES
+'1640 -
+APPROVED
+'1377 -
+APRV_DATE
+'914 -
+APRV_U_ID
+'2180 -
+APRV_DSC
+'3996 -
+APRV_EMP_NO
+'4466 -
+COL_NO
+'1222 -
+REP_CODE
+'395 -
+R_CODE
+'393 -
+I_CODE
+'176 -
+P_CODE
+'923 -
+W_CODE
+'193 -
+I_QTY
+'222 -
+I_PRICE
+'230 -
+AC_CODE_DTL
+'1041 -
+AC_DTL_TYP
+'3398 -
+DOC_TYP
+DOC_TYPE
+'38 -
+DOC_JV_TYP
+DOC_JV_TYPE
+'4016 -
+DOC_NO
+'292 -
+DOC_DATE
+'1137 -
+DOC_DSC
+DOC_DESC
+A_DESC
+AC_DESC
+J_DESC
+'146 -
+REF_NO
+'143 -
+DOC_SRL
+DOC_SER
+'757 -
+DOC_SRL_REF
+DOC_SER_REF
+DOC_SQ
+DOC_SEQ
+DOC_SEQUENCE
+'2767 -
+DOC_SQ_REF
+DOC_SEQ_REF
+DOC_SEQUENCE_REF
+FIELD1
+'2468 -
+FIELD2
+'2469 -
+FIELD3
+'2470 -
+FIELD4
+'2471 -
+FIELD5
+'2472 -
+FIELD6
+'3542 -
+FIELD7
+'3543 -
+FIELD8
+'3544 -
+FIELD9
+'3545 -
+FIELD10
+'3546 -
+10 '
+FIELD11
+'3547 -
+11 '
+FIELD12
+'3548 -
+12 '
+FIELD13
+'3549 -
+13 '
+FIELD14
+'3550 -
+14 '
+FIELD15
+'3551 -
+15 '
+FIELD16
+'3552 -
+16 '
+FIELD17
+'3553 -
+17 '
+FIELD18
+'3554 -
+18 '
+FIELD19
+'3555 -
+19 '
+FIELD20
+'3556 -
+20 '
+MACHINE_NO
+'1879 -
+ROUTE_NO
+'2466 -
+CNTRY_NO
+'1389 -
+PROV_NO
+'1959 -
+CITY_NO
+'1386 -
+ZONE_NO
+'3880 -
+%PHONE%
+'2740 -
+%BOX%
+'49 -
+%FAX%
+'48 -
+%MOB%
+'770 -
+%MAIL%
+'520 -
+%WEB_SI%
+'521 -
+COMMENT ON TABLE DTS_PRFRMNCE_INDCTR IS '
+COMMENT ON TABLE DTS_GRP_ITM_RVL IS '
+COMMENT ON TABLE DTS_TYP_DTL IS '
+COMMENT ON TABLE DTS_CMPNY_RIVAL_DTL IS '
+COMMENT ON TABLE DTS_AGENTS_DTL IS '
+COMMENT ON TABLE DTS_GRP_MST IS '
+COMMENT ON TABLE DTS_GRP_DTL IS '
+COMMENT ON TABLE DTS_ITM_RVL_MST IS '
+COMMENT ON TABLE DTS_ITM_RVL_DTL IS '
+COMMENT ON TABLE DTS_CUSTOMER_TRGT IS '
+COMMENT ON TABLE DTS_PLAN_SMAN_MST IS '
+COMMENT ON TABLE DTS_PLAN_SMAN_DTL IS '
+COMMENT ON TABLE DTS_PLAN_SMAN_SUB_DTL IS '
+COMMENT ON TABLE DTS_OUT_PLAN_SMAN_DTL IS '
+COMMENT ON TABLE DTS_PLAN_PRD_MST IS '
+COMMENT ON TABLE DTS_PLAN_PRD_DTL IS '
+COMMENT ON TABLE DTS_ITM_INFO_MST IS '
+COMMENT ON TABLE DTS_STK_CST_MST IS '
+COMMENT ON TABLE DTS_STK_CST_DTL IS '
+COMMENT ON TABLE DTS_OPTN_PRIV IS '
+Comment On Table Dts_Para Is '
+Comment On Table DTS_CST_VST_MST Is '
+Comment On Table DTS_CST_VST_DTL Is '
+Comment On Table DTS_SURVEY_CST_GPS Is '
+Comment On Column DTS_PRFRMNCE_INDCTR.PR_NO IS '343'
+Comment On Column DTS_PRFRMNCE_INDCTR.PR_NM IS '39 -
+Comment On Column DTS_PRFRMNCE_INDCTR.PR_FLG IS '3630 -
+Comment On Column DTS_GRP_ITM_RVL.GRP_CODE IS '169 -
+Comment On Column DTS_GRP_ITM_RVL.GRP_L_NM IS '558 -
+Comment On Column DTS_GRP_ITM_RVL.GRP_F_NM IS '418 -
+Comment On Column DTS_TYP_DTL.DTS_TYP_NO IS '319 -
+DTS_TYP_NO = 1-
+Comment On Column DTS_TYP_DTL.TYP_NO IS '319 -
+Comment On Column DTS_TYP_DTL.TYP_L_NM IS '1581 -
+Comment On Column DTS_TYP_DTL.TYP_F_NM IS '418 -
+Comment On Column DTS_CMPNY_RIVAL_DTL.CMPNY_NO IS '418 -
+Comment On Column DTS_CMPNY_RIVAL_DTL.CMPNY_L_NM IS '1583 -
+Comment On Column DTS_CMPNY_RIVAL_DTL.CMPNY_F_NM IS '1584 -
+Comment On Column DTS_AGENTS_DTL.AGENT_NO IS '4492 -
+Comment On Column DTS_AGENTS_DTL.AGENT_L_NM IS '4493 -
+Comment On Column DTS_AGENTS_DTL.AGENT_F_NM IS '418 -
+Comment On Column DTS_GRP_MST.GRP_CODE IS '169 -
+Comment On Column DTS_GRP_MST.GRP_L_NM IS '558 -
+Comment On Column DTS_GRP_MST.GRP_F_NM IS '418 -
+Comment On Column DTS_GRP_MST.LEV_NO IS '585'
+Comment On Column DTS_GRP_DTL.GRP_CODE IS '169 -
+Comment On Column DTS_GRP_DTL.I_CODE IS '176'
+Comment On Column DTS_GRP_DTL.LEV_NO IS '585'
+Comment On Column DTS_GRP_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_GRP_DTL.ITM_UNT IS '180'
+Comment On Column DTS_GRP_DTL.P_SIZE IS '557'
+Comment On Column DTS_ITM_RVL_MST.GRP_CODE IS '169 -
+Comment On Column DTS_ITM_RVL_MST.I_CODE_RVL IS '176 -
+Comment On Column DTS_ITM_RVL_MST.I_L_NM IS '177 -
+Comment On Column DTS_ITM_RVL_MST.ITM_UNT IS '180'
+Comment On Column DTS_ITM_RVL_MST.P_SIZE IS '557'
+Comment On Column DTS_ITM_RVL_MST.I_CODE IS '176'
+Comment On Column DTS_ITM_RVL_MST.CMPNY_CNTRY_NO IS '525 -
+TS_F
+Comment On Column DTS_ITM_RVL_MST.CMPNY_PROV_NO IS '1959 -
+Comment On Column DTS_ITM_RVL_MST.CMPNY_CITY_NO IS '333 -
+Comment On Column DTS_ITM_RVL_DTL.C_CODE IS '388'
+Comment On Column DTS_ITM_RVL_DTL.I_PRICE IS '230'
+DTS4
+Comment On Column DTS_ITM_RVL_DTL.AVL_QTY IS '189'
+OMM5
+Comment On Column DTS_ITM_RVL_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_CUSTOMER_TRGT.C_CLASS IS '769'
+Comment On Column DTS_CUSTOMER_TRGT.CNTRY_NO IS '1389'
+Comment On Column DTS_CUSTOMER_TRGT.PROV_NO IS '1959'
+Comment On Column DTS_CUSTOMER_TRGT.CITY_NO IS '1386'
+Comment On Column DTS_CUSTOMER_TRGT.R_CODE IS '393'
+Comment On Column DTS_CUSTOMER_TRGT.REP_CODE IS '395'
+Comment On Column DTS_CUSTOMER_TRGT.ROUTE_NO IS '2466 -
+Comment On Column DTS_CUSTOMER_TRGT.C_PHONE IS '2740 -
+N T@
+Comment On Column DTS_CUSTOMER_TRGT.C_FAX IS '48 -
+Comment On Column DTS_CUSTOMER_TRGT.C_BOX IS '49 -
+Comment On Column DTS_CUSTOMER_TRGT.C_E_MAIL IS '520 -
+Comment On Column DTS_CUSTOMER_TRGT.C_WEB_SITE IS '521 -
+Comment On Column DTS_CUSTOMER_TRGT.C_MOBILE IS '770 -
+Comment On Column DTS_CUSTOMER_TRGT.RSPNS_PRSN_PHONE IS '2740 -
+Comment On Column DTS_CUSTOMER_TRGT.RSPNS_PRSN_FAX IS '48 -
+Comment On Column DTS_CUSTOMER_TRGT.RSPNS_PRSN_BOX IS '49 -
+Comment On Column DTS_CUSTOMER_TRGT.RSPNS_PRSN_E_MAIL IS '520 -
+FRM7
+Comment On Column DTS_CUSTOMER_TRGT.INACTIVE IS '772'
+Comment On Column DTS_CUSTOMER_TRGT.INACTIVE_RES IS '1640'
+nt =
+Comment On Column DTS_CUSTOMER_TRGT.INACTIVE_DATE IS '1641'
+Comment On Column DTS_CUSTOMER_TRGT.C_CODE IS '388'
+Comment On Column DTS_CUSTOMER_TRGT.C_F_NM IS '418 -
+Comment On Column DTS_PLAN_SMAN_MST.DOC_NO IS '292'
+Comment On Column DTS_PLAN_SMAN_MST.DOC_SER IS '757'
+Comment On Column DTS_PLAN_SMAN_MST.DOC_DATE IS '1137'
+Comment On Column DTS_PLAN_SMAN_MST.REF_NO IS '143'
+Comment On Column DTS_PLAN_SMAN_MST.DOC_DSC IS '146 -
+Comment On Column DTS_PLAN_SMAN_MST.REP_CODE IS '395'
+Comment On Column DTS_PLAN_SMAN_MST.APPROVED IS '1555'
+NM 8
+Comment On Column DTS_PLAN_SMAN_MST.APRV_DATE IS '914'
+P_FH
+Comment On Column DTS_PLAN_SMAN_MST.APRV_DSC IS '3996 -
+L.C9
+Comment On Column DTS_PLAN_SMAN_MST.APRV_U_ID IS '2180'
+Comment On Column DTS_PLAN_SMAN_MST.FIELD1 IS '2468 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD2 IS '2469 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD3 IS '2470 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD4 IS '2471 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD5 IS '2472 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD6 IS '3542 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD7 IS '3543 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD8 IS '3544 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD9 IS '3545 -
+Comment On Column DTS_PLAN_SMAN_MST.FIELD10 IS '3546 -
+Comment On Column DTS_PLAN_SMAN_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_PLAN_SMAN_DTL.DOC_NO IS '292'
+Comment On Column DTS_PLAN_SMAN_DTL.DOC_SER IS '757'
+Comment On Column DTS_PLAN_SMAN_DTL.REP_CODE IS '395'
+Comment On Column DTS_PLAN_SMAN_DTL.C_CODE IS '388'
+Comment On Column DTS_PLAN_SMAN_DTL.R_CODE IS '393'
+Comment On Column DTS_PLAN_SMAN_DTL.ROUTE_NO IS '2466 -
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.DOC_NO IS '292'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.DOC_SER IS '757'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.C_CODE IS '388'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.R_CODE IS '393'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.I_CODE IS '176'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.I_QTY IS '222'
+lum;
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.FREE_QTY IS '433'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.BILL_SER IS '1757'
+L_D:
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.BILL_NO IS '349'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.PROCESSED IS '2201'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.ITM_UNT IS '180'
+Comment On Column DTS_PLAN_SMAN_SUB_DTL.P_SIZE IS '557'
+Comment On Column DTS_OUT_PLAN_SMAN_DTL.DOC_NO IS '292'
+Comment On Column DTS_OUT_PLAN_SMAN_DTL.DOC_SER IS '757'
+Comment On Column DTS_OUT_PLAN_SMAN_DTL.C_CODE IS '388'
+Comment On Column DTS_OUT_PLAN_SMAN_DTL.R_CODE IS '393'
+Comment On Column DTS_OUT_PLAN_SMAN_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.BRN_USR IS '2241'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.ITM_UNT IS '180'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.P_SIZE IS '557'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_OUT_P
+LAN_SMAN_SUB_DTL.DOC_NO IS '292'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.DOC_SER IS '757'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.C_CODE IS '388'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.R_CODE IS '393'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.I_CODE IS '176'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.I_QTY IS '222'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.FREE_QTY IS '433'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.BILL_SER IS '1757'
+nt >
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.BILL_NO IS '349'
+Comment On Column DTS_OUT_PLAN_SMAN_SUB_DTL.PROCESSED IS '2201'
+Comment On Column DTS_PLAN_PRD_MST.DOC_NO IS '292'
+n C5
+Comment On Column DTS_PLAN_PRD_MST.DOC_SER IS '757'
+Comment On Column DTS_PLAN_PRD_MST.DOC_DATE IS '1137'
+Comment On Column DTS_PLAN_PRD_MST.REF_NO IS '143'
+Comment On Column DTS_PLAN_PRD_MST.DOC_DSC IS '146 -
+Comment On Column DTS_PLAN_PRD_MST.REP_CODE IS '395'
+Comment On Column DTS_PLAN_PRD_DTL.DOC_NO IS '292'
+Comment On Column DTS_PLAN_PRD_DTL.DOC_SER IS '757'
+Comment On Column DTS_PLAN_PRD_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_PLAN_PRD_DTL.ROUTE_NO IS '2466 -
+Comment On Column DTS_PLAN_PRD_DTL.DOC_DSC IS '146 -
+Comment On Column DTS_EXPNS_MST.FIELD8 IS '3544 -
+Comment On Column DTS_EXPNS_MST.FIELD9 IS '3545 -
+Comment On Column DTS_EXPNS_MST.FIELD10 IS '3546 -
+Comment On Column DTS_EXPNS_MST.APPROVED IS '1555'
+S '4
+Comment On Column DTS_EXPNS_MST.APRV_DATE IS '914'
+MAND
+Comment On Column DTS_EXPNS_MST.APRV_DSC IS '3996 -
+MAN5
+Comment On Column DTS_EXPNS_MST.APRV_U_ID IS '2180'
+Comment On Column DTS_EXPNS_MST.DOC_NO IS '292'
+Comment On Column DTS_EXPNS_MST.DOC_SER IS '757'
+Comment On Column DTS_EXPNS_MST.DOC_DATE IS '1137'
+MST1
+Comment On Column DTS_EXPNS_MST.REF_NO IS '143'
+Comment On Column DTS_EXPNS_MST.DOC_DSC IS '146 -
+Comment On Column DTS_EXPNS_MST.REP_CODE IS '395'
+Comment On Column DTS_EXPNS_MST.FIELD1 IS '2468 -
+Comment On Column DTS_EXPNS_MST.FIELD2 IS '2469 -
+Comment On Column DTS_EXPNS_MST.FIELD3 IS '2470 -
+Comment On Column DTS_EXPNS_MST.FIELD4 IS '2471 -
+Comment On Column DTS_EXPNS_MST.FIELD5 IS '2472 -
+Comment On Column DTS_EXPNS_MST.FIELD6 IS '3542 -
+Comment On Column DTS_EXPNS_MST.FIELD7 IS '3543 -
+Comment On Column DTS_EXPNS_DTL.DOC_NO IS '292'
+Comment On Column DTS_EXPNS_DTL.DOC_SER IS '757'
+Comment On Column DTS_EXPNS_DTL.A_CY IS '8'
+Comment On Column DTS_EXPNS_DTL.AC_RATE IS '13'
+Comment On Column DTS_EXPNS_DTL.DOC_DSC IS '146 -
+Comment On Column DTS_EXPNS_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_ITM_INFO_MST.DOC_NO IS '292'
+DTL5
+Comment On Column DTS_ITM_INFO_MST.DOC_SER IS '757'
+Comment On Column DTS_ITM_INFO_MST.DOC_DATE IS '1137'
+Comment On Column DTS_ITM_INFO_MST.REF_NO IS '143'
+S_P>
+Comment On Column DTS_ITM_INFO_MST.DOC_DSC IS '146 -
+Comment On Column DTS_ITM_INFO_MST.REP_CODE IS '395'
+Comment On Column DTS_ITM_INFO_MST.FIELD1 IS '2468 -
+AN_3
+DTS_ITM_INFO_MST.FIELD2 IS '2469 -
+Comment On Column DTS_ITM_INFO_MST.FIELD3 IS '2470 -
+Comment On Column DTS_ITM_INFO_MST.FIELD4 IS '2471 -
+DE D
+Comment On Column DTS_ITM_INFO_MST.FIELD5 IS '2472 -
+Comment On Column DTS_ITM_INFO_MST.FIELD6 IS '3542 -
+ommD
+Comment On Column DTS_ITM_INFO_MST.FIELD7 IS '3543 -
+n CD
+Comment On Column DTS_ITM_INFO_MST.FIELD8 IS '3544 -
+Comment On Column DTS_ITM_INFO_MST.FIELD9 IS '3545 -
+T_PF
+Comment On Column DTS_ITM_INFO_
+MST.FIELD10 IS '3546 -
+Comment On Column DTS_ITM_INFO_DTL.ITM_UNT IS '180'
+Comment On Column DTS_ITM_INFO_DTL.P_SIZE IS '557'
+Comment On Column DTS_ITM_INFO_DTL.DOC_NO IS '292'
+Comment On Column DTS_ITM_INFO_DTL.DOC_SER IS '757'
+Comment On Column DTS_ITM_INFO_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_ITM_INFO_DTL.I_CODE IS '176'
+Comment On Column DTS_ITM_INFO_DTL.C_CODE IS '388'
+BIL:
+Comment On Column DTS_ITM_INFO_SUB_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_ITM_INFO_SUB_DTL.DOC_NO IS '292'
+MAN9
+Comment On Column DTS_ITM_INFO_SUB_DTL.DOC_SER IS '757'
+Comment On Column DTS_STK_CST_MST.DOC_NO IS '292'
+Comment On Column DTS_STK_CST_MST.DOC_SER IS '757'
+S_P6
+Comment On Column DTS_STK_CST_MST.DOC_DATE IS '1137'
+Comment On Column DTS_STK_CST_MST.REF_NO IS '143'
+Comment On Column DTS_STK_CST_MST.DOC_DESC IS '146'
+Comment On Column DTS_STK_CST_MST.REP_CODE IS '395'
+Comment On Column DTS_STK_CST_MST.C_CODE IS '388'
+Comment On Column DTS_STK_CST_MST.FIELD1 IS '2468 -
+Comment On Column DTS_STK_CST_MST.FIELD2 IS '2469 -
+Comment On Column DTS_STK_CST_MST.FIELD3 IS '2470 -
+Comment On Column DTS_STK_CST_MST.FIELD4 IS '2471 -
+Comment On Column DTS_STK_CST_MST.FIELD5 IS '2472 -
+Comment On Column DTS_STK_CST_MST.FIELD6 IS '3542 -
+Comment On Column DTS_STK_CST_MST.FIELD7 IS '3543 -
+Comment On Column DTS_STK_CST_MST.FIELD8 IS '3544 -
+Comment On Column DTS_STK_CST_MST.FIELD9 IS '3545 -
+Comment On Column DTS_STK_CST_MST.FIELD10 IS '3546 -
+Comment On Column DTS_STK_CST_DTL.DOC_NO IS '292'
+Comment On Column DTS_STK_CST_DTL.DOC_SER IS '757'
+Comment On Column DTS_STK_CST_DTL.RCRD_NO IS '1971'
+Comment On Column DTS_STK_CST_DTL.I_CODE IS '176'
+Comment On Column DTS_STK_CST_DTL.EXPIRE_DATE IS '115'
+Comment On Column DTS_STK_CST_DTL.BATCH_NO IS '1304'
+Comment On Column DTS_STK_CST_DTL.I_QTY IS '222'
+Comment On Column DTS_STK_CST_DTL.P_QTY IS '2200'
+Comment On Column DTS_STK_CST_DTL.BARCODE IS '1895'
+Comment On Column DTS_STK_CST_DTL.ITM_UNT IS '180'
+Comment On Column DTS_STK_CST_DTL.P_SIZE IS '557'
+Comment On Column DTS_OPTN.OPTN_NO IS '
+Comment On Column DTS_OPTN.OPTN_NM IS '
+Comment On Column DTS_OPTN.LBL_NO IS '
+lumI
+Comment On Column DTS_OPTN_PRIV.OPTN_NO IS '
+Comment On Column DTS_OPTN_PRIV.OPTN_FLG IS '
+Comment On Column DTS_CST_VST_MST.C_CODE IS '388 -
+146C
+Comment On Column DTS_CST_VST_MST.REP_CODE IS '395 -
+Comment On Column DTS_CST_VST_MST.DOC_DSC IS '146 -
+Complete Create COMMENT DTS
+DTS Comment_Script
+nt O
+SELECT TABLE_NAME,COLUMN_NAME FROM USER_COL_COMMENTS WHERE COLUMN_NAME IN ( ''AD_U_UID'',''AD_DATE'',''UP_U_ID'',''UP_DATE'',''UP_CNT'',''PR_REP'',''AD_TRMNL_NM'',''BRN_NO'',''CMP_NO'',''BRN_YEAR'',''BRN_USR'',''DOC_BRN_NO'',''A_CODE'',''AC_CODE'',''AC_CODE_DTL'',''AC_DTL_TYP'',''CC_CODE'',''PJ_NO'',''ACTV_NO'',''C_CODE'',''V_CODE'',''CASH_NO'',''EMP_NO'',''ARTCL_NO'',''COL_NO'',''R_CODE'',''REP_CODE'',''AS_CODE'',''LOC_CODE'',''I_CODE'',''W_CODE'',''I_PRICE'',''I_QTY'',''INACTIVE'',''INACTIVE_U_ID'',''INACTIVE_DATE'',''INACTIVE_RES'',''APPROVED'',''APRV_U_ID'',''APRV_DATE'',''APRV_DSC'',''CUR_CODE'',''A_CY'',''RCRD_NO'',''DOC_TYP'',''DOC_TYPE'',''DOC_JV_TYP'',''DOC_JV_TYPE'',''DOC_NO'',''DOC_DATE'',''REF_NO'',''DOC_DSC'',''DOC_DESC'',''A_DESC'',''AC_DESC'',''J_DESC'',''DOC_SER'',''DOC_SRL'',''DOC_SQ'',''DOC_SEQUENCE'',''DOC_SEQ'',''FIELD1'',''FIELD2'',''FIELD3'',''FIELD4'',''FIELD5'',''FIELD6'',''FIELD7'',''FIELD8'',''FIELD9'',''FIELD10'',''FIELD11'',''FIELD12'',''FIELD13'',''FIELD14'',''FIELD15'',''FIELD16'',''FIELD17'',''FIELD18'',''FIELD19'',''FIELD20'',''MACHINE_NO'',''ROUTE_NO'',''CNTRY_NO'',''PROV_NO'',''ZONE_NO'',''CITY_NO'' ) AND TAB
+LE_NAME NOT LIKE ''%$%'' AND TABLE_NAME NOT LIKE ''%_OLD%'' AND COMMENTS IS NULL"SELECT * FROM USER_COL_COMMENTS WHERE (COLUMN_NAME LIKE ''%PHONE%'' OR COLUMN_NAME LIKE ''%FAX%'' OR COLUMN_NAME LIKE ''%BOX%'' OR COLUMN_NAME LIKE ''%MOB%'' OR COLUMN_NAME LIKE ''%MAIL%'' OR COLUMN_NAME LIKE ''%WEB_SI%'' ) AND TABLE_NAME NOT LIKE ''%$%'' AND TABLE_NAME NOT LIKE ''%_OLD%'' AND COMMENTS IS NULL"
+(Nvl (Pr.Ar_Chk_Prd_Aftr_Due, 0),
+1, Nvl (Allow_Prd_Aftr_Due, 0),
+) Allow_Prd_Aftr_Due,
+Nvl (F_Actv_Date,
+To_Date (Ys_Gen_Pkg.Get_Frst_Day, 'DD/MM/RRRR')
+) F_Actvdate,
+Nvl (T_Actv_Date,
+To_Date (Ys_Gen_Pkg.Get_Final_Day, 'DD/MM/RRRR')
+) T_Actv_Date,
+Ar_Allow_Sales_Prv_Dr, Nvl (Pr.Inv_Dis_Lmt, 0) Max_Bill_Disc_Per,
+Nvl (Inv_Dis_Lmt_Itm, 0) Max_Bill_Itm_Disc_Per,
+Nvl (Paid_Instllmnt_Man, 0) Paid_Instllmnt_Man
+From Customer C,
+Privilege_Fixed Pr,
+Customer_Curr Ccy,
+User_R U,
+Dts_V_Sman_Cst Sm,
+Ias_Para_Ar P
+Where C.C_Code = Sm.C_Code
+And Sm.Sman_Typ = 1
+And U.U_Id = Nvl (Pr.U_Id, 0)
+And U.Rep_Code Is Not Null
+And Sm.Rep_Code = U.Rep_Code
+And Ccy.C_Code = Sm.C_Code
+And Nvl (Ccy.Inactive, 0) <> 1
+Create Or Replace View Dts_V_Get_Rep_Storage_Br
+(Rep_Code, Grp_Code, I_Code, I_Name, I_E_Name,W_Code, Avl_Qty, Expire_Date, Batch_No)
+( Select Rep_Code, Grp_Code, I_Code, I_Name, I_E_Name,
+W_Code, Nvl(Sum(Nvl(Avl_Qty,0)),0) Avl_Qty, Expire_Date, Batch_No
+/TMP8/DTS_CONSTRAINT_PKG
+USER_CONSTRAINTS
+USER_CONS_COLUMNS
+USER_TAB_COLS
+USER_TABLES
+"DTS_CONSTRAINT_PKG"CONSTRAINT_PRC"TBL_COL_CV"<cursor ptr>"TABLE_NAME"COLUMN_NAME"V_CNT"I""
+dttg
+CONSTRAINT_PRC
+ALTER TABLE DTS_CST_VST_MST ADD (CONSTRAINT CHCK_VST_STS CHECK (Vst_Sts in (1,0)))
+ALTER TABLE DTS_GRP_DTL ADD (CONSTRAINT DTSGRPDSTDTL_FK FOREIGN KEY (GRP_CODE) REFERENCES DTS_GRP_MST (GRP_CODE) ON DELETE CASCADE)
+ALTER TABLE DTS_ITM_RVL_DTL ADD (CONSTRAINT DTS_ITMRVL
+DTL_FK FOREIGN KEY (I_CODE_RVL) REFERENCES DTS_ITM_RVL_MST(I_CODE_RVL))
+ALTER TABLE DTS_PLAN_SMAN_DTL ADD (CONSTRAINT DTSPLANSMANDTL_FK FOREIGN KEY (DOC_SER) REFERENCES DTS_PLAN_SMAN_MST (DOC_SER) ON DELETE CASCADE)
+ALTER TABLE DTS_PLAN_SMAN_SUB_DTL ADD (CONSTRAINT DTSPLANSMANSUBDTL_FK FOREIGN KEY (DOC_SER,C_CODE) REFERENCES DTS_PLAN_SMAN_DTL (DOC_SER,C_CODE) ON DELETE CASCADE)
+ALTER TABLE DTS_OUT_PLAN_SMAN_DTL ADD (CONSTRAINT DTS_OUTPLANSMANDTL_FK FOREIGN KEY (DOC_SER) REFERENCES DTS_PLAN_SMAN_MST (DOC_SER) ON DELETE CASCADE)
+ALTER TABLE DTS_OUT_PLAN_SMAN_SUB_DTL ADD (CONSTRAINT DTSOUTPLANSMANSUBDTL_FK FOREIGN KEY (DOC_SER, C_CODE) REFERENCES DTS_OUT_PLAN_SMAN_DTL (DOC_SER,C_CODE) ON DELETE CASCADE)
+ALTER TABLE DTS_PLAN_PRD_DTL ADD (CONSTRAINT DTSPLANPRDDTL_FK FOREIGN KEY (DOC_SER) REFERENCES DTS_PLAN_PRD_MST (DOC_SER) ON DELETE CASCADE)
+ALTER TABLE DTS_EXPNS_DTL ADD (CONSTRAINT DTSEXPNSDTL_FK FOREIGN KEY (DOC_SER) REFERENCES DTS_EXPNS_MST (DOC_SER) ON DELETE CASCADE)
+ALTER TABLE DTS_ITM_INFO_DTL ADD (CONSTRAINT DTSITMINFODTL_FK FOREIGN KEY (DOC_SER) REFERENCES DTS_ITM_INFO_MST (DOC_SER) ON DELETE CASCADE)
+ALTER TABLE DTS_ITM_INFO_DTL ADD (CONSTRAINT DTSITMINFODTL_ITM_DTL_FK FOREIGN KEY (I_CODE) REFERENCES IAS_ITM_MST (I_CODE))
+ALTER TABLE DTS_STK_CST_DTL ADD (CONSTRAINT DTSSTKCSTDTL_FK FOREIGN KEY (DOC_SER) REFERENCES DTS_STK_CST_MST (DOC_SER) ON DELETE CASCADE)
+ALTER TABLE DTS_OPTN_PRIV ADD (CONSTRAINT DTSOPTNPRIV_DTSOPTN_FK FOREIGN KEY (OPTN_NO) REFERENCES DTS_OPTN (OPTN_NO))
+ALTER TABLE DTS_OPTN_PRIV ADD (CONSTRAINT DTSOPTNPRIV_USRS_FK FOREIGN KEY (U_ID) REFERENCES USER_R (U_ID))
+ALTER TABLE DTS_CST_VST_MST ADD (CONSTRAINT DTSCSTVSTMST_CST_FK FOREIGN KEY (C_CODE) REFERENCES CUSTOMER (C_CODE))
+ALTER TABLE DTS_CST_VST_MST ADD (CONSTRAINT DTSCSTVSTMST_SLSMAN_FK FOREIGN KEY (REP_CODE) REFERENCES SALES_MAN (REPRS_CODE))
+ALTER TABLE DTS_CST_VST_DTL ADD (CONSTRAINT DTSCSTVSTDTL_FK FOREIGN KEY (VST_SRL) REFERENCES DTS_CST_VST_MST (VST_SRL) ON DELETE CASCADE)
+ALTER TABLE DTS_CST_VST_MST ADD ( CONSTRAINT CHCK_VST_STS CHECK (Vst_Sts in (1,-1)))
+ALTER TABLE DTS_SURVEY_CST_GPS ADD (CONSTRAINT DTSSURVEYCSTGPS_UQ UNIQUE (POINT_ID,POINT_GPS_LAT_Y ,POINT_GPS_LNGT_X))
+ALTER TABLE
+MODIFY
+NOT NULL
+DTS Const_Script
+ADD ( CONSTRAINT FK_UID_
+FOREIGN KEY (
+) REFERENCES USER_R (U_ID) ON DELETE CASCADE )
+BRN_NO%
+S_BRN
+ADD ( CONSTRAINT FK_BRN_
+) REFERENCES S_BRN (BRN_NO) )
+A_CODE%
+ACCOUNT
+ADD ( CONSTRAINT FK_AC_
+) REFERENCES ACCOUNT (A_CODE) )
+CC_CODE%
+COST_CENTERS
+ADD ( CONSTRAINT FK_CC_
+) REFERENCES COST_CENTERS (CC_CODE) )
+PJ_NO%
+IAS_PROJECTS
+ADD ( CONSTRAINT FK_PJ_
+) REFERENCES IAS_PROJECTS (PJ_NO) )
+ACTV_NO%
+IAS_ACTVTY
+ADD ( CONSTRAINT FK_ACTV_
+) REFERENCES IAS_ACTVTY (ACTV_NO) )
+CUR_CODE%
+EX_RATE
+ADD ( CONSTRAINT FK_CUR_
+) REFERENCES EX_RATE (CUR_CODE) )
+Complete Alter Table Constraint DTS
+ADE)
+SELECT M.TABLE_NAME,D.COLUMN_NAME FROM USER_CONSTRAINTS M,USER_CONS_COLUMNS D WHERE M.CONSTRAINT_NAME = D.CONSTRAINT_NAME AND M.TABLE_NAME = D.TABLE_NAME AND (M.TABLE_NAME LIKE ''DTS%'' ) AND M.CONSTRAINT_TYPE = ''R'' AND M.DELETE_RULE = ''CASCADE'' AND M.TABLE_NAME NOT LIKE ''%$%'' AND EXISTS (SELECT 1 FROM USER_TAB_COLS WHERE TABLE_NAME = M.TABLE_NAME AND COLUMN_NAME = D.COLUMN_NAME AND NULLABLE = ''Y'' AND ROWNUM <= 1 ) ORDER BY M.TABLE_NAME"SELECT M.TABLE_NAME,M.COLUMN_NAME FROM USER_TAB_COLS M WHERE COLUMN_NAME IN ( ''DOC_NO'',''DOC_SRL'' ) AND (M.TABLE_NAME LIKE ''DTS%'' ) AND M.TABLE_NAME NOT LIKE ''TST%'' AND M.TABLE_NAME NOT LIKE ''%$%'' AND M.TABLE_NAME NOT LIKE ''%TMP'' AND EXISTS (SELECT 1 FROM USER_TABLES WHERE TABLE_NAME = M.TABLE_NAME AND ROWNUM <= 1 ) AND NULLABLE = ''Y'' ORDER BY M.TABLE_NAME"SELECT M.TABLE_NAME,D.COLUMN_NAME FROM USER_TABLES M,USER_TAB_COLS D WHERE M.TABLE_NAME = D.TABLE_NAME AND (M.TABLE_NAME LIKE ''%_PRIV'' OR M.TABLE_NAME LIKE ''%_PRV'' ) AND (M.TABLE_NAME LIKE ''DTS%'' ) AND M.TABLE_NAME NOT LIKE ''%$%'' AND M.TABLE_NAME NOT LIKE ''HSTRY%'' AND D.COLUMN_NAME LIKE ''U_ID%'' AND NOT EXISTS (SELECT 1 FROM USER_CONS_COLUMNS DT,USER_CONSTRAINTS MS WHERE MS.TABLE_NAME = DT.TABLE_NAME AND MS.CONSTRAINT_NAME = DT.TABLE_NAME AND MS.TABLE_NAME = M.TABLE_NAME AND DT.COLUMN_NAME = D.COLUMN_NAME AND MS.CONSTRAINT_TYPE = ''R'' AND NVL(DELETE_RULE,''0'') != ''CASCADE'' AND ROWNUM <= 1 ) ORDER BY M.TABLE_NAME"SELECT M.TABLE_NAME,D.COLUMN_NAME FROM USER_TABLES M,USER_TAB_COLS D WHERE M.TABLE_NAME = D.TABLE_NAME AND M.TABLE_NAME NOT LIKE ''%$%'' AND M.TABLE_NAME NOT LIKE ''%HSTRY%'' AND M.TABLE_NAME NOT LIKE ''%_DTL'' AND M.TABLE_NAME NOT LIKE
+''%TMP'' AND (M.TABLE_NAME LIKE ''DTS%'' ) AND D.COLUMN_NAME LIKE ''BRN_NO%'' AND NOT EXISTS (SELECT 1 FROM USER_CONS_COLUMNS DT,USER_CONSTRAINTS MS WHERE MS.TABLE_NAME = DT.TABLE_NAME AND MS.CONSTRAINT_NAME = DT.TABLE_NAME AND MS.TABLE_NAME = M.TABLE_NAME AND DT.COLUMN_NAME = D.COLUMN_NAME AND MS.CONSTRAINT_TYPE = ''R'' AND ROWNUM <= 1 ) ORDER BY M.TABLE_NAME"SELECT M.TABLE_NAME,D.COLUMN_NAME FROM USER_TABLES M,USER_TAB_COLS D WHERE M.TABLE_NAME = D.TABLE_NAME AND M.TABLE_NAME NOT LIKE ''%$%'' AND M.TABLE_NAME NOT LIKE ''%TMP'' AND (M.TABLE_NAME LIKE ''DTS%'' ) AND D.COLUMN_NAME != ''A_CODE_DTL'' AND (D.COLUMN_NAME LIKE ''A_CODE%'' OR D.COLUMN_NAME LIKE ''%CC_CODE%'' OR D.COLUMN_NAME LIKE ''PJ_NO%'' OR D.COLUMN_NAME LIKE ''ACTV_NO%'' OR D.COLUMN_NAME LIKE ''CUR_CODE%'' ) AND NOT EXISTS (SELECT 1 FROM USER_CONS_COLUMNS DT,USER_CONSTRAINTS MS WHERE MS.TABLE_NAME = DT.TABLE_NAME AND MS.CONSTRAINT_NAME = DT.TABLE_NAME AND MS.TABLE_NAME = M.TABLE_NAME AND DT.COLUMN_NAME = D.COLUMN_NAME AND MS.CONSTRAINT_TYPE = ''R'' AND ROWNUM <= 1 ) ORDER BY M.TABLE_NAME"
+And r.W_Code=s.W_Code
+Group By s.Rep_Code,Brn_No, Rt_bill_doc_type ,t.Typ_No
+Union
+Select nvl(max(to_Number(Rt_bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(Rt_bill_doc_type ,0) Rt_bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+From Ias_Rt_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV t
+Where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And t.Typ_No=s.Sr_Type
+And DOC_TYPE=4
+And Nvl(b.INVOICING_SERIALS_SR,0)=9
+And r.reprs_Code=u.Rep_Code
+And t.U_id=u.U_Id
+Select Distinct 0 Bno,r.Reprs_Code Rep_Code,Conn_Brn_No Brn_No,FLG_VALUE Rt_bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+From Ias_Para_Ar b ,S_FLAGS f,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV t
+Where FLG_CODE = ''TYPE_NAME''
+And t.DOC_TYPE=4
+And u.Rep_Code Is Not Null
+/TMP8/DTS_FUNCTION_PKG
+CREATE OR REPLACE Function Get_Dts_Trans_Ser( P_Trns_Type In NUMBER, -- Transaction Type
+P_Type In NUMBER, -- Docoument Type -- Si_Type & Sr_Type Which Equal Typ_No In DTS_V_PDA_TYPS_PRIV View
+P_Year In S_BRN.Brn_Year%Type,
+P_Brn_No In S_BRN.Brn_No%Type ,
+P_Sman In Sales_Man.Reprs_Code%Type ,
+P_Bill_No Number,
+P_Bill_doc_Type Number --##-- Cash=1 & Credit =4
+) Return Number
+V_doc_Srl Number(38);
+Invs Number;
+Invs_Sr Number;
+V_Ccno Number;
+V_Csr Number;
+V_Wser Number;
+V_Wcode Number;
+V_Ccode Number;
+begin
+Select Invoicing_Serials ,Invoicing_Serials_Sr Into Invs,Invs_Sr From Ias_Para_Ar;
+Select s.W_Code,s.CC_Code Into V_Wcode,V_Ccode From Sales_Man s Where Reprs_Code=P_Sman;
+V_Csr :=ias_cc_code_pkg.Get_Cc_ser(V_Ccode);
+V_CcNo :=ias_cc_code_pkg.Get_Cc_no(V_Ccode);
+V_Wser := IAS_Wcode_Pkg.Get_Wc_Ser(V_WCode);
+If P_Trns_Type=1 then -- Bills
+If Invs =1 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||P_Bill_No;
+ElsIf Invs =2 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||P_Bill_No;
+ElsIf Invs =4 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(P_Bill_No)||ltrim(lpad(V_Wser,5,'0'));
+ElsIf Invs =5 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||P_Bill_No||ltrim(Lpad(V_Wcode,6,'0'));
+ElsIf Invs =3 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||P_Bill_No||ltrim(lpad(V_Csr,5,'0'));
+ElsIf Invs =6 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||P_Bill_No||ltrim(lpad(V_Ccno,5,'0'));
+ElsIf Invs =7 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(Lpad(P_Type,5,'0'))||P_Bill_No;
+ElsIf Invs =8 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(Lpad(P_Type,5,'0'))||P_Bill_No||ltrim(Lpad(V_Wcode
+,6,'0'));
+ElsIf Invs =9 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||104||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||ltrim(Lpad(P_Type,5,'0'))||P_Bill_No||ltrim(Lpad(V_Wcode,6,'0'));
+End If ;
+ElsIf P_Trns_Type=2 then -- Rt Bills
+If Invs_Sr =1 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||P_Bill_No;
+ElsIf Invs_Sr =2 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||P_Bill_No;
+ElsIf Invs_Sr =4 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(P_Bill_No)||ltrim(lpad(V_Wser,5,'0'));
+ElsIf Invs_Sr =5 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||P_Bill_No||ltrim(Lpad(V_Wcode,6,'0'));
+ElsIf Invs_Sr =3 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||P_Bill_No||ltrim(lpad(V_Csr,5,'0'));
+ElsIf Invs_Sr =6 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||P_Bill_No||ltrim(lpad(V_Ccno,5,'0'));
+ElsIf Invs_Sr =7 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(Lpad(P_Type,5,'0'))||P_Bill_No;
+ElsIf Invs_Sr=8 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(Lpad(P_Type,5,'0'))||P_Bill_No||ltrim(Lpad(V_Wcode,6,'0'));
+ElsIf Invs_Sr =9 Then
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,6,'0')||105||ltrim(Lpad(P_Bill_doc_Type,2,'0'))||ltrim(Lpad(P_Type,5,'0'))||P_Bill_No||ltrim(Lpad(V_Wcode,6,'0'));
+End If;
+Return (V_Doc_Srl);
+Exception When Others Then
+Raise_Application_Error(-20001,'Error When Get Ser In Func. Get_Dts_Trans_Ser'||Sqlerrm);
+End Get_Dts_Trans_Ser ;
+CREATE OR REPLACE Function Get_AR_Trans_Ser( P_Trns_Type In NUMBER, -- Transaction Type
+P_Type In NUMBER, -- Docoument Type
+P_No_Srl In NUMBER, -- 1=Doc_No , 2=Doc_Srl
+P_Brn_No In S_BRN.Brn_No%Type ) Return Number
+V_doc_No Number(15);
+V_Doc_Type Number;
+V_Para_Ser Number;
+V_Doc_Type:=P_Type;
+If P_Trns_Type=1 then -- QUOTATION
+Select Ar_Quot_Serial Into V_Para_Ser From Ias_Para_Ar;
+If V_Para_Ser =1 Then
+Select nvl(Max(QUOT_NO),0)+1 Into V_doc_No From QUOTATION Where
+Brn_Year= P_Year And Brn_No=P_Brn_No;
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,3,'0')||V_doc_No;
+Else
+Brn_Year= P_Year And Brn_No=P_Brn_No And QT_TYPE=V_Doc_Type;
+V_doc_Srl:=P_Year||Lpad(P_Brn_No,3,'0')||V_doc_No||ltrim(Lpad(V_Doc_Type,3,'0'));
+ElsIf P_Trns_Type=2 then -- SALES_ORDER
+Select Ar_Sorder_Serial Into V_Para_Ser From Ias_Para_Ar ;
+Select nvl(Max(ORDER_NO),0)+1 Into V_doc_No From Sales_Order Where
+Brn_Year= P_Year And Brn_No=P_Brn_No And SO_TYPE=V_Doc_Type;
+ElsIf P_Trns_Type=3 then -- Dts Customer Stock Inventory
+Select nvl(Max(doc_no),0)+1 Into V_doc_No From Dts_Stk_Cst_Mst
+Where
+If P_No_Srl=1 Then
+Return (V_Doc_No);
+Raise_Application_Error(-20001,'Error When Get Ser In Func. Get_AR_Trans_Ser'||Sqlerrm);
+End Get_AR_Trans_Ser ;
+CREATE OR REPLACE FUNCTION dts_chk_crdt_prd (
+p_c_code IN customer.c_code%TYPE,
+p_doc_date IN DATE,
+p_rep_code IN sales_man.reprs_code%TYPE
+RETURN DATE
+v_min_idate DATE;
+v_min_doc_date DATE;
+v_crdt_prd NUMBER;
+v_chk_crdt_prd NUMBER;
+v_paid_instll_typ NUMBER;
+v_rep_name VARCHAR2 (50);
+v_user_no user_r.u_id%TYPE;
+v_c_code customer.c_code%TYPE := p_c_code;
+v_rep_code sales_man.reprs_code%TYPE := p_rep_code;
+v_doc_date DATE := p_doc_date;
+--V_Ar_Allow_Sales_Due_Dr Number; --
+v_ar_allow_sales_prv_dr NUMBER;
+v_ar_chk_prd_aftr_due NUMBER; --
+v_check_credit_period NUMBER; --
+v_allow_prd_aftr_due NUMBER; --
+v_cnt_acy NUMBER := 0;
+v_local_cur ex_rate.cur_code%TYPE;
+v_aralt NUMBER := 0;
+v_f_actv_date DATE;
+v_t_actv_date DATE;
+v_no_of_dcml NUMBER := 0;
+BEGIN
+v_c_code := p_c_code;
+v_rep_code := p_rep_code;
+v_doc_date := TO_DATE (p_doc_date, 'DD/MM/RRRR');
+v_local_cur := ys_gen_pkg.get_local_cur;
+SELECT ar_ac_link_type, paid_instllmnt_man, no_of_decimal_ar
+INTO v_aralt, v_paid_instll_typ, v_no_of_dcml
+FROM ias_para_ar;
+EXCEPTION
+WHEN OTHERS
+THEN
+NULL;
+END;
+--##---------------------------------------------------------------------------------------------------------------------------------------##--
+-- If Nvl(:Ias_Bill_Mst.Stand_By,0)=0 Then --- (1)
+SELECT u_id
+INTO v_user_no
+FROM user_r
+WHERE rep_code IS NOT NULL AND rep_code = v_rep_code;
+------------------------------------------------------------------
+---------------------------
+SELECT NVL (ar_allow_sales_prv_dr, 0), NVL (ar_chk_prd_aftr_due, 0),
+check_credit_period
+INTO v_ar_allow_sales_prv_dr, v_ar_chk_prd_aftr_due,
+v_chk_crdt_prd
+FROM privilege_fixed
+WHERE u_id = v_user_no;
+---------------------------------------------------------------------------------------------
+SELECT credit_period,
+DECODE
+(NVL (v_ar_chk_prd_aftr_due, 0),
+1, allow_prd_aftr_due,
+f_actv_date, t_actv_date
+INTO v_crdt_prd,
+v_allow_prd_aftr_due,
+v_f_actv_date, v_t_actv_date
+FROM customer
+WHERE c_code = v_c_code;
+v_crdt_prd := NULL;
+IF (v_chk_crdt_prd = 1 AND v_crdt_prd IS NOT NULL)
+OR v_ar_allow_sales_prv_dr = 0
+THEN --- (2)
+IF v_paid_instll_typ = 1
+SELECT MIN (i_date)
+INTO v_min_idate
+FROM installment
+WHERE c_code = v_c_code
+AND TRUNC (NVL (i_amt, 0)) >
+(TRUNC (NVL (paid_amt, 0) + NVL (adj_amt, 0)) + 1
+AND dr_no IS NULL;
+v_min_idate := NULL;
+ELSE
+SELECT COUNT (DISTINCT a_cy)
+INTO v_cnt_acy
+FROM ias_post_dtl
+v_cnt_acy := 1;
+IF v_cnt_acy = 1
+ias_dstr_cst_dr_pkg.ias_dstr_cst_dr_amt_acy_prc
+(p_c_code => v_c_code,
+p_doc_date => v_doc_date,
+--:Ias_Bill_Mst.Bill_Date,
+p_local_cur => v_local_cur,
+p_aralt => v_aralt,
+p_user_no => v_user_no,
+p_no_of_decimal => v_no_of_dcml
+ias_dstr_cst_dr_pkg.ias_dstr_cst_dr_amt_prc
+END IF;
+SELECT MIN (doc_date)
+FROM ias_si_dr_dtl_tmp
+AND TRUNC (NVL (i_amt, 0)) > (TRUNC (NVL (paid_amt, 0)) + 1);
+END IF; --- (2)
+RETURN (v_min_idate);
+--- End If; --- (1)
+WHEN NO_DATA_FOUND
+Function Prc
+%s is not an open library.
+No library specified for GENERATE.
+Resumes program execution indefinitely.
+- Grants a user access to a library stored in the database.
+GRANT LIBRARY <name> USER <name>
+grant
+"PACKAGE"DTS_INSRT_FORM_DTL_PKG"INSRT_FORM_DTL_PRC"INSRT_FORM_PRIV_PRC""
+INSRT_FORM_DTL_PRC
+INSRT_FORM_PRIV_PRC
+Nvl((SELECT Nvl(I_Price,0) FROM
+Ias_Item_Price ii WHERE ii.I_Code=g.I_Code AND
+ii.Itm_unt=G.ITM_UNT
+AND ii.lev_no=(SELECT lev_no FROM
+IAS_PRICING_LEVELS l WHERE NVL(l.LEV_Low,0) =1 AND
+ROWNUM<=1)),0) low_price,
+IAS_PRICING_LEVELS l WHERE NVL(l.LEV_HIGH,0)=1 AND
+ROWNUM<=1)),0) high_price
+FROM dts_grp_dtl g
+,ias_itm_mst Mi
+,ias_itm_dtl Di
+,ias_item_price c
+,IAS_PRICING_LEVELS PL
+,EX_RATE EX
+WHERE g.i_code = Mi.i_code
+AND g.i_code = c.i_code
+And g.i_code = Di.i_code
+AND Di.i_code=Mi.i_code
+AND g.i_code=Di.i_code
+AND Di.Itm_unt = c.ITM_UNT
+AND Mi.i_code = c.i_code
+AND c.Itm_unt = G.ITM_UNT
+AND c.lev_no = g.lev_no
+AND pl.lev_no = g.lev_no
+AND pl.lev_no = c.lev_no
+AND pl.A_CY=Ex
+/TMP8/DTS_INDEX_PKG
+USER_IND_COLUMNS
+"DTS_INDEX_PKG"INDEX_PRC"TBL_CV"<cursor ptr>"TABLE_NAME"V_TBL_NM"V_COL_NM"V_CNT"I"TBL_COL_CV"COLUMN_NAME"J""
+CREATE INDEX INDX_
+_FK ON
+Complete Create Index DTS
+SELECT DISTINCT M.TABLE_NAME FROM USER_CONSTRAINTS M WHERE M.CONSTRAINT_TYPE = ''R'' AND M.DELETE_RULE = ''CASCADE'' AND (M.TABLE_NAME LIKE ''DTS%'' ) AND M.TABLE_NAME NOT LIKE ''%$%'' AND M.TABLE_NAME NOT LIKE ''%TMP'' AND M.TABLE_NAME NOT LIKE ''%OLD%'' ORDER BY M.TABLE_NAME"SELECT M.TABLE_NAME,D.COLUMN_NAME FROM USER_CONSTRAINTS M,USER_CONS_COLUMNS D WHERE M.CONSTRAINT_NAME = D.CONSTRAINT_NAME AND M.TABLE_NAME = D.TABLE_NAME AND M.CONSTRAINT_TYPE = ''R'' AND M.DELETE_RULE = ''CASCADE'' AND M.TABLE_NAME = :b1 AND NOT EXISTS (SELECT 1 FROM USER_IND_COLUMNS WHERE TABLE_NAME = M.TABLE_NAME AND COLUMN_NAME = D.COLUMN_NAME AND ROWNUM <= 1 )"
+Ar.View_Flag
+From User_R U, Ias_Priv_Ar Ar, Ias_
+/TMP8/DTS_INSRT_DATA_PKG
+FORMS4G
+DTS_PARA
+IAS_SYS
+IAS_DOCJV_TYPE_SYSTEMS
+S_ERP_SYSTEM
+IAS_DOCJV_TYPE_SYSTEMS_MST
+S_LOV_SLCT
+S_LST_SLCT
+DTS_TYP_DTL
+IAS_GEN_PKG
+DTS_PRFRMNCE_INDCTR
+DTS_GRP_ITM_RVL
+DTS_ITM_RVL_MST
+DTS_ITM_RVL_DTL
+DTS_GRP_MST
+DTS_GRP_DTL
+DTS_ITM_INFO_MST
+DTS_ITM_INFO_DTL
+DTS_ITM_INFO_SUB_DTL
+DTS_AGENTS_DTL
+DTS_CMPNY_RIVAL_DTL
+DTS_CUSTOMER_TRGT
+DTS_SURVEY_CST_GPS
+STN_PARA
+STN_PRD
+STN_FUEL_TYP
+STN_CONN_EMP_BY_CNTR_GL
+STN_COUNTERS
+STN_COUNTERS_EMP
+"DTS_INSRT_DATA_PKG"INSRT_DEF_DATA_PRC"V_CNT"<cursor ptr>"<SQL statement. Line 13>"<SQL statement. Line 62>"<SQL statement. Line 82>"<SQL statement. Line 101>"<SQL statement. Line 122>"<SQL statement. Line 147>"<SQL statement. Line 155>"<SQL statement. Line 163>"<SQL statement. Line 171>"INSERT_FLG_PRC"INSERT_LOV_PRC"<SQL statement. Line 322>"<SQL statement. Line 337>"<SQL statement. Line 351>"<SQL statement. Line 366>"<SQL statement. Line 380>"<SQL statement. Line 397>"<SQL statement. Line 411>"<SQL statement. Line 426>"<SQL statement. Line 472>"<SQL statement. Line 490>"<SQL statement. Line 506>"<SQL statement. Line 525>"<SQL statement. Line 541>"<SQL statement. Line 567>"<SQL statement. Line 585>"<SQL statement. Line 625>"INSERT_LIST_PRC"<SQL statement. Line 661>"MOVE_DATA_PRC"P_YEAR_UNIT"V_BRN_YEAR"V_YBP"<SQL statement. Line 694>"<SQL statement. Line 712>"<SQL statement. Line 729>"<SQL statement. Line 747>"<SQL statement. Line 764>"<SQL statement. Line 783>"<SQL statement. Line 801>"<SQL statement. Line 819>"<SQL statement. Line 839>"<SQL statement. Line 856>"<SQL statement. Line 874>"<SQL statement. Line 893>"<SQL statement. Line 911>"<SQL statement. Line 929>"<SQL statement. Line 947>"<SQL statement. Line 965>"<SQL statement. Line 991>"<SQL statement. Line 1007>"<SQL statement. Line 1026>"<SQL statement. Line 1044>"<SQL statement. Line 1064>"<SQL statement. Line 1084>"INSRT_FRM_FLD_PRC""
+INSRT_DEF_DATA_PRC
+Not Complete Create table ......
+Busy
+INSERT INTO DTS_PARA
+(PARA_NO, CST_CSH_SLS_TYP, WRK_WITHOUT_PLN, IMPLMNT_PLAN_SRTROUTE_MNDTRY, AUTO_MOBILE_POSTING,PST_SCNDS_PRD, GOOGLE_MAP_KEY, ZOOM_SCALE, AD_U_ID, AD_DATE, UP_U_ID, UP_DATE, PR_REP, UP_CNT, AD_TRMNL_NM, UP_TRMNL_NM)
+VALUES (1, 1, 0, 0, 0, 68400, NULL, 100, NULL, NULL, 1, SYSDATE, NULL, NULL, NULL, NULL)
+Commit
+RollBack
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (2,1401,'Daily Route Planing For Sales Man',1,SYSDATE,NULL,NULL,NULL,0,0,NULL,NULL,NULL,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (1,1401,'
+',1,SYSDATE,NULL,NULL,NULL,0,0,NULL,NULL,NULL,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (3,1401,'Plan d'action quotidien du d
+',1,SYSDATE,NULL,NULL,NULL,0,1, NULL,NULL,NULL,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (2,1401,1,'Daily Route Planing For Sales Man',NULL,SYSDATE,NULL,1,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (1,1401,1,'
+',NULL,SYSDATE,NULL,1,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (3,1401,1,'Plan d'action quotidien du d
+ROLLBACK
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (2,1404,'Expenses Of Sale
+s Man',1,SYSDATE,NULL,NULL,NULL,0,0,NULL,NULL,NULL,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (1,1404,'
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (3,1404,'D
+penses des d
+s',1,SYSDATE,NULL,NULL,NULL,0,1, NULL,NULL,NULL,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (2,1404,1,'Expenses Of Sales Man',NULL,SYSDATE,NULL,1,0)
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (1,1404,1,'
+INSERT INTO INSERT INTO IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,J
+V_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (3,1404,1,'D
+s',NULL,SYSDATE,NULL,1,0)
+INSERT INTO INSERT INTO IAS_SYS.IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (2,1402,'Periodic Route Planing For Sales Man',1,SYSDATE,NULL,NULL,NULL,0,0,NULL,NULL,NULL,0)
+INSERT INTO INSERT INTO IAS_SYS.IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS_MST (LANG_NO,DOC_TYPE,DOC_TYPE_NAME,AD_U_ID,AD_DATE,UP_U_ID,UP_DATE,UP_CNT,DOC_PST,FLG_ST,RPRT_NM,AD_TRMNL_NM,UP_TRMNL_NM,DOC_APPRVD_FLG) VALUES (1,1402,'
+INSERT INTO INSERT INTO IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (2,1402,1,'Periodic Route Planing For Sales Man',NULL,SYSDATE,NULL,1,0)
+INSERT INTO INSERT INTO IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS (LANG_NO,DOC_TYPE,JV_TYPE,JV_NAME,REP_NAME,AD_DATE,UP_DATE,FLG_ST,DOC_PST) VALUES (1,1402,1,'
+COMMIT
+Err. When Update S_Flags Dts,
+INSERT_FLG_PRC
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 1, 1, 'DTS_PLAN_TYP', '
+', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 1, 1, 'DTS_PLAN_TYP', 'Sale Man', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 3, 3, 'DTS_PLAN_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 3, 3, 'DTS_PLAN_TYP', 'Promoter', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 1, 1, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 1, 1, 'DTS_PRFRMNCE_INDCTR', 'Collect Requests',1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 2, 2, 'DTS_PRFRMNCE_INDCTR', '
+', 0, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 2, 2, 'DTS_PRFRMNCE_INDCTR', 'Delivery Goods', 0, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 3, 3, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 3, 3, 'DTS_PRFRMNCE_INDCTR', 'Promoting goods ', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 4, 4, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 4, 4, 'DTS_PRFRMNCE_INDCTR', 'Sales Return', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 5, 5, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 5, 5, 'DTS_PRFRMNCE_INDCTR', 'Get Info.About Competitor Item', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 6, 6, 'DTS_PRFRMNCE_INDCTR', '
+Insert
+into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 6, 6, 'DTS_PRFRMNCE_INDCTR', 'Showing Items', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 7, 7, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 7, 7, 'DTS_PRFRMNCE_INDCTR', 'Offers Prices', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 8, 8, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 8, 8, 'DTS_PRFRMNCE_INDCTR', 'Delivery Invoice', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 9, 9, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 9, 9, 'DTS_PRFRMNCE_INDCTR', 'Sales', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 10, 10, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 10, 10, 'DTS_PRFRMNCE_INDCTR', 'Money Collecting', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 11, 11, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 11, 11, 'DTS_PRFRMNCE_INDCTR', 'Inventory StocksCustomer', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 12, 12, 'DTS_PRFRMNCE_INDCTR', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 12, 12, 'DTS_PRFRMNCE_INDCTR', 'Others.', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 2, 2, 'DTS_CST_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 1, 1, 'DTS_CST_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 1, 1, 'DTS_CST_TYP', 'Company Customer', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 2, 2, 'DTS_CST_TYP', 'Customer Target', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 1, 1, 'DTS_POST', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 2, 2, 'DTS_POST', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 3, 3, 'DTS_POST', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 1, 1, 'DTS_POST', 'Sales Invoice', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 2, 2, 'DTS_POST', 'Sales Return Invoice',
+1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 3, 3, 'DTS_POST', 'Receipt And Payment Vouchers', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 1, 1, 'DTS_MAP_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 1, 1, 'DTS_MAP_TYP', 'Identify Sales Mans Locations', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 2, 2, 'DTS_MAP_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 2, 2, 'DTS_MAP_TYP', 'Identify Customers Locations', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 3, 3, 'DTS_MAP_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 3, 3, 'DTS_MAP_TYP', 'Draw Daily Plan For Sales Man', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 4, 4, 'DTS_MAP_TYP', 'Draw Route Line Between Sales Man & Customer', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 4, 4, 'DTS_MAP_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 5, 5, 'DTS_MAP_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 5, 5, 'DTS_MAP_TYP', 'Identify Customers Locations By Region', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 1, 1, 'COMM_DTS_PAID_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (1, 2, 2, 'COMM_DTS_PAID_TYP', '
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 2, 2, 'COMM_DTS_PAID_TYP', 'Distribution Paid Of Manual', 1, 0, SYSDATE, NULL)
+Insert into S_FLAGS (LANG_NO, FLG_SR, FLG_VALUE, FLG_CODE, FLG_DESC, FLG_ST, FLG_PRIV, UP_DATE, LBL_NO) Values (2, 1, 1, 'COMM_DTS_PAID_TYP', 'Distribution Paid Of Automatic', 1, 0, SYSDATE, NULL)
+INSERT_LOV_PRC
+nsert into S_LOV_SLCT
+(LOV_NO, LOV_NM, LOV_LBL_NO, LOV_SQL, LOV_COL_CNT,
+LOV_COL_LBL, LOV_COL_WDTH, LOV_COL_HID, DFLT_ORDR, LOV_COL_LTR,
+LOV_COL_RTL, LOV_PRV, RPRT_DPND_WHR, RPRT_RET_COL, GRP_BY)
+Values
+(154, 'LOV_DTS_GRP_DTL', 5535, 'SELECT M.Grp_Code,DECODE (:Parameter.Lang_No,1, NVL (M.Grp_L_Nm, M.Grp_F_Nm),
+NVL (M.Grp_F_Nm, M.Grp_L_Nm)) Grp_Nm FROM Dts_Grp_Mst M Where 1=1', 2,
+'169,558', '60,400', NULL, '1', ',1,',
+NULL, NULL, NULL, NULL, NULL)
+Insert into S_LOV_SLCT
+(156, 'LOV_DTS_TYP_DTL', 4481, 'SELECT M.TYP_No,DECODE (:Parameter.Lang_no,1,NVL(M.TYP_L_NM, M.TYP_F_NM),NVL(M.TYP_F_NM, M.TYP_L_NM)) TY
+P_Nm FROM DTS_TYP_DTL M Where 1=1 ', 2,
+'319,1581', '60,400', NULL, '1', ',1,',
+(155, 'LOV_DTS_GRP_RVL', 5536, 'SELECT M.Grp_Code,DECODE (:Parameter.Lang_no,1,NVL(M.Grp_L_Nm, M.Grp_F_Nm),NVL(M.Grp_F_Nm, M.Grp_L_Nm)) Grp_Nm FROM DTS_GRP_ITM_RVL M Where 1=1 ', 2,
+'292,1137', '60,400', NULL, '1', ',1,',
+E, F
+(157, 'LOV_DTS_CMPNY_RVL', 5537, 'SELECT M.CMPNY_NO,DECODE(:Parameter.Lang_no,1,NVL(M.CMPNY_L_NM,M.CMPNY_F_NM),NVL(M.CMPNY_F_NM,M.CMPNY_L_NM)) CMPNY_NM FROM DTS_CMPNY_RIVAL_DTL M Where 1=1 ', 2,
+'1583,1584', '60,400', NULL, '1', ',1,',
+(158, 'LOV_DTS_AGENT', 5538, 'SELECT M.AGENT_NO,DECODE(:Parameter.Lang_no,1,NVL(M.AGENT_L_NM,M.AGENT_F_NM),NVL(M.AGENT_F_NM,M.AGENT_L_NM)) AGENT_NM FROM DTS_AGENTS_DTL M Where 1=1 ', 2,
+'4492,4493', '60,400', NULL, '1', ',1,',
+(159, 'LOV_DTS_ITM_RVL', 5539, 'SELECT M.I_CODE_RVL,DECODE(:Parameter.Lang_no,1,NVL(M.I_L_NM,M.I_F_Nm),NVL(M.I_F_Nm, M.I_L_Nm)) I_Nm ,ITM_UNT FROM DTS_ITM_RVL_MST M Where 1=1 ', 3,
+'176,177,180', '140,300,80', NULL, '1', ',1,',
+(160, 'LOV_DTS_CST_TRGT', 5062, 'Select C_Code,Decode (:Parameter.Lang_No,1,Nvl(C_L_Nm, C_F_Nm),Nvl (C_F_Nm, C_L_Nm)) C_Name From Dts_Customer_Trgt Where 1=1', 2,
+'388,390', '75,250', NULL, '1', ',1,',
+QL,5
+(164, 'LOV_DTS_PLAN_DYLY', 4938, 'SELECT doc_no,doc_date,plan_typ_nm,rep_code,rep_nm,ref_no,doc_dsc,brn_no
+FROM (SELECT a.doc_no,a.doc_date,c.flg_desc plan_typ_nm,a.ref_no,a.doc_dsc,a.rep_code,DECODE (:parameter.lang_no,1, NVL (b.reprs_a_name, b.reprs_e_name), NVL (b.reprs_e_name, b.reprs_a_name)) rep_nm,a.doc_ser,a.brn_no
+FROM dts_plan_sman_mst a, sales_man b, s_flags c
+WHERE a.plan_typ = 1
+AND a.rep_code = b.reprs_code
+AND c.flg_code = ''DTS_PLAN_TYP''
+AND c.flg_value = a.plan_typ
+AND c.lang_no = :parameter.lang_no
+AND NVL(PRCSSD_FLG,0)=0
+UNION ALL
+ECT a.doc_no,
+a.doc_date,
+c.flg_desc plan_typ_nm,
+a.ref_no,
+a.doc_dsc,
+a.prm_code rep_code,
+DECODE (:parameter.lang_no,
+1, NVL (prm_l_nm, prm_f_nm),
+NVL (prm_f_nm, prm_l_nm))
+rep_nm,
+a.doc_ser,
+a.brn_no
+FROM dts_plan_sman_mst a, ias_promoters b, s_flags c
+WHERE a.plan_typ = 2
+AND a.prm_code = b.prm_code
+AND NVL(PRCSSD_FLG,0)=0)
+', 8,
+'4708,4780,4508,395,396,143,146,2555', '50,70,80,60,150,70,150,30', NULL, '1,2', ',1,2,4,8,',
+',3,7,', NULL, NULL, NULL, NULL)
+(168, 'LOV_DTS_PLAN_PRD', 5542, 'Select a.Doc_No, a.Doc_Date, a.Rep_Code, Decode(:Parameter.Lang_No,1,Nvl(b.Reprs_A_Name,b.Reprs_E_Name),Nvl(b.Reprs_E_Name,b.Reprs_A_Name)) Rep_Nm, a.Ref_No, a.Doc_Dsc,a.Brn_No
+from Dts_Plan_Prd_Mst a,Sales_Man b
+Where a.rep_code=b.Reprs_Code', 7,
+'4708,4780,395,396,143,146,2555', '60,70,70,150,70,150,30', NULL, '1,2', ',1,2,3,7,',
+',6,', NULL, NULL, NULL, NULL)
+(169, 'LOV_DTS_EXP_TYP', 4927, 'SELECT TYP_NO,DECODE(:PARAMETER.LANG_NO,1, NVL(TYP_L_NM, TYP_F_NM),NVL(TYP_F_NM, TYP_L_NM)) TYP_NM FROM DTS_TYP_DTL
+WHERE 1=1 And DTS_TYP_NO = 4', 2,
+'319,1581', '70,250', NULL, '1', ',1,',
+',2,', NULL, NULL, NULL, NULL)
+(170, 'LOV_DTS_SMAN_EXP', 4927, 'Select a.Doc_No, a.Doc_Date, a.Rep_Code, Decode(:Parameter.Lang_No,1,Nvl(b.Reprs_A_Name,b.Reprs_E_Name),Nvl(b.Reprs_E_Name,b.Reprs_A_Name)) Rep_Nm, a.Ref_No, a.Doc_Dsc,a.Brn_No
+from DTS_EXPNS_MST a,Sales_Man b
+'4708,4780,395,396,143,146,2555', '60,70,70,150,70,150,30', NULL, '1', ',1,2,3,7,',
+(171, 'LOV_DTS_ITM_RVL_UNT', 75, 'SELECT ITM_UNT,P_SIZE FROM DTS_ITM_RVL_MST WHERE 1=1', 2,
+'1141,181', '80,70', NULL, '1', ',2,',
+(172, 'LOV_DTS_RVL_ITM_INFO', 5569, 'SELECT Doc_No,Doc_Date,Plan_Typ_Nm,Rep_Code,Rep_Nm,Ref_No,Doc_Dsc,Brn_No
+FROM (SELECT A.DOC_NO,A.DOC_DATE
+,C.FLG_DESC PLAN_TYP_NM,A.REF_NO,A.DOC_DSC,A.REP_CODE,
+DECODE(:PARAMETER.LANG_NO,1, NVL(B.REPRS_A_NAME, B.REPRS_E_NAME),NVL(B.REPRS_E_NAME, B.REPRS_A_NAME)) REP_NM,A.DOC_SER,A.BRN_NO
+FROM DTS_ITM_INFO_MST A,SALES_MAN B,S_FLAGS C WHERE A.PLAN_TYP = 1 AND A.REP_CODE = B.REPRS_CODE AND C.FLG_CODE = ''DTS_PLAN_TYP''
+AND C.FLG_VALUE = A.PLAN_TYP AND C.LANG_NO = :PARAMETER.LANG_NO
+UNION ALL SELECT A.DOC_NO,A.DOC_DATE,C.FLG_DESC PLAN_TYP_NM,A.REF_NO,A.DOC_DSC,A.PRM_CODE REP_CODE,
+DECODE(:PARAMETER.LANG_NO,1, NVL(PRM_L_NM, PRM_F_NM),NVL(PRM_F_NM, PRM_L_NM)) REP_NM,A.DOC_SER,A.BRN_NO
+FROM DTS_ITM_INFO_MST A,IAS_PROMOTERS B,S_FLAGS C
+WHERE A.PLAN_TYP = 3 AND A.PRM_CODE = B.PRM_CODE AND C.FLG_CODE = ''DTS_PLAN_TYP'' AND C.FLG_VALUE = A.PLAN_TYP AND C.LANG_NO = :PARAMETER.LANG_NO)
+'292,1137,4508,395,396,143,146,2555', '50,70,80,60,150,70,150,30', NULL, '1,2', ',1,2,4,8,',
+(173, 'LOV_DTS_STK_CST', 4526, 'SELECT A.DOC_NO, A.DOC_DATE, A.REF_NO, A.DOC_DESC, A.REP_CODE,DECODE(:PARAMETER.LANG_NO,1,NVL(B.REPRS_A_NAME, B.REPRS_E_NAME),NVL(B.REPRS_E_NAME, B.REPRS_A_NAME)) REP_NM, A.BRN_NO
+FROM DTS_STK_CST_MST A, SALES_MAN B WHERE A.REP_CODE = B.REPRS_CODE ', 7,
+'1463,1464,395,396,143,146,2555', '50,70,60,150,70,150,30', NULL, '1,2', ',1,2,3,7,',
+',4,6,', NULL, NULL, NULL, NULL)
+(165, 'LOV_DTS_PLAN_DYLY_PRSUT', 4938, 'SELECT doc_no,doc_date,plan_typ_nm,rep_code,rep_nm,ref_no,doc_dsc,brn_no,Approved,PRCSSD_FLG
+FROM (SELECT a.doc_no,a.doc_date,c.flg_desc plan_typ_nm,a.ref_no,a.doc_dsc,a.rep_code,DECODE (:parameter.lang_no,1, NVL (b.reprs_a_name, b.reprs_e_name), NVL (b.reprs_e_name, b.reprs_a_name)) rep_nm,a.doc_ser,a.brn_no,Approved,PRCSSD_FLG
+WHERE a.plan_typ=1
+AND a.rep_code=b.reprs_code
+AND c.flg_code=''DTS_PLAN_TYP''
+AND c.flg_value=a.plan_typ
+AND c.lang_no=:parameter.lang_no
+SELECT a.doc_no,
+a.brn_no ,
+Approved,
+PRCSSD_FLG
+WHERE a.plan_typ=2 AND a.prm_code=b.prm_code AND c.flg_code=''DTS_PLAN_TYP'' AND c.flg_value=a.plan_typ AND c.lang_no=:parameter.lang_no
+Where 1=1 ', 10,
+'4708,4780,4508,395,396,143,146,2555', '50,70,80,60,150,70,150,30,0,0', NULL, '1,2', ',1,2,4,8,',
+Insert into DTS_LOV
+(LOV_NO, LOV_NM, LOV_LBL_NO, LOV_SQL, LOV_PRV,
+GRP_BY, LOV_COL_CNT, LOV_COL_LBL, LOV_COL_WDTH, LOV_COL_HID,
+DFLT_ORDR, LOV_COL_LTR, LOV_COL_RTL, RPRT_DPND_WHR, RPRT_RET_COL)
+(401, 'LOV_DTS_CST_GPS', 8662, ' SELECT LTRIM(RTRIM((LTRIM(RTRIM(POINT_GPS_LAT_Y))
+LTRIM(RTRIM(POINT_GPS_LNGT_X)))))
+POINT_GPS,POINT_ID, POINT_DESC, POINT_GPS_LAT_Y, POINT_GPS_LNGT_X,REP_CODE,C_CODE
+FROM DTS_SURVEY_CST_GPS C ', NULL,
+NULL, 9, '8663,4044,4247,8617,8616,1928,1929,407,388', '80,30,80,20,20,40,80,30,30', NULL,
+'1', ',1,', NULL, NULL, NULL)
+INSERT_LIST_PRC
+Insert into S_LST_SLCT (LST_NM, LST_SQL, LST_WHR, LST_ORDRBY, LST_SQL_PRV)
+Values('LST_STN_PRD', 'SELECT TO_CHAR(PRD_NO) || ''-'' || DECODE(:PARAMETER.LANG_NO,1,NVL(PRD_A_NM, PRD_F_NM),NVL(PRD_F_NM,PRD_A_NM)) , TO_CHAR(PRD_NO) FROM STN_PRD WHERE 1=1', NULL, '1', NULL) ;
+MOVE_DATA_PRC
+Parameter.CURUSER
+IAS_GEN_PKGIAS20142GET_FIELDSIAS
+IAS_GEN_PKGIAS2014
+2GET_FIELDSIAS
+UPDATE STN_COUNTERS o SET PRIMARY_READ= ( Select Max(CUNTR_READ_CRNT) From STN_BILL_DTL i Where i.CUNTR_NO=o.CUNTR_NO Group By i.CUNTR_NO)
+Where CUNTR_NO In(Select CUNTR_NO From STN_BILL_DTL )
+INSRT_FRM_FLD_PRC
+Complete Insert Data
+Dts Insrt_Data_Script
+ORDRBY
+D\ER
+SELECT COUNT(1) FROM TAB WHERE TABTYPE = ''TABLE'' AND (TNAME LIKE ''DTS%'' )"SELECT COUNT(1) FROM DTS_PARA"SELECT COUNT(1) FROM IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS WHERE DOC_TYPE = 1401"SELECT COUNT(1) FROM IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS WHERE DOC_TYPE = 1404"SELECT COUNT(1) FROM IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS WHERE DOC_TYPE = 1402"UPDATE IAS_SYS.S_ERP_SYSTEM SET INACTIVE=0 WHERE SYS_NO IN ( 70 )"UPDATE IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS_MST SET FLG_ST=1 WHERE DOC_TYPE = 1401 AND FLG_ST = 0"UPDATE IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS_MST SET FLG_ST=1 WHERE DOC_TYPE = 1404 AND FLG_ST = 0"UPDATE IAS_SYS.IAS_DOCJV_TYPE_SYSTEMS_MST SET FLG_ST=1 WHERE DOC_TYPE = 1402 AND FLG_ST = 0"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_GRP_DTL''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LO
+V_DTS_TYP_DTL''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_GRP_RVL''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_CMPNY_RVL''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_AGENT''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_ITM_RVL''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_CST_TRGT''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_PLAN_DYLY''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_PLAN_PRD''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_EXP_TYP''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_SMAN_EXP''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_ITM_RVL_UNT''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_RVL_ITM_INFO''"SELECT COUNT(LOV_NM) FROM S
+_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_STK_CST''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_PLAN_DYLY_PRSUT''"SELECT COUNT(LOV_NM) FROM S_LOV_SLCT WHERE LOV_NM = ''LOV_DTS_CST_GPS''"SELECT COUNT(LST_NM) FROM S_LST_SLCT WHERE LST_NM = ''LST_STN_PRD''"SELECT 1 FROM DTS_TYP_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_PARA WHERE ROWNUM <= 1"SELECT 1 FROM DTS_PRFRMNCE_INDCTR WHERE ROWNUM <= 1"SELECT 1 FROM DTS_GRP_ITM_RVL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_ITM_RVL_MST WHERE ROWNUM <= 1"SELECT 1 FROM DTS_ITM_RVL_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_GRP_MST WHERE ROWNUM <= 1"SELECT 1 FROM DTS_GRP_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_ITM_INFO_MST WHERE ROWNUM <= 1"SELECT 1 FROM DTS_ITM_INFO_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_ITM_INFO_SUB_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_ITM_INFO_SUB_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_AGENTS_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_CMPNY_RIVAL_DTL WHERE ROWNUM <= 1"SELECT 1 FROM DTS_CUSTOMER_TRGT WHERE ROWNUM <= 1"SELECT 1 FROM DTS_SURVEY_CST_GPS WHERE ROWNUM <= 1"SELECT 1 FROM STN_PARA WHERE ROWNUM <= 1"SELECT 1 FROM STN_PRD WHERE ROWNUM <= 1"SELECT 1 FROM STN_FUEL_TYP WHERE ROWNUM <= 1"SELECT 1 FROM STN_CONN_EMP_BY_CNTR_GL WHERE ROWNUM <= 1"SELECT 1 FROM STN_COUNTERS WHERE ROWNUM <= 1"SELECT 1 FROM STN_COUNTERS_EMP WHERE ROWNUM <= 1"
+V_NM = ''LO
+/TMP8/DTS_INSRT_FORM_DTL_PKG
+FORM_DETAIL
+FORMSBC
+PRIVILEGE
+"DTS_INSRT_FORM_DTL_PKG"INSRT_FORM_DTL_PRC"V_CNT"<cursor ptr>"<SQL statement. Line 7>"<SQL statement. Line 9>"INSRT_FORM_PRIV_PRC"V_INC_FLG"V_CNT1"<SQL statement. Line 139>""
+INSERT INTO Form_Detail(F_Sys,Sys_No,Form_No,F_Parent_No,F_File_Name,F_Bt_Priv,F_Inactive,F_Order_No,Scr_Orgnl,Scr_Theme_No,Scr_Typ,Doc_Typ)Values('DTS',70,1420,1400,'DTST020',1,0,1420,Null,Null,3,Null)
+INSERT INTO Ias_Form_Name(Lang_No, Form_No, Form_Name) Values(1, 1420, '
+INSERT INTO Ias_Form_Name(Lang_No, Form_No, Form_Name) Values(2, 1420, 'Post To Onyx System')
+commit
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_
+BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1300, 44 , NULL , 0,0, 1300, NULL, 0, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1301, 1300, NULL , 0,0, 1301, NULL, 0, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1302, 1301, 'DTSS001', 1,0, 1302, NULL, 1, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1303, 1301, 'DTSS002', 1,0, 1303, NULL, 1, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1304, 1301, 'DTSS003', 1,0, 1304, NULL, 1, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1306, 1301, 'DTSS003', 1,0, 1306, NULL, 1, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1307, 1301, 'DTSS003', 1,0, 1307, NULL, 1, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1308, 1301, 'DTSS003', 1,0, 1308, NULL, 1, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1350, 1300, NULL , 0,0, 1350, NULL, 0, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1351, 1350, 'DTSI001', 1,0, 1351, NULL, 2, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1352, 1350, 'DTSI002', 1,0, 1352, NULL, 2, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1353, 1350, 'DTSI003', 1,0, 1353, NULL, 2, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1354, 1350, 'DTSI004', 1,0, 1354, NULL, 2, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1355, 1350, 'ARSI017', 1,0, 1355, NULL, 2, NULL,70, 812)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1356, 1350, 'DTSI005', 1,0, 1356, NULL, 2, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1400, 1300, NULL , 0,0, 1400, NULL, 0, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1401, 1400, 'DTST001', 1,0, 1401, NULL, 3, 1401,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1402, 1400, 'DTST002', 1,0, 1402, NULL, 3, 1402,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_
+NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1403, 1400, 'DTST003', 1,0, 1403, NULL, 3, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1404, 1400, 'DTST004', 1,0, 1404, NULL, 3, 1404,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1405, 1400, 'DTST005', 1,0, 1405, NULL, 3, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1406, 1400, 'DTST006', 1,0, 1406, NULL, 3, NULL,70, 356)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1407, 1400, 'DTST010', 1,0, 1407, NULL, 3, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1450, 1300, NULL, 0,0, 1450, NULL, 0, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1451, 1450, 'DTSR001', 0,0, 1451, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1452, 1450, 'DTSR002', 0,0, 1452, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1453, 1450, 'DTSR003', 0,0, 1453, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1454, 1450, 'DTSR004', 0,0, 1454, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1455, 1450, 'DTSR005', 0,0, 1455, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1456, 1450, 'DTSR006', 0,0, 1456, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1457, 1450, 'DTSR007', 0,0, 1457, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1458, 1450, 'DTSR008', 0,0, 1458, NULL, 4, NULL,70, NULL)
+INSERT INTO FORM_DETAIL(F_SYS, FORM_NO, F_PARENT_NO, F_FILE_NAME, F_BT_PRIV,F_INACTIVE, F_ORDER_NO, SCR_THEME_NO, SCR_TYP, DOC_TYP,SYS_NO, SCR_ORGNL) VALUES ('DTS', 1459, 1450, 'DTSR009', 0,0, 1459, NULL, 4, NULL,70, NULL)
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1300, 'Distribution System')
+NO,Y
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1300, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1301, 'Configuration')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1301, '
+LUEd
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1302, '
+ORMm
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1302, 'Sales Man Performance Indicators')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1303, 'Items Compe
+tition Group')
+S, d
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1303, '
+O, f
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1304, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1304, 'Ways Entry Items Competition')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1306, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1306, 'Characteristics For Items Competitior')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1307, 'Types Of Expenses Of Sales Man')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1307, '
+YS_m
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1308, 'Tyeps Of Price Competition Items')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1308, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1350, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1350, 'Inputs')
+INSERT INTO IAS_FORM_NAME(LANG_N
+O, FORM_NO, FORM_NAME) VALUES (1, 1351, '
+NULz
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1351, 'Details Companies Producing Items Competition')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1352, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1352, 'Details Agents Items Competition')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1353, 'Details Distribution Group')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1353, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1354, '
+ULL_
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1354, 'Item Details Rival')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1355, '
+450]
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1355, 'Promoter Details')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1356, 'Details Target Customer')
+LUEf
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1356, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1400, 'Operations')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1400, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1401, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1401, 'Daily Route Planing For Sales Man')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1402, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1402, 'Period Route Planing For Sales Man')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1403, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1403, 'Keep Track Of Daily Route For Sales Man')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1404, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1404, 'Expenses Of Sales Man')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1405, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1405, 'Statistical Info. About Items Competition')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1406, 'Stock Customer inventories')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1406, '
+INSERT I
+NTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1407, '
+E(LQ
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1407, 'MAPS')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1450, 'Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1450, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1451, 'Item Details Rival Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1451, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1452, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1452, 'Details Target Customer Reports')
+07,c
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1453, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1453, 'Promoter Details Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1454, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1454, 'Details Distribution Group Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1455, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1455, 'Daily Route Planing For Sales Man Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1456, 'Keep Track Of Daily Route For Sales Man Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1456, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1457, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1457, 'Expenses Of Sales Man Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1458, '
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1458, 'Statistical Info. About Items Competition Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (2, 1459, 'Stock Customer inventories Reports')
+INSERT INTO IAS_FORM_NAME(LANG_NO, FORM_NO, FORM_NAME) VALUES (1, 1459, '
+NG_NMPN
+SELECT COUNT(*) FROM FORM_DETAIL WHERE F_SYS = ''DTS''"DELETE FROM FORM_DETAIL WHERE F_SYS = ''DTS''"INSERT INTO PRIVILEGE ( U_ID,FORM_NO,INCLUDE_FLAG,AD_FLAG,DEL_FLAG,MOD_FLAG,VIEW_FLAG,PRINT_FLAG,VWREP_FLAG,F_ORDER_NO,AD_DATE,AD_U_ID,UP_DATE,UP_U_ID,VRFY_FLAG,PST_FLAG ) SELECT 1,FORM_NO,1,1,1,1,1,1,1,F_ORDER_NO,SYSDATE,1, NULL , NULL ,1,1 FROM FORM_DETAIL WHERE FORM_NO BETWEEN 1300 AND 150
+0 AND FORM_NO NOT IN (SELECT FORM_NO FROM PRIVILEGE WHERE U_ID = 1 )"
+/TOOL_MODULE
+-TOOL_MODULE
+REQ_ROLE
+VGS_VER
++TOOL_MODULE
+DE_VER
+ROS_VER
+)TOOL_PLSQL
+MODID
+NAME
+TYPE
+OWNER
++TOOL_PLSQL
+ITEMID
+/TOOL_PLSQL
+PLSLFID_EP
+PLSLFID_ST
+/TMP8/DTS_PACKAGE_PKG
+"DTS_PACKAGE_PKG"PACKAGE_PRC""
+-DE_ATTACHED_LIBS
+DE Attached Libs
++ROSATTRIBS
+class attributes
++ROSLFDESC
+ros lf descrip
+' &ROSOBJMAP
+ros name->id
+ROSSTRINGS
+tk2 uiStrings
+ROSSTRUCTS
+struct types
+ROSTK2RESV
+tk2 reserved
+Tools Modules
+TOOL_PLSQL
+Tools PLSQL
+#p$ *
+/DE_ATTACHED_LIBS
+#p$ ,
+1DE_ATTACHED_LIBS
+LIBNAME
+#p$ .
+3DE_ATTACHED_LIBS
+LOCATION
+PRODUCT
+MODTYPE
+MODNAME
+TCS_VER
+1TOOL_MODULE
+NEXT_ITEMID
+CREATOR
+CREATE_DATE
+CREATE_VER
+MODIFIER
+MOD_DATE
+MOD_VER
+DTS_PROCEDURE_PKG
+/TMP8/DTS_PROCEDURE_PKG
+"DTS_PROCEDURE_PKG"PROCEDURE_PRC""
+PROCEDURE_PRC
+DTS_SEQUENCE_PKG
+/TMP8/DTS_SEQUENCE_PKG
+"DTS_SEQUENCE_PKG"SEQUENCES_PRC""
+DTS_TABLE_FILED_PKG
+/TMP8/DTS_TABLE_FILED_PKG
+IAS_DBS_SYS_PKG
+/TMP8/DTS_UPDATE_TABLE
+"DTS_TABLE_FILED_PKG"TABLE_FILED_PRC"P_ENT""
+TABLE_FILED_PRC
+DTS_PLAN_PRD_MST
+PRCSSD_FLG NUMBER(1) DEFAULT 0
+IAS_DBS_SYS_PKGIAS20142ALTR_DBSI
+APPROVED NUMBER(1) DEFAULT 0
+APRV_DATE DATE
+APRV_DSC VARCHAR2(500)
+APRV_U_ID NUMBER(5)
+ALTER TABLE GPS_EVENT DROP CONSTRAINT GPS_EVENT_PK
+GPS_EVENT
+SRL NUMBER(38)
+PLAN_SER NUMBER(38)
+ALTER TABLE GPS_EVENT ADD (CONSTRAINT PK_GPS_EVENT PRIMARY KEY (Srl))
+DROP
+COLUMN SERVICESTATE
+COLUMN DEVICESTATE
+COLUMN GPS_LAST_SRVR_DATE
+Modify
+CMPNY_NO Number(10)
+AGENT_NO Number(10)
+C_GROUP_CODE Number(10)
+CNTRY_NO Number(10)
+GRP_CODE VARCHAR2(10)
+AGENT_NO_RVL Number(10)
+CMPNY_NO_RVL Number(10)
+CMP_NO_RVL Number(10)
+CMPNY_CNTRY_NO Number(10)
+AGENT_CNTRY_NO Number(10)
+CMPNY_PROV_NO Number(10)
+CMPNY_CITY_NO Number(10)
+AGENT_PROV_NO Number(10)
+AGENT_CITY_NO Number(10)
+ALTER TABLE DTS_SURVEY_CST_GPS DROP CONSTRAINT DTSSURVEYCSTGPS_UQ
+POINT_ID NUMBER(38)
+ALTER TABLE DTS_SURVEY_CST_GPS ADD CONSTRAINT DTSSRVYCSTGPS_PK PRIMARY KEY (POINT_ID)
+DTS_TABLE_PKG
+/TMP8/DTS_TABLE_PKG
+V$TABLESPACE
+V_$TABLESPACE
+"DTS_TABLE_PKG"TABLE_PRC"V_CNT"<cursor ptr>"<SQL statement. Line 8>""
+TABLE_PRC
+COUNT TableSpace DOES NOT CORRECT
+FOLLOW
+CREATE TABLE DTS_PRFRMNCE_INDCTR(
+PR_NO NUMBER(5),
+PR_NM VARCHAR2(60),
+LBL_NO NUMBER(10),
+PR_FLG NUMBER(1) DEFAULT 0,
+AD_U_ID NUMBER(5),
+AD_DATE DATE,
+UP_U_ID NUMBER(5),
+UP_DATE DATE,
+UP_CNT NUMBER(10),
+PR_REP NUMBER(10),
+AD_TRMNL_NM VARCHAR2(50),
+UP_TRMNL_NM VARCHAR2(50),
+CONSTRAINT DTSPRINDCTR_PK PRIMARY KEY (PR_NO) )
+TABLESPACE DTS_INPUT
+CREATE TABLE DTS_GRP_ITM_RVL(
+GRP_CODE VARCHAR2(6),
+GRP_L_NM VARCHAR2(100),
+GRP_F_NM VARCHAR2(100),
+CONSTRAINT DTSGRPDTL_PK
+PRIMARY KEY (GRP_CODE))
+CREATE TABLE DTS_TYP_DTL (
+DTS_TYP_NO NUMBER(2),
+TYP_NO NUMBER(5),
+TYP_L_NM VARCHAR2(100),
+TYP_F_NM VARCHAR2(100),
+CONSTRAINT DTSTYPDTL_PK
+PRIMARY KEY (DTS_TYP_NO,TYP_NO))
+CREATE TABLE DTS_CMPNY_RIVAL_DTL(CMPNY_NO NUMBER(5),
+CMPNY_L_NM VARCHAR2(100),
+CMPNY_F_NM VARCHAR2(100),
+CONSTRAINT DTSCMPDTL_PK PRIMARY KEY (CMPNY_NO))
+CREATE TABLE DTS_AGENTS_DTL( AGENT_NO NUMBER(5),
+AGENT_L_NM VARCHAR2(100),
+AGENT_F_NM VARCHAR2(100),
+CONSTRAINT DTSAGENTDTL_PK
+PRIMARY KEY (AGENT_NO))
+CREATE TABLE DTS_GRP_MST(GRP_CODE VARCHAR2(6),
+LEV_NO NUMBER(3) ,
+CONSTRAINT DTSGRPDSTMST_PK PRIMARY KEY (GRP_CODE))
+CREATE TABLE DTS_GRP_DTL(
+I_CODE VARCHAR2(30),
+ITM_UNT VARCHAR2(10),
+P_SIZE NUMBER,
+LEV_NO NUMBER(3),
+RCRD_NO NUMBER(10),
+UP_CNT NUMBER(10))
+CREATE TABLE DTS_ITM_RVL_MST(
+I_CODE_RVL VARCHAR2(30),
+I_L_NM VARCHAR2(100),
+I_F_NM VARCHAR2(100),
+I_DSC VARCHAR2(500),
+ITM_UNT_RVL VARCHAR2(10),
+P_SIZE_RVL NUMBER ,
+CMPNY_NO_RVL NUMBER(5),
+AGENT_NO_RVL NUMBER(5),
+CMPNY_CNTRY_NO NUMBER(4),
+CMPNY_PROV_NO NUMBER(4),
+CMPNY_CITY_NO NUMBER(3),
+AGENT_CNTRY_NO NUMBER(4),
+AGENT_PROV_NO NUMBER(4),
+AGENT_CITY_NO NUMBER(3),
+CONSTRAINT DTS_ITMRVLMST_PK PRIMARY KEY (I_CODE_RVL))
+CREATE TABLE DTS_ITM_RVL_DTL(
+C_TYP NUMBER(1),
+C_CODE VARCHAR2(15),
+INCOME_DATE DATE,
+I_PRICE NUMBER,
+AVL_QTY NUMBER,
+BARCODE1 VARCHAR2(20),
+BARCODE2 VARCHAR2(20),
+BARCODE3 VARCHAR2(20),
+CREATE TABLE DTS_CUSTOMER_TRGT(
+C_L_NM VARCHAR2(100),
+C_F_NM VARCHAR2(100),
+C_GROUP_CODE NUMBER(5),
+C_ADDRESS VARCHAR2(100),
+C_CLASS NUMBER(3),
+CNTRY_NO NUMBER(4)
+PROV_NO NUMBER(4),
+CITY_NO NUMBER(3),
+R_CODE NUMBER(6),
+REP_CODE VARCHAR2(15),
+ROUTE_NO NUMBER(10),
+SORTINROUTE NUMBER(10),
+GPS VARCHAR2(100),
+C_PHONE VARCHAR2(16),
+C_FAX VARCHAR2(16),
+C_BOX VARCHAR2(60),
+C_PERSON VARCHAR2(40),
+C_E_MAIL VARCHAR2(60),
+C_WEB_SITE VARCHAR2(30),
+C_MOBILE VARCHAR2(16),
+RSPNS_PRSN VARCHAR2(100),
+RSPNS_PRSN_PHONE VARCHAR2(16),
+RSPNS_PRSN_FAX VARCHAR2(16),
+RSPNS_PRSN_BOX VARCHAR2(10),
+RSPNS_PRSN_E_MAIL VARCHAR2(30),
+INSRT_TO_CSTMR NUMBER(1) DEFAULT 0,
+INACTIVE NUMBER(1) DEFAULT 0,
+INACTIVE_RES VARCHAR2(250),
+INACTIVE_DATE DATE,
+UP_CNT NUMBER(10) DEFAULT 0,
+PR_REP NUMBER(10) DEFAULT 0,
+CONSTRAINT DTSCUSTOMER_PK PRIMARY KEY (C_CODE))
+CREATE TABLE DTS_PLAN_SMAN_MST(
+DOC_NO NUMBER(15) NOT NULL,
+DOC_SER NUMBER(38) NOT NULL,
+DOC_DATE DATE NOT NULL,
+REF_NO VARCHAR2(15),
+DOC_DSC VARCHAR2(500),
+REP_CODE VARCHAR2(30),
+PLAN_TYP NUMBER(1),
+PRCSSD_FLG NUMBER(1) DEFAULT 0,
+APPROVED NUMBER(1) DEFAULT 0,
+APRV_DATE DATE,
+APRV_DSC VARCHAR2(500),
+APRV_U_ID NUMBER(5),
+PRM_CODE VARCHAR2(15),
+FIELD1 VARCHAR2(250),
+FIELD2 VARCHAR2(250),
+FIELD3 VARCHAR2(250),
+FIELD4 VARCHAR2(250),
+FIELD5 VARCHAR2(250),
+FIELD6 VARCHAR2(250),
+FIELD7 VARCHAR2(250),
+FIELD8 VARCHAR2(250),
+FIELD9 VARCHAR2(250),
+FIELD10 VARCHAR2(250),
+CMP_NO NUMBER(2),
+BRN_NO NUMBER(3),
+BRN_YEAR NUMBER(4),
+BRN_USR NUMBER(3),
+CONSTRAINT DTSPLANSMANMST_PK PRIMARY KEY (DOC_SER))
+TABLESPACE DTS_DATA_TRNS
+CREATE TABLE DTS_PLAN_SMAN_DTL(
+C_CODE VARCHAR2(30),
+COLLECT_RQST_FLG NUMBER(1) DEFAULT 0,
+DLVRY_GOODS_FLG NUMBER(1) DEFAULT 0,
+PRMTNG_GOODS_FLG NUMBER(1) DEFAULT 0,
+SALES_RTRN_FLG NUMBER(1) DEFAULT 0,
+GET_INFO_ITEM_FLG NUMBER(1) DEFAULT 0,
+SHOWING_ITEMS_FLG NUMBER(1) DEFAULT 0,
+QT_PRICES_FLG NUMBER(1) DEFAULT 0,
+DLVRY_INVOICE_FLG NUMBER(1) DEFAULT 0,
+SALES_FLG NUMBER(1) DEFAULT 0,
+COLLECT_FLG NUMBER(1) DEFAULT 0,
+INV_STK_CST_FLG NUMBER(1) DEFAULT 0,
+OTHERS_FLG NUMBER(1) DEFAULT 0,
+BLNC_AMT NUMBER,
+COL_PRCNT NUMBER,
+COL_AMT NUMBER,
+C_DSC VARCHAR2(500),
+EXEC_COLLECT_FLG NUMBER(1) DEFAULT 0,
+EXEC_COLLECT_RQST_FLG NUMBER(1) DEFAULT 0,
+EXEC_
+EXEC_DLVRY_INVOICE_FLG NUMBER(1) DEFAULT 0,
+EXEC_GET_INFO_ITEM_FLG NUMBER(1) DEFAULT 0,
+EXEC_INV_STK_CST_FLG NUMBER(1) DEFAULT 0,
+EXEC_OTHERS_FLG NUMBER(1) DEFAULT 0,
+EXEC_SALES_FLG NUMBER(1) DEFAULT 0,
+EXEC_QT_PRICES_FLG NUMBER(1) DEFAULT 0,
+EXEC_SHOWING_ITEMS_FLG NUMBER(1) DEFAULT 0,
+EXEC_SALES_RTRN_FLG NUMBER(1) DEFAULT 0,
+EXEC_PRMTNG_GOODS_FLG NUMBER(1) DEFAULT 0,
+CONSTRAINT DTSPLANSMANDTL_PK
+PRIMARY KEY (DOC_SER, C_CODE))
+CREATE TABLE DTS_PLAN_SMAN_SUB_DTL (
+I_QTY NUMBER,
+FREE_QTY NUMBER,
+BILL_SER NUMBER,
+BILL_NO NUMBER,
+OPTN_VAL NUMBER(2),
+TASK_NM VARCHAR2(250),
+PROCESSED NUMBER(1) DEFAULT 0,
+BRN_USR NUMBER(3))
+CREATE TABLE DTS_OUT_PLAN_SMAN_DTL(
+CONSTRAINT DTSOUTPLANSMANDTL_PK PRIMARY KEY (DOC_SER, C_CODE))
+CREATE TABLE DTS_OUT_PLAN_SMAN_SUB_DTL(
+CREATE TABLE DTS_PLAN_PRD_MST(
+F_DOC_DATE DATE NOT NULL,
+T_DOC_DATE DATE NOT NULL,
+F_DOC_DATE_PREV DATE NOT NULL,
+T_DOC_DATE_PREV DATE NOT NULL,
+FLD_DAY1 NUMBER(1) DEFAULT 7,
+FLD_DAY2 NUMBER(1) DEFAULT 1,
+FLD_DAY3 NUMBER(1) DEFAULT 2,
+FLD_DAY4 NUMBER(1) DEFAULT 3,
+FLD_DAY5 NUMBER(1) DEFAULT 4,
+FLD_DAY6 NUMBER(1) DEFAULT 5,
+FLD_DAY7 NUMBER(1) DEFAULT 6,
+AD_DATE DATE NOT NULL,
+AD_U_ID NUMBER(5) NOT NULL,
+CONSTRAINT DTSPLANPRDMST_PK PRIMARY KEY (DOC_SER))
+CREATE TABLE DTS_PLAN_PRD_DTL(
+DOC_DATE_PREV DATE,
+PLAN_NO NUMBER(15),
+PLAN_DATE DATE,
+PLAN_SER NUMBER(38),
+DOC_NO_PREV NUMBER(15),
+DOC_SER_PREV NUMBER(38),
+CREATE TABLE DTS_EXPNS_MST(
+CONSTRAINT DTSEXPNSMST_PK PRIMARY KEY(DOC_SER))
+CREATE TA
+BLE DTS_EXPNS_DTL(
+EXP_TYP NUMBER(5),
+A_CY VARCHAR2(7),
+AC_RATE NUMBER,
+EXP_AMT_L NUMBER,
+EXP_AMT_F NUMBER,
+CREATE TABLE DTS_ITM_INFO_MST(
+CONSTRAINT DTSINFOITMMST_PK PRIMARY KEY(DOC_SER))
+CREATE TABLE DTS_ITM_INFO_DTL(
+CMP_NO_RVL NUMBER(2),
+PUR_QTY_MNTH NUMBER,
+SALE_AVG_MNTH NUMBER,
+ITEM_PRICE NUMBER DEFAULT 0,
+GIVEN_FEATURES NUMBER DEFAULT 0,
+WAYS_ENTR_ITM_RVL NUMBER DEFAULT 0,
+CNT_MNTH_VST_RVL NUMBER(3),
+CREATE TABLE DTS_ITM_INFO_SUB_DTL(
+TYP_NO NUMBER(5) NOT NULL,
+TYP_VAL NUMBER,
+CREATE TABLE DTS_STK_CST_MST(
+DOC_DESC VARCHAR2(500),
+RSPNS_PRSON VARCHAR2(100),
+F_TIME VARCHAR2(15),
+T_TIME
+VARCHAR2(15),
+CONSTRAINT DTSSTKCSTMST_PK PRIMARY KEY(DOC_SER))
+TABLESPACE "DTS_DATA_TRNS"
+CREATE TABLE DTS_STK_CST_DTL(
+DOC_SER NUMBER(38) NOT
+NULL,
+EXPIRE_DATE DATE,
+BATCH_NO VARCHAR2(15),
+P_QTY NUMBER,
+BARCODE VARCHAR2(30),
+CREATE TABLE DTS_OPTN
+OPTN_NO NUMBER(5),
+OPTN_NM VARCHAR2(100),
+CONSTRAINT DTSOPTN_PK PRIMARY KEY (OPTN_NO)
+TABLESPACE "DTS_INPUT"
+CREATE TABLE DTS_OPTN_PRIV
+U_ID NUMBER(5),
+OPTN_FLG NUMBER(1),
+CONSTRAINT DTSOPTNPRIV_PK PRIMARY KEY (OPTN_NO,U_ID)
+CREATE TABLE DTS_PARA
+PARA_NO NUMBER(1) DEFAULT 1,
+CST_CSH_SLS_TYP NUMBER(2) DEFAULT 1,
+WRK_WITHOUT_PLN NUMBER(1) DEFAULT 0,
+IMPLMNT_PLAN_SRTROUTE_MNDTRY NUMBER(1),
+AUTO_MOBILE_POSTING NUMBER(1) DEFAULT 0,
+PST_SCNDS_PRD NUMBER DEFAULT 86400,
+GOOGLE_MAP_KEY VARCHAR2(200),
+ZOOM_SCALE NUMBER(3),
+PR_REP NUMBER(6),
+CONSTRAINT DTSPARA_PK PRIMARY KEY(PARA_NO)
+TABLESPACE "IAS_STP"
+CREATE TABLE DTS_CST_VST_MST
+( VST_NO NUMBER(15),
+VST_SRL NUMBER(38),
+C_CODE VARCHAR2(30) NOT NULL,
+REP_CODE VARCHAR2(30) NOT NULL,
+ARIVL_TM DATE NOT NULL,
+LVD_TM DATE NOT NULL,
+SPND_TM VARCHAR2(50),
+VST_STS NUMBER(1) DEFAULT 0,
+VST_CNCL_RSN VARCHAR2(500),
+CONSTRAINT DTSCSTVSTMST_PK PRIMARY KEY (VST_SRL) USING INDE
+X TABLESPACE DTS_DATA_TRNS
+CREATE TABLE DTS_CST_VST_DTL
+VST_SRL NUMBER(38) NOT NULL,
+DOC_TYPE_REF NUMBER(5),
+DOC_NO_REF NUMBER(15),
+DOC_SECUENCE NUMBER(38),
+PRIMARY KEY (DOC_SECUENCE)
+) TABLESPACE DTS_DATA_TRNS
+CREATE TABLE DTS_SURVEY_CST_GPS
+HND_DVC_SRL VARCHAR2(60) ,
+POINT_ID VARCHAR2(60),
+POINT_DESC VARCHAR2(250),
+POINT_GPS_LAT_Y VARCHAR2(250),
+POINT_GPS_LNGT_X VARCHAR2(50) ,
+SCAN_DATE DATE
+CREATE TABLE GPS_EVENT
+SMAN_TYP NUMBER(1) NOT NULL,
+GPS_LAT_Y VARCHAR2(50),
+GPS_LNGT_X VARCHAR2(50),
+GPS_LAST_DATE DATE,
+SRL NUMBER(38),
+CONSTRAINT PK_GPS_EVENT PRIMARY KEY (SRL)
+TABLESPACE "IAS_GEN"
+COMMENT ON COLUMN GPS_EVENT.REP_CODE IS '395 -
+COMMENT ON COLUMN GPS_EVENT.PR_REP IS '1709 -
+COMMENT ON COLUMN GPS_EVENT.UP_CNT IS '1969 -
+COMMENT ON COLUMN GPS_EVENT.AD_TRMNL_NM IS '1726 -
+Complete Create Tables DTS
+DTS Table_Script
+NUMBE
+SELECT COUNT(1) FROM V$TABLESPACE WHERE NAME LIKE ''DTS%''"
+_U_ID NUMBER(5),
+DTS_SYNONYM_PKG
+/TMP8/DTS_SYNONYM_PKG
+"DTS_SYNONYM_PKG"SYNONYM_PRC""
+SYNONYM_PRC
+DTS_VIEW_PKG
+/TMP8/DTS_VIEW_PKG
+"DTS_VIEW_PKG"VIEW_PRC"V_CNT""
+VIEW_PRC
+CREATE OR REPLACE VIEW DTS_V_GET_ITM_DTL
+(GRP_CODE, I_CODE, I_NAME, ITM_UNT, I_E_NAME,
+G_CODE, P_SIZE, FREE_QTY_PER, DISC_PER, I_PRICE,
+VAT_PER, ALLOW_DISC, ALLOW_FREE_QTY, USE_QTY_FRACTION, USE_BATCH_NO,
+USE_EXP_DATE, MAIN_UNIT, SALE_UNIT, LEV_NO, BILL_DOC_TYPE,
+A_CY, CUR_RATE, L_F, LOW_PRICE, HIGH_PRICE)
+SELECT Distinct g.grp_code grp_code,
+g.i_code i_code,
+NVL (Mi.I_NAME, 'no name') I_NAME,
+NVL (G.ITM_UNT, 'no name') ITM_UNT,
+NVL (Mi.I_E_NAME, 'no name') I_E_NAME,
+Mi.G_CODE G_CODE,
+G.P_SIZE P_SIZE,
+NVL (Mi.FREE_QTY_PER,0) FREE_QTY_PER,
+NVL (Mi.DISC_PER,0) DISC_PER,
+NVL (C.I_PRICE,0) I_PRICE,
+NVL (Mi.VAT_PER,0) VAT_PER,
+NVL (Mi.ALLOW_DISC,0) ALLOW_DISC,
+Nvl (Mi.ALLOW_FREE_QTY,0) ALLOW_FREE_QTY,
+Nvl (Mi.USE_QTY_FRACTION,0) USE_QTY_FRACTION,
+NVL (Mi.USE_BATCH_NO,0) USE_BATCH_NO,
+NVL (Mi.USE_EXP_DATE,0) USE_EXP_DATE,
+NVL (Di.MAIN_UNIT,0) MAIN_UNIT,
+NVL (Di.SALE_UNIT,0) SALE_UNIT,
+G.LEV_NO LEV_NO,
+Nvl(PL.BILL_DOC_TYPE,0) BILL_DOC_TYPE,
+pl.A_CY,
+EX.CUR_RATE,
+Ex.L_F,
+AND pl.A_CY=Ex.Cur_Code
+Order By grp_code,i_code,P_SIZE
+CREATE OR REPLACE VIEW DTS_V_GET_REP_STORAGE
+(REP_CODE, GRP_CODE, I_CODE, I_NAME, I_E_NAME,
+W_CODE, AVL_QTY, EXPIRE_DATE, BATCH_NO)
+Select REP_CODE, GRP_CODE, I_CODE, I_NAME, I_E_NAME,
+W_CODE, Nvl(Sum(Nvl(AVL_QTY,0)),0) Avl_Qty, EXPIRE_DATE, BATCH_NO
+From(
+SELECT S.Reprs_Code Rep_Code,
+S.Grp_Code,
+M.I_Code,
+Mi.I_Name,
+Mi.I_E_Name,
+M.W_Code,
+Nvl((SUM (( (NVL (M.P_Qty,0) + NVL(M.Pf_Qty, 0))*M.In_Out)/Di.P_Size)),0) Avl_Qty,
+M.Expire_Date,
+M.Batch_No
+FROM Item_Movement M,
+Ias_Itm_Mst Mi,
+Ias_Itm_Dtl Di,
+Dts_Grp_Dtl G,
+Sales_Man S
+WHERE M.I_Code = Mi.I_Code
+AND M.I_Code = Di.I_Code
+AND M.I_Code = G.I_Code
+AND Mi.I_Code = Di.I_Code
+AND Mi.I_Code = G.I_Code
+AND Di.I_Code = G.I_Code
+AND G.Grp_Code = S.Grp_Code
+AND M.W_CODE = S.W_CODE
+GROUP BY S.Reprs_Code,
+0 Avl_Qty,
+To_Date('01/01/1900','dd/mm/yyyy') Expire_Date,
+'0' Batch_No
+FROM Ias_Itm_Wcode M,
+GROUP BY Rep_Code,
+Grp_Code,
+I_Code,
+I_Name,
+I_E_Name,
+W_Code,
+Expire_Date,
+Batch_No
+ORDER BY I_Code, W_Code
+CREATE OR REPLACE VIEW DTS_V_PDA_TYPS_PRIV
+(U_ID, U_L_NM, U_F_NM, DOC_TYPE, DOC_TYP_NM,
+TYP_NO, TYP_L_NM, TYP_F_NM, ADD_FLAG, VIEW_FLAG)
+Select U_Id, U_L_Nm, U_F_Nm, Doc_Type, Doc_Typ_Nm, Typ_No, Typ_L_Nm,
+Typ_F_Nm, Add_Flag, View_Flag
+From (Select U.U_Id, Nvl (U_A_Name, U_E_Name) U_L_Nm,
+Nvl (U_E_Name, U_A_Name) U_F_Nm, Ar.Ar_Type Doc_Type,
+Decode (Ar.Ar_Type, 3, 'Sales Types') Doc_Typ_Nm,
+S.Si_Type Typ_No, Nvl (S.Si_A_Name, S.Si_E_Name) Typ_L_Nm,
+Nvl (S.Si_E_Name, S.Si_A_Name) Typ_F_Nm, Ar.Add_Flag,
+From User_R U, Ias_Priv_Ar Ar, Ias_Sales_Types S
+Where U.U_Id = Ar.U_Id
+And Ar.Ar_Type = 3
+And Ar.S_Type = S.Si_Type
+Select U.U_Id, Nvl (U_A_Name, U_E_Name) U_L_Nm,
+Decode (Ar.Ar_Type, 4, 'Rt_Sales Types') Doc_Typ_Nm,
+R.Sr_Type Typ_No, Nvl (R.Sr_A_Name, R.Sr_E_Name) Typ_L_Nm,
+Nvl (R.Sr_E_Name, R.Sr_A_Name) Typ_F_Nm, Ar.Add_Flag,
+From User_R U, Ias_Priv_Ar Ar, Ias_Rt_Sales_Types R
+And Ar.Ar_Type = 4
+And Ar.S_Type = R.Sr_Type
+(U_E_Name, U_A_Name) U_F_Nm, Ar.Ar_Type Doc_Type,
+Decode (Ar.Ar_Type, 1, 'Quotation Types') Doc_Typ_Nm,
+Q.Qt_Type Typ_No, Nvl (Q.Qt_A_Name, Q.Qt_E_Name) Typ_L_Nm,
+Nvl (Q.Qt_E_Name, Q.Qt_A_Name) Typ_F_Nm, Ar.Add_Flag,
+From User_R U, Ias_Priv_Ar Ar, Ias_Quot_Types Q
+And Ar.Ar_Type = 1
+And Ar.S_Type = Q.Qt_Type
+Decode (Ar.Ar_Type, 2, 'Sales Order Types') Doc_Typ_Nm,
+O.So_Type Typ_No, Nvl (O.So_A_Name, O.So_E_Name) Typ_L_Nm,
+Nvl (O.So_E_Name, O.So_A_Name) Typ_F_Nm, Ar.Add_Flag,
+From User_R U, Ias_Priv_Ar Ar, Ias_Sorder_Types O
+And Ar.Ar_Type = 2
+And Ar.S_Type = O.So_Type
+Nvl (U_E_Name, U_A_Name) U_F_Nm, 0 Doc_Type,
+Decode (V.V_Type, 1, 'Voucher Receipt') Doc_Typ_Nm,
+V.V_Type_No Typ_No,
+Nvl (V.V_Type_A_Name, V.V_Type_E_Name) Typ_L_Nm,
+Nvl (V.V_Type_E_Name, V.V_Type_A_Name) Typ_F_Nm,
+1 As "Add_Flag", 1 As "View_Flag"
+From User_R U, Ias_Vouchr_Type V
+Where V.V_Type = 1
+Nvl (U_E_Name, U_A_Name) U_F_Nm, 5 Doc_Type,
+'Rep Inventory' Doc_Typ_Nm, Inv.Inv_Type Typ_No,
+Nvl (Inv.Inv_Name, Inv.Inv_E_Name) Typ_L_Nm,
+Nvl (Inv.Inv_E_Name, Inv.Inv_Name) Typ_F_Nm,
+Invp.Add_Flag, Invp.View_Flag
+From User_R U, Ias_Priv_Inv_Type Invp, Ias_Inv_Types Inv
+Where U.U_Id = Invp.U_Id And Invp.Inv_Type = Inv.Inv_Type)
+Order By U_Id, Doc_Type, Typ_No, Typ_No
+CREATE OR REPLACE VIEW DTS_V_SMAN_CST
+(SMAN_TYP, REP_CODE, C_CODE, W_CODE, WHG_CODE,
+CASH_NO, BANK_NO, GRP_CODE, C_CLASS, R_CODE,
+INACTIVE,Csh_Cst)
+SELECT sman_typ,
+rep_code,
+c_Code,
+w_code,
+whg_code,
+cash_no,
+bank_no,
+grp_code,
+C_Class,
+R_code,
+NVL (Inactive, 0) Inactive,
+Csh_Cst
+/* , NVL (Unlinked, 0) Unlinked */
+FROM (SELECT 1 sman_typ,
+s.reprs_code rep_code,
+c.C_Code,
+s.w_code,
+w.whg_code,
+s.cash_no,
+s.bank_no,
+s.grp_code,
+c.C_Class,
+c.R_code,
+NVL (s.Inactive, 0) Inactive,
+Nvl(c.Csh_Cst,0) Csh_Cst
+/* ,0 Unlinked */
+FROM sales_man s,
+Customer c,
+ias_para_ar p,
+Warehouse_Details w
+WHERE NVL (p.CONN_CST_MULTI_SMAN,0) = 0
+AND s.reprs_code = c.REP_CODE
+AND w.w_code = NVL (s.w_code, 0)
+And NVL (s.Inactive, 0)=0
+UNION
+SELECT 1 sman_typ,
+cst.C_Class,
+cst.R_code,
+Nvl(cst.Csh_Cst,0) Csh_Cst
+/* ,NVL (c.Unlinked, 0) Unlinked */
+Ias_Cst_Sman c,
+Warehouse_Details w,
+Customer cst
+WHERE NVL (p.CONN_CST_MULTI_SMAN, 0) = 1
+AND cst.c_code = NVL (c.c_code, 0)
+And NVL (
+s.Inactive, 0)=0
+SELECT 3 sman_typ,
+s.prm_code rep_code,
+FROM ias_promoters s,
+IAS_PRM_CST c,
+WHERE c.prm_CODE IS NOT NULL
+AND s.Prm_code = c.prm_CODE
+AND cst.c_code = NVL (c.c_code,0)
+And NVL (s.Inactive, 0) =0
+CREATE OR REPLACE VIEW DTS_V_GET_CUSTOMER
+(C_CODE, C_A_NAME, C_E_NAME, C_ADDRESS, CNTRY_NO,
+PROV_NO, CITY_NO, C_CLASS, C_PHONE, C_MOBILE,
+R_CODE, C_PERSON, CUSTFLLOW, ROUTE_NO, SORTINROUTE,
+REP_CODE, LATITUDE, LONGITUDE, GPS_COLOR, COL_NO,
+C_A_CODE, DRIVER_NO, CREDIT_PERIOD,Csh_Cst)
+SELECT c.C_CODE,
+NVL (C_A_NAME, '') C_A_NAME,
+NVL (C_E_NAME, '') C_E_NAME,
+NVL (C_ADDRESS, '') C_ADDRESS,
+CNTRY_NO,
+PROV_NO,
+CITY_NO,
+c.C_CLASS,
+NVL (C_PHONE, '') C_PHONE,
+NVL (C_MOBILE, '') C_MOBILE,
+C.R_CODE,
+NVL (C_PERSON, '') C_PERSON,
+1 CUSTFLLOW,
+ROUTE_NO,
+SORTINROUTE,
+S.REP_CODE,
+Nvl((SUBSTR(Gps,INSTR(Gps,',')+1)),'0') latitude,
+Nvl((SUBSTR(Gps, 1,INSTR (Gps,',')-1)),'0') longitude,
+'0' GPS_COLOR,
+NVL (COL_NO, 0) COL_NO,
+C_A_CODE,
+NVL (DRIVER_NO, 0) DRIVER_NO,
+NVL (CREDIT_PERIOD, 0) CREDIT_PERIOD
+,c.Csh_Cst
+FROM Customer c ,DTS_V_SMAN_CST s
+WHERE c.C_Code=S.C_Code
+And NVL (c.Inactive, 0) = 0
+AND c.C_Class IS NOT NULL
+AND Cntry_No IS NOT NULL
+AND Prov_No IS NOT NULL
+AND CITY_NO IS NOT NULL
+AND City_No IS NOT NULL
+AND c.R_CODE IS NOT NULL
+AND Route_No IS NOT NULL
+AND Sortinroute IS NOT NULL
+AND s.Rep_Code IS NOT NULL
+CREATE OR REPLACE VIEW DTS_V_GET_SALES_DISCOUNT
+(U_ID, REP_CODE, SALES_DISC_WCODE, SALES_DISC_TYPE,SALES_DISC_PERIODIC,I_CODE,ITM_UNT,F_DATE,T_DATE,G_CODE,C_CODE, C_CLASS, BILL_DOC_TYPE, F_QTY, T_QTY,
+BATCH_NO,BRN_NO,W_CODE,WHG_CODE,DISC_TYP_0PER_1AMT,DISC_PER, DISC_AMT,DISC_AMT_CURRENCY,DISC_AMT_CURR_RATE,LEV_NO,
+I_PRICE, LOW_PRICE, HIGH_PRICE, MAX_BILL_DISC_PER, MAX_BILL_ITM_DISC_PER,
+ALLW_MOD_ITM_HAVE_DISC_I
+N_BILL, ALLOW_MOD_ITM_NOT_HAVE_DISC, ALLOW_UPD_DISC_RTBILL, MUST_NOT_EXCD_HIGH_AND_LOW_PRC)
+(SELECT u.U_id,
+Sm.Rep_code Rep_code,
+Sales_Disc_Wcode ,
+DECODE (NVL(p.Show_disc_per_items_ar,0),1, Sales_disc_type,0) Sales_disc_type,
+NVL (P.SALES_DISC_PERIODIC,0) SALES_DISC_PERIODIC,
+i.I_code,
+i.Itm_unt,
+Decode(P.SALES_DISC_PERIODIC,0,Nvl(sd.F_DATE,To_Date(YS_GEN_PKG.Get_Frst_Day,'DD/MM/RRRR')),sd.F_DATE) F_DATE,
+Decode(P.SALES_DISC_PERIODIC,0,Nvl(sd.T_DATE,To_Date(YS_GEN_PKG.Get_Final_Day,'DD/MM/RRRR')),sd.T_DATE) T_DATE,
+Decode (Nvl(Sd.G_Code, '0'),'0', I.G_Code,Sd.G_Code) G_Code,
+Decode (Nvl(Sd.C_Code, '0'),'0', Sm.C_Code,Sd.C_Code) C_Code,
+Decode (Nvl(Sd.C_Class, 0),0, Sd.C_Class,Sd.C_Class) C_Class,
+Decode((Select Distinct C.Csh_Cst From DTS_V_GET_CUSTOMER c Where Rep_Code=Sm.Rep_Code ),0,Nvl(Sd.Bill_Doc_Type,0),1) Bill_Doc_Type,
+Decode(P.Sales_disc_type,10,Nvl(Sd.F_Qty,0),11,Nvl(Sd.F_Qty,0),1) F_Qty,
+Decode(P.Sales_disc_type,10,Nvl(Sd.T_Qty,0),11,Nvl(Sd.T_Qty,0),10000000) T_Qty,
+DECODE (I.USE_BATCH_NO,1,sd.BATCH_NO,'0') BATCH_NO,
+Conn_Brn_No Brn_No,
+sm.w_code,
+sm.whg_code,
+DECODE (Sales_disc_type,0,0,Sd.Amt_type) Disc_typ_0per_1amt,
+DECODE (Show_disc_per_items_ar,0,DECODE (Sd.Amt_type,0,Sd.Amt),0) Disc_per,
+DECODE (Show_disc_per_items_ar,1,DECODE(Sd.Amt_type,1,Sd.Amt),0) Disc_amt,
+DECODE (Sd.Amt_type,1,Sd.A_cy,NULL) Disc_amt_currency,
+DECODE (Sd.Amt_type,1,Sd.Ac_rate,0) Disc_amt_curr_rate,
+I.LEV_NO,
+I.I_PRICE,
+I.LOW_PRICE,
+I.HIGH_PRICE,
+NVL (pr.INV_DIS_LMT,0) MAX_BILL_DISC_PER,
+NVL (INV_DIS_LMT_ITM,0) MAX_BILL_Itm_DISC_PER,
+NVL (AR_UPDATE_ITM_ALLOW_DISC,0) Allw_Mod_Itm_have_Disc_in_bill,
+NVL (AR_UPDATE_ITM_NOT_ALLOW_DISC,0) Allow_Mod_Itm_not_have_Disc,
+NVL (ALLOW_UPD_DISC_RTBILL,0) ALLOW_UPD_DISC_RTBILL,
+NVL (p.CHK_LMT_PRICE_MINUS_DISC_SI,0) Must_Not_Excd_High_and_low_Prc
+FROM Sales_disc Sd,
+User_r u,
+Dts_v_sman_cst Sm,
+Ias_para_ar P,
+DTS_V_Get_ITM_DTL I,
+Dts_v_Get_Rep_storage St,
+PRIVILEGE_FIXED PR
+WHERE SM.SMAN_TYP = 1
+AND Sm.Rep_code = ST.Rep_Code
+And u.U_ID = Nvl(PR.U_ID,0)
+AND sm.Rep_code = NVL(u.Rep_code, 0)
+AND SM.W_CODE IS NOT NULL
+AND SM.W_CODE = ST.W_CODE
+AND SM.W_CODE = DECODE (NVL(sd.w_code, 0), 0, st.W_CODE, sd.W_CODE)
+AND Sm.Grp_code = St.Grp_Code
+AND Sm.Grp_code = i.Grp_Code
+AND i.Grp_Code = ST.Grp_Code
+AND i.I_CODE = st.I_CODE
+AND SM.C_CODE =DECODE (NVL(sd.C_code, '0'),'0', SM.C_CODE,sd.C_code)
+And DECODE (Sales_disc_type,11,Decode(Nvl(i.Bill_Doc_Type,0),0,0,i.Bill_Doc_Type),0) =
+DECODE (Sales_disc_type,11,Decode(Nvl(i.Bill_Doc_Type,0),0,0,sd.Bill_Doc_Type),0)
+AND DECODE (Sales_Disc_Wcode,2,sm.w_code,3,sm.whg_code,0)=DECODE(Sales_Disc_Wcode,2,sd.W_code,3,sd.whg_code,0)
+AND (DECODE (Sales_disc_type,1,i.I_CODE,'0')=DECODE (Sales_disc_type,1,sd.I_CODE,'0')
+AND DECODE (Sales_disc_type,1,i.ITM_UNT,'0')=DECODE (Sales_disc_type,1,sd.Itm_unt, '0'))
+AND DECODE (Sales_disc_type,2,i.G_CODE,'0') =DECODE (Sales_disc_type,2,sd.G_code,'0')
+AND DECODE (Sales_disc_type,3,sm.C_class,0) =DECODE (Sales_disc_type,3,sd.C_class,0)
+AND (DECODE (Sales_disc_type, 4,sm.C_class,'0')= DECODE (Sales_disc_type,4,sd.C_class,'0')
+AND DECODE (Sales_disc_type,4,i.G_CODE,'0') =DECODE (Sales_disc_type, 4,sd.G_code, '0'))
+AND (DECODE (Sales_disc_type,5,sm.C_class,'0') =DECODE (Sales_disc_type,5,sd.C_class,'0')
+AND DECODE (Sales_disc_type,5,i.I_CODE,'0') =DECODE (Sales_disc_type,5,sd.i_code,'0'))
+AND DECODE (Sales_disc_type,6,sm.C_CODE, '0') =DECODE (Sales_disc_type,6,sd.C_code,'0')
+AND (DECODE (Sales_disc_type, 7, sm.C_code,'0') = DECODE (Sales_disc_type,7,sd.C_Code,'0')
+AND DECODE (Sales_disc_type,7,i.G_CODE,'0') =DECODE (Sales_disc_type,7,sd.G_code,'0'))
+AND (DECODE (Sales_disc_type,8,sm.C_code, '0') =DECODE (Sales_disc_type,8,sd.C_Code, '0')
+AND DECODE (Sales_disc_type, 8,i.I_CODE, '0') =DECODE (Sales_disc_type, 8,sd.i_code, '0'))
+AND (DECODE (Sales_disc_type,9,i.LEV_NO, 0) = DECODE (Sales_disc_type,9,sd.LEV_NO, 0)
+AND DECODE (Sales_disc_type,9,i.I_CODE, '0') =DECODE (Sales_disc_type, 9,sd.i_code, '0'))
+AND (DECODE (Sales_disc_type, 12,i.LEV_NO, 0) =DECODE (Sales_disc_type, 12,sd.LEV_NO, 0)
+AND DECODE (Sales_disc_type,12,i.I_CODE,'0') =DECODE (Sales_disc_type, 12,sd.i_code, '0')
+AND DECODE (Sales_disc_type, 12,Nvl(st.BATCH_NO,'0'), '0') =DECODE (Sales_disc_type,12,Nvl(sd.Batch_no,'0'), '0'))
+AND (DECODE (Sales_disc_type, 13,Nvl(u.Conn_Brn_no,0), 0) =DECODE (Sales_disc_type, 13,sd.Brn_no, 0)
+AND DECODE (Sales_disc_type, 13,i.I_CODE, '0')=DECODE (Sales_disc_type, 13,sd.i_code, '0'))
+AND (DECODE (Sales_disc_type, 14,i.LEV_NO, 0) =DECODE (Sales_disc_type, 14,sd.LEV_NO, 0)
+AND DECODE (Sales_disc_type,14,i.I_CODE, '0')=DECODE (Sales_disc_type,14,sd.i_code, '0')
+AND DECODE (Sales_disc_type, 14,Nvl(u.Conn_Brn_no,0), 0)=DECODE(Sales_disc_type,14,sd.Brn_no,0))
+SELECT DISTINCT
+u.U_id,
+Sales_Disc_Wcode,
+DECODE (NVL(p.Show_disc_per_items_ar,0),1, Sales_disc_type,0) sales_disc_typ,
+To_Date(YS_GEN_PKG.Get_Frst_Day,'DD/MM/RRRR') F_DATE,
+To_Date(YS_GEN_PKG.Get_Final_Day,'DD/MM/RRRR') T_DATE,
+I.G_Code G_Code,
+Sm.C_Code,
+Sm.C_Class C_Class,
+Decode((Select Distinct C.Csh_Cst From DTS_V_GET_CUSTOMER c Where Rep_Code=Sm.Rep_Code ),0,0,1) Bill_Doc_Type,
+1 F_Qty,
+10000000 T_Qty,
+DECODE (I.USE_BATCH_NO,1,st.BATCH_NO,'0') BATCH_NO,
+0 Disc_typ_0per_1amt,
+DECODE (NVL(I.ALLOW_DISC,0),1,NVL(I.DISC_PER,0),0) Disc_per,
+DECODE (Show_disc_per_items_ar,1,DECODE(NVL(I.ALLOW_DISC,0),1,NVL(((NVL(I.DISC_PER,0)*NVL(I.I_PRICE, 0))/100),0),0),0) Disc_amt,
+i.A_cy Disc_amt_currency,
+i.CUR_RATE Disc_amt_curr_rate,
+NVL (pr.INV_DIS_LMT, 0) MAX_BILL_DISC_PER,
+NVL (INV_DIS_LMT_ITM, 0) MAX_BILL_Itm_DISC_PER,
+NVL (AR_UPDATE_ITM_ALLOW_DISC, 0) Allw_Mod_Itm_have_Disc_in_bill,
+NVL (AR_UPDATE_ITM_NOT_ALLOW_DISC, 0) Allow_Mod_Itm_not_have_Disc,
+NVL (ALLOW_UPD_DISC_RTBILL, 0) ALLOW_UPD_DISC_RTBILL,
+NVL (p.CHK_LMT_PRICE_MINUS_DISC_SI, 0) Must_Not_Excd_High_and_low_Prc
+/*Be Careful To Notice That --##--
+/* Decode(sd.amt_type,0,sd.amt) dis_per,
+Decode(sd.amt_type,0,(sd.amt*P_Iprice)/100,Decode(sd.a_cy,P_billcur,amt,(sd.ac_rate*1/P_billrate))) dis_amt */
+FROM Dts_v_sman_cst Sm,
+WHERE NVL(p.Show_disc_per_items_ar, 0) = 1
+And Nvl(Sales_disc_type,0)=0
+AND SM.SMAN_TYP = 1
+Create Or Replace View Dts_V_Get_Sales_Free_Qty
+(U_Id, Rep_Code,Sales_Free_Qty_Wcode,Sales_Free_Qty_Type,Sales_Free_Qty_Periodic,
+I_Code,Itm_Unt,F_Date,T_Date,G_Code,C_Code,C_Class,Bill_Doc_Type,F_Qty,T_Qty,
+Low_Qty,W_Code,Whg_Code,Fq_Typ_0Per_1Qty_2Dublct,Freeqty_Per,
+Freeqty_Qty,Freeqty_Dublct, Lev_No, Allow_Bill_Fqty_Only, Allow_Update_Free_Qty)
+(Select U.U_Id,
+Sm.Rep_Code Rep_Code,
+Sales_Free_Qty_Wcode,
+Decode (Nvl(P.Ar_Use_Free_Qty, 0),1,Sales_Free_Qty_Type,0) Sales_Free_Qty_Type,
+Nvl (P.Sales_Free_Qty_Periodic,0) Sales_Free_Qty_Periodic,
+Sf.I_Code,
+Sf.Itm_Unt,
+Decode(P.Sales_Free_Qty_Periodic,0,Nvl(sf.F_DATE,To_Date(YS_GEN_PKG.Get_Frst_Day,'DD/MM/RRRR')),sf.F_DATE) F_DATE,
+Decode(P.Sales_Free_Qty_Periodic,0,Nvl(sf.T_DATE,To_Date(YS_GEN_PKG.Get_Final_Day,'DD/MM/RRRR')),sf.T_DATE) T_DATE,
+Decode (Nvl(Sf.G_Code, '0'),'0', I.G_Code,Sf.G_Code) G_Code,
+Decode (Nvl(Sf.C_Code, '0'),'0', Sm.C_Code,Sf.C_Code) C_Code,
+Decode (Nvl(Sf.C_Class, 0),0, Sm.C_Class,Sf.C_Class) C_Class,
+Decode((Select Distinct C.Csh_Cst From DTS_V_GET_CUSTOMER c Where Rep_Code=Sm.Rep_Code),0,Nvl(Sf.Bill_Doc_Type,0),1) Bill_Doc_Type,
+Decode(P.Sales_Free_Qty_Type,10,Nvl(Sf.F_Qty,0),11,Nvl(Sf.F_Qty,0),1) F_Qty,
+Decode(P.Sales_Free_Qty_Type,10,Nvl(Sf.T_Qty,0),11,Nvl(Sf.T_Qty,0),10000000) T_Qty,
+Decode(Pr.Allow_Bill_Fqty_Only,1,0,Nvl(Sf.Low_Qty,0)) Low_Qty,
+Sm.W_Code,
+Sm.Whg_Code,
+Decode(Sales_Free_Qty_Type,0,0,Sf.Pay_Type) Fq_Typ_0Per_1Qty_2Dublct, --##--- Calculate_Method --## 0 = Percent From Sale_Qty & 1= Static Qty & 2= Multiplied Of Sale_Qty ---##--- All Methods Require Sale_qty >=Low_Qty
+Decode(P.Ar_Use_Free_Qty,0,0,Decode(Sf.Pay_Type,0,(Nvl(Sf.Per_Qty,0)/100),0)) Freeqty_Per, ---##--- If Sales_Qty >=Low_Qty Free_Qty= Trunc(Sales_Qty * Freeqty_Per ) Else Free_Qty= 0 --##--
+Decode(P.Ar_Use_Free_Qty,0,0,Decode(Sf.Pay_Type,1,Sf.Per_Qty,0)) Freeqty_Qty, ---##--- If Sales_Qty >=Low_Qty Then Free_Qty= Freeqty_Qty Else Free_Qty= 0 --##--
+Decode(P.Ar_Use_Free_Qty,0,0,Decode(Sf.Pay_Type,2,Sf.Per_Qty,0)) Freeqty_Dublct, ---##--- If Sales_Qty >=Low_Qty Then Free_Qty=(Trunc(Sales_Qty/Nvl(Low_Qty,1)) * Freeqty_Dublct ) Else Free_Qty= 0 --##--
+I.Lev_No,
+Nvl(Pr.Allow_Bill_Fqty_Only,0) Allow_Bill_Fqty_Only,
+Nvl(Ar_Update_Free_Qty,0) Allow_Update_Free_Qty
+From Sales_Free_Qty Sf,
+Ias_Para_Ar P,
+Dts_V_Get_Itm_Dtl I,
+Dts_V_Get_Rep_Storage St,
+Privile
+ge_Fixed Pr
+Where Nvl(P.Ar_Use_Free_Qty,0)=1
+And Nvl(Sales_Free_Qty_Type,0)<>0
+And Sm.Rep_Code = St.Rep_Code
+And u.Rep_Code = Sm.Rep_Code
+And U.U_Id = Nvl(Pr.U_Id,0)
+And Sm.W_Code Is Not Null
+And Sm.W_Code = St.W_Code
+And Sm.C_Code =Decode (Nvl(Sf.C_Code, '0'), '0', Sm.C_Code , Sf.C_Code)
+And Sm.W_Code =Decode (Nvl(Sf.W_Code, 0), 0, St.W_Code , Sf.W_Code)
+And Sm.Grp_Code = St.Grp_Code
+And Sm.Grp_Code = I.Grp_Code
+And I.Grp_Code = St.Grp_Code
+And I.I_Code = St.I_Code
+And St.I_Code = Decode (Nvl(Sf.i_Code, 0), 0, St.I_Code , Sf.i_Code)
+And Sm.C_Code = Decode (Nvl(Sf.C_Code, '0'),'0', Sm.C_Code,Sf.C_Code)
+And Decode(Sales_Free_Qty_Type,11,Decode(Nvl(I.Bill_Doc_Type,0),0,0,I.Bill_Doc_Type),0)=
+Decode(Sales_Free_Qty_Type,11,Decode(Nvl(I.Bill_Doc_Type,0),0,0,Sf.Bill_Doc_Type),0)
+And Decode (Sales_Free_Qty_Wcode,2,Sm.W_Code,3,Sm.Whg_Code,0)=Decode(Sales_Free_Qty_Wcode,2, Sf.W_Code,3,Sf.Whg_Code,0)
+And ( Decode (Sales_Free_Qty_Type, 1,I.I_Code, '0') = Decode (Sales_Free_Qty_Type,1,Sf.I_Code, '0')
+And Decode (Sales_Free_Qty_Type, 1,I.Itm_Unt,'0') = Decode (Sales_Free_Qty_Type, 1,Sf.Itm_Unt, '0'))
+And Decode (Sales_Free_Qty_Type, 2,I.G_Code, '0') = Decode (Sales_Free_Qty_Type, 2,Sf.G_Code, '0')
+And Decode (Sales_Free_Qty_Type, 3,Sm.C_Class, 0) = Decode (Sales_Free_Qty_Type, 3,Sf.C_Class, 0)
+And ( Decode (Sales_Free_Qty_Type, 4,Sm.C_Class, '0')= Decode (Sales_Free_Qty_Type, 4,Sf.C_Class, '0')
+And Decode (Sales_Free_Qty_Type, 4,I.G_Code, '0') = Decode (Sales_Free_Qty_Type, 4,Sf.G_Code, '0'))
+And ( Decode (Sales_Free_Qty_Type, 5,Sm.C_Class, '0')= Decode (Sales_Free_Qty_Type, 5,Sf.C_Class, '0')
+And Decode (Sales_Free_Qty_Type, 5,I.I_Code, '0') = Decode (Sales_Free_Qty_Type, 5,Sf.I_Code, '0'))
+And Decode (Sales_Free_Qty_Type, 6,Sm.C_Code, '0') = Decode (Sales_Free_Qty_Type, 6,Sf.C_Code, '0')
+And ( Decode (Sales_Free_Qty_Type, 7,Sm.C_Code, '0') = Decode (Sales_Free_Qty_Type, 7,Sf.C_Code, '0')
+And Decode (Sales_Free_Qty_Type, 7,I.G_Code, '0') = Decode (Sales_Free_Qty_Type, 7,Sf.G_Code, '0'))
+And ( Decode (Sales_Free_Qty_Type, 8,Sm.C_Code, '0') = Decode (Sales_Free_Qty_Type, 8,Sf.C_Code, '0')
+And Decode (Sales_Free_Qty_Type, 8,I.I_Code, '0') = Decode (Sales_Free_Qty_Type, 8,Sf.I_Code, '0'))
+Select Distinct
+U.U_Id,
+Decode (Nvl (P.Ar_Use_Free_Qty,0),1, Sales_Free_Qty_Type,0) Sales_Free_Qty_Type,
+I.I_Code,
+I.Itm_Unt,
+Nvl(sd.F_DATE,To_Date(YS_GEN_PKG.Get_Frst_Day,'DD/MM/RRRR')) F_DATE,
+Nvl(sd.T_DATE,To_Date(YS_GEN_PKG.Get_Final_Day,'DD/MM/RRRR')) T_DATE,
+100000000 T_Qty,
+Decode(Pr.Allow_Bill_Fqty_Only,1,0,1) Low_Qty,
+0 Fq_Typ_0Per_1Qty_2Dublct,
+Decode (Ar_Use_Free_Qty,1,Decode(Nvl(I.Allow_Free_Qty,0),1,Nvl(I.Free_Qty_Per,0),0),0) Freeqty_Per,
+0 Freeqty_Qty,
+0 Freeqty_Dublct,
+Nvl (Pr.Allow_Bill_Fqty_Only,0) Allow_Bill_Fqty_Only,
+Nvl (Ar_Update_Free_Qty, 0) Allow_Update_Free_Qty
+From Dts_V_Sman_Cst Sm,
+Privilege_Fixed Pr
+And Nvl(P.Sales_Free_Qty_Type,0)=0
+And Nvl(I.Allow_Free_Qty,0)<>0
+And Sm.Sman_Typ= 1
+And Sm.Rep_Code=U.Rep_Code
+And Sm.Grp_Code Is Not Null
+And Sm.Grp_Code=I.Grp_Code
+And Decode(Sales_Free_Qty_Wcode,2,Sm.W_Code,3,Sm.Whg_Code,0)=
+Decode(Sales_Free_Qty_Wcode,2, Sm.W_Code,3,Sm.Whg_Code,0)
+CREATE OR REPLACE VIEW DTS_V_GET_AR_TRANS_SEQ
+(DOC_TYP, DOC_TYP_NM, DOC_NO, REP_CODE, BRN_NO,
+BILL_DOC_TYPE , Typ_No)
+/*-------------------------------------------------------------------------------------*/
+/*----------##-------------------------09_11_2016---------------*/
+/*------------------------------------------------------------------------------------*/
+Select Doc_Typ,Doc_Typ_Nm, Doc_no, Rep_Code,Brn_No,bill_doc_type ,Typ_No
+From
+/*----------##------------- Vouchers Cash And Cheque ------------##---------------*/
+--###---- bill_doc_type =1 This Mean Cash but bill_doc_type =2 Mean Cheque
+Select 0 Doc_Typ ,'Voucher Receipt' Doc_Typ_Nm,Bill_No Doc_No, Rep_Code, Brn_No,bill_doc_type ,Typ_No
+( Select Nvl(q.BNo,0)+1 Bill_No ,o.Rep_Code,q.Brn_No,1 bill_doc_type ,0 Typ_No From
+select nvl(max(to_Number(Voucher_no)),0) BNo,v.Brn_No,u.U_Id
+From Vouchers v,Cash_In_Hand c ,Sales_Man r ,User_R u
+Where Voucher_Type=1
+And Voucher_Pay_Type=1
+And v.Brn_No = c.CONN_BRN_NO
+And u.CONN_Brn_No Is Not Null
+And u.CONN_Brn_No = c.CONN_BRN_NO
+And r.Cash_No Is Not Null
+And c.Cash_No=r.Cash_No
+And c.Cash_No=v.Cash_No
+Group By v.Brn_No,Cash_Sr,u.U_Id
+select 0 BNo ,u.CONN_Brn_No,u.U_Id
+From Cash_In_Hand c ,Sales_Man r ,User_R u
+Where u.CONN_Brn_No Is Not Null
+And c.Cash_No Not In (Select Distinct Cash_No From Vouchers v Where Voucher_Type=1
+And Voucher_Pay_Type=1 And v.Brn_No = u.CONN_BRN_NO )
+Group By u.CONN_Brn_No,Cash_Sr,u.U_Id
+) q ,User_R o
+where o.Rep_Code Is Not Null And o.Conn_Brn_No Is Not Null
+And o.Conn_Brn_No=q.Brn_No
+And o.U_Id=q.U_Id
+Select Nvl(q.BNo,0)+1 Bill_No ,o.Rep_C
+ode,q.Brn_No,2 bill_doc_type ,0 Typ_No From
+From Vouchers v,Cash_At_Bank c ,Sales_Man r ,User_R u
+And Voucher_Pay_Type=2
+And r.Bank_No Is Not Null
+And c.Bank_No=r.Bank_No
+And c.Bank_No=v.Cash_No
+Group By v.Brn_No,bank_Sr,u.U_Id
+From Cash_At_Bank c ,Sales_Man r ,User_R u
+And c.Bank_No Not In (Select Distinct Cash_No From Vouchers v Where Voucher_Type=1
+And Voucher_Pay_Type=2 And v.Brn_No = u.CONN_BRN_NO )
+Group By u.CONN_Brn_No,bank_Sr,u.U_Id
+/*----------##------------- Quotations ---------------------##---------------*/
+Select 1 Doc_Typ ,'Quotation' Doc_Typ_Nm, Bill_No Doc_No, Rep_Code, Brn_No, bill_doc_type ,Typ_No
+Select Bill_no,u.Rep_Code,i.Brn_No Brn_No,0 bill_doc_type ,0 Typ_No
+Select Nvl(Max(q.BNo),0)+1 Bill_No ,q.Brn_No From
+select nvl(max(to_Number(QUOT_no)),0) Bno ,0 Rep_Code,Brn_No, 0 bill_doc_type
+From QUOTATION s,Ias_Para_Ar b ,Sales_Man r
+Where Nvl( b.Ar_Quot_Serial,0)=1 And r.reprs_Code=s.Rep_Code
+Group By S.Brn_No
+select 0 Bno ,0 Rep_Code,Conn_Brn_No Brn_No, 0 bill_doc_type
+from Ias_Para_Ar b ,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV p
+where Nvl(Ar_Quot_Serial,0)=1
+And Nvl(P.U_Id,0)=Nvl(u.U_Id,0)
+Group By Conn_Brn_No
+Group By Brn_No
+) i ,User_r u
+where u.Rep_Code Is Not Null And u.Conn_Brn_No Is Not Null
+And u.Conn_Brn_No=i.Brn_No
+-- V_doc_Srl:=P_Year||Lpad(P_Brn_No,3,'0')||V_doc_No
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, bill_doc_type , Typ_No From
+select nvl(max(to_Number(Quot_no)),0) Bno,Rep_Code,Brn_No,0 bill_doc_type ,QT_TYPE Typ_No
+From QUOTATION s,Ias_Para_Ar b,Sales_Man r,DTS_V_PDA_TYPS_PRIV p
+where Nvl(b.Ar_Quot_Serial,0)=2
+And r.reprs_Code=s.Rep_Code
+Group By Rep_Code,Brn_No,qt_type
+select 0 Bno,Reprs_Code Rep_Code,Conn_Brn_No Brn_No,0 bill_doc_type ,Typ_No
+From Ias_Para_Ar b,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV p
+where p.DOC_TYPE=1
+AND Nvl(b.Ar_Quot_Serial,0)=2
+Group By Reprs_Code,Conn_Brn_No,Typ_No
+Group By Rep_Code,Brn_No, bill_doc_type , Typ_No
+-- V_doc_Srl:=P_Year||Lpad(P_Brn_No,3,'0')||V_doc_No||ltrim(Lpad(V_Doc_Type,3,'0'))
+/*----------##------------- Sales Orders ---------------------##---------------*/
+Select 2 Doc_Typ ,'Sales Order' Doc_Typ_Nm, Bill_No Doc_No, Rep_Code, Brn_No, bill_doc_type ,Typ_No
+select nvl(max(to_Number(Order_no)),0) Bno ,0 Rep_Code,Brn_No, 0 bill_doc_type
+From Sales_Order s,Ias_Para_Ar b ,Sales_Man r
+Where Nvl( b.Ar_Sorder_Serial,0)=1 And r.reprs_Code=s.Rep_Code
+where Nvl(Ar_Sorder_Serial,0)=1
+-- P_Year||Lpad(P_Brn_No,3,'0')||V_doc_No
+select nvl(max(to_Number(Order_no)),0) Bno,Rep_Code,Brn_No,0 bill_doc_type ,SO_TYPE Typ_No
+From Sales_Order s,Ias_Para_Ar b,Sales_Man r,DTS_V_PDA_TYPS_PRIV p
+where Nvl(b.Ar_Sorder_Serial,0)=2
+Group By Rep_Code,Brn_No,SO_TYPE
+where p.DOC_TYPE=2
+AND Nvl(b.Ar_Sorder_Serial,0)=2
+/*----------##------------- Sales Bills ---------------------##---------------*/
+Select
+3 Doc_Typ ,'Sales Bill' Doc_Typ_Nm, Bill_No Doc_No, Rep_Code, Brn_No, bill_doc_type ,Typ_No
+select nvl(max(to_Number(bill_no)),0) Bno ,0 Rep_Code,Brn_No, 0 bill_doc_type
+From Ias_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r
+Where Nvl( b.INVOICING_SERIALS,0)=1 And r.reprs_Code=s.Rep_Code
+From Ias_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r
+Where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl( b.INVOICING_SERIALS,0)=1 And r.reprs_Code=s.Rep_Code
+from Ias_Para_Ar b ,Sales_Man r,User_r u
+where u.Rep_Code Is Not Null
+AND Nvl(b.INVOICING_SERIALS,0)=1
+/* -- ElsIf :Parameter.Invs=2 Then -- bill_doc_type */
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, bill_doc_type ,0 Ty
+p_No From
+select nvl(max(to_Number(bill_no)),0) Bno,Rep_Code,Brn_No, bill_doc_type
+From Ias_Bill_Mst s,Ias_Para_Ar b,Sales_Man r
+where Nvl(b.INVOICING_SERIALS,0)=2
+Group By Rep_Code,Brn_No, bill_doc_type
+From Ias_Bill_Mst_Br s,Ias_Para_Ar b,Sales_Man r
+where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS,0)=2
+select 0 Bno,Reprs_Code Rep_Code,Conn_Brn_No Brn_No,FLG_VALUE bill_doc_type
+From Ias_Para_Ar b,Sales_Man r,S_FLAGS f,User_r u
+where FLG_CODE = 'TYPE_NAME_SI'
+AND Nvl(b.INVOICING_SERIALS,0)=2
+Group By Reprs_Code,Conn_Brn_No,FLG_VALUE
+/* -- ElsIf :Parameter.Invs=3 Then -- by cost_center*/
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, bill_doc_type ,0 Typ_No From
+Select nvl(max(to_Number(bill_no)),0) Bno,Rep_Code,Brn_No,0 bill_doc_type
+where s.Cc_Code in
+(select Cc_Code from cost_centers
+where nvl(c_sr,0)=(select nvl(c_sr,0) From Cost_Centers where Cc_Code=r.CC_CODE))
+And Nvl(b.INVOICING_SERIALS,0)=3
+And s.Cc_Code=r.CC_CODE
+Group By Rep_Code,Brn_No,s.CC_Code
+Select nvl(max(to_Number(bill_no)),0) Bno,Rep_Code,Brn_No, 0 bill_doc_type
+where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1
+And s.Cc_Code in
+(select Cc_Code from cost_centers where nvl(c_sr,0)=(select nvl(c_sr,0) From Cost_Centers where Cc_Code=r.CC_CODE))
+Select 0 Bno,Reprs_Code Rep_Code,Conn_Brn_No Brn_No,0 bill_doc_type
+from Ias_Para_Ar b ,Sales_Man r ,USER_R u
+where r.Cc_Code in
+And r.CC_CODE Is Not Null
+Group By Reprs_Code,Conn_Brn_No ,r.CC_Code
+/*-- ElsIf :Parameter.Invs=6 Then -- bty cost_center + bill_doc_type */
+where Nvl(b.INVOICING_SERIALS,0)=6
+Group By Rep_Code,Brn_No, bill_doc_type ,s.CC_Code
+where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS,0)=6
+from Ias_Para_Ar b ,Sales_Man r,S_FLAGS f,User_r u
+And Nvl(b.INVOICING_SERIALS,0)=6
+-- And s.Cc_Code=r.CC_CODE
+Group By Reprs_Code,Conn_Brn_No,FLG_VALUE ,r.CC_Code
+/* --- ElsIf :Parameter.Invs=4 Then --warehouse */
+select nvl(max(to_Number(bill_no)),0) Bno ,Rep_Code,Brn_No,0 bill_doc_type From Ias_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r
+where Nvl(b.INVOICING_SERIALS,0)=4
+And s.W_Code=r.W_CODE
+Group By Rep_Code,Brn_No,s.W_Code
+select nvl(max(to_Number(bill_no)),0) Bno ,Rep_Code,Brn_No,0 bill_doc_type From Ias_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r
+where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS,0)=4
+Group By Rep_Code,Brn_No, bill_doc_type ,s.W_Code
+select 0 Bno ,Rep_Code,Conn_Brn_No Brn_No,0 bill_doc_type
+From Ias_Para_Ar b ,Sales_Man r,USER_R u
+And r.W_CODE Is Not Null
+Group By Rep_Code,Conn_Brn_No,r.W_Code
+/* -- ElsIf :Parameter.Invs=5 Then --warehouse + bill_doc_type */
+selec
+t nvl(max(to_Number(bill_no)),0) Bno,Rep_Code,Brn_No, bill_doc_type ,0 Typ_No
+where Nvl(b.INVOICING_SERIALS,0)=5
+select nvl(max(to_Number(bill_no)),0) Bno,Rep_Code,Brn_No, bill_doc_type ,0 Typ_No
+where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS,0)=5
+select 0 Bno,Reprs_Code Rep_Code,CONN_BRN_NO Brn_No,FLG_VALUE bill_doc_type ,0 Typ_No
+From Ias_Para_Ar b ,Sales_Man sm ,S_FLAGS f,USER_R u
+And u.Rep_Code=sm.reprs_Code
+And FLG_CODE = 'TYPE_NAME_SI'
+Group By Reprs_Code,CONN_BRN_NO,FLG_VALUE,sm.W_Code
+/* -- ElsIf :Parameter.Invs=7 Then -- Sr_Type */
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, bill_doc_type ,Typ_No From
+select nvl(max(to_Number(bill_no)),0) Bno,Nvl(r.Reprs_Code ,0) Rep_Code, s.Brn_No
+, Nvl(s. bill_doc_type ,0) bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+From Ias_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r ,User_r u,DTS_V_PDA_TYPS_PRIV t
+where t.Typ_No=s.Si_Type
+And DOC_TYPE=3
+And Nvl(b.INVOICING_SERIALS,0)=7
+Group By Nvl(r.Reprs_Code ,0) , s.Brn_No , Nvl(s. bill_doc_type ,0),t.Typ_No
+From Ias_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r ,User_r u,DTS_V_PDA_TYPS_PRIV t
+And t.Typ_No=s.Si_Type
+select 0 Bno,Nvl(r.Reprs_Code ,0) Rep_Code, Conn_Brn_No Brn_No
+, 0 bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+From Ias_Para_Ar b ,Sales_Man r ,User_r u,DTS_V
+_PDA_TYPS_PRIV t
+where DOC_TYPE=4
+Group By Nvl(r.Reprs_Code ,0) ,Conn_Brn_No ,t.Typ_No
+Group By Rep_Code,Brn_No, bill_doc_type ,Typ_No
+Select nvl(max(to_Number(bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(bill_doc_type ,0) bill_doc_type , t.Typ_No
+From Ias_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV t
+Where t.Typ_No=s.Si_Type
+And Nvl(b.INVOICING_SERIALS,0)=8
+Group By s.Rep_Code,Brn_No,s.Si_Type, bill_doc_type ,t.Typ_No
+Select nvl(max(to_Number(bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(bill_doc_type ,0) bill_doc_type ,t.Typ_No
+From Ias_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV t
+Where Nvl(Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And t.Typ_No=s.Si_Type
+Select 0 Bno,r.Reprs_Code Rep_Code,Conn_Brn_No Brn_No,0 bill_doc_type ,t.Typ_No
+From Ias_Para_Ar b ,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV t
+Where DOC_TYPE=4
+Group By r.Reprs_Code,Conn_Brn_No,t.Typ_No
+Select nvl(max(to_Number(bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(bill_doc_type ,0) bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+And Nvl(b.INVOICING_SERIALS,0)=9
+And r.reprs_Code=u.Rep_Cod
+Group By s.Rep_Code,Brn_No, bill_doc_type ,t.Typ_No
+Select Distinct 0 Bno,r.Reprs_Code Rep_Code,Conn_Brn_No Brn_No,FLG_VALUE bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+Where FLG_CODE = 'TYPE_NAME_SI'
+And t.DOC_TYPE=3
+Group By Reprs_Code,Conn_Brn_No,FLG_VALUE ,t.Typ_No
+Select nvl(max(to_Nu
+mber(bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(bill_doc_type ,0) bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+And Nvl(b.INVOICING_SERIALS,0)=10
+Group By Rep_Code,Brn_No, bill_doc_type,Typ_No
+/*----------##------------- Rt_Sales Bill ---------------------##---------------*/
+Select 4 Doc_Typ ,'Rt_Sales Bill' Doc_Typ_Nm, Bill_No Doc_No, Rep_Code, Brn_No,Rt_bill_doc_type bill_doc_type ,Typ_No
+Select Bill_no,u.Rep_Code,i.Brn_No Brn_No,0 Rt_bill_doc_type,0 Typ_No
+select nvl(max(to_Number(Rt_bill_no)),0) Bno ,0 Rep_Code,Brn_No, 0 Rt_bill_doc_type
+from Ias_Rt_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r
+Where Nvl( b.INVOICING_SERIALS_SR,0)=1 And r.reprs_Code=s.Rep_Code
+from Ias_Rt_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r
+Where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl( b.INVOICING_SERIALS_SR,0)=1 And r.reprs_Code=s.Rep_Code
+select 0 Bno ,0 Rep_Code,Conn_Brn_No Brn_No, 0 Rt_bill_doc_type
+from Ias_P
+ara_Ar b ,Sales_Man r,User_r u
+AND Nvl(b.INVOICING_SERIALS_SR,0)=1
+/* -- ElsIf :Parameter.Invs=2 Then -- Rt_bill_doc_type*/
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, Rt_bill_doc_type,0 Typ_No From
+select nvl(max(to_Number(Rt_bill_no)),0) Bno,Rep_Code,Brn_No,Rt_bill_doc_type
+From Ias_Rt_Bill_Mst s,Ias_Para_Ar b,Sales_Man r
+where Nvl(b.INVOICING_SERIALS_SR,0)=2
+Group By Rep_Code,Brn_No,Rt_bill_doc_type
+From Ias_Rt_Bill_Mst_Br s,Ias_Para_Ar b,Sales_Man r
+where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS_SR,0)=2
+select 0 Bno,Reprs_Code Rep_Code,Conn_Brn_No Brn_No,FLG_VALUE Rt_bill_doc_type
+where FLG_CODE = 'TYPE_NAME'
+AND Nvl(b.INVOICING_SERIALS_SR,0)=2
+Select Nv
+l(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, Rt_bill_doc_type,0 Typ_No From
+Select nvl(max(to_Number(Rt_bill_no)),0) Bno,Rep_Code,Brn_No,0 Rt_bill_doc_type
+And Nvl(b.INVOICING_SERIALS_SR,0)=3
+Select nvl(max(to_Number(Rt_bill_no)),0) Bno,Rep_Code,Brn_No, 0 Rt_bill_doc_type
+where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And s.Cc_Code in
+Select 0 Bno,Reprs_Code Rep_Code,Conn_Brn_No Brn_No,0 Rt_bill_doc_type
+/*-- ElsIf :Parameter.Invs=6 Then -- bty cost_center + Rt_bill_doc_type */
+where Nvl(b.INVOIC
+ING_SERIALS_SR,0)=6
+Group By Rep_Code,Brn_No,Rt_bill_doc_type,s.CC_Code
+where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS_SR,0)=6
+And Nvl(b.INVOICING_SERIALS_SR,0)=6
+select nvl(max(to_Number(Rt_bill_no)),0) Bno ,Rep_Code,Brn_No,0 Rt_bill_doc_type From Ias_Rt_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r
+where Nvl(b.INVOICING_SERIALS_SR,0)=4
+select nvl(max(to_Number(Rt_bill_no)),0) Bno ,Rep_Code,Brn_No,0 Rt_bill_doc_type From Ias_Rt_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r
+where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS_SR,0)=4
+Group By Rep_Code,Brn_No,Rt_bill_doc_type,s.W_Code
+select 0 Bno ,Rep_Co
+de,Conn_Brn_No Brn_No,0 Rt_bill_doc_type
+/* -- ElsIf :Parameter.Invs=5 Then --warehouse + Rt_bill_doc_type */
+select nvl(max(to_Number(Rt_bill_no)),0) Bno,Rep_Code,Brn_No,Rt_bill_doc_type,0 Typ_No
+From Ias_Rt_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r
+where Nvl(b.INVOICING_SERIALS_SR,0)=5
+select nvl(max(to_Number(Rt_bill_no)),0) Bno,Rep_Code,Brn_No,Rt_bill_doc_type ,0 Typ_No
+From Ias_Rt_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r
+where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1 And Nvl(b.INVOICING_SERIALS_SR,0)=5
+select 0 Bno,Reprs_Code Rep_Code,CONN_BRN_NO Brn_No,FLG_VALUE Rt_bill_doc_type ,0 Typ_No
+And FLG_CODE = 'TYPE_NAME'
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, Rt_bill_doc_type ,Typ_No From
+select nvl(max(to_Number(Rt_bill_no)),0) Bno,Nvl(r.Reprs_Code ,0) Rep_Code, s.Brn_No
+, Nvl(s.Rt_bill_doc_type ,0) Rt_bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+From Ias_Rt_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r ,User_r u,DTS_V_PDA_TYPS_PRIV t
+where t.Typ_No=s.Sr_Type
+And Nvl(b.INVOICING_SERIALS_SR,0)=7
+Group By Nvl(r.Reprs_Code ,0) , s.Brn_No , Nvl(s.Rt_bill_doc_type ,0),t.Typ_No
+From Ias_Rt_Bill_Mst_Br s,Ias_Para_Ar b ,Sales_Man r ,User_r u,DTS_V_PDA_TYPS_PRIV t
+where Nvl(Rt_Bill_Post,0)<>1 And Nvl(Stand_By,0)<>1
+And t.Typ_No=s.Sr_Type
+, 0 Rt_bill_doc_type ,Nvl(t.Typ_No ,0) Typ_No
+From Ias_Para_Ar b ,Sales_Man r ,User_r u,DTS_V_PDA_TYPS_PRIV t
+Group By Rep_Code,Brn_No,Rt_bill_doc_type ,Typ_No
+Select nvl(max(to_Number(Rt_bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(Rt_bill_doc_type ,0) Rt_bill_doc_type , t.Typ_No
+From Ias_Rt_Bill_Mst s,Ias_Para_Ar b ,Sales_Man r,User_r u,DTS_V_PDA_TYPS_PRIV t
+Where t.Typ_No=s.Sr_Type
+And Nvl(b.INVOICING_SERIALS_SR,0)=8
+Group By s.Rep_Code,Brn_No,s.Sr_Type,Rt_bill_doc_type ,t.Typ_No
+Select nvl(max(to_Number(Rt_bill_no)),0) Bno,s.Rep_Code,Brn_No, Nvl(Rt_bill_doc_type ,0) Rt_bill_doc_type ,t.Typ_No
+Select 0 Bno,r.Reprs_Code Rep_Code,Conn_Brn_No Brn_No,0 Rt_bill_doc_type ,t.Typ_No
+Select Nvl(Max(q.BNo),0)+1 Bill_no,q.Rep_Code,q.Brn_No, Rt_bill_doc_type, Typ_No From
+Where FLG_CODE = 'TYPE_NAME'
+And Nvl(b.INVOICING_SERIALS_SR,0)=10
+Create Or Replace View Dts_Get_Cst_Crdt_Prd (Sman_Typ,
+Rep_Code,
+C_Code,
+A_Cy,
+U_Id,
+Check_Credit_Period,
+Cr_Limit,
+Bal_Amt,
+Min_Idate,
+Crdt_Prd,
+Allow_Prd_Aftr_Due,
+F_Actvdate,
+T_Actv_Date,
+Ar_Allow_Sales_Prv_Dr,
+Max_Bill_Disc_Per,
+Max_Bill_Itm_Disc_Per,
+Paid_Instllmnt_Man
+Select Sman_Typ, U.Rep_Code, Sm.C_Code, Ccy.A_Cy, U.U_Id,
+Pr.Check_Credit_Period, Cr_Limit,
+(Select Decode (Ccy.A_Cy,
+Ys_Gen_Pkg.Get_Local_Cur, Nvl (Sum (Dr_Amt), 0)
+- Nvl (Sum (Cr_Amt), 0),
+Nvl (Sum (Dr_Amtf), 0) - Nvl (Sum (Cr_Amtf), 0)
+) Bl_Amt
+From Ias_V_Cst_Trns
+Where C_Code = Ccy.C_Code
+And A_Cy = Ccy.A_Cy
+And Nvl (Cc_Code, '0')
+Decode (C.Cc_Code,
+Null, Nvl (Cc_Code, '0'),
+C.Cc_Code
+)) Bal_Amt,
+To_Date (Dts_Chk_Crdt_Prd (Sm.C_Code,
+To_Date (Sysdate, 'DD/MM/RRRR'),
+U.Rep_Code
+'DD/MM/RRRR'
+) V_Min_Idate,
+(Nvl (Decode (Nvl (Pr.Ar_Chk_Prd_Aftr_Due, 0),
+1, Nvl (( Nvl (Allow_Prd_Aftr_Due, 0)
++ Nvl (C.Credit_Period, 0)
+Nvl (C.Credit_Period, 0)
+) Crdt_Prd,
+Decode (Nvl (Pr.Ar_Chk_Prd_Aftr_Due, 0),
+Select S.Reprs_Code Rep_Code,
+Nvl((Sum (( (Nvl (M.P_Qty,0) + Nvl(M.Pf_Qty, 0))*M.In_Out)/Di.P_Size)),0) Avl_Qty,
+From Item_Movement M,
+Where M.I_Code = Mi.I_Code
+And M.I_Code = Di.I_Code
+And M.I_Code = G.I_Code
+And Mi.I_Code = Di.I_Code
+And Mi.I_Code = G.I_Code
+And Di.I_Code = G.I_Code
+And G.Grp_Code = S.Grp_Code
+And M.W_Code = S.W_Code
+Group By S.Reprs_Code,
+To_Date('01/01/1900','DD/MM/YYYY') Expire_Date,
+From Ias_Itm_Wcode M,
+Group By Rep_Code,
+D.I_Code,
+D.W_Code,
+Nvl((Sum (( (Nvl (D.I_Qty,0) + Nvl(D.Free_Qty, 0))* -1)/Di.P_Size)),0) Avl_Qty,
+D.Expire_Date,
+D.Batch_No
+From Ias_Bill_Dtl_Br D,
+Ias_Bill_Mst_Br M,
+Where M.Bill_Ser = D.Bill_Ser
+And Nvl(M.Bill_Post,0)=0
+And D.I_Code = Mi.I_Code
+And D.I_Code = Di.I_Code
+And D.I_Code = G.I_Code
+And D.W_Code = S.W_Code
+Nvl((Sum (( (Nvl (D.I_Qty,0) + Nvl(D.Free_Qty, 0))* 1)/Di.P_Size)),0) Avl_Qty,
+From Ias_Rt_Bill_Mst_Br M,
+Ias_Rt_Bill_Dtl_Br D,
+Where M.Rt_Bill_Ser = D.Rt_Bill_Ser
+And Nvl(M.Rt_Bill_Post,0)=0
+Order By I_Code, W_Code
+Complete Create View Dts
+Dts View_Script
+ct R
+DTS_TRIGGER_PKG
+/TMP8/DTS_TRIGGER_PKG
+"DTS_TRIGGER_PKG"TRIGGER_PRC"V_CNT""
+TRIGGER_PRC
+DTS_UPDATE_TABLE
+"PKG INIT"DTS_UPDATE_TABLE""
+Update Form_Detail Set Doc_Typ=1402 Where Form_No=1402 And Doc_Typ<>1402
+Update Dts_Plan_Prd_Mst Set Prcssd_Flg=1 Where Nvl(Prcssd_Flg,0) =0 And Doc_Ser In(Select Doc_Ser From Dts_Plan_Prd_Dtl Where Plan_Ser In (Select Doc_Ser From Dts_Plan_Sman_Mst))
+"DTS_VIEW_PKG"VIEW_PRC""
+"DTS_TRIGGER_PKG"TRIGGER_PRC""
+"DTS_TABLE_PKG"TABLE_PRC""
+_PRC
+"DTS_INSRT_FORM_DTL_PKG"INSRT_FORM_DTL_PRC"INSRT_FORM_PRIV_PRC""
+"DTS_INSRT_DATA_PKG"INSRT_DEF_DATA_PRC"INSERT_FLG_PRC"INSERT_LOV_PRC"INSERT_LIST_PRC"MOVE_DATA_PRC"P_YEAR_UNIT"INSRT_FRM_FLD_PRC""
+GE_PRC
+"DTS_INDEX_PKG"INDEX_PRC""
+"DTS_CONSTRAINT_PKG"CONSTRAINT_PRC""
+"DTS_COMMENT_PKG"COMMENT_TABELS_PRC"COMMENT_COLUMNS_PRC""
+TMP8[g
+(p)@2
+YSERP_LIB
+FILESYSTEM
+d2kwutil
+&,.47
+BHIOR
+SU[^
+_aioqwz
+$&,/
+:@CIJPS
+TV\_
+`bjprx{
+(*7ACPZ\isu
+`````
+!156:JNOQSU
+DJMSTZ]
+^`hnpvy
+%'-068>AGIORXZ`cikqtz|
+"#fm
+$&*.26:>BFJNRVZ^b
+qsuy}
+0````````````````````````````````````````````````
+%'-068@FIORX[acegikmoqsu
+%'-0246
+&.6<

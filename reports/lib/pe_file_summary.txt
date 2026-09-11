@@ -1,0 +1,7 @@
+YSComUsb.dll: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections
+YsErpSYs.dll: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections
+d2kwut60.dll: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections
+TransferToMTN.exe: PE32 executable (GUI) Intel 80386 Mono/.Net assembly, for MS Windows, 4 sections
+YsGoogleMap.ocx: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 4 sections
+64-bit-dll/NN60.DLL: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections
+64-bit-dll/NNB60.DLL: PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections

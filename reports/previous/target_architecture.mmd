@@ -1,0 +1,62 @@
+flowchart LR
+  subgraph UX[قنوات الاستخدام]
+    WEB[واجهة ويب/PWA]
+    POS[نقطة بيع Edge]
+    MOB[تطبيق تحصيل جوال]
+    IMP[استيراد/تكاملات]
+  end
+
+  subgraph API[طبقة التطبيق الآمنة]
+    IAM[هوية وRBAC وMFA]
+    AR[نطاق الذمم المدينة AR]
+    SALES[المبيعات والفواتير والمردود]
+    CASH[القبض والتسويات والشيكات]
+    CREDIT[الائتمان والتحصيل والأعمار]
+    PRICE[الأسعار والخصومات والضريبة]
+    GL[محرك الترحيل إلى الأستاذ العام]
+    WF[الموافقات وسير العمل]
+    AUDIT[التدقيق والسجل غير القابل للمحو]
+    INT[Outbox/تكاملات وإشعارات]
+  end
+
+  subgraph DATA[طبقة البيانات]
+    DB[(قاعدة بيانات علائقية موحدة)]
+    LEDGER[(AR subledger + GL ledger)]
+    OBJ[(مرفقات/مستندات)]
+    DWH[(تقارير وقراءة تحليلية)]
+    VAULT[(Vault للأسرار)]
+  end
+
+  WEB --> IAM
+  POS --> IAM
+  MOB --> IAM
+  IMP --> INT
+  IAM --> AR
+  AR --> SALES
+  AR --> CASH
+  AR --> CREDIT
+  SALES --> PRICE
+  SALES --> WF
+  CASH --> WF
+  AR --> GL
+  AR --> AUDIT
+  CASH --> AUDIT
+  CREDIT --> AUDIT
+  INT --> AUDIT
+  AR --> DB
+  SALES --> DB
+  CASH --> DB
+  CREDIT --> DB
+  PRICE --> DB
+  WF --> DB
+  AUDIT --> DB
+  GL --> LEDGER
+  DB --> DWH
+  DB --> OBJ
+  IAM --> VAULT
+  INT --> DWH
+
+  classDef risk fill:#ffe3e3,stroke:#b91c1c,color:#111;
+  classDef core fill:#e0f2fe,stroke:#0369a1,color:#111;
+  class AR,GL,AUDIT core;
+  class VAULT risk;

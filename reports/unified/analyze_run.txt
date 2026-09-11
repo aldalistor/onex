@@ -1,0 +1,15 @@
+processed 100/1490
+processed 200/1490
+processed 300/1490
+processed 400/1490
+processed 500/1490
+processed 600/1490
+processed 700/1490
+processed 800/1490
+processed 900/1490
+processed 1000/1490
+processed 1100/1490
+processed 1200/1490
+processed 1300/1490
+processed 1400/1490
+{"totals": {"files": 1490, "bytes": 584550828, "strings": 1573200, "sql_like": 162092, "procedures": 41497, "triggers": 8902, "libs": 2396, "form_refs": 771, "tables": 176975}, "domain_counts": {"other": 229, "admin/system": 37, "assets/maintenance": 39, "AP/purchasing": 58, "AR/accounts-receivable": 106, "GL/finance": 156, "HR": 207, "other-finance/operations": 106, "inventory/stock": 298, "MRP/treasury": 201, "POS": 52, "reports": 1}, "risk_file_counts": {"credentials": 1133, "ddl_privilege": 803, "destructive": 1480, "dynamic_sql": 193, "windows_native": 1272, "session_control": 25, "error_handling": 41, "network": 40}}

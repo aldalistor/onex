@@ -1,0 +1,4 @@
+reconstructed/
+*.zip
+*.zip.part*
+.DS_Store

@@ -1,0 +1,677 @@
+ROS.60050
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+nArrow
+0Scroll Down
+RightArrow
+0Right
+LeftArrow
+0Left
+Control+p
+0Print
+Y Coordinate
+Escape Sequence
+Cancel
+Help
+X Table Definition
+X Coordinate
+Do you really want to revert all changes since the last save ?
+Oracle Terminal
+ld/Item-
+Clear Field/Item
+Down
+Scroll Up
+Scroll Down
+Edit
+Search
+Toggle Insert/Replacene
+Selectin
+Left
+Right
+Delete Backward
+Return
+List of Values
+Next Primary Key
+Clear Record
+Delete Record
+Duplicate Record
+New Record
+Next Set of Records
+Next Record
+Previous Record
+Clear Block
+Block MenuUS
+Next Block
+Previous Block
+Duplicate Field/Item
+Clear Form8
+Enter Query
+Execute Query
+Display Errork
+Print
+Count Matching Records
+Update Record
+User Defined Key 0
+User Defined Key 1
+User Defined Key 2celerator23l
+Accelerator24
+Accelerator25
+Accelerator26
+Accelerator27
+Accelerator28
+Accelerator29
+Accelerator30
+User Defined Key 3
+User Defined Key 4
+User Defined Key 58
+User Defined Key 6UC
+User Defined Key 7k2
+User Defined Key 8
+User Defined Key 9
+Clear End-of-Line
+Debug"
+Toggle Query Modeefr
+Debug Mode
+Previous Menu
+Enter >1 OS Command
+Enter 1 OS Command
+Enter Application Parameters
+Enter Menu Parameters
+Accelerator1
+Accelerator2
+Accelerator3
+Accelerator4
+Accelerator5
+Accelerator6
+Accelerator7
+Accelerator8
+Accelerator9
+Accelerator10"
+Accelerator11
+Accelerator120
+Accelerator130
+Accelerator14
+Accelerator15
+Accelerator16
+Accelerator170
+Accelerator18
+Accelerator19l
+Accelerator20d/I
+Accelerator21d/I
+Accelerator22
+Accelerator23l
+ROSATTRIBS
+class attributes
+ROSLFDESC
+ros lf descrip
+ROSOBJMAP
+ros name->id
+ROSSTRINGS
+tk2 uiStrings
+ROSSTRUCTS
+struct types
+ROSTK2RESV
+tk2 reserved
+Accept
+Exit
+Show Keysdit
+Refreshg
+Scroll Up#ev
+Print0
+Search/Replace
+Search Next Occurence
+Replace Next Occurence
+Pop Criteria
+Scroll Up-
+Right*
+Next Field/Iteml
+Previous Field/Itema
+Next Field/Itemc
+Previous Field/Item
+Choose Itemn
+Cancelun
+Next Field/Item
+Show Keys
+Refresh
+Scroll Left
+Scroll Right
+Clear Item
+Page Up
+Page Down
+Change Focus
+Back Focus
+Next Item
+Previous Item
+Commit
+Toggle Insert/Replace
+Select
+Insert Record
+Block Menu
+Duplicate Item
+Clear Form
+Display Error
+Count Query Hits
+User Defined Key 2
+User Defined Key 5
+User Defined Key 6
+User Defined Key 7
+Debug
+Toggle Query Mode
+Accelerator10
+Accelerator12
+Accelerator13
+Accelerator17
+Accelerator19
+Accelerator20
+Accelerator21
+Accelerator23
+Acce
+Delete Backwardi
+Save
+Previous Field/Item-
+lerator27
+Accelerator31
+Accelerator32
+Accelerator33
+Accelerator34
+Accelerator35
+Accelerator36
+Accelerator37
+Accelerator38
+Accelerator39
+Accelerator40
+Accelerator41
+Accelerator42
+Accelerator43
+Accelerator44
+Delete Element
+Insert Element
+Switch Element
+Non-leaf component "%s" is a leaf
+in "%s" componentfamily resource.
+There is no product defined in the selected
+resource file.
+No bindings found for this device.
+No component family found for this device.
+Error generating terminal key binding tables.0
+REM Error (%d): Failed to rollback incomplete pending changes from the resource file %s!
+Generate key bindings8
+Edit device classes and terminals
+Edit key bindings and product actions
+Sorry, the resource(s) is(are) too big to put into the clipboard.
+Accelerator31-fi
+Accelerator34ati
+Accelerator38e
+Accelerator40nde
+Accelerator41ne
+Delete Backwardt
+Scroll Upver
+UpSF
+Control+F11
+Escape
+Control+qel
+PageUp
+PageDown
+UpArrow
+DownArrowCan
+LeftArrow0
+Control+ps
+Control+End8
+Delete
+Backspace
+PageUpr2
+DownArrow
+Shift+Tab
+control+p
+Control+q
+BackSpace
+Control+k
+Alt+F4
+Control+>
+Control+/
+Control+<
+Control+PageDown
+Control+PageUp
+Control+Tab
+Control+Shift+Tab
+Control+l
+Shift+F3
+Shift+DownArrow
+Shift+UpArrow
+Shift+F7
+Control+u
+Shift+F5
+Control+e
+Control+s
+Shift+F4
+Shift+F6
+Shift+F1
+Shift+F8
+Shift+F2
+Control+?
+Control+Return
+Control+F6
+Control+F5
+Alt+R
+Control+S
+Control+U
+Alt+B
+Control+F
+Control+P
+Control+D
+Control+1
+Control+2
+Control+N
+Alt+E
+Control+K
+Control+W
+Control+L
+Control+3
+Control+O
+Alt+S
+Alt+F
+Control+T
+Control+B
+Control+X
+Control+M
+ToolkitDisabled
+Plain
+ToolkitEnabled
+ToolkitCurrent
+ToolkitDisabledMnemonic
+ToolkitEnabledMnemonic
+ToolkitCurrentMnemonic
+NormalAttribute
+Normal
+Bold
+Bold-text
+Bold-inverse
+ReverseBold
+Underline
+Boilerplate
+None
+WindowTitleCurrent
+Window-title
+WindowTitleNonCurrent
+Menu
+Sub-menu
+Full-screen-title
+Menu-title
+Menu-subtitle
+Menu-bottom-title
+MenuItemEnable
+Menu-item-enabled
+MenuItemDisable
+Menu-item-disabled
+MenuItemSelect
+Menu-item-selected
+MenuItemEnableMnemonic
+UnderlineBold
+MenuItemDisableMnemonic
+MenuItemSelectMnemonic
+ReverseBoldUnderline
+TextControlCurrent
+Field-current
+TextControlNonCurrent
+Reverse
+Field-non-current
+TextControlSelect
+Field-selected-current
+Field-selected-non-current
+Field-queryable
+PushButtonDefault
+PushButtonNonDefault
+Button-non-current
+Button-current
+Alert
+AlertIcon
+Alert-icon
+AlertMessage
+AlertBackground
+ListTitle
+List-title
+ListItemSelect
+List-selected
+ListItemNonSelect
+List-non-selected
+ListPrefix
+ScrollThumb
+"family
+bindtables
+btlists
+lalists
+common
+action
+code
+description
+runform
+help
+editor
+listvalues
+logon
+aflotus
+normal
+debugger
+databaseerror
+design
+designhelp
+designeditor
+designlistvalues
+designlogon
+global
+painter
+outliner
+menueditor
+binding
+name
+attribute
+charmode
+devat
+windows
+bindblob
+sqlforms
+cm_logicals
+forms_logicals
+0Next Field/Item
+Control+F1
+0Show Keys
+0Help
+0Accept
+0Cancel
+0Exit
+0Delete Backward
+0Scroll Up
+0Down
+0Previous Field/Item
+Control+End
+0Clear Field/Item
+thheaderfield
+casefold
+canmove
+bgpattern
+horizontal
+autoscrolled
+group
+rawmode
+cheight
+slowdraw
+selectstyle
+state
+vtatype
+htatype
+statustype
+navigation
+layoutlayers
+timelimit
+autosavebeforeclose
+displaylevel
+distmetrics
+showicons
+showlabels
+ncolumns
+restypedisplay
+nolabel
+contentwd
+contentht
+acontentclass
+expandkeys
+editpushb
+frontsx
+scrollbox
+drawn
+pushb
+okpushb
+cancelpushb
+helppushb
+editppushb
+showbpushb
+headerfield
+Scroll-bar-fill
+TextControlFailValidation
+Field-fail-validation
+ItemQueryDisabled
+Inverse
+Inverse-underline
+UnderlineReverse
+Bold-underline
+Bold-inverse-underline
+Status-Message
+Message-line
+Status-Hint
+Status-Empty
+Status-Work
+Status-Items
+6RESFILE
+pe9j
+title
+colormapredraw
+canresize
+canminimize
+canmaximize
+vsatype
+hsatype
+content
+genattrs
+borderuse
+canvasmovable
+font
+layoutdirection
+contentstack
+dimension
+childstacks
+view
+springs
+natural
+direction
+shrink
+stretch
+springcnt
+csprings
+elasticity
+cspringcnt
+subviews
+navigable
+borderbevel
+innerwd
+innerht
+label
+tabstop
+cwidth
+outerwd
+outerht
+borderwd
+enabled
+itemcnt
+items
+valueindex
+weight
+style
+width
+size
+fontstyle
+alignment
+isdefault
+iscancel
+contentclass
+appmenu
+maxlen
+minwd
+minht
+numcols
+columns
+editable
+numrows
+cells
+value
+scrollee
+icon
+yeslabel
+cancellabel
+message
+defaultbutton
+buttons
+string
+menu
+nitems
+hidden
+tearoff
+submenu
+accelerator
+keyval
+keycap
+modifiers
+iconimage
+iconname
+mnemonic
+alwayshome
+secure
+bgcolor
+green
+blue
+tolerance
+synthesized
+canclose
+0Accelerator19
+0Accelerator13
+0Accelerator28
+0Next Block
+0Previous Block
+0Next Primary Key
+0Next Set of Records
+0Next Record
+0Previous Record
+0Clear Form
+0Clear Block
+0Edit
+0Search
+0Return
+0Clear Record
+0Accelerator4
+0Accelerator14
+0Accelerator34
+0Accelerator8
+0List of Values
+0Accelerator12
+0Enter Query
+0Accelerator9
+0Display Error
+0Accelerator24
+0Count Matching Records
+0Debug Mode
+0Previous Menu
+0Enter Application Parameters
+0Enter Menu Parameters
+0Accelerator1
+0Accelerator2
+0Accelerator3
+0Accelerator5
+0Accelerator6
+0Accelerator7
+0Accelerator10
+0Accelerator11
+0Accelerator15
+0Accelerator16
+0Accelerator17
+0Accelerator18
+0Accelerator20
+0Accelerator21
+0Accelerator22
+0Accelerator23
+0Accelerator25
+0Accelerator26
+0Accelerator27
+0Accelerator29
+0Accelerator30
+0Accelerator31
+0Accelerator32
+0Accelerator33
+0Accelerator35
+Control+E
+0Accelerator36
+Control+R
+0Accelerator37
+Control+H
+0Accelerator38
+Control+4
+0Accelerator39
+Control+I
+0Accelerator40
+Control+Q
+0Accelerator41
+Control+A
+0Accelerator42
+Control+Y
+0Accelerator43
+Control+V
+0Accelerator44
+0Insert Element
+0Switch Element
+0Delete Element
+fi9g
+0Choose Item
+lalist
+List of logical attributes for character mode toolkit
+componentfamily
+Product Actions for SQL*Forms
+windows-sqlforms-designhelp
+bindtable
+Generated for designhelp component in sqlforms componentfamily on windows
+List of logical attributes for SQL*Forms
+windows-sqlforms-normal
+Generated for normal component in sqlforms componentfamily on windows
+windows-sqlforms-aflotus
+Generated for aflotus component in sqlforms componentfamily on windows
+windows-sqlforms-designlistvalu
+Generated for designlistvalues component in sqlforms componentfamily on windows
+windows-sqlforms-designlogon
+Generated for designlogon component in sqlforms componentfamily on windows
+windows-sqlforms-global
+Generated for global component in sqlforms componentfamily on windows
+windows-sqlforms-painter
+Generated for painter component in sqlforms componentfamily on windows
+windows-sqlforms-debugger
+Generated for debugger component in sqlforms componentfamily on windows
+windows-sqlforms-help
+Generated for help component in sqlforms componentfamily on windows
+windows-sqlforms-sqlforms
+btlist
+Generated for sqlforms component in sqlforms componentfamily on windows
+productdef
+Product Definition for Oracle Forms 6.0
+windows-sqlforms-menueditor
+Generated for menueditor component in sqlforms componentfamily on windows
+windows-sqlforms-listvalues
+Generated for listvalues component in sqlforms componentfamily on windows
+windows-sqlforms
+bindings
+Bindings for SQL*Forms on windows
+windows-sqlforms-designeditor
+Generated for designeditor component in sqlforms componentfamily on windows
+windows-sqlforms-outliner
+Generated for outliner component in sqlforms componentfamily on windows
+windows-sqlforms-databaseerror
+Generated for databaseerror component in sqlforms componentfamily on windows
+windows-sqlforms-logon
+Generated for logon component in sqlforms componentfamily on windows
+windows-sqlforms-editor
+Generated for editor component in sqlforms componentfamily on windows
+Default terminal devicec
+Y Table Definition: Occ
+X Table Definition: ckw
+Productionp
+Product Action Definition:
+Y tableD
+X table
+%s Terminal definition load failed
+Key Binding Preview:
+Unknown error!!
+Error while parsing the binding string
+"%s"
+of an entry in component "%s".
+Error while loading binding string for entry %s
+in "%s" component.
+Component "%s" not found
+Resource Name: %s-%s Type: bindings.
+Resource Name: %s Type: componentfamily.
+The product selected is
+not valid.
+ncel

@@ -1,0 +1,36 @@
+flowchart LR
+  ERPMenu[YSERP_MNU.mmx] --> APSI[APSI009.fmx]
+  ERPMenu --> APST[APST015.fmx]
+  ERPMenu --> HRSS[HRSS031.fmx]
+  YSERP[YSERP_LIB.plx] --> ERPForms[ERP/GL/FAS/INV forms]
+  YSERP --> APForms[ADMT030/APSI002/ARSI005]
+  YSERP --> Reports[ERP_JOURNAL/ERP_APPRVD/ERP_VRFY]
+  YSERP --> Export[Ys_ExpToxls.exe]
+  POSMenu[YSPOS_MNU.mmx] --> POST[POST006/010/016/017.fmx]
+  POS[YSPOS_LIB.plx] --> POST001[POST001.fmx]
+  POS --> POSOps[POS billing/payment/hung bills]
+  POS --> Export
+  APSI --> PurchaseManager[IAS_PURCHS_MAN]
+  APST --> AutoRequest[IAS_PRQST_AUTO_MST/DTL]
+  HRSS --> ReportDesigner[HRS_STMNT_RPRT_DES_MST/DTL]
+  Security[IASLIBSEC.plx] --> Dongle[YS_DONGLE_PKG]
+  Security --> Integrity[CRC/MD5/activation/session]
+  Security --> Native[HardDiskSerial.exe + crc.fmx + md5.fmx]
+  Common[d2kwutil.pll/.plx] --> D2K[d2kwut60.dll]
+  D2K --> Win32[Windows GUI/Filesystem/Help]
+  USB[YSComUsb.dll] --> Win32
+  SYS[YsErpSYs.dll] --> Win32
+  Map[YsGoogleMap.ocx] --> Browser[IEFrame/VBA6]
+  MTN[TransferToMTN.exe] --> DotNet[mscoree.dll / .NET]
+  MRP[MRPDBA.plx] --> MRPSFC[MRPSFC025.fmx]
+  MRPMenu[MRPSYSTEM.mmx] --> MRPLib[MRPLIB/mrpslib]
+  ERPSTP[ERPSTPLIB.plx + _TRK] --> CommonData[ERP common packages/tables]
+  HR[HRSLIB.plx] --> HRSS
+  Finance[FASLIB/FNGLIB/GLSLIB/IBSLIB/REMLIB/SHLLIB/SHPLIB] --> GLData[GL/AP/AR/finance data]
+
+  classDef core fill:#dbeafe,stroke:#1d4ed8,color:#111;
+  classDef window fill:#dcfce7,stroke:#15803d,color:#111;
+  classDef risk fill:#fee2e2,stroke:#b91c1c,color:#111;
+  class ERPMenu,YSERP,POSMenu,POS,Security,Common,ERPSTP core;
+  class APSI,APST,HRSS,POST,POST001,MRPSYSTEM window;
+  class Dongle,Integrity,Native,USB,SYS,Map,MTN risk;

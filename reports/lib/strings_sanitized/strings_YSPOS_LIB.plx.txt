@@ -1,0 +1,1580 @@
+ROS.60050
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+No namespace was supplied.
+No file was supplied.
+Operation aborted by user.
+File %[1]s is not a valid PL/SQL source file.
+A library with this name already exists. Overwrite it?
+Debug Actions
+- Displays detailed information about the specified debug action.
+Libraries
+- Displays detailed information about an attached library.
+Tables
+- Displays detailed information about database tables.
+Views
+- Displays detailed information about database views.
+Load Path
+- Displays detailed information about the current load path.
+Locals
+- Displays the name, type and value of a variable or parameter that is
+local to the current scope location.
+Program Units
+- Displays detailed information about a specific program unit instance.
+The information displayed includes the program unit name, its type,
+whether it is compiled, whether it is open for editing, and cross
+reference information.
+Version
+- Displays version information about the development environment.
+DESCRIBE <object>
+<object> ::=
+<program-unit> |
+<library> |
+<table> |
+<view> |
+<debug-action> |
+<local> |
+LOADPATH |
+VERSION |
+NAMESPACE
+<program-unit> ::= <pu-name-spec> [ SPECIFICATION | BODY ]
+<pu-name-spec> ::=
+{ PROGRAMUNIT <programunit-name> } |
+{ SUBPROGRAM <subprogram-name> } |
+{ FUNCTION <function-name> } |
+{ PROCEDURE <procedure-name> }
+{ PACKAGE <package-name> }
+<library> := { LIBRARY <library-name> }
+<table> := { TABLE <table-name> }
+<view> := { VIEW <view-name> }
+<debug-action> ::=
+{ ACTION <debug-action-id> } |
+{ BREAKPOINT <debug-action-id> } |
+{ TRIGGER <debug-action-id> }
+<local> ::=
+{ LOCAL <param-or-var-name> } |
+{ PARAMETER <param-name> } |
+{ VARIABLE <var-name> }
+DESCRIBE
+Breakpoint: %d
+Program Unit: %[1]s %[2]s
+Line: %d
+%[1]s: %[2]s
+Compiled: YES
+Compiled: NO
+Open: YES
+Open: NO
+References:
+%[1]s %[2]s
+IN/OUT
+NUMBER
+DATE
+CHAR(%d)
+UNKNOWN
+Bind Var :%[1]s %[2]s %[3]s
+Library: %s
+Mode: Attached (READONLY)
+Mode: Open (READWRITE)
+Contents:
+External Location: %s
+Current Directory
+Current DB Connection
+External Location: INTERPRETER
+Referenced by:
+Load Path:
+TOOL_MODULE
+VGS_VER
+POS_MNU_PKG
+/TMP1/POS_MNU_PKG
+STANDARD
+SQLFORMS
+TOOLS
+FORMS40
+/TMP1/DELETE_TIMER_PRC
+IAS_PARA_POS
+YSPOS2
+IAS_POS_BILL_MST
+IAS_GEN_PKG
+/TMP1/GEN_PKG
+FORMS4C
+/TMP1/POS_PKG
+FORMS4W
+IAS_POS_HUNG_BILLS
+POS_BILL_FREE_QTY_PRM_TMP
+IAS_POS_RT_BILL_DTL_AUD_TMP
+IAS_POS_RT_BILL_MST
+FORMS4G
+USER_R
+IAS20142
+PRIVILEGE_FIXED
+/TMP1/PAID_PROC
+/TMP1/PAID_MULTI_PROC
+IAS_POS_HST_BILL_MST
+IAS_POS_HST_RT_BILL_MST
+IAS_USR_PKG
+"POS_MNU_PKG"OPN_NEW_BILL_SCRN_PRC"P_BLK_NM"PL_ID"ID"PL_NAME"ADD_DOC_MNU_PRC"V_HOUR"CNT"V_USR_NO"V_USE_HUNG_BILLS"<cursor ptr>"<SQL statement. Line 45>"UNDO_MNU_PRC"V_SHALT"V_RT_BILL_NO"V_BILL_NO"<SQL statement. Line 140>"<SQL statement. Line 148>"<SQL statement. Line 199>"<SQL statement. Line 217>"DEL_ITM_PRC"V_RCRD_NO"<SQL statement. Line 261>"DEL_RCRD_PRC"<SQL statement. Line 314>"<SQL statement. Line 343>"DISC_BILL_AMT_PRC"DISC_BILL_PER_PRC"HUNG_BILL_PRC"REC_COUNT"STATUS"PRNT_PRV_BILL_PRC"V_BILL_TYPE"V_DOC_NO"V_PRINT_PREV_BILL"<SQL statement. Line 493>"<SQL statement. Line 505>"<SQL statement. Line 517>"PAYMNT_BILL_PRC"PAYED_TIMER"MULTI_PAYMNT_BILL_PRC"EXIT_FORM_PRC"PRNT_MIN_BILL_PRC"V_ALT"<SQL statement. Line 805>"<SQL statement. Line 820>"<SQL statement. Line 835>"PRNT_NORML_BILL_PRC"<SQL statement. Line 860>"<SQL statement. Line 875>"<SQL statement. Line 890>"PRNT_OLD_BILL_PRC"<SQL statement. Line 915>"<SQL statement. Line 930>"<SQL statement. Line 938>"<SQL statement. Line 956>"<SQL statement. Line 964>"PRNT_REST_HUNG_BILL_PRC"B_NO"RECNO"START_UP_MNU_PRC"V_USE_DEL_SHIFTF6"V_OPEN_BILL_MORE_ONE"V_USE_UNDO_CTRLU"<SQL statement. Line 1172>"<SQL statement. Line 1183>""
+8G<E
+G4E<
+G4Ep
+G4E(
+G4I0
+G4I,
+G4IL
+OPN_NEW_BILL_SCRN_PRC
+LOCK_SCR
+Parameter.Form_No
+tempdata
+Parameter.lang_no
+lang_no
+Parameter.user_no
+user_no
+Parameter.brn_year
+brn_year
+Parameter.brn_no
+brn_no
+Parameter.CMP_NO
+CMP_NO
+Parameter.BRN_USR
+BRN_USR
+form_no
+Parameter.P_Server_No
+P_Server_No
+P_Open_New_Scr
+POST001.FMX
+ADD_DOC_MNU_PRC
+System.Current_Block
+IAS_POS_BILL_DTL
+Parameter.User_No
+Parameter.Use_Hung_Bills
+Parameter.FORM_NO
+IAS_POS_PAY_CASH
+Create_Record
+Parameter.Prd_Back_Hour
+IAS_GEN_PKGYSPOS2GET_CURDATE
+HH24
+DD/MM/YYYY
+Ias_
+Pos_Bill_Mst.Bill_Date
+23:59:59
+Ias_Pos_Bill_Mst.Bill_Time
+IAS_POS_RT_BILL_DTL
+IAS_POS_RT_BILL_MST.Rt_Bill_Date
+IAS_POS_RT_BILL_MST.Rt_Bill_Time
+records_menu.save_rec
+UNDO_MNU_PRC
+system.current_block
+SYSTEM.MODE
+ENTER-QUERY
+BAR.Add_Btn
+BAR.Mod_Btn
+BAR.Del_Btn
+BAR.Save_Btn
+BAR.List_Btn
+BAR.Seek_Btn
+BAR.Prev_Btn
+BAR.Next_Btn
+BAR.First_Btn
+BAR.Last_Btn
+BAR.Exit_Btn
+BAR.Print_Btn
+al_undo
+Ias_Pos_Pay_Cash.Rt_Bill_No
+Ias_Pos_Pay_Cash.Pay_Note
+Ias_Pos_Pay_Cash
+SYSTEM.CURRENT_FORM
+POST001
+Parameter.Allow_Del_Itm_From_Pos_Bill
+Ias_Pos_Bill_Mst.Bill_No
+Commit
+RollBack
+Ias_Pos_Bill_Dtl.I_Code
+Ias_Pos_Bill_Dtl.i_code
+Parameter.P_Main_User_No
+CHANGE_USER
+POST003
+POST002
+Ias_Pos_Rt_Bill_Mst.Rt_Bill_No
+ias_pos_rt_bill_dtl.i_code
+records_menu.undo
+DEL_ITM_PRC
+System.Cursor_Block
+System.Block_Status
+QUERY
+IAS_POS_BILL_MST.hung
+Global.del_block
+delitem
+Parameter.P_Del_Prev_Record
+System.Trigger_Record
+IAS_POS_PAY_BILLS
+Ias_Pos_Bill_Mst.Cr_Card_Amt
+TRUE
+DEL_RCRD_PRC
+KEY_DEL_REC
+KEY-DELREC
+IAS_POS_PAY_CASH.Dummy
+DISC_BILL_AMT_PRC
+ias_pos_bill_mst.bill_no
+SYSTEM.BLOCK_STATUS
+ias_pos_bill_mst.hung
+ias_pos_bill_dtl.TOT_ITEM_PRICE
+Parameter.max_disc
+ias_pos_bill_mst.disc_amt_mst
+ias_pos_bill_dtl.i_code
+ias_pos_rt_bill_mst.rt_bill_no
+IAS_POS_RT_BILL_MST.BILL_NO
+ias_pos_rt_bill_mst.disc_amt_mst
+DISC_BILL_PER_PRC
+IAS_POS_BILL_DTL.TOT_ITEM_PRICE
+ias_pos_bill_mst.per_disc
+ias_pos_rt_bill_mst.bill_no
+HUNG_BILL_PRC
+SYSTEM.CURRENT_BLOCK
+ias_pos_bill_mst.net_amt
+rg_hung_bills
+Parameter.maxhungs
+ias_pos_bill_mst.hung_u_id
+Parameter.DontSave
+Parameter.Allow_Print_Hung_Bill
+Parameter.print_bill
+ias_pos_bill_mst.bill_type
+Parameter.Rep_Form
+IAS_POS_PAY_RT_BILLS
+ias_pos_rt_bill_mst.rt_bill_type
+PRNT_PRV_BILL_PRC
+Parameter.prev_bill_no
+PAYMNT_BILL_PRC
+Parameter.Form_NO
+system.Current_Block
+ITM_GRP
+ITM_DTL
+PAYED_CASH_TIMER
+PAYEDTIMER
+PAYEDTIMER_CARD
+CH_PR
+ENTER_ICODE_MAN
+PROGRESS
+LCDTIMER
+GET_DISCOUNT
+SAVE_PROC
+MULTI_PAYMNT_BILL_PRC
+EXIT_FORM_PRC
+System.Current_Form
+ITEMSEARCHFLTR
+ITEMSEARCH
+IAS_POS_HELP_KEYS
+DELITEM
+PAYED
+LENGTHED
+LENGTHEDFILTER
+WEIGHTED
+WEIGHTEDFILTER
+IAS_POS_KEY_BRD_GRPS_DTL
+IAS_POS_KEY_BRD_GRPS_MST
+SUPERVISOR_SYSTEM
+System.Current_Item
+BAR.BTN_END
+MAIN8
+MAIN14
+IAS_POS_BILL_MST.point_typ_no
+ias_pos_bill_mst.Disc_Amt_Mst
+ias_pos_bill_mst.POINT_CALC_TYP_NO
+ias_pos_bill_mst.cust_code
+ias_pos_bill_mst.point_typ_no
+ias_pos_bill_mst.Point_Rplc_Amt
+ias_pos_bill_mst.Mobile_NO
+IAS_POS_BILL_MST.BILL_NO
+IAS_POS_BILL_DTL.I_CODE
+IAS_POS_RT_BILL_MST.RT_BILL_NO
+IAS_POS_RT_BILL_DTL.I_CODE
+IAS_POS_PAY_CASH.RT_BILL_NO
+PRNT_MIN_BILL_PRC
+Global.bno
+lov_oldbills
+Lov_oldrtbills
+NT_NORML_BILL_PRC
+PRNT_OLD_BILL_PRC
+OTHR
+PRNT_REST_HUNG_BILL_PRC
+Parameter.ret_hung_bill
+lov_hung_bills
+Parameter.hung_bill_no
+ias_pos_bill_mst
+ias_pos_bill_dtl
+ias_pos_pay_bills
+bill_no =
+records_menu.delete
+ias_pos_bill_mst.bill_date
+ias_pos_bill_mst.bill_time
+ias_pos_bill_mst.ad_u_id
+ias_pos_bill_mst.a_cy
+ias_pos_bill_mst.bill_rate
+main.exta_tools
+main.bgm
+main.search
+RECORDS_MENU.DEL_REC
+extra_tools.kepad
+extra_tools.weighted
+extra_tools.lengthed
+extra_tools.opendrawer
+extra_tools.reterive_hung
+bgm.item_search
+bgm.delitem
+bgm.dis_value
+bgm.dis_per
+bgm.hung_bill
+bgm.print_bill
+bgm.change_cur
+bgm.change_bill_type
+bgm.payed
+bgm.multi_pay
+bgm.bill_note
+EXTRA_TOOLS.HELP
+START_UP_MNU_PRC
+IAS_GEN_PKGYSPOS2GET_PROMPTI
+main.records
+main.system
+records_menu.lst_rec
+amtV
+records_menu.nxt_rec
+g_BW
+records_menu.prev_rec
+records_menu.frst_rec
+records_menu.add
+records_menu.del_rec
+IAS_GEN_P
+records_menu.Create_New_Bill
+search_menu.enter_q
+search_menu.exec_q
+search_menu.cancel_q
+system_m
+enu.exit
+extra_tools.printoldbill
+extra_tools.Reterive_Bill_Off
+extra_tools.Paid_Cash_For_Bills
+extra_tools.Paid_Cash_Rt_Bills
+BGM.PRINT_MINIMIZE_FORM
+BGM.PRINT_NORMAL_FORM
+EXTRA_TOOLS.SHOW_ITM_PRIC
+bgm.SHOW_UNIT
+bgm.change_qty
+bgm.change_price
+_re/
+bgm.change_discount
+extra_tools.SHOW_BILL_MOV
+EXTRA_TOOLS.LOCK_SCR
+AS_S
+EXTRA_TOOLS.CHANGE_USER
+bgm.PRINT_BILL_B4SAVE
+Bar.BTN_DEL_ITEM
+Records_Menu.Undo
+Bar.BTN_UNDO
+Parameter.Print_Bill_B4sav
+BGM.PRINT_BILL_B4SAVE
+Extra_Tools.printoldbill
+Bar.BTN_RESTOR_PRNT_OLDBILL
+Bgm.Print_Bill
+Bar.BTN_PRNT_BRV_BILL
+Bar.BTN_PRNT_BILL_MIN
+Bar.BTN_PRNT_BILL_NORML
+Extra_Tools.PRINTOLDBILL
+Parameter.use_hung_bills
+Parameter.Allow_Hung_Bills
+Bar.BTN_HNG_BILL
+Bar.BTN_RESTOR_HNG_BILL
+Bar.BTN_OPN_BILL_SCRN
+Extra_Tools.Paid_Cash_For_Bills
+IAS_USR_PKGYSPOS2CHK_USR_FRM_PRV
+Extra_Tools.Paid_Cash_Rt_Bills
+records_menu.Del_Rec
+records_menu.Delete
+Bgm.Item_Search
+Bgm.Delitem
+Bgm.Change_Qty
+Bgm.Change_Price
+Bgm.Change_Discount
+Bgm.Dis_Value
+Bgm.Dis_Per
+Bgm.Hung_Bill
+Bgm.Change_Cur
+Bgm.Change_Bill_Type
+Bgm.Bill_Note
+ADD_PROC
+Extra_Tools.Reterive_Hung
+Extra_Tools.Reterive_Bill_Off
+Parameter.Audit_Hung_Bill
+Bar.BTN_DISC_PER
+Parameter.Show_Dis_Per_Item
+bgm.CHANGE_DISCOUNT
+bgm.DIS_VALUE
+Bar.Btn_Disc_Amt
+Parameter.USER_NO
+IAS_
+.Und
+TN_D
+0!H!
+L!d!
+0"H"
+L"d"
+h"l"
+(#,#
+0#H#
+L#d#
+h#l#
+0$4$
+8$<$
+@$X$
+\$t$
+4%L%
+P%h%
+SELECT 1 FROM IAS_POS_BILL_MST WHERE BILL_DATE < TO_CHAR(IAS_GEN_PKG.GET_CURDATE,''DD/MM/YYYY'') AND NVL(HUNG,0) = 1 AND AD_U_ID = :b1 AND ROWNUM <= 1"DELETE FROM IAS_POS_HUNG_BILLS WHERE BILL_NO = :b1"DELETE FROM POS_BILL_FREE_QTY_PRM_TMP WHERE BILL_NO = :b1"DELETE FROM IAS_POS_RT_BILL_DTL_AUD_TMP WHERE R
+T_BILL_NO = :b1"DELETE FROM IAS_POS_RT_BILL_DTL_AUD_TMP WHERE RT_BILL_NO = :b1"DELETE FROM IAS_POS_RT_BILL_DTL_AUD_TMP WHERE RT_BILL_NO = :b1 AND RCRD_NO = :b2"DELETE FROM IAS_POS_RT_BILL_DTL_AUD_TMP WHERE RT_BILL_NO = :b1 AND RCRD_NO = :b2"UPDATE IAS_POS_RT_BILL_MST SET PAYED=0 WHERE RT_BILL_NO = :b1"SELECT NVL(PRINT_PREV_BILL,0) FROM PRIVILEGE_FIXED WHERE U_ID = :b1"SELECT BILL_TYPE FROM IAS_POS_BILL_MST WHERE BILL_NO = :b1"SELECT RT_BILL_TYPE FROM IAS_POS_RT_BILL_MST WHERE RT_BILL_NO = :b1"SELECT NVL(PRINT_PREV_BILL,0) FROM PRIVILEGE_FIXED WHERE U_ID = :b1"SELECT BILL_TYPE FROM IAS_POS_BILL_MST WHERE
+BILL_NO = :b1"SELECT RT_BILL_TYPE FROM IAS_POS_RT_BILL_MST WHERE RT_BILL_NO = :b1"SELECT NVL(PRINT_PREV_BILL,0) FROM PRIVILEGE_FIXED WHERE U_ID = :b1"SELECT BILL_TYPE FROM IAS_POS_BILL_MST WHERE BILL_NO = :b1"SELECT RT_BILL_TYPE FROM IAS_POS_RT_BILL_MST WHERE RT_BILL_NO = :b1"SELECT NVL(PRINT_PREV_BILL,0) FROM PRIVILEGE_FIXED WHERE U_ID = :b1"SELECT BILL_TYPE FROM IAS_POS_BILL_MST WHERE BILL_NO = :b1"SELECT BILL_TYPE FROM IAS_POS_HST_BILL_MST WHERE BILL_NO = :b1"SELECT RT_BILL_TYPE FROM IAS_POS_RT_BILL_MST WHERE RT_BILL_NO = :b1"SELECT RT_BILL_TYPE FROM IAS_POS_HST_RT_BILL_MST WHERE RT_BILL_NO = :b1"SELECT USE_DEL_SHIFTF6,OPEN_BILL_MORE_ONE FROM IAS_PARA_POS"SELECT NVL(USE_UNDO_CTRLU,0),NVL(PRINT_PREV_BILL,0) FROM PRIVILEGE_FIXED WHERE U_ID = :b1"
+mprp_'' || USERENV(''SESSIONID'') || ''0.gif'' FROM DUAL"SELECT ACCOUNT_TYPE FROM ACCOUNT_TYPES WHERE AFFECTED_BY_TRANS = 1"SELECT CUR_CODE FROM EX_RATE WHERE L_F = 1"SELECT CUR_CODE FROM EX_RATE WHERE STOCK_CUR = 1"SELECT NVL(CC_AVAIL,0),NVL(AP_AC_LINK_TYPE,1),NVL(AR_AC_LINK_TYPE,1),A_CODE_D_TYPE,VENDOR_D_TYPE,CUST_D_TYPE,CURR_TYPE,CC_D_TYPE,CC_LENGTH,INVOICING_SERIALS,INVOICING_SERIALS_SR,NVL(ITEM_POSTING_FLAG,0),NVL(USE_MULTI_WC,0) FROM IAS_PARA_GEN,IAS_PARA_GL,IAS_PARA_INV,IAS_PARA_AP,IAS_PARA_AR"SELECT SCR_THEME_NO FROM FORM_DETAIL WHERE FORM_NO = :b1 AND ROWNUM <= 1"SELECT SCR_THEME_NO FROM USER_R WHERE U_ID = :b1 AND ROWNUM <= 1"SELECT THM_NO FROM S_THMS WHERE NVL(THM_FLG,0) = 1 AND ROWNUM <= 1"SELECT THM_COLR_DATA,THM_COLR_USR FROM S_THMS WHERE THM_NO = :b1 AND ROWNUM <= 1"
+CALL_BAR_BTN_SCR
+/TMP1/CALL_BAR_BTN_SCR
+FORM_DETAIL
+"CALL_BAR_BTN_SCR"CALL_MAIN_TREE"V_PL_ID"ID"V_PL_NAME"SHW_JRNL_DOC"P_DOC_SER"ARCHIVES_DOC"P_DOC_TYPE"APPRVD_DOC"P_FLD_SER_NM"P_APPROVED_PRV"VRFY_DOC"P_TBL_NM"P_VRFY_PRV"P_USE_QRY"INACTIVE_DOC"P_INACTIVE_PRV"CALL_SCR_PRC"P_CALL_TYP"P_FRM_NO"P_DOC_TYP"P_FRM_NM"P_PL_ID"V_SYS_NO"V_FILE_NM"V_SCR_TYP"V_DOC_TYP"V_FRM_NO"<cursor ptr>"<SQL statement. Line 206>"<SQL statement. Line 217>"CALL_FRM_TRNS""
+CALL_MAIN_TREE
+LANG_NO
+User_no
+Brn_no
+Brn_year
+Form_No
+P_RSLTN_SIZE
+ERP_SCR.FMX
+SHW_JRNL_DOC
+P_Doc_Ser
+ERP_JOURNAL.Fmx
+ARCHIVES_DOC
+P_Doc_Type
+ADMT030.FMX
+APPRVD_DOC
+P_Fld_Ser_Nm
+Parameter.Blk
+P_Tbl_Nm
+P_APPROVED_PRV
+ERP_APPRVD_SCR.FMX
+VRFY_DOC
+P_Vrfy_Prv
+Parameter.Allow_Cancel_Audit_Ref
+Allow_Cancel_Audit_Ref
+Parameter.Vrfy_Flag
+Vrfy_Flag
+ERP_VRFY_SCR.FMX
+INACTIVE_DOC
+ERP_INACTV_SCR.FMX
+CALL_SCR_PRC
+VIEW
+LANG_DIR
+LANG_DFLT
+USER_NO
+BRN_NO
+BRN_YEAR
+FORM_NO
+SYS_NO
+SCR_TYP
+DOC_TYP
+PARAMETER.SCR_THEME_NO
+SCR_THEME_NO
+CALL_FRM_TRNS
+SELECT FORM_NO FROM FORM_DETAIL WHERE DOC_TYP = :b1 AND ROWNUM <= 1"SELECT SYS_NO,SCR_TYP,F_FILE_NAME,DOC_TYP FROM FORM_DETAIL WHERE FORM_NO = :b1 AND ROWNUM <= 1"
+POS_PKG
+IAS_POS_MACHINE
+TEXT_IO
+"POS_PKG"ADD"SYSTEM_DATE"DETAIL_BLOCK"FIRST_RELATION"NEXT_RELATION"CURRENT_RELATION"CURRENT_BLOCK"GENERATED_BILL_NO"MODIFY"SAVE"V_BILL_NO"V_MACHINE_SER"V_DOC_SER"V_SD"V_MD"V_UD"P_U_ID"P_MACHINE_NO"V_POS_SER"V_SERVER_NO"CNT"GENERATE_BILL_NO"P_MCHNO"P_TYPE"P_SR"V_YEAR_NO"<cursor ptr>"<SQL statement. Line 336>"<SQL statement. Line 343>"NEW_BLOCK"OPEN_DRAWER"CMP"RESULT"FILE_HANDEL"HANDLE"PRINTBILL"P_BILLNO"P_BILLTYPE"P_CNT_PRINT"P_REP_FORM"P_REP_FILE_NM"V_WHR"PL_ID"ID"V_REP_NAME"V_COPIES"V_DES_TYPE"V_TBL_NM"V_FLD_NM"SET_MENUS"TRUEFALSE"UNDO"WINDOW_POS"W_NAME"DESKTOP_H"DESKTOP_W"WINDOW_H"WINDOW_W"PROC_DISC_USER"P_USER_NO"V_BILL_AMT"V_DISC_AMT"V_USR_DISC"<SQL statement. Line 647>"PROC_TOTAL_DISC"V_DISC_BILL_AMT"V_DISC_ITM_AMT""
+ias_pos_bill_mst.c_code
+Ias_Pos_Bill_Mst.Bill_Note
+Ias_Pos_Bill_Mst.Emp_No
+Parameter.ALLOW_SLCT_ITM_UNT
+Ias_Pos_Bill_Dtl.Itm_Unt
+Parameter.machine_no
+Parameter.pos_bill_serial
+Parameter.Ret_Hung_Bill_Off
+Parameter.curr_dflt
+parameter.price_cur
+hh24:mi:ss
+ias_pos_bill_mst.machine_no
+ias_pos_rt_bill_mst.c_code
+Ias_Pos_Rt_Bill_Mst.Rt_Bill_Note
+Ias_Pos_Rt_Bill_Mst.Emp_No
+Ias_Pos_Rt_Bill_Dtl.
+I_Code
+Ias_Pos_Rt_Bill_Dtl.Itm_Unt
+ias_pos_rt_bill_mst.rt_bill_date
+ias_pos_rt_bill_mst.rt_bill_rate
+ias_pos_rt_bill_mst.rt_price_type
+ias_pos_rt_bill_mst.return_type
+Ias_Pos_Rt_Bill_Mst.rt_price_type
+ias_pos_rt_bill_mst.a_cy
+ias_pos_rt_bill_mst.ad_u_id
+ias_pos_rt_bill_mst.rt_bill_time
+ias_pos_rt_bill_mst.machine_no
+Parameter.rtn_bill_no
+Parameter.Use_Undo_Ctrlu
+Bar.Btn_Undo
+Bar.BTN_ADD
+MODIFY
+SAVE
+Parameter.serial_digit
+Parameter.machine_digit
+Parameter.user_digit
+ias_pos_bill_mst.disc_amt
+ias_pos_bill_dtl.tot_item_price
+ias_pos_bill_dtl.tot_disc
+ias_pos_bill_mst.disc_amt_dtl
+ias_pos_bill_mst.bill_amt
+ias_pos_bill_dtl.sum_total_vat_amt
+ias_pos_bill_mst.vat_amt
+ias_pos_bill_mst.Bill_No
+ias_pos_rt_bill_mst.disc_amt
+ias_pos_rt_bill_dtl.tot_item_price
+ias_pos_rt_bill_dtl.tot_disc
+ias_pos_rt_bill_mst.disc_amt_dtl
+ias_pos_rt_bill_mst.rt_bill_amt
+ias_pos_rt_bill_dtl.sum_total_vat_amt
+ias_pos_rt_bill_mst.vat_amt
+ias_pos_rt_bill_mst.Rt_Bill_No
+GENERATE_BILL_NO
+YYYY
+Invalid Generate Bill No Procedure
+Ftr.Err
+NEW_BLOCK
+OPEN_DRAWER
+PRINTBILL
+And ias_pos_hst_bill_mst.bill_no=
+BILL_NO
+And ias_pos_bill_mst.bill_no=
+And ias_pos_hst_rt_bill_mst.rt_bill_no=
+And ias_pos_rt_bill_mst.rt_bill_no=
+ias_pos_rt_bill_mst
+rt_bill_no
+plist
+p_whr
+p_cnt_print
+Parameter.FTR_BILL
+P_FTR
+Parameter.Cust_Note_Join_Point
+P_Note_Join_Pnt
+Parameter.Cust_Note_Not_Join_Point
+P_Note_Not_Join_Pnt
+Parameter.Prnt_Cnt_Point
+Prnt_Cnt_Point
+ias_pos_bill_formal2
+ias_pos_bill_formal
+ias_pos_bill_rols2
+ias_pos_bill_rols
+PRINTER
+Parameter.Collct_rpt_itm_prnt
+ias_pos_rtn_bill_formal2
+ias_pos_rtn_bill_formal
+ias_pos_rtn_bill_rols2
+ias_pos_rtn_bill_rols
+Update
+Set Pr_Rep=Nvl(Pr_Rep,0)+1
+Where
+SET_MENUS
+UNDO
+ias_pos_rt_bill_dtl
+WINDOW_POS
+PROC_DISC_USER
+PROC_TOTAL_DISC
+ramete
+EN_D
+t_bil
+ill_
+.open
+prin
+SELECT SUBSTR(:b1,3,2) || :b2 || LPAD(MACHINE_NO,:b3,0) || :b4 || LPAD(NVL(DECODE(:b5,1,SALE_SER,RT_SALE_SER),0) + 1 ,:b6,0) FROM IAS_POS_MACHINE WHERE MACHINE_NO = :b7"SELECT SUBSTR(:b1,3,2) || :b2 || LPAD(MACHINE_NO,:b3,0) || LPAD(NVL(DECODE(:b4,1,SALE_SER,RT_SALE_SER),0) + 1 ,:b5,0) FROM IAS_POS_MACHINE WHERE MACHINE_NO = :b6"SELECT NVL(INV_DIS_LMT,0) FROM PRIVILEGE_FIXED WHERE U_ID = :b1"
+GEN_PKG
+IAS_PARA_GEN
+IAS_PARA_GL
+YS_GEN_PKG
+S_MSGS
+PUBLIC
+IAS_SYS
+IAS_MSGS
+LANG_DEF
+IAS_BRN_PKG
+SQLMENU
+PRIVILEGE
+IAS_PARA_INV
+ACCOUNT
+ACCOUNT_TYPES
+S_BRN
+COST_CENTERS
+COST_CENTER_TYPES
+IAS_PROJECTS
+CASH_IN_HAND
+CASH_AT_BANK
+CUSTOMER
+WAREHOUSE_DETAILS
+CUSTOMER_GROUP
+ITEM_TYPES
+IAS_ITM_MST
+GET_ITEMS_ACTIVITY
+S_PRD_DTL
+S_PRD_BRN_CLS
+S_PRD_MST
+DUAL
+IAS_FRM_FLD_PRIV
+IAS_LABELS
+PRIV_ACC
+IAS_PRIV_CUSTOMER
+PRIVILEGE_GC
+PRIVILEGE_WH
+S_BRN_USR_PRIV
+PRIV_CASH
+EX_RATE
+S_FLAGS
+S_FLAGS_PRIV
+IAS_SIGNATURE
+IAS_USER_HEAD
+IAS_PARA_AP
+IAS_PARA_AR
+IAS_PRMTR_PKG
+/Ld2kwutil
+WIN_API
+/TMP1/WIN_API_SHELL
+S_THMS
+"GEN_PKG"ITEM_ID"ID"CNT"V_CONN_AC_CC"V_CONN_AC_PJ"V_HEAD_TYPE"V_SHW_ENG_REP"V_SHW_XLSBRN_REP"V_SHW_PARAMTR_REP"SET_PARA"GET_PARA"<cursor ptr>"<SQL statement. Line 18>"GET_MAIN_SYS"P_SYS_NO"C1"FORM_NO"M_S
+YS"I"GET_SUB_MAIN"V_FRM_NO"V_FRM_NO_PRV"GET_SYSTEM_PATH"V_PRG_PATH"GET_HEAD"V_BRN_NM"V_USR_NM"V_FORM_NO"V_NM"V_MAIN_NM"V_SUB_MAIN_NM"V_SYSDATE"V_MAIN_SYS"V_MAIN_SUB"SHOW_MSG"CODE"MSG"V_MSG_CODE"V_MSG_NUM"V_MSG_DESC"<SQL statement. Line 121>"MSGBOX"MESSAGE_NO"POSTFIX1"MESSAGE_NO2"POSTFIX2"MESSAGE_NO3"POSTFIX3"MSGTXT"MSG2"MSG3"ALERT_B"<SQL statement. Line 163>"<SQL statement. Line 171>"<SQL statement. Line 178>"ON_ERROR"MSG_TMR"ON_MESSAGE"GET_LIST_PRINT"V_STM"ITM_ID"V_REP_SMPLE"PRE_FORM"V_WND_ID"WND_ID"V_ID"ALR_ID"<SQL statement. Line 300>"V_PRINT_FLAG"V_VWREP_FLAG"<SQL statement. Line 527>"GET_DATA_REP_SCR"KEY_LISTVAL"KEY_NEXT_ITEM"KEY_PREV_ITEM"KEY_OTHERS"WHEN_TIMER_EXPIRED"WHEN_WINDOW_CLOSED"WHEN_WINDOW_ACTIVATED"WHEN_WINDOW_DEACTIVATED"KEY_UP"IT"KEY_DOWN"KEY_ENTER"SIP_D_FALSE"T1"SIP_D_TRUE"SIP_E_FALSE"SIP_E_TRUE"VISIBLE_FALSE"VISIBLE_TRUE"BUTTON_TRUE"ADD_BTN"MOD_BTN"DEL_BTN"SAVE_BTN"LIST_BTN"SEEK_BTN"PREV_BTN"NEXT_BTN"FIRST_BTN"LAST_BTN"EXIT_BTN"PRINT_BTN"SEARCH"BUTTON_FALSE"CHECKING"P_TYPECODE"P_ITMCODE"P_SCRTYPE"P_A_CODE"TC"P_CONN_ITM_ACT"<SQL statement. Line 1096>"<SQL statement. Line 1107>"<SQL statement. Line 1120>"<SQL statement. Line 1128>"<SQL statement. Line 1136>"<SQL statement. Line 1147>"<SQL statement. Line 1157>"<SQL statement. Line 1166>"<SQL statement. Line 1175>"<SQL statement. Line 1185>"<SQL statement. Line 1193>"<SQL statement. Line 1200>"<SQL statement. Line 1210>"<SQL statement. Line 1216>"<SQL statement. Line 1226>"<SQL statement. Line 1237>"<SQL statement. Line 1250>"<SQL statement. Line 1256>"<SQL statement. Line 1265>"<SQL statement. Line 1271>"<SQL statement. Line 1277>"<SQL statement. Line 1286>"CHECK_DATE"P_DOC_DATE"P_SCR_TYPE"P_FRM_TYPE"P_CHK_CLS"C"V_CNT"V_PRD_CLS"V_PRD_INACTV"SD"V_FLD"V_DEPR_CLS"<SQL statement. Line 1385>"<SQL statement. Line 1405>"<SQL statement. Line 1492>"<SQL statement. Line 1504>"CHECK_CHQ_DATE"P_CHEQ_DATE"<SQL statement. Line 1532>"BUTTON_PRIVILEGE"P_FNO"P_BNAME"AD"MODFY"DEL"VW"VWREP"PRNT"<SQL statement. Line 1574>"<SQL statement. Line 1595>"ENA_DIS_BTN_PRC"P_BTN_STAT"P_SEARCH_STAT"FRM_FLD_PRIVILEGE"P_CV"TAB_NAME"FLD_NAME"GET_PROMPT"ITM"V_HNO"V_LBL"<SQL statement. Line 1779>"GET_PROMPT_FOR_RADIO"B"V_CP"<SQL statement. Line 1798>"FOR_RADIO"POS1"POS2"POS3"A"B1"HM"FIRST"STR"SET_PROMPT"BLK"CURR_ITEM"BLOCK_ITEM"V_PRTXT"SET_TAB_LABEL"TNAME"LNO"<SQL statement. Line 1892>"SET_POPMU_LABEL"P_TNAME"P_LBNO"<SQL statement. Line 1904>"SET_MENU_VALUES"CHECK_PRIV_AC"P_AC"P_ACY"PRV"<SQL statement. Line 1946>"<SQL statement. Line 1967>"CHECK_PRIV_CST"P_C_CODE"<SQL statement. Line 2018>"<SQL statement. Line 2060>"CHECK_PRIV_GC"P_I_CODE"P_FITM"GC"<SQL statement. Line 2140>"<SQL statement. Line 2146>"CHECK_PRIV_WH"WC"<SQL statement. Line 2172>"CHECK_PRIV_BRN"P_BRN_NO"<SQL statement. Line 2194>"CHECK_PRIV_CASH"P_CASHNO"P_ITM"P_CASHTYPE"<SQL statement. Line 2218>"<SQL statement. Line 2254>"CHECK_CUR_RATE"ACCUR"ACRATE"LOCAL_CUR"MNR"MXR"<SQL statement. Line 2296>"POP_PRIVILEGE"<SQL statement. Line 2333>"GET_LIST"P_FLG_CODE"P_TYPE"GROUP_ID"GROUPNAME"GR"QUERY_OK"V_SELECT"<SQL statement. Line 2360>"GET_LIST_PRIV"CODENO"<SQL statement. Line 2416>"DYNAMIC_LIST"P_LST"RG_ID"RG_NAME"RUN_REP"V_PL_ID"V_REP_NAME"V_SHOW_HDR"V_DESTYPE"V_REP_COPIES"V_DESFRMT"V_DESNAME"V_PRINT"V_SYS_NO"V_JV_TYPE"V_TBL_NM"V_FLD_SER"V_REP_WHR"V_REP_WHR1"V_REP_TITLE"V_LANG_NO"CMPANAME"CMPENAME"BANAME"BEADD"BADD"BENAME"BTELE"BFAX"BBOX"BETELE"BEFAX"BEBOX"V_BRN"BIMG"C_PL_NAME"V_SYNCHRONS"V_SIGNATURE1"V_SIGNATURE2"V_SIGNATURE3"V_SIGNATURE4"V_SIGNATURE5"V_SIGNATURE6"V_DEST_TYPE"V_DEST_NM"V_DFLT_WHR"S_SYS_NO"V_PR_REP"<SQL statement. Line 2557>"<SQL statement. Line 2592>"<SQL statement. Line 2624>"<SQL statement. Line 2662>"<SQL statement. Line 2676>"<SQL statement. Line 2686>"RUN_REP_TO_XLS"C_XLSTARTDIR"C_XLFILEFLTR"C_XLWINSTYLE"C_XLPRGDIR"C_XLPRGNM"C_XLFILEEXT"V_REPTITLE"V_XLFILENAME"V_XLFULLCMDLN"V_HTMFILENAME"V_GIFFILENAME"V_XLDIR"DELETE_TEMP_FILES"<SQL statement. Line 2932>"LOAD_LIST"P_ITEM_TYPE"P_OUT_ITM"STM"LOAD_USERS"P_ITM_USER"LOAD_BRN"P_ITM_BRN"P_FRM_TYP"V_BRN_CNT"V_FRM_TYP"V_WHR"LOV_TITLE"P_LOV_NAME"GET_L
+OV_TITLE"P_LOV_TITLE"P_COL1"P_COL2"P_COL3"P_COL4"P_COL5"P_COL6"P_COL7"P_COL8"P_COL9"P_COL10"P_COL11"P_COL12"LOV_ID"CALL_SCR"P_ITMNAME"V_PAR"V_ITM"V_SUB_ACC"V_LOCAL_CUR"V_STK_CUR"V_APALT"V_ARALT"V_AC_D_TYPE"V_VENDOR_D_TYPE"V_CST_D_TYPE"V_CURR_TYPE"V_CC_D_TYPE"V_CC_LEN"V_INV_SI"V_INV_SR"V_CC_AVAIL"V_USE_ONE_WC"V_ITM_POST_FLAG"<SQL statement. Line 3225>"<SQL statement. Line 3230>"<SQL statement. Line 3240>"<SQL statement. Line 3250>"TRNSLT_POPMU"P_POP_MU"MI_ID"POS_BLK_MLT_RCRD"P_BLK_NM"P_FRST_ITM"P_EXCPTED_ITMS"V_CURR_ITM"V_PREV_ITM"V_BLK_ITM"V_XPOS"P_BLK_ID"SHW_RCRD"V_COUNT"V_MAX_VSBL_RCRDS"V_LAST_ITM_POS"GET_TOKEN"P_STR"P_TOKEN_NO"P_TOKEN_SEP"V_STR"V_I"V_I2"CNTR_WND"P_WND_NM"P_WND_CNTR"RPLC_GNR_PRMTR_FNC"P_SQL"V_SQL"ENA_DIS_ITM"P_TYP"V_VAL"V_BLK_NM"SET_YSERP_PRMTRS"SET_DFLT_VAL"P_REC_ST"P_BLK"V_CMPNO"CHK_MNDTRY"V_ITM_CNVS"KEY_HELP"V_HELP_FILE"V_HELP_FILE_PATH"V_HELP_CONTEXT_ID"V_FORM"V_BLOCK"V_ITEM"SET_S_LOV_MST_LBLS"ADD_GRP_CLMN_NOT_UPD"V_RG"V_GRP_CLMN"GET_THM_SCR"P_THM_NO"V_THM_DATA"V_THM_USR"V_THM_NO"<SQL statement. Line 4047>"<SQL statement. Line 4054>"<SQL statement. Line 4062>"<SQL statement. Line 4070>"WIN_MDI_CNTR"V_XMAX"V_YMAX"V_W"V_H"V_APPW"V_APPH"V_X"V_Y""
+G`E(
+G`EH
+GdE4
+E$&a
+GdEl
+GdEp
+SET_PARA
+Parameter.Lang_No
+GET_PARA
+PARAMETER.USER_NO
+WHERE U_ID=
+USE_RSLTN_SCR
+IAS_GEN_PKGYSPOS2GET_FLD_VALUEIA
+GET_MAIN_SYS
+GET_SUB_MAIN
+GET_SYSTEM_PATH
+GET_HEAD
+FTR.PRG
+YS_GEN_PKGYSPOS2GET_PROMPTYS
+IAS_USR_PKGYSPOS2GET_USR_NMI
+HDR.USR
+YS_GEN_PKGYSPOS2GET_FRM_NMYS
+HDR.SYS_SCREEN
+HDR.BRN_YEAR
+YS_GEN_PKGYSPOS2GET_SYSDATEY
+HDR.DATE
+SHOW_MSG
+MSG_TMR
+FTR.ERR
+MSGBOX
+Message Number
+Is Missing
+ON_ERROR
+ON_MESSAGE
+GET_LIST_PRINT
+Prnt.Rep_Smple
+Select b.Flg_sr||'-'||b.FLG_DESC ,To_Char(b.Flg_Value) Flg_Value
+From s_flags b
+where b.flg_code='REP_SMPLE'
+and b.lang_no =
+Order by b.Flg_Value
+Prnt.rep_smple
+Prnt.Lang_no
+Select Lang_no||' - '||Lang_Name,to_char(Lang_no) From Ias_sys.lang_def Where nvl(Flg_St,1)=1 order by lang_no
+PRE_FORM
+Parameter.P_Rsltn_Size
+1024*768
+MAIN
+Bar.Add_Btn
+Bar.Add2_Btn
+Bar.Mod_Btn
+Bar.Del_Btn
+Bar.SAVE_BTN
+Bar.SEEK_BTN
+Bar.LIST_BTN
+Bar.PREV_BTN
+Bar.NEXT_BTN
+Bar.FIRST_BTN
+Bar.LAST_BTN
+Bar.PRINT_BTN
+Bar.Exit_Btn
+Bar.Call_Main_Tree
+IAS_BRN_PKGYSPOS2GET_CMP_NMI
+IAS_BRN_PKGYSPOS2GET_BR_NMIA
+Win1
+Win2
+Win_Lov
+MAIN1
+MAIN2
+MAIN3
+MAIN4
+MAIN5
+MAIN6
+MAIN7
+WIN_PRNT
+YSDd
+PARAMETER.LANG_NO
+AL_UNDO
+ADD_F_DOC
+YS_GEN_PKGYSPOS2GET_MSGY
+PARAMETER.FORM_NO
+WHERE FORM_NO=
+AND ROWNUM<=1
+F_FILE_NAME
+YS_GEN_PKGYSPOS2GET_FLD_VALUEYS_
+AND U_ID=
+PRINT_FLAG
+PARAMTRS.DEST_TYPE
+Prnt.View_Btn
+Prnt.Screen_Btn
+Prnt.Print_Doc_Btn
+Prnt.PRINT_ST
+PMU_SNGL_REC_UTL
+PMU_MLTI_REC_UTL
+SRCH_DTL
+DMY_LOCK
+WIN_LOCK
+Parameter.Trmnl_Nm
+TERMINAL
+WIN_CALL_OBJ
+WIN_LOV
+WIN_LOV_SLCT
+WIN_SHW_RCRD
+GET_DATA_REP_SCR
+Show_Hdr
+Paramtrs.Show_Hdr
+Dest_Type
+Paramtrs.Dest_Type
+REP_SMPLE
+Paramtrs.rep_smple
+Paramtrs.Copies_No
+Paramtrs.Lang_no
+KEY_LISTVAL
+KEY_NEXT_ITEM
+KEY_PREV_ITEM
+KEY_OTHERS
+WHEN_TIMER_EXPIRED
+WHEN_WINDOW_CLOSED
+SYSTEM.EVENT_WINDOW
+EXIT_FORM
+PARAMETER.LOV_TYP
+KEY_EXEQRY
+LOV_MST.DMY_GO_ITM
+LOV_MST_SLCT.DMY_GO_ITM
+PARAMETER.BLK
+WHEN_WINDOW_ACTIVATED
+WHEN_WINDOW_DEACTIVATED
+KEY_UP
+System.Current_block
+FALSE
+KEY_DOWN
+KEY_ENTER
+SIP_D_FALSE
+The Item :
+Is Not Found
+SIP_D_TRUE
+SIP_E_FALSE
+SIP_E_TRUE
+VISIBLE_FALSE
+VISIBLE_TRUE
+BUTTON_TRUE
+Parameter.Prev_Add
+Add_Btn
+ADD2_Btn
+BAR.ADD2_Btn
+BAR.Add2_Btn
+Parameter.Prev_Modify
+Mod_Btn
+Parameter.Prev_Delete
+Del_Btn
+Parameter.Prev_Print
+Print_Btn
+EXIT
+Parameter.Prev_View
+SRCH_FRW
+BUTTON_FALSE
+ADD_Btn
+List_Btn
+Seek_Btn
+Litening
+Prev_Btn
+NEXT_BTN
+First_Btn
+Last_Btn
+CHECKING
+ACODE
+ACODE_INC
+ALLACODE
+COSTCNTR
+CC_INC
+ALLCOSTCNTR
+PJNO
+PJ_INC
+ALLPJNO
+CASHNO
+CASHNO_INC
+BANKNO
+BANKNO_INC
+CCODE
+CCODE_INC
+WCODE
+WCODE_INC
+GCCODE
+ITMTYPE
+ICODE
+MACODE
+System.current_block
+System.current_Item
+WCOD
+E_INC
+GCODE
+CHECK_DATE
+TEXT ITEM
+CHECK_CHQ_DATE
+System.current_item
+BUTTON_PRIVILEGE
+.EXCEL_BTN
+.ADD_Btn
+.ADD2_Btn
+Parameter.PREV_ADD
+.MOD_BTN
+Parameter.PREV_MODIFY
+.DEL_BTN
+Parameter.PREV_Delete
+.PREV_BTN
+.NEXT_BTN
+.SEEK_BTN
+.List_BTN
+.LAST_BTN
+.FIRST_BTN
+Parameter.PREV_VIEW
+.PRINT_BTN
+Parameter.PREV_PRINT
+ENA_DIS_BTN_PRC
+Bar.Dummy
+FRM_FLD_PRIVILEGE
+GET_PROMPT
+GET_PROMPT_FOR_RADIO
+FOR_RADIO
+SET_PROMPT
+LIST
+CHECKBOX
+BUTTON
+RADIO GROUP
+Clmn_Not_Upd
+Clmn_Not_Upd.Blk_Itm
+SET_TAB_LABEL
+SET_POPMU_LABEL
+SET_MENU_VALUES
+CHECK_PRIV_AC
+CHECK_PRIV_CST
+CHECK_PRIV_GC
+CHECK_PRIV_WH
+CHECK_PRIV_BRN
+CHECK_PRIV_CASH
+CHECK_CUR_RATE
+POP_PRIVILEGE
+GET_LIST
+NO_DATA
+SELECT FLG_SR||'- '||FLG_DESC,TO_CHAR(FLG_VALUE)
+IBL7
+FROM S_FLAGS
+WHERE UPPER(FLG_CODE) =
+AND FLG_ST =1
+AND LANG_NO =
+Order by FLG_SR
+SELECT FLG_DESC,TO_CHAR(FLG_VALUE)
+GET_LIST_PRIV
+AND EXISTS (SELECT 1 FROM S_FLAGS_PRIV
+AND FLG_CODE=S_FLAGS.FLG_CODE
+AND FLG_VALUE=S_FLAGS.FLG_VALUE
+AND PRIV_FLAG=1)
+DYNAMIC_LIST
+LST_GRP
+RUN_REP
+Parameter.BRN_NO
+TempData
+Brn_No
+Lang_No
+User_No
+P_Dir
+B_TELE
+B_FAX
+B_BOX
+B_ADD
+B_E_ADD
+BRN_ADES
+BRN_EDES
+B_NAME
+B_E_NAME
+B_E_TELE
+B_E_FAX
+B_E_BOX
+SIGN1
+SIGN2
+SIGN3
+SIGN4
+SIGN5
+SIGN6
+BIMG
+MAXIMIZE
+DD/MM/RRRR HH:MI:SS AM
+P_REP_DAT
+P_USR_NM
+PRINTJOB
+DISABLEFILE
+DISABLEPRINT
+DISABLEMAIL
+SCREEN
+PARAMFORM
+p_show_hdr
+DESTYPE
+DESNAME
+DESFORMAT
+COPIES
+.Dummy
+RUN_REP_TO_XLS
+Excel files(*.xls)|*.xls| Excelx files(*.xlsx)|*.xlsx|
+\Ys_Erp\Ys_ExpToxls\Ys_ExpToxls.exe
+.xls
+file
+html
+-open
+DELETE_TEMP_FILES
+LOAD_LIST
+Select to_char(CUR_CODE)||' - '|| Decode(
+,1,CUR_NAME,nvl(CUR_E_NAME,CUR_NAME)),to_char(CUR_CODE) From Ex_Rate order by Cur_no
+Select to_char(cc_code)||' - '||Decode(
+,1,cc_a_name,nvl(cc_e_name,cc_a_name)), to_char(cc_code)
+From cost_centers
+where c_s_m=(select cc_type from cost_center_types where affected_by_trans=1)
+and Exists (select 1 from privilege_cc
+where (u_id=
+and cc_code=cost_centers.cc_code
+and Decode(
+,'FRM',add_flag,view_flag)=1 and RowNum<=1) Or (
+=1) )
+Order By cost_centers.cc_code
+Select to_char(w_code)||' - '||Decode(
+,1,w_name,nvl(w_e_name,w_name)), to_char(W_CODE)
+From Warehouse_De
+tails
+Where Exists (Select 1 from Privilege_wh
+where ( u_id=
+and w_code=Warehouse_Details.w_code
+=1))
+Order By Warehouse_Details.w_code
+Select to_char(cash_no)||' - '||Decode(
+,1,cash_name,nvl(cash_e_name,cash_name)), to_char(cash_no)
+From Cash_In_Hand
+Where Exists (Select 1 from Priv_cash
+and cash_type=1
+and cash_no=Cash_In_Hand.cash_no
+CT /
+Order By Cash_In_Hand.cash_no
+Select to_char(Bank_no)||' - '||Decode(
+,1,Bank_name,nvl(Bank_e_name,Bank_name)), to_char(Bank_no)
+From Cash_at_Bank
+and cash_type=2
+and cash_no=Cash_at_Bank.Bank_no
+Order By Cash_at_Bank.Bank_no
+Select Type_Of_Item||' - '||Decode(
+,1,It_A_Name,nvl(It_E_Name,It_A_Name)), to_char(Type_Of_Item)
+From Item_Types
+Order By Item_Types.Type_Of_Item
+C_CLASS
+Select c_class||' - '||Decode(
+,1,C_Class_Name,nvl(C_Class_E_Name,C_Class_Name)), to_char(c_class)
+From Customer_Class
+Order By Customer_Class.c_class
+C_DEGREE
+Select C_Degree||' - '||Decode(
+,1,C_Degree_a_Name,nvl(C_Degree_E_Name,C_Degree_a_Name)), to_char(C_Degree)
+From Customer_Degree
+Order By Customer_Degree.C_Degree
+C_GROUP
+Select C_Group_Code||' - '||Decode(
+,1,C_Group_a_Name,nvl(C_Group_E_Name,C_Group_a_Name)), to_char(C_Group_Code)
+From Customer_Group
+Order By Customer_Group.C_Group_Code
+A_GROUP
+Select Group_No||' - '||Decode(
+,1,Group_Name,nvl(Group_E_Name,Group_Name)), to_char(Group_No)
+From Account_Grouping
+Order By Account_Grouping.Group_no
+CC_GROUP
+From cc_grouping
+Order By cc_grouping.Group_no
+LOAD_USERS
+Select to_char( u_id)||' - '|| Decode(
+,1,U_a_Name,nvl(U_e_name,U_a_Name)),to_char(u_id) from user_r order by u_id
+LOAD_BRN
+Add_Flag
+And Cmp_No=
+View_Flag
+Select Brn_no||'-'||Decode(
+,1,Nvl(BRN_LNAME,BRN_FNAME),
+Nvl(BRN_FNAME,BRN_LNAME))BRN_NAME,To_Char(Brn_no) Brn_no
+From S_Brn
+where ((
+Or Exists (select 1 From S_Brn_Usr_Priv
+Where U_Id =
+And S_Brn_Usr_Priv.Brn_No = S_Brn.Brn_No
+And Nvl(
+,1) = 1
+And RowNum <=1 ))
+Order By Cmp_No , Brn_No
+Select Count(1) From S_Brn
+Where ((
+Or Exists ( Select 1 From S_Brn_Usr_Priv
+And Nvl(View_Flag,1) = 1
+YS_GEN_PKGYSPOS2GET_CNTY
+LOV_TITLE
+GET_LOV_TITLE
+CALL_SCR
+VCODE
+APALT
+SUB_ACC
+LOCAL_CUR
+VENDOR_D_TYPE
+V_CODE
+IASAPI002.fmx
+ARALT
+CUST_D_TYPE
+C_CODE
+IASARI005.fmx
+AC_D_TYPE
+CURR_DIFF_TYPE
+CC_AVAIL
+A_CODE
+IASGLI001.fmx
+CC_d_type
+cc_length
+I_SR
+CC_CODE
+IASGLI003.fmx
+INVI008.fmx
+ITEM_POSTING_FLAG
+NO_OF_WH
+INVI006.fmx
+ASCODE
+AS_CODE
+FASI004.fmx
+TRNSLT_POPMU
+A_CODE_PMU
+A_CODE_PMU.S_BY_NAME
+A_CODE_PMU.S_BY_CODE
+o_cU
+A_CODE_PMU.GO_AC_DTL
+A_CODE_PMU.INSERT_RECORD
+A_CODE_PMU.DELETE_RECORD
+CC_CODE_PMU
+CC_CODE_PMU.S_BY_NAME
+CC_CODE_PMU.S_BY_CODE
+CC_CODE_PMU.GO_CC_DTL
+G_CODE_PMU
+G_CODE_PMU.S_BY_NAME
+G_CODE_PMU.S_BY_CODE
+G_CODE_PMU.GO_GC_DTL
+I_CODE_PMU
+I_CODE_PMU.S_BY_NAME
+I_CODE_PMU.S_BY_CODE
+I_CODE_PMU.GO_ITM_DTL
+I_CODE_PMU.DELETE_RECORD
+C_CODE_PMU
+C_CODE_PMU.S_BY_NAME
+C_CODE_PMU.S_BY_CODE
+C_CODE_PMU.GO_CST_DTL
+V_CODE_PMU
+V_CODE_PMU.S_BY_NAME
+V_CODE_PMU.S_BY_CODE
+V_CODE_PMU.GO_VND_DTL
+W_CODE_PMU
+W_CODE_PMU.S_BY_NAME
+W_CODE_PMU.S_BY_CODE
+TYP[
+W_CODE_PMU.GO_WC_DTL
+PRIV_ADD_PMU
+PRIV_ADD_PMU.GRANT_ALL
+PRIV_ADD_PMU.REVOKE_ALL
+PRIV_VIEW_PMU
+PRIV_VIEW_PMU.GRANT_ALL
+PRIV_VIEW_PMU.REVOKE_ALL
+IDR_PMU
+IDR_PMU.INSERT_RECORD
+IDR_PMU.DELETE_RECORD
+IDR_PMU.DELETE_ALL
+PMU_SNGL_REC_UTL.SRCH_CODE
+PMU_SNGL_REC_UTL.CALL_SCR
+PMU_SNGL_REC_UTL.CALL_TRNS
+PMU_MLTI_REC_UTL.SRCH_CODE
+PMU_MLTI_REC_UTL.SHW_RCRD
+PMU_MLTI_REC_UTL.CALL_SCR
+PMU_MLTI_REC_UTL.INSRT_REC
+PMU_MLTI_REC_UTL.DEL_REC
+PMU_MLTI_REC_UTL.CALL_TRNS
+YS_GEN_
+POS_BLK_MLT_RCRD
+INFO
+SHW_RCRD
+DMY_SHW_RCRD
+GYS1
+DMY_SHW_RCRD.DMY_HIDE_ITM
+CNV_SHW_RCRD
+AD_U_ID
+AD_U_NAME
+AD_DATE
+UP_U_ID
+UP_U_NAME
+UP_DATE
+UP_CNT
+%_NM
+SUM%
+DMY_SHW_RCRD.DMY_LBL
+DMY_SHW_RCRD.DMY_VAL
+INACTIVE_DATE
+DD/MM/RRRR HH24:MI:SS
+%DATE
+DD/MM/RRRR
+GET_TOKEN
+CNTR_WND
+FORMS_MDI_WINDOW
+RPLC_GNR_PRMTR_FNC
+PARAMETER.BRN_NO
+:PARAMETER.BRN_NO
+PARAMETER.BRN_YEAR
+:PARAMETER.BRN_YEAR
+:PARAMETER.LANG_NO
+:PARAMETER.USER_NO
+ENA_DIS_ITM
+DISPLAY ITEM
+IMAGE
+,DUMMY,BTN_SRCH_DTL,BTN_SHW_RCRD,AD_U_ID,UP_U_ID,AD_DATE,UP_DATE,AD_U_NAME,UP_U_NAME,UP_CNT,PR_REP,
+SET_YSERP_PRMTRS
+IAS_PRMTR_PKGYSPOS2SETPVALIA
+SET_DFLT_VAL
+.AD_U_ID
+.AD_DATE
+YS_GEN_PKGYSPOS2GET_CURDATEY
+.UP_U_ID
+.UP_DATE
+.PR_REP
+.UP_CNT
+.BRN_YEAR
+PARAMETER.SCR_TYP
+.BRN_NO
+.CMP_NO
+IAS_BRN_PKGYSPOS2GET_BR_CMPI
+.BRN_USR
+PARAMETER.BRN_USR
+CHK_MNDTRY
+VA_MNDTRY_FLD
+CUSTOM
+r255g255b223
+PARAMETER.DONTSAVE
+KEY_HELP
+system.current_form
+system.current_Item
+sample.chm::/
+.htm
+open
+hh.exe
+SET_S_LOV_MST_LBLS
+LOV_MST.FLD_SRCH
+LOV_MST.AUTO_SRCH
+LOV_MST.SRCH_TYP
+GNR_LOV_SRCH_TYP
+ADD_GRP_CLMN_NOT_UPD
+Blk_Itm
+GET_THM_SCR
+VA_MAIN
+VA_FTR
+VA_BAR
+VA_HDR
+r244g244b244
+Hdr.Usr
+Hdr.Sys_Screen
+Hdr.Brn_Year
+Hdr.Date
+VA_RPRT_BAR
+VA_CHK
+VA_RADIO
+VA_MOV
+WIN_MDI_CNTR
+Y_LBL
+N_PKGYS
+ETER
+IO G
+D_U_
+, t <
+$!<!
+@!X!
+\!|!
+4"T"
+X"x"
+4'L'
+P'T'
+X'\'
+`'d'
+h'l'
+p't'
+x'|'
+((,(
+0(4(
+8(<(
+@(X(
+\(`(
+d(h(
+l(t(
+0)4)
+8)P)
+T)X)
+\)`)
+d)h)
+l)p)
+<*T*
+X*\*
+`*d*
+h*l*
+p*t*
+x*|*
+SELECT NVL(CONN_AC_CC,0),NVL(CONN_AC_PJ,0),NVL(HEAD_TYPE,1),NVL(SHOW_ENGINE_REP,1),NVL(SHOW_XLSBTN_REP,0),NVL(SHOW_PARAMTR_REP,0) FROM IAS_PARA_GEN,IAS_PARA_GL"SELECT FORM_NO FROM FORM_DETAIL CONNECT BY FORM_NO = PRIOR F_PARENT_NO START WITH FORM_NO = SYS_NO ORDER BY LEVEL"SELECT FORM_NO FROM FORM_DETAIL CONNECT BY FORM_NO = PRIOR F_PARENT_NO START WITH FORM_NO = :b1 ORDER BY LEVEL"SELECT MSG_DESC FROM S_MSGS WHERE LANG_NO = :b1 AND UPPER(MSG_CODE) = UPPER(:b2) AND MSG_NO = :b3"SELECT NVL(CAPTION_DET,'''') FROM IAS_MSGS WHERE MSG_NO = :b1 AND LANG_NO = :b2"SELECT NVL(CAPTION_DET,'''') FROM IAS_MSGS WHERE MSG_NO = :b1 AND LANG_NO = :b2"SELECT NVL(CAPTION_DET,'''') FROM IAS_MSGS WHERE MSG_NO = :b1 AND LANG_NO = :b2"SELECT LANG_DIR FROM LANG_DEF WHERE LANG_NO = :b1"SELECT NVL(PRINT_FLAG,0),NVL(VWREP_FLAG,0) FROM PRIVILEGE WHERE FORM_NO = :b1
+AND U_ID = :b2 AND ROWNUM <= 1"SELECT 1 FROM ACCOUNT WHERE A_CODE = :b1 AND A_S_M = (SELECT ACCOUNT_TYPE FROM ACCOUNT_TYPES WHERE NVL(AFFECTED_BY_TRANS,0) = 1 ) AND ROWNUM <= 1"SELECT 1 FROM ACCOUNT WHERE A_CODE = :b1 AND NVL(AC_CLOSE,0) IN ( 0,2 ) AND ROWNUM <= 1"SELECT 1 FROM ACCOUNT WHERE A_CODE = :b1 AND ROWNUM <= 1"SELECT 1 FROM S_BRN WHERE BRN_NO = :b1 AND ROWNUM <= 1"SELECT 1 FROM COST_CENTERS WHERE CC_CODE = :b1 AND C_S_M = (SELECT CC_TYPE FROM COST_CENTER_TYPES WHERE NVL(AFFECTED_BY_TRANS,0) = 1 ) AND ROWNUM <= 1"SELECT 1 FROM COST_CENTERS WHERE CC_CODE = :b1 AND NVL(INACTIVE,0) = 0 AND ROWNUM <= 1"SELECT 1 FROM COST_CENTERS WHERE CC_CODE = :b1 AND ROWNUM <= 1"SELECT 1 FROM IAS_PROJECTS WHERE PJ_NO = :b1 AND PJ_SUB = 1 AND ROWNUM <= 1"SELECT 1 FROM IAS_PROJECTS WHERE PJ_NO = :b1 AND NVL(INACTIVE,0) = 0 AND ROWNUM <= 1"SELECT 1 FROM IAS_PROJECTS WHERE PJ_NO = :b1 AND ROWNUM <= 1"SELECT 1 FROM CASH_IN_HAND WHERE CASH_NO = :b1 AND ROWNUM <= 1"SELECT 1 FROM CASH_IN_HAND WHERE CASH_NO = :b1 AND NVL(INACTIVE,0) = 0 AND ROWNUM <= 1"SELECT 1 FROM CASH_AT_BANK WHERE BANK_NO = :b1 AND ROWNUM <= 1"SELECT 1 FROM CASH_AT_BANK WHERE BANK_NO = :b1 AND NVL(INACTIVE,0) = 0 AND ROWNUM <= 1"SELECT 1 FROM CUSTOMER WHERE C_CODE = :b1 AND ROWNUM <= 1"SELECT 1 FROM CUSTOMER WHERE C_CODE = :b1 AND NVL(INACTIVE,0) = 0 AND ROWNUM <= 1"SELECT 1 FROM WAREHOUSE_DETAILS WHERE W_CODE = :b1 AND ROWNUM <= 1"SELECT 1
+FROM WAREHOUSE_DETAILS WHERE W_CODE = :b1 AND NVL(INACTIVE,0) = 0 AND ROWNUM <= 1"SELECT 1 FROM CUSTOMER_GROUP WHERE C_GROUP_CODE = :b1 AND ROWNUM <= 1"SELECT 1 FROM ITEM_TYPES WHERE TYPE_OF_ITEM = :b1 AND ROWNUM <= 1"SELECT CONN_ITM_ACT_BY_USR_PRIV FROM IAS_PARA_INV"SELECT 1 FROM IAS_ITM_MST WHERE I_CODE = :b1 AND GET_ITEMS_ACTIVITY(IAS_ITM_MST.ACTIVITY_NO,:b2,:b3) = 1 AND ROWNUM <= 1"SELECT NVL(INACTV,0) FROM S_PRD_DTL WHERE :b1 BETWEEN F_DATE AND T_DATE"SELECT NVL(PRD_CLS,0),NVL(INACTV,0),NVL(DEPR_CLS,0) FROM S_PRD_BRN_CLS WHERE BRN_NO = :b1 AND :b2 BETWEEN F_DATE AND T_DATE"SELECT COUNT(1) FROM S_PRD_MST WHERE INV_CLS = 1"SELECT SYSDATE FROM DUAL"SELECT COUNT(*) FROM S_PRD_DTL WHERE PRD_NO = (SELECT MIN(PRD_NO) FROM S_PRD_DTL ) AND :b1 >= F_DATE"SELECT 1 FROM FORM_DETAIL WHERE FORM_NO = :b1 AND F_BT_PRIV = 0 AND ROWNUM <= 1"SELECT NVL(AD_FLAG,0),NVL(MOD_FLAG,0),NVL(DEL_FLAG,0),NVL(VIEW_FLAG,0),NVL(VWREP_FLAG,0),NVL(PRINT_FLAG,0) FROM PRIVILEGE WHERE U_ID = :b1 AND FORM_NO = :b2 AND EXISTS (SELECT 1 FROM FORM_DETAIL WHERE FORM_NO = PRIVILEGE.FORM_NO AND F_BT_PRIV = 1 AND ROWNUM <= 1 ) AND ROWNUM <= 1"SELECT TAB_NAME,FLD_NAME FROM IAS_FRM_FLD_PRIV WHERE U_ID = :b1 AND FORM_NO = FORM_NO AND PRIV_FLAG = 1"SELECT CAPTION_DET FROM IAS_LABELS WHERE LABEL_NO = :b1 AND LANG_NO = :b2 AND ROWNUM <= 1"SELECT CAPTION_DET FROM IAS_LABELS WHERE LABEL_NO = :b1 AND LANG_NO = :b2 AND ROWNUM <= 1"SELECT CAPTION_DET FROM IAS_LABELS WHERE LABEL_NO = :b1 AND LANG_NO = :b2"SELECT CAPTION_DET FROM IAS_LABELS WHERE LABEL_NO = :b1 AND LANG_NO = :b2"SELECT 1 FROM PRIV_ACC WHERE U_ID = :b1 AND A_CODE = :b2 AND A_CY = :b3 AND NVL(ADD_FLAG,0) = 1 AND ROWNUM <= 1"SELECT 1 FROM PRIV_ACC WHERE U_ID = :b1 AND A_CODE = :b2 AND ADD_FLAG = 1 AND ROWNUM <= 1"SELECT 1 FROM IAS_PRIV_CUSTOMER WHERE U_ID = :b1 AND C_CODE = :b2 AND A_CY = :b3 AND NVL(ADD_FLAG,0) = 1 AND ROWNUM <= 1"SELECT 1 FROM IAS_PRIV_CUSTOMER WHERE U_ID = :b1 AND C_CODE = :b2 AND ADD_FLAG = 1 AND ROWNUM <= 1"SELECT G_CODE FROM IAS_ITM_MST WHERE I_CODE = :b1 AND ROWNUM <= 1"SELECT 1 FROM PRIVILEGE_GC WHERE U_ID = :b1 AND G_CODE = :b2 AND ADD_FLAG = 1 AND ROWNUM <= 1"SELECT 1 FROM PRIVILEGE_WH WHERE U_ID = :b1 AND W_CODE = :b2 AND NVL(ADD_FLAG,0) = 1 AND ROWNUM <= 1"SELECT 1 FROM S_BRN_USR_PRIV WHERE U_ID = :b1 AND BRN_NO = :b2 AND NVL(ADD_FLAG,0) = 1 AND ROWNUM <= 1"SELECT 1 FROM PRIV_CASH WHERE U_ID = :b1 AND CASH_NO = :b2 AND A_CY = :b3 AND CASH_TYPE = :b4 AND NVL(ADD_FLAG,0) = 1 AND ROWNUM <= 1"SELECT 1 FROM PRIV_CASH WHERE U_ID = :b1 AND CASH_NO = :b2 AND CASH_TYPE = :b3 AND ADD_FLAG = 1 AND ROWNUM <= 1"SELECT NVL(MIN_CUR_RATE,0),NVL(MAX_CUR_RATE,0) FROM EX_RATE WHERE CUR_CODE = :b1"SELECT NVL(INCLUDE_FLAG,0),NVL(VIEW_FLAG,0) FROM PRIVILEGE WHERE U_ID = :b1 AND FORM_NO = :b2"SELECT COUNT(*) FROM S_FLAGS WHERE UPPER(FLG_CODE) = '''' || UPPER(:b1) || '''' AND FLG_ST = 1"SELECT COUNT(*) FROM S_FLAGS WHERE UPPER(FLG_CODE) = '''' || UPPER(:b1) || '''' AND FLG_ST = 1 AND EXISTS (SELECT 1 FROM S_FLAGS_PRIV WHERE U_ID = :b2 AND FLG_CODE = S_FLAGS.FLG_CODE AND FLG_VALUE = S_FLAGS.FLG_VALUE AND PRIV_FLAG = 1 )"SELECT DECODE(:b1,1,CMP_LNAME,CMP_FNAME) || '' - '' || DECODE(:b1,1,BRN_LNAME,BRN_FNAME) ,DECODE(:b1,1,CMP_FNAME,CMP_LNAME) || '' - '' || DECODE(:b1,1,BRN_FNAME,BRN_LNAME) ,DECODE(:b1,1,BRN_LDES,BRN_FDES),DECODE(:b1,1,BRN_FDES,BRN_LDES),DECODE(:b1,1,BRN_LADD,BRN_FADD),DECODE(:b1,1,BRN_FADD,BRN_LADD),DECODE(:b1,1,BRN_LTELE,BRN_FTELE),DECODE(:b1,1,BRN_FTELE,BRN_LTELE),DECODE(:b1,1,BRN_LFAX,BRN_FFAX),DECODE(:b1,1,BRN_FFAX,BRN_LFAX),DECODE(:b1,1,BRN_LBOX,BRN_FBOX),DECODE(:b1,1,BRN_FBOX,BRN_LBOX),CMP_IMG FROM S_BRN WHERE BRN_NO = :b15"SELECT DECODE(:b1,1,CMP_ANAME,CMP_ENAME),DECODE(:b1,1,CMP_ENAME,CMP_ANAME),DECODE(:b1,1,BRN_ADES,BRN_EDES),DECODE(:b1,1,BRN_EDES,BRN_ADES),DECODE(:b1,1,BRN_AADD,BRN_EADD),DECODE(:b1,1,BRN_EADD,BRN_AADD),DECODE(:b1,1,BRN_ATELE,BRN_ETELE),DECODE(:b1,1,BRN_ETELE,BRN_ATELE),DECODE(
+:b1,1,BRN_AFAX,BRN_EFAX),DECODE(:b1,1,BRN_EFAX,BRN_AFAX),DECODE(:b1,1,BRN_ABOX,BRN_EFAX),DECODE(:b1,1,BRN_EBOX,BRN_ABOX),CMP_IMG FROM IAS_USER_HEAD WHERE U_ID = :b13"SELECT DECODE(:b1,1,CMP_LNAME,CMP_FNAME) || '' - '' || DECODE(:b1,1,BRN_LNAME,BRN_FNAME) ,DECODE(:b1,1,CMP_FNAME,CMP_LNAME) || '' - '' || DECODE(:b1,1,BRN_FNAME,BRN_LNAME) ,DECODE(:b1,1,BRN_LDES,BRN_FDES),DECODE(:b1,1,BRN_FDES,BRN_LDES),DECODE(:b1,1,BRN_LADD,BRN_FADD),DECODE(:b1,1,BRN_FADD,BRN_LADD),DECODE(:b1,1,BRN_LTELE,BRN_FTELE),DECODE(:b1,1,BRN_FTELE,BRN_LTELE),DECODE(:b1,1,BRN_LFAX,BRN_FFAX),DECODE(:b1,1,BRN_FFAX,BRN_LFAX),DECODE(:b1,1,BRN_LBOX,BRN_FFAX),DECODE(:b1,1,BRN_FBOX,BRN_LBOX),CMP_IMG FROM S_BRN WHERE BRN_NO = :b15"SELECT NVL(VWREP_FLAG,0),NVL(PRINT_FLAG,0) FROM PRIVILEGE WHERE U_ID = :b1 AND FORM_NO = :b2 AND ROWNUM <= 1"SELECT SIGNATURE1,SIGNATURE2,SIGNATURE3,SIGNATURE4,SIGNATURE5,SIGNATURE6 FROM IAS_SIGNATURE WHERE LANG_NO = :b1 AND FORM_NO = :b2 AND NVL(JV_TYPE,0) = DECODE(:b3, NULL ,NVL(JV_TYPE,0),:b3) AND ROWNUM <= 1"SELECT SIGNATURE1,SIGNATURE2,SIGNATURE3,SIGNATURE4,SIGNATURE5,SIGNATURE6 FROM IAS_SIGNATURE WHERE LANG_NO = :b1 AND FORM_NO = :b2 AND ROWNUM <= 1"SELECT :b1 || ''tmprp_'' || USERENV(''SESSIONID'') || ''.htm'' ,:b1 || ''tmprp_'' || USERENV(''SESSIONID'') || ''0.gif'' FROM DUAL"SELECT ACCOUNT_TYPE FROM ACCOUNT_TYPES WHERE AFFECTED_BY_TRANS = 1"SELECT CUR_CODE FROM EX_RATE WHERE L_F = 1"SELECT CUR_CODE FROM EX_RATE WHERE STOCK_CUR = 1"SELECT NVL(CC_AVAIL,0),NVL(AP_AC_LINK_TYPE,1),NVL(AR_AC_LINK_TYPE,1),A_CODE_D_TYPE,VENDOR_D_TYPE,CUST_D_TYPE,CURR_TYPE,CC_D_TYPE,CC_LENGTH,INVOICING_SERIALS,INVOICING_SERIALS_SR,NVL(ITEM_POSTING_FLAG,0),NVL(USE_MULTI_WC,0) FROM IAS_PARA_GEN,IAS_PARA_GL,IAS_PARA_INV,IAS_PARA_AP,IAS_PARA_AR"SELECT SCR_THEME_NO FROM FORM_DETAIL WHERE FORM_NO = :b1 AND ROWNUM <= 1"SELECT SCR_THEME_NO FROM USER_R WHERE U_ID = :b1 AND ROWNUM <= 1"SELECT THM_NO FROM S_THMS WHERE NVL(THM_FLG,0) = 1 AND ROWNUM <= 1"SELECT THM_COLR_DATA,THM_COLR_USR FROM S_THMS WHERE THM_NO = :b1 AND ROWNUM <= 1"
+SRCH_DTL_PKG
+/TMP1/SRCH_DTL_PKG
+"SRCH_DTL_PKG"CALL_SRCH_BLK_DTL"P_BLK_NM"V_CURR_ITM"V_BLK_ITM"V_FRST_ITM"V_VAL"FIND_SRCH_DTL"V_FLG"V_RCRD"FRST_SRCH_DTL"NEXT_SRCH_DTL"PREV_SRCH_DTL"LAST_SRCH_DTL"EXT_SRCH_DTL""
+CALL_SRCH_BLK_DTL
+SRCH_DTL.BLK_NM
+SRCH_DTL.FLD_NM
+SRCH_DTL.FLD_VAL
+Parameter.LANG_NO
+.Btn_Srch_Dtl
+CNV_SRCH_DTL
+FIND_SRCH_DTL
+SYSTEM.TRIGGER_RECORD
+SYSTEM.LAST_RECORD
+FRST_SRCH_DTL
+NEXT_SRCH_DTL
+PREV_SRCH_DTL
+LAST_SRCH_DTL
+EXT_SRCH_DTL
+SHOW_NOTIFY_HUNG_BILL
+"PKG INIT"SHOW_NOTIFY_HUNG_BILL"CNT"V_U_ID"V_DAY_NOTIFY_HUNG_BILL"V_USE_HUNG_BILLS"V_MAXHUNGS"<cursor ptr>"<SQL statement. Line 9>"<SQL statement. Line 26>""
+SELECT NVL(DAY_NOTIFY_HUNG_BILL,0),NVL(USE_HUNG_BILLS,0),NVL(MAXHUNGS,0) FROM IAS_PARA_POS"SELECT COUNT(1) FROM IAS_POS_BILL_MST WHERE NVL(HUNG,0) = 1 AND AD_U_ID = :b1 HAVING COUNT(1) > :b2"
+PAID_PROC
+CREDIT_CARD_TYPES
+"PKG INIT"PAID_PROC"V_MACHINE_NO"V_CR_CARD_NO"V_CR_CARD_NO_SCND"V_CR_CARD_NO_THRD"V_CR_CARD_NAME1"V_CR_CARD_NAME2"V_CR_CARD_NAME3"V_DISC_AMT_MST"V_DISC_DNT_CHK_PRV"<cursor ptr>"<SQL statement. Line 139>"<SQL statement. Line 150>"<SQL statement. Line 160>"<SQL statement. Line 173>"<SQL statement. Line 183>"<SQL statement. Line 195>""
+Parameter.Machine_No
+Parameter.Use_F12_Key
+Parameter.Round_Amt_Frction
+ias_pos_bill_mst.AMT_ROUNDED_AS_DISC
+Ias_Pos_Bill_Mst.CRD_DISC_AMT_DMY
+Ias_Pos_Bill_Dtl.Tot_Disc
+Ias_Pos_Bill_Mst.Disc_Amt_Mst
+Global.payed_block
+ias_pos_pay_bills.pay_cur
+ias_pos_pay_bills.pay_rate
+display_bill_total
+ias_pos_pay_bill
+s.pay_amt
+Global.DrawerOpen
+Ias_Pos_Pay_Bills.Rep_Form
+Ias_Pos_Bill_Mst.Bill_Type
+Ias_Pos_Bill_Mst.bill_pay_type
+Ias_Pos_Bill_Mst.cr_card_amt
+Ias_Pos_Bill_Mst.cr_card_no
+Ias_Pos_Bill_Mst.c_code
+Ias_Pos_Bill_Mst.c_name
+Ias_Pos_Bill_Mst.bank_name
+Ias_Pos_Bill_Mst.cheque_no
+Ias_Pos_Bill_Mst.cheque_amt
+Ias_Pos_Bill_Mst.cheque_due_date
+Ias_Pos_Bill_Mst.cash_no
+Ias_Pos_Bill_Mst.credit_card
+Ias_Pos_Bill_Mst.cr_card_amt_scnd
+Ias_Pos_Bill_Mst.cr_card_no_scnd
+Ias_Pos_Bill_Mst.cr_card_amt_thrd
+Ias_Pos_Bill_Mst.cr_card_no_thrd
+Ias_Pos_Bill_Mst.card_name1
+Ias_Pos_Bill_Mst.card_name2
+Ias_Pos_Bill_Mst.card_name3
+Ias_Pos_Bill_Mst_Paid.pay_amt
+ias_pos_bill_mst.credit_card
+ias_pos_bill_mst.cr_card_no
+ias_pos_bill_mst.cr_card_amt
+ias_pos_bill_mst.cr_card_no_scnd
+ias_pos_bill_mst.cr_card_amt_scnd
+ias_pos_bill_mst.cr_card_no_thrd
+ias_pos_bill_mst.cr_card_amt_thrd
+ias_pos_bill_mst.card_name1
+ias_pos_bill_mst.card_name2
+ias_pos_bill_mst.card_name3
+Ias_Pos_Bill_Mst.Cr_Card_Comm_Amt
+Ias_Pos_Bill_Mst.Cr_Card_Comm_Amt_Scnd
+Ias_Pos_Bill_Mst.Cr_Card_Comm_Amt_Thrd
+ias_pos_pay_bills.Pay_Cur
+ias_pos_pay_bills.Pay_Amt
+ias_pos_pay_bills.Rt_Bill_No
+System.Last_Record
+Parameter.Auto_Fill_Card_In_Bill
+Ias_Pos_Bill_Mst.cr_card_no_Scnd
+ias_pos_pay_bills.RT_BILL_NO
+ias_pos_rt_bill_mst.net_amt
+ias_pos_Rt_bill_dtl.tot_item_price
+Ias_Pos_Rt_Bill_Dtl.Tot_Disc
+Ias_Pos_Rt_Bill_Mst.Disc_Amt_Mst
+ias_pos_pay_rt_bills.rt_pay_cur
+ias_pos_pay_rt_bills.rt_pay_rate
+ias_pos_pay_rt_bills.rt_pay_amt
+payed.req_amount
+payed.payed_amount
+Global.draweropen
+Payed.payed_amount
+Parameter.Use_Paid
+payed.Payed_Amount
+Payed.Ok
+WHEN-BUTTON-PRESSED
+it_card
+(!@!
+D!\!
+`!d!
+<"T"
+X"\"
+`"x"
+<#@#
+D#\#
+`#x#
+4$8$
+<$T$
+X$p$
+,%0%
+$&<&
+@&X&
+\&t&
+('4'
+8'P'
+T'`'
+d'|'
+<(@(
+D(\(
+`(x(
+4)8)
+<)T)
+X)p)
+,*D*
+H*L*
+P*T*
+_bil
+SELECT MIN(CR_CARD_NO) FROM CREDIT_CARD_TYPES WHERE MACHINE_NO = :b1"SELECT CR_CARD_NAME FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO = :b1"SELECT MIN(CR_CARD_NO) FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO > :b1 AND MACHINE_NO = :b2"SELECT CR_CARD_NAME FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO = :b1"SELECT MIN(CR_CARD_NO) FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO > :b1 AND MACHINE_NO = :b2"SELECT CR_CARD_NAME FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO = :b1"
+PAID_MULTI_PROC
+"PKG INIT"PAID_MULTI_PROC"V_MACHINE_NO"V_CR_CARD_NO"V_CR_CARD_NO_SCND"V_CR_CARD_NO_THRD"V_CR_CARD_NAME1"V_CR_CARD_NAME2"V_CR_CARD_NAME3"V_DISC_AMT_MST"V_DISC_DNT_CHK_PRV"<cursor ptr>"<SQL statement. Line 210>"<SQL statement. Line 221>"<SQL statement. Line 231>"<SQL statement. Line 244>"<SQL statement. Line 254>"<SQL statement. Line 266>""
+ias_pos_bil
+l_mst.net_amt
+ias_pos_pay_bills.pay_amt
+Ias_Pos_Bill_Mst.Cr_Card_Comm_Per
+Ias_Pos_Bill_Mst.Cr_Card_Comm_Per_Scnd
+Ias_Pos_Bill_Mst.Cr_Card_Comm_Per_Thrd
+Parameter.USE_PAY_CASH_RT_BILLS
+Ias_Pos_Bill_Mst.Dummy_Net_Amt
+Ias_Pos_Pay_Bills.Pay_Amt
+Ias_Pos_Pay_Bills.Ok
+@!D!
+H!`!
+d!|!
+8"<"
+@"X"
+\"t"
+Mst.cr_
+0#4#
+8#P#
+T#l#
+($@$
+D$\$
+`$x$
+$%0%
+4%@%
+D%P%
+T%`%
+d%p%
+,&8&
+<&H&
+L&X&
+\&`&
+d&p&
+,'0'
+4'8'
+<'T'
+X'p'
+t'x'
+$(<(
+l(p(
+,)D)
+H)L)
+P)h)
+$*<*
+@*X*
+\*`*
+d*|*
+8+P+
+T+X+
+\+t+
+_Car
+SELECT MIN(CR_CARD_NO) FROM CREDIT_CARD_TYPES WHERE MACHINE_NO = :b1"SELECT CR_CARD_NAME FROM CREDIT_CARD_TYPE
+S WHERE CR_CARD_NO = :b1"SELECT MIN(CR_CARD_NO) FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO > :b1 AND MACHINE_NO = :b2"SELECT CR_CARD_NAME FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO = :b1"SELECT MIN(CR_CARD_NO) FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO > :b1 AND MACHINE_NO = :b2"SELECT CR_CARD_NAME FROM CREDIT_CARD_TYPES WHERE CR_CARD_NO = :b1"
+DELETE_TIMER_PRC
+"PKG INIT"DELETE_TIMER_PRC"PAYED_TIMER"ID""
+-TOOL_MODULE
++TOOL_MODULE
+DE_VER
+ROS_VER
+)TOOL_PLSQL
+MODID
+NAME
+TYPE
+OWNER
++TOOL_PLSQL
+ITEMID
+/TOOL_PLSQL
+PLSLFID_EP
+PLSLFID_ST
+"SRCH_DTL_PKG"CALL_SRCH_BLK_DTL"P_BLK_NM"FIND_SRCH_DTL"FRST_SRCH_DTL"NEXT_SRCH_DTL"PREV_SRCH_DTL"LAST_SRCH_DTL"EXT_SRCH_DTL""
+PL/SQL DE
+PL/SQL Library
+MINGUS
+TMP1[g
+'p(@2
+&p'@.
+p!@*
+"p#@*
+,p-@6
+#p$@.
+$p%@.
+WIN_API_SHELL
+d2kwutil
+FILESYSTEM
++DE_ATTACHED_LIBS
+DE Attached Libs
++ROSATTRIBS
+class attributes
+-ROSLFDESC
+ros lf descrip
+'ROSOBJMAP
+ros name->id
+'ROSSTRINGS
+tk2 uiStrings
+'ROSSTRUCTS
+struct types
+'ROSTK2RESV
+tk2 reserved
+)TOOL_MODULE
+Tools Modules
+' *TOOL_PLSQL
+Tools PLSQL
+#p$ *
+/DE_ATTACHED_LIBS
+#p$ ,
+1DE_ATTACHED_LIBS
+LIBNAME
+#p$ .
+3DE_ATTACHED_LIBS
+LOCATION
+PRODUCT
+MODTYPE
+MODNAME
+TCS_VER
+1TOOL_MODULE
+NEXT_ITEMID
+CREATOR
+CREATE_DATE
+/TOOL_MODULE
+CREATE_VER
+MODIFIER
+MOD_DATE
+MOD_VER
+COPYRIGHT
+REQ_ROLE
+"GEN_PKG"SUPRESS_ERROR"LNG_NO"USER_ID"V_BRN_NO"V_CMP_NO"V_BRN_USR"V_SCR_TYP"V_BRN_YEAR"V_BLK"V_REP_LNG"V_LNG_DIR"V_FORM_NO"V_SYS_NO"V_TRMNL_NM"V_USE_RSLTN_SCR"SET_PARA"GET_PARA"GET_MAIN_SYS"P_SYS_NO"GET_SYSTEM_PATH"GET_HEAD"SHOW_MSG"CODE"MSG"MSGBOX"MESSAGE_NO"POSTFIX1"MESSAGE_NO2"POSTFIX2"MESSAGE_NO3"POSTFIX3"MSGTXT"ON_ERROR"ON_MESSAGE"GET_LIST_PRINT"PRE_FORM"GET_DATA_REP_SCR"KEY_LISTVAL"KEY_NEXT_ITEM"KEY_PREV_ITEM"KEY_OTHERS"WHEN_TIMER_EXPIRED"WHEN_WINDOW_CLOSED"WHEN_WINDOW_ACTIVATED"WHEN_WINDOW_DEACTIVATED"KEY_UP"KEY_DOWN"KEY_ENTER"SIP_D_FALSE"T1"SIP_D_TRUE"SIP_E_FALSE"SIP_E_TRUE"VISIBLE_FALSE"VISIBLE_TRUE"BUTTON_TRUE"ADD_BTN"MOD_BTN"DEL_BTN"SAVE_BTN"LIST_BTN"SEEK_BTN"PREV_BTN"NEXT_BTN"FIRST_BTN"LAST_BTN"EXIT_BTN"PRINT_BTN"SEARCH"BUTTON_FALSE"CHECKING"P_TYPECODE"P_ITMCODE"P_SCRTYPE"P_A_CODE"CHECK_DATE"P_DOC_DATE"P_SCR_TYPE"P_FRM_TYPE"P_CHK_CLS"CHECK_CHQ_DATE"P_CHEQ_DATE"GET_PROMPT"ITM"GET_PROMPT_FOR_RADIO"B"FOR_RADIO"SET_PROMPT"BLK"SET_TAB_LABEL"TNAME"LNO"SET_POPMU_LABEL"P_TNAME"P_LBNO"SET_MENU_VALUES"BUTTON_PRIVILEGE"P_FNO"P_BNAME"ENA_DIS_BTN_PRC"P_BTN_STAT"P_SEARCH_STAT"FRM_FLD_PRIVILEGE"FORM_NO"CHECK_PRIV_AC"P_AC"P_ACY"CHECK_PRIV_CST"P_C_CODE"CHECK_PRIV_GC"P_I_CODE"P_FITM"CHECK_PRIV_WH"WC"CHECK_PRIV_BRN"P_BRN_NO"CHECK_PRIV_CASH"P_CASHNO"P_ITM"P_CASHTYPE"CHECK_CUR_RATE"ACCUR"ACRATE"LOCAL_CUR"POP_PRIVILEGE"GET_LIST"P_FLG_CODE"P_TYPE"GET_LIST_PRIV"CODENO"DYNAMIC_LIST"P_LST"RUN_REP"V_PL_ID"ID"V_REP_NAME"V_SHOW_HDR"V_DESTYPE"V_REP_COPIES"V_DESFRMT"V_DESNAME"V_PRINT"V_JV_TYPE"V_TBL_NM"V_FLD_SER"V_REP_WHR"V_REP_WHR1"V_REP_TITLE"V_LANG_NO"RUN_REP_TO_XLS"LOAD_USERS"P_ITM_USER"LOAD_BRN"P_ITM_BRN"P_FRM_TYP"LOAD_LIST"P_ITEM_TYPE"P_OUT_ITM"LOV_TITLE"P_LOV_NAME"GET_LOV_TITLE"P_LOV_TITLE"P_COL1"P_COL2"P_COL3"P_COL4"P_COL5"P_COL6"P_COL7"P_COL8"P_COL9"P_COL10"P_COL11"P_COL12"CALL_SCR"P_ITMNAME"TRNSLT_POPMU"P_POP_MU"POS_BLK_MLT_RCRD"P_BLK_NM"P_FRST_ITM"P_EXCPTED_ITMS"SHW_RCRD"GET_TOKEN"P_STR"P_TOKEN_NO"P_TOKEN_SEP"CNTR_WND"P_WND_NM"P_WND_CNTR"RPLC_GNR_PRMTR_FNC"P_SQL"ENA_DIS_ITM"P_TYP"SET_YSERP_PRMTRS"SET_DFLT_VAL"P_REC_ST"P_BLK"CHK_MNDTRY"KEY_HELP"SET_S_LOV_MST_LBLS"ADD_GRP_CLMN_NOT_UPD"GET_THM_SCR"P_THM_NO"WIN_MDI_CNTR""
+Parameter.Scr_Typ
+Parameter.BRN_YEAR
+Parameter.BLK
+PARAMETER.SYS_NO
+GET_
+SYSTEM_PATH
+"POS_PKG"USER_ID"ADD"GENERATE_BILL_NO"P_MCHNO"P_TYPE"P_SR"MODIFY"NEW_BLOCK"OPEN_DRAWER"CMP"PRINTBILL"P_BILLNO"P_BILLTYPE"P_CNT_PRINT"P_REP_FORM"P_REP_FILE_NM"SAVE"SET_MENUS"TRUEFALSE"UNDO"WINDOW_POS"W_NAME"PROC_DISC_USER"P_USER_NO"V_BILL_AMT"V_DISC_AMT"PROC_TOTAL_DISC"V_DISC_BILL_AMT"V_DISC_ITM_AMT""
+"WIN_API_SHELL"WINEXEC"COMMAND"WINDOWSTYLE"RAISEEXCEPTIONS"STARTFILE"DOCUMENTFILE"WINHELP"HELPFILE"TARGET"HELPTYPE"WINHELPEX"XPOS"YPOS"WIDTH"HEIGHT"WINDOW"MOUSEPOSITION"SENDMESSAGE"MESSAGECODE"PARAM1"PARAM2"SENDKEYS"HWND"KEYS"START_OR_RESTORE"EXECUTABLE"ARGS"WINDOWCLASS"ACTIVATIONSTYLE"SHELLEXECUTE"OPERATION"FILE"PARAMETERS"DIRECTORY""
+WINEXEC
+STARTFILE
+WINHELP
+WINHELPEX
+MOUSEPOSITION
+SENDMESSAGE
+SENDKEYS
+START_OR_RESTORE
+SHELLEXECUTE
+"CALL_BAR_BTN_SCR"V_LNG_NO"V_LNG_DFLT"V_LNG_DIR"V_USER_NO"V_BRN_NO"V_CMP_NO"V_BRN_USR"V_BRN_YEAR"V_BLK"V_FORM_NO"V_TRMNL_NM"V_SYS_NO"V_SCR_TYP"V_RSLTN_SIZE"CALL_MAIN_TREE"SHW_JRNL_DOC"P_DOC_SER"ARCHIVES_DOC"P_DOC_TYPE"APPRVD_DOC"P_FLD_SER_NM"P_APPROVED_PRV"VRFY_DOC"P_TBL_NM"P_VRFY_PRV"P_USE_QRY"INACTIVE_DOC"P_INACTIVE_PRV"CALL_SCR_PRC"P_CALL_TYP"P_FRM_NO"P_DOC_TYP"P_FRM_NM"P_PL_ID"ID"CALL_FRM_TRNS""
+Parameter.Lang_Dflt
+Parameter.Lang_Dir
+INACTIVE_
+"POS_MNU_PKG"OPN_NEW_BILL_SCRN_PRC"P_BLK_NM"ADD_DOC_MNU_PRC"UNDO_MNU_PRC"DEL_ITM_PRC"DEL_RCRD_PRC"DISC_BILL_AMT_PRC"DISC_BILL_PER_PRC"HUNG_BILL_PRC"PRNT_PRV_BILL_PRC"PAYMNT_BILL_PRC"MULTI_PAYMNT_BILL_PRC"EXIT_FORM_PRC"PRNT_MIN_BILL_PRC"PRNT_NORML_BILL_PRC"PRNT_OLD_BILL_PRC"PRNT_REST_HUNG_BILL_PRC"START_UP_MNU_PRC""
+PRNT_NORML_BILL_PRC
+%&,/17:
+;CILRU[^dghioqwz
+.5BCDI`flr
+"$&(*,
+68:<>@
+JLNPTX\
+suwy}
+````````````````````````
+#&(.1
+2:@CIJPSU[^
+_gmpvy
+(+-/
+;>ACEG
+SVXZ
+fhjlo
+':Re
+Yaghnq
+egik
+!%)-1
+6:>BFJNPRTVXZ\^`b
+nrtvxz|~
+&)/28;ADJMSV\_gouw}
+sd v
+wd!z
+&+=BX`
+CIMQ
+aeimquy{}
+````````````````````````````````````````````````````````````````````````
+=CFNTW]`hnqwz
+%()*0345;>?@FIJKQSY\bekntv|
+%(.17:@C
+X^agjprx{
+&*04
+``````
+#&(*
+'/7?G
+"#$*-./589:@CDEKNOPVYZ[adeflo
+KMPRUWZ
+789>BCJ]^_`abcdefghijklmquy}
+#'+-/15
+!)/28;ADJ
+MU]ek
+)*-.29
+%(./7=
+@FIOPX^
+jpsyz
+"%')+-/2
+:<>@B
+MPSVX
+[]`cfik
+49DLZ
+ADFH
+KNQSUW
+Z]_a
+dfhjm
+78;@JYcr
+#')-/3
+'/7?GOW_gow
