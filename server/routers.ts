@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
-import { createInvoice, getCatalogSources, getDashboard, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice, saveCustomer, saveItem, saveJournal, saveSupplier, searchCustomers, searchInvoices, searchItems, searchJournals, searchSuppliers } from "./db";
+import { createInvoice, getCatalogSources, getDashboard, getFinancialReportCatalog, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice, runFinancialReport, saveCustomer, saveItem, saveJournal, saveSupplier, searchCustomers, searchInvoices, searchItems, searchJournals, searchSuppliers } from "./db";
 
 const invoiceLine = z.object({ itemId: z.number().int().positive(), quantity: z.string().min(1), unitPrice: z.string().min(1), taxAmount: z.string().default("0") });
 const partyInput = z.object({ id: z.number().int().positive().optional(), companyId: z.number().int().positive().default(1), code: z.string().min(1).max(50), legalName: z.string().min(1).max(250), currencyCode: z.string().length(3).default("SAR"), status: z.enum(["ACTIVE", "BLOCKED", "CLOSED"]).default("ACTIVE") });
@@ -19,6 +19,10 @@ export const appRouter = router({
   }),
   dashboard: publicProcedure.query(() => getDashboard()),
   masterData: publicProcedure.query(() => getMasterData()),
+  reports: router({
+    catalog: publicProcedure.query(() => getFinancialReportCatalog()),
+    run: publicProcedure.input(z.object({ reportCode: z.enum(["GLSR001", "ARSR041", "MRPREP001"]), search: z.string().optional(), limit: z.number().int().min(1).max(500).default(100) })).query(({ input }) => runFinancialReport(input)),
+  }),
   windows: router({
     list: publicProcedure.input(z.object({ search: z.string().optional(), domain: z.string().optional(), limit: z.number().int().min(1).max(500).default(80) }).optional()).query(({ input }) => getWindowCatalog(input?.search, input?.domain, input?.limit ?? 80)),
     domains: publicProcedure.query(() => getWindowDomains()),

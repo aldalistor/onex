@@ -436,3 +436,27 @@ export async function reverseInvoice(invoiceId: number, actor: string) {
     return { invoiceId, status: "REVERSED" as const };
   });
 }
+
+export function getFinancialReportCatalog() {
+  return [
+    { code: "GLSR001", name: "ملخص القيود المحاسبية", source: "journal_entries", columns: ["journalNo", "entryType", "totalDebit", "totalCredit", "status"] },
+    { code: "ARSR041", name: "سجل فواتير المبيعات", source: "invoices", columns: ["docNo", "customerId", "grandTotal", "status", "createdAt"] },
+    { code: "MRPREP001", name: "تقييم المخزون", source: "stock_balances", columns: ["itemId", "warehouseId", "quantity", "unitCost", "totalCost"] },
+  ];
+}
+
+export async function runFinancialReport(input: { reportCode: string; search?: string; limit?: number }) {
+  const db = await getDb(); const limit = input.limit || 100; const query = (input.search || "").trim();
+  if (!db) {
+    if (input.reportCode === "ARSR041") return { reportCode: input.reportCode, title: "سجل فواتير المبيعات", columns: ["docNo", "customerId", "grandTotal", "status"], rows: Array.from(demoInvoices.values()).filter((row) => !query || row.docNo.includes(query)).slice(-limit).reverse() };
+    if (input.reportCode === "MRPREP001") return { reportCode: input.reportCode, title: "تقييم المخزون", columns: ["itemId", "warehouseId", "quantity", "unitCost", "totalCost"], rows: [{ itemId: 1, warehouseId: 1, quantity: "100", unitCost: "100", totalCost: "10000" }] };
+    return { reportCode: input.reportCode, title: "ملخص القيود المحاسبية", columns: ["journalNo", "entryType", "totalDebit", "totalCredit", "status"], rows: demoJournals.slice(-limit).reverse() };
+  }
+  if (input.reportCode === "ARSR041") {
+    const filters = query ? like(invoices.docNo, `%${query}%`) : undefined;
+    return { reportCode: input.reportCode, title: "سجل فواتير المبيعات", columns: ["docNo", "customerId", "grandTotal", "status", "createdAt"], rows: await db.select({ docNo: invoices.docNo, customerId: invoices.customerId, grandTotal: invoices.grandTotal, status: invoices.status, createdAt: invoices.createdAt }).from(invoices).where(filters).orderBy(desc(invoices.createdAt)).limit(limit) };
+  }
+  if (input.reportCode === "MRPREP001") return { reportCode: input.reportCode, title: "تقييم المخزون", columns: ["itemId", "warehouseId", "quantity", "unitCost", "totalCost"], rows: await db.select({ itemId: stockBalances.itemId, warehouseId: stockBalances.warehouseId, quantity: stockBalances.quantity, unitCost: stockBalances.unitCost, totalCost: stockBalances.totalCost }).from(stockBalances).limit(limit) };
+  const filters = query ? like(journalEntries.journalNo, `%${query}%`) : undefined;
+  return { reportCode: input.reportCode, title: "ملخص القيود المحاسبية", columns: ["journalNo", "entryType", "totalDebit", "totalCredit", "status", "createdAt"], rows: await db.select({ journalNo: journalEntries.journalNo, entryType: journalEntries.entryType, totalDebit: journalEntries.totalDebit, totalCredit: journalEntries.totalCredit, status: journalEntries.status, createdAt: journalEntries.createdAt }).from(journalEntries).where(filters).orderBy(desc(journalEntries.createdAt)).limit(limit) };
+}
