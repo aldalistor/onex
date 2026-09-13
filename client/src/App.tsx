@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import WindowWorkbench from "./pages/WindowWorkbench";
 
 function Router() {
-  return <Switch><Route path="/" component={Home} /><Route path="/workbench" component={WindowWorkbench} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>;
+  return <Switch><Route path="/" component={WindowWorkbench} /><Route path="/workbench" component={WindowWorkbench} /><Route path="/home" component={Home} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>;
 }
 
 export default function App() {

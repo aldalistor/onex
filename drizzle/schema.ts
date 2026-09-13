@@ -174,6 +174,62 @@ export const auditEvents = mysqlTable("audit_events", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
+export const branches = mysqlTable("branches", {
+  id: int("id").autoincrement().primaryKey(),
+  companyId: int("companyId").notNull(),
+  code: varchar("code", { length: 30 }).notNull(),
+  name: varchar("name", { length: 200 }).notNull(),
+  active: int("active").notNull().default(1),
+}, (table) => ({ companyCode: unique("branch_company_code").on(table.companyId, table.code) }));
+
+export const roles = mysqlTable("roles", {
+  id: int("id").autoincrement().primaryKey(),
+  code: varchar("code", { length: 60 }).notNull().unique(),
+  name: varchar("name", { length: 160 }).notNull(),
+  active: int("active").notNull().default(1),
+});
+
+export const permissions = mysqlTable("permissions", {
+  id: int("id").autoincrement().primaryKey(),
+  code: varchar("code", { length: 120 }).notNull().unique(),
+  windowCode: varchar("windowCode", { length: 160 }),
+  actionCode: varchar("actionCode", { length: 80 }).notNull(),
+  description: varchar("description", { length: 300 }),
+});
+
+export const userRoles = mysqlTable("user_roles", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  roleId: int("roleId").notNull(),
+  branchId: int("branchId"),
+}, (table) => ({ assignment: unique("user_role_branch").on(table.userId, table.roleId, table.branchId) }));
+
+export const rolePermissions = mysqlTable("role_permissions", {
+  id: int("id").autoincrement().primaryKey(),
+  roleId: int("roleId").notNull(),
+  permissionId: int("permissionId").notNull(),
+}, (table) => ({ assignment: unique("role_permission").on(table.roleId, table.permissionId) }));
+
+export const accounts = mysqlTable("accounts", {
+  id: int("id").autoincrement().primaryKey(),
+  companyId: int("companyId").notNull(),
+  code: varchar("code", { length: 80 }).notNull(),
+  name: varchar("name", { length: 240 }).notNull(),
+  accountType: varchar("accountType", { length: 30 }).notNull(),
+  parentCode: varchar("parentCode", { length: 80 }),
+  currencyCode: varchar("currencyCode", { length: 3 }).notNull().default("SAR"),
+  active: int("active").notNull().default(1),
+}, (table) => ({ companyCode: unique("account_company_code").on(table.companyId, table.code) }));
+
+export const fiscalPeriods = mysqlTable("fiscal_periods", {
+  id: int("id").autoincrement().primaryKey(),
+  companyId: int("companyId").notNull(),
+  code: varchar("code", { length: 30 }).notNull(),
+  startsOn: timestamp("startsOn").notNull(),
+  endsOn: timestamp("endsOn").notNull(),
+  status: mysqlEnum("status", ["OPEN", "CLOSED"]).notNull().default("OPEN"),
+}, (table) => ({ companyCode: unique("period_company_code").on(table.companyId, table.code) }));
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type WindowRegistry = typeof windowRegistry.$inferSelect;
@@ -181,3 +237,6 @@ export type Invoice = typeof invoices.$inferSelect;
 export type Item = typeof items.$inferSelect;
 export type Supplier = typeof suppliers.$inferSelect;
 export type JournalEntry = typeof journalEntries.$inferSelect;
+export type Branch = typeof branches.$inferSelect;
+export type Account = typeof accounts.$inferSelect;
+export type FiscalPeriod = typeof fiscalPeriods.$inferSelect;

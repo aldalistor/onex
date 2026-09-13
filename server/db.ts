@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/mysql2";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { ENV } from "./_core/env";
-import { auditEvents, companies, customers, invoices, invoiceLines, items, journalEntries, journalEntryLines, suppliers, stockBalances, stockMovements, warehouses, windowRegistry, type InsertUser, users } from "../drizzle/schema";
+import { accounts, auditEvents, branches, companies, customers, fiscalPeriods, invoices, invoiceLines, items, journalEntries, journalEntryLines, suppliers, stockBalances, stockMovements, warehouses, windowRegistry, type InsertUser, users } from "../drizzle/schema";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 let demoInvoiceSequence = 1000;
@@ -12,6 +12,9 @@ const demoSuppliers: Array<{ id: number; companyId: number; code: string; legalN
 const demoCustomers: Array<{ id: number; companyId: number; code: string; legalName: string; currencyCode: string; status: "ACTIVE" | "BLOCKED" | "CLOSED" }> = [{ id: 1, companyId: 1, code: "CUST-001", legalName: "عميل تجريبي", currencyCode: "SAR", status: "ACTIVE" }];
 const demoItems = [{ id: 1, companyId: 1, code: "ITEM-001", description: "صنف تجريبي", stockFlag: 1, unitCost: "100", revenueAccount: "4100", inventoryAccount: "1300", cogsAccount: "5100", active: 1 }];
 const demoJournals: Array<{ id: number; journalNo: string; entryType: string; totalDebit: string; totalCredit: string; status: "POSTED" }> = [];
+const demoBranches = [{ id: 1, companyId: 1, code: "MAIN", name: "الفرع الرئيسي", active: 1 }];
+const demoAccounts: Array<{ id: number; companyId: number; code: string; name: string; accountType: string; parentCode?: string; currencyCode: string; active: number }> = [{ id: 1, companyId: 1, code: "1100", name: "النقدية", accountType: "ASSET", currencyCode: "SAR", active: 1 }, { id: 2, companyId: 1, code: "4100", name: "إيرادات المبيعات", accountType: "REVENUE", currencyCode: "SAR", active: 1 }, { id: 3, companyId: 1, code: "5100", name: "تكلفة المبيعات", accountType: "EXPENSE", currencyCode: "SAR", active: 1 }];
+const demoPeriods = [{ id: 1, companyId: 1, code: "2026-01", startsOn: new Date("2026-01-01"), endsOn: new Date("2026-01-31"), status: "OPEN" as const }];
 
 type FallbackWindow = {
   id: number; screenNo: string; screenName: string; parentId: string;
@@ -280,6 +283,25 @@ export async function getMasterData() {
   return { companies: companyRows, customers: customerRows, items: itemRows, warehouses: warehouseRows, balances: balanceRows };
 }
 
+export async function getErpControlData() {
+  const db = await getDb();
+  if (!db) return { branches: demoBranches, accounts: demoAccounts, fiscalPeriods: demoPeriods };
+  const [branchRows, accountRows, periodRows] = await Promise.all([
+    db.select().from(branches).limit(100),
+    db.select().from(accounts).where(eq(accounts.active, 1)).orderBy(accounts.code).limit(500),
+    db.select().from(fiscalPeriods).orderBy(desc(fiscalPeriods.startsOn)).limit(100),
+  ]);
+  return { branches: branchRows, accounts: accountRows, fiscalPeriods: periodRows };
+}
+
+export async function saveAccount(input: { id?: number; companyId: number; code: string; name: string; accountType: string; parentCode?: string; currencyCode?: string; active?: number }) {
+  const values = { companyId: input.companyId, code: input.code, name: input.name, accountType: input.accountType, parentCode: input.parentCode, currencyCode: input.currencyCode || "SAR", active: input.active ?? 1 };
+  const db = await getDb();
+  if (!db) { const existing = demoAccounts.find((row) => row.id === input.id || row.code === input.code); if (existing) Object.assign(existing, values); else demoAccounts.push({ id: Math.max(...demoAccounts.map((row) => row.id), 0) + 1, ...values }); return demoAccounts.at(-1); }
+  if (input.id) { await db.update(accounts).set(values).where(eq(accounts.id, input.id)); return (await db.select().from(accounts).where(eq(accounts.id, input.id)).limit(1))[0]; }
+  const inserted = await db.insert(accounts).values(values).$returningId(); return (await db.select().from(accounts).where(eq(accounts.id, Number(inserted[0]?.id))).limit(1))[0];
+}
+
 export async function searchInvoices(search?: string, limit = 20) {
   const db = await getDb();
   const query = (search || "").trim();
@@ -376,6 +398,26 @@ export async function createInvoice(input: { docNo: string; customerId: number; 
     await tx.insert(invoiceLines).values(input.lines.map((line) => ({ invoiceId, itemId: line.itemId, quantity: line.quantity, unitPrice: line.unitPrice, taxAmount: line.taxAmount, lineTotal: (Number(line.quantity) * Number(line.unitPrice) + Number(line.taxAmount)).toFixed(6) })));
     await tx.insert(auditEvents).values({ actor: input.actor, actionCode: "CREATE", entityType: "AR_DOC", entityId: String(invoiceId), requestId: idempotencyKey });
     return { invoiceId, docNo: input.docNo, subtotal, taxTotal, grandTotal, status: "DRAFT" as const };
+  });
+}
+
+export async function receiveStock(input: { itemId: number; warehouseId: number; quantity: string; unitCost: string; actor: string; reference: string }) {
+  const quantity = Number(input.quantity); const unitCost = Number(input.unitCost);
+  if (!Number.isFinite(quantity) || quantity <= 0 || !Number.isFinite(unitCost) || unitCost < 0) throw new Error("INVALID_STOCK_RECEIPT");
+  const db = await getDb();
+  if (!db) return { itemId: input.itemId, warehouseId: input.warehouseId, quantity: input.quantity, unitCost: input.unitCost, status: "RECEIVED" as const, reference: input.reference };
+  return db.transaction(async (tx) => {
+    const balance = (await tx.select().from(stockBalances).where(and(eq(stockBalances.itemId, input.itemId), eq(stockBalances.warehouseId, input.warehouseId))).limit(1))[0];
+    const beforeQty = Number(balance?.quantity ?? 0); const beforeCost = Number(balance?.totalCost ?? 0); const totalCost = quantity * unitCost;
+    const afterQty = beforeQty + quantity; const afterCost = beforeCost + totalCost;
+    if (balance) await tx.update(stockBalances).set({ quantity: afterQty.toFixed(6), totalCost: afterCost.toFixed(6), unitCost: (afterCost / afterQty).toFixed(6), versionNo: balance.versionNo + 1 }).where(eq(stockBalances.id, balance.id));
+    else await tx.insert(stockBalances).values({ itemId: input.itemId, warehouseId: input.warehouseId, quantity: quantity.toFixed(6), totalCost: totalCost.toFixed(6), unitCost: unitCost.toFixed(6), versionNo: 1 });
+    await tx.insert(stockMovements).values({ itemId: input.itemId, warehouseId: input.warehouseId, movementType: "PURCHASE_RECEIPT", quantityIn: quantity.toFixed(6), unitCost: unitCost.toFixed(6), totalCost: totalCost.toFixed(6), balanceAfter: afterQty.toFixed(6), createdBy: input.actor });
+    const journalNo = `AP-RECEIPT-${input.reference}`;
+    const inserted = await tx.insert(journalEntries).values({ journalNo, entryType: "AP_RECEIPT", totalDebit: totalCost.toFixed(6), totalCredit: totalCost.toFixed(6) }).$returningId();
+    const journalId = Number(inserted[0]?.id); if (journalId) await tx.insert(journalEntryLines).values([{ journalEntryId: journalId, accountCode: "1300", accountName: "المخزون", debit: totalCost.toFixed(6), credit: "0", description: input.reference }, { journalEntryId: journalId, accountCode: "2100", accountName: "الموردون", debit: "0", credit: totalCost.toFixed(6), description: input.reference }]);
+    await tx.insert(auditEvents).values({ actor: input.actor, actionCode: "RECEIVE", entityType: "STOCK", entityId: `${input.itemId}:${input.warehouseId}`, requestId: `RECEIVE:${input.reference}` });
+    return { itemId: input.itemId, warehouseId: input.warehouseId, quantity: input.quantity, unitCost: input.unitCost, totalCost: totalCost.toFixed(6), status: "RECEIVED" as const, reference: input.reference };
   });
 }
 
