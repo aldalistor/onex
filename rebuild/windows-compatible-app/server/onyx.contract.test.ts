@@ -39,6 +39,11 @@ describe("Onyx rebuild contracts", () => {
         displayOrder: expect.any(Number),
         userPermission: expect.any(String),
         companyBranchPermission: expect.any(String),
+        rebuildLevel: expect.any(String),
+        sourceStatus: expect.any(String),
+        observedProcedures: expect.any(Number),
+        observedTriggers: expect.any(Number),
+        specPath: expect.any(String),
       });
     }
   });
