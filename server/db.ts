@@ -297,6 +297,14 @@ export async function searchCustomers(search?: string, limit = 20) {
   return db.select().from(customers).where(filters).orderBy(customers.code).limit(limit);
 }
 
+export async function searchSystemUsers(search?: string, limit = 20) {
+  const db = await getDb();
+  if (!db) return [];
+  const query = (search || "").trim();
+  const filters = query ? or(like(users.openId, `%${query}%`), like(users.email, `%${query}%`), like(users.name, `%${query}%`)) : undefined;
+  return db.select({ id: users.id, openId: users.openId, name: users.name, email: users.email, role: users.role, lastSignedIn: users.lastSignedIn }).from(users).where(filters).orderBy(users.id).limit(limit);
+}
+
 export async function saveCustomer(input: { id?: number; companyId: number; code: string; legalName: string; currencyCode?: string; status?: "ACTIVE" | "BLOCKED" | "CLOSED" }) {
   const db = await getDb();
   if (!db) { const existing = demoCustomers.find((row) => row.id === input.id || row.code === input.code); if (existing) Object.assign(existing, input); else demoCustomers.push({ id: Math.max(...demoCustomers.map((row) => row.id), 0) + 1, companyId: input.companyId, code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }); return demoCustomers.at(-1); }

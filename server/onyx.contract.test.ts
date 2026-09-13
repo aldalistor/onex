@@ -99,6 +99,17 @@ describe("Onyx rebuild contracts", () => {
     expect(result.totalCredit).toBe("25.000000");
   });
 
+  it("routes reports and administration windows to database-backed readers", async () => {
+    const caller = appRouter.createCaller(ctx);
+    for (const legacyForm of ["GLSR001", "ARSR041", "MRPREP001", "ADMT027"]) {
+      const rows = await caller.windows.records({ legacyForm, limit: 10 });
+      expect(Array.isArray(rows)).toBe(true);
+    }
+    const report = await caller.reports.run({ reportCode: "MRPREP001", limit: 10 });
+    expect(report.reportCode).toBe("MRPREP001");
+    expect(report.columns).toContain("totalCost");
+  });
+
   it("supports demo atomic create, post, and reversal lifecycle", async () => {
     const caller = appRouter.createCaller(ctx);
     const created = await caller.invoices.create({ docNo: `ATOMIC-${Date.now()}`, customerId: 1, warehouseId: 1, actor: "test", lines: [{ itemId: 1, quantity: "2", unitPrice: "100", taxAmount: "15" }] });

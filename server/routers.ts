@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
-import { createInvoice, getCatalogSources, getDashboard, getFinancialReportCatalog, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice, runFinancialReport, saveCustomer, saveItem, saveJournal, saveSupplier, searchCustomers, searchInvoices, searchItems, searchJournals, searchSuppliers } from "./db";
+import { createInvoice, getCatalogSources, getDashboard, getFinancialReportCatalog, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice, runFinancialReport, saveCustomer, saveItem, saveJournal, saveSupplier, searchCustomers, searchInvoices, searchItems, searchJournals, searchSuppliers, searchSystemUsers } from "./db";
 
 const invoiceLine = z.object({ itemId: z.number().int().positive(), quantity: z.string().min(1), unitPrice: z.string().min(1), taxAmount: z.string().default("0") });
 const partyInput = z.object({ id: z.number().int().positive().optional(), companyId: z.number().int().positive().default(1), code: z.string().min(1).max(50), legalName: z.string().min(1).max(250), currencyCode: z.string().length(3).default("SAR"), status: z.enum(["ACTIVE", "BLOCKED", "CLOSED"]).default("ACTIVE") });
@@ -31,6 +31,8 @@ export const appRouter = router({
     contract: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160) })).query(({ input }) => getWindowContract(input.legacyForm)),
     records: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160), search: z.string().optional(), limit: z.number().int().min(1).max(100).default(20) })).query(({ input }): Promise<any[]> => {
       const form = input.legacyForm.replace(/\.fmx$/i, "").toUpperCase();
+      if (["GLSR001", "ARSR041", "MRPREP001"].includes(form)) return runFinancialReport({ reportCode: form, search: input.search, limit: input.limit }).then((result) => result.rows);
+      if (form === "ADMT027") return searchSystemUsers(input.search, input.limit);
       if (form.startsWith("ARST004")) return searchInvoices(input.search, input.limit);
       if (form.startsWith("ARST") || form.startsWith("ARSR")) return searchCustomers(input.search, input.limit);
       if (form.startsWith("APST") || form.startsWith("APSR")) return searchSuppliers(input.search, input.limit);

@@ -19,7 +19,7 @@ const modules: Array<{ id: ModuleKey; label: string; code: string; icon: typeof 
   { id: "mrp", label: "التخطيط والتصنيع", code: "MRP", icon: BarChart3, windows: [{ id: "MRPACS004", label: "إعدادات التخطيط والتصنيع", module: "mrp", kind: "transaction" }] },
   { id: "hr", label: "الموارد البشرية", code: "HR", icon: Users, windows: [{ id: "HRSI002", label: "ملف الموظف", module: "hr", kind: "transaction" }, { id: "HRSR002", label: "تقارير الموظفين", module: "hr", kind: "report" }] },
   { id: "pos", label: "نقطة البيع", code: "POS", icon: LayoutDashboard, windows: [{ id: "POSLGN", label: "تشغيل نقطة البيع", module: "pos", kind: "transaction" }, { id: "POST001", label: "مبيعات نقطة البيع", module: "pos", kind: "transaction" }] },
-  { id: "reports", label: "التقارير", code: "RPT", icon: FileBarChart, windows: [{ id: "GLSR001", label: "تقارير الحسابات", module: "reports", kind: "report" }, { id: "MRPREP001", label: "تقارير التخطيط والمخزون", module: "reports", kind: "report" }] },
+  { id: "reports", label: "التقارير", code: "RPT", icon: FileBarChart, windows: [{ id: "GLSR001", label: "تقارير الحسابات", module: "reports", kind: "report" }, { id: "ARSR041", label: "سجل فواتير المبيعات", module: "reports", kind: "report" }, { id: "MRPREP001", label: "تقارير التخطيط والمخزون", module: "reports", kind: "report" }] },
 ];
 const kindLabel = { transaction: "معاملة", inquiry: "استعلام", report: "تقرير" };
 
