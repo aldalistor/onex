@@ -276,6 +276,16 @@ export async function getMasterData() {
   return { companies: companyRows, customers: customerRows, items: itemRows, warehouses: warehouseRows, balances: balanceRows };
 }
 
+export async function searchInvoices(search?: string, limit = 20) {
+  const db = await getDb();
+  const query = (search || "").trim();
+  if (!db) {
+    return Array.from(demoInvoices.values()).filter((invoice) => !query || `${invoice.docNo} ${invoice.status}`.toLowerCase().includes(query.toLowerCase())).slice(-limit).reverse();
+  }
+  const filters = query ? or(like(invoices.docNo, `%${query}%`), like(invoices.status, `%${query}%`)) : undefined;
+  return db.select().from(invoices).where(filters).orderBy(desc(invoices.createdAt)).limit(limit);
+}
+
 export async function createInvoice(input: { docNo: string; customerId: number; warehouseId: number; lines: { itemId: number; quantity: string; unitPrice: string; taxAmount: string }[]; actor: string; }) {
   const db = await getDb();
   const subtotal = input.lines.reduce((sum, line) => sum + Number(line.quantity) * Number(line.unitPrice), 0);

@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
-import { createInvoice, getCatalogSources, getDashboard, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice } from "./db";
+import { createInvoice, getCatalogSources, getDashboard, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice, searchInvoices } from "./db";
 
 const invoiceLine = z.object({ itemId: z.number().int().positive(), quantity: z.string().min(1), unitPrice: z.string().min(1), taxAmount: z.string().default("0") });
 
@@ -22,6 +22,10 @@ export const appRouter = router({
     tree: publicProcedure.query(() => getSystemTree()),
     sources: publicProcedure.query(() => getCatalogSources()),
     contract: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160) })).query(({ input }) => getWindowContract(input.legacyForm)),
+    records: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160), search: z.string().optional(), limit: z.number().int().min(1).max(100).default(20) })).query(({ input }) => {
+      if (input.legacyForm.replace(/\.fmx$/i, "").toUpperCase().startsWith("ARST004")) return searchInvoices(input.search, input.limit);
+      return [];
+    }),
     executeAction: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160), action: z.string().min(1).max(80) })).mutation(async ({ input }) => {
       const contract = await getWindowContract(input.legacyForm);
       if (!contract.actions.includes(input.action)) throw new Error("ACTION_NOT_ALLOWED_FOR_WINDOW");
