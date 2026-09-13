@@ -68,6 +68,15 @@ export const customers = mysqlTable("customers", {
   status: mysqlEnum("status", ["ACTIVE", "BLOCKED", "CLOSED"]).notNull().default("ACTIVE"),
 }, (table) => ({ companyCode: unique("customer_company_code").on(table.companyId, table.code) }));
 
+export const suppliers = mysqlTable("suppliers", {
+  id: int("id").autoincrement().primaryKey(),
+  companyId: int("companyId").notNull(),
+  code: varchar("code", { length: 50 }).notNull(),
+  legalName: varchar("legalName", { length: 250 }).notNull(),
+  currencyCode: varchar("currencyCode", { length: 3 }).notNull().default("SAR"),
+  status: mysqlEnum("status", ["ACTIVE", "BLOCKED", "CLOSED"]).notNull().default("ACTIVE"),
+}, (table) => ({ companyCode: unique("supplier_company_code").on(table.companyId, table.code) }));
+
 export const items = mysqlTable("items", {
   id: int("id").autoincrement().primaryKey(),
   companyId: int("companyId").notNull(),
@@ -145,6 +154,16 @@ export const journalEntries = mysqlTable("journal_entries", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
+export const journalEntryLines = mysqlTable("journal_entry_lines", {
+  id: int("id").autoincrement().primaryKey(),
+  journalEntryId: int("journalEntryId").notNull(),
+  accountCode: varchar("accountCode", { length: 80 }).notNull(),
+  accountName: varchar("accountName", { length: 240 }),
+  description: varchar("description", { length: 500 }),
+  debit: decimal("debit", { precision: 20, scale: 6 }).notNull().default("0"),
+  credit: decimal("credit", { precision: 20, scale: 6 }).notNull().default("0"),
+});
+
 export const auditEvents = mysqlTable("audit_events", {
   id: int("id").autoincrement().primaryKey(),
   actor: varchar("actor", { length: 100 }).notNull(),
@@ -160,3 +179,5 @@ export type InsertUser = typeof users.$inferInsert;
 export type WindowRegistry = typeof windowRegistry.$inferSelect;
 export type Invoice = typeof invoices.$inferSelect;
 export type Item = typeof items.$inferSelect;
+export type Supplier = typeof suppliers.$inferSelect;
+export type JournalEntry = typeof journalEntries.$inferSelect;

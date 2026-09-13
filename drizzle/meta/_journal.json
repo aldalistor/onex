@@ -8,6 +8,13 @@
       "when": 1789300607978,
       "tag": "0000_loose_stryfe",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1789305861800,
+      "tag": "0001_medical_the_fury",
+      "breakpoints": true
     }
   ]
 }

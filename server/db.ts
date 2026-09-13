@@ -3,11 +3,15 @@ import { drizzle } from "drizzle-orm/mysql2";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { ENV } from "./_core/env";
-import { auditEvents, companies, customers, invoices, invoiceLines, items, journalEntries, stockBalances, stockMovements, warehouses, windowRegistry, type InsertUser, users } from "../drizzle/schema";
+import { auditEvents, companies, customers, invoices, invoiceLines, items, journalEntries, journalEntryLines, suppliers, stockBalances, stockMovements, warehouses, windowRegistry, type InsertUser, users } from "../drizzle/schema";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 let demoInvoiceSequence = 1000;
 const demoInvoices = new Map<number, { invoiceId: number; docNo: string; subtotal: number; taxTotal: number; grandTotal: number; status: "DRAFT" | "POSTED" | "REVERSED" }>();
+const demoSuppliers: Array<{ id: number; companyId: number; code: string; legalName: string; currencyCode: string; status: "ACTIVE" | "BLOCKED" | "CLOSED" }> = [{ id: 1, companyId: 1, code: "SUP-001", legalName: "مورد تجريبي", currencyCode: "SAR", status: "ACTIVE" }];
+const demoCustomers: Array<{ id: number; companyId: number; code: string; legalName: string; currencyCode: string; status: "ACTIVE" | "BLOCKED" | "CLOSED" }> = [{ id: 1, companyId: 1, code: "CUST-001", legalName: "عميل تجريبي", currencyCode: "SAR", status: "ACTIVE" }];
+const demoItems = [{ id: 1, companyId: 1, code: "ITEM-001", description: "صنف تجريبي", stockFlag: 1, unitCost: "100", revenueAccount: "4100", inventoryAccount: "1300", cogsAccount: "5100", active: 1 }];
+const demoJournals: Array<{ id: number; journalNo: string; entryType: string; totalDebit: string; totalCredit: string; status: "POSTED" }> = [];
 
 type FallbackWindow = {
   id: number; screenNo: string; screenName: string; parentId: string;
@@ -284,6 +288,64 @@ export async function searchInvoices(search?: string, limit = 20) {
   }
   const filters = query ? or(like(invoices.docNo, `%${query}%`), like(invoices.status, `%${query}%`)) : undefined;
   return db.select().from(invoices).where(filters).orderBy(desc(invoices.createdAt)).limit(limit);
+}
+
+export async function searchCustomers(search?: string, limit = 20) {
+  const db = await getDb(); const query = (search || "").trim();
+  if (!db) return demoCustomers.filter((row) => !query || `${row.code} ${row.legalName}`.toLowerCase().includes(query.toLowerCase())).slice(0, limit);
+  const filters = query ? or(like(customers.code, `%${query}%`), like(customers.legalName, `%${query}%`)) : undefined;
+  return db.select().from(customers).where(filters).orderBy(customers.code).limit(limit);
+}
+
+export async function saveCustomer(input: { id?: number; companyId: number; code: string; legalName: string; currencyCode?: string; status?: "ACTIVE" | "BLOCKED" | "CLOSED" }) {
+  const db = await getDb();
+  if (!db) { const existing = demoCustomers.find((row) => row.id === input.id || row.code === input.code); if (existing) Object.assign(existing, input); else demoCustomers.push({ id: Math.max(...demoCustomers.map((row) => row.id), 0) + 1, companyId: input.companyId, code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }); return demoCustomers.at(-1); }
+  if (input.id) { await db.update(customers).set({ code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }).where(eq(customers.id, input.id)); return db.select().from(customers).where(eq(customers.id, input.id)).limit(1).then((rows) => rows[0]); }
+  const inserted = await db.insert(customers).values({ companyId: input.companyId, code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }).$returningId(); return db.select().from(customers).where(eq(customers.id, Number(inserted[0]?.id))).limit(1).then((rows) => rows[0]);
+}
+
+export async function searchSuppliers(search?: string, limit = 20) {
+  const db = await getDb(); const query = (search || "").trim();
+  if (!db) return demoSuppliers.filter((row) => !query || `${row.code} ${row.legalName}`.toLowerCase().includes(query.toLowerCase())).slice(0, limit);
+  const filters = query ? or(like(suppliers.code, `%${query}%`), like(suppliers.legalName, `%${query}%`)) : undefined;
+  return db.select().from(suppliers).where(filters).orderBy(suppliers.code).limit(limit);
+}
+
+export async function saveSupplier(input: { id?: number; companyId: number; code: string; legalName: string; currencyCode?: string; status?: "ACTIVE" | "BLOCKED" | "CLOSED" }) {
+  const db = await getDb();
+  if (!db) { const existing = demoSuppliers.find((row) => row.id === input.id || row.code === input.code); if (existing) Object.assign(existing, input); else demoSuppliers.push({ id: Math.max(...demoSuppliers.map((row) => row.id), 0) + 1, companyId: input.companyId, code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }); return demoSuppliers.at(-1); }
+  if (input.id) { await db.update(suppliers).set({ code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }).where(eq(suppliers.id, input.id)); return db.select().from(suppliers).where(eq(suppliers.id, input.id)).limit(1).then((rows) => rows[0]); }
+  const inserted = await db.insert(suppliers).values({ companyId: input.companyId, code: input.code, legalName: input.legalName, currencyCode: input.currencyCode || "SAR", status: input.status || "ACTIVE" }).$returningId(); return db.select().from(suppliers).where(eq(suppliers.id, Number(inserted[0]?.id))).limit(1).then((rows) => rows[0]);
+}
+
+export async function searchItems(search?: string, limit = 20) {
+  const db = await getDb(); const query = (search || "").trim();
+  if (!db) return demoItems.filter((row) => !query || `${row.code} ${row.description}`.toLowerCase().includes(query.toLowerCase())).slice(0, limit);
+  const filters = query ? or(like(items.code, `%${query}%`), like(items.description, `%${query}%`)) : undefined;
+  return db.select().from(items).where(filters).orderBy(items.code).limit(limit);
+}
+
+export async function saveItem(input: { id?: number; companyId: number; code: string; description: string; stockFlag?: number; unitCost?: string; revenueAccount?: string; inventoryAccount?: string; cogsAccount?: string; active?: number }) {
+  const db = await getDb();
+  const values = { companyId: input.companyId, code: input.code, description: input.description, stockFlag: input.stockFlag ?? 1, unitCost: input.unitCost || "0", revenueAccount: input.revenueAccount || "4100", inventoryAccount: input.inventoryAccount || "1300", cogsAccount: input.cogsAccount || "5100", active: input.active ?? 1 };
+  if (!db) { const existing = demoItems.find((row) => row.id === input.id || row.code === input.code); if (existing) Object.assign(existing, values); else demoItems.push({ id: Math.max(...demoItems.map((row) => row.id), 0) + 1, ...values }); return demoItems.at(-1); }
+  if (input.id) { await db.update(items).set(values).where(eq(items.id, input.id)); return db.select().from(items).where(eq(items.id, input.id)).limit(1).then((rows) => rows[0]); }
+  const inserted = await db.insert(items).values(values).$returningId(); return db.select().from(items).where(eq(items.id, Number(inserted[0]?.id))).limit(1).then((rows) => rows[0]);
+}
+
+export async function searchJournals(search?: string, limit = 20) {
+  const db = await getDb(); const query = (search || "").trim();
+  if (!db) return demoJournals.filter((row) => !query || `${row.journalNo} ${row.entryType}`.toLowerCase().includes(query.toLowerCase())).slice(0, limit);
+  const filters = query ? or(like(journalEntries.journalNo, `%${query}%`), like(journalEntries.entryType, `%${query}%`)) : undefined;
+  return db.select().from(journalEntries).where(filters).orderBy(desc(journalEntries.createdAt)).limit(limit);
+}
+
+export async function saveJournal(input: { journalNo: string; entryType: string; actor: string; lines: { accountCode: string; accountName?: string; description?: string; debit: string; credit: string }[] }) {
+  const debit = input.lines.reduce((sum, line) => sum + Number(line.debit || 0), 0); const credit = input.lines.reduce((sum, line) => sum + Number(line.credit || 0), 0);
+  if (Math.abs(debit - credit) > 0.000001) throw new Error("JOURNAL_NOT_BALANCED");
+  const db = await getDb();
+  if (!db) { const id = demoJournals.length + 1; const result = { id, journalNo: input.journalNo, entryType: input.entryType, totalDebit: debit.toFixed(6), totalCredit: credit.toFixed(6), status: "POSTED" as const }; demoJournals.push(result); return result; }
+  return db.transaction(async (tx) => { const inserted = await tx.insert(journalEntries).values({ journalNo: input.journalNo, entryType: input.entryType, totalDebit: debit.toFixed(6), totalCredit: credit.toFixed(6) }).$returningId(); const id = Number(inserted[0]?.id); if (!id) throw new Error("JOURNAL_CREATE_FAILED"); await tx.insert(journalEntryLines).values(input.lines.map((line) => ({ journalEntryId: id, accountCode: line.accountCode, accountName: line.accountName, description: line.description, debit: line.debit, credit: line.credit }))); await tx.insert(auditEvents).values({ actor: input.actor, actionCode: "CREATE", entityType: "GL_JOURNAL", entityId: String(id), requestId: `JOURNAL:${input.journalNo}` }); return { id, journalNo: input.journalNo, entryType: input.entryType, totalDebit: debit.toFixed(6), totalCredit: credit.toFixed(6), status: "POSTED" as const }; });
 }
 
 export async function createInvoice(input: { docNo: string; customerId: number; warehouseId: number; lines: { itemId: number; quantity: string; unitPrice: string; taxAmount: string }[]; actor: string; }) {
