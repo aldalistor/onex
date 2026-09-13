@@ -83,6 +83,22 @@ describe("Onyx rebuild contracts", () => {
     await expect(caller.windows.executeAction({ legacyForm: "ERP_LOGIN.fmx", action: "drop_database" })).rejects.toBeTruthy();
   });
 
+  it("routes the next FMX batch to database-backed record queries", async () => {
+    const caller = appRouter.createCaller(ctx);
+    for (const legacyForm of ["GLST005", "GLST006", "ARST006", "APST005", "INVT004", "POST001"]) {
+      const rows = await caller.windows.records({ legacyForm, limit: 10 });
+      expect(Array.isArray(rows)).toBe(true);
+    }
+  });
+
+  it("persists a balanced journal through the window contract mutation", async () => {
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.windows.saveJournal({ journalNo: `FMX-BATCH-${Date.now()}`, entryType: "GLST005", actor: "contract.test", lines: [{ accountCode: "1100", debit: "25", credit: "0" }, { accountCode: "4100", debit: "0", credit: "25" }] });
+    expect(result.status).toBe("POSTED");
+    expect(result.totalDebit).toBe("25.000000");
+    expect(result.totalCredit).toBe("25.000000");
+  });
+
   it("supports demo atomic create, post, and reversal lifecycle", async () => {
     const caller = appRouter.createCaller(ctx);
     const created = await caller.invoices.create({ docNo: `ATOMIC-${Date.now()}`, customerId: 1, warehouseId: 1, actor: "test", lines: [{ itemId: 1, quantity: "2", unitPrice: "100", taxAmount: "15" }] });

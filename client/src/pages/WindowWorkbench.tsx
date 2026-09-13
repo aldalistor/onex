@@ -12,9 +12,9 @@ type RuntimeWindow = WindowRecord & { module: ModuleKey };
 
 const modules: Array<{ id: ModuleKey; label: string; code: string; icon: typeof Settings2; windows: RuntimeWindow[] }> = [
   { id: "admin", label: "الإدارة والنظام", code: "ADMIN", icon: Settings2, windows: [{ id: "ERP_DBA", label: "إدارة النظام", module: "admin", kind: "transaction" }, { id: "ERP_DBA_DFLT_DATA", label: "البيانات الافتراضية", module: "admin", kind: "transaction" }, { id: "ERP_JOURNAL", label: "سجل العمليات والتدقيق", module: "admin", kind: "inquiry" }, { id: "ADMT027", label: "المستخدمون والصلاحيات", module: "admin", kind: "transaction" }] },
-  { id: "finance", label: "الحسابات العامة", code: "GL", icon: Calculator, windows: [{ id: "GLST001", label: "دليل الحسابات", module: "finance", kind: "transaction" }, { id: "GLST002", label: "القيد اليومي", module: "finance", kind: "transaction" }, { id: "GLST004", label: "السندات والقيود المالية", module: "finance", kind: "transaction" }, { id: "GLSI001", label: "استعلام القيود", module: "finance", kind: "inquiry" }] },
-  { id: "sales", label: "المبيعات والعملاء", code: "AR", icon: Receipt, windows: [{ id: "ARST003", label: "تعريف العملاء", module: "sales", kind: "transaction" }, { id: "ARST004", label: "فاتورة المبيعات", module: "sales", kind: "transaction" }, { id: "ARSR041", label: "كشف حساب عميل", module: "sales", kind: "report" }] },
-  { id: "purchasing", label: "المشتريات والموردون", code: "AP", icon: ShoppingCart, windows: [{ id: "APST003", label: "فاتورة المشتريات", module: "purchasing", kind: "transaction" }, { id: "APSI002", label: "الموردون", module: "purchasing", kind: "transaction" }] },
+  { id: "finance", label: "الحسابات العامة", code: "GL", icon: Calculator, windows: [{ id: "GLST001", label: "دليل الحسابات", module: "finance", kind: "transaction" }, { id: "GLST002", label: "القيد اليومي", module: "finance", kind: "transaction" }, { id: "GLST004", label: "السندات والقيود المالية", module: "finance", kind: "transaction" }, { id: "GLST005", label: "تفاصيل اليومية", module: "finance", kind: "inquiry" }, { id: "GLST006", label: "ملاحظات القيود", module: "finance", kind: "inquiry" }, { id: "GLSI001", label: "استعلام القيود", module: "finance", kind: "inquiry" }] },
+  { id: "sales", label: "المبيعات والعملاء", code: "AR", icon: Receipt, windows: [{ id: "ARST003", label: "تعريف العملاء", module: "sales", kind: "transaction" }, { id: "ARST004", label: "فاتورة المبيعات", module: "sales", kind: "transaction" }, { id: "ARST006", label: "كشف حساب العميل", module: "sales", kind: "inquiry" }, { id: "ARSR041", label: "كشف حساب عميل", module: "sales", kind: "report" }] },
+  { id: "purchasing", label: "المشتريات والموردون", code: "AP", icon: ShoppingCart, windows: [{ id: "APST003", label: "فاتورة المشتريات", module: "purchasing", kind: "transaction" }, { id: "APST005", label: "كشف حساب المورد", module: "purchasing", kind: "inquiry" }, { id: "APSI002", label: "الموردون", module: "purchasing", kind: "transaction" }] },
   { id: "inventory", label: "المخزون", code: "INV", icon: Package, windows: [{ id: "INVT003", label: "بطاقة الصنف", module: "inventory", kind: "transaction" }, { id: "INVT004", label: "حركة المخزون", module: "inventory", kind: "inquiry" }] },
   { id: "mrp", label: "التخطيط والتصنيع", code: "MRP", icon: BarChart3, windows: [{ id: "MRPACS004", label: "إعدادات التخطيط والتصنيع", module: "mrp", kind: "transaction" }] },
   { id: "hr", label: "الموارد البشرية", code: "HR", icon: Users, windows: [{ id: "HRSI002", label: "ملف الموظف", module: "hr", kind: "transaction" }, { id: "HRSR002", label: "تقارير الموظفين", module: "hr", kind: "report" }] },
@@ -45,6 +45,10 @@ function WorkbenchContent() {
   const records = trpc.windows.records.useQuery({ legacyForm: manager.activeId ?? "__none__", search: query || undefined, limit: 10 }, { enabled: Boolean(manager.activeId) });
   const masterData = trpc.masterData.useQuery();
   const createInvoice = trpc.invoices.create.useMutation();
+  const saveCustomer = trpc.windows.saveCustomer.useMutation();
+  const saveSupplier = trpc.windows.saveSupplier.useMutation();
+  const saveItem = trpc.windows.saveItem.useMutation();
+  const saveJournal = trpc.windows.saveJournal.useMutation();
   const filteredModules = useMemo(() => modules.map((module) => ({ ...module, windows: module.windows.filter((w) => `${w.id} ${w.label}`.toLowerCase().includes(query.toLowerCase())) })).filter((module) => module.windows.length || module.label.includes(query)), [query]);
 
   const openWindow = async (window: RuntimeWindow) => {
@@ -61,17 +65,22 @@ function WorkbenchContent() {
   const saveDraft = async () => {
     const active = manager.activeWindow;
     if (!active) return;
-    if (active.id !== "ARST004") { await manager.commitWindow(active.id); return; }
     const customer = masterData.data?.customers?.[0]; const warehouse = masterData.data?.warehouses?.[0]; const item = masterData.data?.items?.[0];
     if (!customer || !warehouse || !item) { toast.info("الحفظ محليًا جاهز؛ يلزم ربط قاعدة الاختبار للترحيل الفعلي"); await manager.commitWindow(active.id); return; }
-    createInvoice.mutate({ docNo: `${active.id}-${Date.now()}`, customerId: customer.id, warehouseId: warehouse.id, actor: "workbench.user", lines: [{ itemId: item.id, quantity: "1", unitPrice: "0", taxAmount: "0" }] }, { onSuccess: () => void manager.commitWindow(active.id), onError: (error) => toast.error(error.message) });
+    const done = () => void manager.commitWindow(active.id);
+    if (active.id === "ARST003") return saveCustomer.mutate({ id: customer.id, companyId: customer.companyId, code: customer.code, legalName: customer.legalName, currencyCode: customer.currencyCode, status: customer.status }, { onSuccess: done, onError: (error) => toast.error(error.message) });
+    if (active.id === "APST003") { const supplier = masterData.data?.customers?.[0]; if (supplier) return saveSupplier.mutate({ companyId: supplier.companyId, code: `SUP-${supplier.code}`, legalName: supplier.legalName, currencyCode: supplier.currencyCode, status: "ACTIVE" }, { onSuccess: done, onError: (error) => toast.error(error.message) }); }
+    if (active.id === "INVT003") return saveItem.mutate({ id: item.id, companyId: item.companyId, code: item.code, description: item.description, stockFlag: item.stockFlag, unitCost: item.unitCost, revenueAccount: item.revenueAccount, inventoryAccount: item.inventoryAccount, cogsAccount: item.cogsAccount, active: item.active }, { onSuccess: done, onError: (error) => toast.error(error.message) });
+    if (["GLST002", "GLST004"].includes(active.id)) return saveJournal.mutate({ journalNo: `${active.id}-${Date.now()}`, entryType: active.id, actor: "workbench.user", lines: [{ accountCode: "1100", accountName: "حساب تجريبي", description: "قيد من عقد FMX", debit: "100", credit: "0" }, { accountCode: "4100", accountName: "إيراد تجريبي", description: "قيد من عقد FMX", debit: "0", credit: "100" }] }, { onSuccess: done, onError: (error) => toast.error(error.message) });
+    if (["ARST004", "POST001"].includes(active.id)) return createInvoice.mutate({ docNo: `${active.id}-${Date.now()}`, customerId: customer.id, warehouseId: warehouse.id, actor: "workbench.user", lines: [{ itemId: item.id, quantity: "1", unitPrice: "100", taxAmount: "15" }] }, { onSuccess: done, onError: (error) => toast.error(error.message) });
+    await manager.commitWindow(active.id);
   };
 
   const handleAction = async (action: WindowAction) => {
     const id = manager.activeId; if (!id) return;
     if (action === "save") return saveDraft();
     if (action === "cancel") return manager.markClean(id);
-    if (action === "query") return toast.info(`استعلام ${id}: استخدم الحقول ثم نفّذ F7`);
+    if (action === "query") { await records.refetch(); return toast.success(`تم تحديث سجلات ${id} من قاعدة البيانات`); }
     if (action === "new") return toast.info(`سجل جديد في ${id}`);
     if (action === "delete") return toast.info(`الحذف يتطلب تأكيد السجل في ${id}`);
     if (action === "print") return toast.info(`تجهيز تقرير ${id}`);

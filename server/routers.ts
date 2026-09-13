@@ -35,6 +35,7 @@ export const appRouter = router({
       if (form.startsWith("ARST") || form.startsWith("ARSR")) return searchCustomers(input.search, input.limit);
       if (form.startsWith("APST") || form.startsWith("APSR")) return searchSuppliers(input.search, input.limit);
       if (form.startsWith("INVT") || form.startsWith("INVI")) return searchItems(input.search, input.limit);
+      if (form.startsWith("POST")) return searchInvoices(input.search, input.limit);
       if (form.startsWith("GLST") || form.startsWith("GLSI") || form.startsWith("GLSR")) return searchJournals(input.search, input.limit);
       return Promise.resolve([]);
     }),
