@@ -7,15 +7,16 @@ import { WindowManagerProvider, type WindowAction, type WindowRecord, useWindowM
 import { WindowToolbar, WindowTitleBar } from "@/window-runtime/WindowToolbar";
 import { getLegacyContract, type LegacyField } from "@/window-runtime/legacyContracts";
 
-type ModuleKey = "admin" | "finance" | "sales" | "purchasing" | "inventory" | "hr" | "pos" | "reports";
+type ModuleKey = "admin" | "finance" | "sales" | "purchasing" | "inventory" | "mrp" | "hr" | "pos" | "reports";
 type RuntimeWindow = WindowRecord & { module: ModuleKey };
 
 const modules: Array<{ id: ModuleKey; label: string; code: string; icon: typeof Settings2; windows: RuntimeWindow[] }> = [
-  { id: "admin", label: "الإدارة والنظام", code: "ADMIN", icon: Settings2, windows: [{ id: "ERP_DBA", label: "إدارة النظام", module: "admin", kind: "transaction" }, { id: "ADMT027", label: "المستخدمون والصلاحيات", module: "admin", kind: "transaction" }] },
-  { id: "finance", label: "الحسابات العامة", code: "GL", icon: Calculator, windows: [{ id: "GLST001", label: "دليل الحسابات", module: "finance", kind: "transaction" }, { id: "GLST002", label: "القيد اليومي", module: "finance", kind: "transaction" }, { id: "GLSI001", label: "استعلام القيود", module: "finance", kind: "inquiry" }] },
+  { id: "admin", label: "الإدارة والنظام", code: "ADMIN", icon: Settings2, windows: [{ id: "ERP_DBA", label: "إدارة النظام", module: "admin", kind: "transaction" }, { id: "ERP_DBA_DFLT_DATA", label: "البيانات الافتراضية", module: "admin", kind: "transaction" }, { id: "ERP_JOURNAL", label: "سجل العمليات والتدقيق", module: "admin", kind: "inquiry" }, { id: "ADMT027", label: "المستخدمون والصلاحيات", module: "admin", kind: "transaction" }] },
+  { id: "finance", label: "الحسابات العامة", code: "GL", icon: Calculator, windows: [{ id: "GLST001", label: "دليل الحسابات", module: "finance", kind: "transaction" }, { id: "GLST002", label: "القيد اليومي", module: "finance", kind: "transaction" }, { id: "GLST004", label: "السندات والقيود المالية", module: "finance", kind: "transaction" }, { id: "GLSI001", label: "استعلام القيود", module: "finance", kind: "inquiry" }] },
   { id: "sales", label: "المبيعات والعملاء", code: "AR", icon: Receipt, windows: [{ id: "ARST003", label: "تعريف العملاء", module: "sales", kind: "transaction" }, { id: "ARST004", label: "فاتورة المبيعات", module: "sales", kind: "transaction" }, { id: "ARSR041", label: "كشف حساب عميل", module: "sales", kind: "report" }] },
   { id: "purchasing", label: "المشتريات والموردون", code: "AP", icon: ShoppingCart, windows: [{ id: "APST003", label: "فاتورة المشتريات", module: "purchasing", kind: "transaction" }, { id: "APSI002", label: "الموردون", module: "purchasing", kind: "transaction" }] },
   { id: "inventory", label: "المخزون", code: "INV", icon: Package, windows: [{ id: "INVT003", label: "بطاقة الصنف", module: "inventory", kind: "transaction" }, { id: "INVT004", label: "حركة المخزون", module: "inventory", kind: "inquiry" }] },
+  { id: "mrp", label: "التخطيط والتصنيع", code: "MRP", icon: BarChart3, windows: [{ id: "MRPACS004", label: "إعدادات التخطيط والتصنيع", module: "mrp", kind: "transaction" }] },
   { id: "hr", label: "الموارد البشرية", code: "HR", icon: Users, windows: [{ id: "HRSI002", label: "ملف الموظف", module: "hr", kind: "transaction" }, { id: "HRSR002", label: "تقارير الموظفين", module: "hr", kind: "report" }] },
   { id: "pos", label: "نقطة البيع", code: "POS", icon: LayoutDashboard, windows: [{ id: "POSLGN", label: "تشغيل نقطة البيع", module: "pos", kind: "transaction" }, { id: "POST001", label: "مبيعات نقطة البيع", module: "pos", kind: "transaction" }] },
   { id: "reports", label: "التقارير", code: "RPT", icon: FileBarChart, windows: [{ id: "GLSR001", label: "تقارير الحسابات", module: "reports", kind: "report" }, { id: "MRPREP001", label: "تقارير التخطيط والمخزون", module: "reports", kind: "report" }] },
