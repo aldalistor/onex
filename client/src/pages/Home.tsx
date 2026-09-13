@@ -1,33 +1,87 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+import { useMemo, useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
+import { AIChatBox, type Message } from "@/components/AIChatBox";
+import { Boxes, ChevronLeft, CircleDollarSign, FileText, LayoutGrid, Link2, Package, PanelLeft, Plus, Search, Settings2, ShieldCheck, Sparkles, Warehouse, X } from "lucide-react";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
+const sampleWindows = [
+  ["ARST004.fmx", "AR", "AR_DOCUMENTS", "مكتملة جزئيًا"], ["ARST006.fmx", "AR", "AR_REVERSAL", "مواصفة"], ["ARST023.fmx", "AR", "AR_DOCUMENTS", "مواصفة"], ["ARSR041.fmx", "AR", "AR_REPORTS", "مفهرسة"], ["APST003.fmx", "AP", "AP_DOCUMENTS", "مفهرسة"], ["APST005.fmx", "AP", "AP_POSTING", "مفهرسة"], ["GLST001.fmx", "GL", "GL_JOURNALS", "مفهرسة"], ["POST001.fmx", "GL", "POSTING_ENGINE", "مفهرسة"], ["POS_INSTALL.fmx", "POS", "POS_SETUP", "مفهرسة"]
+];
+
+function Stat({ icon: Icon, label, value, accent }: { icon: typeof Boxes; label: string; value: string | number; accent: string }) {
+  return <div className="stat-card"><div className={`stat-icon ${accent}`}><Icon size={18} /></div><div><p className="stat-label">{label}</p><p className="stat-value">{value}</p></div></div>;
+}
+
+function StatusPill({ status }: { status: string }) {
+  const tone = status.includes("مكتملة") || status.includes("verified") ? "success" : status.includes("مواصفة") || status.includes("catalog") ? "warning" : "neutral";
+  return <span className={`status-pill ${tone}`}><span />{status}</span>;
+}
+
 export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const [section, setSection] = useState<"overview" | "windows" | "ar">("overview");
+  const [windowSearch, setWindowSearch] = useState("");
+  const [domain, setDomain] = useState("ALL");
+  const [expandedBranches, setExpandedBranches] = useState<Record<string, boolean>>({});
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
+  const [selectedWindow, setSelectedWindow] = useState<any>(null);
+  const [docNo, setDocNo] = useState("INV-2026-0001");
+  const [quantity, setQuantity] = useState("2");
+  const [unitPrice, setUnitPrice] = useState("245.00");
+  const [tax, setTax] = useState("15");
+  const [aiMessages, setAiMessages] = useState<Message[]>([{ role: "system", content: "ONEX neural assistant" }]);
+  const dashboard = trpc.dashboard.useQuery();
+  const master = trpc.masterData.useQuery();
+  const windows = trpc.windows.list.useQuery({ search: windowSearch || undefined, domain, limit: 80 });
+  const systemTree = trpc.windows.tree.useQuery();
+  const createInvoice = trpc.invoices.create.useMutation();
+  const postInvoice = trpc.invoices.post.useMutation();
+  const aiAssist = trpc.ai.assist.useMutation();
+  const invoiceTotal = useMemo(() => (Number(quantity || 0) * Number(unitPrice || 0) + Number(tax || 0)).toFixed(2), [quantity, unitPrice, tax]);
+  const dbReady = Boolean(master.data?.items?.length);
+  const stats = dashboard.data ?? { windows: 1490, domains: 12, invoices: 0, stockValue: "0.00", journals: 0 };
+  const visibleWindows = windows.data?.length ? windows.data : sampleWindows.filter(([name, d, cap]) => `${name} ${d} ${cap}`.toLowerCase().includes(windowSearch.toLowerCase()) && (domain === "ALL" || d === domain));
+  const customers = master.data?.customers ?? [];
+  const items = master.data?.items ?? [];
+  const warehouses = master.data?.warehouses ?? [];
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const submitInvoice = async () => {
+    if (!customers[0] || !items[0] || !warehouses[0]) { toast.info("جهّز قاعدة الاختبار والبيانات الأساسية أولًا؛ الواجهة جاهزة للربط بـOracle."); return; }
+    try {
+      const created = await createInvoice.mutateAsync({ docNo, customerId: customers[0].id, warehouseId: warehouses[0].id, actor: "demo.user", lines: [{ itemId: items[0].id, quantity, unitPrice, taxAmount: tax }] });
+      toast.success(`تم إنشاء ${created.docNo} كمسودة`);
+      await postInvoice.mutateAsync({ invoiceId: created.invoiceId, actor: "demo.user" });
+      toast.success("تم الترحيل: المخزون + COGS + AR/GL داخل معاملة واحدة");
+      dashboard.refetch();
+    } catch (error) { toast.error(error instanceof Error ? error.message : "تعذر تنفيذ العملية"); }
+  };
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+  return <div className="app-shell" dir="rtl">
+    <aside className="sidebar">
+      <div className="brand"><div className="brand-mark"><Sparkles size={18} /></div><div><strong>ONYX</strong><span>ERP REBUILD</span></div></div>
+      <div className="branch-chip"><span className="pulse" /> فرع إعادة البناء <b>v0.1</b></div>
+      <nav>
+        <button className={section === "overview" ? "nav-item active" : "nav-item"} onClick={() => setSection("overview")}><LayoutGrid size={17} />نظرة عامة</button>
+        <button className={section === "windows" ? "nav-item active" : "nav-item"} onClick={() => setSection("windows")}><PanelLeft size={17} />دليل النوافذ <em>1,490</em></button>
+        <button className={section === "ar" ? "nav-item active" : "nav-item"} onClick={() => setSection("ar")}><FileText size={17} />ARST004 <em>تجريبي</em></button>
+        <button className="nav-item muted" onClick={() => toast.info("ستُفعّل في المرحلة التالية")}><Warehouse size={17} />المخزون <em>قريبًا</em></button>
+        <button className="nav-item muted" onClick={() => toast.info("ستُفعّل في المرحلة التالية")}><CircleDollarSign size={17} />الحسابات العامة <em>قريبًا</em></button>
+      </nav>
+      <div className="sidebar-bottom"><div className="bridge-card"><div className="bridge-top"><Link2 size={16} /><span>حالة الربط</span><b className={dbReady ? "online" : "offline"}>{dbReady ? "متصل" : "تجريبي"}</b></div><p>{dbReady ? "قاعدة البيانات التجريبية تعمل" : "Oracle bridge غير مضاف بعد"}</p><div className="bridge-line"><span style={{ width: dbReady ? "78%" : "24%" }} /></div></div><button className="profile"><div className="avatar">م</div><div><b>مدير النظام</b><span>demo.user</span></div><Settings2 size={16} /></button></div>
+    </aside>
+    <main className="main-content">
+      <header className="topbar"><div><p className="eyebrow">ONYX / REBUILD CONSOLE</p><h1>{section === "windows" ? "دليل النوافذ" : section === "ar" ? "ARST004 · فاتورة مبيعات" : "لوحة التحكم التنفيذية"}</h1></div><div className="top-actions"><div className="connection"><span className="pulse" /> وضع الاختبار <b>Oracle-ready</b></div><Button className="user-action" onClick={() => setSection("ar")}><Plus size={16} />عملية جديدة</Button></div></header>
+      {section === "overview" && <>
+        <section className="hero"><div><div className="hero-kicker"><ShieldCheck size={14} /> خارطة النظام القديم أصبحت قابلة للتشغيل</div><h2>نواة Onyx الحديثة،<br /><span>بنفس منطق النوافذ.</span></h2><p>نسخة تشغيلية تدريجية تحافظ على أسماء النوافذ، دورة العمل، الترحيل، والتدقيق — وتفتح الطريق لقاعدة Oracle الحقيقية.</p><div className="hero-actions"><Button onClick={() => setSection("ar")}><FileText size={16} />ابدأ ARST004</Button><Button variant="outline" onClick={() => setSection("windows")}><PanelLeft size={16} />استعرض 1,490 نافذة</Button></div></div><div className="hero-orbit"><div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" /><div className="orbit-core"><Boxes size={33} /><span>ONEX</span></div><div className="orbit-tag tag-one">AR</div><div className="orbit-tag tag-two">GL</div><div className="orbit-tag tag-three">INV</div></div></section>
+        <div className="stats-grid"><Stat icon={PanelLeft} label="نافذة مفهرسة" value={stats.windows.toLocaleString()} accent="violet" /><Stat icon={Boxes} label="مجالات النظام" value={stats.domains} accent="cyan" /><Stat icon={FileText} label="فواتير مرحّلة" value={stats.invoices} accent="amber" /><Stat icon={CircleDollarSign} label="قيود GL" value={stats.journals} accent="green" /></div>
+        <section className="content-grid"><Card className="panel wide"><CardHeader><div><p className="panel-kicker">LEGACY WINDOW MAP</p><CardTitle>مسار التحويل</CardTitle></div><Button variant="outline" size="sm" onClick={() => setSection("windows")}>فتح الدليل <ChevronLeft size={15} /></Button></CardHeader><CardContent><div className="timeline"><div className="timeline-step done"><span>01</span><div><b>تحليل Forms</b><p>1,490 نافذة · 6,077 أثر تتبع</p></div></div><div className="timeline-line done" /><div className="timeline-step current"><span>02</span><div><b>نواة المعاملات</b><p>ARST004 قيد الاختبار الآن</p></div></div><div className="timeline-line" /><div className="timeline-step"><span>03</span><div><b>Oracle Test DB</b><p>يمكن إضافة DATABASE_URL من إعدادات التشغيل</p></div></div><div className="timeline-line" /><div className="timeline-step"><span>04</span><div><b>التشغيل المتوازي</b><p>مقارنة القديم بالجديد</p></div></div></div></CardContent></Card><Card className="panel"><CardHeader><div><p className="panel-kicker">NEURAL OPERATIONS</p><CardTitle>المساعد العصبي</CardTitle></div></CardHeader><CardContent><AIChatBox height="300px" messages={aiMessages} isLoading={aiAssist.isPending} suggestedPrompts={["ما الحقول المشتركة لهذه النافذة؟", "ما الذي يلزم قبل الترحيل؟", "اشرح مخاطر مصدر الشاشة"]} onSendMessage={(question) => { const next = [...aiMessages, { role: "user" as const, content: question }]; setAiMessages(next); aiAssist.mutate({ question, window: selectedWindow?.formName || "لوحة التحكم", context: selectedWindow?.capability || "النواة العامة" }, { onSuccess: (result) => setAiMessages((messages) => [...messages, { role: "assistant", content: result.answer }]) }); }} /></CardContent></Card></section>
+      </>}
+      {section === "windows" && <section className="window-explorer"><div className="explorer-toolbar"><div><p className="panel-kicker">REAL LEGACY SYSTEM TREE</p><h2>شجرة النظام الفعلية</h2><p>فروع المجالات، مجموعات الـForms، وتفاصيل كل شاشة كما وردت في كتالوج Onyx الأصلي.</p></div><div className="catalog-count"><strong>1,490</strong><span>شاشة مفهرسة</span></div></div><div className="tree-toolbar"><div className="search-field"><Search size={16} /><Input placeholder="ابحث برقم الشاشة أو اسم الـForm أو المجال..." value={windowSearch} onChange={(e) => setWindowSearch(e.target.value)} /></div><div className="tree-legend"><span><i className="tree-dot built" />قيد البناء</span><span><i className="tree-dot indexed" />مفهرسة</span><span><i className="tree-dot spec" />مواصفة</span></div></div><div className="tree-layout"><div className="system-tree"><div className="tree-root"><Boxes size={16} /><div><b>ONEX / ERP</b><span>النظام الرئيسي · 12 مجالًا · 1,490 شاشة</span></div><span className="root-badge">ROOT</span></div>{(systemTree.data ?? []).filter((branch: any) => domain === "ALL" || branch.domain === domain || branch.domain.startsWith(domain + "/")).map((branch: any) => { const branchOpen = expandedBranches[branch.id] ?? branch.id.includes("AR"); return <div className="tree-branch" key={branch.id}><button className="tree-branch-row" onClick={() => setExpandedBranches((prev) => ({ ...prev, [branch.id]: !branchOpen }))}><span className={`chevron ${branchOpen ? "open" : ""}`}>‹</span><span className="branch-icon"><Boxes size={15} /></span><span className="branch-label"><b>{branch.label}</b><small>{branch.domain}</small></span><strong>{branch.windows}</strong></button>{branchOpen && <div className="tree-children">{branch.groups.map((group: any) => { const groupOpen = expandedGroups[group.id] ?? (branch.id.includes("AR") && group.label === "ARST"); return <div className="tree-group" key={group.id}><button className="tree-group-row" onClick={() => setExpandedGroups((prev) => ({ ...prev, [group.id]: !groupOpen }))}><span className={`chevron ${groupOpen ? "open" : ""}`}>‹</span><span className="folder-icon"><Package size={13} /></span><span>{group.label}</span><em>{group.count}</em></button>{groupOpen && <div className="tree-windows">{group.windows.filter((win: any) => !windowSearch || `${win.screenNo} ${win.screenName} ${win.formName} ${win.capability}`.toLowerCase().includes(windowSearch.toLowerCase())).map((win: any) => <button key={win.legacyForm} className={`tree-window-row ${selectedWindow?.legacyForm === win.legacyForm ? "selected" : ""}`} onClick={() => setSelectedWindow(win)}><span className={`tree-status ${win.buildState === "قيد البناء" ? "building" : win.buildState === "متحقق" ? "verified" : win.buildState === "مواصفة" ? "spec" : "indexed"}`} /><span className="tree-window-name"><b>{win.screenName}</b><small>{win.formName}</small></span><span className="tree-screen-no">{win.screenNo}</span><ChevronLeft size={13} /></button>)}</div>}</div>})}</div>}</div>})}</div><div className="window-detail"><div className="detail-header"><div><p className="panel-kicker">SCREEN CONTRACT</p><h3>{selectedWindow?.screenName ?? "اختر شاشة من الشجرة"}</h3><p>{selectedWindow?.formName ?? "تظهر هنا هوية الشاشة وعلاقاتها وصلاحياتها"}</p><p className="detail-source-note">مصدر الحالة: manifest/all_windows_rebuild_status.csv</p></div><StatusPill status={selectedWindow?.rebuildLevel ?? selectedWindow?.buildState ?? "مفهرسة"} /></div>{selectedWindow ? <><div className="detail-code">{selectedWindow.screenNo}<span>{selectedWindow.systemNo}</span></div><div className="detail-grid"><div><span>رقم الشاشة</span><b>{selectedWindow.screenNo}</b></div><div><span>اسم الشاشة</span><b>{selectedWindow.screenName}</b></div><div><span>الأب Parent</span><b>{selectedWindow.parentId}</b></div><div><span>رقم النظام</span><b>{selectedWindow.systemNo}</b></div><div><span>نوع العنصر</span><b>{selectedWindow.itemType}</b></div><div><span>اسم الـForm</span><b>{selectedWindow.formName}</b></div><div><span>ترتيب العرض</span><b>{selectedWindow.displayOrder}</b></div><div><span>حالة البناء</span><b>{selectedWindow.buildState}</b></div><div><span>صلاحية المستخدم</span><b>{selectedWindow.userPermission}</b></div><div><span>صلاحية الشركة أو الفرع</span><b>{selectedWindow.companyBranchPermission}</b></div><div><span>مستوى إعادة البناء</span><b>{selectedWindow.rebuildLevel ?? "catalog_specification"}</b></div><div><span>حالة المصدر</span><b>{selectedWindow.sourceStatus ?? "FMB_PLL_not_found"}</b></div><div><span>الإجراءات المرصودة</span><b>{selectedWindow.observedProcedures ?? 0}</b></div><div><span>الـTriggers المرصودة</span><b>{selectedWindow.observedTriggers ?? 0}</b></div><div><span>مؤشرات الجداول</span><b>{selectedWindow.observedTableIndicators ?? 0}</b></div><div><span>الأدلة المطلوبة التالية</span><b>{selectedWindow.nextRequiredEvidence ?? "FMB/PLL/PKS/PKB/DDL/Forms Builder"}</b></div></div><div className="detail-actions"><Button onClick={() => { setSection("ar"); toast.info(`تم فتح عقد ${selectedWindow.formName}`); }}><FileText size={15} />فتح عقد الشاشة</Button><Button variant="outline" onClick={() => toast.info("سيبدأ بناء منطق الشاشة بعد اعتماد مصدرها FMB/PLL")}>بدء البناء</Button></div></> : <div className="empty-detail"><PanelLeft size={28} /><p>اضغط على أي شاشة في الشجرة لعرض عقدها التفصيلي.</p></div>}</div></div></section>}
+      {section === "ar" && <section className="ar-workspace"><div className="workspace-banner"><div><div className="breadcrumb">AR / SALES / <b>ARST004</b></div><h2>فاتورة مبيعات — إصدار متوافق</h2><p>نموذج التشغيل الأول: رأس الفاتورة، التفاصيل، المخزون، COGS، وقيود AR/GL.</p></div><StatusPill status="مكتملة جزئيًا" /></div><div className="ar-grid"><Card className="panel invoice-form"><CardHeader><div><p className="panel-kicker">DOCUMENT HEADER</p><CardTitle>بيانات الفاتورة</CardTitle></div><span className="doc-chip">DRAFT</span></CardHeader><CardContent><div className="form-grid"><label>رقم المستند<Input value={docNo} onChange={(e) => setDocNo(e.target.value)} /></label><label>تاريخ المستند<Input type="date" defaultValue="2026-09-13" /></label><label>العميل<select><option>{customers[0]?.legalName ?? "عميل تجريبي — Al Datalist"}</option></select></label><label>المستودع<select><option>{warehouses[0]?.name ?? "المستودع الرئيسي"}</option></select></label></div><Separator /><div className="line-title"><div><p className="panel-kicker">INVOICE LINES</p><h3>تفاصيل الأصناف</h3></div><Button variant="outline" size="sm" onClick={() => toast.info("يمكن إضافة أسطر متعددة بعد ربط قاعدة الاختبار") }><Plus size={14} />سطر جديد</Button></div><div className="line-card"><div className="line-product"><div className="product-icon"><Package size={18} /></div><div><b>{items[0]?.description ?? "صنف تجريبي — منتج مخزني"}</b><span>{items[0]?.code ?? "ITEM-001"} · مخزني</span></div></div><div className="line-input"><span>الكمية</span><Input value={quantity} onChange={(e) => setQuantity(e.target.value)} /></div><div className="line-input"><span>السعر</span><Input value={unitPrice} onChange={(e) => setUnitPrice(e.target.value)} /></div><div className="line-input"><span>الضريبة</span><Input value={tax} onChange={(e) => setTax(e.target.value)} /></div><div className="line-total"><span>الإجمالي</span><b>{invoiceTotal} <small>ر.س</small></b></div><button className="remove-line" onClick={() => toast.info("السطر الأساسي لا يحذف في النموذج التجريبي")}><X size={16} /></button></div><div className="posting-contract"><div className="contract-icon"><ShieldCheck size={17} /></div><div><b>عقد الترحيل الذري</b><p>الفاتورة ← المخزون ← COGS ← AR/GL ← التدقيق ← Outbox</p></div><span>ATOMIC</span></div><div className="form-actions"><Button variant="outline" onClick={() => toast.info("المسودة محفوظة محليًا في نموذج العرض")}>حفظ كمسودة</Button><Button onClick={submitInvoice} disabled={createInvoice.isPending || postInvoice.isPending}><CircleDollarSign size={16} />{createInvoice.isPending || postInvoice.isPending ? "جارٍ الترحيل..." : "حفظ وترحيل"}</Button></div></CardContent></Card><Card className="panel posting-preview"><CardHeader><div><p className="panel-kicker">POSTING PREVIEW</p><CardTitle>معاينة الأثر</CardTitle></div></CardHeader><CardContent><div className="preview-total"><span>صافي المستند</span><strong>{invoiceTotal} <small>ر.س</small></strong></div><div className="preview-rows"><div><span><i className="dot green" />حساب العميل</span><b>{invoiceTotal}</b></div><div><span><i className="dot violet" />المبيعات</span><b>{(Number(quantity || 0) * Number(unitPrice || 0)).toFixed(2)}</b></div><div><span><i className="dot amber" />الضريبة</span><b>{Number(tax || 0).toFixed(2)}</b></div><div><span><i className="dot cyan" />حركة المخزون</span><b>{dbReady ? "جاهزة" : "تجريبية"}</b></div></div><Separator /><div className="check-list"><div><span className="check">✓</span> منع التكرار Idempotency</div><div><span className="check">✓</span> منع المخزون السالب</div><div><span className="check">✓</span> توازن المدين والدائن</div><div><span className="check">✓</span> Audit + Outbox</div></div></CardContent></Card></div></section>}
+    </main>
+  </div>;
 }

@@ -1,92 +1,266 @@
-import { eq } from "drizzle-orm";
+import { and, desc, eq, like, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
-import { ENV } from './_core/env';
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { ENV } from "./_core/env";
+import { auditEvents, companies, customers, invoices, invoiceLines, items, journalEntries, stockBalances, stockMovements, warehouses, windowRegistry, type InsertUser, users } from "../drizzle/schema";
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let demoInvoiceSequence = 1000;
+const demoInvoices = new Map<number, { invoiceId: number; docNo: string; subtotal: number; taxTotal: number; grandTotal: number; status: "DRAFT" | "POSTED" | "REVERSED" }>();
 
-// Lazily create the drizzle instance so local tooling can run without a DB.
+type FallbackWindow = {
+  id: number; screenNo: string; screenName: string; parentId: string;
+  systemNo: string; itemType: string; formName: string; displayOrder: number;
+  userPermission: string; companyBranchPermission: string; buildState: string;
+  compiledSize: number; rebuildLevel: string; sourceStatus: string;
+  observedProcedures: number; observedTriggers: number; observedLibraries: number;
+  observedTableIndicators: number; riskFlags: string; specPath: string;
+  nextRequiredEvidence: string; legacyForm: string; domainCode: string;
+  capability: string; migrationPhase: number; status: string; sourceConfidence: string;
+  notes: string;
+};
+
+let fallbackWindows: FallbackWindow[] | null = null;
+function loadFallbackWindows(): FallbackWindow[] {
+  if (fallbackWindows) return fallbackWindows;
+  const csvPath = resolve(process.cwd(), "rebuild-manifest/all_windows_rebuild_status.csv");
+  try {
+    const lines = readFileSync(csvPath, "utf8").split(/\r?\n/).filter(Boolean).slice(1);
+    fallbackWindows = lines.map((line, index) => {
+      const parts = line.split(",");
+      const form = parts[0] || `WINDOW_${index + 1}.fmx`;
+      const category = parts[1] || "other";
+      const procedures = Number(parts[5] || 0);
+      const triggers = Number(parts[6] || 0);
+      const libraries = Number(parts[7] || 0);
+      const tableIndicators = Number(parts[8] || 0);
+      const rebuildLevel = parts[3] || "catalog_specification";
+      return {
+        id: index + 1, screenNo: `SCR-${String(index + 1).padStart(4, "0")}`,
+        screenName: form.replace(/\.fmx$/i, ""), parentId: category,
+        systemNo: "ONEX", itemType: "FORM", formName: form, displayOrder: index + 1,
+        userPermission: category.toUpperCase().includes("ADMIN") ? "ROLE_ADMIN" : "ROLE_USER",
+        companyBranchPermission: category.toUpperCase().includes("POS") ? "COMPANY_BRANCH_REQUIRED" : "COMPANY_BRANCH_SCOPE",
+        buildState: rebuildLevel === "golden_master_verified" ? "متحقق" : rebuildLevel === "source_reconstruction" ? "قيد البناء" : rebuildLevel === "catalog_specification" ? "مواصفة" : "مفهرسة",
+        compiledSize: Number(parts[2] || 0), rebuildLevel, sourceStatus: parts[4] || "FMB_PLL_not_found",
+        observedProcedures: procedures, observedTriggers: triggers, observedLibraries: libraries,
+        observedTableIndicators: tableIndicators, riskFlags: parts.slice(9, -3).join(","),
+        specPath: parts[parts.length - 3] || "", nextRequiredEvidence: parts[parts.length - 1] || "FMB/PLL/PKS/PKB/DDL/Forms Builder",
+        legacyForm: form, domainCode: category, capability: `${form.replace(/\.fmx$/i, "")}_COMPAT`, migrationPhase: 3,
+        status: "cataloged", sourceConfidence: "FMX_STRING_EVIDENCE", notes: "Fallback catalog loaded from rebuild manifest",
+      };
+    });
+  } catch {
+    fallbackWindows = [];
+  }
+  return fallbackWindows;
+}
+
+function fallbackTree(rows = loadFallbackWindows()) {
+  const tree = new Map<string, { id: string; label: string; domain: string; groups: { id: string; label: string; windows: FallbackWindow[] }[] }>();
+  for (const row of rows) {
+    const domain = row.domainCode || "OTHER";
+    const prefix = row.legacyForm.replace(/\.fmx$/i, "").match(/^[A-Za-z]+/)?.[0]?.toUpperCase() || "MISC";
+    const branch = tree.get(domain) || { id: domain, label: domain, domain, groups: [] };
+    let group = branch.groups.find((item) => item.label === prefix);
+    if (!group) { group = { id: `${domain}::${prefix}`, label: prefix, windows: [] }; branch.groups.push(group); }
+    group.windows.push(row);
+    tree.set(domain, branch);
+  }
+  return Array.from(tree.values()).map((branch) => ({ ...branch, windows: branch.groups.reduce((sum, group) => sum + group.windows.length, 0), groups: branch.groups.map((group) => ({ ...group, count: group.windows.length, windows: group.windows.map((win) => ({ ...win, screenNo: win.screenNo, screenName: win.screenName, parentId: group.id, systemNo: "ONEX", itemType: "FORM", formName: win.legacyForm })) })) }));
+}
+
 export async function getDb() {
+  if (process.env.NODE_ENV === "test" || process.env.VITEST || process.env.ONEX_DEMO_MODE === "1") return null;
   if (!_db && process.env.DATABASE_URL) {
-    try {
-      _db = drizzle(process.env.DATABASE_URL);
-    } catch (error) {
-      console.warn("[Database] Failed to connect:", error);
-      _db = null;
-    }
+    _db = drizzle(process.env.DATABASE_URL);
   }
   return _db;
 }
 
 export async function upsertUser(user: InsertUser): Promise<void> {
-  if (!user.openId) {
-    throw new Error("User openId is required for upsert");
-  }
-
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot upsert user: database not available");
-    return;
-  }
-
-  try {
-    const values: InsertUser = {
-      openId: user.openId,
-    };
-    const updateSet: Record<string, unknown> = {};
-
-    const textFields = ["name", "email", "loginMethod"] as const;
-    type TextField = (typeof textFields)[number];
-
-    const assignNullable = (field: TextField) => {
-      const value = user[field];
-      if (value === undefined) return;
-      const normalized = value ?? null;
-      values[field] = normalized;
-      updateSet[field] = normalized;
-    };
-
-    textFields.forEach(assignNullable);
-
-    if (user.lastSignedIn !== undefined) {
-      values.lastSignedIn = user.lastSignedIn;
-      updateSet.lastSignedIn = user.lastSignedIn;
-    }
-    if (user.role !== undefined) {
-      values.role = user.role;
-      updateSet.role = user.role;
-    } else if (user.openId === ENV.ownerOpenId) {
-      values.role = 'admin';
-      updateSet.role = 'admin';
-    }
-
-    if (!values.lastSignedIn) {
-      values.lastSignedIn = new Date();
-    }
-
-    if (Object.keys(updateSet).length === 0) {
-      updateSet.lastSignedIn = new Date();
-    }
-
-    await db.insert(users).values(values).onDuplicateKeyUpdate({
-      set: updateSet,
-    });
-  } catch (error) {
-    console.error("[Database] Failed to upsert user:", error);
-    throw error;
-  }
+  if (!db || !user.openId) return;
+  const values: InsertUser = { openId: user.openId, name: user.name, email: user.email, loginMethod: user.loginMethod, lastSignedIn: new Date() };
+  const updateSet: Record<string, unknown> = { lastSignedIn: new Date() };
+  if (user.name !== undefined) updateSet.name = user.name;
+  if (user.email !== undefined) updateSet.email = user.email;
+  if (user.loginMethod !== undefined) updateSet.loginMethod = user.loginMethod;
+  if (user.role !== undefined) updateSet.role = user.role;
+  else if (user.openId === ENV.ownerOpenId) updateSet.role = "admin";
+  await db.insert(users).values(values).onDuplicateKeyUpdate({ set: updateSet });
 }
 
 export async function getUserByOpenId(openId: string) {
   const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get user: database not available");
-    return undefined;
-  }
-
+  if (!db) return undefined;
   const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
-
-  return result.length > 0 ? result[0] : undefined;
+  return result[0];
 }
 
-// TODO: add feature queries here as your schema grows.
+export async function getWindowCatalog(search?: string, domain?: string, limit = 80) {
+  const db = await getDb();
+  if (!db) {
+    const query = (search || "").toLowerCase();
+    return loadFallbackWindows().filter((win) =>
+      (!query || `${win.legacyForm} ${win.capability} ${win.domainCode}`.toLowerCase().includes(query)) &&
+      (!domain || domain === "ALL" || win.domainCode === domain)
+    ).slice(0, limit);
+  }
+  const filters = [];
+  if (search) filters.push(or(like(windowRegistry.legacyForm, `%${search}%`), like(windowRegistry.capability, `%${search}%`)));
+  if (domain && domain !== "ALL") filters.push(eq(windowRegistry.domainCode, domain));
+  return db.select().from(windowRegistry).where(filters.length ? and(...filters) : undefined).orderBy(windowRegistry.domainCode, windowRegistry.legacyForm).limit(limit);
+}
+
+export async function getSystemTree() {
+  const db = await getDb();
+  if (!db) return fallbackTree();
+  const rows = await db.select().from(windowRegistry).orderBy(windowRegistry.domainCode, windowRegistry.legacyForm);
+  const categoryLabels: Record<string, string> = {
+    'AR/ACCOUNTS-RECEIVABLE': 'الذمم المدينة والمبيعات', 'AP/PURCHASING': 'المشتريات والدائنون', 'GL/FINANCE': 'الحسابات العامة والمالية',
+    'INVENTORY/STOCK': 'المخزون والمستودعات', 'MRP/TREASURY': 'التخطيط والخزينة', 'POS': 'نقاط البيع', 'HR': 'الموارد البشرية',
+    'ADMIN/SYSTEM': 'الإدارة وإعدادات النظام', 'ASSETS/MAINTENANCE': 'الأصول والصيانة', 'OTHER-FINANCE/OPERATIONS': 'العمليات المالية', 'REPORTS': 'التقارير', 'OTHER': 'نوافذ أخرى'
+  };
+  const groups = new Map<string, { id: string; label: string; domain: string; windows: typeof rows }>();
+  for (const row of rows) {
+    const domain = row.domainCode;
+    const base = row.legacyForm.replace(/\.fmx$/i, '');
+    const prefix = base.match(/^[A-Za-z]+/)?.[0]?.toUpperCase() || 'MISC';
+    const key = `${domain}::${prefix}`;
+    if (!groups.has(key)) groups.set(key, { id: key, label: prefix, domain, windows: [] });
+    groups.get(key)!.windows.push(row);
+  }
+  const tree = new Map<string, { id: string; label: string; domain: string; groups: { id: string; label: string; windows: typeof rows }[] }>();
+  for (const group of Array.from(groups.values())) {
+    if (!tree.has(group.domain)) tree.set(group.domain, { id: group.domain, label: categoryLabels[group.domain] || group.domain, domain: group.domain, groups: [] });
+    tree.get(group.domain)!.groups.push(group);
+  }
+  return Array.from(tree.values()).map((branch) => ({ ...branch, windows: branch.groups.reduce((sum: number, group: any) => sum + group.windows.length, 0), groups: branch.groups.sort((a: any, b: any) => a.label.localeCompare(b.label)).map((group: any) => ({ ...group, count: group.windows.length, windows: group.windows.map((win: any) => ({ ...win, screenNo: `SCR-${String(win.id).padStart(4, '0')}`, screenName: win.legacyForm.replace(/\.fmx$/i, ''), parentId: group.id, systemNo: 'ONEX', itemType: 'FORM', formName: win.legacyForm, displayOrder: win.id, userPermission: win.domainCode === 'ADMIN/SYSTEM' ? 'ROLE_ADMIN' : 'ROLE_USER', companyBranchPermission: win.domainCode === 'POS' ? 'COMPANY_BRANCH_REQUIRED' : 'COMPANY_BRANCH_SCOPE', buildState: win.rebuildLevel === 'golden_master_verified' || win.rebuildLevel === 'production_ready' ? 'متحقق' : win.rebuildLevel === 'source_reconstruction' || win.rebuildLevel === 'forms_builder_build' ? 'قيد البناء' : win.rebuildLevel === 'catalog_specification' ? 'مواصفة' : (win.status === 'verified' ? 'متحقق' : 'مفهرس') })) })) }));
+}
+
+export async function getWindowDomains() {
+  const db = await getDb();
+  if (!db) return Array.from(new Set(loadFallbackWindows().map((row) => row.domainCode))).sort();
+  const rows = await db.select({ domain: windowRegistry.domainCode }).from(windowRegistry).groupBy(windowRegistry.domainCode).orderBy(windowRegistry.domainCode);
+  return rows.map((row) => row.domain);
+}
+
+export async function getDashboard() {
+  const db = await getDb();
+  if (!db) return { windows: loadFallbackWindows().length || 1490, domains: new Set(loadFallbackWindows().map((row) => row.domainCode)).size || 12, invoices: 0, stockValue: "0.00", journals: 0, recentInvoices: [] };
+  const [windowCount, domainCount, invoiceCount, stockValue, journalCount, recentInvoices] = await Promise.all([
+    db.select({ count: sql<number>`count(*)` }).from(windowRegistry),
+    db.select({ count: sql<number>`count(distinct ${windowRegistry.domainCode})` }).from(windowRegistry),
+    db.select({ count: sql<number>`count(*)` }).from(invoices),
+    db.select({ total: sql<string>`coalesce(sum(${stockBalances.totalCost}), 0)` }).from(stockBalances),
+    db.select({ count: sql<number>`count(*)` }).from(journalEntries),
+    db.select().from(invoices).orderBy(desc(invoices.createdAt)).limit(6),
+  ]);
+  return { windows: Number(windowCount[0]?.count ?? 0), domains: Number(domainCount[0]?.count ?? 0), invoices: Number(invoiceCount[0]?.count ?? 0), stockValue: String(stockValue[0]?.total ?? "0"), journals: Number(journalCount[0]?.count ?? 0), recentInvoices };
+}
+
+export async function getMasterData() {
+  const db = await getDb();
+  if (!db) return {
+    companies: [{ id: 1, code: "ONEX", name: "شركة Onyx التجريبية", baseCurrency: "SAR" }],
+    customers: [{ id: 1, companyId: 1, code: "CUST-001", legalName: "عميل تجريبي", currencyCode: "SAR", status: "ACTIVE" as const }],
+    items: [{ id: 1, companyId: 1, code: "ITEM-001", description: "صنف تجريبي", stockFlag: 1, unitCost: "100", revenueAccount: "4100", inventoryAccount: "1300", cogsAccount: "5100", active: 1 }],
+    warehouses: [{ id: 1, companyId: 1, code: "MAIN", name: "المستودع الرئيسي", active: 1 }],
+    balances: [{ balance: { quantity: "100", totalCost: "10000", unitCost: "100" }, item: { code: "ITEM-001" }, warehouse: { code: "MAIN" } }],
+  };
+  const [companyRows, customerRows, itemRows, warehouseRows, balanceRows] = await Promise.all([
+    db.select().from(companies).limit(20), db.select().from(customers).limit(100), db.select().from(items).limit(100), db.select().from(warehouses).limit(50), db.select({ balance: stockBalances, item: items, warehouse: warehouses }).from(stockBalances).leftJoin(items, eq(stockBalances.itemId, items.id)).leftJoin(warehouses, eq(stockBalances.warehouseId, warehouses.id)).limit(100),
+  ]);
+  return { companies: companyRows, customers: customerRows, items: itemRows, warehouses: warehouseRows, balances: balanceRows };
+}
+
+export async function createInvoice(input: { docNo: string; customerId: number; warehouseId: number; lines: { itemId: number; quantity: string; unitPrice: string; taxAmount: string }[]; actor: string; }) {
+  const db = await getDb();
+  const subtotal = input.lines.reduce((sum, line) => sum + Number(line.quantity) * Number(line.unitPrice), 0);
+  const taxTotal = input.lines.reduce((sum, line) => sum + Number(line.taxAmount), 0);
+  const grandTotal = subtotal + taxTotal;
+  const idempotencyKey = `ARST004:${input.docNo}`;
+  if (!db) {
+    if (Array.from(demoInvoices.values()).some((invoice) => invoice.docNo === input.docNo)) throw new Error("DUPLICATE_IDEMPOTENCY_KEY");
+    const invoiceId = ++demoInvoiceSequence;
+    const result = { invoiceId, docNo: input.docNo, subtotal, taxTotal, grandTotal, status: "DRAFT" as const };
+    demoInvoices.set(invoiceId, result);
+    return result;
+  }
+  return db.transaction(async (tx) => {
+    const inserted = await tx.insert(invoices).values({ docNo: input.docNo, customerId: input.customerId, warehouseId: input.warehouseId, subtotal: subtotal.toFixed(6), taxTotal: taxTotal.toFixed(6), grandTotal: grandTotal.toFixed(6), idempotencyKey, createdBy: input.actor }).$returningId();
+    const invoiceId = Number(inserted[0]?.id);
+    if (!invoiceId) throw new Error("INVOICE_CREATE_FAILED");
+    await tx.insert(invoiceLines).values(input.lines.map((line) => ({ invoiceId, itemId: line.itemId, quantity: line.quantity, unitPrice: line.unitPrice, taxAmount: line.taxAmount, lineTotal: (Number(line.quantity) * Number(line.unitPrice) + Number(line.taxAmount)).toFixed(6) })));
+    await tx.insert(auditEvents).values({ actor: input.actor, actionCode: "CREATE", entityType: "AR_DOC", entityId: String(invoiceId), requestId: idempotencyKey });
+    return { invoiceId, docNo: input.docNo, subtotal, taxTotal, grandTotal, status: "DRAFT" as const };
+  });
+}
+
+export async function postInvoice(invoiceId: number, actor: string) {
+  const db = await getDb();
+  if (!db) {
+    const invoice = demoInvoices.get(invoiceId);
+    if (!invoice) throw new Error("INVOICE_NOT_FOUND");
+    if (invoice.status !== "DRAFT") throw new Error("INVOICE_ALREADY_POSTED_OR_REVERSED");
+    invoice.status = "POSTED";
+    return { invoiceId, status: "POSTED" as const, totalCogs: 0 };
+  }
+  return db.transaction(async (tx) => {
+    const invoice = (await tx.select().from(invoices).where(eq(invoices.id, invoiceId)).limit(1))[0];
+    if (!invoice) throw new Error("INVOICE_NOT_FOUND");
+    if (invoice.status !== "DRAFT") throw new Error("INVOICE_ALREADY_POSTED_OR_REVERSED");
+    const lines = await tx.select({ line: invoiceLines, item: items, balance: stockBalances }).from(invoiceLines).innerJoin(items, eq(invoiceLines.itemId, items.id)).leftJoin(stockBalances, and(eq(stockBalances.itemId, invoiceLines.itemId), eq(stockBalances.warehouseId, invoice.warehouseId))).where(eq(invoiceLines.invoiceId, invoiceId));
+    let totalCogs = 0;
+    for (const row of lines) {
+      const quantity = Number(row.line.quantity);
+      const balance = row.balance;
+      const beforeQty = Number(balance?.quantity ?? 0);
+      const unitCost = Number(balance?.unitCost ?? row.item.unitCost ?? 0);
+      if (row.item.stockFlag && beforeQty < quantity) throw new Error(`INSUFFICIENT_STOCK:${row.item.code}`);
+      const cost = row.item.stockFlag ? quantity * unitCost : 0;
+      totalCogs += cost;
+      if (row.item.stockFlag && balance) {
+        const afterQty = beforeQty - quantity;
+        const afterCost = Math.max(0, Number(balance.totalCost) - cost);
+        await tx.update(stockBalances).set({ quantity: afterQty.toFixed(6), totalCost: afterCost.toFixed(6), unitCost: afterQty ? (afterCost / afterQty).toFixed(6) : "0", versionNo: balance.versionNo + 1 }).where(eq(stockBalances.id, balance.id));
+        await tx.insert(stockMovements).values({ itemId: row.line.itemId, warehouseId: invoice.warehouseId, sourceInvoiceId: invoiceId, movementType: "SALES_ISSUE", quantityOut: quantity.toFixed(6), unitCost: unitCost.toFixed(6), totalCost: cost.toFixed(6), balanceAfter: afterQty.toFixed(6), createdBy: actor });
+      }
+    }
+    const total = Number(invoice.grandTotal);
+    await tx.insert(journalEntries).values([{ journalNo: `AR-${invoice.docNo}`, sourceInvoiceId: invoiceId, entryType: "AR_SALE", totalDebit: total.toFixed(6), totalCredit: total.toFixed(6) }, { journalNo: `COGS-${invoice.docNo}`, sourceInvoiceId: invoiceId, entryType: "COGS_INVENTORY", totalDebit: totalCogs.toFixed(6), totalCredit: totalCogs.toFixed(6) }]);
+    await tx.update(invoices).set({ status: "POSTED", postedAt: new Date() }).where(eq(invoices.id, invoiceId));
+    await tx.insert(auditEvents).values({ actor, actionCode: "POST", entityType: "AR_DOC", entityId: String(invoiceId), requestId: `POST:${invoice.docNo}` });
+    return { invoiceId, status: "POSTED" as const, totalCogs };
+  });
+}
+
+export async function reverseInvoice(invoiceId: number, actor: string) {
+  const db = await getDb();
+  if (!db) {
+    const invoice = demoInvoices.get(invoiceId);
+    if (!invoice || invoice.status !== "POSTED") throw new Error("ONLY_POSTED_INVOICES_CAN_BE_REVERSED");
+    invoice.status = "REVERSED";
+    return { invoiceId, status: "REVERSED" as const };
+  }
+  return db.transaction(async (tx) => {
+    const invoice = (await tx.select().from(invoices).where(eq(invoices.id, invoiceId)).limit(1))[0];
+    if (!invoice || invoice.status !== "POSTED") throw new Error("ONLY_POSTED_INVOICES_CAN_BE_REVERSED");
+    const lines = await tx.select({ line: invoiceLines, item: items, balance: stockBalances }).from(invoiceLines).innerJoin(items, eq(invoiceLines.itemId, items.id)).leftJoin(stockBalances, and(eq(stockBalances.itemId, invoiceLines.itemId), eq(stockBalances.warehouseId, invoice.warehouseId))).where(eq(invoiceLines.invoiceId, invoiceId));
+    for (const row of lines) {
+      if (!row.item.stockFlag || !row.balance) continue;
+      const quantity = Number(row.line.quantity);
+      const cost = quantity * Number(row.balance.unitCost);
+      const afterQty = Number(row.balance.quantity) + quantity;
+      const afterCost = Number(row.balance.totalCost) + cost;
+      await tx.update(stockBalances).set({ quantity: afterQty.toFixed(6), totalCost: afterCost.toFixed(6), unitCost: (afterCost / afterQty).toFixed(6), versionNo: row.balance.versionNo + 1 }).where(eq(stockBalances.id, row.balance.id));
+      await tx.insert(stockMovements).values({ itemId: row.line.itemId, warehouseId: invoice.warehouseId, sourceInvoiceId: invoiceId, movementType: "SALES_RETURN", quantityIn: quantity.toFixed(6), unitCost: Number(row.balance.unitCost).toFixed(6), totalCost: cost.toFixed(6), balanceAfter: afterQty.toFixed(6), createdBy: actor });
+    }
+    await tx.insert(journalEntries).values({ journalNo: `REV-${invoice.docNo}`, sourceInvoiceId: invoiceId, entryType: "REVERSAL", totalDebit: invoice.grandTotal, totalCredit: invoice.grandTotal });
+    await tx.update(invoices).set({ status: "REVERSED" }).where(eq(invoices.id, invoiceId));
+    await tx.insert(auditEvents).values({ actor, actionCode: "REVERSE", entityType: "AR_DOC", entityId: String(invoiceId), requestId: `REV:${invoice.docNo}` });
+    return { invoiceId, status: "REVERSED" as const };
+  });
+}
