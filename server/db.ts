@@ -234,10 +234,12 @@ export async function getWindowContract(legacyForm: string) {
   const domain = row?.domainCode || runtime?.domain || "OTHER";
   const moduleByDomain: Record<string, string[]> = { AR: ["receivables-core.js", "commercial-invoice-core.js", "invoice-posting-core.js", "document-cycle-core.js"], AP: ["business-operations-core.js", "commercial-invoice-core.js", "document-cycle-core.js"], GL: ["accounting-core.js", "commercial-accounting-core.js", "chart-of-accounts-core.js", "period-close-core.js"], INVENTORY: ["business-operations-core.js", "invoice-posting-core.js"], POS: ["business-operations-core.js", "commercial-invoice-core.js"], HR: ["business-operations-core.js"] };
   const actions = unified?.actions?.split("|").filter(Boolean) || ["initialize", "query", "new", "validate", "save", "update", "delete", "approve", "post", "reverse", "print", "refresh", "exit"];
+  const evidence = (value?: string) => (value || "").split(/[;|]/).map((item) => item.trim()).filter(Boolean).slice(0, 40);
   return {
     legacyForm: `${form}.fmx`, screenName: row?.screenName || form, domain, parentId: row?.parentId || "ROOT",
     source: { manifest: Boolean(manifest), runtime: Boolean(runtime), fields: Boolean(fields), unified: Boolean(unified), specification: `legacy-source/all_window_specs/${form}.rebuild.md` },
     counts: { fields: Number(fields?.fields || unified?.window_field_evidence_count || runtime?.observed_field_count || 0), procedures: Number(manifest?.procedures || runtime?.observed_procedure_count || row?.observedProcedures || 0), triggers: Number(manifest?.triggers || runtime?.observed_trigger_count || row?.observedTriggers || 0), tables: Number(manifest?.tables || runtime?.observed_table_count || row?.observedTableIndicators || 0) },
+    evidence: { fields: evidence(fields?.fields), procedures: evidence(fields?.procedures || runtime?.legacy_packages), triggers: evidence(fields?.triggers), tables: evidence(fields?.tables) },
     actions, coreApi: unified?.core_api || runtime?.core_api || `ONEX_${domain.replace(/[^A-Z]/gi, "_")}_WINDOW_API`,
     midoModules: moduleByDomain[domain.split("/")[0].toUpperCase()] || ["business-operations-core.js", "document-cycle-core.js"],
     status: unified?.production_status || "NOT_READY_FOR_PRODUCTION", specificationPath: `legacy-source/all_window_specs/${form}.rebuild.md`,

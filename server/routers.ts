@@ -22,6 +22,11 @@ export const appRouter = router({
     tree: publicProcedure.query(() => getSystemTree()),
     sources: publicProcedure.query(() => getCatalogSources()),
     contract: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160) })).query(({ input }) => getWindowContract(input.legacyForm)),
+    executeAction: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160), action: z.string().min(1).max(80) })).mutation(async ({ input }) => {
+      const contract = await getWindowContract(input.legacyForm);
+      if (!contract.actions.includes(input.action)) throw new Error("ACTION_NOT_ALLOWED_FOR_WINDOW");
+      return { ok: true, mode: "SAFE_SIMULATION", legacyForm: contract.legacyForm, action: input.action, message: `تم تسجيل طلب ${input.action} في سجل التشغيل التجريبي. يتطلب التنفيذ الفعلي اتصال Oracle وصلاحية معتمدة.` };
+    }),
   }),
   ai: router({
     assist: publicProcedure.input(z.object({

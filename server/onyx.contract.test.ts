@@ -75,6 +75,14 @@ describe("Onyx rebuild contracts", () => {
     expect(contract.specificationPath).toContain("all_window_specs");
   });
 
+  it("executes only declared window actions in safe simulation mode", async () => {
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.windows.executeAction({ legacyForm: "ERP_LOGIN.fmx", action: "query" });
+    expect(result.ok).toBe(true);
+    expect(result.mode).toBe("SAFE_SIMULATION");
+    await expect(caller.windows.executeAction({ legacyForm: "ERP_LOGIN.fmx", action: "drop_database" })).rejects.toBeTruthy();
+  });
+
   it("supports demo atomic create, post, and reversal lifecycle", async () => {
     const caller = appRouter.createCaller(ctx);
     const created = await caller.invoices.create({ docNo: `ATOMIC-${Date.now()}`, customerId: 1, warehouseId: 1, actor: "test", lines: [{ itemId: 1, quantity: "2", unitPrice: "100", taxAmount: "15" }] });
