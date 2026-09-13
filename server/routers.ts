@@ -5,6 +5,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
 import { LOCAL_COOKIE } from "./_core/localAuth";
+import { executeOracleAction, getOracleBridgeStatus } from "./_core/oracleBridge";
 import { createInvoice, getCatalogSources, getDashboard, getErpControlData, getFinancialReportCatalog, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, receiveStock, reverseInvoice, runFinancialReport, saveAccount, saveCustomer, saveItem, saveJournal, saveSupplier, searchCustomers, searchInvoices, searchItems, searchJournals, searchSuppliers, searchSystemUsers } from "./db";
 
 const invoiceLine = z.object({ itemId: z.number().int().positive(), quantity: z.string().min(1), unitPrice: z.string().min(1), taxAmount: z.string().default("0") });
@@ -21,6 +22,7 @@ export const appRouter = router({
   dashboard: publicProcedure.query(() => getDashboard()),
   masterData: publicProcedure.query(() => getMasterData()),
   controlData: publicProcedure.query(() => getErpControlData()),
+  oracle: router({ status: publicProcedure.query(() => getOracleBridgeStatus()) }),
   reports: router({
     catalog: publicProcedure.query(() => getFinancialReportCatalog()),
     run: publicProcedure.input(z.object({ reportCode: z.enum(["GLSR001", "ARSR041", "MRPREP001"]), search: z.string().optional(), limit: z.number().int().min(1).max(500).default(100) })).query(({ input }) => runFinancialReport(input)),
@@ -51,7 +53,7 @@ export const appRouter = router({
     executeAction: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160), action: z.string().min(1).max(80) })).mutation(async ({ input }) => {
       const contract = await getWindowContract(input.legacyForm);
       if (!contract.actions.includes(input.action)) throw new Error("ACTION_NOT_ALLOWED_FOR_WINDOW");
-      return { ok: true, mode: "SAFE_SIMULATION", legacyForm: contract.legacyForm, action: input.action, message: `تم تسجيل طلب ${input.action} في سجل التشغيل التجريبي. يتطلب التنفيذ الفعلي اتصال Oracle وصلاحية معتمدة.` };
+      return executeOracleAction({ legacyForm: contract.legacyForm, action: input.action, coreApi: contract.coreApi, procedures: contract.evidence.procedures, actor: "workbench.user" });
     }),
   }),
   ai: router({
