@@ -1,0 +1,12 @@
+﻿module,windows,reports,window_bytes,report_bytes
+AP/purchasing,59,0,24458336,0
+AR/accounts-receivable,106,0,41017916,0
+GL/finance,78,453,34759564,196591616
+HR,210,833,78495588,210038784
+MRP/treasury,162,533,32514756,161992704
+POS,53,208,33489064,43118592
+admin/system,67,0,160394232,0
+assets/maintenance,76,150,24695248,39411712
+inventory/stock,100,0,36825220,0
+other,587,5,149042016,1867776
+reports,0,4431,0,989129177

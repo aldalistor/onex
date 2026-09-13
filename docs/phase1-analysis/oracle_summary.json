@@ -1,0 +1,11 @@
+{
+  "dump_bytes": 42614784,
+  "ddl_objects": 1116,
+  "by_kind": {
+    "sequence": 13,
+    "table": 925,
+    "type": 1,
+    "view": 177
+  },
+  "erp_name_candidates": 1014
+}

@@ -1,0 +1,76 @@
+{
+  "all_files": 11834,
+  "windows": 1498,
+  "reports": 6613,
+  "libraries": 30,
+  "sql_files": 86,
+  "direct_navigation_edges": 701,
+  "modules": {
+    "admin/system": {
+      "windows": 67,
+      "reports": 0,
+      "window_bytes": 160394232,
+      "report_bytes": 0
+    },
+    "other": {
+      "windows": 587,
+      "reports": 5,
+      "window_bytes": 149042016,
+      "report_bytes": 1867776
+    },
+    "inventory/stock": {
+      "windows": 100,
+      "reports": 0,
+      "window_bytes": 36825220,
+      "report_bytes": 0
+    },
+    "HR": {
+      "windows": 210,
+      "reports": 833,
+      "window_bytes": 78495588,
+      "report_bytes": 210038784
+    },
+    "assets/maintenance": {
+      "windows": 76,
+      "reports": 150,
+      "window_bytes": 24695248,
+      "report_bytes": 39411712
+    },
+    "AP/purchasing": {
+      "windows": 59,
+      "reports": 0,
+      "window_bytes": 24458336,
+      "report_bytes": 0
+    },
+    "AR/accounts-receivable": {
+      "windows": 106,
+      "reports": 0,
+      "window_bytes": 41017916,
+      "report_bytes": 0
+    },
+    "GL/finance": {
+      "windows": 78,
+      "reports": 453,
+      "window_bytes": 34759564,
+      "report_bytes": 196591616
+    },
+    "MRP/treasury": {
+      "windows": 162,
+      "reports": 533,
+      "window_bytes": 32514756,
+      "report_bytes": 161992704
+    },
+    "POS": {
+      "windows": 53,
+      "reports": 208,
+      "window_bytes": 33489064,
+      "report_bytes": 43118592
+    },
+    "reports": {
+      "windows": 0,
+      "reports": 4431,
+      "window_bytes": 0,
+      "report_bytes": 989129177
+    }
+  }
+}

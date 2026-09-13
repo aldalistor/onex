@@ -1,0 +1,733 @@
+[
+  {
+    "file": "Areports/Balance.sql",
+    "bytes": 2175,
+    "lines": 45,
+    "tables_or_views": [
+      "Account",
+      "Customer"
+    ]
+  },
+  {
+    "file": "Areports/YSERP_TRL1.sql",
+    "bytes": 60317,
+    "lines": 1883,
+    "tables_or_views": [
+      "FORM_DETAIL",
+      "FORM_DETASCR_THEME_NOIL",
+      "IAS_DOCJV_TYPE_SYSTEMS",
+      "IAS_DOCJV_TYPE_SYSTEMS_MST",
+      "IAS_FORM_NAME",
+      "PRIVILEGE",
+      "Quota",
+      "S_FLAGS",
+      "S_LOV_SLCT",
+      "TRL_EXT_PRMSSN_TANK",
+      "TRL_GNR_CODE_DTL",
+      "TRL_GNR_CODE_MST",
+      "TRL_LOAD_TANK",
+      "TRL_OWNERS",
+      "TRL_PLAN_STN_MST",
+      "TRL_RSRV_TANKS",
+      "TRL_TANKS",
+      "TRL_TANK_CHK_MST",
+      "TRL_TANK_ENTRY_DTL",
+      "TRL_TANK_ENTRY_MST",
+      "TRL_TANK_INACDNT",
+      "Tank"
+    ]
+  },
+  {
+    "file": "Dll/YSERP_TRL1.sql",
+    "bytes": 60317,
+    "lines": 1883,
+    "tables_or_views": [
+      "FORM_DETAIL",
+      "FORM_DETASCR_THEME_NOIL",
+      "IAS_DOCJV_TYPE_SYSTEMS",
+      "IAS_DOCJV_TYPE_SYSTEMS_MST",
+      "IAS_FORM_NAME",
+      "PRIVILEGE",
+      "Quota",
+      "S_FLAGS",
+      "S_LOV_SLCT",
+      "TRL_EXT_PRMSSN_TANK",
+      "TRL_GNR_CODE_DTL",
+      "TRL_GNR_CODE_MST",
+      "TRL_LOAD_TANK",
+      "TRL_OWNERS",
+      "TRL_PLAN_STN_MST",
+      "TRL_RSRV_TANKS",
+      "TRL_TANKS",
+      "TRL_TANK_CHK_MST",
+      "TRL_TANK_ENTRY_DTL",
+      "TRL_TANK_ENTRY_MST",
+      "TRL_TANK_INACDNT",
+      "Tank"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewCompoundTrig.sql",
+    "bytes": 2047,
+    "lines": 70,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/Newfunc.sql",
+    "bytes": 1087,
+    "lines": 35,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/Newpack.sql",
+    "bytes": 2023,
+    "lines": 73,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewPackage.sql",
+    "bytes": 607,
+    "lines": 17,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewPackageBody.sql",
+    "bytes": 720,
+    "lines": 25,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewPkgFunc.sql",
+    "bytes": 346,
+    "lines": 11,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewPkgProc.sql",
+    "bytes": 343,
+    "lines": 12,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/Newproc.sql",
+    "bytes": 1056,
+    "lines": 34,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/Newtrig.sql",
+    "bytes": 1252,
+    "lines": 39,
+    "tables_or_views": [
+      "dual",
+      "tmpVar"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewType.sql",
+    "bytes": 632,
+    "lines": 17,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewTypeBody.sql",
+    "bytes": 711,
+    "lines": 25,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewTypeFunc.sql",
+    "bytes": 353,
+    "lines": 11,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/User Files/NewTypeProc.sql",
+    "bytes": 350,
+    "lines": 12,
+    "tables_or_views": []
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/control_file.sql",
+    "bytes": 230,
+    "lines": 13,
+    "tables_or_views": [
+      "V$CONTROLFILE"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/cpu.sql",
+    "bytes": 2875,
+    "lines": 70,
+    "tables_or_views": [
+      "v$session"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/db.sql",
+    "bytes": 148,
+    "lines": 10,
+    "tables_or_views": [
+      "V$DATABASE"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/directory.sql",
+    "bytes": 243,
+    "lines": 13,
+    "tables_or_views": [
+      "DBA_DIRECTORIES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/init.sql",
+    "bytes": 384,
+    "lines": 16,
+    "tables_or_views": [
+      "V$PARAMETER"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/io.sql",
+    "bytes": 841,
+    "lines": 33,
+    "tables_or_views": [
+      "v$tablespace"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/io_wait.sql",
+    "bytes": 444,
+    "lines": 20,
+    "tables_or_views": [
+      "dba_extents"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/lock.sql",
+    "bytes": 1117,
+    "lines": 50,
+    "tables_or_views": [
+      "v$lock"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/profile.sql",
+    "bytes": 147,
+    "lines": 10,
+    "tables_or_views": [
+      "DBA_PROFILES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/rbs.sql",
+    "bytes": 531,
+    "lines": 27,
+    "tables_or_views": [
+      "dba_rollback_segs"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/rbs_activity.sql",
+    "bytes": 444,
+    "lines": 18,
+    "tables_or_views": [
+      "V$ROLLNAME"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/rbs_off.sql",
+    "bytes": 409,
+    "lines": 23,
+    "tables_or_views": [
+      "dba_rollback_segs",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/rbs_on.sql",
+    "bytes": 406,
+    "lines": 23,
+    "tables_or_views": [
+      "dba_rollback_segs",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/redo_log.sql",
+    "bytes": 337,
+    "lines": 15,
+    "tables_or_views": [
+      "V$LOG"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/role.sql",
+    "bytes": 148,
+    "lines": 10,
+    "tables_or_views": [
+      "DBA_ROLES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/role_granted.sql",
+    "bytes": 313,
+    "lines": 14,
+    "tables_or_views": [
+      "DBA_ROLE_PRIVS",
+      "SYS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/role_granted_role.sql",
+    "bytes": 318,
+    "lines": 14,
+    "tables_or_views": [
+      "DBA_ROLES",
+      "SYS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/role_user.sql",
+    "bytes": 643,
+    "lines": 37,
+    "tables_or_views": [
+      "SYS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/role_user_granted.sql",
+    "bytes": 816,
+    "lines": 41,
+    "tables_or_views": [
+      "SYS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/role_user_granted_role.sql",
+    "bytes": 821,
+    "lines": 41,
+    "tables_or_views": [
+      "SYS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/session_events.sql",
+    "bytes": 308,
+    "lines": 15,
+    "tables_or_views": [
+      "V$SESSION_EVENT"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/sga.sql",
+    "bytes": 1691,
+    "lines": 70,
+    "tables_or_views": [
+      "v$sgastat"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/system_events.sql",
+    "bytes": 510,
+    "lines": 18,
+    "tables_or_views": [
+      "V$SYSTEM_EVENT"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/throw_extent.sql",
+    "bytes": 1435,
+    "lines": 34,
+    "tables_or_views": [
+      "dba_data_files",
+      "dba_segments"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/tspc.sql",
+    "bytes": 3373,
+    "lines": 94,
+    "tables_or_views": [
+      "dba_free_space",
+      "sys",
+      "v$parameter"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/tspc_coal.sql",
+    "bytes": 389,
+    "lines": 22,
+    "tables_or_views": [
+      "dba_tablespaces",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/tspc_default.sql",
+    "bytes": 490,
+    "lines": 23,
+    "tables_or_views": [
+      "dba_users"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/tspc_off.sql",
+    "bytes": 411,
+    "lines": 23,
+    "tables_or_views": [
+      "dba_tablespaces",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/tspc_on.sql",
+    "bytes": 408,
+    "lines": 23,
+    "tables_or_views": [
+      "dba_tablespaces",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/users.sql",
+    "bytes": 460,
+    "lines": 21,
+    "tables_or_views": [
+      "dba_users"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/version.sql",
+    "bytes": 327,
+    "lines": 11,
+    "tables_or_views": [
+      "v$database",
+      "v$parameter",
+      "v$version"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/what.sql",
+    "bytes": 374,
+    "lines": 15,
+    "tables_or_views": [
+      "sys"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/when.sql",
+    "bytes": 178,
+    "lines": 9,
+    "tables_or_views": [
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/who.sql",
+    "bytes": 442,
+    "lines": 20,
+    "tables_or_views": [
+      "v$session"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/DBA/whoami.sql",
+    "bytes": 140,
+    "lines": 9,
+    "tables_or_views": [
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/aq.sql",
+    "bytes": 418,
+    "lines": 19,
+    "tables_or_views": [
+      "DBA_QUEUES",
+      "DBA_QUEUE_TABLES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/cluster.sql",
+    "bytes": 726,
+    "lines": 21,
+    "tables_or_views": [
+      "DBA_CLUSTERS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/context.sql",
+    "bytes": 177,
+    "lines": 11,
+    "tables_or_views": [
+      "DBA_CONTEXT"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/count_all.sql",
+    "bytes": 411,
+    "lines": 23,
+    "tables_or_views": [
+      "user_tables"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/dblink.sql",
+    "bytes": 603,
+    "lines": 23,
+    "tables_or_views": [
+      "DBA_DB_LINKS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/dimension.sql",
+    "bytes": 264,
+    "lines": 13,
+    "tables_or_views": [
+      "DBA_DIMENSIONS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/fk.sql",
+    "bytes": 290,
+    "lines": 12,
+    "tables_or_views": [
+      "user_constraints"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/fk_no_index.sql",
+    "bytes": 1002,
+    "lines": 30,
+    "tables_or_views": [
+      "ALL_CONS_COLUMNS",
+      "ALL_IND_COLUMNS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/fk_off.sql",
+    "bytes": 469,
+    "lines": 25,
+    "tables_or_views": [
+      "dual",
+      "user_constraints"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/fk_on.sql",
+    "bytes": 464,
+    "lines": 24,
+    "tables_or_views": [
+      "dual",
+      "user_constraints"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/index.sql",
+    "bytes": 252,
+    "lines": 14,
+    "tables_or_views": [
+      "DBA_INDEXES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/index_columns.sql",
+    "bytes": 855,
+    "lines": 28,
+    "tables_or_views": [
+      "DBA_INDEXES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/index_overkill.sql",
+    "bytes": 277,
+    "lines": 13,
+    "tables_or_views": [
+      "ALL_INDEXES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/index_partitioned.sql",
+    "bytes": 992,
+    "lines": 25,
+    "tables_or_views": [
+      "DBA_INDEXES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/index_similar.sql",
+    "bytes": 809,
+    "lines": 25,
+    "tables_or_views": [
+      "ALL_IND_COLUMNS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/job.sql",
+    "bytes": 401,
+    "lines": 16,
+    "tables_or_views": [
+      "DBA_JOBS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/library.sql",
+    "bytes": 364,
+    "lines": 17,
+    "tables_or_views": [
+      "DBA_LIBRARIES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/object_type.sql",
+    "bytes": 344,
+    "lines": 15,
+    "tables_or_views": [
+      "DBA_TYPE_ATTRS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/operator.sql",
+    "bytes": 202,
+    "lines": 11,
+    "tables_or_views": [
+      "DBA_OPERATORS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/outline.sql",
+    "bytes": 240,
+    "lines": 13,
+    "tables_or_views": [
+      "DBA_OUTLINES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/pk.sql",
+    "bytes": 266,
+    "lines": 12,
+    "tables_or_views": [
+      "user_constraints"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/pk_off.sql",
+    "bytes": 647,
+    "lines": 30,
+    "tables_or_views": [
+      "dual",
+      "user_constraints"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/pk_on.sql",
+    "bytes": 642,
+    "lines": 29,
+    "tables_or_views": [
+      "dual",
+      "user_constraints"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/sequence.sql",
+    "bytes": 459,
+    "lines": 17,
+    "tables_or_views": [
+      "DBA_SEQUENCES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/snapshot.sql",
+    "bytes": 511,
+    "lines": 26,
+    "tables_or_views": [
+      "DBA_SNAPSHOTS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/snapshot_log.sql",
+    "bytes": 287,
+    "lines": 14,
+    "tables_or_views": [
+      "DBA_SNAPSHOT_LOGS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/table.sql",
+    "bytes": 230,
+    "lines": 14,
+    "tables_or_views": [
+      "DBA_TABLES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/table_no_index.sql",
+    "bytes": 333,
+    "lines": 17,
+    "tables_or_views": [
+      "ALL_INDEXES",
+      "ALL_TABLES"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/table_partitioned.sql",
+    "bytes": 463,
+    "lines": 18,
+    "tables_or_views": [
+      "SYS"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/trig.sql",
+    "bytes": 386,
+    "lines": 16,
+    "tables_or_views": [
+      "all_triggers"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/trig_off.sql",
+    "bytes": 418,
+    "lines": 24,
+    "tables_or_views": [
+      "all_triggers",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/trig_on.sql",
+    "bytes": 415,
+    "lines": 24,
+    "tables_or_views": [
+      "all_triggers",
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/version.sql",
+    "bytes": 327,
+    "lines": 11,
+    "tables_or_views": [
+      "v$database",
+      "v$parameter",
+      "v$version"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/when.sql",
+    "bytes": 178,
+    "lines": 9,
+    "tables_or_views": [
+      "dual"
+    ]
+  },
+  {
+    "file": "Toad for Oracle 9.5 Portable/ScriptMgr/Schema Objects/whoami.sql",
+    "bytes": 140,
+    "lines": 9,
+    "tables_or_views": [
+      "dual"
+    ]
+  }
+]
