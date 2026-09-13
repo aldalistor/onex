@@ -1,0 +1,804 @@
+!This program cannot be run in DOS mode.
+Richj
+.text
+`.rdata
+@.data
+.rsrc
+@.reloc
+SVWh
+D$(P
+uiSV3
+t_h,
+;(rU
+VPVj0
+s$_r
+;5l9
+Ww!j
+NWVS
+u7WPS
+u&WVS
+_^[]
+QSVW
+QQSVWd
+4SVW
+PhYY
+X_^[]
+SVWUj
+]_^[
+t.;t$$t(
+uRFGHt
+Yt)W3
+SVWj
+j@Y3
+Wj@Y3
+t7SW
+@AA;
+wBVSP
+u>Wj
+j?I_
+ulSj
+uY;]
+pD#U
+j #M
+j?^;
+X_^[
+t:jtj
+Yt)V
+@PP:
+u?jtj
+Yt&V
+FP=P:
+HSVWh
+t9UW
+?=t"U
+QQS3
+PSSW
+8"uD
+8"uF@
+8"u,
+@@f9
+SS@SSPVSS
+t#SSUP
+t$$VSS
+_^][YY
+A=0:
+t&:a
+8csm
+u,9x
+X_^]
+ub9~
+YY_^[
+QQVW
+sO;>|C;~
+u Vj
+u SW
+?csm
+YYPW
+QQSVW
+9p`t
+u+Vj
+VC20XC00U
+SVWU
+tEVU
+t3x<
+^_[3
+PPPPPPPP
+uFWWj
+"WWSh
+9} u
+E WW
+tMWWS
+t@9}
+eYt,F
+80t<
+^[_3
+VWuBh
+tzVS
+GIt%
+t/Ku
+SVWu
+^}%95
+t!CS
+1_^[
+PPPP
+@PWV
+SVWf
+t%WV
+SVW3
+Yu!j
+HSVHWtgHHtF
+NTuI
+\SVW
++ttHHtd
+FGQPS
+~&WP
+tYPV
+YYF;5
+tAVW
+VWsr
+u/9F
+PPhj
+Pl_^
+tWS3
+QSUVWj
+n0SSSSU
+_SSSSU
+Ph_^][Y
+9Q\u
+9y`u
+;qdt
+V9l$
+VVUVS
+_^][
+SUVW
+UUWP
+_^][Y
+tuHHt
+tD9_Pt?
+9X tn
+~0PPW
+E SVj
+(wqt\HHtS
+tFHt>
+t>Ht Ht
+u<9E
+t59~
+u09=hf
+9=hf
+j@jP
+hWj@_;
+QQSV
+tBSh
+@SVW
+btZ-
+9p$u
+,SVW
+t39w
+9w u
+^$tL
+t7j,
+tMVW
+>(r-
+9HPu
+u,;C
+_^[d
+<VWj
+VwltB
+r0=8
+97_u
+tShP
+^[+E
+F _^
+F ^d
+SShv
+;Nxu
+_j X;
+QQUV
+_^]YY
+t#;^
+9^xu2
+Vu4j
+u5SVW
+uTVW
+PWVWWW
+WVWWW
+QQV3
+j@j<
+QSUV
+^,_^][
+CWinApp
+PreviewPages
+Settings
+CWinThread
+CCmdTarget
+.INI
+.HLP
+combobox
+software
+CObject
+CTempGdiObject
+CTempDC
+CGdiObject
+CUserException
+CResourceException
+CNotSupportedException
+CMemoryException
+CException
+CTempWnd
+CWnd
+AfxOldWndProc423
+AfxWnd42s
+AfxControlBar42s
+AfxMDIFrame42s
+AfxFrameOrView42s
+AfxOleControl42s
+GetMonitorInfoA
+EnumDisplayMonitors
+MonitorFromPoint
+MonitorFromRect
+MonitorFromWindow
+GetSystemMetrics
+USER32
+DISPLAY
+commctrl_DragListMsg
+InitCommonControlsEx
+COMCTL32.DLL
+CMapPtrToPtr
+CTempMenu
+CMenu
+?H:mm:ss
+dddd, MMMM dd, yyyy
+M/d/yy
+December
+November
+October
+September
+August
+July
+June
+April
+March
+February
+January
+Saturday
+Friday
+Thursday
+Wednesday
+Tuesday
+Monday
+Sunday
+runtime error
+TLOSS error
+SING error
+DOMAIN error
+R6028
+- unable to initialize heap
+R6027
+- not enough space for lowio initialization
+R6026
+- not enough space for stdio initialization
+R6025
+- pure virtual function call
+R6024
+- not enough space for _onexit/atexit table
+R6019
+- unable to open console device
+R6018
+- unexpected heap error
+R6017
+- unexpected multithread lock error
+R6016
+- not enough space for thread data
+abnormal program termination
+R6009
+- not enough space for environment
+R6008
+- not enough space for arguments
+R6002
+- floating point not loaded
+Microsoft Visual C++ Runtime Library
+Runtime Error!
+Program:
+<program name unknown>
+GAIsProcessorFeaturePresent
+KERNEL32
+e+000
+frexp
+fmod
+_hypot
+_cabs
+ldexp
+modf
+fabs
+floor
+ceil
+sqrt
+atan2
+atan
+acos
+asin
+tanh
+cosh
+sinh
+log10
+SunMonTueWedThuFriSat
+JanFebMarAprMayJunJulAugSepOctNovDec
+(8PX
+700WP
+`h````
+ppxxxx
+(null)
+GetLastActivePopup
+GetActiveWindow
+MessageBoxA
+user32.dll
+1#QNAN
+1#INF
+1#IND
+1#SNAN
+WTSQuerySessionInformationA
+WTSAPI32.dll
+GetCurrentThreadId
+GetCurrentThread
+lstrcmpiA
+lstrcmpA
+GlobalDeleteAtom
+GlobalAlloc
+GlobalLock
+GetModuleFileNameA
+CloseHandle
+InterlockedIncrement
+InterlockedDecrement
+lstrlenA
+WideCharToMultiByte
+MultiByteToWideChar
+lstrcpynA
+LocalAlloc
+LocalFree
+InitializeCriticalSection
+TlsAlloc
+DeleteCriticalSection
+GlobalFree
+GlobalUnlock
+GlobalHandle
+TlsFree
+LeaveCriticalSection
+GlobalReAlloc
+EnterCriticalSection
+TlsSetValue
+LocalReAlloc
+TlsGetValue
+SetErrorMode
+lstrcatA
+lstrcpyA
+GetVersion
+GlobalFlags
+WritePrivateProfileStringA
+SetLastError
+GetProcAddress
+GetModuleHandleA
+GetLastError
+GlobalFindAtomA
+GlobalAddAtomA
+GlobalGetAtomNameA
+FreeLibrary
+LoadLibraryA
+GetProcessVersion
+GetCurrentProcess
+WriteFile
+SetFilePointer
+FlushFileBuffers
+GetCPInfo
+GetOEMCP
+HeapAlloc
+GetCommandLineA
+RtlUnwind
+ExitProcess
+TerminateProcess
+HeapFree
+RaiseException
+HeapSize
+HeapReAlloc
+GetACP
+HeapDestroy
+HeapCreate
+VirtualFree
+VirtualAlloc
+IsBadWritePtr
+SetHandleCount
+GetStdHandle
+GetFileType
+GetStartupInfoA
+FreeEnvironmentStringsA
+FreeEnvironmentStringsW
+GetEnvironmentStrings
+GetEnvironmentStringsW
+LCMapStringA
+LCMapStringW
+SetUnhandledExceptionFilter
+GetStringTypeA
+GetStringTypeW
+IsBadReadPtr
+IsBadCodePtr
+SetStdHandle
+KERNEL32.dll
+PostQuitMessage
+PostMessageA
+SendMessageA
+SetCursor
+EnableWindow
+GetWindowLongA
+IsWindowEnabled
+GetParent
+SetWindowsHookExA
+GetCursorPos
+PeekMessageA
+IsWindowVisible
+ValidateRect
+CallNextHookEx
+GetKeyState
+DispatchMessageA
+TranslateMessage
+GetMessageA
+GetNextDlgTabItem
+GetFocus
+EnableMenuItem
+CheckMenuItem
+SetMenuItemBitmaps
+ModifyMenuA
+GetMenuState
+LoadBitmapA
+GetMenuCheckMarkDimensions
+UnhookWindowsHookEx
+UnregisterClassA
+GetClassNameA
+PtInRect
+GetWindowRect
+GetDlgCtrlID
+GetWindow
+ClientToScreen
+SetWindowTextA
+GetWindowTextA
+wsprintfA
+GetMenuItemCount
+GetDC
+ReleaseDC
+TabbedTextOutA
+DrawTextA
+GrayStringA
+GetDlgItem
+SetWindowLongA
+SetWindowPos
+ShowWindow
+SetFocus
+GetWindowPlacement
+IsIconic
+SystemParametersInfoA
+RegisterWindowMessageA
+SetForegroundWindow
+GetForegroundWindow
+GetMessagePos
+GetMessageTime
+RemovePropA
+CallWindowProcA
+GetPropA
+SetPropA
+GetClassLongA
+CreateWindowExA
+DestroyWindow
+DefWindowProcA
+GetMenuItemID
+GetSubMenu
+GetMenu
+RegisterClassA
+GetClassInfoA
+WinHelpA
+GetCapture
+GetTopWindow
+CopyRect
+GetClientRect
+AdjustWindowRectEx
+GetSysColor
+MapWindowPoints
+LoadIconA
+LoadCursorA
+GetSysColorBrush
+LoadStringA
+DestroyMenu
+USER32.dll
+CreateBitmap
+DeleteObject
+DeleteDC
+SaveDC
+RestoreDC
+SelectObject
+GetStockObject
+SetBkColor
+SetTextColor
+SetMapMode
+SetViewportOrgEx
+OffsetViewportOrgEx
+SetViewportExtEx
+ScaleViewportExtEx
+SetWindowExtEx
+ScaleWindowExtEx
+GetClipBox
+GetDeviceCaps
+PtVisible
+RectVisible
+TextOutA
+ExtTextOutA
+Escape
+GetObjectA
+GDI32.dll
+comdlg32.dll
+ClosePrinter
+DocumentPropertiesA
+OpenPrinterA
+WINSPOOL.DRV
+RegCloseKey
+RegCreateKeyExA
+RegOpenKeyExA
+RegSetValueExA
+ADVAPI32.dll
+SHELL32.dll
+COMCTL32.dll
+ole32.dll
+OLEAUT32.dll
+WtsExtn.dll
+GetClientCompName
+Empty CompName
+.?AVCNoTrackObject@@
+.?AV_AFX_WIN_STATE@@
+.?AVCObject@@
+.?AVCCmdTarget@@
+.?AVCWinThread@@
+.?AVCWinApp@@
+.PAVCException@@
+.?AV_AFX_CTL3D_STATE@@
+.?AV_AFX_CTL3D_THREAD@@
+.?AVCCmdUI@@
+.?AVCException@@
+.PAX
+.PAVCObject@@
+.?AUCThreadData@@
+.?AVCHandleMap@@
+.?AV_AFX_THREAD_STATE@@
+.?AVAFX_MODULE_STATE@@
+.?AVAFX_MODULE_THREAD_STATE@@
+.?AV_AFX_BASE_MODULE_STATE@@
+.?AVCDC@@
+.?AVCGdiObject@@
+.?AVCTempDC@@
+.?AVCTempGdiObject@@
+.PAVCSimpleException@@
+.?AVCSimpleException@@
+.?AVCResourceException@@
+.?AVCUserException@@
+.PAVCMemoryException@@
+.?AVCMemoryException@@
+.?AVCNotSupportedException@@
+.?AVCWnd@@
+.?AVCTestCmdUI@@
+.?AVCTempWnd@@
+.?AVCMapPtrToPtr@@
+.?AVCMenu@@
+.?AVCTempMenu@@
+.?AVtype_info@@
+kU'9
+HMXB
+?Zd;
+?/L[
+S;uD
+z?aUY
+D?$?
+U>c{
+zc%C1
+.:3q
+-64OS
+NKeb
+wwwwww
+wwww
+181b1~1M2X2
+3+3P3x3
+4D4t4
+545\5f5r5
+6%6+6N6m6
+7:7L7v7}7
+8)818N8
+989C9J9e9{9
+94:n:t:
+; ;&;i;{;
+0 0)0
+151=1B1N1S1p1v1
+183P3W3_3d3h3l3
+3B4H4L4P4T4
+5;5m5t5x5|5
+5:6k6
+9!949=9I9{9
+:2:8:@:H:S:
+;1;7;
+<!</<<<L<m<y<
+<(=@=G=O=T=X=\=
+=2>8><>@>D>
+?+?]?d?h?l?p?t?x?|?
+40A0f0
+1[1a1
+2(2.2>2E2L2T2{2
+3"3*323:3M3U3
+4O6]6c6}6
+7#7.747>7D7T7Z7
+7D81:<:D:W:]:s:z:
+?"?(?9?R?^?d?q?
+`0x0~0
+121d1n1
+21272D2e2
+2-393C3W3e3r3w3}3
+3'4l4O5h5
+6j6}6
+7!7/7:7M7t7
+848J8Q8?<D<n=s=
+w0|0R1W1
+6$616>6H6R6Z6h6
+637I7|7
+9+9;9Y9
+;C=Y=f=l=q=x=~=
+=j>o>
+3%3L4h4
+6+63696?6
+<!===P=
+>'?A?O?]?h?|?
+0/090B0^0
+2L4c4
+5%5>5n5
+6+7C7
+;6<X<g<
+<$=+=Q=i=
+1k2{2
+7$8l8
+889K9
+:.:3:S:
+> ?%?
+w2}2
+2 333A3]3
+4 454^4{4
+5$5/5;5V5a5m5
+546G6V6e6|6
+6'737H7s7
+<H<~<
+=;=A=F=X=c=p=y=
+>*>3>9>U>
+0!01090
+1'101L1Q1p1
+2@3p3x3
+4(4-4
+5=5E5L5{5
+6 636C6O6V6`6r6
+7U8g8w8
+;>;q;N<`<
+=?=J=w=
+50<0*1G1
+4"4&4*4.42464:4>4B4F4J4N4R4V4Z4^4b4f4j4n4r4v4z4~4
+4e5j5
+5!6t6
+8R8j8o8
+;V;[;
+<2<U<
+>>>}>
+0&0B0N0
+1,1Q153C3k3
+4f5|5
+6'6O6k6
+6?7j7
+7"818G8~8
+809r9
+.070L0S0l0
+2G2X2^2o2
+2P3U3
+404l4
+5\6~6
+7$8B8
+9$9`9
+93:C:L:b:w:
+;(;E;Q;u;
+< <:<A<J<R<a<y<
+=)=5=u=
+==>K>l>
+>%?1?;?@?Q?V?k?
+0$1+1Q1X1
+2 2,21282=2S2b2o2~2
+383e3
+4#4/4P4c4p4w4
+5,5@5K5X5a5g5
+6"6T6Z6f6
+7@7J7V7a7k7w7
+8M8_8|8
+9#9>9Q9^9d9w9
+:1:X:g:
+<%<9<N<a<m<
+=#=5=K=]=q=}=
+>3>F>Y>m>y>
+X3\3x3|3
+4(484<4T4l4
+5 5$5(5,5054585<5@5D5H5L5P5T5X5\5`5h5x5
+6 606T6t6x6|6
+7 7$7(7,7074787<7@7D7H7L7P7T7
+8$8(888H8`8p8
+9 9$9(9,9094989<9@9D9H9L9P9T9X9\9`9d9h9l9p9t9x9|9
+:0:@:T:X:\:`:d:h:l:p:t:x:|:
+;4;L;d;|;
+<$<<<T<l<
+=,=D=X=\=|>
+? ?$?(?,?0?4?<?@?D?H?L?x?|?
+0 0$0(0,000@0P0h0l0p0t0x0
+0<5@5P5X5\5d5h5t5x5
+909H9L9P9T9l9|9
+:(:,:D:T:X:`:x:
+;(;<;L;P;X;p;t;
+<,<<<@<H<`<d<h<|<
+=,=0=8=P=T=X=l=|=
+>,><>@>H>`>d>h>l>
+?4?D?H?P?h?l?p?
+0,0<0@0H0`0d0|0
+1,10181P1d1t1x1
+2(2D2P2l2x2
+3,3P3X3
+4$404L4T4`4|4
+5$5,585T5`5|5
+6<6@6D6H6L6\6h6p6
+6 7,747@7\7h7p7
+8 8<8H8d8p8
+9H9T9\9h9
+0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0t0x0|0
+101P1h1
+202@2X2x2
+3(3@3`3x3
+4 4@4`4
+5(505h5l5p5
+7 7$7(7,7074787
+:$:,:0:@:
+;$=,=4=<=D=L=T=\=d=l=t=|=
+0@3D3H3L3P3T3X3\3`3d3p3
+((((( H
+VS_VERSION_INFO
+StringFileInfo
+040904B0
+CompanyName
+FileDescription
+WtsExtn DLL
+FileVersion
+1, 0, 0, 1
+InternalName
+WtsExtn
+LegalCopyright
+Copyright (C) 2009
+LegalTrademarks
+OriginalFilename
+WtsExtn.DLL
+ProductName
+WtsExtn Dynamic Link Library
+ProductVersion
+VarFileInfo
+Translation
+MS Shell Dlg
+&New
+Cancel
+&Help
+Open
+Save As
+All Files (*.*)
+Untitled
+an unnamed file
+&Hide
+No error message is available.'An unsupported operation was attempted.$A required resource was unavailable.
+Out of memory.
+An unknown error has occurred.
+Invalid filename.
+Failed to open document.
+Failed to save document.
+Save changes to %1? Failed to create empty document.
+The file is too large to open.
+Could not start print job.
+Failed to launch help.
+Internal application error.
+Command failed.)Insufficient memory to perform operation.PSystem registry entries have been removed and the INI file (if any) was deleted.BNot all of the system registry entries (or INI file) were removed.FThis program requires the file %s, which was not found on this system.tThis program is linked to the missing export %s in the file %s. This machine may have an incompatible version of %s.
+#Unable to read write-only property.#Unable to write read-only property.
+Unexpected file format.V%1
+Cannot find this file.
+Please verify that the correct path and file name are given.
+Destination disk drive is full.5Unable to read from %1, it is opened by someone else.AUnable to write to %1, it is read-only or opened by someone else..An unexpected error occurred while reading %1..An unexpected error occurred while writing %1.
+Please enter an integer.
+Please enter a number.*Please enter an integer between %1 and %2.(Please enter a number between %1 and %2.(Please enter no more than %1 characters.
+Please select a button.*Please enter an integer between 0 and 255. Please enter a positive integer. Please enter a date and/or time.
+Please enter a currency.
+No error occurred.-An unknown error occurred while accessing %1.
+%1 was not found.
+%1 contains an invalid path.=%1 could not be opened because there are too many open files.
+Access to %1 was denied..An invalid file handle was associated with %1.<%1 could not be removed because it is the current directory.6%1 could not be created because the directory is full.
+Seek failed on %15A hardware I/O error was reported while accessing %1.0A sharing violation occurred while accessing %1.0A locking violation occurred while accessing %1.
+Disk full while accessing %1..An attempt was made to access %1 past its end.
+No error occurred.-An unknown error occurred while accessing %1./An attempt was made to write to the reading %1..An attempt was made to access %1 past its end.0An attempt was made to read from the writing %1.
+%1 has a bad format."%1 contained an unexpected object. %1 contains an incorrect schema.
+#Unable to load mail system support.
+Mail system DLL is invalid.!Send Mail failed to send message.
+pixels

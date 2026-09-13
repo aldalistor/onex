@@ -1,0 +1,1011 @@
+!This program cannot be run in DOS mode.
+Rich
+.text
+`.rdata
+@.data
+.rsrc
+@.reloc
+D$<j
+L$2WR
+VRWP
+u0PPhH
+xSUV3
+L$(PQ
+j'hH
+SSSj
+j(hH
+SSh,
+t'9^
+uiSV3
+Sh<5
+;(rU
+VPVj0
+s$_r
+QSVW
+QQSVWd
+4SVW
+PhYY
+X_^[]
+SVWUj
+]_^[
+t.;t$$t(
+NWVS
+u7WPS
+u&WVS
+_^[]
+Ww!j
+uRFGHt
+Yt)W3
+SVWj
+j@Y3
+Wj@Y3
+t7SW
+@AA;
+SVWu
+wBVSP
+8csm
+u,9x
+X_^]
+ub9~
+YY_^[
+QQVW
+sO;>|C;~
+u Vj
+u SW
+?csm
+YYPW
+QQSVW
+t:jtj
+Yt)V
+u?jtj
+Yt&V
+9p`t
+u>Wj
+t&:a
+HSVWh
+t9UW
+?=t"U
+QQS3
+PSSW
+8"uD
+8"uF@
+8"u,
+@@f9
+SS@SSPVSS
+t#SSUP
+t$$VSS
+_^][YY
+^_[3
+PPPPPPPP
+uFWWj
+"WWSh
+9} u
+E WW
+tMWWS
+t@9}
+u+Vj
+VC20XC00U
+SVWU
+tEVU
+t3x<
+j?I_
+ulSj
+uY;]
+pD#U
+j #M
+j?^;
+X_^[
+eYt,F
+80t<
+^[_3
+VWuBh
+tzVS
+GIt%
+t/Ku
+^}%95<
+t!CS
+1_^[
+PPPP
+@PWV
+SVWf
+t%WV
+SVW3
+Yu!j
+HSVHWtgHHtF
+NTuI
+\SVW
++ttHHtd
+u.h R
+~&WP
+tYPV
+YYF;5
+FGQPS
+tAVW
+VWsr
+_VWU
+SSWVj
+_^][
+u/9F
+j@jP
+hWj@_;
+t$$SS
+QSUVWj
+n0SSSSU
+_SSSSU
+Ph_^][Y
+9Q\u
+9y`u
+;qdt
+V9l$
+VVUVS
+SUVW
+UUWP
+_^][Y
+tuHHt
+tD9_Pt?
+9X tn
+~0PPW
+E SVj
+(wqt\HHtS
+tFHt>
+t>Ht Ht
+u<9E
+t59~
+u09=
+PPhj
+Pl_^
+tWS3
+QQSV
+tBSh\
+@SVW
+btZ-
+F(T=
+9p$u
+,SVW
+t39w
+9w u
+^$tL
+t7j,
+tMVW
+>(r-
+9HPu
+u,;C
+_^[d
+<VWj
+VwltB
+r0=8
+97_u
+$SVW
+PPPPhd
+SUVWj
+09|$
+tvWWWWU
+ug9|$
+PWhj
+te9|$
+WWWWU
+F,_^][
+^[+E
+F _^
+4SV3
+uSj*
+Yt&h
+YuLf
+~<j j
+NTQP
+WWWWW
+9PRV
+QWWV
+Xt7f
+@Pj@
+t@WP
+j Pj
+X^[_
+Qj<P
+F ^d
+SShv
+_j X;
+;Nxu
+u1j@
+QQUV
+_^]YY
+t#;^
+9^xu2
+Vu4j
+u5SVW
+uTVW
+j@j<
+PWVWWW
+WVWWW
+QQV3
+UVWS
+VVUSVV
+t$ PUSVV
+F<tC
+~`j,j
+;F0v
+tq9w(tlSj
+9w,t
+8{uB
+^,_^][
+CWinThread
+CCmdTarget
+CWinApp
+PreviewPages
+Settings
+RichEdit Text and Objects
+Rich Text Format
+FileNameW
+FileName
+Link Source Descriptor
+Object Descriptor
+Link Source
+Embed Source
+Embedded Object
+ObjectLink
+OwnerLink
+Native
+CNotSupportedException
+CMemoryException
+CException
+COleException
+DISPLAY
+.INI
+.HLP
+CTempWnd
+CWnd
+AfxOldWndProc423
+AfxWnd42s
+AfxControlBar42s
+AfxMDIFrame42s
+AfxFrameOrView42s
+AfxOleControl42s
+GetMonitorInfoA
+EnumDisplayMonitors
+MonitorFromPoint
+MonitorFromRect
+MonitorFromWindow
+GetSystemMetrics
+USER32
+commctrl_DragListMsg
+InitCommonControlsEx
+COMCTL32.DLL
+CObject
+combobox
+software
+CTempGdiObject
+CTempDC
+CGdiObject
+CUserException
+CResourceException
+COleDispatchException
+CMapPtrToPtr
+CTempMenu
+CMenu
+COleBusyDialog
+COleDialog
+%2\CLSID
+%2\Insertable
+%2\protocol\StdFileEditing\verb\0
+&Edit
+%2\protocol\StdFileEditing\server
+CLSID\%1
+CLSID\%1\ProgID
+CLSID\%1\InprocHandler32
+ole32.dll
+CLSID\%1\LocalServer32
+CLSID\%1\Verb\0
+&Edit,0,2
+CLSID\%1\Verb\1
+&Open,0,2
+CLSID\%1\Insertable
+CLSID\%1\AuxUserType\2
+CLSID\%1\AuxUserType\3
+CLSID\%1\DefaultIcon
+%3,%7
+CLSID\%1\MiscStatus
+CLSID\%1\InProcServer32
+CLSID\%1\DocObject
+%2\DocObject
+CLSID\%1\Printable
+CLSID\%1\DefaultExtension
+%9, %8
+CDialog
+Edit
+Helv
+MS Sans Serif
+MS Shell Dlg
+System
+?H:mm:ss
+dddd, MMMM dd, yyyy
+M/d/yy
+December
+November
+October
+September
+August
+July
+June
+April
+March
+February
+January
+Saturday
+Friday
+Thursday
+Wednesday
+Tuesday
+Monday
+Sunday
+runtime error
+TLOSS error
+SING error
+DOMAIN error
+R6028
+- unable to initialize heap
+R6027
+- not enough space for lowio initialization
+R6026
+- not enough space for stdio initialization
+R6025
+- pure virtual function call
+R6024
+- not enough space for _onexit/atexit table
+R6019
+- unable to open console device
+R6018
+- unexpected heap error
+R6017
+- unexpected multithread lock error
+R6016
+- not enough space for thread data
+abnormal program termination
+R6009
+- not enough space for environment
+R6008
+- not enough space for arguments
+R6002
+- floating point not loaded
+Microsoft Visual C++ Runtime Library
+Runtime Error!
+Program:
+<program name unknown>
+GAIsProcessorFeaturePresent
+KERNEL32
+e+000
+frexp
+fmod
+_hypot
+_cabs
+ldexp
+modf
+fabs
+floor
+ceil
+sqrt
+atan2
+atan
+acos
+asin
+tanh
+cosh
+sinh
+log10
+SunMonTueWedThuFriSat
+JanFebMarAprMayJunJulAugSepOctNovDec
+(8PX
+700WP
+`h````
+ppxxxx
+(null)
+GetLastActivePopup
+GetActiveWindow
+MessageBoxA
+user32.dll
+1#QNAN
+1#INF
+1#IND
+1#SNAN
+SetCommTimeouts
+SetCommState
+GetCommState
+CreateFileA
+CloseHandle
+ReadFile
+WriteFile
+InterlockedDecrement
+GetModuleFileNameA
+InterlockedIncrement
+lstrlenA
+WideCharToMultiByte
+MultiByteToWideChar
+GetCurrentThreadId
+GetCurrentThread
+lstrcmpiA
+lstrcmpA
+GlobalDeleteAtom
+GlobalAlloc
+GlobalLock
+GetTickCount
+SetLastError
+GetLastError
+lstrcpynA
+LocalFree
+FormatMessageA
+GlobalUnlock
+GlobalFree
+MulDiv
+LocalAlloc
+InitializeCriticalSection
+TlsAlloc
+DeleteCriticalSection
+GlobalHandle
+TlsFree
+LeaveCriticalSection
+GlobalReAlloc
+EnterCriticalSection
+TlsSetValue
+LocalReAlloc
+TlsGetValue
+SetErrorMode
+lstrcatA
+lstrcpyA
+GetVersion
+GetProcAddress
+GetModuleHandleA
+GlobalFindAtomA
+GlobalAddAtomA
+GlobalGetAtomNameA
+LockResource
+LoadResource
+FindResourceA
+FreeLibrary
+LoadLibraryA
+GetProcessVersion
+GlobalFlags
+WritePrivateProfileStringA
+GetCPInfo
+GetOEMCP
+GetCurrentProcess
+SetFilePointer
+FlushFileBuffers
+RtlUnwind
+RaiseException
+GetCommandLineA
+HeapAlloc
+HeapFree
+ExitProcess
+TerminateProcess
+HeapSize
+HeapReAlloc
+GetACP
+SetUnhandledExceptionFilter
+SetHandleCount
+GetStdHandle
+GetFileType
+GetStartupInfoA
+FreeEnvironmentStringsA
+FreeEnvironmentStringsW
+GetEnvironmentStrings
+GetEnvironmentStringsW
+HeapDestroy
+HeapCreate
+VirtualFree
+LCMapStringA
+LCMapStringW
+VirtualAlloc
+IsBadWritePtr
+GetStringTypeA
+GetStringTypeW
+IsBadReadPtr
+IsBadCodePtr
+SetStdHandle
+KERNEL32.dll
+EnableWindow
+SendMessageA
+GetWindowLongA
+IsWindowEnabled
+GetParent
+SetWindowsHookExA
+GetCursorPos
+PeekMessageA
+IsWindowVisible
+ValidateRect
+CallNextHookEx
+GetKeyState
+DispatchMessageA
+TranslateMessage
+GetMessageA
+GetNextDlgTabItem
+GetFocus
+EnableMenuItem
+CheckMenuItem
+SetMenuItemBitmaps
+ModifyMenuA
+GetMenuState
+LoadBitmapA
+GetMenuCheckMarkDimensions
+PostQuitMessage
+PostMessageA
+SetCursor
+RegisterClipboardFormatA
+GetMenuItemID
+GetSubMenu
+GetMenuItemCount
+UnhookWindowsHookEx
+UnregisterClassA
+LoadStringA
+GetWindowRect
+GetWindowPlacement
+IsIconic
+SystemParametersInfoA
+RegisterWindowMessageA
+SetWindowPos
+SetWindowLongA
+GetWindow
+SetForegroundWindow
+GetForegroundWindow
+GetMessagePos
+GetMessageTime
+RemovePropA
+CallWindowProcA
+GetPropA
+SetPropA
+GetClassLongA
+CreateWindowExA
+DestroyWindow
+DefWindowProcA
+GetDlgCtrlID
+GetWindowTextA
+GetDlgItem
+GetMenu
+RegisterClassA
+GetClassInfoA
+wsprintfA
+WinHelpA
+GetCapture
+GetTopWindow
+CopyRect
+GetClientRect
+AdjustWindowRectEx
+SetFocus
+IsWindow
+SetActiveWindow
+GetSysColor
+MapWindowPoints
+SendDlgItemMessageA
+UpdateWindow
+LoadIconA
+IsDialogMessageA
+SetWindowTextA
+ShowWindow
+LoadCursorA
+GetSysColorBrush
+ReleaseDC
+GetDC
+GetClassNameA
+PtInRect
+ClientToScreen
+TabbedTextOutA
+DrawTextA
+GrayStringA
+PostThreadMessageA
+DestroyMenu
+CreateDialogIndirectParamA
+EndDialog
+USER32.dll
+CreateBitmap
+GetDeviceCaps
+GetClipBox
+SetTextColor
+SetBkColor
+GetObjectA
+DeleteObject
+DeleteDC
+SaveDC
+RestoreDC
+SelectObject
+GetStockObject
+SetMapMode
+SetViewportOrgEx
+OffsetViewportOrgEx
+SetViewportExtEx
+ScaleViewportExtEx
+SetWindowExtEx
+ScaleWindowExtEx
+PtVisible
+RectVisible
+TextOutA
+ExtTextOutA
+Escape
+GDI32.dll
+comdlg32.dll
+ClosePrinter
+DocumentPropertiesA
+OpenPrinterA
+WINSPOOL.DRV
+RegCloseKey
+RegCreateKeyExA
+RegOpenKeyExA
+RegSetValueExA
+ADVAPI32.dll
+SHELL32.dll
+COMCTL32.dll
+oledlg.dll
+CoInitialize
+CoUninitialize
+CLSIDFromProgID
+CLSIDFromString
+OleRun
+CoCreateInstance
+OleInitialize
+OleUninitialize
+CoFreeUnusedLibraries
+CoRegisterMessageFilter
+CoRevokeClassObject
+OleFlushClipboard
+OleIsCurrentClipboard
+OLEAUT32.dll
+YSComUsb.dll
+ConnectCOM
+DisconnectCOM
+SendToCOM
+WriteToCOM
+_Java_YSComUsb_inDll@8
+Set configuration port has problem.
+Get configuration port has problem.
+Port Closeing isn't successed.
+Reading of serial communication has problem.
+Pls check whether you are opening the correct serial port!!!!
+SerialThread
+.PAVCOleDispatchException@@
+.PAX
+.PAVCObject@@
+.PAVCException@@
+.PAVCOleException@@
+Could not connect to the Biometric Decive
+192.168.1.201
+zkemkeeper.ZKEM.1
+prob while opening serial port
+Disconnected
+.?AVCObject@@
+.?AVCCmdTarget@@
+.?AVCWinThread@@
+.?AVCNoTrackObject@@
+.?AV_AFX_CTL3D_STATE@@
+.?AV_AFX_CTL3D_THREAD@@
+.?AVCCmdUI@@
+.?AV_AFX_WIN_STATE@@
+.?AVCWinApp@@
+.PAVCSimpleException@@
+.PAVCMemoryException@@
+.?AVCException@@
+.?AVCSimpleException@@
+.?AVCMemoryException@@
+.?AVCNotSupportedException@@
+.?AVCOleException@@
+.?AUCThreadData@@
+.?AVCHandleMap@@
+.?AV_AFX_THREAD_STATE@@
+.?AVAFX_MODULE_STATE@@
+.?AVAFX_MODULE_THREAD_STATE@@
+.?AV_AFX_BASE_MODULE_STATE@@
+.?AVCWnd@@
+.?AVCTestCmdUI@@
+.PAVCUserException@@
+.?AVCTempWnd@@
+.?AVCDC@@
+.?AVCGdiObject@@
+.?AVCTempDC@@
+.?AVCTempGdiObject@@
+.?AVCResourceException@@
+.?AVCUserException@@
+.?AUIUnknown@@
+.?AVCOleDispatchException@@
+.?AVCOleMessageFilter@@
+.?AUIMessageFilter@@
+.?AVXMessageFilter@COleMessageFilter@@
+.?AVCMapPtrToPtr@@
+.?AVCMenu@@
+.?AVCTempMenu@@
+.?AVCDialog@@
+.?AVCCommonDialog@@
+.?AVCOleDialog@@
+.?AVCOleBusyDialog@@
+.?AV_AFX_OLE_STATE@@
+.?AVtype_info@@
+kU'9
+HMXB
+?Zd;
+?/L[
+S;uD
+z?aUY
+D?$?
+U>c{
+zc%C1
+.:3q
+-64OS
+NKeb
+.?AV_com_error@@
+wwwwww
+wwww
+R0`0k0
+0!1,1[1f1
+333;3F3O3Y3f3r3
+4-484>4E4P4Y4c4p4
+545@5q5
+7&7b7}7
+8C8T8c8h8w8
+8>9D9K9R9Y9c9i9p9z9
+:::E:P:j:y:
+; ;*;3;=;J;Z;x;~;
+<%</<=<H<T<f<q<z<
+=(=8=C=I=O=W=a=i=s=
+= >5>x>G?R?
+0"040
+011O1o1~1
+2&2.242:2@2F2L2R2u2
+3:3a3s3
+4;4`4
+5/5T5
+5D6S6
+:4:=:Z:e:l:
+<-<5<;<~<
+>5><>@>D>H>L>P>T>X>
+?%?@?G?L?P?T?q?
+:0@0D0H0L0
+1'2-2p2v2X3c3h3r3w3
+4 4=4C4
+485P5W5_5d5h5l5
+5B6H6L6P6T6
+7;7m7t7x7|7
+7j8p8
+8.9m9s9
+9':9:H:i:o:
+:-;9;C;N;X;b;h;
+;R<X<v<
+=%=7=E=T=e=
+=!>X>
+>"?|?
+^3c3
+7t8|8
+9!9'989O9Y9r9
+:_:d:
+;#;+;3;;;N;V;
+;h<~<
+=:=A=V=
+>$>U>[>h>
+?Q?]?g?{?
+3!31383?3G3n3z3
+4"4I4X4
+5&5@6E6d6q6~6
+7$8I8
+9#91:T:Z:a:j:q:y:
+=#=)=9=D=V=i=t=z=
+1"1'1-1=1F1`1q1w1
+797L7R7[7b7
+9+9O:
+=0=C=[={=
+>V>\>j>
+1*13191E1J1T1[1c1i1p1u1
+444<4B4H4
+;*;F;Y;
+<0=J=X=f=q=
+>8>B>K>g>
+0U2l2
+3.3G3w3
+545L5
+7Z9i9
+9&:-:S:k:
+<0<i<
+<6=y?
+2"282C2O2U2
+2\3z3
+4_4{4
+868A8M8h8s8
+9"929B9x9
+9k:w:
+=!=)=.=3=S=X=x=
+1E2J2
+333n3
+546:6E6
+7(7z7
+8_9r9
+>'>->D>O>\>e>k>
+?+?g?
+0P0b0
+1$2.343G3R3
+5:5u5
+5/6P6c6~6
+7(70787R7W7w728m8
+;];v;
+<#=(=A=
+=A>F>u>
+5"5&5*5.52565:5>5B5F5J5N5\5
+6,616
+708[8
+9Q;y;~;
+<Z={=
+=c>o>
+0P0[0a0
+021>1M1
+41494B4M4V4q4
+515Q5w5
+8"9E9d9
+:":L:R:m:v:
+:U;o;
+=U>z>
+0@0H0U0
+1$1/1=1|1
+2-353A3.4<4p4
+5+6~6
+717=7Z7i7
+8&838Q8W8k8z8
+929I9T9
+:!;d;m;
+<D<r<
+=P>X>w>
+0l0w0
+101B1
+2 3>3z3
+5.535:5C5d5
+7 7N7
+8J8[8g8v8
+919Z9
+:#:(:0:=:D:M:d:o:{:
+:$;F;q;
+;L<U<^<p<v<
+=J=b=
+=(>e>
+?*???N?
+0=0Q0
+1)1A1b1u1
+343G3
+434H4
+6 6u6
+7*777F7L7S7[7m7t7}7
+8?8T8h8s8
+9 9M9Y9s9
+:H:j:
+;e;l;z;
+<!<(<@<]<r<x<
+=1=<=I=R=X=m=u=
+>+><>C>^>q>~>
+?$?/?8?Z?k?w?
+4k5q5
+5T6a6h6
+7"8,8S8\8
+8:9q9-:
+=,=f=
+> >$>(>,>0>4>8><>@>D>H>L>P>T>X>\>
+/0l0
+1<1Y1
+2E2n2
+3%393M3b3v3
+4)454A4W4a4u4
+5!555I5_5q5
+646L6b6u6
+4 4$4(4,4044484<4@4D4H4L4P4T4X4\4`4d4h4l4p4t4x4
+5 5$5(5,5054585@5P5d5h5l5p5t5x5|5
+6,6L6P6T6|6
+7 7$7<7T7l7
+8 8$8(8,8084888<8@8D8H8
+9 9@9P9p9
+: :$:(:,:0:4:8:<:P:\:`:x:
+;,;D;\;t;
+<4<L<d<|<
+= =$=<>@>D>H>L>P>T>X>\>`>d>h>l>p>t>x>|>
+?8?<?@?D?H?L?P?T?X?\?`?d?h?l?p?t?x?|?
+80D0H0`0l0p0
+1 1$1(1,1014181<1@1D1H1L1P1T1X1\1`1d1h1l1p1t1x1|1
+2 2$2(2,2024282<2@2D2H2L2P2T2X2`2p2
+3 3$3(3,3034383<3@3D3H3L3P3T3X3\3`3d3h3l3p3t3x3|3
+4 4$4(4,4044484<4@4P4h4x4
+5 5$5(5,5054585<5@5D5H5L5P5T5X5\5l7p7t7x7|7
+8 8$8,80888<8@8D8H8P8T8\8`8d8h8p8t8x8
+949L9d9|9
+: :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:t:x:|:
+;@;D;
+0d0h0
+303H3`3d3h3|3
+444D4H4P4h4|4
+5$54585@5X5p5
+6 686<6@6T6d6h6p6
+7 7$7<7L7P7X7p7t7
+8,8<8@8H8`8d8h8|8
+9$94989@9X9\9t9
+:$:(:0:H:L:P:d:t:x:
+;$;(;0;H;`;d;h;|;
+< <4<D<H<P<h<l<
+=$=4=8=@=X=p=
+>,>0>8><>@>D>\>l>p>x>
+?,?8?T?`?|?
+0$0D0d0h0l0p0
+1(1D1L1X1t1
+2 2<2H2d2p2
+3$3,3L3l3p3t3x3|3
+444<4H4P4
+5(5D5P5X5
+6(606`6l6t6
+7(7D7L7T7`7|7
+848@8\8h8p8
+9,989T9`9|9
+:,:4:<:D:P:l:x:
+;$;,;8;T;`;|;
+<(<0<L<T<p<|<
+0 0$0(0,0004080<0@0D0H0L0P0T0X0\0`0d0h0l0p0t0
+3 3@3`3
+404P4p4
+585X5
+606P6h6
+707P7
+8(8H8x8
+: :$:(:,:0:4:8:<:@:D:H:L:P:T:X:\:`:d:h:l:p:
+<,<<<
+=$=,=4=<=D=L=T=\=d=l=t=
+> >$>0>4>
+T0\0d0l0t0|0
+10343
+3`6d6h6l6p6t6x6|6
+((((( H
+VS_VERSION_INFO
+StringFileInfo
+040904B0
+CompanyName
+FileDescription
+YSComUsb DLL
+FileVersion
+1, 0, 0, 1
+InternalName
+YSComUsb
+LegalCopyright
+Copyright (C) 2013
+LegalTrademarks
+OriginalFilename
+YSComUsb.DLL
+ProductName
+YSComUsb Dynamic Link Library
+ProductVersion
+VarFileInfo
+Translation
+&New
+Cancel
+&Help
+Open
+Save As
+All Files (*.*)
+Untitled
+an unnamed file
+&Hide
+No error message is available.'An unsupported operation was attempted.$A required resource was unavailable.
+Out of memory.
+An unknown error has occurred.
+Invalid filename.
+Failed to open document.
+Failed to save document.
+Save changes to %1? Failed to create empty document.
+The file is too large to open.
+Could not start print job.
+Failed to launch help.
+Internal application error.
+Command failed.)Insufficient memory to perform operation.PSystem registry entries have been removed and the INI file (if any) was deleted.BNot all of the system registry entries (or INI file) were removed.FThis program requires the file %s, which was not found on this system.tThis program is linked to the missing export %s in the file %s. This machine may have an incompatible version of %s.
+#Unable to read write-only property.#Unable to write read-only property.
+Unexpected file format.V%1
+Cannot find this file.
+Please verify that the correct path and file name are given.
+Destination disk drive is full.5Unable to read from %1, it is opened by someone else.AUnable to write to %1, it is read-only or opened by someone else..An unexpected error occurred while reading %1..An unexpected error occurred while writing %1.
+Please enter an integer.
+Please enter a number.*Please enter an integer between %1 and %2.(Please enter a number between %1 and %2.(Please enter no more than %1 characters.
+Please select a button.*Please enter an integer between 0 and 255. Please enter a positive integer. Please enter a date and/or time.
+Please enter a currency.
+No error occurred.-An unknown error occurred while accessing %1.
+%1 was not found.
+%1 contains an invalid path.=%1 could not be opened because there are too many open files.
+Access to %1 was denied..An invalid file handle was associated with %1.<%1 could not be removed because it is the current directory.6%1 could not be created because the directory is full.
+Seek failed on %15A hardware I/O error was reported while accessing %1.0A sharing violation occurred while accessing %1.0A locking violation occurred while accessing %1.
+Disk full while accessing %1..An attempt was made to access %1 past its end.
+No error occurred.-An unknown error occurred while accessing %1./An attempt was made to write to the reading %1..An attempt was made to access %1 past its end.0An attempt was made to read from the writing %1.
+%1 has a bad format."%1 contained an unexpected object. %1 contains an incorrect schema.
+#Unable to load mail system support.
+Mail system DLL is invalid.!Send Mail failed to send message.
+pixels

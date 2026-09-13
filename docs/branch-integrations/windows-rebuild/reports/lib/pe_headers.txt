@@ -1,0 +1,7 @@
+### YSComUsb.dll
+### YsErpSYs.dll
+### d2kwut60.dll
+### TransferToMTN.exe
+### YsGoogleMap.ocx
+### 64-bit-dll/NN60.DLL
+### 64-bit-dll/NNB60.DLL

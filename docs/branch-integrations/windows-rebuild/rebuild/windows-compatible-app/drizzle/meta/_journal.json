@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1789295817687,
+      "tag": "0000_yielding_mongu",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1789296078907,
+      "tag": "0001_fair_queen_noir",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1789297057373,
+      "tag": "0002_sloppy_zombie",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1789298660069,
+      "tag": "0003_chief_captain_cross",
+      "breakpoints": true
+    }
+  ]
+}

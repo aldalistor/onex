@@ -1,0 +1,606 @@
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 22-JAN-2017 11:03:56
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 22-JAN-2017 11:03:56
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:29
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:44
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:44
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:46
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:53
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:53
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:09:54
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:10:13
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:10:13
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=[REDACTED_HOST])(Port=1521)))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=D:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 06-JAN-2021 00:10:14
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12543
+    TNS-12543: TNS:destination host unreachable
+    ns secondary err code: 12560
+    nt main err code: 513
+    TNS-00513: Destination host unreachable
+    nt secondary err code: 51
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:45
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:45
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:48
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:48
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:48
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:48
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle80)(ARGV0=oracle80ORCL)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')))(CONNECT_DATA=(SID=ORCL)(CID=(PROGRAM=C:\orant\BIN\ifrun60.EXE)(HOST=[REDACTED_HOST])(USER=[REDACTED_USER]))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.3.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.0.6.3.0 - Production
+  Time: 18-MAY-2022 21:33:48
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 0
+    nt OS err code: 0
+
+Starting report ias_store_qty [Mon Dec 28 13:51:44 2015] ...
+REP-0110: Unable to open file 'ias_store_qty'.
+REP-1070: Error while opening or saving a document.
+REP-0110: Unable to open file 'ias_store_qty'.
+End report ias_store_qty [Mon Dec 28 13:51:44 2015].
+
+Starting report Ias_Itm_Mov_Qty_Sum [Mon Dec 28 13:52:04 2015] ...
+REP-0110: Unable to open file 'Ias_Itm_Mov_Qty_Sum'.
+REP-1070: Error while opening or saving a document.
+REP-0110: Unable to open file 'Ias_Itm_Mov_Qty_Sum'.
+End report Ias_Itm_Mov_Qty_Sum [Mon Dec 28 13:52:04 2015].
+
+Starting report Ias_Itm_Mov_Qty_Sum [Mon Dec 28 13:54:16 2015] ...
+REP-0110: Unable to open file 'Ias_Itm_Mov_Qty_Sum'.
+REP-1070: Error while opening or saving a document.
+REP-0110: Unable to open file 'Ias_Itm_Mov_Qty_Sum'.
+End report Ias_Itm_Mov_Qty_Sum [Mon Dec 28 13:54:16 2015].
+
+Starting report ias_store_qty [Mon Dec 28 13:59:24 2015] ...
+REP-0110: Unable to open file 'ias_store_qty'.
+REP-1070: Error while opening or saving a document.
+REP-0110: Unable to open file 'ias_store_qty'.
+End report ias_store_qty [Mon Dec 28 13:59:24 2015].
+[03/16/16 13:09:33 Arab Standard Time]::Client Status [ConnId=0, PID=7440]
+	>> ERROR: Abnormal termination, Error Code: C0000005 ACCESS_VIOLATION
+
+======================= STACK DUMP =======================
+
+Fault address:  771AE1FE 01:0001E1FE
+Module: C:\Windows\SysWOW64\ntdll.dll
+
+System Information:
+Operating System: Windows NT Version 6.1 Build 7600 
+Command line: "C:\orant\BIN\ifrun60.EXE" "[REDACTED_FORM_PATH]"
+FORM/BLOCK/FIELD: ERP_LOGIN:LOGIN.CLOSE
+Last Trigger: WHEN-BUTTON-PRESSED - (Execution Suspended)
+Msg: <NULL>
+Last Builtin: EXIT_FORM - (Successfully Completed)
+
+Registers:
+EAX:006F6F42
+EBX:04AA2240
+ECX:00270000
+EDX:04AA2240
+ESI:2F8131D4
+EDI:04AA2238
+CS:EIP:0023:771AE1FE
+SS:ESP:002B:0018F1C8  EBP:0018F1FC
+DS:002B  ES:002B  FS:0053  GS:002B
+Flags:00010206
+------------------- Call Stack Trace ---------------------
+Frameptr   RetAddr  Param#1  Param#2  Param#3  Param#4  Function Name       
+0x0018f1fc 771ade63 04aa21b0 002bbac8 002bbb28 04aa2238 0x771ae1fe          
+0x0018f214 771d4908 00270000 00000000 04aa2240 00000000 0x771ade63          
+0x0018f234 771d48b1 002bbac8 7c3174da 05e2cdc4 01dd8ee8 0x771d4908          
+0x0018f2b0 771c10d1 04a80000 0018f2d4 7c31749e 05e2cdc4 0x771d48b1          
+0x0018f2f4 75081da7 04a80000 00000000 01df1c4c 67e2e3db 0x771c10d1          
+0x0018f304 67e2e3db 04a80000 67df8289 04a80000 01dd8ee8 0x75081da7          
+0x01df1c4c 00000002 00000000 00000000 01df1c6c 00000000 0x67e2e3db          
+------------------- End of Stack Trace -------------------
+
+
+[03/16/16 13:18:46 Arab Standard Time]::Client Status [ConnId=0, PID=8380]
+	>> ERROR: Abnormal termination, Error Code: C0000005 ACCESS_VIOLATION
+
+======================= STACK DUMP =======================
+
+Fault address:  771AE1FE 01:0001E1FE
+Module: C:\Windows\SysWOW64\ntdll.dll
+
+System Information:
+Operating System: Windows NT Version 6.1 Build 7600 
+Command line: "C:\orant\BIN\ifrun60.EXE" "[REDACTED_FORM_PATH]"
+FORM/BLOCK/FIELD: ERP_LOGIN:LOGIN.CLOSE
+Last Trigger: WHEN-BUTTON-PRESSED - (Execution Suspended)
+Msg: <NULL>
+Last Builtin: EXIT_FORM - (Successfully Completed)
+
+Registers:
+EAX:0061636F
+EBX:04BB2240
+ECX:00850000
+EDX:04BB2240
+ESI:47B68630
+EDI:04BB2238
+CS:EIP:0023:771AE1FE
+SS:ESP:002B:0018F1C8  EBP:0018F1FC
+DS:002B  ES:002B  FS:0053  GS:002B
+Flags:00010206
+------------------- Call Stack Trace ---------------------
+Frameptr   RetAddr  Param#1  Param#2  Param#3  Param#4  Function Name       
+0x0018f1fc 771ade63 04bb21b0 0089bac8 0089bb28 04bb2238 0x771ae1fe          
+0x0018f214 771d4908 00850000 00000000 04bb2240 00000000 0x771ade63          
+0x0018f234 771d48b1 0089bac8 7c1f3eb2 05e8cdc4 01f48ee8 0x771d4908          
+0x0018f2b0 771c10d1 02240000 0018f2d4 7c1f3ef6 05e8cdc4 0x771d48b1          
+0x0018f2f4 75081da7 02240000 00000000 01f61c4c 67e2e3db 0x771c10d1          
+0x0018f304 67e2e3db 02240000 67df8289 02240000 01f48ee8 0x75081da7          
+0x01f61c4c 00000002 00000000 00000000 01f61c6c 00000000 0x67e2e3db          
+------------------- End of Stack Trace -------------------
+
+

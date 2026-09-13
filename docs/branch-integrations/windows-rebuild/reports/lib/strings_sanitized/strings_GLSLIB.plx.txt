@@ -1,0 +1,5360 @@
+ROS.60050
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+No namespace was supplied.
+No file was supplied.
+Operation aborted by user.
+File %[1]s is not a valid PL/SQL source file.
+A library with this name already exists. Overwrite it?
+Debug Actions
+- Displays detailed information about the specified debug action.
+Libraries
+- Displays detailed information about an attached library.
+Tables
+- Displays detailed information about database tables.
+Views
+- Displays detailed information about database views.
+Load Path
+- Displays detailed information about the current load path.
+Locals
+- Displays the name, type and value of a variable or parameter that is
+local to the current scope location.
+Program Units
+- Displays detailed information about a specific program unit instance.
+The information displayed includes the program unit name, its type,
+whether it is compiled, whether it is open for editing, and cross
+reference information.
+Version
+- Displays version information about the development environment.
+DESCRIBE <object>
+<object> ::=
+<program-unit> |
+<library> |
+<table> |
+<view> |
+<debug-action> |
+<local> |
+LOADPATH |
+VERSION |
+NAMESPACE
+<program-unit> ::= <pu-name-spec> [ SPECIFICATION | BODY ]
+<pu-name-spec> ::=
+{ PROGRAMUNIT <programunit-name> } |
+{ SUBPROGRAM <subprogram-name> } |
+{ FUNCTION <function-name> } |
+{ PROCEDURE <procedure-name> }
+{ PACKAGE <package-name> }
+<library> := { LIBRARY <library-name> }
+<table> := { TABLE <table-name> }
+<view> := { VIEW <view-name> }
+<debug-action> ::=
+{ ACTION <debug-action-id> } |
+{ BREAKPOINT <debug-action-id> } |
+{ TRIGGER <debug-action-id> }
+<local> ::=
+{ LOCAL <param-or-var-name> } |
+{ PARAMETER <param-name> } |
+{ VARIABLE <var-name> }
+DESCRIBE
+Breakpoint: %d
+Program Unit: %[1]s %[2]s
+Line: %d
+%[1]s: %[2]s
+Compiled: YES
+Compiled: NO
+Open: YES
+Open: NO
+References:
+%[1]s %[2]s
+IN/OUT
+NUMBER
+DATE
+CHAR(%d)
+UNKNOWN
+Bind Var :%[1]s %[2]s %[3]s
+Library: %s
+Mode: Attached (READONLY)
+Mode: Open (READWRITE)
+Contents:
+External Location: %s
+Current Directory
+Current DB Connection
+External Location: INTERPRETER
+Referenced by:
+Load Path:
+S_CHECK_
+INIT"GL+
+"P_CURR_-
+YEAR_UNI/
+'p(@2
+GLS_FUNCTION_PKG
+MINGUS
+GLS_CHECK_DATA_PRC
+Err When Gls_Check_Data_Prc :
+CONSTRAINT_PRC
+GLS_COMMENT_PKG
+"GLS_COMMENT_PKG"COMMENT_TABELS_PRC"COMMENT_COLUMNS_PRC""
+COMMENT_TABELS_PRC
+COMMENT_COLUMNS_PRC
+PL/SQL DE
+PL/SQL Library
+TMP1[g
+)p*@6
+ALTER_QTY_SIZE_PRC
+(p)@2
+CHK_BDGT_BLNC_PRC
+CHK_GLS_SYS_ACTV
+CHK_UPD_CHQNO_PRC
+1p2@>
+CREATE_VIEW_MULTI_YEAR_PRC
+%p&@2
+CRT_GLS_DOC_SQ
+CRT_GNR_CMNT_PRC
+DBA_GLS_SYS_SCRIPT
+#p$@.
+GET_LIB_DATE
+&p'@.
+GLS_CONSTRAINT_PKG
+/TMP1/GLS_COMMENT_PKG
+/TMP1/GLS_CONSTRAINT_PKG
+"GLS_CONSTRAINT_PKG"CONSTRAINT_PRC""
+GLS_VIEW_PKG
+IAS_AUD_LIST_PKG
++p,@6
+IAS_DOC_VIEW_PKG_PRC
+.p/@6
+IAS_GET_ALL_FLD_TBL_FNC
+IAS_GL_CSHFLW_PKG
+IAS_POSTING_GL_PKG
+IAS_POSTING_GRNT_PKG
+*p+@2
+IAS_POSTING_JRS_PKG
+IAS_POST_LIST_PKG
+IAS_REPORT_PKG
+IAS_UNPOSTTRNS_PRC
+SHP_POSTING_PKG
+UPDATE_FORM_ORDER
+YSERP_LIB
+FILESYSTEM
+d2kwutil
+DE_ATTACHED_LIBS
+DE Attached Libs
+ROSATTRIBS
+class attributes
+ROSLFDESC
+ros lf descrip
+ROSOBJMAP
+ros name->id
+ROSSTRINGS
+tk2 uiStrings
+ROSSTRUCTS
+struct types
+ROSTK2RESV
+tk2 reserved
+TOOL_MODULE
+Tools Modules
+TOOL_PLSQL
+Tools PLSQL
+#p$ *
+/DE_ATTACHED_LIBS
+MODID
+OWNER
+#p$ ,
+1DE_ATTACHED_LIBS
+LIBNAME
+ITEMID
+#p$ .
+3DE_ATTACHED_LIBS
+LOCATION
+-TOOL_MODULE
+PRODUCT
+MODTYPE
++TOOL_MODULE
+MODNAME
+TCS_VER
+1TOOL_MODULE
+NEXT_ITEMID
+CREATOR
+CREATE_DATE
+/TOOL_MODULE
+CREATE_VER
+MODIFIER
+MOD_DATE
+MOD_VER
+COPYRIGHT
+REQ_ROLE
+VGS_VER
+DE_VER
+ROS_VER
+)TOOL_PLSQL
+NAME
+TYPE
++TOOL_PLSQL
+/TOOL_PLSQL
+PLSLFID_EP
+PLSLFID_ST
+/TMP1/GLS_FUNCTION_PKG
+STANDARD
+FORMS40
+SQLFORMS
+"GLS_FUNCTION_PKG"FUNCTION_PRC""
+FUNCTION_PRC
+CREATE OR REPLACE FUNCTION IAS_Get_Prompt_By_Fld (P_Lng_no In number ,
+P_CLM_nm In char ,
+P_TBL_nm In char DEFAULT '0') RETURN CHAR Is
+Cmnt varchar2(100);
+BEGIN
+Select Ias_Gen_Pkg.Get_Prompt(P_Lng_no,TO_NUMBER(SUBSTR(Comments,1,4)))
+into Cmnt
+From User_Col_Comments
+Where Comments In (Select To_Char(Label_No) From Ias_Labels)
+AND DECODE(P_TBL_nm,'0','0',Table_Name )=NVL(P_TBL_nm,'0')
+AND COLUMN_NAME=P_clm_nm
+And RowNum<=1;
+--IF Cmnt LIKE 'Cash/Bank' OR Cmnt LIKE '
+' THEN
+IF Cmnt LIKE IAS_GEN_PKG.GET_PROMPT(P_Lng_no,1220) THEN
+CMNT:=IAS_GEN_PKG.GET_PROMPT(P_Lng_no,3183);
+END IF;
+Return(Cmnt);
+Exception
+When Others Then
+Return(Null);
+END IAS_Get_Prompt_By_Fld;
+CREATE OR REPLACE FUNCTION Get_Ac_Bal_Fnc( P_a_code In ACCOUNT.A_CODE%TYPE ,
+P_post In Number Default 1) RETURN NUMBER IS
+v_bl_amt NUMBER:=0;
+If P_a_code Is Not Null Then --(1)
+Select Round(nvl(sum(nvl(amt,0)),0) ,2)
+Into v_bl_amt
+From ias_post_dtl d
+where nvl(Doc_Post,0) = Decode (P_post ,2,nvl(Doc_Post,0),1)
+and (d.a_code In (Select a_code from ias_Acc_tree where AC_TREE = P_a_code ) Or d.a_code = p_a_code)
+and nvl(doc_post,0) = Decode(P_post,2,nvl(doc_post,0),P_post);
+End If; --(1)
+Return(nvl(v_bl_amt,0));
+When others then
+Return(0);
+End Get_Ac_Bal_Fnc;
+CREATE OR REPLACE FUNCTION GET_AC_TYPE(P_a_code In ACCOUNT.A_CODE%TYPE) RETURN NUMBER IS
+r_bs NUMBER;
+Begin
+Select nvl(report_bs,0)
+Into r_bs
+From account_report_type,account
+where account_report_type.report_type=account.a_report
+and account.a_code=P_a_code;
+Return(r_bs);
+when others then
+End GET_AC_TYPE;
+CREATE OR REPLACE FUNCTION Doc_Type_Name( P_lang In NUMBER,
+P_doctype In NUMBER,
+P_jvtype In NUMBER Default Null) RETURN CHAR Is
+v_jvname VARCHAR2(100);
+v_dvname VARCHAR2(50);
+If P_doctype = 0 Then
+Return (Ias_Gen_Pkg.Get_Prompt (P_lang,1647));
+ElsIf P_jvtype Is Null Then
+Select DOC_TYPE_NAME
+Into v_jvname
+From Ias_Sys.IAS_DOCJV_TYPE_SYSTEMS_MST
+Where Lang_no = P_lang
+and DOC_TYPE = P_Doctype;
+Return(v_jvname);
+Return(P_doctype);
+End;
+Elsif P_Doctype = 1 Then
+Select Decode(P_Lang,1,jv_name,jv_e_name)
+From jv_types
+where jv_type=P_jvtype;
+Elsif P_Doctype = 8 then
+Select Decode(P_Lang,1,incom_name,incom_e_name)
+From Incom_Types
+where Incom_Type=P_jvtype;
+return(P_doctype);
+Elsif P_Doctype=9 then
+Select Decode(P_Lang,1,out_name,out_e_name)
+From out_Types
+where out_Type=P_jvtype;
+Elsif P_Doctype = 11 then
+Select Decode(P_Lang,1,Tr_name,Tr_e_name)
+From transfer_Types
+where Tr_Type=P_jvtype;
+Return(P_Doctype);
+ElsIf P_jvtype Is Not Null Then
+Select Flg_Desc
+Into v_dvname
+From S_Flags
+and Flg_Code ='POST_DOC_TYPE'
+and Flg_Value= P_doctype;
+v_dvname:=Null;
+If P_Doctype In (2,3) Then
+and Flg_Code ='CASH_CHQ'
+and Flg_Value= P_jvtype;
+v_jvname:=Null;
+ElsIf P_Doctype In (4,5,6,7) Then
+and Flg_Code ='TYPE_NAME_SI'
+ElsIf P_Doctype = 10 Then
+and Flg_Code ='STK_ADJ_TYPE'
+ElsIf P_Doctype >=60 Then
+Select Jv_NAME
+From Ias_Sys.IAS_DOCJV_TYPE_SYSTEMS
+and DOC_TYPE = P_Doctype
+and JV_TYPE = P_jvtype;
+Select Doc_Type_Name
+End If;
+Return(v_dvname||' '||v_jvname);
+Else
+END Doc_Type_Name;
+CREATE OR REPLACE FUNCTION GET_VER_CODE_NAME( P_Lng_no In Number DEFAULT 1,
+P_CLM_NAM IN VARCHAR2,
+P_CLM_VAL IN VARCHAR2,
+P_Ac_Dtl_Typ IN NUMBER DEFAULT 0
+)RETURN VARCHAR2 IS
+V_Name VARCHAR2(250);
+P_CLM VARCHAR2(60);
+P_CLM :=''||P_CLM_NAM||'';
+IF UPPER(P_CLM)='A_CODE' THEN
+V_Name:=IAS_Acode_Pkg.Get_A_Name(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='C_CODE' THEN
+V_Name:=IAS_Cst_Pkg.Get_C_Name(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='V_CODE' THEN
+V_Name:=IAS_Vndr_Pkg.Get_v_Name(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='CASH_NO' THEN
+V_Name:=IAS_CshBnk_Pkg.Get_CB_Name (1,P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='BANK_NO' THEN
+V_Name:=IAS_CshBnk_Pkg.Get_CB_Name (2,P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='EMP_NO' THEN
+V_Name:=YS_EMP_PKG.Get_EMP_NM (P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='CC_CODE' THEN
+V_Name:=IAS_Cc_Code_Pkg.Get_Cc_Name(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='PJ_NO' THEN
+V_Name:=IAS_PJ_Pkg.Get_PJ_Name(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='ACTV_NO' THEN
+V_Name:=IAS_Actv_Pkg.Get_Actv_Name(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='BRN_NO' THEN
+V_Name:=IAS_BRN_PKG.Get_Br_Nm(P_CLM_VAL,P_Lng_no);
+Elsif UPPER(P_CLM)='REP_CODE' THEN
+Select Decode(P_Lng_no,1,Nvl(REPRS_A_NAME,REPRS_E_NAME) ,Nvl(REPRS_E_NAME,REPRS_A_NAME) )
+InTo V_Name
+From Sales_man
+Where REPRS_CODE=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='COL_NO' THEN
+Select Decode(P_Lng_no,1,Nvl(COL_NAME,COL_E_NAME) ,Nvl(COL_E_NAME,COL_NAME) )
+From COLLERCTOR
+Where COL_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='R_CODE' THEN
+Select Decode(P_Lng_no,1,Nvl(R_A_NAME,R_E_NAME), Nvl(R_E_NAME,R_A_NAME) )
+From REGIONS
+Where R_CODE=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='CNTRY_NO' THEN
+Select Decode(P_lng_no,1,Nvl(CNTRY_A_NAME,CNTRY_E_NAME),Nvl(CNTRY_E_NAME,CNTRY_A_NAME))
+From CNTRY
+Where CNTRY_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='PROV_NO' THEN
+Select Decode(P_lng_no,1,Nvl(PROV_A_NAME,PROV_E_NAME),Nvl(PROV_E_NAME,PROV_A_NAME))
+From IAS_PROVINCES
+Where PROV_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='CITY_NO' THEN
+Select Decode(P_lng_no,1,Nvl(CITY_A_NAME,CITY_E_NAME),Nvl(CITY_E_NAME,CITY_A_NAME))
+From CITIES
+Where CITY_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='CMP_NO' THEN
+Select Decode(P_lng_no,1,Nvl(CMP_LNAME,CMP_FNAME),Nvl(CMP_FNAME,CMP_LNAME))
+From S_CMPNY
+Where CMP_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='LC_NO' THEN
+Select LC_DESC
+From LC_MASTER
+Where LC_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='ZONE_NO' THEN
+Select Decode(P_Lng_no,1,Nvl(ZONE_L_NM,ZONE_F_NM), Nvl(ZONE_F_NM,ZONE_L_NM) )
+From S_ZONE
+Where ZONE_NO=P_CLM_VAL And RowNum<=1;
+Elsif UPPER(P_CLM)='AC_CODE_DTL' THEN
+--P_Cb_Type
+If P_Ac_Dtl_Typ in(1,2) then
+V_Name:=IAS_CshBnk_Pkg.Get_CB_Name (P_Ac_Dtl_Typ,P_CLM_VAL,P_Lng_no);
+ElsIf P_Ac_Dtl_Typ=3 Then
+ElsIf P_Ac_Dtl_Typ=4 Then
+ElsIf P_Ac_Dtl_Typ =7 Then
+V_Name:=YS_EMP_Pkg.Get_EMP_NM(P_CLM_VAL,P_Lng_no);
+-- YS_AC_DTL_PKG.GET_AC_DTL_NM(D.AC_CODE_DTL,D.A_CODE,D.AC_DTL_TYP,:Lang_No) ,
+ELSE
+V_Name:=NULL;
+Return(V_Name);
+Exception When Others Then
+Return (Null);
+END GET_VER_CODE_NAME;
+Function Prc
+GLS_INSRT_DATA_PKG
+/TMP1/GLS_INSRT_DATA_PKG
+/TMP1/GLS_INSERT_FLG_PRC
+/TMP1/GLS_INSERT_LOV_PRC
+/TMP1/GLS_INSERT_LST_PRC
+"GLS_INSRT_DATA_PKG"INSRT_DEF_DATA_PRC"V_CNT"INSERT_FLG_PRC"INSERT_LOV_PRC"INSERT_LIST_PRC"INSRT_FRM_FLD_PRC""
+INSRT_DEF_DATA_PRC
+insert into IAS_PARA_GL(para_no) values(1)
+commit
+INSERT_FLG_PRC
+INSERT_LOV_PRC
+INSERT_LIST_PRC
+INSRT_FRM_FLD_PRC
+TMP1
+*p6@:
+)p2@6
+(p2@6
+2p>@B
+&p2@6
+$p.@2
+'p.@2
+And Nvl(HUNG,0)=0
+And Brn_No = Decode(:P_Brn_No,0,Brn_No,:P_Brn_No)
+And Tr_date between NVL(:P_F_date,Tr_date) And NVL(:P_T_date,Tr_date)
+And Tr_No between nvl(:P_F_Doc_No,Tr_NO) AND nvl(:P_T_Doc_No,Tr_NO)
+And Exists (Select 1 From S_Brn_Usr_Priv
+Where U_Id = :P_User_No
+And Brn_No = Ias_WhTrns_Mst.Brn_No
+And Nvl(A
+GLS_INDEX_PKG
+/TMP1/GLS_INDEX_PKG
+"GLS_INDEX_PKG"INDEX_PRC""
+INDEX_PRC
+Gls Index_Script
+GLS_INSRT_FORM_DTL_PKG
+/TMP1/GLS_INSRT_FORM_DTL_PKG
+"GLS_INSRT_FORM_DTL_PKG"INSRT_FORM_DTL_PRC"INSRT_FORM_PRIV_PRC"V_INC_FLG"V_CNT"V_CNT1""
+INSRT_FORM_DTL_PRC
+INSRT_FORM_PRIV_PRC
+GLS_PACKAGE_PKG
+/TMP1/GLS_PACKAGE_PKG
+/TMP1/IAS_POSTING_GL_PKG
+/TMP1/IAS_POSTING_GRNT_PKG
+/TMP1/IAS_POSTING_JRS_PKG
+/TMP1/IAS_POST_LIST_PKG
+/TMP1/IAS_REPORT_PKG
+/TMP1/IAS_AUD_LIST_PKG
+/TMP1/IAS_GL_CSHFLW_PKG
+/TMP1/IAS_DOC_VIEW_PKG_PRC
+/TMP1/SHP_POSTING_PKG
+FORMS4W
+"GLS_PACKAGE_PKG"PACKAGE_PRC""
+PACKAGE_PRC
+Follow
+GLS Packages Created
+GLS_PROCEDURE_PKG
+/TMP1/GLS_PROCEDURE_PKG
+/TMP1/IAS_UNPOSTTRNS_PRC
+/TMP1/CHK_BDGT_BLNC_PRC
+/TMP1/CHK_UPD_CHQNO_PRC
+"GLS_PROCEDURE_PKG"PROCEDURE_PRC""
+PROCEDURE_PRC
+GLS_SEQUENCE_PKG
+/TMP1/GLS_SEQUENCE_PKG
+"GLS_SEQUENCE_PKG"SEQUENCES_PRC""
+SEQUENCES_PRC
+GLS_SYNONYM_PKG
+/TMP1/GLS_SYNONYM_PKG
+"GLS_SYNONYM_PKG"SYNONYM_PRC""
+SYNONYM_PRC
+GLS_TABLE_FILED_PKG
+/TMP1/GLS_TABLE_FILED_PKG
+/TMP1/CHK_GLS_SYS_ACTV
+IAS20142
+FORM_DETAIL
+S_FLAGS
+"GLS_TABLE_FILED_PKG"TABLE_FILED_PRC"P_ENT"V_CNT"<cursor ptr>"<SQL statement. Line 21>"<SQL statement. Line 23>"<SQL statement. Line 25>"<SQL statement. Line 27>"<SQL statement. Line 29>""
+TABLE_FILED_PRC
+The General Ledger System is Inactive or tables are not exists
+GLS TABLE FIELDS UPDATED...
+UPDATE FORM_DETAIL SET F_BT_PRIV=1,DOC_TYP=27 WHERE FORM_NO = 454"UPDATE FORM_DETAIL SET F_BT_PRIV=1,DOC_TYP=66 WHERE FORM_NO = 29"UPDATE FORM_DETAIL SET F_BT_PRIV=1,DOC_TYP=67 WHERE FORM_NO = 30"UPDATE FORM_DETAIL SET F_BT_PRIV=1,DOC_TYP=68 WHERE FORM_NO = 31"UPDATE S_FLAGS SET FLG_ST=1 WHERE FLG_CODE IN ( ''POST_DOC_TYPE'',''UNPOST_DOC_TYPE'' ) AND FLG_VALUE IN ( 27,28,29 )"
+%p.@2
+.p:@>
+P_DOC_NO_REF => D_CV.DOC_NO ,
+P_DOC_SER_REF => D_CV.DOC_SER ,
+P_CHEQUE_NO => D_CV.CHEQUE_NO ,
+P_REF_NO => M_CV.REF_NO ,
+GLS_S_SCR_LBL_PKG
+/TMP1/GLS_S_SCR_LBL_PKG
+"GLS_S_SCR_LBL_PKG"GLS_S_SCR_LBL_PRC""
+GLS_S_SCR_LBL_PRC
+GLS_TABLE_PKG
+/TMP1/GLS_TABLE_PKG
+"GLS_TABLE_PKG"TABLE_PRC"V_CNT""
+TABLE_PRC
+GLS_TRIGGER_PKG
+/TMP1/GLS_TRIGGER_PKG
+"GLS_TRIGGER_PKG"TRIGGER_PRC"V_CNT""
+TRIGGER_PRC
+CREATE OR REPLACE TRIGGER IAS_JV_INSTALLMNT_Tgr
+BEFORE DELETE OR INSERT OR UPDATE
+OF A_CY
+,J_AMT
+,J_AMT_F
+,AC_CODE_DTL
+,BILL_NO
+,BILL_SER
+,I_NO
+ON DETAIL_JOURNAL_V
+REFERENCING NEW AS NEW OLD AS OLD
+FOR EACH ROW
+If DELETING Then --(1)
+If :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=3 Then --(2)
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0)- DECODE(NVL(:OLD.J_AMT_F,0),0,ABS(:OLD.J_AMT),ABS(:OLD.J_AMT_F))
+WHERE C_CODE=:OLD.AC_CODE_DTL
+AND A_CY =:OLD.A_CY
+AND BILL_SER =:OLD.BILL_SER
+AND I_NO =:OLD.I_NO;
+ELSIf :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=4 Then --(2)
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0)- DECODE(NVL(:OLD.J_AMT_F,0),0,ABS(:OLD.J_AMT),ABS(:OLD.J_AMT_F))
+WHERE V_CODE=:OLD.AC_CODE_DTL
+End if;
+ElsIf INSERTING Then --(1)
+If :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=3 Then --(3)
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(NVL(:NEW.J_AMT_F,0),0,ABS(:NEW.J_AMT),ABS(:NEW.J_AMT_F))
+WHERE C_CODE=:NEW.AC_CODE_DTL
+AND A_CY =:NEW.A_CY
+AND BILL_SER =:NEW.BILL_SER
+AND I_NO =:NEW.I_NO;
+ELSIf :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=4 Then --(3)
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(NVL(:NEW.J_AMT_F,0),0,ABS(:NEW.J_AMT),ABS(:NEW.J_AMT_F))
+WHERE V_CODE=:NEW.AC_CODE_DTL
+End If;--(3)
+ElsIf UPDATING Then --(1)
+If :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=3 Then --(4)
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0)- DECODE (nvl(:OLD.J_AMT_F,0),0,ABS(nvl(:OLD.J_AMT,0)),ABS(nvl(:OLD.J_AMT_F,0)))
+WHERE C_CODE =:OLD.AC_CODE_DTL
+If :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=3 Then --(5)
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(nvl(:NEW.J_AMT_F,0),0,ABS(nvl(:NEW.J_AMT,0)),ABS(nvl(:NEW.J_AMT_F,0)))
+End if; --(5)
+If :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=4 Then --(4)
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0)- DECODE (nvl(:OLD.J_AMT_F,0),0,ABS(nvl(:OLD.J_AMT,0)),ABS(nvl(:OLD.J_AMT_F,0)))
+WHERE V_CODE =:OLD.AC_CODE_DTL
+If :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null
+AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=4 Then --(5)
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(nvl(:NEW.J_AMT_F,0),0,ABS(nvl(:NEW.J_AMT,0)),ABS(nvl(:NEW.J_AMT_F,0)))
+End If;--(1)
+EXCEPTION WHEN OTHERS THEN
+Raise_Application_Error(-20303,' Error When Installment Trans. '||SqlErrm);
+END;
+CREATE OR REPLACE TRIGGER IAS_VD_INSTALLMNT_Tgr
+,AC_AMT
+,AC_AMTF
+ON VOUCHER_DETAIL
+If DELETING Then --(((1)
+If :OLD.VOUCHER_TYPE = 1 AND :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=3 Then --(2)
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0)- DECODE(NVL(:OLD.AC_AMTF,0),0,ABS(:OLD.AC_AMT),ABS(:OLD.AC_AMTF))
+ELSIf :OLD.VOUCHER_TYPE = 2 AND :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=4 Then --(2)
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0)- DECODE(NVL(:OLD.AC_AMTF,0),0,ABS(:OLD.AC_AMT),ABS(:OLD.AC_AMTF))
+If :NEW.VOUCHER_TYPE = 1 AND :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=3 Then --(3)
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(NVL(:NEW.AC_AMTF,0),0,ABS(:NEW.AC_AMT),ABS(:NEW.AC_AMTF))
+ELSIf :NEW.VOUCHER_TYPE = 2 AND :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=4 Then --(3)
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(NVL(:NEW.AC_AMTF,0),0,ABS(:NEW.AC_AMT),ABS(:NEW.AC_AMTF))
+If :OLD.VOUCHER_TYPE = 1 AND :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=3 Then
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0)- DECODE(nvl(:OLD.AC_AMTF,0),0,ABS(nvl(:OLD.AC_AMT,0)),ABS(nvl(:OLD.AC_AMTF,0)))
+If :NEW.VOUCHER_TYPE = 1 AND :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=3 Then
+UPDATE INSTALLMENT SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(nvl(:NEW.AC_AMTF,0),0,ABS(nvl(:NEW.AC_AMT,0)),ABS(nvl(:NEW.AC_AMTF,0)))
+If :OLD.VOUCHER_TYPE = 2 AND :OLD.BILL_SER Is Not Null AND :OLD.I_NO Is Not Null AND :OLD.AC_CODE_DTL Is Not Null AND :OLD.AC_DTL_TYP=4 Then
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0)- DECODE (nvl(:OLD.AC_AMTF,0),0,ABS(nvl(:OLD.AC_AMT,0)),ABS(nvl(:OLD.AC_AMTF,0)))
+If :NEW.VOUCHER_TYPE = 2 AND :NEW.BILL_SER Is Not Null AND :NEW.I_NO Is Not Null AND :NEW.AC_CODE_DTL Is Not Null AND :NEW.AC_DTL_TYP=4 Then
+UPDATE IAS_INSTALLMENT_PI SET PAID_AMT=NVL(PAID_AMT,0) + DECODE(nvl(:NEW.AC_AMTF,0),0,ABS(nvl(:NEW.AC_AMT,0)),ABS(nvl(:NEW.AC_AMTF,0)))
+EPTION WHEN OTHERS THEN
+Teriggers Created
+:=NAME_IN('Parameter.BRN_USR');
+v_Scr_Typ Number(10) :=NAME_IN('Parameter.Scr_Typ');
+v_Brn_Year Number(4) :=NAME_IN('Parameter.BRN_YEAR');
+v_Blk Varchar2(50):=NAME_IN('Parameter.BLK');
+--v_Rep_Ext Varchar2(5) :=NAME_IN('Parameter.REP_EXT');
+v_Rep_Lng Varchar2(5);
+v_Lng_Dir Number:=1;
+v_form_no Number:=Name_In('PARAMETER.FORM_NO');
+v_form_name Varchar2(500):=Name_In('PARAMETER.FORM_NAME');
+v_scr_orgnl Number:=Name_In('PARAMETER.SCR_ORGNL');
+v_Sys_No Number:=Name_In('PARAMETER.SYS_NO');
+V_Trmnl_Nm Varchar2(100):=NAME_IN('PARAMETER.Trmnl_Nm');
+v_Use_Rsltn_Scr Number:=1;
+V_Rsltn_Size Varchar2(100):=Name_In('Parameter.P_Rsltn_Size');
+V_Use_Unicode Number:=Name_In('PARAMETER.USE_UNICODE');
+--------## Procedure
+PROCEDURE Set_Para;
+PROCEDURE GET_PARA ;
+--------## Function
+FUNCTION Get_System_Path Return Varchar2;
+PROCEDURE GET_HEAD;
+PROCEDURE Show_Msg(code varchar2,Msg varchar2);
+PROCEDURE MSGBOX(Message_No number,postfix1 varchar2 DEFAULT null,
+Message_No2 number default null ,postfix2 varchar2 DEFAULT null,
+Message_No3 number default null ,postfix3 varchar2 DEFAULT null,
+MsgTxt varchar2 DEFAULT null);
+--------## Triggers
+PROCEDURE ON_ERROR;
+PROCEDURE ON_MESSAGE;
+Procedure Get_List_Print;
+PROCEDURE PRE_FORM;
+PROCEDURE Get_Data_Rep_Scr;
+PROCEDURE KEY_LISTVAL
+PROCEDURE KEY_NEXT_ITEM ;
+PROCEDURE KEY_PREV_ITEM;
+PROCEDURE KEY_OTHERS;
+PROCEDURE WHEN_TIMER_EXPIRED;
+PROCEDURE WHEN_WINDOW_CLOSED ;
+PROCEDURE WHEN_WINDOW_ACTIVATED;
+PROCEDURE WHEN_WINDOW_DEACTIVATED ;
+PROCEDURE KEY_UP;
+PROCEDURE KEY_DOWN;
+PROCEDURE KEY_ENTER;
+--------## Procedure Enable & Disable & Visible
+PROCEDURE SIP_D_FALSE(T1 Varchar2);
+PROCEDURE SIP_D_TRUE (T1 Varchar2);
+PROCEDURE SIP_E_FALSE(T1 Varchar2);
+PROCEDURE SIP_E_TRUE (T1 Varchar2);
+PROCEDURE VISIBLE_FALSE (T1 Varchar2);
+PROCEDURE VISIBLE_TRUE (T1 Varchar2);
+PROCEDURE BUTTON_TRUE (Add_Btn varchar2 Default null,Mod_Btn varchar2 Default null,
+Del_Btn varchar2 Default null,Save_Btn varchar2 Default null,
+List_Btn varchar2 Default null,Seek_Btn varchar2 Default null,
+Prev_Btn varchar2 Default null,Next_Btn varchar2 Default null,
+First_Btn varchar2 Default null,Last_Btn varchar2 Default null,
+Exit_Btn varchar2 Default null,Print_Btn varchar2 Default null,
+Search Number Default 0);
+PROCEDURE BUTTON_FALSE (Add_Btn varchar2 Default null,Mod_Btn varchar2 Default null,
+--## Check Date
+PROCEDURE CHECK_DATE( P_doc_date In Date ,
+P_Scr_Type In Varchar2,
+P_Frm_Type In Number Default 0,
+P_chk_cls In Number Default 1);
+PROCEDURE CHECK_CHQ_DATE( P_Cheq_date In DATE ,P_Doc_date In Date ,P_Scr_Type In Varchar2) ;
+--## Set Langs
+PROCEDURE FOR_RADIO(itm VARCHAR);
+FUNCTION Get_Prompt(Itm In varchar) RET
+/TMP1/GLS_VIEW_PKG
+"GLS_VIEW_PKG"VIEW_PRC"V_CNT""
+VIEW_PRC
+CREATE OR REPLACE FORCE VIEW ias_v_ny_open_bal (a_code,
+ac_code_dtl,
+ac_dtl_typ,
+a_cy,
+cc_code,
+from_cc_code,
+lc_no,
+pj_no,
+actv_no,
+rep_code,
+j_amt,
+j_amt_f,
+ac_rate,
+verify,
+ob_py,
+col_no,
+doc_sequence,
+external_post,
+f_brn_no,
+value_date,
+ad_u_id,
+ad_date,
+up_u_id,
+up_date,
+cmp_no,
+brn_no,
+brn_year,
+brn_usr,
+up_cnt,
+pr_rep,
+ad_trmnl_nm,
+up_trmnl_nm)
+SELECT "A_CODE", "AC_CODE_DTL", "AC_DTL_TYP", "A_CY", "CC_CODE",
+"FROM_CC_CODE", "LC_NO", "PJ_NO", "ACTV_NO",
+"REP_CODE", "J_AMT", "J_AMT_F", "AC_RATE", "VERIFY",
+"OB_PY", "COL_NO", "DOC_SEQUENCE", "EXTERNAL_POST", "F_BRN_NO",
+"VALUE_DATE", "AD_U_ID", "AD_DATE", "UP_U_ID", "UP_DATE", "CMP_NO",
+"BRN_NO", "BRN_YEAR", "BRN_USR", "UP_CNT", "PR_REP", "AD_TRMNL_NM",
+"UP_TRMNL_NM"
+FROM open_bal;
+Create Or Replace Force View Ias_V_Chk_CstTrns as
+Select 1 doc_type,D.ac_code_dtl c_code,a_cy a_cy,D.j_doc_no doc_no,D.jv_type jv_type ,
+M.j_ser doc_ser,D.cc_code cc_code , D.rcrd_no
+From master_journal_v M,detail_journal_v D ,Customer C
+where M.j_ser = D.j_ser
+and D.a_code = C.c_a_code
+and D.ac_code_dtl = C.c_code
+and D.ac_dtl_typ=3
+and nvl(stand_by,0) = 0
+Minus
+Select doc_type,ac_code_dtl c_code,a_cy,doc_no doc_no,jv_type jv_type,
+doc_ser,cc_code,rcrd_no
+From Ias_Post_dtl
+where doc_type=1
+and ac_dtl_typ=3
+Create Or Replace Force View Ias_V_Chk_VndTrns as
+Select 1 doc_type,D.AC_CODE_DTL v_code,a_cy,D.j_doc_no ,D.jv_type jv_type ,
+M.j_ser doc_ser,D.cc_code
+From Master_journal_v M,Detail_journal_v D ,V_details C
+and D.a_code = C.v_a_code
+and D.AC_CODE_DTL = C.v_code
+and D.AC_CODE_DTL Is Not Null
+AND D.AC_DTL
+_TYP=4
+Select doc_type,AC_CODE_DTL v_code,a_cy,doc_no ,jv_type jv_type,
+doc_ser,cc_code
+From Ias_Post_Dtl
+and AC_CODE_DTL Is Not Null
+AND AC_DTL_TYP=4
+CREATE OR REPLACE FORCE VIEW bgt_v_blnc (doc_no,
+doc_ser,
+doc_date,
+ref_no,
+doc_desc,
+doc_note,
+ac_tree,
+a_code,
+prd_no,
+f_date,
+t_date,
+bdgt_prd_type,
+bdgt_type,
+BRN_NO,
+mn_sub,
+A_S_M,
+A_LEVEL,
+a_report,
+est_blnc
+SELECT a.doc_no, a.doc_ser, a.doc_date, a.ref_no, a.doc_desc, a.doc_note,
+c.ac_tree, c.a_code, a.a_cy, b.prd_no, b.cc_code, b.pj_no,
+b.actv_no, b.brn_year, b.f_date, b.t_date, a.bdgt_prd_type,
+a.bdgt_type,a.BRN_NO,a.ad_u_id, c.mn_sub,C.A_S_M,C.A_LEVEL,C.a_report,
+ROUND
+(SUM
+(DECODE
+(ys_gen_pkg.get_fld_value ('IAS_PARA_GL',
+'nvl(Use_Multi_Cur_Bdgt,0)'
+0, NVL (b.amt_l, 0)
++ NVL (b.amt_l_add, 0)
++ NVL (b.amt_l_add_mov, 0)
+- NVL (b.amt_l_disc, 0)
+- NVL (b.amt_l_disc_mov, 0),
+DECODE (a.a_cy,
+ys_gen_pkg.get_local_cur, NVL (b.amt_l, 0)
+NVL (b.amt_f, 0)
++ NVL (b.amt_f_add, 0)
++ NVL (b.amt_f_add_mov, 0)
+- NVL (b.amt_f_disc, 0)
+- NVL (b.amt_f_disc_mov, 0)
+) est_blnc
+FROM ias_bdgt_blnc_mst a,
+ias_bdgt_blnc_dtl b,
+ias_acc_tree c
+WHERE a.doc_ser = b.doc_ser AND b.a_code = c.a_code
+GROUP BY a.doc_no,
+a.doc_ser,
+a.doc_date,
+a.ref_no,
+a.doc_desc,
+a.doc_note,
+c.ac_tree,
+c.a_code,
+a.a_cy,
+b.prd_no,
+b.cc_code,
+b.pj_no,
+b.actv_no,
+b.brn_year,
+b.f_date,
+b.t_date,
+a.bdgt_prd_type,
+a.bdgt_type,
+a.BRN_NO,
+a.ad_u_id,
+c.mn_sub,
+C.A_S_M,
+C.A_LEVEL,
+C.a_report
+ST"RUN_REP"V_PL_ID"ID"V_REP_NAME"V_SHOW_HDR"V_DESTYPE"V_REP_COPIES"V_DESFRMT"V_DESNAME"V_PRINT"V_JV_TYPE"V_TBL_NM"V_FLD_SER"V_REP_WHR
+"PKG INIT"SHP_POSTING_PKG""
+CREATE OR REPLACE PACKAGE IAS_POSTING_SHP_PKG
+V_CURR_BAL
+NUMBER;
+V_LANG_NO
+PLS_INTEGER;
+V_USER_NO
+V_LOCAL_CUR
+VARCHAR2(7);
+V_SLS_AC VARCHAR(30);
+V_DISC_AC VARCHAR2(30);
+V_VAT_AC
+VARCHAR2(30);
+V_OTHR_AC VARCHAR2(30);
+V_STK_CUR VARCHAR2(7);
+V_USE_AUDIT_DOC NUMBER(1);
+V_USE_VAT_PROFIT NUMBER(1);
+V_CALC_VAT_AMT_TYPE NUMBER(2);
+V_A_CODE
+V_CC_CODE
+COST_CENTERS.CC_CODE%TYPE ;
+V_PJ_NO
+IAS_PROJECTS.PJ_NO%TYPE ;
+V_ACTV_NO
+IAS_ACTVTY.ACTV_NO%TYPE ;
+V_VAT_PER VARCHAR2(30);
+v_cb_no CASH_IN_HAND.CASH_NO%TYPE ;
+V_CURR_DIFF_AC VARCHAR2(30);
+V_LOSS_OFG_AC VARCHAR2(30);
+V_MIN_PROFIT_AMT NUMBER;
+V_VAT_PROFIT_PER
+V_VAT_PROFIT_DEBT VARCHAR2(30);
+V_VAT_PROFIT_CRDT VARCHAR2(30);
+V_PAY_LTR_AC
+V_REC_LTR_AC VARCHAR2(30);
+V_LC_DIFF_AC VARCHAR2(30);
+V_COMM_A_CODE VARCHAR2(30);
+V_FRC_AC VARCHAR2(30);
+V_DOC_DESC VARCHAR2(250);
+V_SI_POST_DISC
+NUMBER(1);
+V_POST_REP_COMM NUMBER(1);
+V_USE_VAT NUMBER(1);
+V_PUR_DISC
+V_PUR_FREE_QTY_COST NUMBER(1);
+V_POST_CHEQ_TYPE NUMBER(1);
+V_POST_CHEQ_TYPE_VNDR NUMBER(1);
+V_AR_CS_TYPE
+V_INCOMING_CS_TYPE NUMBER(1);
+V_INC_PJ_TYPE NUMBER(1);
+V_USE_BALANCED_CC
+NUMBER (1):=0;
+V_USE_BALANCED_BRN
+V_POST_ADD_DISC_ITM_TYPE
+V_USE_PRICE_WHTRNS_REC_COST NUMBER;
+--======================================================================
+PROCEDURE GET_PARA ( P_LANG_NO
+IN PLS_INTEGER
+DEFAULT 1
+P_USER_NO
+P_POST_TYPE IN NUMBER
+DEFAULT 0
+Procedure Get_Interface_Ac(P_Brn_no
+In NUMBER
+PROCEDURE POST_PREPAID( P_F_DOC_NO IN NUMBER DEFAULT NULL
+,P_T_DOC_NO IN NUMBER DEFAULT NULL
+,P_F_DOC_DATE IN DATE DEFAULT NULL
+,P_T_DOC_DATE IN DATE DEFAULT NULL
+,P_DOC_SER IN NUMBER DEFAULT NULL
+,P_JV_TYPE IN NUMBER DEFAULT NULL
+,P_BRN_NO IN NUMBER DEFAULT NULL
+,P_AD_U_ID IN NUMBER DEFAULT NULL
+,P_POST_TYPE IN NUMBER DEFAULT 0);
+PROCEDURE POST_BILLING( P_F_DOC_NO IN NUMBER DEFAULT NULL
+PROCEDURE POST_HND_OVER( P_F_DOC_NO IN NUMBER DEFAULT NULL
+END IAS_POSTING_SHP_PKG;
+CREATE OR REPLACE PACKAGE BODY IAS_POSTING_SHP_PKG AS
+--##_____________________________________________________________________________________________________##--
+PROCEDURE GET_PARA ( P_LANG_NO IN PLS_INTEGER DEFAULT 1,
+P_USER_NO IN PLS_INTEGER ,
+P_POST_TYPE IN NUMBER DEFAULT 0) IS
+V_LANG_NO:=P_LANG_NO;
+V_USER_NO:=P_USER_NO;
+SELECT CUR_CODE
+INTO V_LOCAL_CUR
+FROM EX_RATE
+WHERE L_F=1;
+RAISE_APPLICATION_ERROR(-20601,IAS_GEN_PKG.GET_MSG(V_LANG_NO,227)||SQLERRM) ;
+SELECT NVL(VAT_PER,0),NVL(POST_REP_COMM,0),NVL(CALC_VAT_AMT_TYPE,0),NVL(USE_VAT,0)
+INTO V_VAT_PER,V_POST_REP_COMM,V_CALC_VAT_AMT_TYPE,V_USE_VAT
+FROM SHP_PARA,IAS_PARA_GEN;
+EXCEPTION
+WHEN OTHERS THEN
+RAISE_APPLICATION_ERROR(-20603,IAS_GEN_PKG.GET_MSG(V_LANG_NO,670)||SQLERRM) ;
+--=======================================================================
+END GET_PARA;
+) Is
+SELECT SHP_SLS_AC,SHP_DISC_AC,SHP_OTHR_AC,SHP_VAT_AC
+INTO V_SLS_AC,V_DISC_AC,V_OTHR_AC,V_VAT_AC
+From Interface_Acc
+Where Brn_No=P_Brn_No
+When No_Data_Found Then
+Raise_application_error(-20606,Ias_Gen_Pkg.Get_Msg(V_Lang_No,1094)||SqlErrm) ;
+End Get_Interface_Ac;
+--===================================================================================================
+,P_POST_TYPE IN NUMBER DEFAULT 0) IS
+V_amt_loc NUMBER;
+V_amt_F NUMBER;
+FOR M_CV IN
+(SELECT
+95 DOC_TYPE
+,Mv.DOC_NO DOC_NO
+,Mv.BILL_DOC_TYPE JV_TYPE
+,Mv.DOC_SER
+DOC_SER
+,Mv.DOC_DATE DOC_DATE
+,Mv.CASH_NO CASH_NO
+,DECODE(Mv.BILL_DOC_TYPE,4,Mv.C_CODE) C_CODE
+,Mv.A_CODE A_CODE
+,NVL(Mv.BILL_RATE,1) AC_RATE
+,Mv.REP_CODE REP_CODE
+,Mv.A_CY A_CY
+,Mv.COMM_PER COMM_PER
+,Mv.SHP_TYPE BILL_TYPE
+,Mv.REF_NO REF_NO
+,Mv.A_DSC DOC_DESC
+,Mv.EVRY_ADD_WGHT_PRICE EVRY_ADD_WGHT_PRICE
+,NVL(Mv.BILL_AMT,0)*NVL(Mv.BILL_RATE,1) BILL_AMT
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,NVL(Mv.BILL_AMT,0)) BILL_AMTF
+,(NVL(DISC_AMT,0)*NVL(Mv.BILL_RATE,1)) DISC_AMT
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,(NVL(DISC_AMT,0))) DISC_AMTF
+,Mv.OTHR_AMT *NVL(Mv.BILL_RATE,1) OTHR_AMT
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,(NVL(OTHR_AMT,0))) OTHR_AMTF
+,Mv.VAT_AMT *NVL(Mv.BILL_RATE,1) VAT_AMT
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,(NVL(VAT_AMT,0))) VAT_AMTF
+,NVL(Mv.CHEQUE_AMT,0) *NVL(Mv.BILL_RATE,1) CHEQUE_AMT
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,NVL(Mv.CHEQUE_AMT,0)) CHEQUE_AMTF
+,((NVL(Mv.BILL_AMT,0)-(NVL(DISC_AMT,0)))* NVL(Mv.COMM_PER,0))/100 COMM_AMT
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,((NVL(Mv.BILL_AMT,0)
+-(NVL(DISC_AMT,0))) * NVL(Mv.COMM_PER,0))/100) COMM_AMTF
+,Mv.CHEQUE_NO CHEQUE_NO
+,Mv.CC_CODE CC_CODE
+,Mv.PJ_NO PJ_NO
+,Mv.ACTV_NO ACTV_NO
+,Mv.CASH_AC_FCC CASH_AC_FCC
+,Mv.CASH_NO_FCC CASH_NO_FCC
+,BILL_DUE_DATE DOC_DUE_DATE
+,Mv.SHP_CNT SHP_CNT
+,R_CODE R_CODE
+,Mv.DOC_BRN_NO DOC_BRN_NO
+,AUDIT_REF_DESC AUDIT_REF_DESC
+,AUDIT_REF_U_ID AUDIT_REF_U_ID
+,AUDIT_REF_DATE AUDIT_REF_DATE
+,UNPOST_U_ID UNPOST_U_ID
+,UNPOST_DATE UNPOST_DATE
+,AD_DATE AD_DATE
+,Mv.AD_U_ID
+AD_U_ID
+,UP_DATE UP_DATE
+,UP_U_ID UP_U_ID
+,UP_CNT UP_CNT
+,Mv.CMP_NO CMP_NO
+,Mv.BRN_NO BRN_NO
+,Mv.BRN_YEAR BRN_YEAR
+,Mv.BRN_USR BRN_USR
+,AUDIT_REF AUDIT_REF
+,BILL_PY MOV_DOC_PY
+FROM
+SHP_PREPAID_SLS_MST Mv
+WHERE
+NVL(Mv.SHP_POST,0)=DECODE(NVL(P_POST_TYPE,0),0,0,NVL(Mv.SHP_POST,0))
+and NVL(Mv.STAND_BY,0)=0
+AND NVL(Mv.BILL_PY,0)=0
+AND NVL(Mv.AUDIT_REF,0) = DECODE(V_USE_AUDIT_DOC,1,1,NVL(Mv.AUDIT_REF,0))
+AND Mv.BILL_DOC_TYPE = DECODE(NVL(P_JV_TYPE,0),0, Mv.BILL_DOC_TYPE,P_JV_TYPE)
+AND Mv.DOC_NO BETWEEN NVL(P_F_DOC_NO,Mv.DOC_NO) AND NVL(P_T_DOC_NO,Mv.DOC_NO)
+AND Mv.DOC_DATE BETWEEN NVL(P_F_DOC_DATE,Mv.DOC_DATE) AND NVL(P_T_DOC_DATE,Mv.DOC_DATE)
+And Mv.DOC_SER =NVL(P_DOC_SER, Mv.DOC_SER)
+AND Mv.BRN_NO = NVL(P_BRN_NO, Mv.BRN_NO)
+AND Mv.AD_U_ID = NVL(P_AD_U_ID, Mv.AD_U_ID) And EXISTS
+(SELECT 1 FROM S_BRN_USR_PRIV
+WHERE U_ID = V_USER_NO
+AND S_BRN_USR_PRIV.BRN_NO = Mv.BRN_NO
+AND NVL(ADD_FLAG,1) = 1
+AND ROWNUM <= 1
+FOR UPDATE NOWAIT)
+LOOP --(1)
+IF NVL(IAS_POSTING_PKG.CHK_EXIST_PST_DOC(M_CV.DOC_TYPE,M_CV.DOC_SER) ,0) = 0 THEN -- (BEGIN CHK EXIST) --
+IAS_POSTING_PKG.SET_DOC_INFO (
+P_AUDIT_REF => M_CV.AUDIT_REF ,
+P_AUDIT_REF_DESC => M_CV.AUDIT_REF_DESC ,
+P_AUDIT_REF_U_ID => M_CV.AUDIT_REF_U_ID ,
+P_AUDIT_REF_DATE => M_CV.AUDIT_REF_DATE ,
+P_AD_U_ID => M_CV.AD_U_ID ,
+P_AD_DATE => M_CV.AD_DATE ,
+P_UP_U_ID => M_CV.UP_U_ID ,
+P_UP_DATE => M_CV.UP_DATE ,
+P_UP_CNT => M_CV.UP_CNT ,
+P_UNPOST_U_ID => M_CV.UNPOST_U_ID ,
+P_UNPOST_DATE => M_CV.UNPOST_DATE ,
+P_BRN_NO => M_CV.BRN_NO ,
+P_BRN_YEAR => M_CV.BRN_YEAR ,
+P_CMP_NO => M_CV.CMP_NO ,
+P_BRN_USR => M_CV.BRN_USR ,
+P_POST_TYPE => P_POST_TYPE
+Get_Interface_Ac(M_cv.Brn_No );
+--##_________________________________________________________
+____________________________________________##--
+IF V_USE_VAT = 1 THEN
+IF V_VAT_AC IS NULL THEN
+RAISE_APPLICATION_ERROR(-20654,IAS_GEN_PKG.GET_MSG(V_LANG_NO,1125)||' ,'||SQLERRM) ;
+V_VAT_AC:=NULL;
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (M_CV.A_CODE,M_CV.A_CY);
+IAS_POSTING_PKG.INSRT_POST_MST(
+P_DOC_TYPE => M_CV.DOC_TYPE,
+P_JV_TYPE => M_CV.JV_TYPE,
+P_DOC_NO => M_CV.DOC_NO,
+P_DOC_SER => M_CV.DOC_SER,
+P_J_DATE => M_CV.DOC_DATE,
+P_REF_NO => M_CV.REF_NO,
+P_CC_CODE => M_CV.CC_CODE,
+P_PJ_NO => M_CV.PJ_NO,
+P_ACTV_NO => M_CV.ACTV_NO,
+P_CASH_NO => M_CV.CASH_NO,
+P_DOC_BRN_NO => M_CV.DOC_BRN_NO);
+-----------------------------------------------------------------------------------------------------------
+-- the DR SITE
+/* If M_cv.a_cy <> v_local_cur Then
+v_amtf:=D_cv.amt/(M_cv.Mamt/nvl(M_cv.Mamtf,1));
+v_amtf:=0;
+-- DR SLS_AC
+IF M_CV.CASH_AC_FCC IS NOT NULL THEN
+V_AMT_LOC :=(NVL(M_CV.CHEQUE_AMT,0));
+V_AMT_F :=(NVL(M_CV.CHEQUE_AMTF,0));
+V_AMT_LOC :=(NVL(M_CV.BILL_AMT,0)-NVL(M_CV.Disc_AMT,0)+NVL(M_CV.OTHR_AMT,0)+NVL(M_CV.VAT_AMT,0));
+V_AMT_F :=(NVL(M_CV.BILL_AMTF,0)-NVL(M_CV.Disc_AMTF,0)+NVL(M_CV.OTHR_AMTF,0)+NVL(M_CV.VAT_AMTF,0));
+If nvl(V_AMT_LOC,0) >0 then
+IAS_POSTING_PKG.INSRT_POST_DTL ( P_DOC_TYPE => M_CV.DOC_TYPE ,
+P_JV_TYPE => M_CV.JV_TYPE ,
+P_DOC_NO => M_CV.DOC_NO ,
+P_DOC_SER => M_CV.DOC_SER ,
+P_A_CODE => M_CV.A_code ,
+P_A_CY => M_CV.A_CY ,
+P_AMT => V_AMT_LOC ,
+P_AMT_F => V_AMT_F ,
+P_J_DATE => M_CV.DOC_DATE ,
+P_J_DESC => M_CV.DOC_DESC ,
+P_CC_CODE => M_CV.CC_CODE ,
+P_PJ_NO => M_CV.PJ_NO ,
+P_ACTV_NO => M_CV.ACTV_NO ,
+P_CASH_NO => M_CV.CASH_NO ,
+P_CB_BEFORE => V_CURR_BAL ,
+P_C_CODE => M_CV.C_CODE ,
+P_CHEQUE_NO => M_CV.CHEQUE_NO ,
+P_REP_CODE => M_CV.REP_CODE ,
+P_BRN_NO => NVL(M_CV.DOC_BRN_NO,M_CV.BRN_NO),
+P_DOC_BRN_NO => M_CV.DOC_BRN_NO );
+IF (NVL(M_CV.BILL_AMT,0)+NVL(M_CV.OTHR_AMT,0)+NVL(M_CV.VAT_AMT,0)-NVL(M_CV.Disc_AMT,0)-NVL(V_AMT_LOC,0)) >0 THEN
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (M_CV.CASH_AC_FCC,M_CV.A_CY);
+P_A_CODE => M_CV.CASH_AC_FCC,
+P_AMT => (NVL(M_CV.BILL_AMT,0)+NVL(M_CV.OTHR_AMT,0)+NVL(M_CV.VAT_AMT,0)-NVL(M_CV.Disc_AMT,0)-NVL(V_AMT_LOC,0)) ,
+P_AMT_F => (NVL(M_CV.BILL_AMTF,0)+NVL(M_CV.OTHR_AMTF,0)+NVL(M_CV.VAT_AMTF,0)-NVL(M_CV.Disc_AMTF,0)-NVL(V_AMT_F,0)) ,
+P_CASH_NO => M_CV.CASH_NO_FCC,
+IF NVL(M_CV.Disc_AMT,0)>0 then
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (V_Disc_AC,M_CV.A_CY);
+P_A_CODE => V_Disc_AC ,
+P_AMT => M_CV.disc_amt ,
+P_AMT_F => M_CV.disc_amtF
+--THE CR SIDE
+--V_amt_loc:= (NVL(M_CV.BILL_AMT,0)-NVL(M_CV.OTHR_AMT,0)-NVL(M_CV.VAT_AMT,0))*NVL(M_CV.AC_RATE,1);
+IF NVL(M_CV.BILL_AMT,0) >0 Then
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (V_SLS_AC,M_CV.A_CY);
+IAS_POSTING_PKG.INSRT_POST_DTL( P_DOC_TYPE => M_CV.DOC_TYPE ,
+P_A_CODE => V_SLS_AC ,
+P_AMT => -(NVL(M_CV.BILL_AMT,0)) ,
+P_AMT_F => -(NVL(M_CV.BILL_AMTF,0)) ,
+End IF;
+IF NVL(M_CV.Othr_AMT,0)>0 then
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (V_OTHR_AC,M_CV.A_CY);
+P_A_CODE => V_OTHR_AC ,
+P_AMT => -M_CV.OTHR_amt ,
+P_AMT_F => -M_CV.OTHR_amtF ,
+IF NVL(M_CV.VAT_AMT,0)>0 then
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (V_VAT_AC,M_CV.A_CY);
+P_A_CODE => V_VAT_AC ,
+P_AMT => -M_CV.VAT_amt ,
+P_AMT_F => -M_CV.VAT_amtF ,
+end if ;
+--IF V_INSRT_DTL = 0 THEN
+-- RAISE_APPLICATION_ERROR(-20620,IAS_GEN_PKG.GET_MSG(V_LANG_NO,940)||CHR(13)||SQLERRM) ;
+--END IF;
+IF P_POST_TYPE = 1 THEN -- FROM POSTING SCREEN
+UPDATE SHP_PREPAID_SLS_MST SET SHP_POST = 1 ,
+POST_U_ID = V_USER_NO,
+POST_DATE = SYSDATE
+WHERE DOC_SER=M_CV.DOC_SER;
+WHEN OTHERS T
+RAISE_APPLICATION_ERROR(-20613,'SHP., '||IAS_GEN_PKG.GET_MSG(V_LANG_NO,1123)||SQLERRM) ;
+Update Ias_Post_Mst Set doc_post=1
+Where doc_type=M_cv.doc_type
+and doc_ser =M_cv.doc_ser;
+Raise_application_error(-20652,'Ias_Post_Mst, '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+Update Ias_Post_Dtl Set doc_post=1
+Raise_application_error(-20653,'Ias_Post_Dtl, '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+IF SQL%NOTFOUND THEN
+RAISE_APPLICATION_ERROR(-20614,'SHP., '||IAS_GEN_PKG.GET_MSG(V_LANG_NO,1123)||SQLERRM) ;
+If Nvl(V_USE_BALANCED_CC,0)=1 And Nvl(V_CC_AVAIL,0) = 3 Then
+IAS_Posting_Pkg.Balanced_Cc (
+P_Doc_Type => M_Cv.Doc_Type ,
+P_Jv_Type => M_Cv.Jv_Type ,
+P_Doc_No => M_Cv.Doc_No ,
+P_Doc_Ser => M_Cv.Doc_Ser ,
+P_J_Date => M_Cv.Doc_Date );
+End If;*/
+If Nvl(V_Use_Balanced_Brn,0)=1 Then
+IAS_Posting_Pkg.Balanced_Brn ( P_Doc_Type => M_Cv.Doc_Type ,
+--## Check balance Posting DisAssemble_Kit_Items
+Ias_Posting_Pkg.Check_Bal_Post ( P_doc_type => M_cv.doc_type,
+P_doc_ser => M_cv.doc_ser,
+P_jv_type => M_cv.jv_type,
+P_doc_no => M_cv.doc_no,
+P_doc_date => M_cv.doc_date,
+P_local_cur=> v_local_cur,
+P_Lang_no => v_Lang_no,
+P_cc_code => M_cv.cc_code,
+P_pj_no => null,
+P_Actv_No => null,
+P_ref_no => Null,
+p_ad_u_id => M_cv.ad_u_id ,
+p_post_u_id => V_User_no ,
+P_Post_Type => P_Post_Type ,
+P_Brn_no => M_cv.Brn_no,
+P_Brn_Year => M_cv.Brn_Year,
+P_CMP_NO => M_cv.CMP_NO,
+P_BRN_USR => M_cv.BRN_USR );
+END LOOP;--(1)
+END POST_PREPAID;
+DOC_TYPE
+,Mv.DOC_SER DOC_SER
+,Mv.A_CY
+A_CY
+,Mv.SHP_TYPE Shp_TYPE
+,Mv.FIRST_WGHT FIRST_WGHT
+,Mv.ACTUAL_WGHT ACTUAL_WGHT
+,Mv.EVRY_ADD_WGHT EVRY_ADD_WGHT
+,Mv.EVRY_ADD_WGHT_PRICE *NVL(Mv.BILL_RATE,1) EVRY_ADD_WGHT_PRICE
+,DECODE(Mv.A_CY,V_LOCAL_CUR,0,NVL(Mv.EVRY_ADD_WGHT_PRICE,0)) EVRY_ADD_WGHT_PRICEF
+D_DATE AD_DATE
+,Mv.AD_U_ID AD_U_ID
+SHP_BILLING Mv
+and Mv.DOC_SER =NVL(P_DOC_SER, Mv.DOC_SER) --201300112 -- NVL(P_DOC_SER, Mv.DOC_SER)
+IF V_VAT_AC IS
+NULL THEN
+/* If M_CV.Shp_Type=1 then
+V_AMT_LOC :=(((NVL(M_CV.ACTUAL_WGHT,0)-NVL(M_CV.FIRST_WGHT,0))/NVL(M_CV.EVRY_ADD_WGHT,0))*NVL(M_CV.EVRY_ADD_WGHT_PRICE,0)) -NVL(M_CV.Disc_AMT,0);
+V_AMT_F :=(((NVL(M_CV.ACTUAL_WGHT,0)-NVL(M_CV.FIRST_WGHT,0))/NVL(M_CV.EVRY_ADD_WGHT,0))*NVL(M_CV.EVRY_ADD_WGHT_PRICEF,0)) -NVL(M_CV.Disc_AMTF,0);
+else*/
+-- End if;
+IF nvl(V_AMT_LOC,0)>0 Then
+P_REP_CODE
+=> M_CV.REP_CODE ,
+P_DOC_NO =>
+M_CV.DOC_NO ,
+P_AMT_F => M_CV.disc_amtF ,
+-- THE CR SITE
+--V_SLS_AC
+IF (NVL(M_CV.BILL_AMT,0))>0 then --MUR7122013
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (V_OTHR_
+AC,M_CV.A_CY);
+--END IF
+UPDATE SHP_BILLING SET SHP_POST = 1 ,
+Where doc_ty
+pe=M_cv.doc_type
+END POST_BILLING;
+---------------------------------------------------
+-- POSTINH HAND OVER WHEN RECEIVING MONY
+,P_BRN_NO IN NUMBER D
+EFAULT NULL
+V_Insrt_dtl NUMBER;
+203 DOC_TYPE
+,Mv.HND_NO DOC_NO
+,Mv.HND_TYP JV_TYPE
+,Mv.HND_SRL DOC_SER
+,Mv.HND_DATE DOC_DATE
+,Mv.AC_CODE_DTL CASH_NO
+,Mv.ac_DTL_TYP AC_DTL_TYP
+,Mv.AC_CODE A_CODE
+,NVL(Mv.CUR_RATE,1) AC_RATE
+,Mv.CUR_CODE A_CY
+-- ,Mv.COMM_PER COMM_PER
+,Mv.HND_DSC DOC_DESC
+,NVL(Mv.AMT,0)*NVL(Mv.CUR_RATE,1) BILL_AMT
+,DECODE(Mv.cur_code,V_LOCAL_CUR,0,NVL(Mv.AMT,0)) BILL_AMTF
+,AD_U_ID AD_U_ID
+SHP_HND_MST Mv
+NVL(Mv.DOC_POST,0)=DECODE(NVL(P_POST_TYPE,0),0,0,NVL(Mv.DOC_POST,0))
+AND NVL(Mv.HND_PY,0)=0
+AND Mv.HND_NO BETWEEN NVL(P_F_DOC_NO,Mv.HND_NO) AND NVL(P_T_DOC_NO,Mv.HND_NO)
+AND Mv.HND_DATE BETWEEN NVL(P_F_DOC_DATE,Mv.HND_DATE) AND NVL(P_T_DOC_DATE,Mv.HND_DATE)
+and Mv.HND_SRL =NVL(P_DOC_SER, Mv.HND_SRL) --201300112 -- NVL(P_DOC_SER, Mv.DOC_SER)
+For Update NoWait
+Order by Mv.HND_NO,Mv.HND_date)
+--##______________________
+--Get_Interface_Ac(M_cv.Brn_No );
+/*IF V_USE_VAT = 1 THEN
+END IF;*/
+V_Insrt_dtl:=0;
+For D_cv in
+( Select
+Dv.DOC_NO DOC_NO
+,Dv.BILL_DOC_TYPE JV_TYPE
+,Dv.DOC_SER DOC_SER
+,Dv.DOC_DATE DOC_DATE
+,Dv.CASH_NO CASH_NO
+,DECODE(Dv.BIL
+L_DOC_TYPE,4,Dv.C_CODE) C_CODE
+,Dv.A_CODE A_CODE
+,NVL(Dv.BILL_RATE,1) AC_RATE
+,Dv.REP_CODE REP_CODE
+,Dv.A_CY A_CY
+,Dv.REF_NO REF_NO
+,Dv.A_DSC DOC_DESC
+,NVL(Dv.BILL_AMT,0)*NVL(Dv.BILL_RATE,1) BILL_AMT
+,DECODE(Dv.A_CY,V_LOCAL_CUR,0,NVL(Dv.BILL_AMT,0)) BILL_AMTF
+,(NVL(DISC_AMT,0)*NVL(Dv.BILL_RATE,1)) DISC_AMT
+,DECODE(Dv.A_CY,V_LOCAL_CUR,0,(NVL(DISC_AMT,0)))
+DISC_AMTF
+,Dv.OTHR_AMT *NVL(Dv.BILL_RATE,1) OTHR_AMT
+,DECODE(Dv.A_CY,V_LOCAL_CUR,0,(NVL(OTHR_AMT,0))) OTHR_AMTF
+,Dv.VAT_AMT *NVL(Dv.BILL_RATE,1) VAT_AMT
+,DECODE(Dv.A_CY,V_LOCAL_CUR,0,(NVL(VAT_AMT,0))) VAT_AMTF
+,NVL(Dv.CHEQUE_AMT,0) *NVL(Dv.BILL_RATE,1) CHEQUE_AMT
+,DECODE(Dv.A_CY,V_LOCAL_CUR,0,NVL(Dv.CHEQUE_AMT,0)) CHEQUE_AMTF
+,((NVL(Dv.BILL_AMT,0)-(NVL(DISC_AMT,0)))* NVL(Dv.COMM_PER,0))/100 COMM_AMT
+,DECODE(Dv.A_CY,V_LOCAL_CUR,0,((NVL(Dv.BILL_AMT,0)
+-(NVL(DISC_AMT,0))) * NVL(Dv.COMM_PER,0))/100) COMM_AMTF
+,Dv.CHEQUE_NO CHEQUE_NO
+,Dv.CC_CODE CC_CODE
+,Dv.PJ_NO PJ_NO
+,Dv.ACTV_NO ACTV_NO
+,Dv.DOC_BRN_NO DOC_BRN_NO
+From SHP_BILLING Dv
+Where Dv.HND_SRL=M_cv.DOC_SER
+AND Dv.BILL_DOC_TYPE=4
+AND NVL(Dv.PAY_WHN_HND,0)=1
+Loop --(2)
+V_Insrt_dtl:=1;
+V_AMT_LOC :=(NVL(D_CV.BILL_AMT,0)-NVL(D_CV.Disc_AMT,0)+NVL(D_CV.OTHR_AMT,0)+NVL(D_CV.VAT_AMT,0));
+V_AMT_F :=(NVL(D_CV.BILL_AMTF,0)-NVL(D_CV.Disc_AMTF,0)+NVL(D_CV.OTHR_AMTF,0)+NVL(D_CV.VAT_AMTF,0));
+P_A_CODE => IAS_CSHBNK_PKG.Get_A_code(1,M_CV.CASH_NO) , --M_CV.A_code ,
+P_AC_CODE_DTL => M_CV.CASH_NO ,
+P_AC_DTL_TYP => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(IAS_CSHBNK_PKG.Get_A_code(1,M_CV.CASH_NO)),
+P_J_DESC
+=> M_CV.DOC_DESC ,
+P_C_CODE => NULL ,
+P_DOC_TYPE_REF => 96 ,
+P_DOC_JV_TYPE_REF => D_CV.JV_TYPE ,
+V_CURR_BAL:=IAS_POSTING_PKG.CHECK_ACODE (D_CV.A_CODE,D_CV.A_CY);
+P_A_CODE => D_CV.A_code ,
+P_AC_CODE_DTL => D_CV.C_CODE ,
+P_AC_DTL_TYP => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(D_CV.A_code),
+P_A_CY => D_CV.A_CY ,
+P_AMT => - V_AMT_LOC ,
+P_AMT_F => - V_AMT_F ,
+P_CC_CODE => D_CV.CC_CODE ,
+P_PJ_NO => D_CV.PJ_NO ,
+P_ACTV_NO => D_CV.ACTV_NO ,
+P_CASH_NO => NULL ,
+P_C_CODE => D_CV.C_CODE ,
+P_REF_NO => D_CV.REF_NO ,
+P_REP_CODE => D_CV.REP_CODE ,
+P_BRN_NO => NVL(D_CV.DOC_BRN_NO,M_CV.BRN_NO),
+END LOOP; --2
+UPDATE SHP_HND_MST SET DOC_POST = 1 ,
+WHERE HND_SRL=M_CV.DOC_SER;
+End loop;--(1)
+END POST_HND_OVER;
+_______________##--
+"PKG INIT"IAS_UNPOSTTRNS_PRC""
+CREATE OR REPLACE PROCEDURE IAS_UnpostTrns_Prc ( P_User_no In Number,
+P_DocType In Out Number,
+P_Wh_MJSql_Mst In varchar2,
+P_Wh_MJSql_Dtl In varchar2,
+P_Wh_DocSql In varchar2,
+P_Wh_DocSql_Dtl In varchar2,
+P_Del_Or_Not In Number DEFAULT 0,
+P_Close_Per In Out NUMBER) Is
+Cnt Number;
+CLMN_DOC_NO
+VarChar2(50);
+CLMN_DOC_DATE
+CLMN_JV_TYPE
+CLMN_Doc_Ser
+CLMN_Doc_Post
+CLMN_EXTRNL_POST VarChar2(50);
+TABLE_NAME
+--##-------------------------------------
+--Mrd Updated in 18/0/2016 check glslib
+Ias_Report_Pkg.Get_Clmn_Name(
+P_DocType
+,--## Get Table Name and Column Name Use In Update Post Flag in Tables
+TABLE_NAME );
+--## Check EXISTS EXTERNAL_POST --
+Execute Immediate 'Select 1 From USER_TAB_COLUMNS Where TABLE_NAME='''||TABLE_NAME||'''
+AND COLUMN_NAME= ''EXTERNAL_POST''
+and RowNum<=1 ' Into cnt;
+Exception When no_data_found then
+cnt:=0;
+Raise_application_error(-20204,'There Is Error when Select Ias_Post_Mst ,'||SqlErrm) ;
+If NVL(cnt,0) > 0 Then --(1)
+CLMN_EXTRNL_POST:=' AND NVL(EXTERNAL_POST,0)=0';
+/* If TABLE_NAME NOT IN('IAS_PR_BILL_MST','STK_ADJUSTMENT','ASSEMBLE_KIT_ITEMS','DISASSEMBLE_KIT_ITEMS',
+'NOTE','SHP_BILLING','SHP_PREPAID_SLS_MST','REM_CNTRCT_RNT_MST') THEN
+End If; */
+--## Check Closing Periods --
+Execute Immediate 'Select 1 From Ias_Post_Mst Where EXISTS ( SELECT 1 FROM S_PRD_BRN_CLS WHERE PRD_NO = Ias_Post_Mst.MNTH AND BRN_NO = Ias_Post_Mst.BRN_NO AND PRD_CLS = 1 AND ROWNUM<=1) '|| ' And '||P_Wh_MJSql_Mst||' and RowNum<=1 ' Into cnt;
+If cnt > 0 Then --(1)
+P_Close_Per:=1;
+Else -- (1)
+If Nvl(P_Del_Or_Not,0) = 1 Then--## Delete From Ias_Post_Mst and Ias_Post_Dtl (Cascade)
+If P_DocType Not In(83,84) Then
+Execute Immediate
+' Delete From Ias_Post_Mst
+Where EXISTS ( SELECT 1 FROM S_PRD_BRN_CLS WHERE PRD_NO =Ias_Post_Mst.MNTH AND BRN_NO = Ias_Post_Mst.BRN_NO AND PRD_CLS = 0 AND ROWNUM<=1)
+and nvl(EXTERNAL_POST,0)= 0
+--and nvl(DOC_POST,0)= 1
+and Exists (select 1 From S_Brn_Usr_Priv
+Where U_Id = '||p_User_No||'
+And S_Brn_Usr_Priv.Brn_No =Ias_Post_Mst.Brn_No
+And Nvl(Add_Flag,1) = 1
+And RowNum <=1 ) and '||P_Wh_MJSql_Mst||'';
+' Delete From Ias_Post_Dtl
+Where EXISTS ( SELECT 1 FROM S_PRD_BRN_CLS WHERE PRD_NO =Ias_Post_Dtl.MNTH AND BRN_NO = Ias_Post_Dtl.BRN_NO AND PRD_CLS = 0 AND ROWNUM<=1)
+-- and nvl(DOC_POST,0)= 1
+and Doc_Sequence Is Not Null
+And Exists (select 1 From S_Brn_Usr_Priv
+And S_Brn_Usr_Priv.Brn_No =Ias_Post_dtl.Brn_No
+If P_DocType Not In ( 83 , 84 ) Then -- Cheque Due --
+' Update Ias_Post_Mst Set Doc_post=0 ,Unpost_date=Sysdate ,Unpost_u_id='||P_User_no||'
+' Update Ias_Post_Dtl Set Doc_post=0 ,Unpost_date=Sysdate ,Unpost_u_id='||P_User_no||'
+And nvl(EXTERNAL_POST,0)= 0
+And S_Brn_Usr_Priv.Brn_No =Ias_Post_Dtl.Brn_No
+And RowNum <=1 ) and '||P_Wh_MJSql_Dtl||'';
+--------------------------------------------------------------
+If P_DocType Is Not Null Then --(2)
+--## Update Post Flag = 0 --
+-- insert into tst values(P_Wh_DocSql);
+' Update '||TABLE_NAME||' a Set '||Clmn_Doc_Post||'=0 ,Unpost_date=Sysdate ,Unpost_u_id='||P_User_no||' Where
+Exists (select 1 From S_Brn_Usr_Priv
+And S_Brn_Usr_Priv.Brn_No =a.Brn_No
+And RowNum <=1 )
+and '||P_Wh_DocSql||' '||CLMN_EXTRNL_POST||'';
+-- and Exists(select doc_ser from ias_post_dtl where doc_close=0 and doc_ser=a.'||CLMN_Doc_Ser||' )
+If P_DocType = 775 Then -- Salary Calc
+' Update HRS_SLRY_CALC_MST_HSTRY a Set DOC_POST =0 ,Unpost_date=Sysdate ,Unpost_u_id='||P_User_no||' Where
+Exists (Select 1 From S_Brn_Usr_Priv
+And RowNum <=1 ) and '||P_Wh_DocSql||'';
+ElsIf P_DocType In ( 2,3 ,83,84) Then -- Receipt / Payment
+' Update Voucher_Detail Set cheque_post=0 ,Unpost_date=Sysdate ,Unpost_u_id='||P_User_no||' Where Exists (select 1 From S_Brn_Usr_Priv
+And S_Brn_Usr_Priv.Brn_No =Voucher_Detail.Brn_No
+And RowNum <=1 ) and '||P_Wh_DocSql_Dtl||'';
+ElsIf P_DocType =6 Then
+' Update gr_note Set GR_POST=0 ,Unpost_date=Sysdate ,Unpost_u_id='||P_User_no||' Where Exists (select 1 From S_Brn_Usr_Priv
+And S_Brn_Usr_Priv.Brn_No =gr_note.Brn_No
+Raise_application_error(-20205,'Error When Updating Document Doc_type ='||P_DocType||' '||SqlErrm) ;
+End If; --(2)
+--==========================================================================
+Exception When others then
+Raise_application_error(-20206,'Error When Unposting Document In Ias_Post_Mst = '||SqlErrm) ;
+End IAS_UnpostTrns_Prc;
+_FCC IS NOT NULL THEN
+"PKG INIT"IAS_REPORT_PKG""
+CREATE OR REPLACE PACKAGE Body Ias_Report_Pkg AS
+Function Get_Rep_Para ( P_SUM_DTL In Number Default Null, -- 0 - Detail , 1 - Summery --
+P_Doc_TYPE In Number Default Null,
+P_Jv_TYPE In Number Default Null,
+P_Doc_No In Number Default Null,
+P_Doc_Ser In Number Default Null,
+USER_NO In Number ,
+v_show_hdr In Number ,
+Brn_No In Number ,
+F_SYS_NO In Number ,
+LANG_NO In Number Default 1 ,
+P_DIR In Number Default 1 ,
+P_FTR In VarChar2 Default Null,
+P_HDR In VarChar2 Default Null,
+P_VAR In VarChar2 Default Null,
+P_NUM In Number Default Null,
+P_Gen_Inv In Number Default 1 ,-- P_Gen_Inv := 1 - General Doc Type , 2 - Inv Doc Type --
+P_Weher In VarChar2 Default Null,-- Condition Addition --
+P_REP_NM In VarChar2 Default Null,
+P_Tbl_Nm_Mst In Varchar2 Default Null,
+P_Tbl_Nm_Dtl In Varchar2 Default Null) RETURN VarChar2 Is
+Select Nvl(ALLOW_CALL_REP_BTN,0) ,Nvl(HIDE_COST,0)
+Into CALL_BTN,HID_COST From PRIVILEGE_FIXED
+Where U_ID=USER_NO;
+CALL_BTN :=1;
+END ;
+If Nvl(CALL_BTN ,0)=0 Then
+Return('NOT');
+G_Doc_TYPE := P_Doc_TYPE;
+G_Jv_TYPE := P_Doc_TYPE;
+G_Doc_No := P_Doc_No;
+G_Doc_Ser := P_Doc_Ser;
+G_Usr_No := User_No;
+G_Brn_No := Brn_No;
+G_Lang_No := Lang_No;
+Null;
+If Nvl(P_Gen_Inv,1)=2 Then
+Select Decode(P_DOC_TYPE,
+0 ,0 ,
+1 ,4 ,
+2 ,6 ,
+3 ,5 ,
+4 ,7,
+5 ,8,
+6 ,9,
+7 ,11,
+8 ,12,
+11,17,
+12,17,
+13,18,
+14,18,
+15,10,
+16,10,
+17,10,
+18,10) Into G_DOC_TYPE From Dual;
+G_DOC_TYPE :=P_DOC_TYPE;
+G_Usr_Nm:= ias_gen_pkg.get_prompt(Lang_no,2524)||' : '||IAS_USR_PKG.Get_Usr_Nm(G_Usr_No,Lang_No);
+G_Usr_Nm:
+= G_Usr_No;
+G_REP_DAT := Ias_Gen_Pkg.Get_Prompt(Lang_No,2489)||' : '||Ias_Gen_Pkg.Get_Curdate();
+If G_Doc_Ser Is Not Null Then -- P_REP_NM --
+If P_Gen_Inv = 2 Then
+Get_Priv_Rep_Name_Inv ;
+Get_Priv_Rep_Name ;
+End If ;
+HDR:=Doc_Type_Name(Lang_No,P_Doc_TYPE,P_Jv_TYPE);
+If Lang_No<>1 Then
+Select
+substr(V_REP_NM,1,instr(V_REP_NM,' ')-1)||'_F'||
+substr(V_REP_NM,instr(V_REP_NM,' '), Length(V_REP_NM)) Into V_REP_NM
+From dual;
+V_Rep_Nm:=P_Rep_Nm;
+Hdr:=P_Hdr;
+Prnt:=Null;
+If LANG_NO <> 1 Then
+V_Rep_Nm:=V_Rep_Nm||'_F';
+End If; -- P_REP_NM --
+If v_show_hdr = 1 Then
+Get_Rep_Head;
+CmpANAME:=Null;
+CmpENAME:=Null;
+BANAME :=Null;
+BENAME :=Null;
+BADD :=Null;
+BEADD :=Null;
+BTELE :=Null;
+BFAX :=Null;
+BBOX :=Null;
+BETELE :=Null;
+BEFAX :=Null;
+BEBOX :=Null;
+BIMG :=Null;
+Str:=
+' B_TELE="'||BTELE||'"'||'
+B_FAX="'||BFAX||'"'||'
+B_BOX="'||BBOX||'"'||'
+B_ADD="'||BADD||'"'||'
+B_E_ADD="'||BEADD||'"'||'
+BRN_ADES="'||BANAME||'"'||'
+BRN_EDES="'||BENAME||'"'||'
+B_NAME="'||CmpANAME||'"'||'
+B_E_NAME="'||CmpENAME||'"'||'
+B_E_TELE="'||BETELE||'"'||'
+B_E_FAX="'||BEFAX||'"'||'
+B_E_BOX="'||BEBOX||'"'||'
+BIMG="'||BIMG||'"'||'
+MAXIMIZE="'||'NO'||'"'||'
+PRINTJOB="'||'YES'||'"'||'
+PARAMFORM="'||'NO'||'"'||'
+User_No="'||G_Usr_No||'"'||'
+P_Usr_Nm="'||G_Usr_Nm||'"'||'
+p_show_hdr="'||v_show_hdr||'"'||'
+F_SYS_NO="'||F_SYS_NO||'"'||'
+LANG_NO="'||LANG_NO||'"'||'
+P_DIR="'||P_DIR||'"'||'
+P_FTR="'||P_FTR||'"'||'
+P_HDR="'||P_HDR||'"'||'
+P_VAR="'||P_VAR||'"'||'
+P_NUM="'||P_NUM||'"'||'
+P_Tbl_Nm_Mst="'||P_Tbl_Nm_Mst||'"'||'
+P_Tbl_Nm_Mst="'||P_Tbl_Nm_Dtl||'"'||'
+P_REP_DAT="'||G_REP_DAT||'"';
+--If Prnt = 0 Or Nvl(Call_Btn,0) =2 Then
+If Nvl(Call_Btn,0) =2 Then
+STR:=STR||' DISABLEFILE="'||'YES'||'"'||'
+DISABLEPRINT="'||'YES'||'"'||'
+DISABLEMAIL="'||'YES'||'"'||'
+P_Tbl_Mst="'||P_Tbl_Nm_Mst||'"'||'
+P_Tbl_Dtl="'||P_Tbl_Nm_Dtl||'"' ;
+If (Prnt = 0 And VwRep = 0 And P_REP_NM Is Null) Or (Call_Btn=0) Then
+ElsIf V_REP_NM Is Not Null Then
+Return(V_REP_NM||'
+'||P_Weher||'
+'||STR);
+End Get_Rep_Para;
+--=========================================================================================
+Function Get_Priv_Rep_Para (P_SUM_DTL In Number Default Null, -- 0 - Detail , 1 - Summery --
+P_NUM
+In Number Default Null,
+P_ALLOW_REP In Out Number ,-- Mean 0 - Not Show Report But Show Msg In P_SHOW_MSG --
+P_SHOW_MSG In Out VarChar2 ,
+CALL_BTN :=0;
+If Nvl(F_SYS_NO ,0) In (118,119,144,266,307,314,656) Then
+P_ALLOW_REP
+P_SHOW_MSG
+Ias_Gen_Pkg.Get_prompt(Nvl(Lang_No,1),1274)||' ' ||Ias_Gen_Pkg.Get_prompt(Nvl(Lang_No,1),89 );
+ElsIf Nvl(CALL_BTN ,0)=0 Then
+Ias_Gen_Pkg.Get_Msg(Nvl(Lang_No,1),1114);
+G_Usr_Nm:= G_Usr_No;
+HDR:=Doc_Type_Name(Lang_No,P_Doc_TYPE,P_Jv_Type);
+Hdr:=P_Hdr ;
+B_E_ADD="'||BEADD||'"
+BRN_ADES="'||BANAME||'"
+BRN_EDES="'||BENAME||'"
+B_NAME="'||CmpANAME||'"
+B_E_NAME="'||CmpENAME||'"
+B_E_TELE="'||BETELE||'"
+B_E_FAX="'||BEFAX||'"
+B_E_BOX="'||BEBOX||'"
+P_HDR="'||HDR||'"'||'
+P_Tbl_Nm_Dtl="'||P_Tbl_Nm_Dtl||'"'||'
+If Prnt = 0 Or Nvl(Call_Btn,0) =2 Then
+P_Tbl_Dtl="'||P_Tbl
+_Nm_Dtl||'"' ;
+--P_ALLOW_REP := 0;
+--P_SHOW_MSG := Ias_Gen_Pkg.Get_Msg(Nvl(Lang_No,1),592);
+--Return('NOT');
+If Prnt = 0 And VwRep = 0 And V_REP_NM Is Null Then
+P_ALLOW_REP := 0;
+P_SHOW_MSG := Ias_Gen_Pkg.Get_Msg(Nvl(Lang_No,1),592);
+P_ALLOW_REP := 1;
+End Get_Priv_Rep_Para;
+PROCEDURE Get_Priv_Rep_Name Is
+Select nvl(VwRep_flag,0),nvl(Print_flag,0) Into VwRep,Prnt
+From Privilege
+Where U_id=G_Usr_No
+And Form_no=Decode(G_DOC_TYPE,
+1 ,20 ,
+2 ,23 ,
+3 ,21 ,
+4 ,158,
+5 ,160,
+6 ,130,
+7 ,133,
+8 ,226,
+9 ,227,
+10,229,
+11,228,
+12,235,
+13,159,
+14,161,
+15,700,
+16,134,
+17,233,
+18,234,
+21,24,
+22,25,
+20 )
+VwRep:=0;
+Prnt:=0;
+Select Decode(G_DOC_TYPE,
+1 ,'report=IAS_Gl_Jrnl_V_All_Dtl P_Whr=" and M.J_ser ='||G_DOC_SER||'"' ,
+2 ,'report=IAS_Gl_PymntRcpt_Dtl P_Whr=" and M.V_ser ='||G_DOC_SER||'"' ,
+3 ,'report=IAS_Gl_PymntRcpt_Dtl P_Whr=" and M.V_ser ='||G_DOC_SER||'"' ,
+4 ,'report=IAS_prd_det P_Whr=" and M.Bill_ser ='||G_DOC_SER||'"' ,
+5 ,'report=IAS_sri_prd_det P_Whr=" and M.Rt_Bill_ser ='||G_DOC_SER||'"' ,
+6 ,'report=IAS_pi_prd_det P_Whr=" and M.Bill_ser ='||G_DOC_SER||'"' ,
+7 ,'report=IAS_pri_prd_det P_Whr=" and M.Rt_Bill_ser ='||G_DOC_SER||'"' ,
+8 ,Decode(Hid_Cost,1
+,'report=IAS_Inc_Call P_Whr=" and M.G_ser ='||G_DOC_SER||'"'
+,'report=Ias_Inc_Hcost_Call P_Whr=" and M.G_ser ='||G_DOC_SER||'"' ),
+9 ,Decode(Hid_Cost,1
+,'report=Ias_Out_Call P_Whr=" and M.Out_Ser ='||G_DOC_SER||'"'
+,'report=Ias_Out_Hcost_Call P_Whr=" and M.Out_Ser ='||G_DOC_SER||'"' ),
+10,Decode(G_JV_TYPE,1
+,'report=Ias_Stk_Adjust_Qty_Call P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"'
+,'report=Ias_Stk_Adjust_Call P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ),
+11,'report=Ias_Transfer_Out_Call P_Whr=" and M.Tr_ser ='||G_DOC_SER||'"' ,
+12,'report=Ias_Rec_Transfer_Call P_Whr=" and M.Tr_ser ='||G_DOC_SER||'"' ,
+13,'report=Ias_out_bills_det P_Whr=" and M.Out_ser ='||G_DOC_SER||'"' ,
+14,'report=Ias_ret_rt_bills_det P_Whr=" and M.Ret_ser ='||G_DOC_SER||'"' ,
+15,'report=Ias_Prd_Scr_Add_Disc P_Whr=" and a.Doc_ser ='||G_DOC_SER||'"' ,
+16,'report=Ias_Pi_scr_Add_Disc P_Whr=" and a.Doc_ser ='||G_DOC_SER||'"' ,
+17,'report=Ias_Out_Kit_Scr_Hcost_Call P_Whr=" and M.Doc_Ser ='||G_DOC_SER||'"' ,
+18,'report=Ias_Out_Kit_D_Scr_Hcost_Call P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"' ,
+21,'report=Ias_Gl_Note_Dtl P_Whr=" and M.Note_Ser ='||G_DOC_SER||'"' ,
+22,'report=Ias_Gl_Note_Dtl P_Whr=" and M.Note_Ser ='||G_DOC_SER||'"' ,
+27,'report=GRNTT001 P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+28,'report=GRNTT002 P_Whr=" and M.Doc_Srl='||G_DOC_SER||'"' ,
+29,'report=GRNTT002 P_Whr=" and M.Doc_Srl_Ref ='||G_DOC_SER||'"' ,
+85 ,'report=IAS_Gl_Rq_Jrnl_V_All_Dtl P_Whr=" and M.J_ser ='||G_DOC_SER||'"' ,
+92 ,'report=IAS_Gl_RQ_PymntRcpt_Dtl P_Whr=" and M.V_ser ='||G_DOC_SER||'"' ,
+93 ,'report=IAS_Gl_RQ_PymntRcpt_Dtl P_Whr=" and M.V_ser ='||G_DOC_SER||'"' ,
+95,'report=sSHPT001 P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+96,'report=sSHPT002 P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+98,'report=GLST010 P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+203,'report=SHPT006 P_Whr=" and M.Hnd_Srl ='||G_DOC_SER||'"' ,
+300,'report=PMS_CONTRACTS_MST P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+301,'report=PMS_SUB_CONTRACTS_MST P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+302,'report=PMS_FINCE_RECEIP P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+303,'report=PMS_SUB_FINCE_RECEIP P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+------------------------------------------
+331,'report=DAILY_PAYMENTS1 P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+332,'report=CUSTOMER_BILL_CORR P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+333,'report=ACCOUNTS P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+334,'report=METER_INSURANCE_DEDUCT P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+336,'report=SERV_INFR_CUSTOMER P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+337,'report=SERV_INFR_PAYMENTS P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+338,'report=SERV_INFR_REVERSE P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+339,'report=SERV_INFR_CUSTOMER P_Whr=" and M.Doc_ser ='||G_DOC_SER||'"' ,
+500,'report=Rem_Contract P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+501,'report=REM_REP_PRMTING P_Whr=" and M.Doc_Srl='||G_DOC_SER||'"' ,
+502,'report=REM_CNTRCT_CNCL P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+503,'report=REM_BILL P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+504,'report=REM_CONTRACT_SALE_DTl_SCR P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+505,'report=REM_PURCHS_DTl_SCR P_Whr=" and M.Doc_Srl ='||G_DOC_SER||'"' ,
+805,'report=Hrsmdct001_Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+717,'report=Hrst018_Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+603,'report=Fast002_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+604,'report=Fast003_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+605,'report=Fast004_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+606,'report=Fast005_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+607,'report=Fasr007_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+609,'report=Fast008_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+610,'report=Fast009_1Scr P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"',
+'report=IAS_Gl_Jrnl_V_All_Dtl_Sys P_Whr=" and M.Doc_Ser ='||G_DOC_SER||'"' )
+Into V_REP_NM From Dual;
+End Get_Priv_Rep_Name ;
+PROCEDURE Get_Priv_Rep_Name_Inv Is
+1 ,158,
+2 ,130,
+3 ,160,
+4 ,133,
+5 ,226,
+6 ,227,
+7,228,
+8,235,
+11,233,
+12,233,
+13,234,
+14,234,
+15,229,
+16,229,
+17,229,
+,229,
+999 )
+1 ,'report=IAS_prd_det P_Whr=" and M.Bill_ser ='||G_DOC_SER||'"' ,
+2 ,'report=IAS_pi_prd_det P_Whr=" and M.Bill_ser ='||G_DOC_SER||'"' ,
+3 ,'report=IAS_sri_prd_det P_Whr=" and M.Rt_Bill_ser ='||G_DOC_SER||'"' ,
+4 ,'report=IAS_pri_prd_det P_Whr=" and M.Rt_Bill_ser ='||G_DOC_SER||'"' ,
+5 ,Decode(Hid_Cost,1
+6 ,Decode(Hid_Cost,1
+7,'report=Ias_Transfer_Out_Call P_Whr=" and M.Tr_ser ='||G_DOC_SER||'"' ,
+8,'report=Ias_Rec_Transfer_Call P_Whr=" and M.Tr_ser ='||G_DOC_SER||'"' ,
+11,'report=Ias_Out_Kit_Scr_Hcost_Call P_Whr=" and M.Doc_Ser ='||G_DOC_SER||'"' ,
+12,'report=Ias_Out_Kit_Scr_Hcost_Call P_Whr=" and M.Doc_Ser ='||G_DOC_SER||'"' ,
+13,'report=Ias_Out_Kit_D_Scr_Hcost_Call P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"' ,
+14,'report=Ias_Out_Kit_D_Scr_Hcost_Call P_Whr=" and M.Doc_Ser='||G_DOC_SER||'"' ,
+15,Decode(G_JV_TYPE,1
+16,Decode(G_JV_TYPE,1
+17,Decode(G_JV_TYPE,1
+18,Decode(G_JV_TYPE,1
+'.....' )
+End Get_Priv_Rep_Name_Inv ;
+--==========================
+===============================================================
+PROCEDURE Get_Rep_Head Is
+v_Head_Type Number;
+Select nvl(Head_type,1) Into v_Head_Type
+From Ias_Para_Gen;
+v_Head_Type:=1;
+If v_Head_Type = 1 Then
+Select Decode(G_Lang_no,1,CMP_LNAME,CMP_FNAME),
+Decode(G_Lang_no,1,CMP_FNAME,CMP_LNAME),
+Decode(G_Lang_no,1,BRN_LDES,BRN_FDES),
+Decode(G_Lang_no,1,BRN_FDES,BRN_LDES),
+Decode(G_Lang_no,1,BRN_LAdd,BRN_FAdd),
+Decode(G_Lang_no,1,BRN_FAdd,BRN_LAdd),
+Decode(G_Lang_no,1,BRN_LTele,BRN_FTele),
+Decode(G_Lang_no,1,BRN_FTele,BRN_LTele),
+Decode(G_Lang_no,1,BRN_LFax,BRN_FFax),
+Decode(G_Lang_no,1,BRN_FFax,BRN_LFax),
+Decode(G_Lang_no,1,BRN_LBox,BRN_FFax),
+Decode(G_Lang_no,1,BRN_FBox,BRN_LBox),
+CMP_IMG
+Into CmpAName ,
+CmpEName ,
+BAName ,
+BEName ,
+BAdd ,
+BEAdd ,
+BTele ,
+BETele ,
+BFax ,
+BEFax ,
+BBox ,
+BEBox ,
+BIMG
+From S_Brn
+Where Brn_No=G_BRN_No;
+null;
+Select Decode(G_Lang_no,1,CMP_ANAME,CMP_ENAME),
+Decode(G_Lang_no,1,CMP_ENAME,CMP_ANAME),
+Decode(G_Lang_no,1,BRN_ADES,BRN_EDES),
+Decode(G_Lang_no,1,BRN_EDES,BRN_ADES),
+Decode(G_Lang_no,1,BRN_AAdd,BRN_EAdd),
+Decode(G_Lang_no,1,BRN_EAdd,BRN_AAdd),
+Decode(G_Lang_no,1,BRN_ATele,BRN_ETele),
+Decode(G_Lang_no,1,BRN_ETele,BRN_ATele),
+Decode(G_Lang_no,1,BRN_AFax,BRN_EFax),
+Decode(G_Lang_no,1,BRN_EFax,BRN_AFax),
+Decode(G_Lang_no,1,BRN_ABox,BRN_EFax),
+Decode(G_Lang_no,1,BRN_EBox,BRN_ABox),
+From IAS_USER_HEAD
+Where U_id=G_Usr_No;
+Decode(G_Lang_no,1,BR
+N_LBox,BRN_FFax),
+Where Brn_No=G_BRN_No And RowNum<=1;
+CmpANAME:=replace(CmpANAME,'','');
+CmpENAME:=replace(CmpENAME,'','');
+BANAME :=replace(BANAME,'','');
+BENAME :=replace(BENAME,'','');
+BADD :=replace(BADD,'','');
+BEADD :=replace(BEADD,'','');
+BTELE :=replace(BTELE,'','');
+BFAX :=replace(BFAX,'','');
+BBOX :=replace(BBOX,'','');
+BETELE :=replace(BETELE,'','');
+BEFAX :=replace(BEFAX,'','');
+BEBOX :=replace(BEBOX,'','');
+BIMG :=replace(BIMG,'','');
+End Get_Rep_Head ;
+Function Get_Tbl_Nm_Mst ( P_Doc_Type In Number ) Return Varchar2 Is
+V_Tbl_Nm_Mst Varchar2(100) ;
+If P_Doc_Type = 1 Then
+V_Tbl_Nm_Mst :='Master_Journal_V' ;
+ElsIf P_Doc_Type = 2 Then
+V_Tbl_Nm_Mst :='Vouchers' ;
+ElsIf P_Doc_Type = 3 Then
+ElsIf P_Doc_Type = 4 Then
+V_Tbl_Nm_Mst :='Ias_Bill_Mst' ;
+ElsIf P_Doc_Type = 5 Then
+V_Tbl_Nm_Mst :='Ias_Rt_Bill_Mst' ;
+ElsIf P_Doc_Type = 6 Then
+V_Tbl_Nm_Mst :='Ias_Pi_Bill_Mst' ;
+ElsIf P_Doc_Type = 7 Then
+V_Tbl_Nm_Mst :='Ias_Pr_Bill_Mst' ;
+ElsIf P_Doc_Type = 8 Then
+V_Tbl_Nm_Mst :='Gr_Note' ;
+ElsIf P_Doc_Type = 9 Then
+V_Tbl_Nm_Mst :='Ias_Outgoing_Mst' ;
+ElsIf P_Doc_Type = 10 Then
+V_Tbl_Nm_Mst :='Stk_Adjustment' ;
+ElsIf P_Doc_Type = 11 Then
+V_Tbl_Nm_Mst :='Ias_Whtrns_Mst' ;
+ElsIf P_Doc_Type = 12 Then
+ElsIf P_Doc_Type = 13 Then
+V_Tbl_Nm_Mst :='Master_Out_Bills' ;
+ElsIf P_Doc_Type = 14 Then
+V_Tbl_Nm_Mst :='Ias_Ret_Bill_Mst' ;
+ElsIf P_Doc_Type = 15 Then
+V_Tbl_Nm_Mst :='Ias_Bill_Mst_Add_Disc' ;
+ElsIf P_Doc_Type = 16 Then
+V_Tbl_Nm_Mst :='ias_pi_bill_mst_add_disc' ;
+ElsIf P_Doc_Type = 17 Then
+V_Tbl_Nm_Mst :='Assemble_Kit_Items' ;
+ElsIf P_Doc_Type = 18 Then
+V_Tbl_Nm_Mst :='Disassemble_Kit_Items' ;
+ElsIf P_Doc_Type = 21 Then
+V_Tbl_Nm_Mst :='Note' ;
+ElsIf P_Doc_Type = 22 Then
+ElsIf P_Doc_Type IN(27,29) Then
+V_Tbl_Nm_Mst :='IAS_GRNT_MST' ;
+ElsIf P_Doc_Type = 28 Then
+V_Tbl_Nm_Mst :='IAS_GRNT_INCR_MST' ;
+ElsIf P_Doc_Type = 85 Then
+V_Tbl_Nm_Mst :='IAS_RQ_JRNL_MST' ;
+ElsIf P_Doc_Type IN( 92,93) Then
+V_Tbl_Nm_Mst :='IAS_RQ_VCHR_MST' ;
+ElsIf P_Doc_Type = 95 Then
+V_Tbl_Nm_Mst :='SHP_PREPAID_SLS_MST' ;
+ElsIf P_Doc_Type = 96 Then
+V_Tbl_Nm_Mst :='SHP_BILLING' ;
+ElsIf P_Doc_Type = 98 Then
+V_Tbl_Nm_Mst :='IAS_EXCH_CUR_MST' ;
+ElsIf P_Doc_Type = 203 Then
+V_Tbl_Nm_Mst :='SHP_HND_MST' ;
+ElsIf P_Doc_Type = 300 The
+V_Tbl_Nm_Mst :='PMS_CONTRACTS_MST' ;
+ElsIf P_Doc_Type = 301 Then
+V_Tbl_Nm_Mst :='PMS_SUB_CONTRACTS_MST' ;
+ElsIf P_Doc_Type = 302 Then
+V_Tbl_Nm_Mst :='PMS_FINCE_RECEIPT_MST' ;
+ElsIf P_Doc_Type = 303 Then
+V_Tbl_Nm_Mst :='PMS_S_FINCE_RECEIPT_MST' ;
+ElsIf P_Doc_Type = 500 Then
+V_Tbl_Nm_Mst :='REM_CNTRCT_RNT_MST' ;
+ElsIf P_Doc_Type = 501 Then
+V_Tbl_Nm_Mst :='REM_PRMTING_PRIOD_MST' ;
+ElsIf P_Doc_Type = 502 Then
+V_Tbl_Nm_Mst :='REM_CNTRCT_RNT_CNCL_MST' ;
+ElsIf P_Doc_Type = 503 Then
+V_Tbl_Nm_Mst :='REM_BILL_MST' ;
+ElsIf P_Doc_Type = 504 Th
+V_Tbl_Nm_Mst :='REM_CNTRCT_SALE_MST' ;
+ElsIf P_Doc_Type = 505 Then
+V_Tbl_Nm_Mst :='REM_CNTRCT_PURCHS_MST' ;
+ElsIf P_Doc_Type = 603 Then
+V_Tbl_Nm_Mst :='FAS_INCRS_MST' ;
+ElsIf P_Doc_Type = 604 Then
+V_Tbl_Nm_Mst :='FAS_DCRS_MST' ;
+ElsIf P_Doc_Type = 605 Then
+V_Tbl_Nm_Mst :='FAS_TRNS_MST' ;
+ElsIf P_Doc_Type = 606 Then
+V_Tbl_Nm_Mst :='FAS_RCVD_MST' ;
+ElsIf P_Doc_Type = 607 Then
+V_Tbl_Nm_Mst :='FAS_DEPR_MST' ;
+ElsIf P_Doc_Type = 609 Then
+V_Tbl_Nm_Mst :='FAS_ADJST_MST' ;
+ElsIf P_Doc_Type = 610 Then
+V_Tbl_Nm_Mst :='FAS_EVL_MST' ;
+ElsIf P_Doc_Type = 717 Then
+V_Tbl_Nm_Mst :='HRS_PYMNT_FIN_TRUST_MST' ;
+ElsIf P_Doc_Type = 775 Then
+V_Tbl_Nm_Mst :='HRS_V_SLRY_CALC_MST' ;
+ElsIf P_Doc_Type = 805 Then
+V_Tbl_Nm_Mst :='HRS_MDCL_CARE_MST' ;
+Return (V_Tbl_Nm_Mst) ;
+End Get_Tbl_Nm_Mst ;
+Function Get_Tbl_Nm_Dtl ( P_Doc_Type In Number ) Return Varchar2 Is
+V_Tbl_Nm_Dtl Varchar2(100) ;
+V_Tbl_Nm_Dtl :='Detail_Journal_V' ;
+V_Tbl_Nm_Dtl :='Voucher_Detail' ;
+V_Tbl_Nm_Dtl :='Ias_Bill_Dtl' ;
+V_Tbl_Nm_Dtl :='Ias_Rt_Bill_Dtl' ;
+V_Tbl_Nm_Dtl :='Ias_Pi_Bill_Dtl' ;
+V_Tbl_Nm_Dtl :='Ias_Pr_Bill_Dtl' ;
+V_Tbl_Nm_Dtl :='Gr_Detail' ;
+V_Tbl_Nm_Dtl :='Ias_Outgoing_Dtl' ;
+V_Tbl_Nm_Dtl :='Stk_Adjustment_Det' ;
+V_Tbl_Nm_Dtl :='Ias_Whtrns_Dtl' ;
+V_Tbl_Nm_Dtl :='Detail_Out_Bills' ;
+V_Tbl_Nm_Dtl :='Ias_Ret_Bill_Dtl' ;
+V_Tbl_Nm_Dtl :='IAS_BILL_DTL_ADD_DISC' ;
+V_Tbl_Nm_Dtl :='Ias_Pi_Bill_Dtl_Add_Disc' ;
+V_Tbl_Nm_Dtl :='Assemble_Kit_Items_Det' ;
+V_Tbl_Nm_Dtl :='Disassemble_Kit_Items_Det' ;
+V_Tbl_Nm_Dtl :='Note_Detail' ;
+ElsIf P_Doc_Type IN(27,28,29) Then
+V_Tbl_Nm_Dtl :='IAS_GRNT_DTL' ;
+V_Tbl_Nm_Dtl :='IAS_RQ_JRNL_DTL' ;
+V_Tbl_Nm_Dtl :='IAS_RQ_VCHR_DTL' ;
+V_Tbl_Nm_Dtl :='SHP_PREPAID
+_SLS_MST' ;
+V_Tbl_Nm_Mst :='SHP_BILLING' ; */
+V_Tbl_Nm_Dtl :='IAS_EXCH_CUR_DTL' ;
+V_Tbl_Nm_Dtl :='SHP_BILLING' ;
+ElsIf P_Doc_Type = 300 Then
+V_Tbl_Nm_Dtl :='PMS_CONTRACTS_DTL' ;
+V_Tbl_Nm_Dtl :='PMS_SUB_CONTRACTS_DTL' ;
+V_Tbl_Nm_Dtl :='PMS_FINCE_RECEIPT_DTL' ;
+V_Tbl_Nm_Dtl :='PMS_S_FINCE_RECEIPT_DTL' ;
+V_Tbl_Nm_Dtl :='REM_CNTRCT_RNT_DTL' ;
+V_Tbl_Nm_Dtl :='REM_PRMTING_PRIOD_DTL' ;
+V_Tbl_Nm_Dtl :='REM_CNTRCT_RNT_CNCL_DTL' ;
+V_Tbl_Nm_Dtl :='REM_BILL_DTL' ;
+/*ElsIf P_Doc_Type = 504 Then
+V_Tbl_Nm_Dtl :='REM_CNTRCT_SALE_DTL' ;
+ElsIf P_Doc_Type = 504 Then
+V_Tbl_Nm_Dtl :='REM_CNTRCT_PURCHS_DTL' ; */
+V_Tbl_Nm_Dtl :='FAS_INCRS_DTL' ;
+V_Tbl_Nm_Dtl :='FAS_DCRS_DTL' ;
+V_Tbl_Nm_Dtl :='FAS_TRNS_DTL' ;
+V_Tbl_Nm_Dtl :='FAS_RCVD_DTL' ;
+V_Tbl_Nm_Dtl :='FAS_DEPR_DTL' ;
+V_Tbl_Nm_Dtl :='FAS_ADJST_DTL' ;
+V_Tbl_Nm_Dtl :='FAS_EVL_DTL' ;
+V_Tbl_Nm_Dtl :='HRS_PYMNT_FIN_TRUST_DTL' ;
+V_Tbl_Nm_Dtl :='HRS_V_SLRY_CALC_DTL' ;
+V_Tbl_Nm_Dtl :='HRS_MDCL_CARE_DTL' ;
+Return (V_Tbl_Nm_Dtl) ;
+End Get_Tbl_Nm_Dtl ;
+Function Get_Tbl_Nm_Mst_Inv ( P_Doc_Type In Number ) Return Varchar2 Is
+ElsIf P_Doc_Type In (15,16,17,18) Then
+ElsIf P_Doc_Type In (11,12) Then
+ElsIf P_Doc_Type In (13,14) Then
+End Get_Tbl_Nm_Mst_Inv ;
+Function Get_Tbl_Nm_Dtl_Inv ( P_Doc_Type In Number ) Return Varchar2 Is
+V_Tbl_Nm_Mst :='Ias_Bill_Dtl' ;
+V_Tbl_Nm_Mst :='Ias_Pi_Bill_Dtl' ;
+V_Tbl_Nm_Mst :='Ias_Rt_Bill_Dtl' ;
+ElsIf P_Doc_Type = 4
+Then
+V_Tbl_Nm_Mst :='Ias_Pr_Bill_Dtl' ;
+V_Tbl_Nm_Mst :='Gr_Detail' ;
+V_Tbl_Nm_Mst :='Ias_Outgoing_Dtl' ;
+V_Tbl_Nm_Mst :='Ias_Whtrns_Dtl' ;
+V_Tbl_Nm_Mst :='Stk_Adjustment_Det' ;
+V_Tbl_Nm_Mst :='Assemble_Kit_Items_Det' ;
+V_Tbl_Nm_Mst :='Disassemble_Kit_Items_Det' ;
+End Get_Tbl_Nm_Dtl_Inv ;
+Procedure Get_Clmn_Name( P_Doc_Type In Out Number ,
+P_CLMN_DOC_NO In Out VarChar2,
+P_CLMN_DOC_DATE In Out VarChar2,
+P_CLMN_JV_TYPE In Out VarChar2,
+P_CLMN_Doc_Ser In Out VarChar2,
+P_CLMN_Doc_Post In Out VarChar2,
+P_TABLE_NAME In Out VarChar2 ) Is
+P_CLMN_DOC_NO
+:= 'J_Doc_No';
+P_CLMN_DOC_DATE := 'J_DATE';
+P_CLMN_JV_TYPE := 'Jv_Type';
+P_CLMN_Doc_Ser := 'J_SER';
+P_CLMN_Doc_Post := 'J_POST';
+P_TABLE_NAME := 'MASTER_JOURNAL_V';
+ElsIf P_Doc_Type In (2,3) Then
+P_CLMN_DOC_NO := 'Voucher_No';
+P_CLMN_DOC_DATE := 'Voucher_Date';
+P_CLMN_JV_TYPE := 'Voucher_Pay_Type';
+P_CLMN_Doc_Ser := 'V_SER';
+P_CLMN_Doc_Post := 'Voucher_POST';
+P_TABLE_NAME := 'VOUCHERS';
+ElsIf P_Doc_Type In (4) Then
+P_CLMN_DOC_NO := 'Bill_No';
+P_CLMN_DOC_DATE := 'BILL_DATE';
+P_CLMN_JV_TYPE := 'BILL_DOC_TYPE';
+P_CLMN_Doc_Ser := 'BILL_SER';
+P_CLMN_Doc_Post := 'Bill_POST';
+P_TABLE_NAME := 'IAS_BILL_MST';
+ElsIf P_Doc_Type In (6) Then
+P_TABLE_NAME := 'IAS_PI_BILL_MST';
+ElsIf P_Doc_Type In (5) Then
+P_CLMN_DOC_NO := 'Rt_Bill_No';
+P_CLMN_DOC_DATE := 'Rt_Bill_Date';
+P_CLMN_JV_TYPE := 'Rt_Bill_Doc_Type';
+P_CLMN_Doc_Ser := 'Rt_Bill_Ser';
+P_CLMN_Doc_Post := 'RT_BILL_POST';
+P_TABLE_NAME := 'IAS_RT_BILL_MST';
+ElsIf P_Doc_Type In (7) Then
+P_TABLE_NAME := 'IAS_PR_BILL_MST';
+:= 'Gr_No';
+P_CLMN_DOC_DATE := 'Gr_Date';
+P_CLMN_JV_TYPE := 'Incom_Type';
+P_CLMN_Doc_Ser := 'G_Ser';
+P_CLMN_Doc_Post := 'GR_POST';
+P_TABLE_NAME := 'GR_NOTE';
+P_CLMN_DOC_NO := 'Out_No';
+P_CLMN_DOC_DATE := 'Out_Date';
+P_CLMN_JV_TYPE := 'Out_Type';
+P_CLMN_Doc_Ser := 'Out_Ser';
+P_CLMN_Doc_Post := 'OUT_POST';
+P_TABLE_NAME := 'IAS_OUTGOING_MST';
+ElsIf P_Doc_Type In (10) Then
+P_CLMN_DOC_NO := 'Doc_No';
+P_CLMN_DOC_DATE := 'Doc_Date';
+P_CLMN_JV_TYPE := 'ADJUST_TYPE';
+P_CLMN_Doc_Ser := 'Doc_Ser';
+P_CLMN_Doc_Post := 'STK_POST';
+P_TABLE_NAME := 'STK_ADJUSTMENT';
+P_CLMN_DOC
+_NO := 'Tr_No';
+P_CLMN_DOC_DATE := 'Tr_Date';
+P_CLMN_JV_TYPE := 'Tr_Type';
+P_CLMN_Doc_Ser := 'Tr_Ser';
+P_CLMN_Doc_Post := 'Tr_POST';
+P_TABLE_NAME := 'IAS_WHTRNS_MST';
+P_TABLE_NAME := 'MASTER_OUT_BILLS';
+P_CLMN_DOC_NO := 'Ret_No';
+P_CLMN_DOC_DATE := 'Ret_Date';
+P_CLMN_JV_TYPE := 'RT_BILL_DOC_TYPE';
+P_CLMN_Doc_Ser := 'Ret_Ser';
+P_CLMN_Doc_Post := 'RET_POST';
+P_TABLE_NAME := 'IAS_RET_BILL_MST';
+ElsIf P_Doc_Type In (15) Then
+P_CLMN_JV_TYPE := 'ADD_DISC_TYPE';
+P_CLMN_Doc_Post := 'DOC_POST';
+P_TABLE_NAME := 'IAS_BILL_MST_ADD_DISC';
+ElsIf P_Doc_Type In (16) Then
+P_TABLE_NAME := 'IAS_PI_BILL_MST_ADD_DISC';
+ElsIf P_Doc_Type In (17) Then
+P_CLMN_JV_TYPE := '';
+P_TABLE_NAME := 'ASSEMBLE_KIT_ITEMS';
+ElsIf P_Doc_Type In (18) Then
+P_TABLE_NAME := 'DISASSEMBLE_KIT_ITEMS';
+ElsIf P_Doc_Type In (19) Then
+P_TABLE_NAME := '';
+ElsIf P_Doc_Type In (21,22) Then
+P_CLMN_DOC_NO := 'Note_No';
+P_CLMN_DOC_DATE := 'Note_Date';
+P_CLMN_JV_TYPE := 'Note_TYPE_No';
+P_CLMN_Doc_Ser := 'Note_Ser';
+P_CLMN_Doc_Post := '';
+P_TABLE_NAME := 'NOTE';
+ElsIf P_Doc_Type In (27) Then
+P_CLMN_JV_TYPE := 'GR_TYPE';
+P_CLMN_Doc_Ser := 'DOC_SRL';
+P_TABLE_NAME := 'IAS_GRNT_MST';
+ElsIf P_Doc_Type In (28) Then
+P_TABLE_NAME := 'IAS_GRNT_INCR_MST';
+ElsIf P_Doc_Type In (29) Then
+P_CLMN_DOC_NO := 'Doc_No_REF';
+P_CLMN_DOC_DATE := 'GR_CLS_DATE';
+P_CLMN_Doc_Ser := 'DOC_SRL_REF';
+P_CLMN_Doc_Post := 'DOC_POST_REF';
+ElsIf P_Doc_Type In (83,84) Then -- cheq. due
+P_CLMN_DOC_NO := 'VOUCHER_NO';
+P_CLMN_DOC_DATE := 'VOUCHER_DATE';
+P_CLMN_JV_TYPE := 'VOUCHER_PAY_TYPE';
+P_CLMN_Doc_Post := 'CHEQUE_POST';
+P_TABLE_NAME := 'VOUCHER_DETAIL';
+ElsIf P_Doc_Type In (72) Then
+P_CLMN_DOC_NO := 'DOC_NO';
+P_CLMN_DOC_DATE := 'VALUE_DATE';
+P_CLMN_Doc_Ser := 'DOC_SER';
+P_TABLE_NAME := 'IAS_DUE_CREDIT_CARD';
+ElsIf P_Doc_Type In (95) Then
+P_CLMN_DOC_DATE := 'DOC_DATE';
+P_CLMN_Doc_Post := 'SHP_POST';
+P_TABLE_NAME := 'SHP_PREPAID_SLS_MST';
+ElsIf P_Doc_Type In (96) Then
+P_TABLE_NAME := 'SHP_BILLING';
+ElsIf P_Doc_Type In (98) Then
+P_CLMN_JV_TYPE := 'TYP_NO';
+P_TABLE_NAME := 'IAS_EXCH_CUR_MST';
+ElsIf P_Doc_Type In (203) Then
+P_CLMN_DOC_NO := 'HND_NO';
+P_CLMN_DOC_DATE := 'HND_DATE';
+P_CLMN_JV_TYPE := 'HND_TYPE';
+P_CLMN_Doc_Ser := 'HND_SRL';
+P_TABLE_NAME := 'SHP_HND_MST';
+ElsIf P_Doc_Type In (300) Then
+P_CLMN_DOC_NO := 'CNTRCT_NO';
+P_CLMN_DOC_DATE := 'CNTRCT_DATE';
+P_CLMN_JV_TYPE := 'CNTRCT_TYPE';
+P_TABLE_NAME := 'PMS_CONTRACTS_MST';
+ElsIf P_Doc_Type In (301) Then
+P_CLMN_DOC_NO := 'SUB_CNTRCT_NO';
+P_CLMN_DOC_DATE := 'SUB_S_CNTRCT_DATE';
+/* P_CLMN_JV_TYPE := 'HND_TYPE';*/
+P_TABLE_NAME := 'PMS_SUB_CONTRACTS_MST';
+ElsIf P_Doc_Type In (302) Then
+P_CLMN_DOC_NO := 'RECEIPT_NO';
+P_CLMN_DOC_DATE := 'RECEIPT_DATE';
+P_TABLE_NAME := 'PMS_FINCE_RECEIPT_MST';
+ElsIf P_Doc_Type In (303) Then
+P_TABLE_NAME := 'PMS_S_FINCE_RECEIPT_MST';
+ElsIf P_Doc_Type In (500) Then
+P_CLMN_JV_TYPE := 'RNTL_TYP';
+P_CLMN_Doc_Ser := 'DOC_SRl';
+P_TABLE_NAME := 'REM_CNTRCT_RNT_MST';
+ElsIf P_Doc_Type In (501) Then
+P_TABLE_NAME := 'REM_PRMTING_P
+RIOD_MST';
+ElsIf P_Doc_Type In (502) Then
+P_TABLE_NAME := 'REM_CNTRCT_RNT_CNCL_MST';
+ElsIf P_Doc_Type In (503) Then
+P_TABLE_NAME := 'REM_BILL_MST';
+ElsIf P_Doc_Type In (504) Then
+P_TABLE_NAME := 'REM_CNTRCT_SALE_MST';
+ElsIf P_Doc_Type In (505) Then
+P_CLMN_JV_TYPE := 'PAY_TYP';
+P_TABLE_NAME := 'REM_CNTRCT_PURCHS_MST';
+ElsIf P_Doc_Type In (603) Then
+P_CLMN_JV_TYPE := 'INCRS_TYP';
+P_TABLE_NAME := 'FAS_INCRS_MST';
+ElsIf P_Doc_Type In (604) Then
+P_CLMN_JV_TYPE := 'DCRS_TYP';
+P_TABLE_NAME := 'FAS_DCRS_MST';
+ElsIf P_Doc_Type In (605) Then
+P_CLMN_JV_TYPE := 'TRNS_TYP';
+P_TABLE_NAME := 'FAS_TRNS_MST';
+ElsIf P_Doc_Type In (606) Then
+P_CLMN_JV_TYPE := 'RCVD_TYP';
+P_TABLE_NAME := 'FAS_RCVD_MST';
+ElsIf P_Doc_Type In (607) Then
+P_CLMN_JV_TYPE := 'DEPR_TYP';
+P_TABLE_NAME := 'FAS_DEPR_MST';
+ElsIf P_Doc_Type In (609) Then
+P_TABLE_NAME := 'FAS_ADJST_MST';
+ElsIf P_Doc_Type In (610) Then
+P_TABLE_NAME := 'FAS_EVL_MST';
+ElsIf P_Doc_Type In (717) Then
+P_TABLE_NAME := 'HRS_PYMNT_FIN_TRUST_MST';
+ElsIf P_Doc_Type In (775) Then
+P_TABLE_NAME := 'HRS_SLRY_CALC_MST';
+ElsIf P_Doc_Type In (805) Then
+P_TABLE_NAME := 'HRS_MDCL_CARE_MST';
+End Get_Clmn_Name;
+Function Get_Clmn_Labl( P_TBLFLD_NAME In VarChar2 ,
+LANG_NO In Number Default 1 ) RETURN VarChar2 Is
+Cment VarChar2(100);
+Tabl VarChar2(100):=Upper(Substr(P_TBLFLD_NAME,1,Instr(P_TBLFLD_NAME,'.')-1));
+Clmn VarChar2(100):=Upper(Substr(P_TBLFLD_NAME,Instr(P_TBLFLD_NAME,'.',-1)+1,Length(P_TBLFLD_NAME)));
+To_Char(Case When To_Number(Ascii(Substr(Comments,1,1))) Between 49 And 57 Then
+Ias_Gen_Pkg.Get_Prompt(Lang_No,To_Number(Comments)) Else Comments End)
+Into Cment From User_Col_Comments
+Where Table_Name ||'.'|| Column_Name = Nvl(Tabl,Table_Name)||'.'|| Clmn;
+Where Table_Name ||'.'|| Column_Name = Nvl(Tabl,Table_Name)||'.'|| Clmn
+And To_Number(Ascii(Substr(Comments,1,1))) Between 49 And 57;
+Select Comments
+Cment:= P_TBLFLD_NAME;
+Return(Cment);
+End Get_Clmn_Labl ;
+Function Get_Clmn_Type( P_TBLFLD_NAME In VarChar2 ,
+P_LENGTH In Out Number ) RETURN VarChar2 Is
+TypeD VarChar2(20);
+Lngth Number;
+Select Data_Type , Data_Length
+Into TypeD , P_LENGTH
+From USER
+_TAB_COLS
+Where TABLE_NAME||'.'||COLUMN_NAME = Nvl(Tabl,Table_Name)||'.'|| Clmn
+And Table_Name In (Select Table_Name From User_Tab_Comments Where Table_Type='TABLE') ;
+From USER_TAB_COLS
+And Table_Name In (Select Table_Name From User_Tab_Comments Where Table_Type='TABLE')
+Select Data_Type
+Into TypeD
+TypeD:='VARCHAR2';
+Return(TypeD);
+End Get_Clmn_Type;
+End Ias_Report_Pkg;
+_Prompt(P_Lng_no,TO_NUMBER(SUBSTR(Comments,1,4)))
+"PKG INIT"UPDATE_FORM_ORDER""
+"PKG INIT"IAS_POST_LIST_PKG""
+CREATE OR REPLACE PACKAGE IAS_Post_List_Pkg AS
+TYPE Post_List_Rec IS REF CURSOR ;
+PROCEDURE Post_List_View ( List_Qry IN OUT Post_List_Rec ,
+P_date IN Date,
+P_Jv_Type IN Number,
+P_Cash_Bank IN Cash_IN_Hand.Cash_No%Type,
+P_W_Code IN WareHouse_Details.W_Code%Type,
+P_CS IN Cost_Centers.cc_code%Type,
+P_User_No IN Number,
+P_Post_Jv_Type IN Number,
+P_Pur_type IN Number Default 0,
+P_Order_By IN Varchar2,
+P_Brn_No IN Number Default 0,
+P_Ad_U_Id IN Number ,
+P_POST_UNPOST IN NUMBER);
+Procedure UnPost_List_Inv_View ( List_Qry In Out Post_List_Rec ,
+P_Date In Date ,
+P_Jv_Type In Number ,
+P_Cash_Bank In Cash_In_Hand.Cash_No%Type ,
+P_W_Code In WareHouse_Details.W_Code%Type,
+P_Cs In Cost_Centers.cc_code%Type ,
+P_User_No In Number ,
+P_UnPost_Jv_Type In Number ,
+P_Order_By In Varchar2 ) ;
+END IAS_Post_List_Pkg;
+CREATE OR REPLACE PACKAGE BODY IAS_Post_List_Pkg AS
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Posting List View - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+PROCEDURE Post_List_View (
+List_Qry IN OUT Post_List_Rec ,
+P_Cash_Bank IN Cash_In_Hand.Cash_No%Type,
+P_Ad_U_Id IN Number,
+P_POST_UNPOST IN NUMBER) IS --40 POST 104 UNPOST
+v_Use_Audit_Doc Number(1);
+--## Get Parameters
+Select nvl(Use_Audit_Doc,0)
+Into v_Use_Audit_Doc
+v_Use_Audit_Doc:=0 ;
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Journal_V - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If P_Post_Jv_Type = 1 Then
+Open List_Qry For
+'Select J_Ser,
+jv_type,
+j_doc_no,
+j_date,
+0 Cash_No,
+0 W_Code,
+0 Cs,
+0 Cheque_No,
+0 Ac_Code,
+0 DOC_SEQUENCE,
+0 GR_NO,
+0 G_Ser
+From Master_Journal_V
+Where J_Date = Nvl(:P_Date , J_date)
+And Nvl(Jv_Type,0) = Decode(:P_Jv_Type,0,Nvl(Jv_Type,0),:P_Jv_Type)
+And nvl(Audit_ref,0) = Decode(:v_Use_Audit_Doc,1,1,nvl(Audit_ref,0))
+And Nvl(ad_u_id,0) = Decode(:P_ad_u_id,0,Nvl(ad_u_id,0),:P_ad_u_id)
+And Brn_No = Master_Journal_V.Brn_No
+And RowNum <= 1 )
+AND (1=:P_User_No
+OR EXISTS (SELECT JV_TYPE
+FROM JV_TYPES_DETAIL
+WHERE JV_TYPE = Master_Journal_V.JV_TYPE
+AND U_ID = :P_User_No
+AND Nvl(VIEW_FLAG,0) = 1 ) )
+And Nvl(J_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(J_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+Where Doc_Close=0
+and Doc_Post = 1
+and Doc_type = 1
+and Doc_Ser=Master_Journal_V.J_Ser
+and RowNum<=1))
+And Nvl(Stand_By,0)=0 '||P_Order_By
+Using
+P_date,
+P_Jv_Type,
+v_Use_Audit_Doc,
+P_Brn_No,
+P_ad_u_id,
+P_User_No,
+P_POST_UNPOST ;
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Receipt - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 2 Then
+'Select V_Ser
+J_Ser,
+Voucher_Pay_Type Jv_type,
+Voucher_No J_doc_no,
+Voucher_Date J_date,
+Cash_No,
+From Vouchers
+Where Voucher_Type = 1
+And Voucher_Date = Nvl(:P_Date , Voucher_Date)
+And Nvl(Voucher_Pay_Type,0) =Decode(:P_Jv_Type,0,Nvl(Voucher_Pay_Type,0),:P_Jv_Type)
+And Nvl(Cash_No,0) =Decode(Nvl(:P_Cash_Bank,0) ,0,Nvl(Cash_No,0),Nvl(:P_Cash_Bank,0) )
+And Nvl(Audit_ref,0) = Decode(:v_Use_Audit_Doc,1,1,nvl(Audit_ref,0))
+And Nvl(Move_Cheq_Py,0)=0
+And Brn_No = Vouchers.Brn_No
+And Nvl(Add_Flag,1) = 1 And RowNum <= 1 )
+And Nvl(Voucher_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Voucher_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 2
+and Doc_Ser=Vouchers.V_Ser
+P_Cash_Bank ,
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Payment - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 3 Then
+'Select V_Ser J_Ser,
+Voucher_No
+J_doc_no,
+Where Voucher_Type = 2
+And Nvl(Voucher_Pay_Type,0) = Decode(:P_Jv_Type,0,Nvl(Voucher_Pay_Type,0),:P_Jv_Type)
+and Doc_type = 3
+Using P_date,
+P_POST_UNPOST;
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Bills - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 4 Then
+'Select Bill_Ser J_Ser,
+Bill_Doc_Type Jv_type,
+Bill_No J_doc_no,
+Bill_Date J_date,
+W_Code,
+From Ias_Bill_Mst
+Where Bill_Date = Nvl(:P_Date , Bill_Date)
+And Nvl(Bill_Doc_Type,0) =Decode(:P_Jv_Type,0,Nvl(Bill_Doc_Type,0),:P_Jv_Type)
+And Nvl(cc_code,''0'') =Decode(:P_Cs,''0'',Nvl(cc_code,''0''),:P_Cs)
+And Nvl(w_code,0) =Decode(nvl(:P_W_Code,0),0,Nvl(w_code,0),nvl(:P_W_Code,0))
+And Brn_No = Ias_Bill_Mst.Brn_No
+And Nvl(Ias_Bill_Mst.Bill_Py,0)=0
+And Nvl(Bill_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Bill_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 4
+and Doc_Ser=Ias_Bill_Mst.Bill_Ser
+P_Cs,
+P_W_Code,
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Rt Bills - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_P
+ost_Jv_Type = 5 Then
+'Select Rt_Bill_Ser J_Ser,
+Rt_Bill_Doc_Type Jv_type,
+Rt_Bill_No J_doc_no,
+Rt_Bill_Date J_date,
+Cc_code Cs,
+From Ias_Rt_Bill_Mst
+Where Rt_Bill_Date = Nvl(:P_Date , Rt_Bill_Date)
+And Nvl(Rt_Bill_Doc_Type,0) = Decode(:P_Jv_Type,0,Nvl(Rt_Bill_Doc_Type,0),:P_Jv_Type)
+And Nvl(Cash_No,0) =Decode(Nvl(:P_Cash_Bank,0) ,0,Nvl(
+Cash_No,0),Nvl(:P_Cash_Bank,0) )
+And Nvl(Cc_code,''0'') =Decode(:P_Cs,''0'',Nvl(Cc_code,''0''),:P_Cs)
+And Nvl(W_Code,0) =Decode(nvl(:P_W_Code,0),0,Nvl(W_Code,0),nvl(:P_W_Code,0))
+And Brn_No = Ias_Rt_Bill_Mst.Brn_No
+And nvl(Ias_Rt_Bill_Mst.Rt_Bill_Py,0)=0
+And Nvl(Rt_Bill_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Rt_Bill_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 5
+and Doc_Ser=Ias_Rt_Bill_Mst.Rt_Bill_Ser
+'||P_Order_By
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Purchase - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 6 Then
+Jv_type,
+J_date,
+Cheque_No,
+Ac_Code,
+DOC_SEQUENCE ,
+gr_no,
+G_Ser
+From
+(Select Ias_pi_bill_Mst.Bill_Ser
+Ias_pi_bill_Mst.Bill_Doc_Type Jv_type,
+Ias_pi_bill_Mst.Bill_No J_doc_no,
+Ias_pi_bill_Mst.Bill_Date J_date,
+Ias_pi_bill_Mst.Cash_No Cash_No,
+Gr_Note.w_code
+Ias_pi_bill_Mst.Cc_code
+GR_NOTE.GR_NO
+GR_NOTE.G_SER
+From Ias_pi_bill_Mst,Gr_Note
+Where Ias_pi_bill_Mst.Bill_Ser=Gr_Note.Doc_Ser
+And Nvl(Gr_Note.C_Flag,0) = 1
+and Nvl(Ias_pi_bill_Mst.Pur_Type,0) = Decode(:P_Pur_Type,0,Nvl(Ias_pi_bill_Mst.Pur_Type,0),:P_Pur_Type)
+and Nvl(Ias_pi_bill_Mst.Pur_Type,0)<>3
+And Ias_pi_bill_Mst.Bill_Date = Nvl(:P_Date , Ias_pi_bill_Mst.Bill_Date)
+And Nvl(Ias_pi_bill_Mst.Bill_Doc_Type,0) = Decode(:P_Jv_Type,0,Nvl(Ias_pi_bill_Mst.Bill_Doc_Type,0),:P_Jv_Type)
+And Nvl(Ias_pi_bill_Mst.Cash_No,0) =Decode(Nvl(:P_Cash_Bank,0) ,0,Nvl(Ias_pi_bill_Mst.Cash_No,0),Nvl(:P_Cash_Bank,0) )
+And nvl(Ias_pi_bill_Mst.Audit_ref,0) = Decode(:v_Use_Audit_Doc,1,1,nvl(Ias_pi_bill_Mst.Audit_ref,0))
+And Ias_pi_bill_Mst.Brn_No = Decode(:P_Brn_No,0,Ias_pi_bill_Mst.Brn_No,:P_Brn_No)
+And Nvl(Ias_pi_bill_Mst.ad_u_id,0) = Decode(:P_ad_u_id,0,Nvl(Ias_pi_bill_Mst.ad_u_id,0),:P_ad_u_id)
+And Nvl(Ias_pi_bill_Mst.cc_code,''0'') =Decode(:P_Cs,''0'',Nvl(Ias_pi_bill
+_Mst.cc_code,''0''),:P_Cs)
+And Nvl(Ias_pi_bill_Mst.w_code,0) =Decode(nvl(:P_W_Code,0),0,Nvl(Ias_pi_bill_Mst.w_code,0),nvl(:P_W_Code,0))
+And Brn_No = Ias_pi_bill_Mst.Brn_No
+And Nvl(GR_NOTE.Gr_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(GR_NOTE.Gr_Post,0)=Decode(:P_POST_UNPOST,1,0,1) OR Exists ( Select Doc_Ser_REF From Ias_Post_DTL
+and Doc_Post = Decode(:P_POST_UNPOST,1,0,1)
+and Doc_type = 6
+and Doc_Ser_Ref=GR_NOTE.G_Ser
+Union all
+Select Ias_pi_bill_Mst.Bill_Ser
+Ias_pi_bill_Mst.w_code
+From Ias_pi_bill_Mst
+Where Nvl(Ias_pi_bill_Mst.Pur_Type,0) = Decode(:P_Pur_Type,0,Nvl(Ias_pi_bill_Mst.Pur_Type,0),:P_Pur_Type)
+and Nvl(Ias_pi_bill_Mst.Pur_Type,0)=3
+And Nvl(Ias_pi_bill_Mst.cc_code,''0'') =Decode(:P_Cs,''0'',Nvl(Ias_pi_bill_Mst.cc_code,''0''),:P_Cs)
+And Nvl(Ias_pi_bill_Mst.Bill_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Ias_pi_bill_Mst.Bill_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_Ser=Ias_pi_bill_Mst.Bill_Ser
+) '||P_Order_By
+Using P_Pur_Type,
+P_Pur_Type,
+P_POST_UNPOST,
+P_Cs
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Rt Purchase - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 7 Then
+W_Code W_Code,
+From Ias_Pr_Bill_Mst
+And Brn_No = Ias_Pr_Bill_Mst.Brn_No
+and Doc_type = 7
+and Doc_Ser=Ias_Pr_Bill_Mst.Rt_Bill_Ser
+P_Cash_Bank,
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Gr Detail - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 8 Then
+'Select G_Ser J_Ser,
+InCom_Type Jv_type,
+Gr_No J_doc_no,
+Gr_Date J_date,
+cc_code
+From Gr_Note
+Where Pi_Type = 5
+And Gr_Date = Nvl(:P_Date , Gr_Date)
+And Nvl(InCom_Type,0) = Decode(:P_Jv_Type,0,Nvl(InCom_Type,0),:P_Jv_Type)
+And Brn_No = Gr_Note.Brn_No
+And Nvl(Gr_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Gr_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 8
+and Doc_Ser=Gr_Note.G_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Outgoung - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 9 Then
+'Select out_Ser
+out_Type
+out_No J_doc_no,
+out_Date J_date,
+w_code,
+From Ias_Outgoing_Mst
+Where out_Date = Nvl(:P_Date , out_Date)
+And Nvl(out_Type,0) = Decode(:P_Jv_Type,0,Nvl(out_Type,0),:P_Jv_Type)
+And Brn_No = Ias_Outgoing_Mst.Brn_No
+And Nvl(out_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(out_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 9
+and Doc_Ser=Ias_Outgoing_Mst.out_Ser
+-- - - - - - - - - - - - - - -- - - - - - - - Adjustment - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 10 Then
+'Select Doc_Ser J_Ser,
+Adjust_Type Jv_type,
+Doc_No J_doc_no,
+Doc_Date J_date,
+CC_CODE Cs,
+From Stk_Adjustment
+Where Doc_Date = Nvl(:P_Date , Doc_Date)
+And Nvl(Adjust_Type,0) = Decode(:P_Jv_Type,0,Nvl(Adjust_Type,0),:P_Jv_Type)
+And Brn_No = Stk_Adjustment.Brn_No
+And Nvl(Stk_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Stk_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 10
+and Doc_Ser=Stk_Adjustment.Doc_Ser
+-- - - - - - - - - - - - - - - - - - - WTransfer Out- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 11 Then
+'Select Tr_Ser J_Ser,
+Tr_Type Jv_type,
+Tr_No J_doc_no,
+Tr_Date J_date,
+From Ias_WhTrns_Mst
+Where TR_INOUT_TYPE = 1
+And Tr_Date = Nvl(:P_Date , Tr_Date)
+And Nv
+l(Tr_Type,0) = Decode(:P_Jv_Type,0,Nvl(Tr_Type,0),:P_Jv_Type)
+And Nvl(Tr_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Tr_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 11
+and Doc_Ser=Ias_WhTrns_Mst.Tr_Ser
+-- - - - - - - - - - - - - - -- - - - - - - WTransfer In - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 12 Then
+Where TR_INOUT_TYPE = 2
+And Nvl(Tr_Type,0) = Decode(:P_Jv_Type,0,Nvl(Tr_Type,0),:P_Jv_Type)
+and Doc_type = 12
+-- - - - - - - - - - - - - - -- - - - - - - Assembly Kit Item - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 17 Then
+'Select doc_ser J_Ser,
+0 Jv_type,
+From Assemble_Kit_Items
+Where Doc_Date = Nvl(:
+P_Date , Doc_Date)
+And Brn_No = Assemble_Kit_Items.Brn_No
+And Nvl(Doc_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Doc_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 17
+and Doc_Ser=Assemble_Kit_Items.Doc_Ser
+-- - - - - - - - - - - - - - -- - - - - - - DisAssembly Kit Item - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 18 Then
+From DisAssemble_Kit_Items
+And Brn_No = DisAssemble_Kit_Items.Brn_No
+and Doc_type = 18
+and Doc_Ser=DisAssemble_Kit_Items.Doc_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - Gate - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -------------
+ElsIf P_Post_Jv_Type = 19 Then
+From Master_Gate_Gr
+And Brn_No = Master_Gate_Gr.Brn_No
+And (Nvl(Doc_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_M
+and Doc_type = 19
+and Doc_Ser=Master_Gate_Gr.Doc_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Out Bills - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 13 Then
+'Select Out_Ser J_Ser,
+Bill_Doc_Type Jv_ty
+Out_No J_doc_no,
+Out_Date J_date,
+cc_code Cs,
+From Master_Out_Bills
+Where Out_Date = Nvl(:P_Date , Out_Date)
+And Brn_No = Master_Out_Bills.Brn_No
+And Nvl(Out_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Out_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 13
+and Doc_Ser=Master_Out_Bills.Out_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Ret Bills - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 14 Then
+'Select Ret_Ser J_Ser,
+Ret_No J_doc_no,
+Ret_Date J_date,
+From Ias_Ret_Bill_Mst
+Where Ret_Date = Nvl(:P_Date , Ret_Date)
+And Nvl(Cc_Code,''0'') =Decode(:P_Cs,''0'',Nvl(Cc_Code,''0''),:P_Cs)
+And Brn_No = Ias_Ret_Bill_Mst.Brn_No
+And Nvl(Add_Flag,1) =
+1 And RowNum <= 1 )
+And Nvl(Ret_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Ret_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 14
+and Doc_Ser=Ias_Ret_Bill_Mst.Ret_Ser
+-- - - - - - - - - - - - - - -- - - - - - - Add Disc Sales- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 15 Then
+ADD_DISC_TYPE Jv_type,
+W_CODE,
+CC_CODE,
+From IAS_BILL_MST_ADD_DISC
+And Brn_No = IAS_BILL_MST_ADD_DISC.Brn_No
+and Doc_type = 15
+and Doc_Ser=IAS_BILL_MST_ADD_DISC.Doc_Ser
+-- - - - - - - - - - - - - - -- - - - - - - Add Disc Purches- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 16 Then
+From Ias_Pi_Bill_Mst_Add_Disc
+And Brn_No = Ias_Pi_Bill_Mst_Add_Disc.Brn_No
+and Doc_type = 16
+and Doc_Ser=Ias_Pi_Bill_Mst_Add_Disc.Doc_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -GRNT_MST- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 27 Then
+'Select DOC_SRL J_Ser,
+GR_TYPE jv_type,
+DOC_NO j_doc_no,
+DOC_DATE j_date,
+From IAS_GRNT_MST
+Where Doc_Date = Nvl(:P_Date , Doc_date)
+And Nvl(GR_TYPE,0) = Decode(:P_Jv_Type,0,Nvl(GR_TYPE,0),:P_Jv_Type)
+And Brn_No = IAS_GRNT_MST.Brn_No
+and Doc_type = 27
+and Doc_Ser=IAS_GRNT_MST.Doc_Srl
+ELSIf P_Post_Jv_Type = 28 Then
+From IAS_GRNT_INCR_MST
+And Brn_No = IAS_GRNT_INCR_MST.Brn_No
+and Doc_type = 28
+and Doc_Ser=IAS_GRNT_INCR_MST.Doc_Srl
+ELSIf P_Post_Jv_Type = 29 Then
+'Select DOC_SRL_REF J_Ser,
+DOC_NO_REF j_d
+oc_no,
+AND Nvl(DOC_SRL_REF,0)<>0
+And Nvl(Doc_Post_REF,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(Doc_Post_REF,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 29
+and Doc_Ser=IAS_GRNT_MST.DOC_SRL_REF
+-- - - - - - - - - - - - - - -- - - - - - - Visa Card- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Post_Jv_Type = 72 Then
+1 Jv_type,
+value_Date J_date,
+Null Cash_No,
+From Ias_Due_Credit_Card
+Where value_Date = Nvl(:P_Date , value_Date)
+And Nvl(Cc_Code,''0'') = Decode(:P_Cs,''0'',Nvl(Cc_Code,''0''),:P_Cs)
+And Brn_No = Ias_Due_Credit_Card.Brn_No
+and Doc_type = 72
+and Doc_Ser=Ias_Due_Credit_Card.Doc_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --- Reciept Cheque - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ---
+ElsIf P_Post_Jv_Type = 83 Then -- cheque due receipt
+'Select Vouchers.V_Ser J_Ser,
+Vouchers.Voucher_Pay_Type Jv_type,
+Vouchers.Voucher_No J_doc_no,
+Vouchers.Voucher_Date
+Nvl(Bank_no,Vouchers.Cash_No) Cash_No,
+Voucher_Detail.Cheque_No Cheque_No,
+Voucher_Detail.A_Code Ac_Code,
+Voucher_Detail.DOC_SEQUENCE DOC_SEQUENCE,
+From Vouchers,Voucher_Detail
+Where Vouchers.V_Ser=Voucher_Detail.V_Ser
+And Vouchers.Voucher_Type = 1
+And Nvl(Vouchers.Voucher_Pay_Type,0) = 2
+And Vouchers.Cheq_Type = 3
+And nvl(Voucher_Detail.cheque_valued,0) In (1,2)
+And Vouchers.Voucher_Date = Nvl(:P_Date , Vouchers.Voucher_Date)
+And nvl(Voucher_Detail.Audit_ref,0) = Decode(:v_Use_Audit_Doc,1,1,nvl(Voucher_Detail.Audit_ref,0))
+And Nvl(Vouchers.Cash_No,0) =Decode(Nvl(:P_Cash_Bank,0) ,0,Nvl(Vouchers.Cash_No,0),Nvl(:P_Cash_Bank,0) )
+And Vouchers.Brn_No = Decode(:P_Brn_No,0,Vouchers.Brn_No,:P_Brn_No)
+And Nvl(Vouchers.ad_u_id,0) = Decode(:P_ad_u_id,0,Nvl(Vouchers.ad_u_id,0),:P_ad_u_id)
+--And Nvl(Vouchers.Move_Cheq_Py,0) = 0
+And Nvl(Vouchers.Voucher_Post,0) = 1
+And Nvl(Vouchers.Stand_By,0)=0
+And Nvl(Voucher_Detail.Cheque_Post,0)=Decode(:P_POST_UNPOST,1,0,1) '||P_Order_By
+ElsIf P_Post_Jv_Type = 84 Then -- cheque due payment
+Vouchers.Voucher_Date J_date,
+0 Cs ,
+And Vouchers.Voucher_Type = 2
+--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --- SHP_PREPAID_SLS_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ---
+ElsIf P_Post_Jv_Type = 95 Then
+'Select DOC_Ser J_Ser,
+DOC_No J_doc_no,
+DOC_Date J_date,
+From SHP_PREPAID_SLS_MST
+Where DOC_Date = Nvl(:P_Date , DOC_Date)
+And Nvl(SHP_PREPAID_SLS_MST.Audit_ref,0) = Decode(:v_Use_Audit_Doc,1,1,nvl(SHP_PREPAID_SLS_MST.Audit_ref,0))
+And Brn_No = SHP_PREPAID_SLS_MST.Brn_No
+And Nvl(Stand_By,0)=0
+And Nvl(SHP_PREPAID_SLS_MST.Bill_Py,0)=0
+And Nvl(SHP_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(SHP_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 95
+and Doc_Ser=SHP_PREPAID_SLS_MST.Doc_Ser
+Using P_date ,
+P_Jv_Type ,
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - billing airwaybill no - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ---
+ElsIf P_Post_Jv_Type =96 Then
+From SHP_BILLING
+And Brn_No = SHP_BILLING.Brn_No
+And Nvl(SHP_BILLING.Bill_Py,0)=0
+and Doc_type = 96
+and Doc_Ser=SHP_BILLING.Doc_Ser
+ElsIf P_Post_Jv_Type = 98 Then
+TYP_NO Jv_type,
+CSH_BNK_NO ,
+0 Che
+que_No,
+From Ias_Exch_Cur_Mst
+Where AC_DTL_TYP= 1
+And Doc_Date = Nvl(:P_Date , Doc_Date)
+And Nvl(CSH_BNK_NO,0) =Decode(Nvl(:P_Cash_Bank,0) ,0,Nvl(CSH_BNK_NO,0),Nvl(:P_Cash_Bank,0) )
+And Brn_No = Ias_Exch_Cur_Mst.Brn_No
+and Doc_type = 98
+and Doc_Ser=Ias_Exch_Cur_Mst.DOC_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SHP_HND_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ---
+ElsIf P_Post_Jv_Type =203 Then
+'Select HND_SRL J_Ser,
+HND_TYP Jv_type,
+HND_NO J_doc_no,
+HND_Date J_date,
+AC_CODE_DTL Cash_No,
+From SHP_HND_MST
+Where HND_Date = Nvl(:P_Date ,HND_Date)
+And Nvl(HND_TYP,0) =Decode(:P_Jv_Type,0,Nvl(HND_TYP,0),:P_Jv_Type)
+And Nvl(AC_CODE_DTL,0) =Decode(Nvl(:P_Cash_Bank,0) ,0,Nvl(AC_CODE_DTL,0),Nvl(:P_Cash_Bank,0) )
+And Brn_No = SHP_HND_MST.Brn_No
+And Nvl(SHP_HND_MST.HND_Py,0)=0
+And Nvl(DOC_Post,0)=Decode(:P_POST_UNPOST,1,0,1)
+And (Nvl(DOC_Post,0)=0 OR Exists ( Select Doc_Ser From Ias_Post_Mst
+and Doc_type = 203
+and Doc_Ser=SHP_HND_MST.HND_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - PMS_CONTRACTS_MST- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ---
+ElsIf P_Post_Jv_Type =300 Then
+'Select DOC_SER J_Ser,
+CNTRCT_TYPE Jv_type,
+CNTRCT_NO J_doc_no,
+CNTRCT_Date J_date,
+0 cc_code,
+From PMS_CONTRACTS_MST
+Where CNTRCT_Date = Nvl(:P_Date ,CNTRCT_Date)
+And Nvl(CNTRCT_TYPE,0) =Decode(:P_Jv_Type,0,Nvl(CNTRCT_TYPE,0),:P_Jv_Type)
+And Brn_No = PMS_CONTRACTS_MST.Brn_No
+and Doc_type = 300
+and Doc_Ser=PMS_CONTRACTS_MST.Doc_Ser
+ElsIf P_Post_Jv_Type =301 Then
+SUB_CNTRCT_NO J_doc_no,
+SUB_S_CNTRCT_DATE J_date,
+From PMS_SUB_CONTRACTS_MST
+Where SUB_S_CNTRCT_DATE= Nvl(:P_Date ,SUB_S_CNTRCT_DATE)
+And Brn_No = PMS_SUB_CONTRACTS_MST.Brn_No
+and Doc_type = 301
+and Doc_Ser=PMS_SUB_CONTRACTS_MST.Doc_Ser
+P_ad_u
+_id,
+ElsIf P_Post_Jv_Type =302 Then
+RECEIPT_NO J_doc_no,
+RECEIPT_DATE J_date,
+From PMS_FINCE_RECEIPT_MST
+Where RECEIPT_DATE= Nvl(:P_Date ,RECEIPT_DATE)
+And Brn_No = PMS_FINCE_RECEIPT_MST.Brn_No
+and Doc_type = 302
+and Doc_Ser=PMS_FINCE_RECEIPT_MST.Doc_Ser
+ElsIf P_Post_Jv_Type =303 Then
+From PMS_S_FINCE_RECEIPT_MST
+And Brn_No = PMS_S_FINCE_RECEIPT_MST.Brn_No
+and Doc_type = 303
+and Doc_Ser=PMS_S_FINCE_RECEIPT_MST.Doc_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - REM_CNTRCT_RNT_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 500 Then
+RNTL_TYP jv_type,
+From REM_CNTRCT_RNT_MST
+And Nvl(RNTL_TYP,0) = Decode(:P_Jv_Type,0,Nvl(RNTL_TYP,0),:P_Jv_Type)
+And Brn_No =
+REM_CNTRCT_RNT_MST.Brn_No
+and Doc_type = 500
+and Doc_SrL=REM_CNTRCT_RNT_MST.DOC_SRL
+and RowNum<=1)) '||P_Order_By
+--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - REM_PRMTING_PRIOD_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 501 Then
+0 jv_type,
+From REM_PRMTING_PRIOD_MST
+And Brn_No = REM_PRMTING_PRIOD_MST.Brn_No
+and Doc_type = 501
+and Doc_SrL=REM_PRMTING_PRIOD_MST.DOC_SRL
+--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - REM_CNTRCT_RNT_CNCL_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 502 Then
+From REM_CNTRCT_RNT_CNCL_MST
+And Brn_No = REM_CNTRCT_RNT_CNCL_MST.Brn_No
+and Doc_type = 502
+and Doc_SrL=REM_CNTRCT_RNT_CNCL_MST.DOC_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - REM_BILL_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 503 Then
+BILL_TYP jv_type,
+From REM_BILL_MST
+And Nvl(BILL_TYP,0) = Decode(:P_Jv_Type,0,Nvl(BILL_TYP,0),:P_Jv_Type)
+And Brn_No = REM_BILL_MST.Brn_No
+and Doc_type = 503
+and Doc_SrL=REM_BILL_MST.DOC_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - REM_CNTRCT_SALE_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 504 Then
+PAY_TYP jv_type,
+From REM_CNTRCT_SALE_MST
+And Nvl(PAY_TYP,0) = Decode(:P_Jv_Type,0,Nvl(PAY_TYP,0),:P_Jv_Type)
+And Brn_No = REM_CNTRCT_SALE_MST.Brn_No
+and Doc_type = 504
+and Doc_SrL=REM_CNTRCT_SALE_MST.DOC_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FAS_INCRS_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 603 Then
+INCRS_TYP jv_type,
+From FAS_INCRS_MST
+And Nvl(INCRS_TYP,0) = Decode(:P_Jv_Type,0,Nvl(INCRS_TYP,0),:P_Jv_Type)
+And Brn_No = FAS_INCRS_MST.Brn_No
+and Doc_type = 603
+and Do
+c_Ser=FAS_INCRS_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FFAS_DCRS_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 604 Then
+DCRS_TYP jv_type,
+From FAS_DCRS_MST
+And Nvl(DCRS_TYP,0) = Decode(:P_Jv_Type,0,Nvl(DCRS_T
+YP,0),:P_Jv_Type)
+And Brn_No = FAS_DCRS_MST.Brn_No
+and Doc_type = 604
+and Doc_Ser=FAS_DCRS_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FAS_TRNS_MST- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 605 Then
+TRNS_TYP jv_type,
+From FAS_TRNS_MST
+And Nvl(TRNS_TYP,0) = Decode(:P_Jv_Type,0,Nvl(TRNS_TYP,0),:P_Jv_Type)
+And Brn_No = FAS_TRNS_MST.Brn_No
+and Doc_type = 605
+and Doc_Ser=FAS_TRNS_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FAS_RCVD_MS
+T- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 606 Then
+RCVD_TYP jv_type,
+From FAS_RCVD_MST
+And Nvl(RCVD_TYP,0) = Decode(:P_Jv_Type,0,Nvl(RCVD_TYP,0),:P_Jv_Type)
+And Brn_No = FAS_RCVD_MST.Brn_No
+and Doc_type = 606
+and Doc_Ser=FAS_RCVD_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FAS_DEPR_MST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 607 Then
+Depr_TYP jv_type,
+From FAS_DEPR_MST
+And Depr_Typ = 1
+AND FINAL_DEPR=1
+And Brn_No = FAS_DEPR_MST.Brn_No
+and Doc_type = 607
+and Doc_Ser=FAS_DEPR_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FAS_ADJST - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 609 Then
+From FAS_ADJST_MST
+And Brn_No = FAS_ADJST_MST.Brn_No
+and Doc_type = 609
+and Doc_Ser=FAS_ADJST_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -FAS_EVAL - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 610 Then
+From FAS_EVL_MST
+And Brn_No = FAS_EVL_MST.Brn_No
+and Doc_type = 610
+and Doc_Ser=FAS_EVL_MST.DOC_SER
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -SALARY - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 775 Then
+From HRS_SLRY_CALC_MST
+And Brn_No = HRS_SLRY_CALC_MST.Brn_No
+And Nvl(Add_Flag
+,1) = 1
+and Doc_type = 775
+and Doc_Ser=HRS_SLRY_CALC_MST.DOC_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -TRUST CLEAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 717 Then
+TYP_NO jv_type,
+From HRS_PYMNT_FIN_TRUST_MST
+And Nvl(typ_no,0) = Decode(:P_Jv_Type,0,Nvl(typ_no,0),:P_Jv_Type)
+And Brn_No = HRS_PYMNT_FIN_TRUST_MST.Brn_No
+and Doc_type = 717
+and Doc_Ser=HRS_PYMNT_FIN_TRUST_MST.DOC_SRL
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Tmedical cure - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ELSIf P_Post_Jv_Type = 805 Then
+From HRS_MDCL_CARE_MST
+And Brn_No = HRS_MDCL_CARE_MST.Brn_No
+and Doc_type = 805
+and Doc_Ser=HRS_MDCL_CARE_MST.DOC_SRL
+--------------------------------------------------------------------------------------
+Raise_application_error(-20447,'Error When Query From Table '||SqlErrm) ;
+--##------------------------------------------------------------------------------------------------------------##--
+P_Order_By In Varchar2 ) Is
+-- ## Gr Detail
+If P_UnPost_Jv_Type = 8 Then
+'Select G_Ser J_Ser ,
+InCom_Type Jv_type ,
+Gr_No J_doc_no ,
+Gr_Date J_date ,
+W_Code ,
+Cc_code Cost_Center
+And Nvl(Incom_Type,0) = Decode(:P_Jv_Type,0,Nvl(Incom_Type,0),:P_Jv_Type)
+And GR_POST=1 '||P_Order_By
+P_Jv_Type ;
+--## Outgoung
+ElsIf P_UnPost_Jv_Type = 9 Then
+'Select Out_Ser J_Ser ,
+Out_Type Jv_Type ,
+Out_No J_Doc_No ,
+Out_Date J_Date ,
+Cc_Code
+And Nvl(Out_Type,0) = Decode(:P_Jv_Type,0,Nvl(Out_Type,0),:P_Jv_Type)
+And Out_Post=1 '||P_Order_By
+--## Adjustment
+ElsIf P_UnPost_Jv_Type = 10 Then
+'Select Doc_Ser J_Ser ,
+Adjust_Type Jv_Type ,
+Doc_No J_Doc_No ,
+Doc_Date J_Date ,
+Cc_Code Cost_Center
+And Stk_Post=1 '||P_Order_By
+Using P_Date ,
+--## WTransfer (Out)
+ElsIf P_UnPost_Jv_Type = 11 Then
+'Select Tr_Ser J_Ser ,
+Tr_Type Jv_Type ,
+Tr_No J_Doc_No ,
+Tr_Date J_Date ,
+Where Tr_InOut_Type = 1
+And TR_POST=1 '||P_Order_By
+Using P_Date,
+--## WTransfer (In)
+ElsIf P_UnPost_Jv_Type = 12 Then
+Where Tr_InOut_Type = 2
+And Tr_Post = 1 '||P_Order_By
+P_Jv_Type;
+--## Assembly Kit Item
+ElsIf P_UnPost_Jv_Type = 17 Then
+0 Jv_Type ,
+And DOC_POST=1 '||P_Order_By
+Using P_Date ;
+--## DisAssembly Kit Item
+ElsIf P_UnPost_Jv_Type = 18 Then
+Using P_date ;
+Raise_Application_Error(-20448,'Error When Query From Table '||SqlErrm) ;
+x,BRN_EFax),
+"PKG INIT"IAS_POSTING_JRS_PKG""
+CREATE OR REPLACE PACKAGE IAS_POSTING_JRS_PKG IS
+v_curr_bal
+V_Lang_No
+Pls_Integer;
+V_User_No
+v_local_cur
+VarChar2(7);
+v_cc_avail Pls_Integer;
+V_USE_BALANCED_CC NUMBER (1):=0;
+V_USE_BALANCED_BRN NUMBER (1):=0;
+v_Use_Audit_Doc NUMBER(1);
+v_Post_Cheq_type NUMBER(1);
+V_Post_Cheq_Type_Vndr NUMBER(1);
+v_pay_ltr_ac VarChar2(30);
+v_rec_ltr_ac VarChar2(30);
+v_ac_code_dtl VarChar2(30);
+v_ac_dtl_typ ACCOUNT.ac_dtl_typ%Type ;
+V_ChqPayIntrm_Ac Number;
+V_CC_POST PLS_INTEGER;
+V_PJ_POST PLS_INTEGER;
+V_ACTV_POST PLS_INTEGER;
+V_POST_ACC_DSC_IN_PAY_CHQ NUMBER (1):=0;
+v_Cnt NUMBER;
+V_Chq_No NUMBER;
+V_AMT Number;
+V_AMTF Number;
+v_a_code
+VarChar2(30);
+v_cc_code
+Cost_Centers.Cc_Code%Type ;
+V_Pj_No
+Ias_Projects.Pj_No%Type ;
+V_Actv_No
+Ias_Actvty.Actv_No%Type ;
+v_doc_desc VarChar2(250);
+v_FrcNo
+NUMBER(2);
+Procedure Get_Para ( P_Lang_no
+In Pls_Integer
+Default 1
+P_User_No
+P_Post_Type In NUMBER
+Default 0
+Procedure Post_JRS( P_f_doc_no In NUMBER Default Null
+,P_t_doc_no In NUMBER Default Null
+,P_f_doc_date In Date Default Null
+,P_t_doc_date In Date Default Null
+,P_doc_ser
+In NUMBER Default Null
+,P_jv_type
+,P_doc_type In NUMBER Default Null
+,P_Brn_no In NUMBER Default Null
+,P_Ad_U_Id In NUMBER Default Null
+,P_Post_type
+In NUMBER Default 0);
+END IAS_POSTING_JRS_PKG;
+No c*
+CREATE OR REPLACE PACKAGE BODY IAS_POSTING_JRS_PKG AS
+Procedure Get_Para ( P_Lang_no In Pls_Integer Default 1 ,
+P_User_No In Pls_Integer ,
+P_Post_Type In NUMBER Default 0 ) Is
+V_Lang_No:=P_Lang_no;
+V_User_No:=P_User_No;
+Select Cur_code
+Into V_Local_Cur
+From Ex_Rate
+Where L_f=1;
+Raise_application_error(-20601,ias_gen_pkg.Get_Msg(v_lang_no,227)||SqlErrm) ;
+Select Nvl(Ias_Para_Gen.Cc_Avail,1),Nvl(Ias_Para_Gen.Cc_Post,0),Nvl(Ias_Para_Gen.Pj_Post,0),Nvl(Ias_Para_Gen.Actv_Post,0),
+Nvl(Ias_Para_Gl.Post_Cheque_Type,0),Nvl(Ias_Para_Gl.Post_Cheq_Type_Vndr,0),
+Decode(P_Post_Type,0,0,Nvl(Use_Audit_Doc,0)),
+Nvl(Use_Balanced_Cc,0),Nvl(Use_Balanced_Brn,0),Nvl(POST_ACC_DSC_IN_PAY_CHQ,0)
+Into V_Cc_Avail,V_Cc_Post,V_Pj_Post,V_Actv_Post,
+V_Post_Ch
+eq_Type,V_Post_Cheq_Type_Vndr,
+V_Use_Audit_Doc ,
+V_Use_Balanced_Cc,V_USE_BALANCED_BRN ,V_POST_ACC_DSC_IN_PAY_CHQ
+From Ias_Para_Gen,Ias_Para_Gl ;
+Raise_application_error(-20603,Ias_Gen_Pkg.Get_Msg(V_Lang_No,670)||SqlErrm) ;
+End Get_Para;
+--## Post_Jrs
+In NUMBER Default 0) Is
+v_Insrt_dtl NUMBER:=0;
+--================================================================
+For M_cv In
+( Select Mj.DOC_TYPE
+doc_type
+,Mj.j_doc_no
+doc_no
+,Mj.jv_type
+jv_type
+,Mj.j_date
+doc_date
+,Mj.ref_no
+ref_no
+,Mj.j_ser
+doc_ser
+,Mj.ad_u_id
+Ad_U_id
+,Mj.Brn_no
+Brn_no
+,Mj.Brn_Year
+Brn_Year
+,Mj.CMP_NO
+CMP_NO
+,Mj.BRN_USR
+BRN_USR
+,Audit_Ref
+Audit_Ref
+,Audit_Ref_Desc Audit_Ref_Desc
+,Audit_Ref_U_Id
+Audit_Ref_U_Id
+,Audit_Ref_Date Audit_Ref_Date
+,Ad_Date Ad_Date
+,Up_U_Id Up_U_Id
+,Up_Date Up_Date
+,Unpost_U_Id Unpost_U_Id
+,Unpost_Date
+Unpost_Date
+From S_JRNL_FILE_MST Mj
+where Mj.j_ser = nvl(P_doc_ser, Mj.j_ser)
+and nvl(Mj.j_post,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mj.j_post,0))
+-- and nvl(Mj.stand_by,0)=0
+--and nvl(Mj.Audit_ref,0) = Decode(v_Use_Audit_Doc,1,1,nvl(Mj.Audit_ref,0))
+and Mj.Doc_type = Decode(nvl(P_doc_type,0),0,Mj.doc_type,P_doc_type)
+and Mj.jv_type = Decode(nvl(P_jv_type,0),0,Mj.jv_type,P_jv_type)
+and Mj.j_doc_no between nvl(P_f_doc_no,Mj.j_doc_no) and nvl(P_t_doc_no,Mj.j_doc_no)
+and Mj.j_date between nvl(P_f_doc_date,Mj.j_date) and nvl(P_t_doc_date,Mj.j_date)
+and Mj.Brn_No = nvl(P_Brn_No, Mj.Brn_No)
+and Mj.ad_u_id = nvl(P_ad_u_id, Mj.ad_u_id)
+/*And Exists (Select 1 From S_Brn_Usr_Priv
+Where U_Id = V_User_no
+And S_Brn_Usr_Priv.Brn_No = Mj.Brn_No
+And Nvl(Add_Flag,1) = 1 And RowNum <= 1 )*/
+For Update NoWait)
+Loop --(1)
+If Nvl(IAS_Posting_Pkg.Chk_Exist_Pst_Doc(M_cv.doc_type,M_cv.doc_ser
+,0) = 0 Then -- (Begin Chk Exist) --
+IAS_Posting_Pkg.Set_Doc_Info (
+P_Audit_Ref
+=> M_cv.Audit_Ref
+P_Audit_Ref_Desc => M_cv.Audit_Ref_Desc
+P_Audit_Ref_U_Id
+=> M_cv.Audit_Ref_U_Id
+P_Audit_Ref_Date => M_cv.Audit_Ref_Date ,
+P_Ad_U_Id => M_cv.Ad_U_Id ,
+P_Ad_Date => M_cv.Ad_Date ,
+P_Up_U_Id => M_cv.Up_U_Id ,
+P_Up_Date => M_cv.Up_Date ,
+P_UP_CNT => M_cv.UP_CNT ,
+P_Unpost_U_Id => M_cv.Unpost_U_Id ,
+P_Unpost_Date
+=> M_cv.Unpost_Date
+P_Brn_No
+M_cv.brn_no
+P_Brn_Year
+M_cv.brn_year
+P_CMP_NO
+M_cv.CMP_NO
+P_BRN_USR
+M_cv.BRN_USR
+P_Post_Type
+IAS_Posting_Pkg.Insrt_Post_Mst(
+p_doc_type
+M_cv.doc_type
+p_jv_type
+M_cv.jv_type
+p_doc_no
+M_cv.doc_no
+p_doc_ser
+_cv.doc_ser
+p_j_date
+M_cv.doc_date
+p_ref_no
+M_cv.ref_no
+v_Insrt_dtl:=0;
+--=========================================================================
+Dj.a_code
+a_code
+,Dj.ac_code_dtl
+ac_code_dtl
+,Dj.ac_dtl_typ
+ac_dtl_typ
+,Dj.a_cy
+a_cy
+,Dj.cc_code
+,Dj.pj_no
+pj_no
+,Dj.Actv_No Actv_No
+,Dj.Doc_Brn_No Doc_Brn_No
+,nvl(Dj.DR_amt,0)
+dr_amt
+,nvl(Dj.DR_amt_f,0)
+dr_amtf
+,nvl(Dj.CR_amt,0)
+Cr_amt
+,nvl(Dj.CR_amt_f,0)
+Cr_amtf
+,Dj.j_desc
+doc_desc
+,Dj.lc_no
+,Dj.Gr_No
+,Dj.rcrd_no
+,Dj.Wo_No
+Wo_No
+,Dj.Wo_Ser
+Wo_Ser
+,Dj.DOC_TYPE_REF
+DOC_TYPE_REF
+,Dj.DOC_JV_TYPE_REF
+DOC_JV_TYPE_REF
+,Dj.DOC_NO_REF
+DOC_NO_REF
+,Dj.DOC_SER_REF
+DOC_SER_REF
+,Dj.Ref_No
+Ref_No
+,Dj.CHEQUE_NO
+CHEQUE_NO
+,Dj.NOTE_NO NOTE_NO
+,Dj.Rep_Code
+,Dj.Col_No
+From S_JRNL_FILE_DTL Dj
+Where Dj.j_ser=M_cv.doc_ser)
+v_Insrt_dtl:=1;
+--------------------------------------------------------------------------------
+IF nvl(D_cv.Dr_amt,0) > 0 THEN
+V_AMT := D_cv.Dr_amt;
+V_AMTF:= D_cv.Dr_amtF;
+ELSIF nvl(D_cv.Cr_amt,0) > 0 THEN
+V_AMT :=-D_cv.Cr_amt ;
+V_AMTF:=-D_cv.Cr_amtF ;
+---------------------------------------------------------------------------------
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (D_cv.a_code,D_cv.a_cy);
+IAS_Posting_Pkg.Insrt_Post_Dtl(
+M_cv.doc_ser
+p_a_code
+D_cv.a_code
+P_ac_code_dtl
+=> D_cv.ac_code_dtl ,
+P_ac_dtl_typ
+=> D_cv.ac_dtl_typ
+p_a_cy
+D_cv.a_cy
+p_amt
+V_AMT
+p_amt_f
+V_AMTF ,
+p_j_desc
+D_cv.doc_desc
+p_cc_code
+D_cv.cc_code
+p_pj_no
+D_cv.pj_no
+p_Actv_No
+D_cv.Actv_No ,
+p_cb_before
+p_lc_no
+D_cv.lc_no
+P_cheque_no
+D_cv.cheque_no,
+P_Note_No
+D_cv.Note_No ,
+D_cv.ref_no
+p_rcrd_no
+D_cv.rcrd_no
+P_Col_No => D_Cv.Col_No ,
+P_Rep_Code => D_Cv.Rep_Code ,
+P_Wo_No
+D_Cv.Wo_No
+P_Wo_Ser
+D_Cv.Wo_Ser
+P_DOC_TYPE_REF
+D_Cv.DOC_TYPE_REF ,
+P_DOC_JV_TYPE_REF
+D_Cv.DOC_JV_TYPE_REF ,
+P_DOC_NO_REF =>
+D_Cv.DOC_NO_REF
+P_DOC_SER_REF
+D_Cv.DOC_SER_REF ,
+P_Brn_No => Nvl(D_Cv.Doc_Brn_No,M_Cv.Brn_No),
+P_Doc_Brn_No => D_Cv.Doc_Brn_No );
+End Loop; --(2)
+--==========================================================
+If v_Insrt_dtl = 0 Then
+Raise_application_error(-20620,Ias_Gen_Pkg.Get_Msg(V_Lang_No,940)||chr(13)||SqlErrm) ;
+End If; -- (End Chk Exist) --
+P_Doc_Ser => M_Cv.Doc_Ser
+--## Update Post flag
+If P_Post_Type = 1 Then -- From Posting Screen
+Update S_JRNL_FILE_MST Set j_post = 1 ,
+Post_u_id = V_User_no,
+Post_Date = SysDate
+Where j_ser=M_cv.doc_ser;
+Raise_application_error(-20613,'JRS., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+If Sql%NotFound Then
+Raise_application_error(-20614,'JRS., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+d If;
+Ias_Posting_Pkg.Update_IntrM_Tab ( P_doc_type
+P_doc_ser
+P_jv_type
+P_doc_no
+P_doc_date
+P_local_cur
+P_Lang_no => v_Lang_no ,
+P_cc_code
+Null
+P_PJ_NO
+P_Actv_NO =>
+P_ref_no
+null
+p_ad_u_id
+=> M_cv.ad_u_id
+p_post_u_id
+=> V_User_no
+P_Post_Type => P_Post_Type
+P_Brn_no
+M_cv.Brn_no
+M_cv.Brn_Year
+P_BRN_USR =>
+End Post_JRS;
+ucher_No';
+"PKG INIT"IAS_POSTING_GRNT_PKG""
+CREATE OR REPLACE Package IAS_POSTING_GRNT_PKG Is
+v_comm_a_code VarChar2(30);
+Procedure Post_Grnt( P_f_doc_no In NUMBER Default Null
+Default Null
+,P_Brn_no
+,P_Ad_U_Id In NUMBER
+Procedure Post_Incr_Grnt( P_f_doc_no In NUMBER Default Null
+Procedure Post_Grnt_Cls( P_f_doc_no In NUMBER Default Null
+End IAS_POSTING_GRNT_PKG;
+CREATE OR REPLACE Package Body IAS_POSTING_GRNT_PKG Is
+--## Get_Para
+----------------------------------------------------------------------------------------------------------------
+V_Post_Cheq_Type,V_Post_Cheq_Type_Vndr,
+--## Post_GRNT
+Procedure Post_GRNT( P_f_doc_no In NUMBER Default Null
+,P_Post_type In NUMBER Default 0) Is
+v_cshBnk_no varchar2(30);
+v_c_code varchar2(30);
+v_v_code varchar2(30);
+-----------------------------------------------------------------------------
+( Select 27
+,Mj.doc_no
+,Mj.Gr_type
+,Mj.doc_date
+,Mj.doc_srl
+,Up_Cnt Up_Cnt
+From IAS_GRNT_MST Mj
+Where nvl(Mj.Doc_post,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mj.doc_post,0))
+and nvl(Mj.stand_by,0)=0
+and nvl(Mj.Audit_ref,0) = Decode(v_Use_Audit_Doc,1,1,nvl(Mj.Audit_ref,0))
+and Mj.gr_type = Decode(nvl(P_jv_type,0),0,Mj.gr_type,P_jv_type)
+and Mj.doc_no between nvl(P_f_doc_no,Mj.doc_no) and nvl(P_t_doc_no,Mj.doc_no)
+and Mj.doc_date between nvl(P_f_doc_date,Mj.doc_date) and nvl(P_t_doc_date,Mj.doc_date)
+and M
+j.doc_srl = nvl(P_doc_ser, Mj.doc_srl)
+P_Up_Cnt => M_cv.Up_Cnt ,
+-------------------------------------------------------------------------------------
+Dj.ac_code a_code
+,Dj.cur_code
+,nvl(Dj.amt_l,0)
+,nvl(Dj.amt_f,0)
+amtf
+,Dj.doc_dsc doc_desc
+,Dj.DOC_TYP_REF
+,Dj.DOC_JV_TYP_REF
+,Dj.DOC_SRl_REF
+From ias_grnt_dtl Dj
+Where Dj.doc_srl=M_cv.doc_ser )
+D_cv.amt
+D_cv.amtf
+P_Brn_No => Nvl(D_Cv.Doc_Brn_No
+,M_Cv.Brn_No),
+------------------------------------------------------------------------------------
+P_Doc_Ser => M_Cv.Doc_Se
+Update IAS_GRNT_MST Set DOC_POST = 1 ,
+Where DOC_SRL=M_cv.doc_ser;
+Raise_application_error(-20613,'Mjv., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+Raise_application_error(-20614,'Mjv., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+End Post_Grnt;
+--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+--## increase grnt
+( Select 28
+From IAS_GRNT_INCR_MST Mj
+and Mj.doc_srl = nvl(P_doc_ser, Mj.doc_srl)
+Update IAS_GRNT_INCR_MST Set DOC_POST = 1 ,
+End Post_Incr_Grnt;
+--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+Procedure Post_GRNT_ClS( P_f_doc_no In NUMBER Default Null
+-----------------------------------------------------------------------------;
+( Select 29 doc_type
+,Mj.doc_no_ref
+,Mj.Gr_close
+,Mj.GR_CLS_DATE
+,Mj.doc_srl_ref
+Mj.ad_u_id
+,Ad_Date_ref Ad_Date
+,Up_U_Id_ref Up_U_Id
+,Up_Date_ref Up_Date
+,Unpost_U_Id_ref Unpost_U_Id
+,Unpost_Date_ref
+Where nvl(Mj.DOC_POST_REF,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mj.DOC_POST_REF,0))
+and Mj.GR_CLOSE = Decode(nvl(P_jv_type,0),0,Mj.GR_CLOSE,P_jv_type)
+and Mj.doc_no_ref between nvl(P_f_doc_no,Mj.doc_no_ref) and nvl(P_t_doc_no,Mj.doc_no_ref)
+and Mj.GR_CLS_DATE between nvl(P_f_doc_date,Mj.GR_CLS_DATE) and nvl(P_t_doc_date,Mj.GR_CLS_DATE)
+and Mj.doc_srl_ref = nvl(P_doc_ser, Mj.doc_srl_ref)
+For D_cv in ( Select
+Where Dj.doc_srl=M_cv.doc_ser
+) --And dj.doc_typ=29
+Update IAS_GRNT_MST Set doc_post_ref = 1 ,
+Post_u_id_ref = V_User_no,
+Post_Date_ref = SysDate
+Where DOC_SRL_REF =M_cv.doc_ser;
+P_local_
+End Post_Grnt_ClS;
+---======================================================================================
+d_Date_ref Ad_Date
+"PKG INIT"IAS_POSTING_GL_PKG""
+CREATE OR REPLACE Package IAS_POSTING_Gl_PKG Is
+v_rec_ltr_ac NUMBER(30);
+V_USE_PAY_VCHR_MST_AC_PRV
+NUMBER(1):=0;
+V_USE_RCV_VCHR_MST_AC_PRV
+V_Pst_Sman_Comm_Vchr_Rcpt NUMBER(1):=0;
+V_Reprs_Comm_Ac VarChar2(30);
+V_Reprs_Comm_dsc VarChar2(100);
+V_Rep_Code_Ac VarChar2(30);
+V_Rep_Comm_AmtL NUMBER;
+V_Rep_Comm_AmtF NUMBER;
+Procedure Get_Interface_Ac(P_Brn_no In NUMBER ) ;
+FUNCTION Get_PST_BRN_NO(P_BRN_NO IN NUMBER, P_DOC_BRN_NO IN NUMBER) RETURN NUMBER ;
+Procedure Post_Jv( P_f_doc_no In NUMBER Default Null
+Procedure Post_Rec( P_f_doc_no In NUMBER Default Null
+,P_Cc_code
+In VarChar2 Default Null
+,P_Cash_No
+--=======================================================
+================
+Procedure Post_Rec_Due_Cheq( P_f_doc_no In NUMBER Default Null
+,P_doc_ser In NUMBER Default Null
+,P_jv_type In NUMBER Default Null
+,P_Cc_code In VarChar2 Default Null
+,P_Cash_No In NUMBER Default Null
+,P_A_code In VarChar2 Default Null
+-------------------------------------------
+,P_Ac_code_Dtl In VarChar2 Default Null
+,P_Ac_Dtl_Typ In NUMBER Default Null
+,P_Cheq_No In NUMBER Default Null
+,P_RcRd_No In NUMBER Default Null
+,P_Due_date
+In Date Default Null
+,P_Doc_Seq
+In NUMBER Default 0) ;
+Procedure Post_Pay( P_f_doc_no In NUMBER Default Null
+Procedure Post_Pay_Due_Cheq( P_f_doc_no In NUMBER Default Null
+Procedure Post_Exch_Cur( P_f_doc_no In NUMBER Default Null
+,P_Post_type In NUMBER Default 0);
+End IAS_POSTING_Gl_PKG;
+CREATE OR REPLACE Package Body IAS_POSTING_G
+L_PKG Is
+--## Get_Para murad
+Nvl(Use_Balanced_Cc,0),Nvl(Use_Balanced_Brn,0),Nvl(POST_ACC_DSC_IN_PAY_CHQ,0),
+Nvl(PST_SMAN_COMM_VCHR_RCPT,0) ,NVL(USE_PAY_VCHR_MST_AC_PRV,0),NVL(USE_RCV_VCHR_MST_AC_PRV,0)
+V_Use_Balanced_Cc,V_USE_BALANCED_BRN ,V_POST_ACC_DSC_IN_PAY_CHQ,
+V_PST_SMAN_COMM_VCHR_RCPT ,V_USE_PAY_VCHR_MST_AC_PRV,V_USE_RCV_VCHR_MST_AC_PRV
+From Ias_Para_Gen,Ias_Para_Gl ,Ias_Para_AR ;
+End Get_Para ;
+Select pay_letter, rec_letter,REPRS_COMM_AC
+Into v_pay_ltr_ac, v_rec_ltr_ac,V_REPRS_COMM_AC
+--MRD 30052016
+FUNCTION Get_PST_BRN_NO(P_BRN_NO IN NUMBER,
+P_DOC_BRN_NO IN NUMBER) RETURN NUMBER IS
+V_PST_BRN_NO S_BRN.BRN_NO%TYPE ;
+IF V_USE_BALANCED_BRN=1 THEN
+V_PST_BRN_NO:= Nvl(P_DOC_BRN_NO,P_BRN_NO);
+V_PST_BRN_NO:= P_BRN_NO;
+RETURN(V_PST_BRN_NO);
+End Get_PST_BRN_NO;
+--## Post_Jv
+( Select 1
+Audit_Re
+From Master_Journal_v Mj
+Where nvl(Mj.j_post,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mj.j_post,0))
+and Mj.jv_type = Decode(nvl(P_jv_
+type,0),0,Mj.jv_type,P_jv_type)
+and Mj.j_ser = nvl(P_doc_ser, Mj.j_ser)
+AND (1=V_User_no OR EXISTS (SELECT JV_TYPE
+WHERE JV_TYPE = Mj.JV_TYPE
+AND U_ID = V_User_no
+AND Nvl(ADD_FLAG,0) = 1 ) )
+,nvl(Dj.j_amt,0)
+,nvl(Dj.j_amt_f,0)
+,Dj.DOC_DUE_DATE DOC_DUE_DATE
+,Dj.DOC_SEQUENCE Doc_seq
+,Dj.Rep_Code Rep_Code
+,Dj.Col_No Col_No
+,Dj.Cashier_No
+From Detail_journal_v Dj
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (D_cv.a_code,D_cv
+.a_cy);
+P_DOC_DUE_DATE
+=> D_cv.DOC_DUE_DATE,
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,D_Cv.Doc_Brn_No),
+P_Doc_Brn_No => D_Cv.Doc_Brn_No ,
+P_Cashier_No => D_Cv.Cashier_No);
+Update Master_Journal_v Set j_post = 1 ,
+P_Post_Type =>
+End Post_Jv;
+Procedure Post_Rec(P_f_doc_no In NUMBER Default Null
+In NUMBER Default 0
+V_Date Date;
+v_Doc_Date Date;
+v_bank_ac ACCOUNT.A_CODE%TYPE;
+v_cb_ac ACCOUNT.A_CODE%TYPE;
+v_PayRec_ac ACCOUNT.A_CODE%TYPE;
+v_RecLtr_ac ACCOUNT.A_CODE%TYPE;
+v_amt NUMBER;
+v_amtf NUMBER;
+v_Insrt_dtl NUMBER;
+V_Cc_Ac_Code VarChar2(30);
+--==================================================================
+( Select 2 doc_type
+,Mv.voucher_pay_type jv_type
+,Mv.voucher_no doc_no
+,Mv.voucher_date doc_date
+,Mv.ref_no ref_no
+,Mv.cc_code cc_code
+,Mv.pj_no pj_no
+,Mv.Actv_No Actv_No
+,Mv.cash_no
+cash_no
+,Mv.Doc_Brn_No
+Doc_Brn_No
+,Mv.a_cy a_cy
+,Mv.a_desc doc_desc
+,Mv.col_no col_no
+,Mv.cash_amt Mamt
+,Mv.cash_amtf Mamtf
+,nvl(Mv.cheq_type,0) cheq_type
+,Mv.v_ser doc_ser
+,Mv.ad_u_id ad_u_id
+,Mv.Brn_no Brn_no
+,Mv.Brn_Year Brn_Year
+,Mv.CMP_NO
+,Mv.BRN_USR
+,Audit_Ref_Desc
+Audit_Ref_Desc
+,Audit_Ref_Date
+Audit_Ref_Date
+,Ad_Date
+Ad_Date
+,Up_U_Id
+Up_U_Id
+,Up_Date
+Up_Date
+,Up_Cnt
+Up_Cnt
+,Unpost_U_Id
+Unpost_U_Id
+,nvl(Mv.CHEQ_TYPE,0)
+Install_Type
+,nvl(Mv.Move_Cheq_Py,0)
+MOV_DOC_PY
+From Vouchers Mv
+Where Mv.voucher_type = 1
+and nvl( Mv.voucher_post,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mv.voucher_post,0))
+and nvl(Mv.stand_by,0)=0
+--and nvl(Mv.Move_Cheq_Py,0) = 0
+and nvl(Mv.Audit_ref,0) = Decode(v_Use_Audit_Doc,1,1,nvl(Mv.Audit_ref,0))
+and Mv.voucher_pay_type = Decode(nvl(P_jv_type,0),0,Mv.voucher_pay_type,P_jv_type)
+and Mv.voucher_no between nvl(P_f_doc_no,Mv.voucher_no) and nvl(P_t_doc_no,Mv.voucher_no)
+and Mv.voucher_date between nvl(P_f_doc_date,Mv.voucher_date) and nvl(P_t_doc_date,Mv.voucher_date)
+and Mv.cash_no = nvl(P_cash_no, Mv.cash_no)
+and Mv.v_ser = nvl(P_doc_ser, Mv.v_ser)
+and Mv.Brn_No = nvl(P_Brn_No, Mv.Brn_No)
+and Mv.ad_u_id = nvl(P_ad_u_id, Mv.ad_u_id)
+And S_Brn_Usr_Priv.Brn_No = Mv.Brn_No
+Order by Mv.voucher_type,Mv.voucher_no,Mv.voucher_date)
+IAS_Posting_Pkg.Set_Doc_Info ( P_Audit_Ref
+P_Audit_Ref_U_Id => M_cv.Audit_Ref_U_Id
+_Ad_Date => M_cv.Ad_Date ,
+=> M_cv.brn_no
+=> M_cv.brn_year
+=> M_cv.CMP_NO
+=> M_cv.BRN_USR
+=> P_Post_Type
+P_MOV_DOC_PY
+=> M_cv.MOV_DOC_PY
+M_cv.cc_code
+M_cv.pj_no
+M_cv.Actv_no
+p_cash_no
+M_cv.cash_no
+P_Doc_Brn_No => M_Cv.Doc_Brn_No );
+----------------------- Start posting GLS_VCHR_MST_ACCNT Credit---------------
+-- Added by Murad Al-Garrash in 31/08/2016
+------------------------------------------------------------------------
+IF V_USE_RCV_VCHR_MST_AC_PRV=1 THEN
+For D_cv_mst in
+( Select Dv.aC_code a_code
+,Dv.ac_code_dtl ac_code_dtl
+,Dv.ac_dtl_typ ac_dtl_typ
+,Dv.Cur_code a_cy
+,Dv.cc_code cc_code
+,Dv.pj_no pj_no
+,Dv.Actv_No Actv_No
+,Dv.Doc_Brn_No
+,nvl(Dv.amt_l,0) amt
+,nvl(Dv.amt_f,0) amtf
+,Dv.doc_dsc doc_desc
+,Dv.DOC_SEQ DOC_SEQ
+,Dv.rcrd_no rcrd_no
+From GLS_VCHR_MST_ACCNT Dv
+Where vchr_typ=1
+and Dv.doc_srl=M_cv.doc_ser)
+If nvl(D_cv_mst.amt,0)>0 then
+p_doc_type => M_cv.doc_type,
+p_jv_type => M_cv.jv_type,
+p_doc_no => M_cv.doc_no,
+p_doc_ser => M_cv.doc_ser,
+p_a_code => D_cv_mst.a_code,
+p_ac_code_dtl => D_cv_mst.ac_code_dtl,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(D_cv_mst.a_code),
+p_a_cy => D_cv_mst.a_cy,
+p_amt => (D_cv_mst.amt),
+p_amt_f => (D_cv_mst.amtf),
+p_j_date => M_cv.doc_date,
+p_j_desc => D_cv_mst.doc_desc,
+p_cc_code => D_cv_mst.cc_code,
+p_pj_no => D_cv_mst.pj_no,
+p_Actv_No => D_cv_mst.Actv_No,
+p_cb_before => v_curr_bal,
+p_ref_no => M_cv.ref_no
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No) ,
+P_Doc_Brn_No => M_cv.Doc_Brn_No ) ;
+End if ;
+End loop;
+END IF ;--(end VCHR_MST_AC_PRV)
+----------------------- End posting GLS_VCHR_MST_ACCNT ---------------
+If (M_cv.jv_type = 1 ) Or (M_cv.jv_type = 2 and M_cv.cheq_type =0 ) Then --(3) - Cash
+Select Count(1) Into V_Cnt
+Voucher_Detail
+Where V_Ser = M_Cv.Doc_Ser;
+Exception when others then
+V_Cnt:=1;
+If Nvl(v_cnt,1)=1 then
+Select cheque_no into V_Chq_No
+From voucher_detail
+where V_SER=m_cv.doc_ser
+And Rownum<=1;
+V_Chq_No :=null;
+--## Cach/Bank No (DR)
+v_cb_ac:=Ias_Posting_Pkg.Get_CB_ACode(M_cv.Cash_no,M_cv.jv_type);
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_cb_ac,M_cv.a_cy);
+--------------------------------------------
+If Nvl(V_Use_Balanced_Cc,0) = 1 Then
+Select Cc_Code
+Into V_Cc_Ac_Code
+From Ias_Account_Cc
+Where A_Code = v_cb_ac ;
+V_Cc_Ac_Code := M_cv.cc_code ;
+End ;
+v_cb_ac
+=> M_cv.cash_no ,
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_cb_ac),
+M_cv.a_cy
+M_cv.Mamt
+M_cv.Mamtf
+M_cv.doc_desc
+=> V_Cc_Ac_Code
+P_Col_No => M_Cv.Col_No ,
+p_w_code
+P_CHEQUE_NO =>
+V_Chq_No
+P_Install_Type =>
+M_cv.Install_Type ,
+P_Doc_Brn_No => M_cv.Doc_Brn_No );
+( Select Dv.a_code a_code
+,Dv.ac_code_dtl
+,Dv.ac_dtl_typ
+,Dv.a_cy a_cy
+,Dv.Csh_Bnk_no Csh_Bnk_no
+,nvl(abs(Dv.ac_amt),0) amt
+,nvl(abs(Dv.ac_amtf),0) amtf
+,Dv.Otr_Amt_L Otr_Amt_L
+,Dv.Otr_Amt_F Otr_Amt_F
+,Dv.ac_desc doc_desc
+,Dv.value_date value_date
+,Dv.Cheque_No Cheque_No
+,Dv.rep_code
+rep_code
+,Dv.ref_no
+,Dv.CNTRCT_NO CNTRCT_NO
+,Dv.CNTRCT_BTCH CNTRCT_BTCH
+,Dv.Wo_No
+,Dv.Wo_Ser
+,Dv.DOC_SEQUENCE DOC_SEQ
+,Dv.DOC_TYPE_REF
+,Dv.DOC_JV_TYPE_REF
+,Dv.DOC_NO_REF
+,Dv.DOC_SER_REF
+,Dv.VALUE_DATE
+DOC_DUE_DATE
+,Dv.CHEQUE_VALUED
+CHEQUE_VALUED
+,Dv.Rep_Comm_Amt
+Rep_Comm_Amt
+,Dv.Ac_Code_Dr_Comm
+Ac_Code_Dr_Comm
+,Dv.EX_RATE Ex_rate
+,Dv.Cntrct_Srl Cntrct_Srl
+,Dv.Cashier_No Cashier_No
+From Voucher_detail Dv
+Where voucher_typ
+and Dv.v_ser=M_cv.doc_ser)
+----------------------- Start posting GLS_VCHR_MST_ACCNT DEBIT ---------------
+IF V_USE_RCV_VCHR_MST_AC_PRV=1 And M_cv.jv_type = 2 THEN
+If nvl(D_cv.Otr_Amt_L,0)>0 then
+p_a_code => D_cv.a_code,
+p_ac_code_dtl => D_cv.ac_code_dtl,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(D_cv.a_code),
+p_a_cy => D_cv.a_cy,
+p_amt => -D_cv.Otr_Amt_L,
+p_amt_f => -D_cv.Otr_Amt_F,
+p_j_date => M_cv.Doc_Date,
+p_j_desc => D_cv.doc_desc,
+p_cc_code => D_cv.cc_code,
+p_pj_no => D_cv.pj_no,
+p_Actv_No => D_cv.Actv_No,
+p_ref_no => D_cv.ref_no,
+D_cv.rcrd_no,
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,D_Cv.Doc_Brn_No) ,
+END IF ;--(end VCHR_MST_AC_PRV depit)
+----------------------------------------------------------------------------------------
+--## V_Date
+If M_cv.jv_type = 2 and M_cv.cheq_type <> 0 Then
+Select Min(value_date)
+Into V_Date
+Where v_ser=M_cv.doc_ser
+and a_code=D_cv.a_code
+and a_cy=D_cv.a_cy
+and rcrd_no=D_cv.rcrd_no;
+Raise_Application_Error(-20616,'Error When Select Value_Date ='||SqlErrm) ;
+V_Date:= M_cv.doc_date;
+--## Start Rep_Commm
+IF V_PST_SMAN_COMM_VCHR_RCPT=1 and Nvl(D_cv.Rep_Comm_Amt,0)>0 Then --(1)
+If D_cv.a_cy =V_Local_Cur then
+V_Rep_Comm_AmtL:=D_cv.Rep_Comm_Amt;
+V_Rep_Comm_AmtF:=0;
+V_Rep_Comm_AmtL:=D_cv.Rep_Comm_Amt * D_cv.ex_rate ;
+V_Rep_Comm_AmtF:=D_cv.Rep_Comm_Amt;
+--## Ac_code (DR)
+-- V_Reprs_Comm_Ac:=D_cv.Ac_Code_Dr_Comm;
+if D_cv.DOC_TYPE_REF=500 and D_cv.DOC_NO_REF IS NOT NULL THEN
+V_Reprs_Comm_dsc:=IAS_GEN_PKG.GET_PROMPT(V_Lang_No,6645)||' '||D_cv.DOC_NO_REF;
+else
+V_Reprs_Comm_dsc:=IAS_GEN_PKG.GET_PROMPT(V_Lang_No,1563);
+if V_Reprs_Comm_Ac is null then
+Raise_application_error(-20606,Ias_Gen_Pkg.Get_Msg(V_Lang_No,2252)||SqlErrm) ;
+end if;
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (V_Reprs_Comm_Ac,D_cv.a_cy);
+p_doc_type => M_cv.doc_type ,
+p_jv_type => M_cv.jv_type ,
+p_doc_no => M_cv.doc_no ,
+p_doc_ser => M_cv.doc_ser ,
+p_a_code => V_Reprs_Comm_Ac ,
+=> null
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(V_Reprs_Comm_Ac),
+p_a_cy => D_cv.a_cy ,
+p_amt => (V_Rep_Comm_AmtL),
+p_amt_f => (V_Rep_Comm_AmtF),
+p_j_desc => V_Reprs_Comm_dsc,
+=> D_cv.Actv_no
+p_w_code => Null,
+=> v_curr_bal,
+p_rcrd_no => D_cv.rcrd_no,
+P_CHEQUE_VALUED
+=> D_cv.CHEQUE_VALUED,
+D_Cv.Wo_No,
+D_Cv.Wo_Ser,
+P_Doc_Brn_No => D_Cv.Doc_Brn_No);
+--## Ac_code (CR)
+V_Rep_Code_Ac:=IAS_SMAN_PKG.Get_Acode(D_cv.Rep_Code);
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (V_Rep_Code_Ac,D_cv.a_cy);
+p_a_code => V_Rep_Code_Ac ,
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(V_Rep_Code_Ac),
+p_amt => -(V_Rep_Comm_AmtL),
+p_amt_f => -(V_Rep_Comm_AmtF),
+p_j_date => M_cv.doc_date ,--v_Doc_Date,
+-- P_Col_No => M_cv.col_no,
+P_Rep_Code => D_cv.Rep_Code,
+P_cheque_no => D_cv.cheque_no,
+--## End Rep_Comm
+If M_cv.Cheq_type = 3 and v_Post_Cheq_type = 0 Then --( v_Post_Cheq_type=0 Effect on Account)
+--## Currency (Rec_lettre Account Interface) Must be Equal Bank Currency
+v_PayRec_ac:=Ias_Posting_Pkg.Get
+_BnkRecPay_Ac (M_cv.Cash_no,1);
+If v_PayRec_ac Is Null Then
+If v_rec_ltr_ac Is Null Then
+Raise_application_error(-20617,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+v_RecLtr_ac:=v_rec_ltr_ac;
+v_RecLtr_ac:=v_PayRec_ac;
+--## v_rec_ltr_ac (CR) --- MUR24032014
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_RecLtr_ac,M_cv.a_cy);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_RecLtr_ac,M_cv.a_cy);
+v_ac_dtl_typ:=Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_RecLtr_ac);
+If M_cv.a_cy = D_cv.a_cy Then
+v_amt:=D_cv.amt;
+v_amtf:=D_cv.amtf;
+if M_cv.a_cy <> v_local_cur Then
+p_a_code => v_RecLtr_ac ,
+=> null ,
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_RecLtr_ac),
+p_a_cy => M_cv.a_cy ,
+p_amt => -(v_amt) ,
+p_amt_f => -(v_amtf) ,
+p_j_date => M_cv.doc_date ,
+p_j_desc => D_cv.doc_desc ,
+p_cc_code => D_cv.cc_code ,
+p_pj_no => D_cv.pj_no ,
+--P_Col_No => M_Cv.Col_No ,
+-- P_Rep_Code => D_Cv.Rep_Code ,
+p_w_code => Null ,
+p_cb_before => v_curr_bal ,
+p_ref_no => D_cv.ref_no ,
+P_cheque_no => D_cv.cheque_no ,
+p_rcrd_no => D_cv.rcrd_no ,
+=> D_cv.DOC_DUE_DATE ,
+=> D_cv.CHEQUE_VALUED ,
+D_Cv.Wo_No ,
+D_Cv.Wo_Ser ,
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No),-- Nvl(M_Cv.Doc_Brn_No,M_cv.Brn_No) ,
+If M_cv.jv_type =2 and M_cv.cheq_type = 1 Then
+v_Doc_Date:= v_date;
+v_Doc_Date:=M_cv.doc_date;
+--v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,D_cv.a_code,D_cv.a_cy);
+p_a_code => D_cv.a_code ,
+=> D_cv.ac_code_dtl
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(D_cv.a_code),
+p_amt => -(D_cv.amt),
+p_amt_f => -(D_cv.amtf),
+p_j_date => v_Doc_Date,
+P_Col_No => M_cv.col_no,
+If (M_cv.jv_type = 1 ) or (M_cv.jv_type = 2 and M_cv.cheq_type =0 ) Then --(3) - Cash Or cheque by v date.
+ElsIf M_cv.jv_type = 2 and M_cv.cheq_type = 1 Then -- Due Date
+v_ac_dtl_typ:=Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_cb_ac);
+p_a_code => v_cb_ac,
+=> M_cv.cash_no
+p_a_cy => M_cv.a_cy,
+p_amt => v_amt,
+p_amt_f => v_amtf,
+p_j_date => v_date,
+p_j_desc => M_cv.doc_desc,
+p_cc_code => M_cv.cc_code,
+p_pj_no => M_cv.pj_no,
+=> M_cv.Actv_no
+=> D_cv.rcrd_no,
+=> D_Cv.Wo_No
+=> D_Cv.Wo_Ser ,
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No),--Nvl(M_Cv.Doc_Brn_No,M_Cv.Brn_No) ,
+ElsIf M_cv.jv_type = 2 and M_cv.cheq_type = 2 Then --(3) -- Cheque Direct Interface
+v_PayRec_ac:=Ias_Posting_Pkg.Get_BnkRecPay_Ac (M_cv.Cash_no,1);
+Raise_application_error(-20618,Ias_Gen
+_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+--## v_rec_ltr_ac (DR)
+oc_type => M_cv.doc_type,
+p_a_code => v_RecLtr_ac,
+=> D_Cv.Wo_No,
+=> D_Cv.Wo_Ser,
+--## v_rec_ltr_ac (CR)
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_RecLtr_ac) ,
+p_amt => -(v_amt),
+p_amt_f => -(v_amtf),
+p_j_date => D_cv.value_date,
+=> D_Cv.Wo_Ser
+P_Doc_Brn_No => M_Cv.Doc_Brn_No
+--## Get Account From bank MMM
+v_bank_ac:=Ias_Posting_Pkg.Get_CB_ACode(M_cv.cash_no,2);
+--## bank_ac (Cash_no )(DR)
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_bank_ac,M_cv.a_cy);
+p_a_code => v_bank_ac,
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_bank_ac) ,
+ElsIf M_cv.jv_type = 2 and M_cv.cheq_type = 3 Then -- Manual cheq
+If v_Post_Cheq_type = 0 Then -- Not Effect
+=> Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_cb_ac) ,
+--P_Rep_Code => D_cv.Rep_Code,
+Else -- Effect
+Raise_application_error(-20619,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+p_cheque_no => D_cv.cheque_no,
+End If; --(3)
+End loop; --(2)
+End If; --(End Check Exist)
+Update Vouchers Set voucher_post = 1 ,
+Where voucher_type=1
+and v_ser=M_cv.doc_ser;
+Raise_application_error(-20621,'Vouchers, '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+If Sql%No
+tFound Then
+Ias_Posting_Pkg.Update_IntrM_Tab ( P_doc_type => M_cv.doc_type,
+P_PJ_NO => M_cv.PJ_NO,
+P_ref_no => M_cv.ref_no,
+p_ad_u_id => M_cv.ad_u_id,
+=> V_User_no,
+P_Brn_Year => M_cv.Brn_Year
+M_cv.CMP_NO ,
+M_cv.BRN_USR);
+End Post_Rec;
+--=====================================================================================
+v_a_code VARCHAR2(30);
+v_PayRec_ac VARCHAR2(30);
+v_RecLtr_ac VARCHAR2(30);
+v_bnk_det_ac VARCHAR2(30);
+v_amt_loc NUMBER;
+v_amt_f NUMBER;
+v_amt_chq_loc NUMBER;
+v_amt_chq_f NUMBER;
+cnt NUMBER;
+V_Bank_Brn_No NUMBER;
+,Dv.ref_no ref_no_dtl
+,Mv.cash_no Bank_No_Mst
+,Mv.a_cy Bank_acy_Mst
+,nvl(Mv.cash_amt,0) cash_amt
+,nvl(Mv.cash_amtf,0) cash_amtf
+,Dv.a_code a_code
+,abs(Dv.ac_amt) amt
+,abs(Dv.ac_amtf) amtf
+,Mv.a_desc a_desc
+,Dv.bank_no Bank_no_Dtl
+,Dv.a_code_end a_code_end
+,Dv.AC_CODE_DTL_END AC_CODE_DTL_END
+,Dv.AC_DTL_Typ_END AC_DTL_Typ_END
+,Dv.Return_Res Return_Res
+,Mv.cc_code cc_code_Mst
+,Dv.cc_code cc_code_Dtl
+,Dv.rep_code rep_code
+,Mv.pj_no pj_no_Mst
+,Mv.Actv_No Actv_No_Mst
+,Dv.pj_no pj_no_Dtl
+,Dv.Actv_No Actv_No_Dtl
+,Mv.Doc_Brn_No Doc_Brn_No_Mst
+,Dv.Doc_Brn_No Doc_Brn_No_Dtl
+,Dv.DOC_TYPE_REF DO
+C_TYPE_REF
+,Dv.DOC_JV_TYPE_REF DOC_JV_TYPE_REF
+,Dv.DOC_NO_REF DOC_NO_REF
+,Dv.DOC_SER_REF DOC_SER_REF
+,Dv.Lc_no Lc_no
+,Dv.cheque_no cheque_no
+,nvl(Dv.cheque_valued,0) cheque_valued
+,nvl(Endrsmnt,0) Endrsmnt
+,Cb.a_code Bank_a_code
+,nvl(Mv.Ex_rate,1) ac_rate_M
+,nvl(Dv.Ex_rate,1) ac_rate_D
+,nvl(Mv.Move_Cheq_Py,0) Move_Cheq_Py
+,Dv.Doc_Sequence Doc_Sequence_dtl
+,Dv.Audit_Ref
+,Dv.Audit_Ref_Desc
+,Dv.Audit_Ref_U_Id
+,Dv.Audit_Ref_Date
+,Mv.Ad_Date
+,Mv.Up_U_Id
+,Mv.Up_Date
+,Mv.Up_Cnt
+,Nvl(Dv.Unpost_U_Id,Mv.Unpost_U_Id) Unpost_U_Id
+,Nvl(Dv.Unpost_Date,Mv.Unpost_Date) Unpost_Date
+,Dv.Bank_Brn_No Bank_Brn_No
+From Vouchers Mv , Voucher_Detail Dv, Cash_at_Bank Cb
+Where Mv.v_ser = Dv.v_ser
+and Mv.cash_no=Cb.bank_no
+and Mv.voucher_type = 1
+and Mv.voucher_pay_type = 2
+and Mv.voucher_post=Decode(Nvl(P_Post_Type,0),0,1,nvl(Mv.voucher_post,0))
+and Mv.Cheq_type = 3
+and nvl(Dv.cheque_no,0)=Decode(P_Cheq_No,Null,nvl(Dv.cheque_no,0),Nvl(P_Cheq_No,0))
+and nvl(Dv.RcRd_No,0)=Decode(P_RcRd_No,Null,nvl(Dv.RcRd_No,0),Nvl(P_RcRd_No,0))
+and Dv.value_date =Decode(P_Due_date,Null,Dv.value_date,P_Due_date)
+and nvl(Dv.cheque_post,0)=0
+and nvl(Dv.cheque_valued,0) In (1,2)
+--and nvl(Mv.MOVE_CHEQ_PY,0) = 0
+and nvl(Dv.Audit_ref,0) = Decode(v_Use_Audit_Doc,1,1,nvl(Dv.Audit_ref,0))
+And Dv.DOC_SEQUENCE = nvl(P_Doc_Seq, Dv.DOC_SEQUENCE)
+If M_cv.Bank_no_Dtl Is Not Null Then
+Select a_code
+Into v_bnk_det_ac
+From Cash_At_Bank
+Where Bank_No = M_cv.Bank_No_Dtl;
+when others Then
+Raise_application_error(-20624,Ias_Gen_Pkg.Get_Msg(V_Lang_No,600)||SqlErrm) ;
+If M_cv.doc_date > M_cv.value_date Then
+Raise_application_error(-20624,Ias_Gen_Pkg.Get_Msg(V_Lang_No,582)||' = '||M_cv.doc_ser||chr(13)||SqlErrm) ;
+--======================================================================================
+If Nvl(IAS_Posting_Pkg.Chk_Exist_Pst_Doc(83,M_cv.doc_ser,M_cv.Doc_Sequence_dtl
+P_Ad_Date
+=> M_cv.Ad_Date ,
+M_cv.Move_Cheq_Py ,
+P_DOC_SEQ
+M_cv.Doc_Sequence_dtl);
+--## Check Voucher cheq is move From prev. Year
+Get_Interface_Ac(M_cv.brn_no );
+If M_cv.Move_Cheq_Py = 1 Then -- Move Prev. year
+Select 1 Into cnt From ias_post_mst
+where doc_type=M_cv.doc_type
+and doc_no=M_cv.doc_no
+and doc_ser=M_cv.doc_ser
+and RowNum<=1;
+when no_data_found Then
+p_doc_type =>
+M_cv.doc_type ,
+M_cv.jv_type ,
+M_cv.doc_no ,
+M_cv.doc_ser ,
+M_cv.value_date ,
+M_cv.cc_code_Mst ,
+M_cv.pj_no_Mst ,
+M_cv.Actv_No_Mst ,
+M_cv.Bank_No_Mst ,
+M_cv.ref_no ,
+P_Doc_Brn_No => M_cv.Doc_Brn_No_Mst);
+If v_Post_Cheq_type = 0 Then --(2) Not Effect on account code
+If M_cv.cheque_valued = 1 Then --(3) -- Due Or Endorsement
+--##-----------------------------------------------------------------------##--
+--## Bank_det (bank_no) Or A_code_End (Endrsmnt=1) (DR)--
+-- chq_dtl
+v_amt_chq_loc:=0;
+v_amt_chq_f :=0;
+Declare
+Cursor Chq_dtl_cv Is
+Select a_code,a_cy,ac_code_dtl,ac_dtl_typ,Ex_Rate ac_rate,bank_no,
+Ac_Dsc,rcrd_no_ref Rcrd_no,
+nvl(ac_amt,0) amt_chq, nvl(ac_amtf,0) amtf_chq
+From Ias_vchr_chq_dtl
+and v_ser = M_cv.doc_ser
+and rcrd_no_ref = M_cv.rcrd_no
+and Doc_Sequence = M_cv.Doc_Sequence_dtl;
+For Chq_cv In Chq_dtl_cv Loop
+If M_cv.Bank_acy_Mst = v_local_cur Then
+v_amt_loc:=Chq_cv.amt_chq;
+v_amt_f:=null;
+ElsIf M_cv.Bank_acy_Mst<>v_local_cur Then
+If nvl(Chq_cv.amtf_chq,0)=0 Then
+v_amt_f:=round(Chq_cv.amt_chq/(M_cv.cash_amt/nvl(M_cv.cash_amtf,1)),4);
+-- v_amt_f:=M_cv.amtf;
+if M_cv.Bank_acy_Mst = Chq_cv.a_cy Then
+v_amt_f:=Chq_cv.amtf_chq;
+v_amt_f:=(Chq_cv.amtf_chq * Chq_cv
+.ac_rate)/M_cv.ac_rate_M;
+v_amt_chq_loc:=nvl(v_amt_chq_loc,0) + nvl(v_amt_loc,0);
+v_amt_chq_f :=nvl(v_amt_chq_f,0)+ nvl(v_amt_f,0);
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (Chq_cv.a_code,M_cv.Bank_acy_Mst);
+--mrd
+p_a_code => Chq_cv.a_code,
+p_ac_code_dtl => Chq_cv.ac_code_dtl,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(Chq_cv
+.a_code),
+p_a_cy => Chq_cv.a_cy,
+p_amt => nvl(v_amt_loc,0),
+p_amt_f => nvl(v_amt_f,0),
+p_j_date => M_cv.value_date,
+p_j_desc => NVL(M_cv.Return_Res,nvl(Chq_cv.Ac_Dsc,M_cv.doc_desc)),
+p_cc_code => M_cv.cc_code_Mst,
+p_pj_no => M_cv.pj_no_Mst,
+=> M_cv.Actv_No_Mst,
+P_Rep_Code => M_cv.Rep_Code,
+p_ref_no => M_cv.ref_no_dtl,
+P_cheque_no => M_cv.cheque_no,
+=> Chq_cv.rcrd_no,
+M_cv.value_date,
+M_cv.CHEQUE_VALUED,
+M_cv.Wo_No
+M_cv.Wo_Ser
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No_dtl) ,--Nvl(M_cv.Doc_Brn_No_Dtl,M_cv.Brn_No)
+P_Doc_Brn_No => M_cv.Doc_Brn_No_Dtl );
+End Loop;
+Raise_application_error(-20624,'Vchr cheq_Dtl., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+--## Bank_det (bank_no) Or A_code_End (Endrsmnt=1) (DR)
+v_amt_loc:=M_cv.amt;
+If nvl(M_cv.amtf,0)=0 Then
+v_amt_f:=round(M_cv.amt/(M_cv.cash_amt/nvl(M_cv.cash_amtf,1)),4);
+If M_cv.Bank_acy_Mst = M_cv.a_cy Then
+v_amt_f:=M_cv.amtf;
+v_amt_f:=(M_cv.amtf *M_cv.ac_rate_D)/M_cv.ac_rate_M;
+If M_cv.a_code_end Is Not Null and M_cv.Endrsmnt = 1 Then
+v_a_code:= M_cv.a_code_end;
+v_cb_no:=M_cv.Ac_code_Dtl_End;--IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_a_code,M_cv.Bank_acy_Mst);
+V_Bank_Brn_No := Nvl(M_cv.Doc_Brn_No_Mst,M_cv.Brn_No) ;
+v_a_code:= v_bnk_det_ac;
+--v_cb_no:=M_cv.bank_no_Mst;
+v_cb_no:=
+M_cv.Bank_no_Dtl;
+V_Bank_Brn_No := M_cv.Bank_Brn_No ;
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_a_code,M_cv.Bank_acy_Mst);
+M_cv.doc_type,
+M_cv.jv_type,
+M_cv.doc_no,
+M_cv.doc_ser,
+v_a_code,
+p_ac_code_dtl => v_cb_no ,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_a_code),
+=> M_cv.Bank_acy_Mst,
+(nvl(v_amt_loc,0) -nvl(v_amt_chq_loc,0)),
+(nvl(v_amt_f,0) - nvl(v_amt_chq_f,0)),
+NVL(M_cv.Return_Res,M_cv.doc_desc),
+M_cv.cc_code_Mst,
+M_cv.pj_no_Mst,
+M_cv.Actv_No_Mst,
+v_curr_bal,
+M_cv.ref_no_dtl,
+P_cheque_no =>
+M_cv.cheque_no,
+M_cv.rcrd_no,
+P_Brn_No => V_Bank_Brn_No ,
+P_Doc_Brn_No => V_Bank_Brn_No );
+--## Acount code ( ac_code) (CR)
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (M_cv.a_code,M_cv.A_cy);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,M_cv.a_code,M_cv.A_cy);
+p_a_code => M_cv.a_code ,
+p_ac_code_dtl => M_cv.ac_code_dtl ,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP( M_cv.a_code) ,
+p_amt => -(M_cv.amt) ,
+p_amt_f => -(M_cv.amtf) ,
+p_j_date => M_cv.value_date ,
+p_j_desc => NVL(M_cv.Return_Res,M_cv.doc_desc),
+p_cc_code => M_cv.cc_code_Dtl,
+p_pj_no => M_cv.pj_no_Dtl,
+=> M_cv.Actv_No_Dtl,
+=> M_cv.rcrd_no,
+=> M_cv.value_date,
+=> M_cv.CHEQUE_VALUED,
+=> M_cv.Wo_No
+=> M_cv.Wo_Ser
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No_dtl)
+--## Interface account (Rec_letter) (DR)
+v_PayRec_ac:=Ias_Posting_Pkg.Get_BnkRecPay_Ac (M_cv.bank_no_Mst,1);
+Raise_application_error(-20618,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_RecLtr_ac,M_cv.bank_acy_Mst);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_RecLtr_ac,M_cv.bank_acy_Mst);
+If nvl(M_cv.cash_amtf,0)<>0 Then
+If M_cv.bank_acy_Mst<>M_cv.a_cy Then
+v_amt_f:=(M_cv.amt/(M_cv.Cash_Amt/m_Cv.Cash_Amtf));
+p_ac_code_dtl => null ,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_RecLtr_ac),
+p_a_cy => M_cv.Bank_acy_Mst,
+p_j_desc =>NVL(M_cv.Return_Res,M_cv.doc_desc),
+P_Brn_No => Nvl(M_cv.Doc_Brn_No_Mst,M_cv.Brn_No) ,
+P_Doc_Brn_No => M_cv.Doc_Brn_No_Mst );
+--## Bank_no In vouchers (cash_no) (CR)
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (M_cv.Bank_a_code,M_cv.bank_acy_Mst);
+p_a_code => M_cv.bank_a_code,
+p_ac_code_dtl => M_cv.bank_no_Mst ,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(M_cv.bank_a_code),
+p_amt => -(v_amt_loc),
+p_amt_f => -(v_amt_f),
+p_j_desc => M_cv
+.a_desc,
+P_Doc_Brn_No => M_cv.Bank_Brn_No );
+ElsIf M_cv.Cheque_valued = 2 Then--(3) Return cheque
+p_amt => v_amt_loc,
+p_amt_f => v_amt_f,
+p_j_desc => nvl(M_cv.Return_Res,M_cv.doc_desc),
+=> M_cv.Wo_Ser ,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_
+AC_DTL_TYP(M_cv.bank_a_code),
+p_j_desc => nvl(M_cv.Return_Res,M_cv.a_desc),
+ElsIf v_Post_Cheq_type = 1 Then --(2) Effect on account code
+If M_cv.cheque_valued = 1 Then --(4) -- Due
+Select a_code,a_cy,Ex_Rate ac_rate,ac_code_dtl,ac_dtl_typ,bank_no,
+Ac_Dsc,rcrd_no_ref rcrd_no,
+v_amt_f:=(Chq_cv.amtf_chq * Chq_cv.ac_rate)/M_cv.ac_rate_M;
+p_doc_no =>
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(Chq_cv.a_code),
+p_cc_code => M_cv.cc_code_dtl,
+P_Brn_No => Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No_dtl) ,
+if M_cv.Bank_acy_Mst = M_cv.a_cy Then
+v_cb_no:= M_cv.Ac_Code_Dtl_End;--IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_a_code,M_cv.bank_acy_Mst);
+V_Bank_Brn_No := Get_PST_BRN_NO(M_Cv.Brn_No,M_Cv.Doc_Brn_No_dtl) ;
+v_cb_no:=M_cv.bank_no_Dtl; --M_cv.bank_no_Mst;
+p_a_code => v_a_code,
+p_ac_code_dtl => v_cb_no,
+p_amt => (nvl(v_amt_loc,0) - nvl(v_amt_chq_loc,0)),
+p_amt_f => (nvl(v_amt_f,0) - nvl(v_amt_chq_f,0)),
+P_cheque_no => M_cv.cheque_no
+--## Interface account (Rec_letter) (CR)
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_RecLtr_ac,M_cv.Bank_acy_Mst);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_RecLtr_ac,M_cv.Bank_acy_Mst);
+p_ac_code_dtl => null,
+p_a_cy =>M_cv.Bank_acy_Mst,
+p_rcr
+d_no
+P_Doc_Brn_No => M_cv.Doc_Brn_No_Mst
+--===============================================================
+ElsIf M_cv.cheque_valued = 2 Then --(4) -- return cheque
+--## Acount code ( ac_code) (DR)
+P_ac_code_dtl => M_cv.ac_code_dtl ,
+P_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(M_cv.a_code),
+p_amt =>(M_cv.amt),
+p_amt_f =>(M_cv.amtf),
+p_cc_code => M_cv.cc_code_DTL,
+p_pj_no => M_cv.pj_no_dtl,
+p_Actv_No => M_cv.Actv_no_dtl ,
+P_DOC_TYPE_REF => M_Cv.DOC_TYPE_REF ,
+P_DOC_JV_TYPE_REF => M_Cv.DOC_JV_TYPE_REF ,
+P_DOC_NO_REF => M_Cv.DOC_NO_REF ,
+P_DOC_SER_REF => M_Cv.DOC_SER_REF ,
+p_ref_no => M_cv.ref_no,
+p_rcrd_no => M_cv.rcrd_no,
+P_Wo_No => M_Cv.Wo_No,
+P_Wo_Ser => M_Cv.Wo_Ser,
+End If;--(4)
+End If;--(2)
+P_Jv_Ty
+pe => M_Cv.Jv_Type ,
+/*Ias_Posting_Pkg.Check_Bal_Post ( P_doc_type => M_cv.doc_type,
+P_cc_code => M_cv.cc_code_Mst,
+P_pj_no => M_cv.pj_no_Mst,
+P_CMP_NO =>
+M_cv.BRN_USR);*/
+Update voucher_detail Set cheque_post = 1
+and voucher_pay_type=2
+and v_ser=M_cv.doc_ser
+and Doc_Sequence=M_cv.Doc_Sequence_dtl
+and rcrd_no=M_cv.rcrd_no;
+Raise_application_error(-20625,'Vchr cheq., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+Update Ias_Post_Dtl Set Doc_Post=1
+Where Doc_type =M_Cv.Doc_Type
+And Doc_ser =M_Cv.Doc_Ser
+And rcrd_no =M_cv.rcrd_no
+And DOC_SEQUENCE=M_Cv.DOC_SEQUENCE_DTL;
+Raise_application_error(-20609,'cHEQ pOST, '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+Raise_application_error(-20626,'Vchr cheq., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+End Loop;--(1)
+--=============================================================
+End Post_Rec_Due_Cheq;
+,P_f_doc_date In DATE Default Null
+,P_t_doc_date In DATE Default Null
+v_PayLtr_ac ACCOUNT.A_CODE%TYPE;
+v_ac_dsc varchar2(500);
+( Select 3 doc_type
+,Mv.cash_amtf
+Mamtf
+Where Mv.voucher_type = 2
+and nvl(Mv.voucher_post,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mv.voucher_post,0))
+And Mv.Brn_No = nvl(P_Brn_No, Mv.Brn_No)
+M_cv.MOV_DOC_PY
+p_doc_type=> M_cv.doc_type,
+=> M_cv.jv_type,
+=> M_cv.doc_no,
+=> M_cv.doc_ser,
+=> M_cv.doc_date,
+=> M_cv.cc_code,
+=> M_cv.pj_no,
+p_Actv_No => M_cv.Actv_No,
+=> M_cv.cash_no,
+=> M_cv.ref_no ,
+-- Added by Murad Al-Garrash in 25/07/2016
+IF V_USE_PAY_VCHR_MST_AC_PRV=1 THEN
+Where vchr_typ=2
+p_amt => -(D_cv_mst.amt),
+p_amt_f => -(D_cv_mst.amtf),
+If (M_cv.jv_type = 1 ) or (M_cv.jv_type = 2 and M_cv.cheq_type = 0 ) Then --(3)
+From Voucher_Detail
+--## Cach/Bank No (CR)
+p_ac_code_dtl => M_cv.cash_no,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_cb_ac),
+p_amt => -(M_cv.Mamt),
+p_amt_f => -(M_cv.Mamtf),
+For D_cv
+,Dv.Rep_Code Rep_Code
+,nvl(Dv.ac_amt,0) amt
+,nvl(Dv.ac_amtf,0) amtf
+,nvl(Dv.Otr_amt_L,0) Otr_amt_L
+,nvl(Dv.Otr_amt_F,0) Otr_amt_F
+,Dv.Cheque_No cheque_no
+,Dv.lc_no lc_no
+,Dv.DOC_TYPE_REF DOC_TYPE_REF
+Where voucher_type=2
+--------------------- Start posting GLS_VCHR_MST_ACCNT DEBIT ---------------
+-- Added by Murad Al-Garrash in 20/08/2016
+IF V_USE_PAY_VCHR_MST_AC_PRV=1 And M_cv.jv_type = 2 THEN
+p_amt => D_cv.Otr_Amt_L,
+p_amt_f => D_cv.Otr_Amt_F,
+p_lc_no => D_cv.lc_no,
+If M_cv.jv_type =2 and M_cv.cheq_type <> 0 Then
+Raise_Application_Error(-20630,'Error When Select Value_Date ='||SqlErrm) ;
+--murad start
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+IF NVL(V_POST_ACC_DSC_IN_PAY_CHQ,0)=1 AND M_cv.jv_type =2 and M_cv.cheq_type <> 0 THEN
+V_Ac_Dsc:=D_cv.doc_desc;
+V_Ac_Dsc :=M_cv.doc_desc;
+IF M_cv.jv_type =2 and M_cv.cheq_type =3 and V_POST_CHEQ_TYPE_VNDR=0 then
+-- v_bank_ac:=Ias_Posting_Pkg.Get_CB_ACode(M_cv.cash_no,2);
+V_ChqPayIntrm_Ac:=Ias_Posting_Pkg.Get_ChqPayIntrm_Ac (M_cv.Cash_no,2);
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (V_ChqPayIntrm_Ac,M_cv.a_cy);
+p_a_code => V_ChqPayIntrm_Ac,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(V_ChqPayIntrm_Ac),
+p_amt => (v_amt),
+p_amt_f => (v_amtf),
+p_j_date => M_cv.Doc_date,
+p_j_desc => V_Ac_Dsc ,
+P_DOC_DUE_DATE => D_cv.DOC_DUE_DATE ,
+P_CHEQUE_VALUED => D_cv.CHEQUE_VALUED,
+P_Wo_No => D_cv.Wo_No ,
+P_Wo_Ser => D_cv.Wo_Ser ,
+v_PayRec_ac:=Ias_Posting_Pkg.Get_BnkRecPay_Ac (M_cv.Cash_no,2);
+If v_pay_ltr_ac Is Null Then
+Raise_application_error(-20631,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+v_PayLtr_ac:=v_pay_ltr_ac;
+v_PayLtr_ac:=v_PayRec_ac;
+--## v_pay_ltr_ac (CR)
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_PayLtr_ac,M_cv.a_cy);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_PayLtr_ac,M_cv.a_cy);
+p_a_code => v_PayLtr_ac,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_PayLtr_ac),
+p_amt => -v_amt,
+p_amt_f => -v_amtf,
+=> D_cv.cheque_no
+=> D_cv.DOC_DUE_DATE
+D_cv.CHEQUE_VALUED,
+D_cv.Wo_No
+D_cv.Wo_Ser
+--## Get Account From bank
+--murad end
+p_amt => D_cv.amt,
+p_amt_f => D_cv.amtf,
+If (M_cv.jv_type = 1 ) or (M_cv.jv_type = 2 and M_cv.cheq_type =0 ) Then --(3)
+v_amtf:=D_cv
+.amt/(M_cv.Mamt/nvl(M_cv.Mamtf,1));
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_cb_ac) ,
+p_j_desc => V_Ac_Dsc,
+D_cv.cheque_no
+D_cv.DOC_DUE_DATE
+ElsIf M_cv.jv_type = 2 and M_cv.cheq_type = 2 and V_POST_CHEQ_TYPE_VNDR=1 Then --(3) -- Cheque Direct Interface
+--## v_pay_ltr_ac (DR)
+=> D_cv.DOC_DUE_
+Raise_application_error(-20632,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+--## bank_ac (Cash_no )(CR)
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_bank_ac) ,
+ElsIf M_cv.jv_type = 2 and M_cv.cheq_type = 3 Then -- Manual
+Raise_application_error(-20633,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+=> M_cv.doc_type,
+=> v_PayLtr_ac,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_PayLtr_ac) ,
+=> M_cv.a_cy,
+=> -(v_amt),
+=> -(v_amtf),
+p_ref_no=> D_cv.ref_no,
+=> D_cv.rcrd_no
+=> D_cv.Wo_No
+=> D_cv.Wo_Ser
+end if;--murad
+Raise_application_error(-20634,Ias_Gen_Pkg.Get_Msg(V_Lang_No,940)||chr(13)||SqlErrm) ;
+End If;--(End Chk Exist)
+Raise_application_error(-20635,'vouchrs., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+P_Actv_No => M_cv.Actv_No,
+p_post_u_id=> V_User_no,
+End Post_Pay;
+v_PayRec_ac VarChar2(30);
+v_PayLtr_ac VarChar2(30);
+--v_amt_chq_loc NUMBER;
+--v_amt_chq_f NUMBER;
+,Mv.voucher_pay_type
+,Mv.voucher_no
+,Mv.voucher_date
+ref_no_dtl
+Bank_No_Mst
+,Mv.a_cy
+Bank_acy_Mst
+,nvl(Mv.cash_amtf,0)
+cash_amtf
+,Dv.ac_amt amt
+,Dv.ac_amtf amtf
+,Dv.cc_cod
+e cc_code_Dtl
+,Mv.pj_no
+pj_no_Mst
+,Mv.Actv_No
+Actv_No_Mst
+,Dv.pj_no
+pj_no_Dtl
+,Dv.Actv_No
+Actv_No_Dtl
+,Dv.Doc_Sequence Doc_Sequence_Dtl
+,Mv.Unpost_U_Id
+,Mv.Unpost_Date
+and Mv.voucher_type = 2
+Raise_application_error(-20624,Ias_Gen_Pkg.Get_Msg(V_Lang_No,58
+2)||' = '||M_cv.doc_ser||chr(13)||SqlErrm) ;
+If Nvl(IAS_Posting_Pkg.Chk_Exist_Pst_Doc(84,M_cv.doc_ser,M_cv.Doc_Sequence_dtl
+M_cv.Move_Cheq_Py
+M_cv.Doc_Sequence_Dtl);
+--## Check Voucher cheq Is move From prev. Year
+If M_cv.Move_Cheq_Py = 1 Then
+p_cc_code => M_cv.cc_code_Mst ,
+p_pj_no => M_cv.pj_no_Mst ,
+p_Actv_No => M_cv.Actv_No_Mst ,
+p_cash_no => M_cv.Bank_No_Mst ,
+p_ref_no => M_cv.ref_no ,
+If v_Post_Cheq_type_vndr = 0 Then --(2) Not Effect on account code
+V_ChqPayIntrm_Ac:=Ias_Posting_Pkg.Get_ChqPayIntrm_Ac (M_cv.Bank_No_Mst ,2);
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (V_ChqPayIntrm_Ac,M_cv.bank_acy_Mst);
+p_ac_code_dtl => NULL ,
+p_a_cy => M_cv.bank_acy_Mst,
+p_j_date => M_cv.Value_date,
+P_CHEQ
+UE_VALUED
+v_payLtr_ac:=v_pay_ltr_ac;
+v_payLtr_ac:=v_PayRec_ac;
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_payLtr_ac,M_cv.bank_acy_Mst);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_payLtr_ac,M_cv.bank_acy_Mst);
+p_a_code => v_payLtr_ac,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_payLtr_ac),
+p_amt =>v_amt_loc,
+p_amt_f =>v_amt_f,
+M_cv.Actv_No_Dtl,
+IAS_Posting_Pkg.Insrt_Post_Dtl( p_doc_type=> M_cv.doc_type,
+=> M_cv.a_code,
+p_ac_code_dtl => M_cv.ac_code_dtl,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(M_cv.a_code) ,
+p_amt => M_cv.amt,
+p_amt_f => M_cv.amtf,
+p_j_desc => NVL(M_cv.Return_Res,M_cv.doc_desc) ,
+p_Actv_No => M_cv.Actv_No_Dtl,
+p_lc_no => M_cv.lc_no,
+P_Doc_Brn_No => M_cv.Doc_Brn_No_dtl );
+/*If M_cv.a_code_end Is Not Null and M_cv.Endrsmnt = 1 Then
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_a_code,M_cv.Bank_acy_Mst);
+v_cb_no:=M_cv.Bank_no_Dtl;
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(v_a_code) ,
+M_cv.Bank_acy_Mst,
+=> -
+(nvl(v_amt_loc,0) ),
+(nvl(v_amt_f,0)),
+=> NVL(M_cv.Return_Res,M_cv.doc_desc) ,
+--$$$$$$$$$$$$
+If M_cv.bank_acy_Mst=M_cv.a_cy Then
+v_amt_f:=0;
+V_ChqPayIntrm_Ac:=Ias_Posting_Pkg.Get_ChqPayIntrm_Ac (M_cv.bank_no_Mst,2);
+--v_Post_Cheq_type_vndr_curr_bal:=IAS_Posting_Pkg.Check_Acode (V_ChqPayIntrm_Ac,M_cv.a_cy);
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(V_ChqPayIntrm_Ac) ,
+v_PayRec_ac:=Ia
+s_Posting_Pkg.Get_BnkRecPay_Ac (M_cv.bank_no_Mst,2);
+IAS_Posting_Pkg.Insrt_Post_Dtl(P_doc_type => M_cv.doc_type,
+p_j_date => M_c
+v.Value_date,
+p_cash_no => v_cb_no,
+ElsIf v_Post_Cheq_type_vndr = 1 Then --(2) Effect on account code
+--## Bank_det (bank_no) (CR)
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (M_cv.Bank_a_code,M_cv.Bank_acy_Mst);
+--v_amt_f:=M_cv.amtf;
+If Nvl(V_Us
+e_Balanced_Cc,0) = 1 Then
+Where A_Code = M_cv.Bank_A_Code ;
+V_Cc_Ac_Code := M_cv.Cc_Code_Mst ;
+p_a_code => M_cv.Bank_a_code,
+p_ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(M_cv.Bank_a_code) ,
+p_j_desc => M_cv.a_desc,
+p_cc_code => V_Cc_Ac_Code,
+P_Brn_No => Nvl(M_cv.Doc_Brn_No_Mst,M_Cv.Brn_No) ,
+--## Interface account (Pay_letter) (DR)
+v_PayRec_ac:=Ias_Posting_Pkg.Get_BnkRecPay_Ac (M_cv.bank_no_Mst,2);
+Raise_application_error(-20636,Ias_Gen_Pkg.Get_Msg(V_Lang_No,799)||SqlErrm) ;
+v_curr_bal:=IAS_Posting_Pkg.Check_Acode (v_PayLtr_ac,M_cv.Bank_acy_Mst);
+v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,v_PayLtr_ac,M_cv.Bank_acy_Mst);
+p_Actv_No => M_cv.Actv_No_Mst,
+M_cv.CHEQUE_VALUED ,
+--##Interface account (Pay_letter) (DR)
+--v_cb_no:=IAS_CshBnk_Pkg.Get_CB_No(M_cv.jv_type,M_cv.a_code,M_cv.A_cy);
+p_a_code => M_cv.a_code,
+p_amt => -(M_cv.amt),
+p_amt_f => -(M_cv.amtf),
+p_Rep_Code => M_cv.Rep_Code,
+M_cv.ref_n
+o_dtl,
+End if;--(4)
+end if; --murad 2
+--## Check balance Posting stk_adustment
+P_Actv_No => M_cv.Actv_No_Mst,
+and a_code=M_cv.a_code
+Raise_application_error(-20638,'vchr cheq., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm);
+Where Doc_type =
+M_Cv.Doc_Type
+And Doc_ser =
+M_Cv.Doc_Ser
+And rcrd_no =
+M_cv.rcrd_no
+And DOC_SEQUENCE=
+M_Cv.DOC_SEQUENCE_DTL;
+Raise_application_error(-20639,'vchr cheq., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm);
+--=====================================================
+End Post_Pay_Due_Cheq;
+( Select 98 doc_type
+,Mv.TYP_NO jv_type
+,Mv.Doc_no doc_no
+,Mv.Doc_date doc_date
+,Mv.csh_bnk_no cash_no
+,Mv.Cur_Code a_cy
+,Mv.doc_dsc doc_desc
+,Mv.DOC_AMT_L Mamt
+,Mv.DOC_AMT_F Mamtf
+,0 cheq_type
+,Mv.Doc_Srl doc_ser
+From IAS_EXCH_CUR_MST Mv
+Where Mv.ac_dtl_typ = 1
+and nvl(Mv.Doc_post,0)=Decode(Nvl(P_Post_Type,0),0,0,nvl(Mv.Doc_post,0))
+and Mv.TYP_NO = Decode(nvl(P_jv_type,0),0,Mv.TYP_NO,P_jv_type)
+and Mv.Doc_no between nvl(P_f_doc_no,Mv.Doc_no) and nvl(P_t_doc_no,Mv.Doc_no)
+and Mv.Doc_date between nvl(P_f_do
+c_date,Mv.Doc_date) and nvl(P_t_doc_date,Mv.Doc_date)
+and Mv.csh_Bnk_No = nvl(P_cash_no, Mv.csh_Bnk_No)
+and Mv.Doc_Srl = nvl(P_doc_ser, Mv.Doc_Srl)
+Order by Mv.Typ_No,Mv.Doc_no,Mv.Doc_date)
+( Select Dv.ac_code a_code
+,Dv.Cur_Code a_cy
+,Dv.cc_code
+,nvl(Dv.AMT_L,0) amt
+,nvl(Dv.AMT_F,0) amtf
+,Dv.doc_sq doc_sq
+,Dv.DOC_TYP_REF DOC_TYPE_REF
+,Dv.DOC_JV_TYP_REF DOC_JV_TYPE_REF
+,Dv.DOC_SRL_REF DOC_SER_REF
+,null cheque_no
+From IAS_EXCH_CUR_Dtl Dv
+Where Dv.DOC_SRL=M_cv.doc_ser)
+V_Doc_Date:=M_cv.doc_date;
+V_ac_dsc :=M_cv.doc_desc;
+--murad start $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ac_dtl_typ => Ys_Ac_Dtl_Pkg.GET_AC_DTL_TYP(D_cv.a_code),
+Update IAS_EXCH_CUR_MST Set DOC_post = 1 ,
+Where Doc_Srl=M_cv.doc_ser;
+Raise_application_error(-20635,'IAS_EXCH_CUR_MST., '||Ias_Gen_Pkg.Get_Msg(V_Lang_No,1123)||SqlErrm) ;
+End Post_Exch_Cur;
+End IAS_POSTING_GL_PKG;
+"PKG INIT"IAS_GL_CSHFLW_PKG""
+CREATE OR REPLACE PACKAGE Ias_Gl_CshFlw_Pkg AS
+FUNCTION Chk_CshFlw_Fld ( P_Doc_Ser IN NUMBER ,
+P_Rcrd_No_Dtl IN NUMBER ,
+P_Rcrd_No_Ac IN NUMBER ,
+P_Doc_Type IN NUMBER ,
+P_Cc_Code IN VARCHAR2 ,
+P_Pj_No IN VARCHAR2 ,
+P_Actv_No IN VARCHAR2 ,
+P_A_Cy IN VARCHAR2 ,
+P_Ref_No IN VARCHAR2 ,
+P_C_Code IN VARCHAR2 ,
+P_V_Code IN VARCHAR2 ,
+P_Col_No IN NUMBER ,
+P_Rep_Code IN VARCHAR2 ,
+P_Brn_No IN NUMBER ) RETURN NUMBER;
+PROCEDURE Update_Rcrd_Formula (P_Doc_Ser IN NUMBER ) ;
+FUNCTION Get_Rcrd_Dtl_Val ( P_Doc_Ser IN NUMBER ,
+P_Grp_Type IN NUMBER ,
+P_Prd_Val IN VARCHAR2 ,
+P_Fld_Grp IN VARCHAR2 ,
+P_Fld_Grp_val IN VARCHAR2 ,
+P_Fdate IN DATE ,
+P_Tdate IN DATE ,
+P_Rcrd_Calc IN VARCHAR2 ,
+P_Slct_Doc_Typ IN VARCHAR2,
+P_WHR IN VARCHAR2 DEFAULT ' AND 1=1 ' ) RETURN NUMBER;
+FUNCTION Get_Rcrd_Dtl_Val_Formula ( P_Doc_Ser IN NUMBER ,
+P_Rcrd_Formula IN VARCHAR2 ) RETURN NUMBER;
+END Ias_Gl_CshFlw_Pkg;
+CREATE OR REPLACE PACKAGE BODY Ias_Gl_CshFlw_Pkg AS
+P_Brn_No IN NUMBER ) RETURN NUMBER IS
+---------------------------------------------------------------------------------------------------
+-------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+V_Cnt Number:=1;
+For I In (Select Rcrd_No,Fld_Nm From Ias_Gl_Cshflw_fld Where Doc_Ser=P_Doc_Ser And Rcrd_No_Dtl=P_Rcrd_No_Dtl And Rcrd_No_Ac=P_Rcrd_No_Ac) Loop
+V_Cnt := Ias_Gen_Pkg.Get_Cnt('Select 1 From Ias_Gl_Cshflw_fld_Dtl
+Where Doc_Ser='||P_Doc_Ser||'
+And Rcrd_No_Dtl='||P_Rcrd_No_Dtl||'
+And Rcrd_No_Ac='||P_Rcrd_No_Ac||'
+And Rcrd_No_Fld='||I.Rcrd_No||'
+And Fld_val=Decode('''||I.Fld_Nm||''',''DOC_TYPE'','''||P_Doc_Type||''',
+''CC_CODE'','''||NVL(P_Cc_Code,'0')||''',
+''PJ_NO'','''||NVL(P_Pj_No,'0')||''',
+''ACTV_NO'','''||NVL(P_Actv_No,'0')||''',
+''A_CY'','''||P_A_Cy||''',
+''REF_NO'','''||NVL(P_Ref_No,'0')||''',
+''C_CODE'','''||NVL(P_C_Code,'0')||''',
+''V_CODE'','''||NVL(P_V_Code,'0')||''',
+''COL_NO'','''||NVL(P_Col_No,0)||''',
+''REP_CODE'','''||NVL(P_Rep_Code,'0')||''',
+''BRN_NO'','''||P_Brn_No||''')
+And RowNum<=1');
+If Nvl(V_Cnt,0)=0 Then
+V_Cnt :=0;
+Exit;
+RETURN V_Cnt;
+END Chk_CshFlw_Fld;
+--##############################################################################################################################################
+PROCEDURE Update_Rcrd_Formula (P_Doc_Ser IN NUMBER ) IS
+Cursor C_CshFlw Is Select Rcrd_No,Rcrd_Formula_Desc,Rcrd_Formula From Ias_Gl_CshFlw_Dtl Where Doc_Ser=P_Doc_Ser And Rcrd_Conn_Type=2 Order By Rcrd_No;
+V_Max_Rcrd_No Number;
+V_Rcrd_No Number;
+V_Rcrd_Formula Varchar2(2000);
+Update Ias_Gl_CshFlw_Dtl Set Rcrd_Formula=Null Where Doc_Ser=P_Doc_Ser;
+V_Max_Rcrd_No := Ias_Gen_Pkg.Get_Cnt('Select Max(Rcrd_No) From Ias_Gl_CshFlw_Dtl Where Doc_Ser='||P_Doc_Ser);
+If Nvl(V_Max_Rcrd_No,0)>0 Then
+For I In C_CshFlw Loop
+V_Rcrd_No := V_Max_Rcrd_No;
+V_Rcrd_Formula := I.Rcrd_Formula_Desc;
+Loop
+V_Rcrd_Formula := Replace(V_Rcrd_Formula,'R'||V_Rcrd_No,'Get_Rcrd_Val('||V_Rcrd_No||')');
+V_Rcrd_No := V_Rcrd_No-1;
+Exit When V_Rcrd_No=0;
+Update Ias_Gl_CshFlw_Dtl Set Rcrd_Formula=V_Rcrd_Formula Where Doc_Ser=P_Doc_Ser And Rcrd_No=I.Rcrd_No;
+For I In (Select Rcrd_No,Rcrd_Formula From Ias_Gl_CshFlw_Dtl Where Doc_Ser=P_Doc_Ser And Rcrd_Conn_Type=2) Loop
+For J In ( Select Rcrd_No,Rcrd_Formula From Ias_Gl_CshFlw_Dtl Where Doc_Ser=P_Doc_Ser And Rcrd_Conn_Type=2 And Rcrd_No<>I.Rcrd_No) Loop
+If I.Rcrd_Formula Like '%Get_Rcrd_Val('||J.Rcrd_No||')%' Then
+Update Ias_Gl_CshFlw_Dtl Set Rcrd_Formula=Replace(Rcrd_Formula,'Get_Rcrd_Val('||J.Rcrd_No||')','('||J.Rcrd_Formula||')') Where Doc_Ser=P_Doc_Ser And Rcrd_No=I.Rcrd_No;
+Exception When Others Then Null;
+P_Fld_Grp_Val IN VARCHAR2 ,
+P_Slct_Doc_Typ IN VARCHAR2 ,
+P_WHR IN VARCHAR2 DEFAULT ' AND 1=1 ' ) RETURN NUMBER IS
+V_Amt Number:=0;
+V_Whr Varchar2(4000);
+V_Whr:=P_WHR;
+If P_Fld_Grp<>'Null' Then
+V_Whr := V_Whr||' And Ias_V_Post_Dtl_OPN_YR.'||P_Fld_Grp||'='''||P_Fld_Grp_Val||'''';
+If P_Slct_Doc_Typ Is Not Null Then
+V_Whr := V_Whr||' And Ias_V_Post_Dtl_OPN_YR.Doc_Type In '||P_Slct_Doc_Typ;
+V_Amt := Ias_Gen_Pkg.Get_Cnt('Select Sum( Case When Ias_Gl_CshFlw_Pkg.Chk_CshFlw_Fld ( Ias_Gl_Cshflw_Ac.Doc_Ser ,
+Ias_Gl_Cshflw_Ac.Rcrd_No_Dtl,
+Ias_Gl_Cshflw_Ac.Rcrd_No,
+Ias_V_Post_Dtl_OPN_YR.Doc_Type,
+Ias_V_Post_Dtl_OPN_YR.Cc_Code,
+Ias_V_Post_Dtl_OPN_YR.Pj_No,
+Ias_V_Post_Dtl_OPN_YR.Actv_No,
+Ias_V_Post_Dtl_OPN_YR.A_Cy,
+Ias_V_Post_Dtl_OPN_YR.Ref_No,
+Ias_V_Post_Dtl_OPN_YR.C_Code,
+Ias_V_Post_Dtl_OPN_YR.V_Code,
+Ias_V_Post_Dtl_OPN_YR.Col_No,
+Ias_V_Post_Dtl_OPN_YR.Rep_Code,
+Ias_V_Post_Dtl_OPN_YR.Brn_No)=1 Then '||Nvl(P_Rcrd_Calc,'Amt')||' else 0 End)
+From Ias_V_Post_Dtl_OPN_YR,Ias_Acc_Tree,Ias_Gl_Cshflw_Ac
+Where Ias_V_Post_Dtl_OPN_YR.A_Code = Ias_Acc_Tree.A_Code
+And Ias_Acc_Tree.Ac_Tree = Ias_Gl_Cshflw_Ac.A_Code
+And Ias_Gl_Cshflw_Ac.Doc_Ser = '||P_Doc_Ser||'
+And Ias_Gl_Cshflw_Ac.Rcrd_No_Dtl = '||P_Rcrd_No_Dtl||'
+And Ias_V_Post_Dtl_OPN_YR.Doc_Date Between '''||P_Fdate||''' And '''||P_Tdate||''' '||V_Whr||'
+And Decode('||P_Grp_Type||', 1 , TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''DD/MM/YYYY''),
+2 , TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Da
+te,''WW (MM/YYYY)''),
+3 , TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''MM/YYYY''),
+4 , TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''Q/YYYY''),
+5 , (CASE WHEN TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''MM'') IN (''01'',''02'',''03'',''04'') THEN ''01''
+WHEN TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''MM'') IN (''05'',''06'',''07'',''08'') THEN ''02''
+WHEN TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''MM'') IN (''09'',''10'',''11'',''12'') THEN ''03'' END)||''/''||TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''YYYY''),
+6 , (CASE WHEN TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''Q'') IN (1,2) THEN ''01''
+WHEN TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''Q'') IN (3,4) THEN ''02'' END)||''/''||TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''YYYY''),
+7 , TO_CHAR(Ias_V_Post_Dtl_OPN_YR.Doc_Date,''YYYY''))='''||P_Prd_Val||'''');
+RETURN(Nvl(V_Amt,0));
+Exception When Others Then RETURN(0);
+P_Rcrd_Formula IN VARCHAR2 ) RETURN NUMBER IS
+V_Foumula Varchar2(5000);
+SELECT Replace(P_Rcrd_Formula,'Get_Rcrd_Val(','(Select Nvl(sum(Blnc_amt),0) From Ias_Gl_CshFlw_Tmp Where Doc_Ser='||P_Doc_Ser||' And Prd='''||P_Prd_Val||''' And Nvl(Fld_Grp,''0'')='''||Nvl(P_Fld_Grp,'0')||''' And Rcrd_No=')
+InTo V_Foumula
+From Dual;
+V_Amt := Ias_Gen_Pkg.Get_Cnt('Select '||V_Foumula||' From Dual');
+RETURN(V_Amt);
+nvl(P_cash_no, Mv.cash_no)
+USER_TAB_COLUMNS
+PUBLIC
+"PKG INIT"IAS_GET_ALL_FLD_TBL_FNC"P_TBL_NM"C_FLD"<cursor ptr>"COLUMN_NAME"V_FLD"I""
+SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = UPPER(:b1) AND COLUMN_NAME NOT IN ( UPPER(''ROW_ID''),UPPER(''UMARKER'') )ORDER BY COLUMN_ID"
+eq_type = 0 Then --(2) Not Effect on account code
+"PKG INIT"IAS_DOC_VIEW_PKG_PRC""
+CREATE OR REPLACE PACKAGE IAS_Doc_View_Pkg AS
+TYPE Doc_View_Rec IS REF CURSOR ;
+PROCEDURE Doc_View_Jv (
+List_Qry IN OUT Doc_View_Rec,
+P_J_Ser IN NUMBER,
+P_Lang_No IN NUMBER,
+P_Post_Jv_Type IN NUMBER,
+P_Use_Srvc_Bill IN NUMBER Default 0 );
+PROCEDURE Doc_View_ICode (
+List_Qry IN OUT Doc_View_Rec ,
+P_Post_Jv_Type IN NUMBER);
+END IAS_Doc_View_Pkg;
+CREATE OR REPLACE PACKAGE BODY IAS_Doc_View_Pkg AS
+P_Use_Srvc_Bill IN NUMBER Default 0 ) IS
+--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Journal_v --- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+'Select
+D.A_Code,
+YS_AC_DTL_PKG.GET_AC_DTL_NM(D.AC_CODE_DTL,D.A_CODE,D.AC_DTL_TYP,:P_lang_no) A_Name ,
+D.AC_CODE_DTL c_v_code,
+D.A_Cy,
+D.J_Desc,
+Decode(Sign(J_Amt),1,J_Amt,Null) J_Amt,
+Decode(Sign(J_Amt_F),1,J_Amt_F,Null) J_Amt_F,
+Decode(Sign(J_Amt),-1,Abs(J_Amt),Null) Cr_l,
+Decode(Sign(J_Amt_F),-1,Abs(J_Amt_F),Null) Cr_F,
+D.cc_code
+From Detail_Journal_V D ,account
+Where D.A_Code=Account.A_Code
+And D.J_Ser = :P_J_Ser
+Order By D.Rcrd_No'
+Using P_Lang_No,
+P_J_Ser ;
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Reciept -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+ElsIf P_Post_Jv_Type In (2,21,83) Then
+AC_CODE_DTL c_v_code,
+A_cy,
+Ac_Desc,
+0 J_Amt,
+0 J_Amt_F,
+Abs(Ac_Amt) Cr_l,
+Abs(Ac_AmtF) Cr_F,
+D.cc_code Cost_Center
+From Voucher_Detail D,account
+And V_Ser = :P_J_Ser
+And Voucher_Type = 1
+Order By Rcrd_No'
+P_Lang_No,
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Payment -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+ElsIf P_Post_Jv_Type In (3,31,84) Then
+A_CY,
+Ac_Amt J_Amt,
+Ac_AmtF J_Amt_F,
+0 Cr_l,
+0 Cr_F,
+And Voucher_Type = 2
+-- - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - Payment -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+ElsIf P_Post_Jv_Type =98 Then
+' Select D.AC_Code A_CODE,
+YS_AC_DTL_PKG.GET_AC_DTL_NM(D.AC_CODE_DTL,D.AC_CODE,D.AC_DTL_TYP,:P_lang_no) A_Name ,
+CUR_CODE A_CY,
+DOC_DSC Ac_Desc,
+AMT_L J_Amt,
+AMT_F J_Amt_F,
+From IAS_EXCH_CUR_DTL D,account
+Where D.AC_Code=Account.A_Code
+And DOC_SRL = :P_J_Ser
+ElsIf P_Post_Jv_Type=6 And P_Use_Srvc_Bill=1 Then
+Ias_Pi_Bill_Jrnl.A_Code,
+Decode (:P_Lang_No,1,Nvl(A_Name,A_Name_Eng),Nvl(A_Name_Eng,A_Name)) A_Name,
+Decode(Ias_Pi_Bill_Jrnl.c_code,null,Ias_Pi_Bill_Jrnl.v_code,Ias_Pi_Bill_Jrnl.c_code) c_v_code,
+Ias_Pi_Bill_Jrnl.A_Cy,
+Ias_Pi_Bill_Jrnl.doc_desc J_Desc,
+Decode(Sign(Amt),1,Amt,Null) J_Amt,
+decode(a_cy,ias_gen_pkg.Get_Local_Cur,Decode(Sign(Amt),1,Amt,Null)) J_Amt_F,
+Decode(Sign(Amt),-1,Abs(Amt),Null) Cr_l,
+decode(a_cy,ias_gen_pkg.Get_Local_Cur,Decode(Sign(Amt),-1,Abs(Amt),Null)) Cr_F,
+Ias_Pi_Bill_Jrnl.cc_code
+From Ias_Pi_Bill_Jrnl,account
+Where Ias_Pi_Bill_Jrnl.A_Code=Account.A_Code
+And bill_Ser = :P_J_Ser
+Order By Ias_Pi_Bill_Jrnl.Rcrd_No'
+Ias_Post_Dtl.A_Code,
+Decode (:P_Lang_No,1,Nvl(A_Name,A_Name_Eng),Nvl(A_Name_Eng,A_Name)) A_Name ,
+Decode(Ias_Post_Dtl.c_code,null,Ias_Post_Dtl.v_code,Ias_Post_Dtl.c_code) c_v_code,
+Ias_Post_Dtl.A_Cy,
+Ias_Post_Dtl.Doc_Desc,
+Decode(Sign(Amt_F),1,Amt_F,Null) J_Amt_F,
+Decode(Sign(Amt_F),-1,Abs(Amt_F),Null) Cr_F,
+Ias_Post_Dtl.cc_code
+From Ias_Post_Dtl,account
+Where Ias_Post_Dtl.A_Code=Account.A_Code
+And Ias_Post_Dtl.Doc_Ser = :P_J_Ser
+Order By Ias_Post_Dtl.Rcrd_No'
+Raise_application_error(-20445,'Error When Query From Table '||SqlErrm) ;
+End Doc_View_Jv ;
+PROCEDURE Doc_View_ICode ( List_Qry
+IN OUT Doc_View_Rec ,
+P_J_Ser IN Number,
+P_Lang_No IN Number,
+P_Post_Jv_Type IN Number) IS
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Bills -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+If P_Post_Jv_Type = 4 Then
+Ias_Itm_Mst.I_Code I_Code,
+Decode (:P_Lang_No,1,Nvl(I_Name,I_E_Name),Nvl(I_E_Name,I_Nam
+e)) I_Name,
+Ias_Bill_Dtl.Itm_Unt Unit,
+I_Qty,
+0 Inv_No,
+I_Price,
+(Nvl(I_Qty,0)*Nvl(I_Price,0)) Amount,
+Ias_Bill_Dtl.W_Code,
+Ias_Bill_Dtl.Dis_Per,
+Ias_Bill_Dtl.Free_Qty
+From Ias_Bill_Dtl,Ias_Itm_Mst
+Where Ias_Bill_Dtl.I_Code=Ias_Itm_Mst.I_Code
+And Bill_Ser = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Rt Bills -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+ElsIf P_Post_Jv_Type = 5 Then
+Decode (:P_Lang_No,1,Nvl(I_Name,I_E_Name),Nvl(I_E_Name,I_Name)) I_Name,
+Ias_Rt_Bill_Dtl.Itm_Unt Unit,
+Bill_No Inv_No,
+Ias_Rt_Bill_Dtl.W_Code,
+Ias_Rt_Bill_Dtl.Dis_Per,
+Ias_Rt_Bill_Dtl.Free_Qty
+From Ias_Rt_Bill_Dtl,Ias_Itm_Mst
+Where Ias_Rt_Bill_Dtl.I_Code=Ias_Itm_Mst.I_Code
+And Rt_Bill_Ser = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Purchase -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_pi_bill_Dtl.Itm_Unt Unit,
+Ias_pi_bill_Dtl.W_Code,
+Ias_pi_bill_Dtl.Dis_Per,
+Ias_pi_bill_Dtl.Free_Qty
+From Ias_pi_bill_Dtl,Ias_Itm_Mst
+Where Ias_pi_bill_Dtl.I_Code=Ias_Itm_Mst.I_Code
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Rt Purchase-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_Pr_Bill_Dtl.Itm_Unt Unit,
+Dis_Per,
+Free_Qty
+From Ias_Pr_Bill_Dtl,Ias_Itm_Mst
+Where Ias_Pr_Bill_Dtl.I_Code=Ias_Itm_Mst.I_Code
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - InComing-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Gr_Detail.Itm_Unt Unit,
+C_Price,
+(Nvl(I_Qty,0)*Nvl(C_Price,0)) Amount,
+0 Dis_Per,
+0 Free_Qty
+From Gr_Detail,Ias_Itm_Mst
+Where Gr_Detail.I_Code=Ias_Itm_Mst.I_Code
+And Pi_Type=5
+And G_Ser = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Outgoing -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_Outgoing_Dtl.Itm_Unt Unit,
+From Ias_Outgoing_Dtl,Ias_Itm_Mst
+Where Ias_Outgoing_Dtl.I_Code=Ias_Itm_Mst.I_Code
+And Out_Ser = :P_J_Ser
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Stk_Adjustment -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Stk_Adjustment_Det.Itm_Unt Unit,
+Avl_Qty I_Qty,
+WtAvg I_Price,
+Pls_Mins Amount,
+From Stk_Adjustment_Det,Ias_Itm_Mst
+Where Stk_Adjustment_Det.I_Code=Ias_Itm_Mst.I_Code
+And Doc_Ser = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Warehouse_Transfer (Out) -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_Whtrns_Dtl.Itm_Unt Unit,
+I_Qty I_Qty,
+W_CODE Inv_No,
+Stk_Cost I_Price,
+0 Amount,
+T_W_code W_Code,
+From Ias_Whtrns_Dtl,Ias_Itm_Mst
+Where Ias_Whtrns_Dtl.I_Code=Ias_Itm_Mst.I_Code
+And Tr_Inout_Type = 1
+And Tr_Ser = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Warehouse_Transfer (In)-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+F_W_code Inv_No,
+W_code W_Code,
+And Tr_Inout_Type = 2
+--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Kit Item -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_Pi_Bill_Dtl_Add_Disc.Itm_Unt Unit,
+ADD_DIS_QTY I_Qty,
+Doc_No Inv_No,
+0 I_Price,
+(Nvl(ADD_DIS_QTY,0)*Nvl(ADD_DIS_PER,0)) Amount,
+ADD_DIS_PER Dis_Per,
+From Ias_Pi_Bill_Dtl_Add_Disc,Ias_Itm_Mst
+Where Ias_Pi_Bill_Dtl_Add_Disc.I_Code=Ias_Itm_Mst.I_Code
+Assemble_Kit_Items_Det.Itm_Unt Unit,
+F_W_Code Inv_No,
+T_W_Code W_Code,
+From Assemble_Kit_Items_Det,Ias_Itm_Mst
+Where Assemble_Kit_Items_Det.Kit_Item_No=Ias_Itm_Mst.I_Code
+And Doc_Ser = :P_J_Ser'
+Disassemble_Kit_Items_Det.Itm_Unt Unit,
+From Disassemble_Kit_Items_Det,Ias_Itm_Mst
+Where Disassemble_Kit_Items_Det.Kit_Item_No=Ias_Itm_Mst.I_Code
+--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Gate -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Detail_Gate_Gr.Itm_Unt Unit,
+Bill_Doc_Type I_Qty,
+Doc_Type I_Price,
+I_Qty Amount,
+From Detail_Gate_Gr,Ias_Itm_Mst
+Where Detail_Gate_Gr.I_Code=Ias_Itm_Mst.I_Code
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Out Bills -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Detail_Out_Bills.Itm_Unt Unit,
+Detail_Out_Bills.Dis_Amt,
+Detail_Out_Bills.Free_Qty
+From Detail_Out_Bills,Ias_Itm_Mst
+Where Detail_Out_Bills.I_Code=Ias_Itm_Mst.I_Code
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Ret Bills -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_Ret_Bill_Dtl.Itm_Unt Unit,
+Rt_Bill_No Inv_No,
+From Ias_Ret_Bill_Dtl,Ias_Itm_Mst
+Where Ias_Ret_Bill_Dtl.I_Code=Ias_Itm_Mst.I_Code
+And Ret_Ser = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Add Sales Disc -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Ias_Bill_Dtl_Add_Disc.Itm_Unt Unit,
+From Ias_Bill_Dtl_Add_Disc,Ias_Itm_Mst
+Where Ias_Bill_Dtl_Add_Disc.I_Code=Ias_Itm_Mst.I_Code
+Ias_Exch_Cur_Dtl.Ac_Code A_Code,
+Decode(
+Ias_Exch_Cur_Dtl.ac_dtl_typ,1,IAS_CshBnk_Pkg.Get_CB_Name(1,ac_code_dtl,:P_lang_no),
+2,IAS_CshBnk_Pkg.Get_CB_Name(2,ac_code_dtl,:P_lang_no),
+3,IAS_CST_Pkg.Get_C_Name(ac_code_dtl,:P_lang_no),
+4,IAS_Vndr_Pkg.Get_v_Name(ac_code_dtl,:P_lang_no),
+7,YS_EMP_PKG.Get_Emp_Nm(ac_code_dtl,:P_lang_no),
+Decode (:P_Lang_No,1,Nvl(A_Name,A_Name_Eng),Nvl(A_Name_Eng,A_Name)))A_Name ,
+ac_code_dtl c_v_code,
+cur_code A_CY,
+Doc_Dsc Ac_Desc,
+Amt_l J_Amt,
+Amt_F J_Amt_F,
+Ias_Exch_Cur_Dtl.cc_code Cost_Center
+From Ias_Exch_Cur_Dtl,account
+Where Ias_Exch_Cur_Dtl.Ac_Code=Account.A_Code
+And doc_srl = :P_J_Ser
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SHP ,Fas , Hrs -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+ElsIf P_Post_Jv_Type in(95,96,603,604,605,606,607,775,717,805) Then
+'Select Ias_Post_Dtl.A_Code,
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --
+Raise_application_error(-20446,'Error When Query From Table '||SqlErrm) ;
+=> v_cb_no,
+"PKG INIT"IAS_AUD_LIST_PKG""
+CREATE OR REPLACE PACKAGE IAS_Aud_List_Pkg AS
+TYPE AUD_List_Rec IS REF CURSOR ;
+--MRDddd
+PROCEDURE Aud_List_View ( List_Qry
+IN OUT Aud_List_Rec ,
+P_date
+IN Date,
+P_Jv_Type
+IN Number,
+P_Cash_Bank
+IN Cash_IN_Hand.Cash_No%Type,
+P_W_Code
+IN WareHouse_Details.W_Code%Type,
+P_CS
+IN Cost_Centers.cc_code%Type,
+P_Aud_Jv_Type
+P_Order_By
+IN Varchar2,
+IN NUMBER,
+P_F_DATE IN Date,
+P_T_DATE IN Date,
+P_F_DOC_NO
+P_T_DOC_NO
+P_CHQ_DUE IN Number DEFAULT 0,
+P_DOC_SEQUENCE IN Number DEFAULT 0 );
+Procedure Update_Aud ( AudRef IN Number,
+AudDesc IN Varchar2,
+AudUid IN Number,
+DocSer IN Number,
+ClmnNam IN Varchar2,
+TablNameMst IN Varchar2,
+P_AUD_DATE IN DATE DEFAULT Ias_Gen_Pkg.Get_CurDate,
+P_Msg_No In Out NUMBER ,
+P_DOC_SEQUENCE IN Number DEFAULT 0) ;
+END IAS_Aud_List_Pkg;
+CREATE OR REPLACE PACKAGE BODY IAS_Aud_List_Pkg AS
+PROCEDURE Aud_List_View (
+List_Qry IN OUT Aud_List_Rec ,
+P_Aud_Jv_Type IN Number,
+P_DOC_SEQUENCE IN Number DEFAULT 0) IS
+If P_Aud_Jv_Type = 1 Then
+Ias_Gen_Pkg.Get_Local_Cur A_CY ,
+Nvl(Batch_val,0) amt ,
+Nvl(Audit_Ref,0) Audit_Ref,
+AUDIT_REF_DESC
+Where Nvl(Jv_Type,0) = Decode(:P_Jv_Type,0,Nvl(Jv_Type,0),:P_Jv_Type)
+And j_date between NVL(:P_F_date,j_date) And NVL(:P_T_date,j_date)
+and j_doc_no between nvl(:P_F_Doc_No,J_DOC_NO) AND nvl(:P_T_Doc_No,J_DOC_NO)
+And Nvl(Audit_Ref,0)<>1
+P_F_date,
+P_T_date,
+P_F_Doc_No,
+P_T_Doc_No,
+P_User_No;
+ElsIf P_Aud_Jv_Type = 2 Then
+If nvl(P_CHQ_DUE,0) = 0 Then
+Null W_Code,
+A_Cy,
+Decode(A_Cy,Ias_Gen_Pkg.Get_Local_Cur,CASH_AMT,CASH_AMTf) amt,
+And voucher_date between NVL(:P_F_date,Voucher_Date) And NVL(:P_T_date,Voucher_Date)
+And voucher_no between nvl(:P_F_Doc_No,Voucher_No) AND nvl(:P_T_Doc_No,Voucher_No)
+P_Cs ,
+ELSIF P_CHQ_DUE = 1 Then
+VALUE_DATE J_date,
+Decode(A_Cy,Ias_Gen_Pkg.Get_Local_Cur,AC_AMT,AC_AMTf) amt,
+DOC_SEQUENCE DOC_SEQUENCE,
+And CHEQUE_VALUED in(1,2)
+And VALUE_DATE between NVL(:P_F_date,VALUE_DATE) And NVL(:P_T_date,VALUE_DATE)
+And voucher_no betwe
+en nvl(:P_F_Doc_No,Voucher_No) AND nvl(:P_T_Doc_No,Voucher_No)
+And Brn_No = Voucher_Detail.Brn_No
+And Exists (Select 1 From Vouchers
+Where V_ser = Voucher_Detail.V_ser
+And Nvl(CHEQ_TYPE,0) = 3 And RowNum <= 1 )
+ElsIf P_Aud_Jv_Type = 3 Then
+here U_Id = :P_User_No
+ElsIf P_Aud_Jv_Type = 4 Then
+BILL_CURRENCY A_CY,
+BILL_AMT Amt,
+Nvl(Audit_Ref,0) Audit_Ref ,
+Where Nvl(Bill_Doc_Type,0) =Decode(:P_Jv_Type,0,Nvl(Bill_Doc_Type,0),:P_Jv_Type)
+And Bill_date between NVL(:P_F_date,Bill_Date) And NVL(:P_T_date,Bill_Date)
+And Bill_No between nvl(:P_F_Doc_No,Bill_No) AND nvl(:P_T_Doc_No,Bill_No)
+Using P_Jv_Type,
+ElsIf P_Aud_Jv_Type = 5 Then
+RT_BILL_CURRENCY A_CY,
+Where Nvl(Rt_Bill_Doc_Type,0) = Decode(:P_Jv_Type,0,Nvl(Rt_Bill_Doc_Type,0),:P_Jv_Type)
+And Nvl(STAND_BY,0)=0
+And Rt_Bill_date between NVL(:P_F_date,Rt_Bill_Date) And NVL(:P_T_date,Rt_Bill_Date)
+And Rt_Bill_No b
+etween nvl(:P_F_Doc_No,Rt_Bill_No) AND nvl(:P_T_Doc_No,Rt_Bill_No)
+And Nvl(Add_Flag,1) = 1 And RowNum <= 1 ) '||P_Order_By
+---------------------------------- Purchase -------- - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Aud_Jv_Type = 6 Then
+Gr_Note.w_code W_Code,
+Ias_pi_bill_Mst.Cc_code Cs,
+Nvl(Ias_pi_bill_Mst.Audit_Ref,0) Audit_Ref,
+Ias_pi_bill_Mst.AUDIT_REF_DESC
+And Nvl(Gr_Note.Pending,0) = 0
+And Nvl(Ias_pi_bill_Mst.HUNG,0)=0
+And Nvl(Bill_Doc_Type,0) = Decode(:P_Jv_Type,0,Nvl(Bill_Doc_Type,0),:P_Jv_Type)
+And Nvl(Ias_pi_bill_Mst.Audit_Ref,0)<>1
+And Ias_pi_bill_Mst.Bill_date between NVL(:P_F_date,Bill_Date) And NVL(:P_T_date,Bill_Date)
+And Ias_pi_bill_Mst.Bill_No between nvl(:P_F_Doc_No,Bill_No) AND nvl(:P_T_Doc_No,Bill_No)
+ElsIf P_Aud_Jv_Type = 7 Then
+And Rt_Bill_No between nvl(:P_F_Doc_No,Rt_Bill_No) AND nvl(:P_T_Doc_No,Rt_Bill_No)
+And Nvl(Add_Fl
+ag,1) = 1 And RowNum <= 1 )
+ElsIf P_Aud_Jv_Type = 8 Then
+A_Cy A_CY,
+Gr_Amt Amt,
+And Gr_date between NVL(:P_F_date,Gr_Date) And NVL(:P_T_date,Gr_Date)
+And Gr_No between nvl(:P_F_Doc_No,Gr_No) AND nvl(:P_T_Doc_No,Gr_No)
+ElsIf P_Aud_Jv_Type = 9 Then
+'Select out_Ser J_Ser,
+Out_Amt Amt,
+Where Nvl(out_Type,0) = Decode(:P_Jv_Type,0,Nvl(out_Type,0),:P_Jv_Type)
+And out_date between NVL(:P_F_date,Out_date) And NVL(:P_T_date,Out_date)
+And out_No between nvl(:P_F_Doc_No,Out_NO) AND nvl(:P_T_Doc_No,Out_NO)
+ElsIf P_Aud_Jv_Type = 10 Then
+0 Amt,
+DOC_SEQUENCE,
+Where Nvl(Adjust_Type,0) = Decode(:P_Jv_Type,0,Nvl(Adjust_Type,0),:P_Jv_Type)
+And doc_date between NVL(:P_F_date,Doc_Date) And NVL(:P_T_date,Doc_Date)
+And Doc_No between nvl(:P_F_Doc_No,DOC_NO) AND nvl(:P_T_Doc_No,DOC_NO)
+And Nvl(Add_Flag,1) = 1 And RowNum
+<= 1 )
+ElsIf P_Aud_Jv_Type = 11 Then
+w_code
+Ias_Gen_Pkg.Get_Stk_Cur A_CY,
+Tr_Amt Amt,
+ElsIf P_Aud_Jv_Type = 12 Then
+dd_Flag,1) = 1 And RowNum <= 1 )
+ElsIf P_Aud_Jv_Type = 13 Then
+ElsIf P_Aud_Jv_Type = 14 Then
+And ret_date between NVL(:P_F_date,Ret_date) And NVL(:P_T_date,Ret_date)
+And ret_No between nvl(:P_F_Doc_No,Ret_NO) AND nvl(:P_T_Doc_No,Ret_NO)
+-- - - - - - - - - - - - - - -- - - - - -
+- - Add Disc sales- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Aud_Jv_Type = 15 Then
+Doc_Ser J_Ser,
+ADD_DISC_TYPE
+Doc_No
+Doc_Date
+W_CODE
+ADD_DISC_AMT_MST Amt,
+Where Nvl(Cc_Code,''0'') =Decode(:P_Cs,''0'',Nvl(Cc_Code,''0''),:P_Cs)
+-- - - - - - - - - - - - - - -- - - - - - - - Add Disc purchase- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Aud_Jv_Type = 16 Then
+From IAS_PI_BILL_MST_ADD_DISC
+And Brn_No = IAS_PI_BILL_MST_ADD_DISC.Brn_No
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Ass Kit Items - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ElsIf P_Aud_Jv_Type = 17 Then
+DOC_DATE J_date,
+From_WH W_Code,
+From ASSEMBLE_KIT_ITEMS
+And Nvl(FROM_WH,0) =Decode(nvl(:P_W_Code,0),0,Nvl(FROM_WH,0),nvl(:P_W_Code,0))
+And doc_date between N
+VL(:P_F_date,Doc_Date) And NVL(:P_T_date,Doc_Date)
+And Brn_No = ASSEMBLE_KIT_ITEMS.Brn_No
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Diss Kit Items - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - -
+ElsIf P_Aud_Jv_Type = 18 Then
+TO_WH W_Code,
+From DISASSEMBLE_KIT_ITEMS
+And Nvl(TO_WH,0) =Decode(nvl(:P_W_Code,0),0,Nvl(TO_WH,0),nvl(:P_W_Code,0))
+And Brn_No = DISASSEMBLE_KIT_ITEMS.Brn_No
+ElsIf P_Aud_Jv_Type = 21 Then
+Vouchers.Voucher_Pay_Type Jv_type ,
+Vouchers.Voucher_Date J_date ,
+Vouchers.Cash_No Cash_No ,
+0 W_Code ,
+Voucher_Detail.A_Code Ac_Code
+And Nvl(Vouchers.Voucher_Pay_Type,0) = 2 --Decode(:P_Jv_Type,0,Nvl(Vouchers.Voucher_Pay_Type,0),:P_Jv_Type)
+And Nvl(Voucher_Detail.Cheque_Post,0) = 0
+And Nvl(Vouchers.Stand_By,0)=0 '||P_Order_By
+P_Cash_Bank;
+----------------------------------------------------------------------------
+ElsIf P_Aud_Jv_Type = 27 Then
+GR_TYPE Jv_type,
+DOC_NO J_doc_no,
+CUR_CODE A_Cy,
+Nvl(GR_AMT,0)* Nvl(Cur_Rate, 1) Amt,
+Where Nvl(GR_TYPE,0) =Decode(:P_Jv_Type,0,Nvl(GR_TYPE,0),:P_Jv_Type)
+ElsIf P_Aud_Jv_Type = 28 Then
+ElsIf P_Aud_Jv_Type = 29 Then
+DOC_NO_REF J_doc_no,
+GR_CLS_DATE J_date,
+And GR_CLS_DATE between NVL(:P_F_date,GR_CLS_DATE) And NVL(:P_T_date,GR_CLS_DATE)
+And Doc_No_REF between nvl(:P_F_Doc_No,Doc_No_REF) AND nvl(:P_T_Doc_No,Doc_No_REF)
+ElsIf P_Aud_Jv_Type = 31 Then
+Vouchers.Cash_No Cash_No,
+----------------------------------------------------------------------------------------------------
+ElsIf P_Aud_Jv_Type = 95 Then
+Cash_No Cash_No,
+NVL(BILL_AMT,0)*NVL(BILL_RATE,1) Amt,
+and Nvl(Cc_Code,''0'') =Decode(:P_Cs,''0'',Nvl(Cc_Code,''0''),:P_Cs)
+ElsIf P_Aud_Jv_Type = 96 Then
+And Brn_No = SHP_BI
+LLING.Brn_No
+ElsIf P_Aud_Jv_Type = 98 Then
+CSH_BNK_NO Cash_No,
+Decode(CUR_CODE,Ias_Gen_Pkg.Get_Local_Cur,DOC_AMT_L,DOC_AMT_F) amt,
+From IAS_EXCH_CUR_MST
+Where TYP_NO = 1
+And Nvl(TYP_NO,0) = Decode(:P_Jv_Type,0,Nvl(TYP_NO,0),:P_Jv_Type)
+And doc_date between NVL(:P_F_date,doc_date) And NVL(:P_T_date,doc_date)
+And doc_no between nvl(:P_F_Doc_No,doc_no) AND nvl(:P_T_Doc_No,doc_no)
+And Brn_No = IAS_EXCH_CUR_MST.Brn_No
+And Nvl(STNDBY_FLG,0)=0 '||P_Order_By
+ElsIf P_Aud_Jv_Type = 123 Then
+Nvl(Doc_Amt,0)* Nvl(Cur_Rate, 1) Amt,
+From Stn_Cpn_Sls_Mst
+And Brn_No = Stn_Cpn_Sls_Mst.Brn_No
+ElsIf P_Aud_Jv_Type = 203 Then
+'Select HND_SrL J_Ser,
+HND_No J_doc_no,
+HND_DATE J_date,
+NULL Cs,
+NVL(AMT,0)*NVL(CUR_RATE,1) Amt,
+Where Nvl(HND_TYP,0) =Decode(:P_Jv_Type,0,Nvl(HND_TYP,0),:P_Jv_Type)
+And HND_DATE between NVL(:P_F_date,HND_DATE) And NVL(:P_T_date,HND_DATE)
+And HND_No between nvl(:P_F_Doc_No,HND_No) AND nvl(:P_T_Doc_No,HND_No)
+ElsIf P_Aud_Jv_Type = 500 Then
+'Select Doc_SRL J_Ser,
+RNTL_TYP Jv_type,
+NVL(Cntrct_Amt,0)*NVL(Ex_Rate,1) Amt,
+Where Nvl(RNTL_TYP,0) =Decode(:P_Jv_Type,0,Nvl(RNTL_TYP,0),:P_Jv_Type)
+And Brn_No = REM_CNTRCT_RNT_MST.Brn_No
+ElsIf P_Aud_Jv_Type = 501 Then
+ElsIf P_Aud_Jv_Type = 502 Then
+IT_REF_DESC
+From Rem_Cntrct_Rnt_Cncl_Mst
+And Brn_No = Rem_Cntrct_Rnt_Cncl_Mst.Brn_No
+ElsIf P_Aud_Jv_Type = 503 Then
+NVL(BILL_Amt,0)*NVL(Ex_Rate,1) Amt,
+From Rem_Bill_Mst
+And Brn_No = Rem_Bill_Mst.Brn_No
+ElsIf P_Aud_Jv_Type = 504 Then
+NVL(CNTRCT_AMT,0)*NVL(Ex_Rate,1) Amt,
+From Rem_Cntrct_Sale_Mst
+And Brn_No = Rem_Cntrct_Sale_Mst.Brn_No
+ElsIf P_Aud_Jv_Type = 603 Then
+INCRS_TYP Jv_type,
+Nvl(INCRS_AMT,0)* Nvl(Cur_Rate, 1) Amt,
+Where Doc_No between nvl(:P_F_Doc_No,DOC_NO) AND nvl(:P_T_Doc_No,DOC_NO)
+nd Brn_No = Decode(:P_Brn_No,0,Brn_No,:P_Brn_No)
+ElsIf P_Aud_Jv_Type = 604 Then
+DCRS_TYP Jv_type,
+Nvl(Dcrs_AMT,0)* Nvl(Cur_Rate, 1) Amt,
+From FAS_Dcrs_MST
+And Brn_No = FAS_Dcrs_MST.Brn_No
+ElsIf P_Aud_Jv_Type = 605 Then
+TRNS_TYP Jv_type,
+Null A_Cy,
+ElsIf P_Aud_Jv_Type = 606 Then
+RCVD_TYP Jv_type,
+ElsIf P_Aud_Jv_Type = 607 Then
+DEPR_TYP Jv_type,
+ElsIf P_Aud_Jv_Type = 609 Then
+ElsIf P_Aud_Jv_Type = 610 Then
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - UnPosting List View - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+--P_CUR_DATE IN DATE DEFAULT Ias_Gen_Pkg.Get_CurDate,
+V_Up_Date varchar2(100);
+V_Up_Date := Ys_Gen_Pkg.Get_Fld_Value (P_Tab_Nm => TablNameMst ,P_Fld_Nm=> 'To_CHAR(UP_DATE,''DD/MM/YYYY HH:MI:SS AM'')', P_WHR => ' Where '||ClmnNam||' = '||DocSer||' AND ROWNUM<=1');
+If V_Up_Date Is Not Null And To_Date(V_Up_Date,'DD/MM/YYYY HH:MI:SS AM') > To_Date(P_AUD_DATE,'DD/MM/YYYY HH:MI:SS AM') Then
+P_Msg_No:=1854;
+If nvl(P_CHQ_DUE,0)=1 then
+'Update '||TablNameMst||' Set AUDIT_REF = '||AudRef || '
+, AUDIT_REF_DESC = '''||AudDesc || '''
+, AUDIT_REF_U_ID = ' ||AudUid || '
+, AUDIT_REF_DATE = '''||P_AUD_DATE|| '''
+Where '|| ClmnNam ||' = ' ||DocSer||'
+And DOC_SEQUENCE='||P_DOC_SEQUENCE ;
+Raise_application_error(-20448,'Error When Update Table '||SqlErrm) ;
+, AUDIT_REF_DATE = '''||P_AUD_DATE||'''
+Where '|| ClmnNam ||' = ' ||DocSer ;
+'Update IAS_POST_DTL Set AUDIT_REF = '||AudRef || '
+Where Doc_Ser = ' ||DocSer ;
+End Update_Aud ;
+c_no,
+YS_GEN_PKG
+USER_TABLES
+"PKG INIT"CHK_GLS_SYS_ACTV"V_BRN_USR"V_ACTV"V_CNT"<cursor ptr>"<SQL statement. Line 7>""
+PARAMETER.BRN_USR
+YS_GEN_PKGIAS20142CHK_ACTV_SYSTEMYS_
+GLS SYSTEM IS INACTIVE
+SELECT COUNT(1) FROM USER_TABLES WHERE TABLE_NAME LIKE ''GLS%''"
+"PKG INIT"CHK_BDGT_BLNC_PRC""
+CREATE OR REPLACE PROCEDURE Chk_Bdgt_Blnc_Prc(P_Chk_Amt In number,
+P_A_CODE Account.a_code%type,
+P_A_Cy Ex_rate.CUR_CODE%type,
+P_Cc_Code Cost_centers.cc_CODE%type,
+P_PJ_NO Ias_projects.pj_no%type,
+P_Actv_NO Ias_Actvty.actv_no%type,
+P_DATE IN DATE DEFAULT IAS_GEN_PKG.Get_Sysdate,
+P_User_No In Number,
+P_BGT_Amt_L out Number,
+P_BGT_Amt_F
+out Number,
+P_BAL out Number,
+P_Pass_Prv out Number,
+P_Msg out Varchar2 ,
+P_Lng In Number,
+P_Bgt_Srl In Number Default 0) IS
+V_Bal Number:=0;
+V_USE_MULTI_CUR_BDGT Number:=0;
+V_Frc_No Number:=0;
+V_Chk_Bgt_Amt Number:=0;
+V_BGT_CUR Number:=0;
+V_local_Cur Varchar2(10);
+V_F_Date Date;
+V_T_Date Date;
+---------------------------------------------------------------------------------------------------------------------------------
+-- PURPOSE: to Check the Budget Balance
+----------------------------------------------------------------------------------------------------------
+--##----------------------------------------------------------------------------------------------------------##--
+V_local_Cur:=Ys_Gen_Pkg.Get_local_Cur;
+Select Nvl(USE_MULTI_CUR_BDGT,0),Nvl(Chk_Bgt_Amt,0),Nvl(NO_OF_DECIMAL,2)
+Into V_USE_MULTI_CUR_BDGT,V_Chk_Bgt_Amt, V_Frc_No
+From ias_para_gl ;
+P_Pass_Prv:=1;
+-----hare
+--## P_Pass_Prv 1= not allow ,2=allow ,3=allow with worning
+Select Nvl(BGT_LMT_PRV,1)
+Into P_Pass_Prv
+From Privilege_Fixed
+Where u_id=P_User_No;
+Select Round((Nvl(Amt_L,0)+Nvl(Amt_L_Add,0)+Nvl(Amt_L_Add_Mov,0)-Nvl(Amt_L_Disc,0)-Nvl(Amt_L_Disc_Mov,0)),V_Frc_no),
+Round((Nvl(Amt_F,0)+Nvl(Amt_F_Add,0)+Nvl(Amt_F_Add_Mov,0)-Nvl(Amt_F_Disc,0)-Nvl(Amt_F_Disc_Mov,0)),V_Frc_no),
+F_Date,
+T_Date
+Into P_BGT_Amt_L,
+P_BGT_Amt_F,
+V_F_Date,
+V_T_Date
+From IAS_BDGT_BLNC_MST M,IAS_BDGT_BLNC_DTL D
+where M.DOC_SER=D.doc_ser
+AND M.DFLT=Decode(P_Bgt_Srl,0,1,M.DFLT)
+and M.DOC_SER=Decode(P_Bgt_Srl,0,M.DOC_SER,P_Bgt_Srl)
+AND A_CODE= P_A_CODE
+And Nvl(d.a_cy,'0')= Decode(V_USE_MULTI_CUR_BDGT,0,Nvl(d.a_cy,'0'),P_A_Cy)
+And P_Date betwe
+en F_Date and T_Date
+And nvl(cc_code,'0') = Decode(nvl(cc_code,'0'),'0',nvl(cc_code,'0'),P_cc_code)
+And nvl(pj_no,'0') = Decode(nvl(pj_no,'0'),'0',nvl(pj_no,'0'),P_PJ_NO)
+And nvl(actv_no,'0') = Decode(nvl(actv_no,'0'),'0',nvl(actv_no,'0'),P_ACTV_NO)
+Exception when Others Then
+P_BGT_Amt_L :=0;
+P_BGT_Amt_F:=0;
+--## Balance
+If V_USE_MULTI_CUR_BDGT=0 THEN
+V_BGT_CUR:=1;
+V_BGT_CUR:=0;
+V_Bal:=Round(Ys_Get_Blnc_Ac_Dtl_Fnc(P_A_CODE =>P_A_CODE,
+P_AC_DTL_TYP => 0,
+P_AC_CODE_DTL => NULL,
+P_LOC_CUR =>V_local_Cur,
+P_CUR_CODE =>P_A_CY,
+P_CC_CODE =>P_CC_CODE,
+P_PJ_CODE =>P_PJ_NO,
+P_ACTV_CODE =>P_ACTV_NO,
+P_F_DATE =>V_F_DATE,
+P_T_DATE =>V_T_DATE,
+P_BLNC_TYP => 2,
+P_LOC_AMT => V_BGT_CUR ,
+P_DOC_POST => 2 ),V_frc_no);
+P_Bal:=Nvl(V_Bal,0);
+--## BGT_AMT_L
+IF V_Chk_Bgt_Amt=1 THEN ---(1)
+If V_USE_MULTI_CUR_BDGT=0 Or (V_USE_MULTI_CUR_BDGT=1 and P_A_Cy=V_local_Cur ) Then
+IF P_BGT_AMT_L Is Not Null And nvl(V_Bal,0)+Nvl(P_Chk_Amt,0)>P_BGT_AMT_L Then
+P_Msg:=Ias_Gen_Pkg.Get_Prompt(P_Lng,6074)||' = '||P_BGT_AMT_L||' '||
+Ias_Gen_Pkg.Get_Prompt(P_Lng,139)||' = '||Round((nvl(V_Bal,0)+NVL(P_Chk_Amt,0)),V_Frc_No)||
+Ias_Gen_Pkg.Get_Prompt(P_Lng,999)||' = '||Round(abs(P_BGT_AMT_L-(nvl(V_Bal,0)+NVL(P_Chk_Amt,0))),V_Frc_No)||' , '||
+Ias_Gen_Pkg.Get_Prompt(P_Lng,3604)||' = '||Abs(Round(((nvl(P_BGT_AMT_L,0)-Nvl(NVL(P_Chk_Amt,0),0)-(nvl(nvl(V_Bal,0),0))) /nvl(P_BGT_AMT_L,0))*100,2));
+ElsIf V_USE_MULTI_CUR_BDGT=1 And P_A_Cy<>V_local_Cur Then
+IF P_BGT_AMT_F Is Not Null And nvl(V_Bal,0)+Nvl(P_Chk_Amt,0)>P_BGT_AMT_F Then
+P_Msg:=Ias_Gen_Pkg.Get_Prompt(P_Lng,6074)||' = '||P_BGT_AMT_F||' '||
+Ias_Gen_Pkg.Get_Prompt(P_Lng,999)||' = '||Round(abs(P_BGT_AMT_F-(nvl(V_Bal,0)+NVL(P_Chk_Amt,0))),V_Frc_No)||' , '||
+Ias_Gen_Pkg.Get_Prompt(P_Lng,3604)||' = '||Abs(Round(((nvl(P_BGT_AMT_F,0)-Nvl(NVL(P_Chk_Amt,0),0)-(nvl(nvl(V_Bal,0),0))) /nvl(P_BGT_AMT_F,0))*100,2));
+End If;---(1)
+End Chk_Bdgt_Blnc_Prc;
+"PKG INIT"CHK_UPD_CHQNO_PRC""
+CREATE OR REPLACE Procedure Chk_Upd_ChqNo_Prc (P_TRS_TYP IN Varchar2,
+P_bank_no IN Number,
+P_Cur_Code IN Varchar2,
+P_Cheque_No IN Varchar2,
+P_DOC_NO IN Number,
+P_DOC_DATE IN DATE ,
+P_DOC_SRL IN Number,
+P_DOC_TYP IN Number,
+P_DOC_JV_TYP IN Number,
+P_CHQ_ST out Number,
+P_Msg out varchar2 ,
+P_lng_no IN Number default 1) IS
+V_Cnt Number;
+V_CHQ_ST Number;
+V_DOC_NO_REF Number;
+V_DOC_SRL_REF Number;
+V_DOC_TYP_REF Number;
+V_DOC_JV_TYP_REF Number;
+V_TBL_NM Varchar2(60);
+V_DOC_SRL Varchar2(60);
+V_CHQ_NO Number;
+V_DUP_CHQ_PRMTR Number;
+V_DUP_CHQ_PRMTR:=Nvl(IAS_GEN_PKG.GET_FLD_VALUE('IAS_PARA_GL','NVL(DUP_CHQ_NO_PAYMNT,0)'),0);
+IF P_DOC_TYP=3 THEN
+V_TBL_NM:='VOUCHER_DETAIL';
+V_DOC_SRL:='V_SER';
+ELSIF P_DOC_TYP=6 THEN
+V_TBL_NM:='IAS_PI_BILL_MST';
+V_DOC_SRL:='BILL_SER';
+Select 1
+Into V_Cnt
+from GLS_BNK_CHQ_MST
+where bank_no = p_bank_no
+And CUR_CODE = P_Cur_Code
+V_Cnt:=0;
+If NVL(V_Cnt,0) = 1 THEN
+from GLS_BNK_CHQ_DTL
+where bank_no = P_bank_no
+And CHQ_NO = P_CHEQUE_NO
+P_Msg:= YS_GEN_PKG.Get_Msg(P_Lng_no ,1935)||' '||IAS_CSHBNK_PKG.GET_CB_NAME(2,P_bank_no,P_Lng_no);
+Return;
+------------------------------------------------------------------------------------------
+If NVL(V_Cnt,0) = 1 Then
+Select CHQ_ST ,CHQ_NO,DOC_NO_REF,DOC_TYP_REF,DOC_JV_TYP_REF,DOC_SRL_REF
+Into V_CHQ_ST,V_CHQ_NO,V_DOC_NO_REF,V_DOC_TYP_REF,V_DOC_JV_TYP_REF,V_DOC_SRL_REF
+And CHQ_NO =P_CHEQUE_NO
+V_CHQ_ST:=1;
+P_CHQ_ST:=V_CHQ_ST;
+IF NVL(V_CHQ_ST,1)=2 AND P_TRS_TYP IN ('I','U') then --AND P_DUP_CHQ=0 THEN --USED
+IF V_DUP_CHQ_PRMTR=1 AND P_DOC_TYP=3 AND NVL(V_DOC_SRL_REF,0)<>NVL(P_DOC_SRL,0) THEN
+P_MSG:= YS_GEN_PKG.Get_Msg(P_Lng_no ,763); --763
+ELSIF V_DUP_CHQ_PRMTR=1 AND P_DOC_TYP=3 AND NVL(V_DOC_SRL_REF,0)=NVL(P_DOC_SRL,0) THEN
+NULL;
+P_MSG:= YS_GEN_PKG.Get_Msg(P_Lng_no ,763);
+ELSIF NVL(V_CHQ_ST,1)=3 THEN -- CANCELED
+P_Msg:= YS_GEN_PKG.Get_Msg(P_Lng_no ,1936);
+ELSIF NVL(V_CHQ_ST,1)=4 THEN -- STOPPED
+P_Msg:= YS_GEN_PKG.Get_Msg(P_Lng_no ,1937);
+IF NVL(V_CHQ_ST,1)=1 AND P_TRS_TYP IN ('I','U') THEN
+UPDATE GLS_BNK_CHQ_DTL SET CHQ_ST = 2,
+DOC_NO_REF = P_DOC_NO,
+DOC_DATE_REF = P_DOC_DATE,
+DOC_SRL_REF = P_DOC_SRL,
+DOC_TYP_REF = P_DOC_TYP,
+DOC_JV_TYP_REF = P_DOC_JV_TYP
+WHERE Bank_No = P_bank_no
+AND CHQ_NO = P_CHEQUE_NO;
+IF NVL(V_CHQ_ST,1) =2 AND P_TRS_TYP ='U' THEN
+UPDATE GLS_BNK_CHQ_DTL SET DOC_DATE_REF = P_DOC_DATE,
+AND DOC_SRL_REF = P_DOC_SRL
+If V_CHQ_ST =2 AND P_TRS_TYP ='D' THEN
+UPDATE GLS_BNK_CHQ_DTL SET CHQ_ST = 1,
+DOC_NO_REF = Null,
+DOC_DATE_REF = Null,
+DOC_SRL_REF = Null,
+DOC_TYP_REF = Null,
+DOC_JV_TYP_REF = Null
+WHERE bank_no = p_bank_no
+And DOC_SRL_REF = V_DOC_SRL_REF
+End Chk_Upd_ChqNo_Prc;
+j_date => M_cv.doc_date,
+$p%@.
+GLS_INSERT_FLG_PRC
+GLS_INSERT_LOV_PRC
+GLS_INSERT_LST_PRC
+-p.@:
+"PKG INIT"GLS_INSERT_FLG_PRC""
+"PKG INIT"GLS_INSERT_LOV_PRC""
+Loves Created
+Commit
+VIEW_PKG
+"PKG INIT"GLS_INSERT_LST_PRC""
+List Created
+/LYSERP_LIB
+GEN_PKG
+"PKG INIT"GLS_CHECK_DATA_PRC"P_CURR_YEAR_UNIT"P_NEW_YEAR_UNIT"V_CNT""
+USER_COL_COMMENTS
+"PKG INIT"CRT_GNR_CMNT_PRC"C"<cursor ptr>"TABLE_NAME"COLUMN_NAME"COMMENTS"I""
+BRN_NO
+COMMENT ON COLUMN
+.BRN_NO IS '50 -
+.CMP_NO IS '1583 -
+.BRN_USR IS '3300 -
+.AD_U_ID IS '758 -
+AD_DATE
+.AD_DATE IS '759 -
+UP_U_ID
+.UP_U_ID IS '760 -
+UP_DATE
+.UP_DATE IS '761 -
+(SELECT * FROM USER_COL_COMMENTS WHERE (UPPER(COLUMN_NAME) IN ( ''DOC_NO'',''DOC_DATE'',''BRN_NO'',''CMP_NO'',''BRN_YEAR'',''BRN_USR'',''AD_U_ID'',''AD_DATE'',''UP_U_ID'',''UP_DATE'' ) OR COLUMN_NAME LIKE ''%_A_NAME'' OR COLUMN_NAME LIKE ''%_E_NAME'' ) AND TABLE_NAME NOT LIKE ''%$%'' )"
+"PKG INIT"CRT_GLS_DOC_SQ""
+CREATE OR REPLACE PACKAGE GLS_DOC_SQ as
+FUNCTION Get_Doc_Typ_Serial (P_DOC_TYP In NUMBER) RETURN NUMBER ;
+--##-------------------------------------------------------------------------------------##--
+FUNCTION Get_Doc_No ( P_Doc_Typ In Number,
+P_Doc_Srl_Typ In Number DEFAULT NULL,
+P_Brn_Year In Number,
+P_Brn_No In S_BRN.BRN_NO%TYPE,
+P_Typ_No In Number DEFAULT NULL ) RETURN NUMBER ;
+FUNCTION Get_Doc_Srl ( P_Doc_Typ In Number,
+P_Typ_No In Number DEFAULT NULL,
+P_Doc_No In Number ) RETURN NUMBER ;
+End GLS_DOC_SQ;
+CREATE OR REPLACE PACKAGE BODY GLS_DOC_SQ as
+FUNCTION Get_Doc_Typ_Serial (P_DOC_TYP In NUMBER) RETURN NUMBER IS
+V_FLD_NM VARCHAR2(60);
+V_DOC_SERIAL NUMBER;
+/*IF P_DOC_TYP = 602 THEN --
+V_FLD_NM:= '';
+ELSIF P_DOC_TYP = 603 THEN --
+V_FLD_NM:= 'INCRS_SERIAL';
+ELSIF P_DOC_TYP = 604 THEN --
+V_FLD_NM:= 'DCRS_SERIAL';
+ELSIF P_DOC_TYP = 605 THEN -- Transfer
+V_FLD_NM:= 'TRNS_SERIAL';
+ELSIF P_DOC_TYP = 606 THEN -- Receive
+V_FLD_NM:= 'RCVD_SERIAL';
+ELSIF P_DOC_TYP = 608 THEN -- Inventory Assets
+V_FLD_NM:= 'INV_SERIAL';
+ELSIF P_DOC_TYP = 609 THEN -- Adjustment Assets
+V_FLD_NM:= 'ADJST_SERIAL';
+EXECUTE IMMEDIATE ('SELECT '||V_FLD_NM||' FROM IAS_PARA_GL ') INTO V_DOC_SERIAL;
+RETURN (V_DOC_SERIAL);
+RETURN(NULL);
+END Get_Doc_Typ_Serial;
+P_Typ_No In Number DEFAULT NULL) RETURN NUMBER IS
+V_Doc_Srl_Typ Number := P_Doc_Srl_Typ;
+V_Doc_No Number;
+If P_Doc_Typ Is Not Null And V_Doc_Srl_Typ Is Null Then
+V_Doc_Srl_Typ:= Get_Doc_Typ_Serial (P_DOC_TYP => P_Doc_Typ );
+If V_Doc_Srl_Typ Is Null Then
+Raise_Application_Error (-20001,'Error When Select Serial Typ For Document , '||Sqlerrm);
+If P_Doc_Typ = 605 Then -- -- Transfer
+If V_Doc_Srl_Typ = 1 Then -- Accumlated By Branch
+Select nvl(Max(doc_no),0) + 1 Into V_Doc_No
+where Brn_No = P_Brn_No;
+ElsIf P_Doc_Typ = 603 Then -- Leave Request
+ElsIf P_Doc_Typ = 604 The
+n -- Leave Request
+ElsIf P_Doc_Typ = 606 Then -- Leave Request
+ElsIf P_Doc_Typ = 607 then
+SELECT NVL(MAX(DOC_NO),0)+1 INTO V_DOC_NO
+FROM FAS_DEPR_MST
+WHERE BRN_NO = P_BRN_NO
+AND DEPR_TYP = P_Typ_No;
+ElsIf P_Doc_Typ = 608 Then -- Leave Request
+From FAS_INV_MST
+ElsIf P_Doc_Typ = 609 Then -- Leave Request
+ELSIf P_Doc_Typ = 610 Then -- -- Evaluation
+ELSIf P_Doc_Typ = 611 Then -- -- Merge
+From FAS_MRG_MST
+ELSIf P_Doc_Typ = 613 Then -- -- HOLD
+From FAS_HOLD_MST
+where Brn_No = P_Brn_No
+AND HOLD_TYP = P_TYP_NO;
+Return(V_Doc_No);
+Return(null);
+END Get_Doc_No;
+P_Doc_No In Number ) RETURN NUMBER IS
+V_Doc_Srl Number;
+If P_Doc_Typ Is Not Null Then
+V_Doc_Srl := P_Brn_Year||lpad(P_Brn_no,6,0)||lpad(P_Doc_Typ,5,0)||P_Doc_No;
+Else -- - Serial By Branch + Type
+V_Doc_Srl := P_Brn_Year||lpad(P_Brn_no,6,0)||lpad(P_Doc_Typ,5,0)||P_Typ_No||P_Doc_No;
+Return (V_Doc_Srl );
+Return (Null );
+--Return (Null );
+Raise_Application_Error (-20002,'Error When Select Serial Typ For Document , '||Sqlerrm);
+END Get_Doc_Srl;
+dit_Ref,0)<>1
+ALL_USERS
+DUAL
+/TMP1/IAS_GET_ALL_FLD_TBL_FNC
+IAS_DBS_SYS_PKG
+"PKG INIT"CREATE_VIEW_MULTI_YEAR_PRC"C_USR"<cursor ptr>"USERNAME"C_TBL_NM"TBL_NAME"VW_NAME"V_ALL_FLD"V_SQLSTR"V_SQLSTR1"V_SQLSTR2"V_FRST_USR"I"I_USR"USR"C_FIELD"COLUMN_NAME"FIELD"V_SQL"B""
+d tg
+d(tg
+CREATE Or Replace VIEW
+SELECT ROWID ROW_ID,1 UMARKER ,
+IAS_V_ITEM_MOVEMENT_YR
+IAS_V_POST_DTL_YR
+Where Doc_Type <> 0
+IAS_V_GR_DETAIL_YR
+Where Pi_Type <> 0
+UNION ALL
+SELECT ROWID ROW_ID,2 UMARKER ,
+WHERE 1 = 2
+VIEW
+IAS_DBS_SYS_PKGIAS20142CHECK_OBJECTI
+IAS_V_WHTRNS_MST_YR
+IAS_V_WHTRNS_DTL_YR
+IAS_V_BILL_MST_YR
+IAS_V_BILL_DTL_YR
+IAS_V_RT_BILL_MST_YR
+IAS_V_RT_BILL_DTL_YR
+IAS_V_PI_BILL_MST_YR
+IAS_V_PI_BILL_DTL_YR
+IAS_V_PR_BILL_MST_YR
+IAS_V_PR_BILL_DTL_YR
+IAS_V_P_ORDER_MST_YR
+IAS_V_P_ORDER_DTL_YR
+IAS_V_P_REQUEST_YR
+IAS_V_P_REQUEST_DETAIL_YR
+PJ_NO
+Union All
+.Ias_Post_Dtl
+IAS_V_POST_DTL_OPN_YR
+CREATE View IAS_V_POST_DTL_OPN_YR AS
+SELECT USERNAME FROM ALL_USERS WHERE USERNAME LIKE ''IAS%'' AND SUBSTR(USERNAME,8) = SUBSTR(USER,8) ORDER BY USERNAME"SELECT TBL_NAME,VW_NAME FROM (SELECT ''ITEM_MOVEMENT'' TBL_NAME,''IAS_V_ITEM_MOVEMENT_YR'' VW_NAME FROM DUAL UNION SELECT ''GR_DETAIL'' TBL_NAME,''IAS_V_GR_DETAIL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_WHTRNS_MST'' TBL_NAME,''IAS_V_WHTRNS_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_WHTRNS_DTL'' TBL_NAME,''IAS_V_WHTRNS_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_POST_DTL'' TBL_NAME,''IAS_V_POST_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_BILL_MST'' TBL_NAME,''IAS_V_BILL_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_BILL_DTL'' TBL_NAME,''IAS_V_BILL_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_RT_BILL_MST'' TBL_NAME,''IAS_V_RT_BILL_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_RT_BILL_DTL'' TBL_NAME,''IAS_V_RT_BILL_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_PI_BILL_MST'' TBL_NAME,''IAS_V_PI_BILL_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_PI_BILL_DTL'' TBL_NAME,''IAS_V_PI_BILL_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_PR_BILL_MST'' TBL_NAME,''IAS_V_PR_BILL_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_PR_BILL_DTL'' TBL_NAME,''IAS_V_PR_BILL_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''P_ORDER'' TBL_NAME,''IAS_V_P_ORDER_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''P_ORDER_DETAIL'' TBL_NAME,''IAS_V_P_ORDER_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''P_REQUEST'' TBL_NAME,''IAS_V_P_REQUEST_YR'' VW_NAME FROM DUAL UNION SELECT ''P_REQUEST_DETAIL'' TBL_NAME,''IAS_V_P_REQUEST_DETAIL_YR'' VW_NAME FROM DUAL UNION SELECT ''MASTER_JOURNAL_V'' TBL_NAME,''GLS_V_JRNL_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''DETAIL_JOURNAL_V'' TBL_NAME,''GLS_V_JRNL_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''VOUCHERS'' TBL_NAME,''GLS_V_VCHR_MST_YR'' VW_NAME FROM DUAL UNION
+SELECT ''VOUCHER_DETAIL'' TBL_NAME,''GLS_V_VCHR_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_RQ_VCHR_MST'' TBL_NAME,''GLS_V_RQ_VCHR_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_RQ_VCHR_DTL'' TBL_NAME,''GLS_V_RQ_VCHR_DTL_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_RQ_JRNL_MST'' TBL_NAME,''GLS_V_RQ_JRNL_MST_YR'' VW_NAME FROM DUAL UNION SELECT ''IAS_RQ_JRNL_DTL'' TBL_NAME,''GLS_V_RQ_JRNL_DTL_YR'' VW_NAME FROM DUAL )"SELECT USERNAME FROM ALL_USERS WHERE USERNAME LIKE ''IAS%'' AND SUBSTR(USERNAME,8) = SUBSTR(USER,8) ORDER BY USERNAME DESC"SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ''IAS_POST_DTL'' AND COLUMN_NAME NOT IN ( ''DOC_NO_REF'',''DOC_JV_TYPE_REF'',''DOC_TYPE_REF'',''DOC_SER_REF'' )ORDER BY COLUMN_NAME"
+"PKG INIT"ALTER_QTY_SIZE_PRC"C"<cursor ptr>"TABLE_NAME"COLUMN_NAME"DATA_TYPE"DATA_TYPE_MOD"DATA_TYPE_OWNER"DATA_LENGTH"DATA_PRECISION"DATA_SCALE"NULLABLE"COLUMN_ID"DEFAULT_LENGTH"DATA_DEFAULT"NUM_DISTINCT"LOW_VALUE"HIGH_VALUE"DENSITY"NUM_NULLS"NUM_BUCKETS"LAST_ANALYZED"SAMPLE_SIZE"CHARACTER_SET_NAME"CHAR_COL_DECL_LENGTH"GLOBAL_STATS"USER_STATS"AVG_COL_LEN"CHAR_LENGTH"CHAR_USED"V80_FMT_IMAGE"DATA_UPGRADED"HISTOGRAM"I""
+ALTER TABLE
+MODIFY (
+NUMBER)
+SELECT * FROM USER_TAB_COLUMNS WHERE UPPER(COLUMN_NAME) LIKE (''%QTY%'') AND TABLE_NAME LIKE ''GLS%'' AND DATA_PRECISION = 6"
+"PKG INIT"GET_LIB_DATE""
+14/11/2016
+"PKG INIT"DBA_GLS_SYS_SCRIPT""
+"GLS_VIEW_PKG"VIEW_PRC""
+"GLS_TRIGGER_PKG"TRIGGER_PRC""
+"GLS_TABLE_PKG"TABLE_PRC""
+"GLS_TABLE_FILED_PKG"TABLE_FILED_PRC"P_ENT""
+"GLS_INSRT_FORM_DTL_PKG"INSRT_FORM_DTL_PRC"INSRT_FORM_PRIV_PRC""
+"GLS_INSRT_DATA_PKG"INSRT_DEF_DATA_PRC"INSERT_FLG_PRC"INSERT_LOV_PRC"INSERT_LIST_PRC"INSRT_FRM_FLD_PRC""
+(.173<
+%6;;;FW
+'8===HY
+'/7?EHJLNPRT
+AB*l*
+$'-069;=?A
+%(.068>@FHNPRTVXZ\
+`````
+(068>A
+LRSY\
+]_acegi
+%(.17:@BHKMOQSU
+(.17:<
+$&,/
+DJKQT
+UW]`
+acil
+moqsuwy{
+08>@FI
+"&(4<CIMQSZ
+````
+X^agjpsy|
+!%')-/379;=?AEGKOQSW[_
+ejoty~
+%(+.47:@CFILORSV\_eknqw}
+!"#$%

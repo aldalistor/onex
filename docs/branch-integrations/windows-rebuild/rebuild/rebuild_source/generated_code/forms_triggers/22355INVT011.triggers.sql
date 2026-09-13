@@ -1,0 +1,74 @@
+-- GENERATED ORACLE FORMS TRIGGERS — 22355INVT011.fmx
+-- These are Forms Builder trigger bodies, not SQL*Plus statements.
+-- Status: SCAFFOLD_ONLY; map exact blocks/items from FMB/source before use.
+-- Package wrapper: RB_F_22355INVT011_9F423
+
+-- PRE-FORM
+BEGIN
+  RB_F_22355INVT011_9F423.initialize('22355INVT011');
+EXCEPTION
+  WHEN OTHERS THEN
+    MESSAGE('Initialization failed: ' || SQLERRM);
+    RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- WHEN-NEW-FORM-INSTANCE
+BEGIN
+  RB_F_22355INVT011_9F423.initialize('22355INVT011');
+END;
+
+-- KEY-COMMIT
+BEGIN
+  RB_F_22355INVT011_9F423.save_document(NULL);
+  COMMIT_FORM;
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+    MESSAGE('Save failed: ' || SQLERRM);
+    RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- KEY-EXIT
+BEGIN
+  EXIT_FORM;
+END;
+
+-- WHEN-VALIDATE-RECORD
+BEGIN
+  RB_F_22355INVT011_9F423.validate_before_save(NULL);
+EXCEPTION
+  WHEN OTHERS THEN
+    MESSAGE('Validation failed: ' || SQLERRM);
+    RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- WHEN-BUTTON-PRESSED: SAVE
+BEGIN
+  RB_F_22355INVT011_9F423.save_document(NULL);
+  COMMIT_FORM;
+END;
+
+-- WHEN-BUTTON-PRESSED: POST
+BEGIN
+  RB_F_22355INVT011_9F423.post_document(NULL);
+  COMMIT_FORM;
+END;
+
+-- WHEN-BUTTON-PRESSED: REVERSE
+BEGIN
+  RB_F_22355INVT011_9F423.reverse_document(NULL);
+  COMMIT_FORM;
+END;
+
+-- WHEN-BUTTON-PRESSED: PRINT
+BEGIN
+  RB_F_22355INVT011_9F423.print_document(NULL);
+END;
+
+-- ON-ERROR
+BEGIN
+  MESSAGE('Oracle Forms error: ' || ERROR_TYPE || '-' || TO_CHAR(ERROR_CODE));
+  RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- Observed catalog indicators: procedures=56, triggers=9, tables=218, risks=credentials,ddl_privilege,destructive,windows_native

@@ -1,0 +1,654 @@
+[
+  {
+    "name": "IAS_DATE_LOCK_USER_SCR",
+    "line": 166643,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UFD",
+        "definition": "DATE"
+      },
+      {
+        "name": "UTD",
+        "definition": "DATE"
+      },
+      {
+        "name": "LFD",
+        "definition": "DATE"
+      },
+      {
+        "name": "LTD",
+        "definition": "DATE"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_CNT",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "PR_REP",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "AD_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      },
+      {
+        "name": "UP_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_DATE_LOCK_USER_SCR\" (\"U_ID\" NUMBER(5, 0), \"FORM_NO\" NUMBER(5, 0), \"UFD\" DATE, \"UTD\" DATE, \"LFD\" DATE, \"LTD\" DATE, \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"UP_CNT\" NUMBER(10, 0), \"PR_REP\" NUMBER(10, 0), \"AD_TRMNL_NM\" VARCHAR2(50), \"UP_TRMNL_NM\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_FAVORITE_SCR",
+    "line": 167663,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "ORDR_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "SYS_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "PR_REP",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "UP_CNT",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "AD_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      },
+      {
+        "name": "UP_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_FAVORITE_SCR\" (\"U_ID\" NUMBER(5, 0), \"FORM_NO\" NUMBER(5, 0), \"ORDR_NO\" NUMBER(5, 0), \"SYS_NO\" NUMBER(5, 0), \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"PR_REP\" NUMBER(10, 0), \"UP_CNT\" NUMBER(10, 0), \"AD_TRMNL_NM\" VARCHAR2(50), \"UP_TRMNL_NM\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_FORM_NAME",
+    "line": 167687,
+    "columns": [
+      {
+        "name": "LANG_NO",
+        "definition": "NUMBER(2, 0)"
+      },
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "FORM_NAME",
+        "definition": "VARCHAR2(60)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_FORM_NAME\" (\"LANG_NO\" NUMBER(2, 0), \"FORM_NO\" NUMBER(5, 0), \"FORM_NAME\" VARCHAR2(60))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_GEN\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_FRM_FLD_PRIV",
+    "line": 168787,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "TAB_NAME",
+        "definition": "VARCHAR2(30)"
+      },
+      {
+        "name": "FLD_NAME",
+        "definition": "VARCHAR2(30)"
+      },
+      {
+        "name": "PRIV_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "F_ORDER_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_FRM_FLD_PRIV\" (\"U_ID\" NUMBER(5, 0), \"FORM_NO\" NUMBER(5, 0), \"TAB_NAME\" VARCHAR2(30), \"FLD_NAME\" VARCHAR2(30), \"PRIV_FLAG\" NUMBER(1, 0), \"F_ORDER_NO\" NUMBER(5, 0), \"AD_DATE\" DATE, \"AD_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_MNDTRY_SCR_FIELDS",
+    "line": 216998,
+    "columns": [
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER"
+      },
+      {
+        "name": "FLD_NM",
+        "definition": "VARCHAR2(60)"
+      },
+      {
+        "name": "FLD_ST",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "TBL_NM",
+        "definition": "VARCHAR2(60)"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_CNT",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "PR_REP",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "AD_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      },
+      {
+        "name": "UP_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_MNDTRY_SCR_FIELDS\" (\"FORM_NO\" NUMBER, \"FLD_NM\" VARCHAR2(60), \"FLD_ST\" NUMBER(1, 0), \"TBL_NM\" VARCHAR2(60), \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"UP_CNT\" NUMBER(10, 0), \"PR_REP\" NUMBER(10, 0), \"AD_TRMNL_NM\" VARCHAR2(50), \"UP_TRMNL_NM\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_GEN\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_USER_GROUP",
+    "line": 260163,
+    "columns": [
+      {
+        "name": "GROUP_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "GROUP_A_NAME",
+        "definition": "VARCHAR2(100) NOT NULL ENABLE"
+      },
+      {
+        "name": "GROUP_E_NAME",
+        "definition": "VARCHAR2(100)"
+      },
+      {
+        "name": "ADMIN_USER",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_CNT",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "PR_REP",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "AD_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      },
+      {
+        "name": "UP_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_USER_GROUP\" (\"GROUP_NO\" NUMBER(5, 0), \"GROUP_A_NAME\" VARCHAR2(100) NOT NULL ENABLE, \"GROUP_E_NAME\" VARCHAR2(100), \"ADMIN_USER\" NUMBER(1, 0), \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"UP_CNT\" NUMBER(10, 0), \"PR_REP\" NUMBER(10, 0), \"AD_TRMNL_NM\" VARCHAR2(50), \"UP_TRMNL_NM\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_USER_HEAD",
+    "line": 260192,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "BRN_YEAR",
+        "definition": "NUMBER(4, 0)"
+      },
+      {
+        "name": "CMP_NO",
+        "definition": "NUMBER(3, 0)"
+      },
+      {
+        "name": "BRN_NO",
+        "definition": "NUMBER(6, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "CMP_ANAME",
+        "definition": "VARCHAR2(40) NOT NULL ENABLE"
+      },
+      {
+        "name": "CMP_ENAME",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_ADES",
+        "definition": "VARCHAR2(40) NOT NULL ENABLE"
+      },
+      {
+        "name": "BRN_EDES",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_AADD",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_EADD",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_ATELE",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_ETELE",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_AFAX",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_EFAX",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_ABOX",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "BRN_EBOX",
+        "definition": "VARCHAR2(40)"
+      },
+      {
+        "name": "CMP_IMG",
+        "definition": "VARCHAR2(30)"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "BRN_USR",
+        "definition": "NUMBER(3, 0)"
+      },
+      {
+        "name": "UP_CNT",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "PR_REP",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "AD_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      },
+      {
+        "name": "UP_TRMNL_NM",
+        "definition": "VARCHAR2(50)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_USER_HEAD\" (\"U_ID\" NUMBER(5, 0), \"BRN_YEAR\" NUMBER(4, 0), \"CMP_NO\" NUMBER(3, 0), \"BRN_NO\" NUMBER(6, 0) NOT NULL ENABLE, \"CMP_ANAME\" VARCHAR2(40) NOT NULL ENABLE, \"CMP_ENAME\" VARCHAR2(40), \"BRN_ADES\" VARCHAR2(40) NOT NULL ENABLE, \"BRN_EDES\" VARCHAR2(40), \"BRN_AADD\" VARCHAR2(40), \"BRN_EADD\" VARCHAR2(40), \"BRN_ATELE\" VARCHAR2(40), \"BRN_ETELE\" VARCHAR2(40), \"BRN_AFAX\" VARCHAR2(40), \"BRN_EFAX\" VARCHAR2(40), \"BRN_ABOX\" VARCHAR2(40), \"BRN_EBOX\" VARCHAR2(40), \"CMP_IMG\" VARCHAR2(30), \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"BRN_USR\" NUMBER(3, 0), \"UP_CNT\" NUMBER(10, 0), \"PR_REP\" NUMBER(10, 0), \"AD_TRMNL_NM\" VARCHAR2(50), \"UP_TRMNL_NM\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "IAS_USR_LGN_HSTRY",
+    "line": 260238,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "TRMNL_NM",
+        "definition": "VARCHAR2(30)"
+      },
+      {
+        "name": "LGN_TYP",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "LGN_OUT_DATE",
+        "definition": "DATE NOT NULL ENABLE"
+      },
+      {
+        "name": "LNG_NO",
+        "definition": "NUMBER(3, 0)"
+      },
+      {
+        "name": "CMP_NO",
+        "definition": "NUMBER(3, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "BRN_NO",
+        "definition": "NUMBER(6, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "BRN_YEAR",
+        "definition": "NUMBER(4, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "BRN_USR",
+        "definition": "NUMBER(3, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "APPL_NO",
+        "definition": "NUMBER"
+      },
+      {
+        "name": "HSTRY_NO",
+        "definition": "NUMBER"
+      }
+    ],
+    "ddl": "CREATE TABLE \"IAS_USR_LGN_HSTRY\" (\"U_ID\" NUMBER(5, 0) NOT NULL ENABLE, \"TRMNL_NM\" VARCHAR2(30), \"LGN_TYP\" NUMBER(1, 0), \"LGN_OUT_DATE\" DATE NOT NULL ENABLE, \"LNG_NO\" NUMBER(3, 0), \"CMP_NO\" NUMBER(3, 0) NOT NULL ENABLE, \"BRN_NO\" NUMBER(6, 0) NOT NULL ENABLE, \"BRN_YEAR\" NUMBER(4, 0) NOT NULL ENABLE, \"BRN_USR\" NUMBER(3, 0) NOT NULL ENABLE, \"APPL_NO\" NUMBER, \"HSTRY_NO\" NUMBER)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_DATA_HISTORY\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "PRIVILEGE",
+    "line": 310942,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "INCLUDE_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "AD_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "DEL_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "MOD_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "VIEW_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "PRINT_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "VWREP_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "VRFY_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "PST_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "F_ORDER_NO",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"PRIVILEGE\" (\"U_ID\" NUMBER(5, 0), \"FORM_NO\" NUMBER(5, 0), \"INCLUDE_FLAG\" NUMBER(1, 0), \"AD_FLAG\" NUMBER(1, 0), \"DEL_FLAG\" NUMBER(1, 0), \"MOD_FLAG\" NUMBER(1, 0), \"VIEW_FLAG\" NUMBER(1, 0), \"PRINT_FLAG\" NUMBER(1, 0), \"VWREP_FLAG\" NUMBER(1, 0), \"VRFY_FLAG\" NUMBER(1, 0), \"PST_FLAG\" NUMBER(1, 0), \"F_ORDER_NO\" NUMBER(5, 0), \"AD_DATE\" DATE, \"AD_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 196608 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "S_BRN_USR_PRIV",
+    "line": 329252,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "BRN_NO",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "ADD_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "VIEW_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "FILL_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      }
+    ],
+    "ddl": "CREATE TABLE \"S_BRN_USR_PRIV\" (\"U_ID\" NUMBER(5, 0), \"BRN_NO\" NUMBER(10, 0), \"ADD_FLAG\" NUMBER(1, 0), \"VIEW_FLAG\" NUMBER(1, 0), \"FILL_FLAG\" NUMBER(1, 0), \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "S_FLAGS_PRIV",
+    "line": 338295,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "FLG_CODE",
+        "definition": "VARCHAR2(30)"
+      },
+      {
+        "name": "FLG_VALUE",
+        "definition": "NUMBER(10, 0)"
+      },
+      {
+        "name": "PRIV_FLAG",
+        "definition": "NUMBER(1, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      }
+    ],
+    "ddl": "CREATE TABLE \"S_FLAGS_PRIV\" (\"U_ID\" NUMBER(5, 0), \"FLG_CODE\" VARCHAR2(30), \"FLG_VALUE\" NUMBER(10, 0), \"PRIV_FLAG\" NUMBER(1, 0), \"AD_DATE\" DATE, \"AD_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  },
+  {
+    "name": "S_USR_TP_PRV",
+    "line": 344802,
+    "columns": [
+      {
+        "name": "U_ID",
+        "definition": "NUMBER(5, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "FORM_NO",
+        "definition": "NUMBER(5, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "OBJ_NM",
+        "definition": "VARCHAR2(60) NOT NULL ENABLE"
+      },
+      {
+        "name": "TP_NM",
+        "definition": "VARCHAR2(30) NOT NULL ENABLE"
+      },
+      {
+        "name": "PRV_FLG",
+        "definition": "NUMBER(1, 0) NOT NULL ENABLE"
+      },
+      {
+        "name": "AD_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "AD_DATE",
+        "definition": "DATE"
+      },
+      {
+        "name": "UP_U_ID",
+        "definition": "NUMBER(5, 0)"
+      },
+      {
+        "name": "UP_DATE",
+        "definition": "DATE"
+      }
+    ],
+    "ddl": "CREATE TABLE \"S_USR_TP_PRV\" (\"U_ID\" NUMBER(5, 0) NOT NULL ENABLE, \"FORM_NO\" NUMBER(5, 0) NOT NULL ENABLE, \"OBJ_NM\" VARCHAR2(60) NOT NULL ENABLE, \"TP_NM\" VARCHAR2(30) NOT NULL ENABLE, \"PRV_FLG\" NUMBER(1, 0) NOT NULL ENABLE, \"AD_U_ID\" NUMBER(5, 0), \"AD_DATE\" DATE, \"UP_U_ID\" NUMBER(5, 0), \"UP_DATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"IAS_ADM_DATA\" LOGGING NOCOMPRESS"
+  }
+]

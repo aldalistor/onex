@@ -1,0 +1,38 @@
+flowchart LR
+  Menu[YSERP_MNU.mmx\n1095 Forms] --> Domains[1490 Oracle Forms]
+  POSMenu[YSPOS_MNU.mmx] --> POS[POS Forms\n52]
+  MRPMenu[MRPSYSTEM.mmx] --> MRP[MRP/Treasury Forms\n201]
+  Domains --> AR[AR/Receivables\n106]
+  Domains --> AP[AP/Purchasing\n58]
+  Domains --> GL[GL/Finance\n156]
+  Domains --> INV[Inventory/Stock\n298]
+  Domains --> HR[HR\n207]
+  Domains --> ADMIN[Admin/System\n37]
+  Domains --> ASSET[Assets/Maintenance\n39]
+  Domains --> OPS[Other Finance/Operations\n106]
+  AR --> ARST[ARST004 / ARST006 / ARST023]
+  AP --> APST[APST005 / APST003 / APST015]
+  GL --> GLST[GLST001 / GLST002 / GLST004]
+  POS --> POST[POST001 / POST002 / POST008]
+  MRP --> MRPACS[MRPACS004 / MRPSFC025]
+  AR --> Shared[YSERP_LIB + IAS_*_PKG]
+  AP --> Shared
+  GL --> Shared
+  INV --> Shared
+  HR --> Shared
+  POS --> POSLib[YSPOS_LIB.plx]
+  Shared --> ERP[YSERP_LIB.plx + ERPSTPLIB]
+  ERP --> Oracle[Oracle Database\nTables/Views/Packages]
+  POSLib --> Oracle
+  Security[IASLIBSEC.plx + ERP_LOGIN/POSLGN] --> Oracle
+  Security --> Native[32-bit Windows DLL/OCX/EXE]
+  ERP --> Native
+  Native --> Device[USB/Serial/IE/NET/Excel]
+  Oracle --> Posting[Posting / GL / AR / Inventory]
+  Posting --> Reports[Reports / Excel / Print]
+  classDef domain fill:#dbeafe,stroke:#1d4ed8,color:#111;
+  classDef risk fill:#fee2e2,stroke:#b91c1c,color:#111;
+  classDef core fill:#dcfce7,stroke:#15803d,color:#111;
+  class AR,AP,GL,INV,HR,ADMIN,ASSET,OPS,POS,MRP,ARST,APST,GLST,POST,MRPACS domain;
+  class Shared,ERP,POSLib,Oracle,Posting,Reports core;
+  class Security,Native,Device risk;

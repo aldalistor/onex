@@ -1,0 +1,74 @@
+-- GENERATED ORACLE FORMS TRIGGERS — MTXCHKR03.fmx
+-- These are Forms Builder trigger bodies, not SQL*Plus statements.
+-- Status: SCAFFOLD_ONLY; map exact blocks/items from FMB/source before use.
+-- Package wrapper: RB_MTXCHKR03_D2903
+
+-- PRE-FORM
+BEGIN
+  RB_MTXCHKR03_D2903.initialize('MTXCHKR03');
+EXCEPTION
+  WHEN OTHERS THEN
+    MESSAGE('Initialization failed: ' || SQLERRM);
+    RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- WHEN-NEW-FORM-INSTANCE
+BEGIN
+  RB_MTXCHKR03_D2903.initialize('MTXCHKR03');
+END;
+
+-- KEY-COMMIT
+BEGIN
+  RB_MTXCHKR03_D2903.save_document(NULL);
+  COMMIT_FORM;
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+    MESSAGE('Save failed: ' || SQLERRM);
+    RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- KEY-EXIT
+BEGIN
+  EXIT_FORM;
+END;
+
+-- WHEN-VALIDATE-RECORD
+BEGIN
+  RB_MTXCHKR03_D2903.validate_before_save(NULL);
+EXCEPTION
+  WHEN OTHERS THEN
+    MESSAGE('Validation failed: ' || SQLERRM);
+    RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- WHEN-BUTTON-PRESSED: SAVE
+BEGIN
+  RB_MTXCHKR03_D2903.save_document(NULL);
+  COMMIT_FORM;
+END;
+
+-- WHEN-BUTTON-PRESSED: POST
+BEGIN
+  RB_MTXCHKR03_D2903.post_document(NULL);
+  COMMIT_FORM;
+END;
+
+-- WHEN-BUTTON-PRESSED: REVERSE
+BEGIN
+  RB_MTXCHKR03_D2903.reverse_document(NULL);
+  COMMIT_FORM;
+END;
+
+-- WHEN-BUTTON-PRESSED: PRINT
+BEGIN
+  RB_MTXCHKR03_D2903.print_document(NULL);
+END;
+
+-- ON-ERROR
+BEGIN
+  MESSAGE('Oracle Forms error: ' || ERROR_TYPE || '-' || TO_CHAR(ERROR_CODE));
+  RAISE FORM_TRIGGER_FAILURE;
+END;
+
+-- Observed catalog indicators: procedures=7, triggers=0, tables=28, risks=destructive,windows_native

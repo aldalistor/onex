@@ -1,0 +1,4488 @@
+ROS.60050
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+No namespace was supplied.
+No file was supplied.
+Operation aborted by user.
+File %[1]s is not a valid PL/SQL source file.
+A library with this name already exists. Overwrite it?
+Debug Actions
+- Displays detailed information about the specified debug action.
+Libraries
+- Displays detailed information about an attached library.
+Tables
+- Displays detailed information about database tables.
+Views
+- Displays detailed information about database views.
+Load Path
+- Displays detailed information about the current load path.
+Locals
+- Displays the name, type and value of a variable or parameter that is
+local to the current scope location.
+Program Units
+- Displays detailed information about a specific program unit instance.
+The information displayed includes the program unit name, its type,
+whether it is compiled, whether it is open for editing, and cross
+reference information.
+Version
+- Displays version information about the development environment.
+DESCRIBE <object>
+<object> ::=
+<program-unit> |
+<library> |
+<table> |
+<view> |
+<debug-action> |
+<local> |
+LOADPATH |
+VERSION |
+NAMESPACE
+<program-unit> ::= <pu-name-spec> [ SPECIFICATION | BODY ]
+<pu-name-spec> ::=
+{ PROGRAMUNIT <programunit-name> } |
+{ SUBPROGRAM <subprogram-name> } |
+{ FUNCTION <function-name> } |
+{ PROCEDURE <procedure-name> }
+{ PACKAGE <package-name> }
+<library> := { LIBRARY <library-name> }
+<table> := { TABLE <table-name> }
+<view> := { VIEW <view-name> }
+<debug-action> ::=
+{ ACTION <debug-action-id> } |
+{ BREAKPOINT <debug-action-id> } |
+{ TRIGGER <debug-action-id> }
+<local> ::=
+{ LOCAL <param-or-var-name> } |
+{ PARAMETER <param-name> } |
+{ VARIABLE <var-name> }
+DESCRIBE
+Breakpoint: %d
+Program Unit: %[1]s %[2]s
+Line: %d
+%[1]s: %[2]s
+Compiled: YES
+Compiled: NO
+Open: YES
+Open: NO
+References:
+%[1]s %[2]s
+IN/OUT
+NUMBER
+DATE
+CHAR(%d)
+UNKNOWN
+Bind Var :%[1]s %[2]s %[3]s
+Library: %s
+Mode: Attached (READONLY)
+Mode: Open (READWRITE)
+Contents:
+External Location: %s
+Current Directory
+Current DB Connection
+External Location: INTERPRETER
+Referenced by:
+Load Path:
+TOOL_PLSQL
+PLSLFID_ST
+I_PRELOA
+&PACKAGE BODY WIN_API_PRELOAD IS
+DLL_LOCATION VARCHAR2(2000);
+PROCEDURE SET_LOAD_LOC (Location IN VARCHAR2) is
+BEGIN
+DLL_LOCATION := Location;
+END SET_LOAD_LOC;
+FUNCTION GET_LOAD_LOC RETURN VARCHAR2 IS
+RETURN DLL_LOCATION;
+END GET_LOAD_LOC;
+END WIN_API_PRELOAD;
+/D2KWUTIL/WIN_API_PRELOAD
+STANDARD
+"WIN_API_PRELOAD"DLL_LOCATION"SET_LOAD_LOC"LOCATION"GET_LOAD_LOC""
+SET_LOAD_LOC
+GET_LOAD_LOC
+PL/SQL DE
+PL/SQL Library
+MINGUS
+D2KWUTIL
+p @*
+WIN_API
+$p%@.
+WIN_API_BITOP
+WIN_API_DEBUG
+%p&@2
+WIN_API_DIALOG
+-p.@:
+WIN_API_DIRECTORY_LIST
+*p+@2
+WIN_API_ENVIRONMENT
+#p$@.
+WIN_API_FILE
+&p'@.
+WIN_API_PRELOAD
+WIN_API_SESSION
+WIN_API_SHELL
+WIN_API_UTILITY
+[!C!CV
+PD,DDDD
+GDDDD
+?MT>7-
+A`PZ,
+2TeQa(d
+}DDDDDDDDDDDDL
+FaCL88
+~U}]__
+3bf>
+x3bf>
+y3bf
+o}[j}
+"b!""
+%-qK
+K>lv
+$C!C
+%{i{{>
+Ap8T6
+_XX_
+<mKR
+[r[2
+A`7d
+qDDD
+xS`I
+3i1A8
+033oF
+a>sf$03
+YTX<
+@PQa
+V?Ra
+IUPACKAGE BODY WIN_API_UTILITY is
+-- Constants for maintaining the Function Handle Array
+-- These should be unique through the Whole Library
+-- Utility has indexes in the range 700 - 799
+iDelFile CONSTANT PLS_INTEGER := 700;
+iMoveFile CONSTANT PLS_INTEGER := 701;
+iCopyFile CONSTANT PLS_INTEGER := 702;
+iCreateDir CONSTANT PLS_INTEGER := 703;
+iDeleteDir CONSTANT PLS_INTEGER := 704;
+iTmpFile CONSTANT PLS_INTEGER := 705;
+iActiveWin CONSTANT PLS_INTEGER := 706;
+iParentWin
+CONSTANT PLS_INTEGER := 707;
+iPlaySound CONSTANT PLS_INTEGER := 708;
+iSleep CONSTANT PLS_INTEGER := 709;
+iPeekButtonClick CONSTANT PLS_INTEGER := 710;
+iGetTickCount CONSTANT PLS_INTEGER := 711;
+-- Private Program unit headers
+FUNCTION d2kwutil_DelFile( hFunc IN ORA_FFI.funcHandleType,
+FileName IN OUT VARCHAR2) return PLS_INTEGER;
+FUNCTION d2kwutil_MoveFile ( hFunc IN ORA_FFI.funcHandleType,
+OldFileName IN OUT VARCHAR2,
+NewFileName IN OUT VARCHAR2) return PLS_INTEGER;
+FUNCTION d2kwutil_CopyFile ( hFunc IN ORA_FFI.funcHandleType,
+NewFileName IN OUT VARCHAR2,
+Flags IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_CreateDir( hFunc IN ORA_FFI.funcHandleType,
+DirectoryPath IN OUT VARCHAR2) return PLS_INTEGER;
+FUNCTION d2kwutil_DeleteDir( hFunc IN ORA_FFI.funcHandleType,
+FUNCTION d2kwutil_TmpFile ( hFunc IN ORA_FFI.funcHandleType,
+Path IN OUT VARCHAR2,
+Prefix IN OUT VARCHAR2,
+FUNCTION d2kwutil_ActiveWin( hFunc IN ORA_FFI.funcHandleType) return PLS_INTEGER;
+FUNCTION d2kwutil_ParentWin( hFunc IN ORA_FFI.funcHandleType,
+wnd IN PLS_INTEGER,
+Recursive IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_PlaySound( hFunc IN ORA_FFI.funcHandleType,
+FileName IN OUT VARCHAR2,
+PROCEDURE d2kwutil_Sleep ( hFunc IN ORA_FFI.funcHandleType,
+SleepTime IN PLS_INTEGER);
+FUNCTION d2kwutil_PeekButtonClick ( hFunc IN ORA_FFI.funcHandleType,
+hBtn IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_GetTickCount ( hFunc IN ORA_FFI.funcHandleType ) return PLS_INTEGER;
+-- Pragmas
+PRAGMA INTERFACE(C,d2kwutil_DelFile, 11265);
+PRAGMA INTERFACE(C,d2kwutil_MoveFile, 11265);
+PRAGMA INTERFACE(C,d2kwutil_CopyFile, 11265);
+PRAGMA INTERFACE(C,d2kwutil_CreateDir, 11265);
+PRAGMA INTERFACE(C,d2kwutil_DeleteDir, 11265);
+PRAGMA INTERFACE(C,d2kwutil_TmpFile, 11265);
+PRAGMA INTERFACE(C,d2kwutil_ActiveWin, 11265);
+PRAGMA INTERFACE(C,d2kwutil_ParentWin, 11265);
+PRAGMA INTERFACE(C,d2kwutil_PlaySound, 11265);
+PRAGMA INTERFACE(C,d2kwutil_Sleep, 11265);
+PRAGMA INTERFACE(C,d2kwutil_PeekButtonClick, 11265);
+PRAGMA INTERFACE(C,d2kwutil_GetTickCount, 11265);
+-- Public Bodies
+PROCEDURE Delete_File ( FileName IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) is
+iRC pls_integer := 0;
+vcBuff1 varchar2(512);
+begin
+Win_API_Debug.DebugLog(99,'Delete_File','Args: FileName="'||FileName||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+WIN_API.Clean_Error_Stack;
+if WIN_API.API_ENABLED then
+win_api.Register_function_call(iDelFile,'d2kwutil_DelFile','INT','*CHAR');
+vcBuff1 := FileName;
+iRC := d2kwutil_DelFile(win_api.FunctionHandle(iDelFile),vcBuff1);
+Win_API_Debug.DebugLog(99,'Delete_File','Result: RC='||to_char(iRC));
+else
+raise WIN_API.NOT_AVAILABLE;
+end if;
+if iRC = 0 then
+WIN_API.Add_error('Delete_File','Could not delete the file '||FileName);
+if RaiseExceptions then
+raise NO_DATA_FOUND;
+exception
+when NO_DATA_FOUND then
+raise;
+when WIN_API.NOT_AVAILABLE then
+Win_API.Add_error('Delete_File',Win_API.NoAPI);
+when others then
+Win_API.Add_error('Delete_File',Win_API.UError||WIN_API.Add_External_errors);
+end Delete_file;
+PROCEDURE Move_File ( OldFileName IN VARCHAR2,
+NewFileName IN VARCHAR2,
+iRC PLS_INTEGER := 0;
+vcBuff1 VARCHAR2(512);
+vcBuff2 VARCHAR2(512);
+Win_API_Debug.DebugLog(99,'Move_File','Args: OldFileName="'||OldFileName||'", NewFileName="'||NewFileName||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iMoveFile,'d2kwutil_MoveFile','INT','*CHAR,*CHAR');
+vcBuff1 := OldFileName;
+vcBuff2 := NewFileName;
+iRC := d2kwutil_MoveFile(win_api.FunctionHandle(iMoveFile),vcBuff1,vcBuff2);
+Win_API_Debug.DebugLog(99,'Move_File','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Move_File','Could not Move the file '||OldFileName||' to '||NewFileName);
+Win_API.Add_error('Move_File',Win_API.NoAPI);
+Win_API.Add_error('Move_File',Win_API.UError||WIN_API.Add_External_errors);
+end Move_file;
+PROCEDURE Copy_File ( OldFileName IN VARCHAR2,
+AllowOverWrite IN BOOLEAN DEFAULT FALSE,
+iBuff1 PLS_INTEGER := 0;
+Win_API_Debug.DebugLog(99,'Copy_File','Args: OldFileName="'||OldFileName||'", NewFileName="'||NewFileName||'", AllowOverWrite='||win_api_debug.booltochar(RaiseExceptions)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iCopyFile,'d2kwutil_CopyFile','INT','*CHAR,*CHAR,INT');
+if AllowOverWrite then
+iBuff1 := 0;
+iBuff1 := 1;
+iRC := d2kwutil_CopyFile(win_api.FunctionHandle(iCopyFile),vcBuff1,vcBuff2,iBuff1);
+Win_API_Debug.DebugLog(99,'Copy_File','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Copy_File','Could not copy the file '||OldFileName||' to '||NewFileName);
+Win_API.Add_error('Copy_File',Win_API.NoAPI);
+Win_API.Add_error('Copy_File', Win_API.UError||WIN_API.Add_External_errors);
+end Copy_file;
+PROCEDURE Create_Directory ( DirectoryPath IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE)
+vcBuff1 varchar2(261);
+Win_API_Debug.DebugLog(99,'Create_Directory','Args: DirectoryPath="'||DirectoryPath||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+if length(DirectoryPath) > 260 then
+WIN_API.Add_error('Create_Directory','Directory Path is too Long (Max length 260)');
+win_api.Register_function_call(iCreateDir,'d2kwutil_CreateDir','INT','*CHAR');
+vcBuff1 := DirectoryPath;
+iRC := d2kwutil_CreateDir(win_api.FunctionHandle(iCreateDir),vcBuff1);
+Win_API_Debug.DebugLog(99,'Create_Directory','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Create_Directory','Could not Create the Directory '||DirectoryPath);
+Win_API.Add_error('Create_Directory',Win_API.NoAPI);
+Win_API.Add_error('Create_Directory',Win_API.UError||WIN_API.Add_External_errors);
+end Create_Directory;
+PROCEDURE Delete_Directory ( DirectoryPath IN VARCHAR2,
+Win_API_Debug.DebugLog(99,'Delete_Directory','Args: DirectoryPath="'||DirectoryPath||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iDeleteDir,'d2kwutil_DeleteDir','INT','*CHAR');
+iRC := d2kwutil_DeleteDir(win_api.FunctionHandle(iDeleteDir),vcBuff1);
+Win_API_Debug.DebugLog(99,'Delete_Directory','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Delete_Directory','Could not Delete the Directory '||DirectoryPath||'. The directory may contain files or may not exist');
+Win_API.Add_error('Delete_Directory',Win_API.NoAPI);
+Win_API.Add_error('Delete_Directory',Win_API.UError||WIN_API.Add_External_errors);
+end Delete_Directory;
+FUNCTION Generate_Temp_Filename (Path IN VARCHAR2 DEFAULT NULL,
+Prefix IN VARCHAR2 DEFAULT 'D2K',
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2 is
+vcBuff2 VARCHAR2(4);
+vcBuff3 VARCHAR2(512);
+Win_API_Debug.DebugLog(99,'Generate_Temp_Filename','Args: Path="'||Path||'", Prefix="'||Prefix||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iTmpFile,'d2kwutil_TmpFile','INT','*CHAR,*CHAR,*CHAR');
+if Path is null then
+vcBuff1 := '.';
+elsif upper(Path) = '$TEMP$' then
+vcBuff1 := win_api_environment.get_temp_directory;
+vcBuff1 := Path;
+vcBuff2 := substr(Prefix,1,3);
+vcBuff3 := RPAD(' ',512,CHR(0));
+iRC := d2kwutil_TmpFile(win_api.FunctionHandle(iTmpFile),vcBuff1,vcBuff2,vcBuff3);
+Win_API_Debug.DebugLog(99,'Generate_Temp_Filename','Result: RC='||to_char(iRC)||' vcBuff3="'||vcBuff3||'"');
+if (iRC = 0 ) then
+WIN_API.Add_error(Generate_Temp_Filename,'Returned no value');
+if (RaiseExceptions) then
+return vcBuff3;
+PACKAGE BODY WIN_API_SHELL is
+-- Shell has indexes in the range 600 - 699
+iWinExec
+CONSTANT PLS_INTEGER := 600;
+iWinHelp
+CONSTANT PLS_INTEGER := 601;
+iMouse_x_y
+CONSTANT PLS_INTEGER := 602;
+iSendMsg
+CONSTANT PLS_INTEGER := 603;
+iSendKeys
+CONSTANT PLS_INTEGER := 604;
+iShellExecute CONSTANT PLS_INTEGER := 605;
+FUNCTION d2kwutil_WinExec ( hFunc IN ORA_FFI.funcHandleType,
+Command IN OUT VARCHAR2,
+WindowStyle IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_WinHelp( hFunc IN ORA_FFI.funcHandleType,
+HelpStyle IN PLS_INTEGER,
+OwnerWin IN PLS_INTEGER,
+PosSet IN PLS_INTEGER,
+XPos IN PLS_INTEGER,
+YPos IN PLS_INTEGER,
+Width IN PLS_INTEGER,
+Height IN PLS_INTEGER,
+WindowName IN VARCHAR2,
+TopicTarget IN PLS_INTEGER,
+SearchTarget IN OUT VARCHAR2) return PLS_INTEGER;
+PROCEDURE d2kwutil_Mouse_x_y ( hFunc IN ORA_FFI.funcHandleType,
+XPos IN OUT PLS_INTEGER,
+YPos IN OUT PLS_INTEGER);
+FUNCTION d2kwutil_SendMsg( hFunc IN ORA_FFI.funcHandleType,
+hWnd IN PLS_INTEGER,
+uMsg IN PLS_INTEGER,
+wParam IN PLS_INTEGER,
+lParam IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_SendKeys( hFunc IN ORA_FFI.funcHandleType,
+Keys IN OUT VARCHAR2) return PLS_INTEGER;
+FUNCTION d2kwutil_ShellExecute(hFunc IN ORA_FFI.funcHandleType,
+Operation
+IN OUT
+VARCHAR2,
+File
+Parameters
+Directory
+PROCEDURE Wrap_WinHelp ( CalledBy IN VARCHAR2,
+HelpFile IN VARCHAR2,
+Target IN VARCHAR2,
+HelpType IN PLS_INTEGER,
+SetPos IN PLS_INTEGER,
+HelpXPos IN PLS_INTEGER,
+HelpYPos IN PLS_INTEGER,
+HelpWidth IN PLS_INTEGER,
+HelpHeight IN PLS_INTEGER,
+HelpWindow IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE);
+PRAGMA INTERFACE(C,d2kwutil_WinExec,
+11265);
+PRAGMA INTERFACE(C,d2kwutil_WinHelp,
+PRAGMA INTERFACE(C,d2kwutil_Mouse_x_y,
+PRAGMA INTERFACE(C,d2kwutil_SendMsg,
+PRAGMA INTERFACE(C,d2kwutil_SendKeys,
+PRAGMA INTERFACE(C,d2
+kwutil_ShellExecute, 11265);
+PROCEDURE WinExec ( Command IN VARCHAR2,
+WindowStyle IN PLS_INTEGER DEFAULT WIN_API.SW_SHOWNORMAL,
+Win_API_Debug.DebugLog(99,'WinExec','Args: Command="'||Command||'", WindowStyle='||to_char(WindowStyle)||', RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+Win_API.Clean_Error_Stack;
+if Win_API.API_ENABLED then
+win_api.Register_function_call(iWinExec,'d2kwutil_WinExec','INT','*CHAR,INT');
+vcBuff1 := Command;
+iRC := d2kwutil_WinExec(win_api.FunctionHandle(iWinExec),vcBuff1,WindowStyle);
+Win_API_Debug.DebugLog(99,'WinExec','Result: RC='||to_char(iRC));
+if iRC < 32 then
+Win_API.Add_error('WinExec','Unable to execute '||Command||'(RC='||to_char(iRC)||')');
+Win_API.Add_error('WinExec',Win_API.NoAPI);
+Win_API.Add_error('WINEXEC',Win_API.UError||WIN_API.Add_External_errors);
+end WinExec;
+PROCEDURE StartFile ( DocumentFile IN VARCHAR2,
+vcExtension VARCHAR2(30);
+vcClass VARCHAR2(256);
+vcCmd VARCHAR2(1000);
+Win_API_Debug.DebugLog(99,'StartFile','Args: DocumentFile="'||DocumentFile||'", WindowStyle='||to_char(WindowStyle)||', RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+vcExtension := substr(DocumentFile,instr(DocumentFile,'.',-1));
+vcClass := WIN_API_ENVIRONMENT.Read_Registry('HKEY_CLASSES_ROOT\'||vcExtension, null, FALSE);
+if vcClass is NULL then /* not registered type */
+win_api.add_error('StartFile','Files of Type "'||vcExtension||'" do not have an associated application.');
+RAISE NO_DATA_FOUND;
+vcCmd := WIN_API_ENVIRONMENT.Read_Registry( 'HKEY_CLASSES_ROOT\'||vcClass||'\shell\open\command', null, FALSE);
+if vcCmd is NULL then /* This type of file cannot be opened */
+win_api.add_error('StartFile','Files of Class "'||vcClass||'" do not have an associated shell open command.');
+if instr(vcCmd, '%1') > 0 then
+vcCmd := replace(vcCmd, '%1', DocumentFile);
+vcCmd := vcCmd||' "'||DocumentFile||'"';
+WIN_API_SHELL.WinExec( vcCmd,WindowStyle,TRUE);
+RAISE;
+end StartFile;
+PROCEDURE WinHelp ( HelpFile IN VARCHAR2,
+Wrap_WinHelp('WinHelp',HelpFile,Target,HelpType,0,0,0,0,0,NULL,RaiseExceptions);
+end WinHelp;
+PROCEDURE WinHelpEx( HelpFile IN VARCHAR2,
+Window IN VARCHAR2,
+Wrap_WinHelp('WinHelpEx',HelpFile,Target,HelpType,1,Xpos,YPos,Width,Height,Window,RaiseExceptions);
+end WinHelpEx;
+iHLPTest pls_integer := 0;
+vcBuff2 varchar2(512);
+vcBuff3 varchar2(60);
+iBuff1 pls_integer;
+iBuff2 pls_integer;
+Win_API_Debug.DebugLog(99,'Wrap_WinHelp','Args: CalledBy="'||CalledBy||'", HelpFile="'||HelpFile||'", Target="'||Target||'", HelpType='||to_char(HelpType)||', SetPos='||to_char(SetPos)||', HelpXPos='||to_char(HelpXPos)||', HelpYPos='||to_char(HelpYPos)||', HelpWidth='||to_char(HelpWidth)||', HelpHeight='||to_char(HelpHeight)||', HelpWindow="'||HelpWindow||'", RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+win_api.Register_function_call(iWinHelp,'d2kwutil_WinHelp','INT','*CHAR,INT,INT,INT,INT,INT,INT,INT,*CHAR,LONG,*CHAR');
+-- check to see if help file exists.
+iHLPTest := win_api_file.File_Size(HelpFile,FALSE);
+if iHLPTest = 0 then
+Win_API.Add_error(CalledBy,'Unable to locate Help file: '||HelpFile);
+vcBuff1 := HelpFile;
+vcBuff2 := Target;
+vcBuff3 := HelpWindow;
+iBuff1 := WIN_API_UTILITY.GET_ACTIVE_WINDOW(FALSE);
+if HelpType in (WIN_API.HELP_KEY,WIN_API.HELP_PARTIALKEY) then
+NULL;
+elsif HelpType in (WIN_API.HELP_INDEX, WIN_API.HELP_QUIT,WIN_API.HELP_FINDER) then
+vcBuff2 := NULL;
+iBuff2 := 0;
+iBuff2 := to_number(Target);
+iRC := d2kwutil_WinHelp(win_api.FunctionHandle(iWinHelp),vcBuff1,HelpType,iBuff1,SetPos,HelpXPos,HelpYPos,HelpWidth,HelpHeight,vcBuff3,iBuff2,vcBuff2);
+Win_API_Debug.DebugLog(99,'Wrap_WinHelp','Result: RC='||to_char(iRC));
+Win_API.Add_error(CalledBy,'Unable to locate WINHELP.EXE');
+when VALUE_ERROR then
+Win_API.Add_error(CalledBy,'When accessing Help a string was supplied in place of a Topic number');
+Win_API.Add_error(CalledBy,Win_API.NoAPI);
+Win_API.Add_error(CalledBy,Win_API.UError||WIN_API.Add_External_errors);
+end Wrap_WinHelp;
+PROCEDURE MousePosition ( Xpos OUT NUMBER,
+Ypos OUT NUMBER) is
+iBuff1 pls_integer := 0;
+iBuff2 pls_integer := 0;
+Win_API_Debug.DebugLog(99,'MousePosition','Args: <No Arguments>');
+win_api.Register_function_call(iMouse_x_y,'d2kwutil_Mouse_x_y',NULL,'*INT,*INT');
+d2kwutil_Mouse_x_y(win_api.FunctionHandle(iMouse_x_y),iBuff1,iBuff2);
+Xpos := iBuff1;
+Ypos := iBuff2;
+Win_API_Debug.DebugLog(99,'MousePosition','Result: XPos='||to_char(iBuff1)||', YPos='||to_char(iBuff2));
+Win_API.Add_error('MousePosition',Win_API.NoAPI);
+Win_API.Add_error('MOUSEPOSITION',Win_API.UError||WIN_API.Add_External_errors);
+end MousePosition;
+PROCEDURE SendMessage ( Target IN PLS_INTEGER,
+MessageCode IN PLS_INTEGER,
+Param1 IN PLS_INTEGER DEFAULT 0,
+Param2 IN PLS_INTEGER DEFAULT 0,
+Win_API_Debug.DebugLog(99,'SendMessage','Args: Target='||to_char(Target)||', MessageCode='||to_char(MessageCode)||', Param1='||to_char(Param1)||', Param2='||to_char(Param2)||', RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+win_api.Register_function_call(iSendMsg,'d2kwutil_SendMsg','INT','INT,INT,INT,INT');
+iRC := d2kwutil_SendMsg(win_api.FunctionHandle(iSendMsg),Target,MessageCode, Param1, Param2);
+Win_API_Debug.DebugLog(99,'SendMessage','Result: RC='||to_char(iRC));
+if iRC <> 0 then
+Win_API.Add_error('SendMessage',to_char(MessageCode)||' with parameters '||to_char(Param1)||'/'||to_char(Param2)||' to window '||to_char(Target)||', returned a Non-Zero return code ('||to_char(iRC)||')');
+Win_API.Add_error('SendMessage', Win_API.NoAPI);
+Win_API.Add_error('SendMessage',Win_API.UError||WIN_API.Add_External_errors);
+end SendMessage;
+PROCEDURE SendKeys ( Hwnd IN PLS_INTEGER,
+Keys IN VARCHAR2,
+vcBuff1 varchar2(256);
+Win_API_Debug.DebugLog(99,'SendKeys','Args: Hwnd='||to_char(Hwnd)||', Keys="'||Keys||'", RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+-- check that at least something has been sent as a keystroke..
+if Keys is NULL then
+Win_API.Add_error('SendKeys','No Keystrokes Specified (Keys parameter is NULL)');
+win_api.Register_function_call(iSendKeys,'d2kwutil_SendKeys','INT','INT,*CHAR');
+vcbuff1 := rpad(keys,255,chr(0));
+iBuff1 := hWnd;
+iRC := d2kwutil_SendKeys(win_api.FunctionHandle(iSendkeys), iBuff1, vcbuff1);
+Win_API_Debug.DebugLog(99,'SendKeys','Result: RC='||to_char(iRC));
+if iRC = 2 then
+Win_API.Add_error('SendKeys','Missing close brace } in key string '||Keys);
+elsif iRC = 3 then
+Win_API.Add_error('SendKeys','Invalid Key in key string '||Keys);
+elsif iRC = 4 then
+Win_API.Add_error('SendKeys','Missing Close Parenthesis ) in key string '||Keys);
+elsif iRC = 5 then
+Win_API.Add_error('SendKeys','Invalid count in key string '||Keys);
+elsif iRC = 6 then
+Win_API.Add_error('SendKeys','Key string too long - '||Keys);
+elsif iRC = 7 then
+Win_API.Add_error('SendKeys','Can''t install hook');
+Win_API.Add_error('SendKeys','Unknown error message = '|| to_char(iRC));
+Win_API.Add_error('SendKeys',Win_API.NoAPI);
+Win_API.Add_error('SendKeys',Win_API.UError||WIN_API.Add_External_errors);
+end SendKeys;
+Procedure Start_or_Restore( Executable IN VARCHAR2,
+Args IN VARCHAR2,
+WindowClass IN VARCHAR2,
+ActivationStyle IN PLS_INTEGER DEFAULT WIN_API.SW_SHOWNORMAL,
+RaiseExceptions IN BOOLEAN) is
+hWinhandle PLS_INTEGER;
+iLoc PLS_INTEGER;
+iRestoreMsg PLS_INTEGER;
+CUPACKAGE BODY win_api_session IS
+-- Session has indexes in the range 500 - 599
+iOneSession CONSTANT PLS_INTEGER := 500;
+iFindAppWindow CONSTANT PLS_INTEGER := 501;
+iFind3rdPartyApp CONSTANT PLS_INTEGER := 502;
+iChangeMDIIcon CONSTANT PLS_INTEGER := 503;
+iTimeOutInit CONSTANT PLS_INTEGER := 504;
+iTimeOutLastEvent CONSTANT PLS_INTEGER := 505;
+iTimeOutUnHook CONSTANT PLS_INTEGER := 506;
+NOT_VALID_ON_NT EXCEPTION;
+FUNCTION d2kwutil_OneSession ( hFunc IN ORA_FFI.funcHandleType,
+WindowTitle IN OUT VARCHAR2,
+ModuleName IN OUT VARCHAR2,
+Class IN OUT VARCHAR2,
+Activate IN PLS_INTEGER
+) return PLS_INTEGER;
+FUNCTION d2kwutil_FindAppWindow( hFunc IN ORA_FFI.funcHandleType,
+Activate IN OUT PLS_INTEGER
+FUNCTION d2kwutil_Find3rdPartyApp(hFunc IN ORA_FFI.funcHandleType,
+FUNCTION d2kwutil_ChangeMDIIcon (hFunc IN ORA_FFI.funcHandleType,
+IconFile IN OUT VARCHAR2,
+IconIndex IN PLS_INTEGER,
+IconFileSM IN OUT VARCHAR2,
+IconIndexSM IN PLS_INTEGER
+FUNCTION d2kwutil_TimeOutInit ( hFunc IN ORA_FFI.funcHandleType,
+hWnd IN NUMBER
+FUNCTION d2kwutil_TimeOutLastEvent ( fFunc IN ORA_FFI.funcHandleType
+) return NUMBER;
+FUNCTION d2kwutil_TimeOutUnHook ( fFunc IN ORA_FFI.funcHandleType
+FUNCTION Wrap_Find3rdPartyApp(
+CalledBy
+In VARCHAR2,
+WindowTitle IN VARCHAR2,
+ModuleName IN VARCHAR2,
+MatchType IN VARCHAR2,
+Activate IN BOOLEAN,
+Minimize
+IN BOOLEAN,
+Class IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN BOOLEAN;
+PROCEDURE ProcessOptions ( WindowTitle IN VARCHAR2,
+Minimize IN BOOLEAN,
+vcBuff1 IN OUT VARCHAR2,
+vcBuff2 IN OUT VARCHAR2,
+vcBuff3 IN OUT VARCHAR2,
+iBuff1 I
+N OUT PLS_INTEGER);
+PRAGMA INTERFACE(C,d2kwutil_OneSession, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FindAppWindow, 11265);
+PRAGMA INTERFACE(C,d2kwutil_Find3rdPartyApp, 11265);
+PRAGMA INTERFACE(C,d2kwutil_ChangeMDIIcon, 11265);
+PRAGMA INTERFACE(C,d2kwutil_TimeOutInit, 11265);
+PRAGMA INTERFACE(C,d2kwutil_TimeOutLastEvent,11265);
+PRAGMA INTERFACE(C,d2kwutil_TimeOutUnHook, 11265);
+function One_Session( WindowTitle IN VARCHAR2,
+Class IN VARCHAR2 DEFAULT WIN_API.D2K_WINDOW_CLASS,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE
+) return BOOLEAN IS
+vcBuff3 varchar2(512);
+iRC pls_integer;
+Win_API_Debug.DebugLog(99,'One_Session','Args: WindowTitle="'||WindowTitle||'", ModuleName="'||ModuleName||'", MatchType="'||MatchType||'", Activate='||win_api_debug.booltochar(Activate)||', Class="'||Class||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+iRC := 0;
+win_api.Register_function_call(iOneSession,'d2kwutil_OneSession','INT','*CHAR,*CHAR,*CHAR,INT');
+ProcessOptions(WindowTitle, ModuleName, MatchType, Class, Activate,FALSE,vcBuff1, vcBuff2, vcBuff3,iBuff1);
+iRC := d2kwutil_OneSession(win_api.FunctionHandle(iOneSession),vcBuff1,vcBuff2,vcBuff3,iBuff1);
+Win_API_Debug.DebugLog(99,'One_Session','Result: RC='||to_char(iRC));
+if iRC <> 0 and RaiseExceptions then
+Win_API.Add_error('One_Session','No Matching Session Found');
+elsif iRC = 0 then
+return(FALSE);
+return (TRUE);
+when NOT_VALID_ON_NT then
+Win_API.Add_error('One_Session','Only matching on "WINDOW" is allowed on NT');
+Raise NO_DATA_FOUND;
+Win_API.Add_error('One_Session',Win_API.NoAPI);
+Win_API.Add_error('One_Session',Win_API.UError||WIN_API.Add_External_errors);
+END One_Session;
+function FindAppWindow( WindowTitle IN VARCHAR2,
+) return number IS
+Win_API_Debug.DebugLog(99,'FindAppWindow','Args: WindowTitle="'||WindowTitle||'", ModuleName="'||ModuleName||'", MatchType="'||MatchType||', Class="'||Class||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFindAppWindow,'d2kwutil_FindAppWindow','INT','*CHAR,*CHAR,*CHAR,INT');
+ProcessOptions(WindowTitle, ModuleName, MatchType, Class, FALSE, FALSE, vcBuff1, vcBuff2, vcBuff3,iBuff1);
+iRC := d2kwutil_FindAppWindow(win_api.FunctionHandle(iFindAppWindow),vcBuff1,vcBuff2,vcBuff3,iBuff1);
+Win_API_Debug.DebugLog(99,'FindAppWindow','Result: RC='||to_char(iRC));
+if iRC = 0 and RaiseExceptions then
+Win_API.Add_error('FindAppWindow','No matching application was found');
+return iRC;
+Win_API.Add_error('FindAppWindow','Only matching on "WINDOW" is allowed on NT');
+if Rais
+eExceptions then
+Win_API.Add_error('FindAppWindow',Win_API.NoAPI);
+Win_API.Add_error('FindAppWindow', Win_API.UError||WIN_API.Add_External_errors);
+END FindAppWindow;
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN BOOLEAN IS
+Win_API_Debug.DebugLog(99,CalledBy,'Args: WindowTitle="'||WindowTitle||'", ModuleName="'||ModuleName||'", MatchType="'||MatchType||'", Activate='||win_api_debug.booltochar(Activate)||', Class="'||Class||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFind3rdPartyApp,'d2kwutil_Find3rdPartyApp','INT','*CHAR,*CHAR,*CHAR,INT');
+ProcessOptions(WindowTitle, ModuleName, MatchType, Class, Activate, Minimize, vcBuff1, vcBuff2, vcBuff3,iBuff1);
+iRC := d2kwutil_Find3rdPartyApp(win_api.FunctionHandle(iFind3rdPartyApp),vcBuff1,vcBuff2,vcBuff3,iBuff1);
+Win_API_Debug.DebugLog(99,CalledBy,'Result: RC='||to_char(iRC));
+Win_API.Add_error(CalledBy,'Application not found');
+return TRUE;
+Win_API.Add_error(CalledBy,'Only matching on "WINDOW" is allowed on NT');
+END Wrap_Find3rdPartyApp;
+function Find3rdPartyApp( WindowTitle IN VARCHAR2,
+RETURN Wrap_Find3rdPartyApp('Find3rdPartyApp', WindowTitle, ModuleName, MatchType, Activate, FALSE, Class, RaiseExceptions);
+END Find3rdPartyApp;
+FUNCTION Find3rdPartyAppEx (WindowTitle IN VARCHAR2,
+RETURN Wrap_Find3rdPartyApp('Find3rdPartyAppEx', WindowTitle, ModuleName, MatchType, Activate, Minimize, Class, RaiseExceptions);
+END Find3rdPartyAppEx;
+procedure Change_MDI_Icon( MDIWindow IN PLS_INTEGER,
+IconFile IN VARCHAR2,
+IconIndex IN PLS_INTEGER DEFAULT 0) IS
+vcBuff2 varchar2(256);
+iBuff3 pls_integer;
+Win_API_Debug.DebugLog(99,'Change_MDI_Icon','Args: MDIWindow='||to_ch
+PACKAGE BODY WIN_API_FILE is
+-- File has indexes in the range 400 - 499
+iFileInfo CONSTANT PLS_INTEGER := 400;
+iFileOpen CONSTANT PLS_INTEGER := 401;
+iFileClose CONSTANT PLS_INTEGER := 402;
+iFileRewind CONSTANT PLS_INTEGER := 403;
+iFileRead CONSTANT PLS_INTEGER := 404;
+iFileWrite CONSTANT PLS_INTEGER := 405;
+iFileTell CONSTANT PLS_INTEGER := 406;
+iFileSeek CONSTANT PLS_INTEGER := 407;
+iFileTemp CONSTANT PLS_INTEGER := 408;
+iFileFlush CONSTANT PLS_INTEGER := 409;
+iFileEOF CONSTANT PLS_INTEGER := 410;
+-- Shared Variables
+iBuff4 pls_integer;
+iBuff5 pls_integer;
+iBuff6 pls_integer;
+iBuff7 pls_integer;
+iBuff8 pls_integer;
+iBuff9 pls_integer;
+PROCEDURE File_info ( CalledBy IN VARCHAR2,
+FileName IN VARCHAR2,
+Option1 IN PLS_INTEGER,
+Option2 IN PLS_INTEGER,
+RaiseExceptions IN BOOLEAN);
+PROCEDURE CheckFileHandle ( CalledBy IN VARCHAR2,
+FileHandle IN WIN_API.FILE_TYPE);
+FUNCTION d2kwutil_FileInfo ( hFunc IN ORA_FFI.funcHandleType,
+dwOut1 IN OUT PLS_INTEGER,
+dwOut2 IN OUT PLS_INTEGER,
+dwOut3 IN OUT PLS_INTEGER,
+dwOut4 IN OUT PLS_INTEGER,
+dwOut5 IN OUT PLS_INTEGER,
+dwOut6 IN OUT PLS_INTEGER,
+dwOut7 IN OUT PLS_INTEGER
+FUNCTION d2kwutil_FileOpen ( hFunc IN ORA_FFI.funcHandleType,
+FileMode IN OUT VARCHAR2
+) return WIN_API.FILE_TYPE;
+FUNCTION d2kwutil_FileClose( hFunc IN ORA_FFI.funcHandleType,
+FileHandle IN PLS_INTEGER
+PROCEDURE d2kwutil_FileRewind( hFunc IN ORA_FFI.funcHandleType,
+FileHandle IN PLS_INTEGER);
+FUNCTION d2kwutil_FileRead( hFunc IN ORA_FFI.funcHandleType,
+FileHandle IN PLS_INTEGER,
+Buffer IN OUT VARCHAR2,
+Bytes IN PLS_INTEGER,
+NullMask IN OUT VARCHAR2,
+NullChar IN PLS_INTEGER,
+EOF IN OUT PLS_INTEGER
+FUNCTION d2kwutil_FileWrite( hFunc IN ORA_FFI.funcHandleType,
+Buffer IN VARCHAR2,
+NullMask IN VARCHAR2
+FUNCTION d2kwutil_FileTell ( hFunc IN ORA_FFI.funcHandleType,
+CTION d2kwutil_FileSeek( hFunc IN ORA_FFI.funcHandleType,
+Origin IN PLS_INTEGER,
+Offset IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_FileTemp( hFunc IN ORA_FFI.funcHandleType
+FUNCTION d2kwutil_FileFlush(hFunc IN ORA_FFI.funcHandleType,
+FUNCTION d2kwutil_FileEOF( hFunc IN ORA_FFI.funcHandleType,
+PRAGMA INTERFACE(C,d2kwutil_FileInfo, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileOpen, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileClose, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileRewind,11265);
+PRAGMA INTERFACE(C,d2kwutil_FileRead, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileWrite, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileTell, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileSeek, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileTemp, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileFlush, 11265);
+PRAGMA INTERFACE(C,d2kwutil_FileEOF, 11265);
+-- Internal Bodies
+Procedure File_info ( CalledBy IN VARCHAR2,
+Win_API_Debug.DebugLog(99,'File_Info','Args: CalledBy="'||CalledBy||'", FileName="'||FileName||'", Option1='||to_char(Option1)||', Option2='||to_char(Option2)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+iBuff3 := 0;
+iBuff4 := 0;
+iBuff5 := 0;
+iBuff6 := 0;
+iBuff7 := 0;
+iBuff8 := 0;
+iBuff9 := 0;
+win_api.Register_function_call(iFileInfo,'d2kwutil_FileInfo','LONG','*CHAR,INT,INT,*LONG,*LONG,*LONG,*LONG,*LONG,*LONG,*LONG');
+vcBuff1 := RPAD(Filename,512,CHR(0));
+iBuff1 := Option1;
+iBuff2 := Option2;
+iRC := d2kwutil_FileInfo(win_api.FunctionHandle(iFileInfo),vcBuff1,iBuff1,iBuff2,iBuff3,iBuff4,iBuff5,iBuff6,iBuff7,iBuff8,iBuff9);
+Win_API_Debug.DebugLog(99,'File_Info','Result: RC='||to_char(iRC)||', iBuff1='||to_char(iBuff1)||', iBuff2='||to_char(iBuff2)||', iBuff3='||to_char(iBuff3)||', iBuff4='||to_char(iBuff4)||', iBuff5='||to_char(iBuff5)||', iBuff6='||to_char(iBuff6)||', iBuff7='||to_char(iBuff7)||', iBuff8='||to_char(iBuff8)||', iBuff9='||to_char(iBuff9));
+if iRC in (0, -1074255551, -1074245406) then
+WIN_API.Add_error(CalledBy,'File '||FileName||' does not exist');
+elsif iRC <> 1 then
+WIN_API.Add_error(CalledBy,'Gathering Information about '||FileName||' generated system error '||to_char(iRC));
+Win_API.Add_error(CalledBy, Win_API.UError||WIN_API.Add_External_errors);
+end;
+FileHandle IN WIN_API.FILE_TYPE) is
+if FileHandle = 0 or FileHandle is NULL then
+win_api.add_error(CalledBy,'File Handle is Invalid');
+PROCEDURE Created_Date ( FileName IN VARCHAR2,
+ReturnDate OUT DATE,
+ReturnMS OUT NUMBER,
+*PACKAGE BODY WIN_API_ENVIRONMENT is
+-- Environment has indexes in the range 300 - 399
+iReadINIFile CONSTANT PLS_INTEGER := 300;
+iWriteINIFile CONSTANT PLS_INTEGER := 301;
+iGetRegKey CONSTANT PLS_INTEGER := 302;
+iSetRegKey CONSTANT PLS_INTEGER := 303;
+iGetWinuser CONSTANT PLS_INTEGER := 304;
+iGetDOSEnv CONSTANT PLS_INTEGER := 305;
+iWinDir CONSTANT PLS_INTEGER := 306;
+iTmpDir CONSTANT PLS_INTEGER := 307;
+iWNetGetConnection CONSTANT PLS_INTEGER := 308;
+iGetWorkingDirectory CONSTANT PLS_INTEGER := 309;
+iSetWorkingDirectory CONSTANT PLS_INTEGER := 310;
+iGetComputerName CONSTANT PLS_INTEGER := 311;
+iGetWindowsVersion CONSTANT PLS_INTEGER := 312;
+iMaintRegKey CONSTANT PLS_INTEGER := 313;
+PROCEDURE Wrap_Write_Registry( CalledBy IN VARCHAR2,
+RegPath IN VARCHAR2,
+RegEntry IN VARCHAR2,
+RegValue IN VARCHAR2,
+RegFormat IN PLS_INTEGER,
+PROCEDURE Wrap_Maint_Registry( CalledBy IN VARCHAR2,
+Opt IN PLS_INTEGER,
+FUNCTION d2kwutil_ReadINIFile ( hFunc IN ORA_FFI.funcHandleType,
+Section IN OUT VARCHAR2,
+Entry IN OUT VARCHAR2,
+DefaultVal IN OUT VARCHAR2,
+InBuffLen IN PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_WriteINIFile( hFunc IN ORA_FFI.funcHandleType,
+Buffer IN OUT VARCHAR2
+FUNCTION d2kwutil_GetWinuser ( hFunc IN ORA_FFI.funcHandleType,
+UserName IN OUT VARCHAR2,
+InBuffLen IN PLS_INTEGER
+) RETURN PLS_INTEGER;
+FUNCTION d2kwutil_GetDOSEnv ( hFunc IN ORA_FFI.funcHandleType,
+SourceStr IN OUT VARCHAR2,
+ExpandStr IN OUT VARCHAR2,
+FUNCTION d2kwutil_WinDir ( hFunc IN ORA_FFI.funcHandleType,
+WindowsDir IN OUT VARCHAR2,
+FUNCTION d2kwutil_TmpDir ( hFunc IN ORA_FFI.funcHandleType,
+TempDir IN OUT VARCHAR2,
+FUNCTION d2kwutil_WNetGetConnection (hFunc IN ORA_FFI.funcHandleType,
+DriveLetter IN OUT VARCHAR2,
+OutBuffLen IN OUT PLS_INTEGER
+FUNCTION d2kwutil_GetRegKey ( hFunc IN ORA_FFI.funcHandleType,
+RegRoot IN PLS_INTEGER,
+RegPath IN OUT VARCHAR2,
+RegEntry IN OUT VARCHAR2,
+RegValue IN OUT VARCHAR2,
+RegValueLength IN PLS_INTEGER,
+RegDontExpand
+IN PLS_INTEGER
+FUNCTION d2kwutil_SetRegKey ( hFunc IN ORA_FFI.funcHandleType,
+RegEntryType IN PLS_INTEGER,
+RegValueDword IN PLS_INTEGER,
+RegNullInd
+FUNCTION d2kwutil_GetWorkingDirectory ( hFunc IN ORA_FFI.funcHandleType,
+WorkingDir IN OUT VARCHAR2,
+FUNCTION d2kwutil_SetWorkingDirectory ( hFunc IN ORA_FFI.funcHandleType,
+WorkingDirect IN OUT VARCHAR2
+FUNCTION d2kwutil_GetComputerName ( hFunc IN ORA_FFI.funcHandleType,
+ComputerName IN OUT VARCHAR2,
+InBuffLen IN OUT PLS_INTEGER
+FUNCTION d2kwutil_GetWindowsVersion (hFunc IN ORA_FFI.funcHandleType,
+BuildInfo IN OUT VARCHAR2,
+BuildLoWord IN OUT VARCHAR2
+FUNCTION d2kwutil_MaintRegKey ( hFunc IN ORA_FFI.funcHandleType,
+opt IN PLS_INTEGER
+PRAGMA INTERFACE(C,d2kwutil_ReadINIFile,11265);
+PRAGMA INTERFACE(C,d2kwutil_WriteINIFile,11265);
+PRAGMA INTERFACE(C,d2kwutil_GetWinuser,11265);
+PRAGMA INTERFACE(C,d2kwutil_GetDOSEnv,11265);
+PRAGMA INTERFACE(C,d2kwutil_WinDir,11265);
+PRAGMA INTERFACE(C,d2kwutil_TmpDir,11265);
+PRAGMA INTERFACE(C,d2kwutil_WNetGetConnection,11265);
+PRAGMA INTERFACE(C,d2kwutil_GetRegKey,11265);
+PRAGMA INTERFACE(C,d2kwutil_SetRegKey,11265);
+PRAGMA INTERFACE(C,d2kwutil_GetWorkingDirectory,11265);
+PRAGMA INTERFACE(C,d2kwutil_SetWorkingDirectory,11265);
+PRAGMA INTERFACE(C,d2kwutil_GetComputerName,11265);
+PRAGMA INTERFACE(C,d2kwutil_GetWindowsVersion,11265);
+PRAGMA INTERFACE(C,d2kwutil_MaintRegKey,11265);
+FUNCTION Read_INI_File ( FileName IN VARCHAR2,
+Section IN VARCHAR2,
+Entry IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return VARCHAR2 is
+DEFAULT_PLACEHOLDER constant varchar2(16):= 'D2KWUTIL_EMPTY';
+vcBuff4 VARCHAR2(512);
+vcBuff5 VARCHAR2(512);
+iRC PLS_INTEGER;
+Win_API_Debug.DebugLog(99,'Read_INI_File','Args: FileName="'||Filename||'", Section="'||Section||'", Entry="'||Entry||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iReadINIFile,'d2kwutil_ReadINIFile','INT','*CHAR,*CHAR,*CHAR,*CHAR,*CHAR,INT');
+vcBuff2 := Section;
+vcBuff3 := Entry;
+vcBuff4 := RPAD(' ',512,CHR(0));
+vcBuff5 := DEFAULT_PLACEHOLDER;
+iRC := d2kwutil_ReadINIFile(win_api.FunctionHandle(iReadINIFile),vcBuff1,vcBuff2,vcBuff3,vcBuff4,vcBuff5,512);
+Win_API_Debug.DebugLog(99,'Read_INI_File','Result: RC='||to_char(iRC)||', vcBuff4="'||vcBuff4||'"');
+if iRC = 0 or vcBuff4 = DEFAULT_PLACEHOLDER then
+Win_API.Add_error('Read_INI_File','Unable to obtain '||Entry||' from the ['||Section||'] section of '||FileName);
+if not RaiseExceptions then
+return NULL;
+return vcBuff4;
+Win_API.Add_error('Read_INI_File',Win_API.NoAPI);
+Win_API.Add_error('Read_INI_File',Win_API.UError||WIN_API.Add_External_errors);
+end Read_INI_File;
+PROCEDURE Write_INI_File ( FileName IN VARCHAR2,
+Value IN VARCHAR2,
+Win_API_Debug.DebugLog(99,'Write_INI_File','Args: FileName="'||Filename||'", Section="'||Section||'", Entry="'||Entry||'", Value="'||Value||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iWriteINIFile,'d2kwutil_WriteINIFile','INT','*CHAR,*CHAR,*CHAR,*CHAR');
+vcBuff4 := Value;
+iRC := d2kwutil_WriteINIFile(win_api.FunctionHandle(iWriteINIFile),vcBuff1,vcBuff2,vcBuff3,vcBuff4);
+Win_API_Debug.DebugLog(99,'Write_INI_File','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Write_INI_File','Unable to set the value of '||Entry||' in the ['||Section||'] section of '||FileName);
+Win_API.Add_error('Write_INI_File',Win_API.NoAPI);
+Win_API.Add_error('Write_INI_File',Win_API.UError||WIN_API.Add_External_errors);
+end Write_INI_File;
+FUNCTION Get_Windows_Username (RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2 is
+Win_API_Debug.DebugLog(99,'Get_Windows_Username','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iGetWinuser,'d2kwutil_GetWinuser','INT','*CHAR,INT');
+vcBuff1 := RPAD(' ',512,CHR(0));
+iRC := d2kwutil_GetWinuser(win_api.FunctionHandle(iGetWinuser),vcBuff1,512);
+Win_API_Debug.DebugLog(99,'Get_Windows_Username','Result: RC='||to_char(iRC)||', vcBuff1="'||vcBuff1||'"');
+Win_API.Add_error('Get_Windows_Username', 'No Value Returned');
+return vcBuff1;
+exce
+ption
+Win_API.Add_error('Get_Windows_Username',Win_API.NoAPI);
+Win_API.Add_error('Get_Windows_Username',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Windows_Username;
+FUNCTION Get_Windows_Directory (RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2 is
+Win_API_Debug.DebugLog(99,'Get_Windows_Directory','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iWinDir,'d2kwutil_WinDir','INT','*CHAR,INT');
+iRC := d2kwutil_WinDir(win_api.FunctionHandle(iWinDir),vcBuff1,512);
+Win_API_Debug.DebugLog(99,'Get_Windows_Directory','Result: RC='||to_char(iRC)||', vcBuff1="'||vcBuff1||'"');
+Win_API.Add_error('Get_Windows_Directory','No Value Returned');
+return WIN_API.StripDirSep(vcBuff1);
+Win_API.Add_error('Get_Windows_Directory',Win_API.NoAPI);
+Win_API.Add_error('Get_Windows_Directory',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Windows_Directory;
+FUNCTION Get_Temp_Directory (RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2 is
+Win_API_Debug.DebugLog(99,'Get_Temp_Directory','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iTmpDir,'d2kwutil_TmpDir','INT','*CHAR,INT');
+iRC := d2kwutil_WinDir(win_api.FunctionHandle(iTmpDir),vcBuff1,512);
+Win_API_Debug.DebugLog(99,'Get_Temp_Directory','Result: RC='||to_char(iRC)||', vcBuff1="'||vcBuff1||'"');
+Win_API.Add_error('Get_Temp_Directory','No Value Returned');
+Win_API.Add_error('Get_Temp_Directory',Win_API.NoAPI);
+Win_API.Add_error('Get_Temp_Directory',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Temp_Directory;
+FUNCTION Get_Environment_string ( VariableName IN VARCHAR2,
+iBuff1 PLS_INTEGER;
+Win_api_debug.DebugLog(99,'Get_Environment_String','Args: VariableName="'||VariableName||'", RaiseExceptions='||win_api_debug.BoolToChar(RaiseExceptions));
+win_api.Register_function_call(iGetDOSEnv,'d2kwutil_GetDOSEnv','LONG','*CHAR,*CHAR,LONG');
+vcBuff1 := '%'||VariableName||'%';
+vcBuff2 := RPAD(' ',512,CHR(0));
+iBuff1 := 512;
+iRC := d2kwutil_GetDOSEnv(win_api.FunctionHandle(iGetDOSEnv),vcBuff1,vcBuff2,iBuff1);
+Win_api_debug.DebugLog(99,'Get_Environment_String','Result: Value Length='||to_char(iRC)||', Value='||vcBuff2);
+if iRC = 0 or vcBuff2 = vcBuff1 then
+Win_API.Add_error('Get_Environment_String','Unable to get the value of the variable '||VariableName);
+return vcBuff2;
+excepti
+Win_API.Add_error('Get_Environment_String',Win_API.NoAPI);
+Win_API.Add_error('Get_Environment_String',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Environment_String;
+FUNCTION Get_Net_Connection ( DriveLetter IN VARCHAR2,
+Win_API_Debug.DebugLog(99,'Get_Net_Connection','Args: DriveLetter="'||DriveLetter||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iWNetGetConnection,'d2kwutil_WNetGetConnection','INT','*CHAR,*CHAR,*LONG');
+vcBuff1 := substr(DriveLetter,1,instr(DriveLetter,':'));
+iRC := d2kwutil_WNetGetConnection(win_api.FunctionHandle(iWNetGetConnection),vcBuff1,vcBuff2,iBuff1);
+Win_API_Debug.DebugLog(99,'Get_Net_Connection','Result: RC='||to_char(iRC)||', vcBuff2="'||vcBuff2||'"');
+Win_API.Add_error('Get_Net_Connection' ,'Unable to expand "'||vcBuff1||'" into a network path (Return Code='||to_char(iRC)||')');
+Win_API.Add_error('Get_Net_Connection',Win_API.NoAPI);
+Win_API.Add_error('Get_Net_Connection',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Net_Connection;
+FUNCTION Read_Registry (RegPath IN VARCHAR2,
+vcBuff3 VARCHAR2(2000);
+vcRoot VARCHAR2(20);
+iBuff2 PLS_INTEGER;
+iBuff3
+PLS_INTEGER;
+Win_API_Debug.DebugLog(99,'Read_Registry','Args: RegPath="'||RegPath||'", RegEntry="'||RegEntry||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iGetRegKey,'d2kwutil_GetRegKey','INT','INT,*CHAR,*CHAR,*CHAR,INT,INT');
+-- Which Root?
+vcRoot := upper(substr(RegPath,1,instr(RegPath,'\')-1));
+if vcRoot = 'HKEY_LOCAL_MACHINE' then
+elsif vcRoot = 'HKEY_CLASSES_ROOT' then
+elsif vcRoot = 'HKEY_CURRENT_USER' then
+iBuff1 := 2;
+elsif vcRoot = 'HKEY_USERS' then
+iBuff1 := 3;
+elsif vcRoot = 'HKEY_CURRENT_CONFIG' then
+iBuff1 := 4;
+WIN_API.Add_error('Read_Registry','Invalid Registry Key '||RegPath);
+iBuff2 := 2000; /* Length of buffer */
+vcBuff1 := substr(RegPath,instr(RegPath,'\')+1);
+vcBuff2 := RegEntry;
+vcBuff3 := RPAD(SUBSTR(NVL(vcBuff3,' '),1,2000),2000,CHR(0));
+if not WIN_API.COMPAT_EXPAND_REG_VALUES then
+iBuff3 := 1;
+Win_API_Debug.DebugLog(99,'Read_Registry','Compatibility: Reg Value expansion supressed');
+iRC := d2kwutil_GetRegKey(win_api.FunctionHandle(iGetRegKey),iBuff1,vcBuff1,vcBuff2,vcBuff3,iBuff2,iBuff3);
+Win_API_Debug.DebugLog(99,'Read_Registry','Result: RC='||to_char(iRC)||', vcBuff3="'||vcBuff3||'"');
+if iRC = -1 then
+Win_API.Add_error('Read_R
+egistry','Cannot read entry '||RegPath||'->'||RegEntry);
+elsif iRC = -2 then
+Win_API.Add_error('Read_Registry', RegPath||'->'||RegEntry||' is an unsupported datatype');
+elsif iRC = -3 then
+Win_API.Add_error('Read_Registry',RegPath||'->'||RegEntry||' is longer than '||to_char(iBuff2)||' Bytes');
+raise VALUE_ERROR;
+elsif iRC = -4 then
+Win_API.Add_error('Read_Registry', RegPath||'->'||RegEntry||' Failed to expand environment string');
+Win_API.Add_error('Read_Registry',Win_API.NoAPI);
+Win_API.Add_error('Read_Registry',Win_API.UError||WIN_API.Add_External_errors);
+end Read_Registry;
+iBuff3 PLS_INTEGER;
+iNullInd
+PLS_INTEGER := 0;
+Win_API_Debug.DebugLog(99,'Wrap_Write_Registry','Args: CalledBy="'||CalledBy||'", RegPath="'||RegPath||'", RegEntry="'||RegEntry||'", RegValue="'||RegValue||'", RegFormat='||to_char(RegFormat)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iSetRegKey,'d2kwutil_SetRegKey','INT','INT,*CHAR,*CHAR,INT,*CHAR,LONG,INT');
+WIN_API.Add_error(CalledBy,'Invalid Registry Key '||RegPath);
+iBuff2 := RegFormat;
+if RegValue is NULL then
+vcBuff3 := ' ';
+iNullInd := 1;
+Win_API_Debug.DebugLog(99,'Wrap_Write_Registry','NULL value passed.');
+if RegFormat = WIN_API.REG_DWORD then
+iBuff3 := trunc(abs(to_number(RegValue)));
+if iBuff3 > 4294967295 then
+Raise VALUE_ERROR; /* larger than a DWORD */
+vcBuff3 := RegValue;
+iRC := d2kwutil_SetRegKey(win_api.FunctionHandle(iSetRegKey),iBuff1,vcBuff1,vcBuff2,iBuff2,vcBuff3,iBuff3,iNullInd);
+Win_API_Debug.DebugLog(99,'Wrap_Write_Registry','Result: RC='||to_char(iRC));
+WIN_API.Add_error(CalledBy,'Cannot set Registry Entry '||RegPath||'->'||RegEntry||' to '||RegValue);
+Win_API.Add_error(CalledBy,'The value being set exceeded the maximum for a DWORD (4,294,967,295)');
+end Wrap_Write_Registry;
+PROCEDURE Write_Registry( RegPath IN VARCHAR2,
+Wrap_Write_Registry('Write_Registry',RegPath, RegEntry,RegValue,WIN_API.REG_SZ, RaiseExceptions);
+end Write_Registry;
+PROCEDURE Write_RegistryEx( RegPath IN VARCHAR2,
+Wrap_Write_Registry('Write_RegistryEx',RegPath, RegEntry,RegValue,RegFormat, RaiseExceptions);
+end Write_RegistryEx;
+vcOp VARCHAR2(10);
+Win_API_Debug.DebugLog(99,'Wrap_Maint_Registry','Args: CalledBy="'||CalledBy||'", RegPath="'||RegPath||'", Opt='||to_char(Opt)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iMaintRegKey,'d2kwutil_MaintRegKey','INT','INT,*CHAR,INT');
+if opt = 0 then
+vcOp := 'Create';
+vcOp := 'Delete';
+if (instr(vcBuff1,'\') = 0) and iBuff1 <> 1 then
+WIN_API.Add_error(CalledBy,'You Probably don''t want to delete something this high in the Registry hierachy: '||RegPath);
+iRC := d2kwutil_MaintRegKey(win_api.FunctionHandle(iMaintRegKey),iBuff1,vcBuff1,opt);
+Win_API_Debug.DebugLog(99,'Wrap_Maint_Registry','Result: RC='||to_char(iRC));
+WIN_API.Add_error(CalledBy,'Cannot '||vcOp||' Registry Key '||RegPath|| ' (Error code = '||to_char(iRC)||')');
+end Wrap_Maint_Registry;
+PROCEDURE Create_Registry_Key( RegPath IN VARCHAR2,
+Wrap_Maint_Registry('Create_Registry_Key',RegPath,0,RaiseExceptions);
+PROCEDURE Delete_Registry_Key( RegPath IN VARCHAR2,
+Wrap_Maint_Registry('Delete_Registry_Key',RegPath,1,RaiseExceptions);
+FUNCTION Get_Working_Directory ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2 is
+Win_API_Debug.DebugLog(99,'Get_Working_Directory','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iGetWorkingDirectory,'d2kwutil_GetWorkingDirectory','INT','*CHAR,INT');
+vcBuff1 := RPAD(' ',512);
+iRC := d2kwutil_GetWorkingDirectory(win_api.FunctionHandle(iGetWorkingDirectory),vcBuff1,512);
+Win_API_Debug.DebugLog(99,'Get_Working_Directory','Result: RC='||to_char(iRC)||', vcBuff1="'||vcBuff1||'"');
+Win_API.Add_error('Get_Working_Directory','No Value Returned');
+Win_API.Add_error('Get_Working_Directory',Win_API.NoAPI);
+Win_API.Add_error('Get_Working_Directory',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Working_Directory;
+PROCEDURE Set_Working_Directory (WorkingDirectory in VARCHAR2, RaiseExceptions IN BOOLEAN DEFAULT FALSE) is
+Win_API_Debug.DebugLog(99,'Set_Working_Directory','Args: WorkingDirectory="'||WorkingDirectory||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iSetWorkingDirectory,'d2kwutil_SetWorkingDirectory','INT','*CHAR');
+vcBuff1 := WorkingDirectory||chr(0);
+iRC := d2kwutil_SetWorkingDirectory(win_api.FunctionHandle(iSetWorkingDirectory),vcBuff1);
+Win_API_Debug.DebugLog(99,'Set_Working_Directory','Result: RC='||to_char(iRC));
+Win_API.Add_error('Set_Working_Directory','Failed to set directory to '||WorkingDirectory);
+Win_API.Add_error('Set_Working_Directory',Win_API.NoAPI);
+Win_API.Add_error('Set_Working_Directory',Win_API.UError||WIN_API.Add_External_errors);
+end Set_Working_Directory;
+FUNCTION Get_Computer_Name ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2 is
+iBuff1 PLS_INTEGER := 512;
+Win_API_Debug.DebugLog(99,'Get_Computer_Name','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iGetComputerName,'d2kwutil_GetComputerName','INT','*CHAR,*LONG');
+iRC := d2kwutil_GetComputerName(win_api.FunctionHandle(iGetComputerName),vcBuff1,iBuff1);
+Win_API_Debug.DebugLog(99,'Get_Computer_Name','Result: RC='||to_char(iRC)||', vcBuff1="'||vcBuff1||'"');
+Win_API.Add_error('Get_Computer_Name','No Value Returned');
+Win_API.Add_error('GetComputer_Name',Win_API.NoAPI);
+Win_API.Add_error('Get_Computer_Name',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Computer_Name;
+FUNCTION Get_Windows_Version RETURN VARCHAR2 is
+rcBuff VARCHAR2(30);
+vcBuff1 VARCHAR2(30) := rpad(' ',30);
+vcBuff2 VARCHAR2(16) := rpad(' ',16);
+Win_API_Debug.DebugLog(99,'Get_Windows_Version','Args: <No Arguments>');
+if Win_A
+PACKAGE BODY WIN_API_DIALOG is
+-- Dialog has indexes in the range 200 - 299
+iChooseFile CONSTANT PLS_INTEGER := 200;
+iChoosePrinter CONSTANT PLS_INTEGER := 201;
+iChooseFont CONSTANT PLS_INTEGER := 202;
+iChooseColor CONSTANT PLS_INTEGER := 203;
+FUNCTION ChooseFile( CalledBy IN VARCHAR2,
+Modal IN BOOLEAN,
+szTitle IN VARCHAR2,
+szInitDir IN VARCHAR2,
+szFileFilter IN VARCHAR2,
+Flags IN PLS_INTEGER,
+SepChar IN VARCHAR2,
+szBuffer IN OUT VARCHAR2 ) RETURN PLS_INTEGER;
+FUNCTION d2kwutil_ChooseFile ( hFunc IN ORA_FFI.funcHandleType,
+dialog_type IN PLS_INTEGER,
+hwndOwner IN PLS_INTEGER,
+szTitle IN OUT VARCHAR2,
+szInitDir IN OUT VARCHAR2,
+szFileFilter IN OUT VARCHAR2,
+AdvancedFlags IN PLS_INTEGER,
+szBuffer IN OUT VARCHAR2) return PLS_INTEGER;
+FUNCTION d2kwutil_ChoosePrinter( hFunc IN ORA_FFI.funcHandleType,
+hWin IN PLS_INTEGER,
+PrinterName IN OUT VARCHAR2,
+Port IN OUT VARCHAR2,
+Opt IN PLS_INTEGER) return PLS_INTEGER;
+Function d2kwutil_ChooseFont ( hFunc IN ORA_FFI.funcHandleType,
+Face IN OUT VARCHAR2,
+PointSize IN OUT PLS_INTEGER,
+Bold IN OUT PLS_INTEGER,
+Italic IN OUT PLS_INTEGER) return PLS_INTEGER;
+Function d2kwutil_ChooseColor ( hFunc IN ORA_FFI.funcHandleType,
+Combined
+IN OUT PLS_INTEGER,
+Green IN OUT PLS_INTEGER,
+Blue
+IN OUT PLS_INTEGER) return PLS_INTEGER;
+PRAGMA INTERFACE(C,d2kwutil_ChooseFile,11265);
+PRAGMA INTERFACE(C,d2kwutil_ChoosePrinter,11265);
+PRAGMA INTERFACE(C,d2kwutil_ChooseFont,11265);
+PRAGMA INTERFACE(C,d2kwutil_ChooseColor,11265);
+FUNCTION Open_File ( Title IN VARCHAR2 DEFAULT 'Open File',
+StartDirectory IN VARCHAR2 DEFAULT '$WINDIR$',
+FileFilter IN VARCHAR2 DEFAULT 'All files(*.*)|*.*|',
+Modal IN BOOLEAN DEFAULT TRUE,
+AdvancedFlags IN PLS_INTEGER DEFAULT WIN_API.OFN_FLAG_DEFAULT,
+) RETURN VARCHAR2 is
+vcReturnedFile varchar2(4096);
+iLRC pls_integer := 0;
+vcReturnedFile := CHR(0);
+iLRC := choosefile('Open_File',Modal,Title,StartDirectory,FileFilter,AdvancedFlags,' ',vcReturnedFile);
+if iLRC = 1 then
+Win_API.Add_error('Open_File','No file was selected');
+return vcReturnedFile;
+end Open_File;
+FUNCTION Open_FileEx( Title IN VARCHAR2 DEFAUL
+T 'Open File',
+AdvancedFlags IN PLS_INTEGER DEFAULT (WIN_API.OFN_FLAG_DEFAULT+WIN_API.OFN_ALLOWMULTISELECT),
+SeparatorChar IN VARCHAR2 DEFAULT CHR(10),
+iLRC := choosefile('Open_File',Modal,Title,StartDirectory,FileFilter,AdvancedFlags,SeparatorChar,vcReturnedFile);
+Win_API.Add_error('Open_FileEx','No file was selected');
+end Open_FileEx;
+FUNCTION Save_File ( SampleName IN VARCHAR2,
+Title IN VARCHAR2 DEFAULT 'Save File As',
+vcReturnedFile := SampleName;
+iLRC := choosefile('Save_File',Modal,Title,StartDirectory,FileFilter,AdvancedFlags,' ',vcReturnedFile);
+Win_API.Add_error('Save_File','No file was selected');
+end Save_File;
+szBuffer IN OUT VARCHAR2 ) RETURN PLS_INTEGER is
+hwndOwner PLS_INTEGER;
+vcBuff1 VARCHAR2(255);
+vcBuff2 VARCHAR2(2000);
+vcBuff3 VARCHAR2(100);
+vcBuff4 VARCHAR2(1);
+vcBuff5 VARCHAR2(4096);
+Win_API_Debug.DebugLog(99,'ChooseFile','Args: CalledBy="'||CalledBy||', Modal='||win_api_debug.BoolToChar(Modal)||', szTitle="'||szTitle||'", szInitDir="'||szInitDir||'", szFileFilter="'||szFileFilter||'", Flags='||to_char(flags)||', SepChar="'||SepChar||'", szBuffer="'||szBuffer||'"');
+if Modal then
+hwndOwner := win_api_utility.get_active_window;
+hwndOwner := 0;
+win_api.Register_function_call(iChooseFile,'d2kwutil_ChooseFile','INT','INT,SHORT,*CHAR,*CHAR,*CHAR,LONG,CHAR,*CHAR');
+if CalledBy = 'Open_File' then
+iBuff2 := Flags;
+vcBuff1 := szTitle;
+if upper(szInitDir) = '$WINDIR$' then
+vcBuff2 := win_api_environment.get_windows_directory;
+elsif upper(szInitDir) = '$TEMP$' then
+vcBuff2 := win_api_environment.get_temp_directory;
+vcBuff2 := szInitDir;
+if substr(vcBuff2,length(vcBuff2),1) <> '\' then
+vcBuff2 := vcBuff2||'\';
+if szFileFilter = NULL or szFileFilter = '' then
+vcBuff3 := 'All files(*.*)|*.*|';
+vcBuff3 := szFileFilter;
+vcBuff4 := substr(SepChar,1,1);
+vcBuff5 :=
+RPAD(szBuffer,4096,CHR(0));
+iRC := d2kwutil_choosefile (win_api.FunctionHandle(iChoosefile),iBuff1,hwndOwner,vcBuff1,vcBuff2,vcBuff3,iBuff2,vcBuff4,vcBuff5);
+Win_API_Debug.DebugLog(99,'ChooseFile','Result: RC='||to_char(iRC)||', szBuffer="'||vcBuff5||'"');
+szBuffer := vcBuff5;
+end Choosefile;
+PROCEDURE Select_Printer ( PrinterName OUT VARCHAR2,
+Port OUT VARCHAR2,
+RaiseExceptions in BOOLEAN DEFAULT FALSE) is
+vcBuff1 VARCHAR2(513);
+vcBuff2 VARCHAR2(513);
+ChoosePrinter('Select_Printer',vcBuff1, vcBuff2,0,RaiseExceptions);
+PrinterName := vcBuff1;
+Port := vcBuff2;
+end Select_Printer;
+PROCEDURE ChoosePrinter ( CalledBy IN VARCHAR2,
+Win_API_Debug.DebugLog(99,'ChoosePrinter','Args: CalledBy="'||CalledBy||'", Opt='||to_char(Opt)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iChoosePrinter,'d2kwutil_ChoosePrinter','INT','INT,*CHAR,*CHAR,INT');
+iBuff1 := win_api_utility.get_active_window(FALSE);
+iRC := d2kwutil_ChoosePrinter(win_api.FunctionHandle(iChoosePrinter),iBuff1,vcBuff1,vcBuff2,Opt);
+Win_API_Debug.DebugLog(99,'ChoosePrinter','Result: RC='||to_char(iRC)||', PrinterName="'||vcBuff1||'", Port="'||vcBuff2||'"');
+Win_API.Add_error(CalledBy,'No Printer Selected');
+end ChoosePrinter;
+PROCEDURE Choose_Font ( Face IN OUT VARCHAR2,
+Bold IN OUT BOOLEAN,
+Italic IN OUT BOOLEAN,
+iBuff1
+iBuff2
+vcBuff1 VARCHAR2(32);
+Win_API_Debug.DebugLog(99,'Choose_Font','Args: Face="'||Face||'", PointSize='||to_char(PointSize)||', Bold='||win_api_debug.booltochar(BOLD)||', Italic='||win_api_debug.booltochar(Italic));
+win_api.Register_function_call(iChooseFont,'d2kwutil_ChooseFont','INT','INT,*CHAR,*INT,*INT,*INT');
+vcBuff1 := rpad(Face,32,chr(0));
+iBuff1 := PointSize;
+if Bold then
+iBuff2 := 700;
+iBuff2 := 400;
+if Italic then
+iBuff3 := 255;
+iRC := d2kwutil_ChooseFont(win_api.FunctionHandle(iChooseFont),hwndOwner,vcBuff1,iBuff1,iBuff2,iBuff3);
+Win_API_Debug.DebugLog(99,'Choose_Font','Result: RC='||to_char(iRC)||', Face="'||vcBuff1||'" PointSize='||to_char(iBuff1)||', Bold='||to_
+UHPACKAGE BODY WIN_API_BITOP is
+-- Constants for Bounds Checking
+-- Note that PLS_INTEGER can't actually take a Full 32 bits only 31
+-- So in the case where the 32nd bit needs to be set we use an
+-- Indicator variable to pass the value accross.
+MAX_DWORD CONSTANT NUMBER := 4294967295;
+MAX_PLS_INT CONSTANT NUMBER := 2147483647;
+SIGN_BIT_VALUE CONSTANT NUMBER := 2147483648;
+MAX_WORD CONSTANT NUMBER := 65535;
+MAX_BYTE CONSTANT NUMBER := 255;
+-- BitOpt has indexes in the range 100 - 199
+iBitWise CONSTANT PLS_INTEGER := 100;
+iExtractWord CONSTANT PLS_INTEGER := 101;
+iExtractByte CONSTANT PLS_INTEGER := 102;
+iMakeLong CONSTANT PLS_INTEGER := 103;
+iMakeWord CONSTANT PLS_INTEGER := 104;
+iToBitString CONSTANT PLS_INTEGER := 105;
+iToHexString CONSTANT PLS_INTEGER := 106;
+iFromBitString CONSTANT PLS_INTEGER := 107;
+iFromHexString CONSTANT PLS_INTEGER := 108;
+-- Exceptions
+NULL_ARGUMENT EXCEPTION;
+VALUE_TOO_LARGE EXCEPTION;
+VALUE_TOO_SMALL EXCEPTION;
+INVALID_FORMAT EXCEPTION;
+LastError VARCHAR2(30);
+-- Private Program unit headers that impliment the interfaces
+FUNCTION d2kwutil_Bitwise ( hFunc IN ORA_FFI.funcHandleType,
+X IN PLS_INTEGER,
+XSignBit IN PLS_INTEGER,
+Y IN PLS_INTEGER,
+YSignBit IN PLS_INTEGER,
+OverFlow IN OUT PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_ExtractWord ( hFunc IN ORA_FFI.funcHandleType,
+Overflow IN PLS_INTEGER,
+FUNCTION d2kwutil_ExtractByte ( hFunc IN ORA_FFI.funcHandleType,
+FUNCTION d2kwutil_MakeLong ( hFunc IN ORA_FFI.funcHandleType,
+Overflow IN OUT PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_MakeWord ( hFunc IN ORA_FFI.funcHandleType,
+Y IN PLS_INTEGER) return PLS_INTEGER;
+PROCEDURE d2kwutil_ToBitString( hFunc IN ORA_FFI.funcHandleType,
+Bits IN PLS_INTEGER,
+Result IN OUT VARCHAR2);
+PROCEDURE d2kwutil_ToHexString( hFunc IN ORA_FFI.funcHandleType,
+FUNCTION d2kwutil_FromBitString( hFunc IN ORA_FFI.funcHandleType,
+SRC IN OUT VARCHAR2,
+FUNCTION d2kwutil_FromHexString( hFunc IN ORA_FFI.funcHandleType,
+-- Private Program u
+nit headers that impliment wrapper methods
+FUNCTION Bitwise_Wrapper ( CallBy IN VARCHAR2,
+X IN NUMBER,
+Y IN NUMBER,
+Opt IN PLS_INTEGER) return NUMBER;
+FUNCTION ExtractWord_Wrapper ( CallBy IN VARCHAR2,
+FUNCTION ExtractByte_Wrapper ( CallBy IN VARCHAR2,
+-- Utility Methods
+FUNCTION Num2PLS ( X IN NUMBER,
+SignBit IN BOOLEAN DEFAULT FALSE ) return PLS_INTEGER;
+FUNCTION PLS2Num ( X IN PLS_INTEGER,
+Overflow IN PLS_INTEGER ) return NUMBER;
+Procedure BoundsCheck ( X IN NUMBER,
+LowerBound IN NUMBER,
+UpperBound IN NUMBER,
+ArgName IN VARCHAR2);
+PRAGMA INTERFACE(C,d2kwutil_Bitwise,11265);
+PRAGMA INTERFACE(C,d2kwutil_ExtractWord,11265);
+PRAGMA INTERFACE(C,d2kwutil_ExtractByte,11265);
+PRAGMA INTERFACE(C,d2kwutil_MakeLong,11265);
+PRAGMA INTERFACE(C,d2kwutil_MakeWord,11265);
+PRAGMA INTERFACE(C,d2kwutil_ToBitString,11265);
+PRAGMA INTERFACE(C,d2kwutil_ToHexString,11265);
+PRAGMA INTERFACE(C,d2kwutil_FromBitString,11265);
+PRAGMA INTERFACE(C,d2kwutil_FromHexString,11265);
+-- Utility Method Bodies
+SignBit IN BOOLEAN DEFAULT FALSE ) return PLS_INTEGER is
+Begin
+if X > MAX_PLS_INT then
+if Not SignBit then
+iRC := (X - SIGN_BIT_VALUE);
+iRC := 1;
+iRC := X;
+Overflow IN PLS_INTEGER ) return NUMBER is
+iRC NUMBER;
+if Overflow = 1 then
+iRC := X + SIGN_BIT_VALUE;
+ArgName IN VARCHAR2) is
+if X < LowerBound then
+LastError := '['||ArgName||' = '||to_char(x)||']';
+RAISE VALUE_TOO_SMALL;
+elsif X > UpperBound then
+RAISE VALUE_TOO_LARGE;
+elsif X is NULL then
+LastError := '['||ArgName||' is NULL]';
+RAISE NULL_ARGUMENT;
+LastError := NULL;
+FUNCTION BITWISE_OR ( X IN NUMBER,
+Y IN NUMBER) RETURN NUMBER is
+return bitwise_wrapper('Bitwise_OR',X,Y,0);
+FUNCTION BITWISE_XOR ( X IN NUMBER,
+return bitwise_wrapper('Bitwise_XOR',X,Y,1);
+FUNCTION BITWISE_AND ( X IN NUMBER,
+return bitwise_wrapper('Bitwise_And',X,Y,2);
+FUNCTION BITWISE_SHIFT_RIGHT ( X IN NUMBER,
+Steps IN NUMBER) RETURN NUMBER is
+return bitwise_wrapper('Bitwise_Shift_Right',X,Steps,3);
+FUNCTION BITWISE_SHIFT_LEFT ( X IN NUMBER,
+return bitwise_wrapper('Bitwise_Shift_Left',X,Steps,4);
+FUNCTION HIWORD ( X IN NUMBER) RETURN NUMBER is
+retur
+n ExtractWord_wrapper('HiWord',X,0);
+FUNCTION LOWORD ( X IN NUMBER) RETURN NUMBER is
+return ExtractWord_wrapper('LoWord',X,1);
+FUNCTION HIBYTE ( X IN NUMBER) RETURN NUMBER is
+return ExtractByte_wrapper('HiByte',X,0);
+FUNCTION LOBYTE ( X IN NUMBER) RETURN NUMBER is
+return ExtractByte_wrapper('LoByte',X,1);
+FUNCTION MakeLong ( X IN NUMBER,
+iOverFlow PLS_INTEGER := 0;
+iResult NUMBER;
+Win_API_Debug.DebugLog(99,'MakeLong','Args: X="'||to_char(X)||'", Y="'||to_char(Y)||'"');
+BoundsCheck(X,0,MAX_WORD,'LoWord');
+BoundsCheck(Y,0,MAX_WORD,'HiWord');
+win_api.Register_function_call(iMakeLong,'d2kwutil_MakeLong','LONG','SHORT,SHORT,*INT');
+iRC := d2kwutil_MakeLong(win_api.FunctionHandle(iMakeLong),X,Y,iOverflow);
+iResult := PLS2Num(iRC,iOverflow);
+Win_API_Debug.DebugLog(99,'MakeLong','Result: RC="'||to_char(iRC)||'", OverFlow="'||to_char(iOverflow)||'", Result="'||to_char(iResult)||'"');
+return(iResult);
+when VALUE_TOO_LARGE then
+Win_API.Add_error('MakeLong',win_api.MaxWord||LastError);
+RAISE VALUE_ERROR;
+when VALUE_TOO_SMALL then
+Win_API.Add_error('MakeLong',win_api.MinBound||LastError);
+when NULL_ARGUMENT then
+Win_API.Add_error('MakeLong',win_api.NullArg||LastError);
+Win_API.Add_error('MakeLong',Win_API.NoAPI);
+Win_API.Add_error('MakeLong', Win_API.UError||WIN_API.Add_External_errors);
+end MakeLong;
+FUNCTION MakeWord ( X IN NUMBER,
+Win_API_Debug.DebugLog(99,'MakeWord','Args: X="'||to_char(X)||'", Y="'||to_char(Y)||'"');
+BoundsCheck(X,0,MAX_BYTE,'LoByte');
+BoundsCheck(Y,0,MAX_BYTE,'HiByte');
+win_api.Register_function_call(iMakeWord,'d2kwutil_MakeWord','LONG','BYTE,BYTE');
+iRC := d2kwutil_MakeWord(win_api.FunctionHandle(iMakeWord),Num2PLS(X),Num2PLS(Y));
+Win_API_Debug.DebugLog(99,'MakeWord','Result: RC="'||to_char(iRC)||'"');
+Return iRC;
+Win_API.Add_error('MakeWord',win_api.MaxByte||LastError);
+Win_API.Add_error('MakeWord',win_api.MinBound||LastError);
+Win_API.Add_error('MakeWord',win_api.NullArg||LastError);
+Win_API.Add_error('MakeWord',Win_API.NoAPI);
+Win_API.Add_error('MakeWord', Win_API.UError||WIN_API.Add_External_errors);
+end MakeWord;
+FUNCTION To_BitString ( X IN NUMBER,
+Bits IN PLS_INTEGER DEFAULT 32) RETURN VARCHAR2 is
+vcBuffer VARCHAR2(33) := rpad(' ',33);
+Win_API_Debug.DebugLog(99,'To_BitString','Args: X="'||to_char(X)||'", Bits="'||to_char(Bits)||'"');
+BoundsCheck(X,0,MAX_DWORD,'Arg1');
+BoundsCheck(Bits,1,32,'Bits');
+win_api.Register_function_call(iToBitString,'d2kwutil_ToBitString','VOID','LONG,INT,INT,*CHAR');
+d2kwutil_ToBitString(win_api.FunctionHandle(iToBitString),Num2PLS(X),Num2PLS(X,TRUE),Bits,vcBuffer);
+Win_API_Debug.DebugLog(99,'To_Bitstring','Result: RC="'||vcBuffer||'"');
+return SUBSTR(vcBuffer,(33-Bits));
+if instr(LastError,'Bits') > 0 then
+Win_API.Add_error('To_BitString',win_api.MaxBound||LastError);
+Win_API.Add_error('To_BitString',win_api.MaxDWord||LastError);
+Win_API.Add_error('To_BitString',win_api.Min
+Bound||LastError);
+Win_API.Add_error('To_BitString',win_api.NullArg||LastError);
+Win_API.Add_error('To_BitString',Win_API.NoAPI);
+Win_API.Add_error('To_BitString', Win_API.UError||WIN_API.Add_External_errors);
+end To_Bitstring;
+FUNCTION To_HexString ( X IN NUMBER ) RETURN VARCHAR2 is
+vcBuffer VARCHAR2(9) := rpad(' ',9);
+Win_API_Debug.DebugLog(99,'To_HexString','Args: X="'||to_char(X)||'"');
+win_api.Register_function_call(iToHexString,'d2kwutil_ToHexString','VOID','LONG,INT,*CHAR');
+d2kwutil_ToHexString(win_api.FunctionHandle(iToHexString),Num2PLS(X),Num2PLS(X,TRUE),vcBuffer);
+Win_API_Debug.DebugLog(99,'To_HexString','Result: RC="'||vcBuffer||'"');
+return vcBuffer;
+Win_API.Add_error('To_HexString',win_api.MaxDWord||LastError);
+Win_API.Add_error('To_HexString',win_api.MinBound||LastError);
+Win_API.Add_error('To_HexString',win_api.NullArg||LastError);
+Win_API.Add_error('To_HexString',Win_API.NoAPI);
+Win_API.Add_error('To_HexString', Win_API.UError||WIN_API.Add_External_errors);
+end To_HexString;
+FUNCTION BitString_To_Number (Src IN VARCHAR2 ) RETURN NUMBER is
+vcBuffer VARCHAR2(33) := rpad(Src,33,chr(0));
+Win_API_Debug.DebugLog(99,'BitString_to_Number','Args: Src="'||Src||'"');
+BoundsCheck(length(Src),1,32,'Source String');
+if replace(replace(Src,'0'),'1') is not NULL then
+RAISE INVALID_FORMAT;
+win_api.Register_function_call(iFromBitString,'d2kwutil_FromBitString','LONG','*CHAR,*INT');
+iRC := d2kwutil_FromBitString(win_api.FunctionHandle(iFromBitString),vcBuffer,iOverFlow);
+Win_API_Debug.DebugLog(99,'BitString_To_Number','Result: RC="'||to_char(iResult)||'"');
+Return iResult;
+Win_API.Add_error('BitString_To_Number','Bit String to convert must be 32 characters in length or less (min = 1)');
+Win_API.Add_error('BitString_To_Number','Bit String to convert must be 1 character in length or more (max = 32)');
+Win_API.Add_error('BitString_To_Number',win_api.NullArg||LastError);
+when INVALID_FORMAT then
+Win_API.Add_error('BitString_To_Number','Bit String can only contain "1" and "0" characters');
+Win_API.Add_error('BitString_To_Number',Win_API.NoAPI);
+Win_API.Add_error('BitString_To_Number', Win_API.UError||WIN_API.Add_External_errors);
+end BitString_To_Number;
+FUNCTION HexString_To_Number (Src IN VARCHAR2 ) RETURN NUMBER is
+vcBuffer VARCHAR2(9) := rpad(upper(Src),9,chr(0));
+Win_API_Debug.DebugLog(99,'HexString_to_Number','Args: Src="'||Src||'"');
+BoundsCheck(length(Src),1,8,'Source String');
+if replace(translate(Src,'1234567890ABCDEFabcdef','1111111111111111111111'),'1') is not NULL then
+win_api.Register_function_call(iFromHexString,'d2kwutil_FromHexString','LONG','*CHAR,*INT');
+iRC := d2kwutil_FromHexString(win_api.FunctionHandle(iFromHexString),vcBuffer,iOverflow);
+iResult := PLS
+2Num(iRC,iOverflow);
+Win_API_Debug.DebugLog(99,'HexString_To_Number','Result: RC="'||to_char(iResult)||'"');
+Win_API.Add_error('HexString_To_Number','String to convert must be between 1 and 8 characters in length');
+Win_API.Add_error('HexString_To_Number',win_api.NullArg||LastError);
+Win_API.Add_error('HexString_To_Number','Hex String can only contain the following characters "1234567890ABCDEF"');
+Win_API.Add_error('HexString_To_Number',Win_API.NoAPI);
+Win_API.Add_error('HexString_To_Number', Win_API.UError||WIN_API.Add_External_errors);
+end HexString_To_Number;
+--Bodies for Internal wrapper Program Units
+Opt IN PLS_INTEGER) return NUMBER is
+iOverflow PLS_INTEGER := 0;
+Win_API_Debug.DebugLog(99,'BitWise_Wrapper','Args: Callby="'||CallBy||'", X="'||to_char(X)||'", Y="'||to_char(Y)||'", Opt="'||to_char(Opt)||'"');
+if Opt > 2 then
+BoundsCheck(Y,0,32,'Bits to Shift');
+BoundsCheck(Y,0,MAX_DWORD,'Arg2');
+win_api.Register_function_call(iBitwise,'d2kwutil_Bitwise','LONG','LONG,INT,LONG,INT,INT,*INT');
+iRC := d2kwutil_Bitwise(win_api.FunctionHandle(iBitwise),Num2PLS(X),Num2PLS(X,TRUE),Num2PLS(Y),Num2PLS(Y,TRUE),Opt,iOverflow);
+Win_API_Debug.DebugLog(99,'Bitwise_Wrapper','Result: RC="'||to_char(iResult)||'"');
+Win_API.Add_error(CallBy,'You cannot shift by more than 32 places');
+Win_API.Add_error(CallBy,win_api.MaxDWord||LastError);
+Win_API.Add_error(CallBy,win_api.MinBound||LastError);
+Win_API.Add_error(CallBy,win_api.NullArg||LastError);
+Win_API.Add_error(CallBy,Win_API.NoAPI);
+Win_API.Add_error(CallBy, Win_API.UError||WIN_API.Add_External_errors);
+end Bitwise_wrapper;
+Win_API_Debug.DebugLog(99,'ExtractWord_Wrapper','Args: Callby="'||CallBy||'", X="'||to_char(X)||'", Opt="'||to_char(Opt)||'"');
+win_api.Register_function_call(iExtractWord,'d2kwutil_ExtractWord','LONG','LONG,INT,INT');
+iResult := d2kwutil_ExtractWord(win_api.FunctionHandle(iExtractWord),Num2PLS(X),Num2PLS(X,TRUE),Opt);
+Win_API_Debug.DebugLog(99,'ExtractWord_Wrapper','Result: RC="'||to_char(iResult)||'"');
+when others t
+PACKAGE BODY Win_API is
+-- Private Types
+TYPE aFunctionLoadCount is table of PLS_INTEGER index by BINARY_INTEGER;
+BadLocation EXCEPTION;
+-- Private Variables
+DLL_LOAD_COUNT PLS_INTEGER := 0;
+iPreLoadCount PLS_INTEGER := 0;
+vcTestPath VARCHAR2(256) := NULL;
+FunctionLoad aFunctionLoadCount;
+-- Private Function and Procedure Declarations
+FUNCTION Attempt_DLL_Load (TargetPath in out VARCHAR2,
+TargetDLL in VARCHAR2,
+LoadCount in BOOLEAN DEFAULT TRUE) return ORA_FFI.LibHandleType;
+FUNCTION TranslateType(Datatype in VARCHAR2) return PLS_INTEGER;
+PROCEDURE d2kwutil_version (hfunc in ORA_FFI.FUNCHANDLETYPE,
+Version in out VARCHAR2);
+PRAGMA INTERFACE(C,d2kwutil_Version,11265);
+-- Function and Procedure Bodies
+PROCEDURE PreLoad(RaiseExceptions IN BOOLEAN DEFAULT TRUE) is
+vcVersion VARCHAR2(40);
+Win_API_Debug.DebugLog(99,'PreLoad','Args: (None)');
+vcVersion := DLLVersion;
+Win_API.Add_error('D2KWUTIL (Pre-Load)', Win_API.NoAPI);
+Win_API.Add_error('D2KWUTIL (Pre-Load)', Win_API.UError||WIN_API.Add_External_errors);
+end PreLoad;
+FUNCTION DLLVersion return varchar2 is
+vcVersion VARCHAR2(100) := RPAD(' ',40);
+Win_API_Debug.DebugLog(99,'DLLVersion','Args: <No Arguments>');
+Register_function_call(1,'d2kwutil_Version','VOID','*CHAR');
+d2kwutil_version(win_api.FunctionHandle(1),vcVersion);
+Win_API_Debug.DebugLog(99,'DLLVersion','Result: Version='||vcVersion);
+return vcVersion;
+end DLLVersion;
+PROCEDURE Clean_Error_Stack is
+-- just empty the variables
+ERROR_ENCOUNTERED := FALSE;
+ERROR_STACK := NULL;
+end Clean_Error_Stack;
+PROCEDURE Add_Error (CallingFunction in VARCHAR2, SetErrorText in VARCHAR2) is
+-- Just watch for value errors
+ERROR_ENCOUNTERED := TRUE;
+ERROR_STACK := CallingFunction||': '||substr(SetErrorText,1,1968);
+Win_API_Debug.DebugLog(99,'Add_Error',ERROR_STACK);
+end Add_Error;
+FUNCTION Add_External_Errors return varchar2 is
+iCounter pls_integer;
+vcErrBuff varchar2(1968);
+if tool_err.nerrors > 0 then
+for iCounter in 1..tool_err.nerrors LOOP
+vcErrBuff := vcErrBuff||chr(10)||tool_err.message;
+exit; /* String exceeds allowable buffer */
+tool_err.pop;
+end loop;
+elsif SQLERRM is not null then
+vcErrBuff := chr(10)||SQLERRM;
+return vcErrBuff;
+end Add_External_Errors;
+PROCEDURE Register_Function_Call ( FunctionID in PLS_INTEGER,
+FunctionName in VARCHAR2,
+FunctionReturn in VARCHAR2,
+FunctionArgs in VARCHAR2) is
+vcArgs VARCHAR2(200);
+vcFrag VARCHAR2(10);
+iOffset PLS_INTEGER;
+-- See if the DLL has been loaded at all.
+-- if this call to FIND_LIBRARY fails, we'll fall through to the Exception.
+DLL_HANDLE := ORA_FFI.find_library(DLL_NAME);
+when ora_ffi.ffi_error then
+-- Attempt to load the DLL again in a subblock. If this fails
+-- then the API must be disabled and NOT_DATA_FOUND raised
+DLL_HANDLE := Attempt_DLL_Load(DLL_Path, DLL_NAME);
+API_ENABLED := FALSE;
+add_error('D2KWUTIL',DLL_NAME||' not found.');
+-- now compare the Cached value for this function's loadcount with
+-- that for th
+e DLL this tells us that the function has either not
+-- been registered yet, or that the DLL has been reloaded in between
+-- times. This would not be healthy so we have to re-register in that case.
+if (not FunctionLoad.exists(FunctionId)) or (FunctionLoad(FunctionId)<> DLL_LOAD_COUNT) then
+-- We need to go through the registration process.
+-- Register the function with the DLL
+FunctionHandle(FunctionId) := ora_ffi.register_function(Win_API.DLL_HANDLE,FunctionName,ORA_FFI.C_STD);
+if FunctionName <> 'd2kwutil_DebugString' then
+if not FunctionLoad.exists(FunctionId) then
+Win_API_Debug.DebugLog(99,'Register_Function_Call','Ftn="'||FunctionName||'", DLL Count='||to_char(DLL_LOAD_COUNT)||', Initial Reg');
+Win_API_Debug.DebugLog(99,'Register_Function_Call','Ftn="'||FunctionName||'", DLL Count='||to_char(DLL_LOAD_COUNT)||', Re-Registration Count = '||to_char(FunctionLoad(FunctionId)));
+-- Loop through and register the parameters
+vcArgs := FunctionArgs||',';
+while vcArgs is not null and vcArgs <> ',' and vcArgs <> 'VOID,' LOOP
+iOffset := instr(vcArgs,',');
+vcFrag := substr(vcArgs,1,iOffset-1);
+ora_ffi.register_parameter(FunctionHandle(FunctionId),TranslateType(vcFrag));
+if iOffset = length(vcArgs) then
+vcArgs := NULL;
+vcArgs := substr(vcArgs,iOffset+1);
+end LOOP;
+-- Register the return type IF this is a function
+if upper(FunctionReturn) <> 'VOID' and FunctionReturn is not NULL then
+ora_ffi.register_return(FunctionHandle(FunctionId),TranslateType(FunctionReturn));
+-- Now add this Function's Loadcount to the array to prevent un-nessary re-registration
+FunctionLoad(FunctionId) := DLL_LOAD_COUNT;
+Win_API.Add_error(FunctionName, Win_API.UError||WIN_API.Add_External_errors);
+end Register_Function_Call;
+FUNCTION Attempt_DLL_Load (TargetPath in out VARCHAR2, TargetDLL in VARCHAR2, LoadCount in BOOLEAN DEFAULT TRUE) return ORA_FFI.LibHandleType is
+hDLL ORA_FFI.LibHandleType;
+hFile TEXT_IO.FILE_TYPE;
+if TargetPath is not null then
+-- Watch out for folks who put multiple Paths in here
+-- Oh yes it's happened! Just use the first & throw the rest away
+-- Add trailing Directory Sep if required
+TargetPath := StripDirSep(TargetPath)||'\';
+-- Check that there is actually a file there.
+hFile := TEXT_IO.FOPEN(TargetPath||TargetDLL,'R');
+TEXT_IO.FCLOSE(hFile);
+Win_API_Debug.DebugLog(99,'Attempt_DLL_LOAD',TargetDLL||' not found in the specified location of "'||TargetPath||'"');
+raise BadLocation;
+hDLL := ORA_FFI.LOAD_LIBRARY(TargetPath, TargetDLL);
+if LoadCount then
+DLL_LOAD_COUNT := DLL_LOAD_COUNT + 1;
+API_ENABLED := TRUE;
+return hDLL;
+return hDLL; /* Will be null */
+end Attempt_DLL_Load;
+FUNCTION TranslateType(DataType in VARCHAR2) return PLS_INTEGER is
+-- Just a simple lookup of the types.
+vcType VARCHAR2(10) := UPPER(DataType);
+if vcType = '*CHAR' then
+iRC := ORA_FFI.C_CHAR_PTR;
+elsif vcType = 'CHAR' then
+iRC := ORA_FFI.C_CHAR;
+elsif vcType = '*INT' then
+iRC := ORA_FFI.C_INT_PTR;
+elsif vcType = 'INT' then
+iRC := ORA_FFI.C_INT;
+elsif vcType = '*LONG' then
+iRC := ORA_FFI.C_LONG_PTR;
+elsif vcType = 'LONG' then
+iRC := ORA_FFI.C_LONG;
+elsif vcType = '*SHORT' or vcType = '*BYTE' then
+iRC := ORA_FFI.C_SHORT_PTR;
+elsif vcType = 'SHORT' or vcType = 'BYTE' then
+iRC := ORA_FFI.C_SHORT;
+elsif vcType = '*DOUBLE' then
+iRC := ORA_FFI.C_DOUBLE_PTR;
+elsif vcType = 'DOUBLE' then
+iRC := ORA_FFI.C_DOUBLE;
+elsif vcType = '*VOID' then
+iRC := ORA_FFI.C_VOID_PTR;
+end TranslateType;
+Function StripDirSep ( InPath in varchar2) return varchar2 is
+vcPath varchar2(500) := InPath;
+-- Check and Strip SemiColons, we take everything
+-- Before the first Semicolon as our path
+if instr(vcPath,';') > 0 then
+vcPath := substr(vcPath,1,instr(vcPath,';') -1);
+-- Check and Strip '\'
+if substr(vcPath,-1,1) = '\' then
+vcPath := substr(vcPath,1,length(vcPath)-1);
+return vcPath;
+end StripDirSep;
+FUNCTION GetResource (ResourceName in VARCHAR2) return VARCHAR2 is
+Return '<'||substr(DLL_NAME,1,(instr(DLL_NAME,'.')-1))||'>'||ResourceName;
+end GetResource;
+/*----------------------------------------------------------------------------*\
+* This body section is only run once (per instance of the PLL)
+* and sets up all required flags and paths.
+\*----------------------------------------------------------------------------*/
+-- Search Path is:
+-- 1. Preload override location set by WIN_API_PRELOAD.SET_LOAD_LOC
+-- 2. D2KWUTILnn_PATH e.g. D2KWUTIL60_PATH
+-- 3. D2KWUTIL_PATH
+-- 4. Working Directory / O/S Path
+-- 5. \Bin directory based in ..\bin
+-- 6. %ORACLE_HOME%\Bin
+Win_API_Debug.DebugLog(99,'Win_API(init)','Searching For DLL ('||DLL_NAME||')');
+DLL_PATH := WIN_API_PRELOAD.GET_LOAD_LOC;
+if DLL_PATH is not NULL then
+DLL_HANDLE := Attempt_DLL_load(DLL_PATH,DLL_NAME);
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL loaded from Preload Location: '||DLL_PATH);
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL failed to load from Preload Location: '||DLL_PATH);
+Win_API_Debug.DebugLog(99,'Win_API(init)','Preload location not set');
+if NOT WIN_API.API_ENABLED then /* Try the Specific Variable */
+-- Work out the version number and look for that variable
+TOOL_ENV.GETVAR('D2KWUTIL'||substr(replace(win_api_version,'.',NULL),1,2)||'_PATH',DLL_PATH);
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL loaded from D2KWUTIL'||substr(replace(win_api_version,'.',NULL),1,2)||'_PATH ('||DLL_PATH||')');
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL failed to load from D2KWUTIL'||substr(replace(win_api_version,'.',NULL),1,2)||'_PATH');
+Win_API_Debug.DebugLog(99,'Win_API(init)','Variable D2KWUTIL'||substr(replace(win_api_version,'.',NULL),1,2)||'_PATH not set');
+if not WIN_API.API_ENABLED then /* Try the plain path */
+TOOL_ENV.GETVAR('D2KWUTIL_PATH',DLL_PATH);
+if DLL_PATH is not null then
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL loaded from D2KWUTIL_PATH');
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL failed to load from D2KWUTIL_PATH');
+Win_API_Debug.DebugLog(99,'Win_API(init)','Variable D2KWUTIL_PATH not set, Searching O/S PATH');
+if not WIN_API.API_ENABLED then /* Try Working Directory and O/S Path */
+DLL_PATH := NULL;
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL loaded from O/S Path');
+DLL_PATH := '%PATH%';
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL not found in O/S Path or Working Directory');
+if not WIN_API.API_ENABLED then /* Try relative Bin directory */
+DLL_PATH := '..\bin';
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL loaded from relative bin (..\bin\)');
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL not found in relative bin');
+if not WIN_API.API_ENABLED then /* Try %ORACLE_HOME%\bin */
+TOOL_ENV.GETVAR('ORACLE_HOME',DLL_PA
+PACKAGE Win_API IS
+/*-------------------------------------------------------------------------------*\
+* WIN_API -> This package defines the constants used throughout
+* the library as a whole, including versions of those
+* constants defined within WINDOWS.H/WINUSER.H that
+* we'll be using. Add more constants in here if required
+* The package also contains Explict Exception declarations,
+* various status Flags and functions for Error Handling
+* NOTE: In order to make this library portable across Forms,
+* Reports and Graphics we do not use any application
+* specific built-ins such as the Forms MESSAGE()
+* Built-in. Instead errors are recorded in a package
+* variable which the programmer can examine if required
+\*-------------------------------------------------------------------------------*/
+* Internal Version Number ** Oracle Developer Release 6.0 Version
+WIN_API_VERSION CONSTANT VARCHAR2(30) := '6.0.6.0 Production';
+DLL_NAME CONSTANT VARCHAR2(12) := 'D2KWUT60.DLL';
+DLL_PATH VARCHAR2(256) := NULL;
+* General Window Classes of Common Applications for use with WIN_API_SESSION
+* ** WARNING ** These Window classes are out of our control and might change
+* when you upgrade the software in question,
+-- Oracle Apps
+WINCLASS_DEVELOPER_2000_V1 CONSTANT VARCHAR2(15) := 'ui23MDIroot_W32'; /* Developer/2000 release 1.n / Toolkit 2.3 Apps on 32 bit */
+WINCLASS_DEVELOPER_2000_V2 CONSTANT VARCHAR2(15) := 'ui25MDIroot_W32'; /* Developer/2000 Release 2.0 / Toolkit 2.5 Apps on 32 bit */
+WINCLASS_DEVELOPER_2000_V6 CONSTANT VARCHAR2(15) := 'ui60MDIroot_W32'; /* Developer/2000 Release 6.0 / Toolkit 6.0 Apps on 32 bit */
+D2K_WINDOW_CLASS CONSTANT VARCHAR2(15) := WINCLASS_DEVELOPER_2000_V6; /* Set to the "current" version */
+WINCLASS_INTEROFFICE_40 CONSTANT VARCHAR2(28) := 'Afx:10000000:b:10008:6:5023b';/* Oracle Interoffice 4.0 Client 32 bit */
+WINCLASS_INTEROFFICE_41 CONSTANT VARCHAR2(28) := 'Afx:10000000:b:1496:6:3a17'; /* Oracle Interoffice 4.0 Client 32 bit */
+WINCLASS_SQLPLUS CONSTANT VARCHAR2(13) := 'SqlplusWClass'; /* Sql*Plus 32 bit */
+WINCLASS_REPORTSSERVER_V1 CONSTANT VARCHAR2(15) := 'R25SRV_WINCLASS'; /* Reports Server Reports 2.5 */
+WINCLASS_REPORTSSERVER_V2 CONSTANT VARCHAR2(15) := 'R30SRV_WINCLASS'; /* Reports Server Reports 3.0 */
+WINCLASS_REPORTSSERVER_V6 CONSTANT VARCHAR2(14) := 'RWRBE_WINCLASS'; /* Reports Server Reports 6.0 */
+-- Microsoft Office Apps - Office97
+WINCLASS_MSWORD_97 CONSTANT VARCHAR2(7) := 'OpusApp'; /* Microsoft Word 97 */
+WINCLASS_MSEXCEL_97 CONSTANT VARCHAR2(6) := 'XLMAIN'; /* Microsoft Excel 97 */
+WINCLASS_MSPOWERPOINT_97 CONSTANT VARCHAR2(14):= 'PP97FrameClass'; /* Microsoft Power Point 97 */
+-- Microsoft Office Apps - Office95
+WINCLASS_MSWORD_7 CONSTANT VARCHAR2(7) := 'OpusApp'; /* Microsoft Word 7 */
+WINCLASS_MSEXCEL_7 CONSTANT VARCHAR2(6) := 'XLMAIN'; /* Microsoft Excel 7 */
+WINCLASS_MSPOWERPOINT_7 CONSTANT VARCHAR2(13):= 'PP7FrameClass'; /* Microsoft Power Point 7 */
+WINCLASS_MSSCHEDULE_7 CONSTANT VARCHAR2(23):= 'MS Schedule+ 32 Panesdi'; /* Microsoft Schedule 7 */
+WINCLASS_MSEXCHANGE_4 CONSTANT VARCHAR2(29):= 'Microsoft Exchange 4.0 Viewer'; /* Microsoft Exchange 4 in-tray */
+-- Microsoft O/S Utilities
+WINC
+LASS_INETEXPLORER CONSTANT VARCHAR2(7):= 'IEFrame'; /* Internet Explorer */
+WINCLASS_OUTLOOK_EXPRESS CONSTANT VARCHAR2(29):= 'Outlook Express Browser Class'; /* Outlook Express */
+WINCLASS_EXPLORER CONSTANT VARCHAR2(13):= 'ExploreWClass'; /* Explorer */
+WINCLASS_MYCOMPUTER CONSTANT VARCHAR2(13):= 'CabinetWClass'; /* My Computer & Network Neighborhood*/
+WINCLASS_CALCULATOR CONSTANT VARCHAR2(7) := 'SciCalc'; /* Windows Calculator */
+WINCLASS_NOTEPAD CONSTANT VARCHAR2(7) := 'Notepad'; /* Windows Notepad */
+WINCLASS_WORDPAD CONSTANT VARCHAR2(12):= 'WordPadClass'; /* Windows Wordpad/Write */
+WINCLASS_DOS CONSTANT VARCHAR2(18):= 'ConsoleWindowClass'; /* Dos Window */
+-- Other
+WINCLASS_NETSCAPE_3 CONSTANT VARCHAR2(27):= 'Afx:40000000:b:150e:6:38cfe'; /* Netscape Navigator 3.0 */
+WINCLASS_NETSCAPE_4 CONSTANT VARCHAR2(28):= 'Afx:40000000:b:10008:6:6063e'; /* Netscape Communicator 4.0 */
+WINCLASS_PFE_7 CONSTANT VARCHAR2(11):= 'PFE32_Frame'; /* Programmers File Editor */
+WINCLASS_REGEDIT CONSTANT VARCHAR2(15):= 'RegEdit_RegEdit'; /* Registry Editor */
+-- Window Style Constants (from WINUSER.H)
+-- Any PU's that use these constants will explain
+-- their use. For further information consult the
+-- Windows SDK.
+SW_HIDE CONSTANT PLS_INTEGER := 0;
+SW_SHOWNORMAL CONSTANT PLS_INTEGER := 1;
+SW_SHOWMINIMIZED CONSTANT PLS_INTEGER := 2;
+SW_SHOWMAXIMIZED CONSTANT PLS_INTEGER := 3;
+SW_SHOWNOACTIVATE CONSTANT PLS_INTEGER := 4;
+SW_SHOW CONSTANT PLS_INTEGER := 5;
+SW_MINIMIZE CONSTANT PLS_INTEGER := 6;
+SW_SHOWMINNOACTIVE CONSTANT PLS_INTEGER := 7;
+SW_SHOWNA CONSTANT PLS_INTEGER := 8;
+SW_RESTORE CONSTANT PLS_INTEGER := 9;
+SW_SHOWDEFAULT CONSTANT PLS_INTEGER := 10;
+-- Help Access Constants (From WINUSER.H)
+-- See WIN_API_SHELL.WinHelp
+HELP_CONTEXT CONSTANT PLS_INTEGER := 1; /* 0x0001L */
+HELP_QUIT CONSTANT PLS_INTEGER := 2; /* 0x0002L */
+HELP_INDEX CONSTANT PLS_INTEGER := 3; /* 0x0003L */
+HELP_CONTENTS CONSTANT PLS_INTEGER := 3; /* 0x0003L */
+HELP_HELPONHELP CONSTANT PLS_INTEGER := 4; /* 0x0004L */
+HELP_SETINDEX CONSTANT PLS_INTEGER := 5; /* 0x0005L */
+HELP_SETCONTENTS CONSTANT PLS_INTEGER := 5; /* 0x0005L */
+HELP_CONTEXTPOPUP CONSTANT PLS_INTEGER := 8; /* 0x0008L */
+HELP_FORCEFILE CONSTANT PLS_INTEGER := 9; /* 0x0009L */
+HELP_KEY CONSTANT PLS_INTEGER := 257; /* 0x0101L */
+HELP_COMMAND CONSTANT PLS_INTEGER := 258; /* 0x0102L */
+HELP_PARTIALKEY CONSTANT PLS_INTEGER := 261; /* 0x0105L */
+HELP_MULTIKEY CONSTANT PLS_INTEGER := 513; /* 0x0201L */
+HELP_SETWINPOS CONSTANT PLS_INTEGER := 515; /* 0x0203L */
+-- Windows 4+
+HELP_CONTEXTMENU CONSTANT PLS_INTEGER := 10; /* 0x000a */
+HELP_FINDER CONSTANT PLS_INTEGER := 11; /* 0x000b */
+HELP_WM_HELP CONSTANT PLS_INTEGER := 12; /* 0x000c */
+HELP_SETPOPUP_POS CONSTANT PLS_INTEGER := 13; /* 0x000d */
+-- Windows Messages for use with SendMessage
+-- DO NOT utilise the Windows Sendmessage interface without being conversant
+-- with the Windows message handling mechanism
+-- Refer to the Microsoft Windows SDK for Messages and Parameter values
+WM_SYSCOMMAND CONSTANT PLS_INTEGER := 274; /* 0x0112 */
+WM_MDITILE CONSTANT PLS_INTEGER := 550; /* 0x0226 */
+WM_MDICASCADE CONSTANT PLS_INTEGER := 551; /* 0x0227 */
+WM_MDIICONARRANGE CONSTANT PLS_INTEGER := 552; /* 0x0228 */
+SC_RESTORE CONSTANT PLS_INTEGER := 61728; /* 0xF120 */
+SC_MINIMIZE CONSTANT PLS_INTEGER := 61472; /* 0xF020 */
+SC_MAXIMIZE CONSTANT
+PLS_INTEGER := 61488; /* 0xF030 */
+-- Flags for use with File Dialog boxes ("Save As" or "Open")
+-- Refer to your Microsoft documentation for details on the
+-- Exact usage and dependancies of each option
+OFN_READONLY CONSTANT PLS_INTEGER := 1; /* 0x00000001 */
+OFN_OVERWRITEPROMPT CONSTANT PLS_INTEGER := 2; /* 0x00000002 */
+OFN_HIDEREADONLY CONSTANT PLS_INTEGER := 4; /* 0x00000004 */
+OFN_NOCHANGEDIR CONSTANT PLS_INTEGER := 8; /* 0x00000008 */
+OFN_SHOWHELP CONSTANT PLS_INTEGER := 16; /* 0x00000010 */
+OFN_NOVALIDATE CONSTANT PLS_INTEGER := 256; /* 0x00000100 */
+OFN_ALLOWMULTISELECT CONSTANT PLS_INTEGER := 512; /* 0x00000200 */
+OFN_EXTENSIONDIFFERENT CONSTANT PLS_INTEGER := 1024; /* 0x00000400 */
+OFN_PATHMUSTEXIST CONSTANT PLS_INTEGER := 2048; /* 0x00000800 */
+OFN_FILEMUSTEXIST CONSTANT PLS_INTEGER := 4096; /* 0x00001000 */
+OFN_CREATEPROMPT CONSTANT PLS_INTEGER := 8192; /* 0x00002000 */
+OFN_SHAREAWARE CONSTANT PLS_INTEGER := 16384; /* 0x00004000 */
+OFN_NOREADONLYRETURN CONSTANT PLS_INTEGER := 32768; /* 0x00008000 */
+OFN_NOTESTFILECREATE CONSTANT PLS_INTEGER := 65536; /* 0x00010000 */
+OFN_NONETWORKBUTTON CONSTANT PLS_INTEGER := 131072; /* 0x00020000 */
+OFN_NOLONGNAMES CONSTANT PLS_INTEGER := 262144; /* 0x00040000 */
+OFN_EXPLORER CONSTANT PLS_INTEGER := 524288; /* 0x00080000 */
+OFN_NODEREFERENCELINKS CONSTANT PLS_INTEGER := 1048576; /* 0x00100000 */
+OFN_LONGNAMES CONSTANT PLS_INTEGER := 2097152; /* 0x00200000 */
+-- The defaults used here (WIN_API.OFN_PATHMUSTEXIST|WIN_API.OFN_FILEMUSTEXIST|WIN_API.OFN_HIDEREADONLY|WIN_API.OFN_NOCHANGEDIR|WIN_API.OFN_EXPLORER)
+OFN_FLAG_DEFAULT CONSTANT PLS_INTEGER := 530444;
+-- Registry Data types for Write_RegistryEx
+REG_EXPAND_SZ CONSTANT PLS_INTEGER := 0;
+REG_SZ CONSTANT PLS_INTEGER := 1;
+REG_DWORD CONSTANT PLS_INTEGER := 2;
+-- Compatibility Flags - Used where I have changed behaviour and you might not like the new version
+-- Change these at runtime to FALSE to revert to "old" behaviour
+COMPAT_EXPAND_REG_VALUES
+BOOLEAN := TRUE;
+-- Types
+TYPE aFunctionHandle is table of ORA_FFI.FUNCHANDLETYPE index by BINARY_INTEGER;
+--SUBTYPE FILE_TYPE is ORA_FFI.POINTERTYPE;
+SUBTYPE FILE_TYPE is PLS_INTEGER;
+-- Public Variables
+ERROR_ENCOUNTERED BOOLEAN := FALSE; /* The Last Call resulted in an error */
+ERROR_STACK VARCHAR2(2000); /* Holds Text of Last error(s) */
+API_ENABLED BOOLEAN := FALSE; /* Are API functions usable ?*/
+DLL_HANDLE ORA_FFI.LibHandleType;
+FunctionHandle aFunctionHandle;
+-- Public Exceptions
+NOT_AVAILABLE EXCEPTION; /* A call to the API was made but API functions not currently available (e.g. not on Windows) */
+-- Error Constants
+UError CONSTANT VARCHAR2(30) := ' Caused an unexpected error: ';
+NoAPI CONSTANT VARCHAR2(31) := 'API Functions are not Available';
+MaxDWord CONSTANT VARCHAR2(33) := 'Integer Argument exceeds 32 bits ';
+MaxWord CONSTANT VARCHAR2(33) := 'Integer Argument exceeds 16 bits ';
+MaxByte CONSTANT VARCHAR2(32) := 'Integer Argument exceeds 8 bits ';
+MinBound CONSTANT VARCHAR2(27) := 'Integer Argument too Small ';
+MaxBound CONSTANT VARCHAR2(27) := 'Integer Argument too Large ';
+NullArg CONSTANT VARCHAR2(24) := 'Argument cannot be NULL ';
+* PreLoad -> Loads the DLL into memory
+* DLL_Location argument allows you to explicitly load
+* from a particular place
+PROCEDURE PreLoad(RaiseExceptions IN BOOLEAN DEFAULT TRUE);
+/*------------------
+----------------------------------------------------------*\
+* DLLVersion -> Returns the Version String of the DLL in use.
+FUNCTION DLLVersion return varchar2;
+* Clean_Error_Stack -> Re-initialises the error mechanism
+PROCEDURE Clean_Error_Stack;
+* Add_Error -> Adds the text of the specified error to the
+* ERROR_STACK variable and sets the error Flag
+* ERROR_ENCOUTERED.
+PROCEDURE Add_Error (CallingFunction in VARCHAR2, SetErrorText in VARCHAR2);
+* Add_External_Errors -> If we get an unexpected error this funtion will
+* return a sting containing the error text
+FUNCTION Add_External_Errors return varchar2;
+* Register_Function_Call -> Ensures that the DLL is still loaded and
+* registers the function if required
+* Raises NO_DATA_FOUND if the library
+* cannot be loaded
+PROCEDURE Register_Function_Call (FunctionID in PLS_INTEGER,
+FunctionArgs in VARCHAR2);
+* StripDirSep -> Removes trailing directory seperators or
+* SemiColons from paths, providing a known format
+FUNCTION StripDirSep ( INPath in varchar2) return varchar2;
+* GetResource -> Returns the name of the Resource requested Prefixed with
+* The name of the DLL in the Correct Format
+* If the resource being requested is a Cursor then
+* the D2kwutil DLL file *Must* be on the O/S Path
+FUNCTION GetResource (ResourceName in VARCHAR2) return VARCHAR2;
+END Win_API; /* End Package Declaration */
+ORA_FFI
+"WIN_API"WIN_API_VERSION"DLL_NAME"DLL_PATH"WINCLASS_DEVELOPER_2000_V1"WINCLASS_DEVELOPER_2000_V2"WINCLASS_DEVELOPER_2000_V6"D2K_WINDOW_CLASS"WINCLASS_INTEROFFICE_40"WINCLASS_INTEROFFICE_41"WINCLASS_SQLPLUS"WINCLASS_REPORTSSERVER_V1"WINCLASS_REPORTSSERVER_V2"WINCLASS_REPORTSSERVER_V6"WINCLASS_MSWORD_97"WINCLASS_MSEXCEL_97"WINCLASS_MSPOWERPOINT_97"WINCLASS_MSWORD_7"WINCLASS_MSEXCEL_7"WINCLASS_MSPOWERPOINT_7"WINCLASS_MSSCHEDULE_7"WINCLASS_MSEXCHANGE_4"WINCLASS_INETEXPLORER"WINCLASS_OUTLOOK_EXPRESS"WINCLASS_EXPLORER"WINCLASS_MYCOMPUTER"WINCLASS_CALCULATOR"WINCLASS_NOTEPAD"WINCLASS_WORDPAD"WINCLASS_DOS"WINCLASS_NETSCAPE_3"WINCLASS_NETSCAPE_4"WINCLASS_PFE_7"WINCLASS_REGEDIT"SW_HIDE"SW_SHOWNORMAL"SW_SHOWMINIMIZED"SW_SHOWMAXIMIZED"SW_SHOWNOACTIVATE"SW_SHOW"SW_MINIMIZE"SW_SHOWMINNOACTIVE"SW_SHOWNA"SW_RESTORE"SW_SHOWDEFAULT"HELP_CONTEXT"HELP_QUIT"HELP_INDEX"HELP_CONTENTS"HELP_HELPONHELP"HELP_SETINDEX"
+SPACKAGE WIN_API_BITOP IS
+/*-------------------------------------------------------------------------*\
+* WIN_API_BITOP -> This package provides 'C' Bit operations for
+* PL/SQL. Most of the functions work with Positive 31 Bit
+* integers, except where explicitly mentioned.
+* Passing an integer larger than 32 bits will
+* cause a value error to be raised
+* Contents:
+* Simple Bit Mask Operations
+* Bitwise_OR
+* Bitwise_XOR
+* Bitwise_AND
+* Bitwise_SHIFT_RIGHT
+* Bitwise_SHIFT_LEFT
+* Implimentations of standard Macros
+* HiWord
+* LoWord
+* HiByte
+* LoByte
+* MakeWord
+* MakeLong
+* Some Handy Datatype Conversion functions
+* To_BitString
+* To_HexString
+* BitString_To_Number
+* HexString_To_Number
+* Dependancies:
+* WIN_API
+* WIN_API_DEBUG
+\*-------------------------------------------------------------------------*/
+* Bitwise_OR -> Performs a C OR operation
+* Arguments:
+* -> Two 32 bit Integers to OR
+* Returns:
+* integer result
+FUNCTION Bitwise_OR ( X IN NUMBER,
+Y IN NUMBER) RETURN NUMBER;
+* Bitwise_XOR -> Performs a C XOR operation
+* -> Two 32 bit integers to XOR
+* 32 bit integer result
+FUNCTION Bitwise_XOR ( X IN NUMBER,
+* Bitwise_AND -> Performs a C AND operation
+* -> Two 32 bit integers to AND
+FUNCTION Bitwise_AND ( X IN NUMBER,
+* Bitwise_SHIFT_RIGHT -> Performs a Bitwise Right shift of an Integer
+* X -> 32 bit Integer to Shift
+* Steps -> Number of Bits to Shift
+FUNCTION Bitwise_SHIFT_RIGHT ( X IN NUMBER,
+Steps IN NUMBER) RETURN NUMBER;
+* BITWISE_SHIFT_LEFT -> Performs a Bitwise Left shift of an Integer
+FUNCTION Bitwise_SHIFT_LEFT ( X IN NUMBER,
+* HiWord -> Extracts the high 16 bits from a 32 bit integer
+* X -> 32 bit Integer
+* 16 bit integer result
+FUNCTION HiWord ( X IN NUMBER) RETURN NUMBER;
+* LoWord -> Extracts the Low 16 bits from a 32 bit integer
+FUNCTION LoWord ( X IN NUMBER) RETURN NUMBER;
+* HiByte -> Extracts the high 8 bits from a 16 bit integer
+* X -> 16 bit Integer
+* 8 bit int
+eger result
+FUNCTION HiByte ( X IN NUMBER) RETURN NUMBER;
+* LoByte -> Extracts the Low 8 bits from a 16 bit integer
+* 8 bit integer result
+FUNCTION LoByte ( X IN NUMBER) RETURN NUMBER;
+* MakeLong -> Combines two 16 bit integers into a Long (32 bit)
+* X -> 16 bit Integer to be the Low Word
+* Y -> 16 bit Integer to be the High Word
+* MakeWord -> Combines two bytes (8 bit integers) into a Word (16 bits)
+* X -> 8 bit Integer to be the Low Byte
+* Y -> 8 bit Integer to be the High Byte
+* To_BitString -> Translates a 32 bit integer to a string of 1's & 0's
+* You can specify how many bits you are interested in
+* eg, just view the Low 8 bits of a number.
+* X -> 32 bit Integer to convert
+* Bits -> A number of <=32 of bits to convert. This
+* defines the length of the output string.
+* defaults to the full 32 bits
+* String up to 32 chars long
+Bits IN PLS_INTEGER DEFAULT 32) RETURN VARCHAR2;
+* To_HexString -> Translates a 32 bit integer to a Hex String
+* String up to 8 chars long
+FUNCTION To_HexString ( X IN NUMBER ) RETURN VARCHAR2;
+* BitString_To_Number -> Translates a string of 1's and 0's to a number
+* Src -> A String of up to 32 chars to convert
+* 32 bit integer
+FUNCTION BitString_To_Number (Src IN VARCHAR2 ) RETURN NUMBER;
+* HexString_To_Number -> Translates a Hexidecimal string to a number
+* Src -> A String of up to 8 chars to convert
+FUNCTION HexString_To_Number (Src IN VARCHAR2 ) RETURN NUMBER;
+END WIN_API_BITOP;
+"WIN_API_BITOP"BITWISE_OR"X"Y"BITWISE_XOR"BITWISE_AND"BITWISE_SHIFT_RIGHT"STEPS"BITWISE_SHIFT_LEFT"HIWORD"LOWORD"HIBYTE"LOBYTE"MAKELONG"MAKEWORD"TO_BITSTRING"BITS"TO_HEXSTRING"BITSTRING_TO_NUMBER"SRC"HEXSTRING_TO_NUMBER""
+.\PACKAGE WIN_API_DIALOG IS
+* WIN_API_DIALOG -> This package is concerned with Displaying Common
+* dialogs
+* Open_File -> Open File Dialog
+* Save_File -> Save File Dialog
+* Select_Printer -> Printer Selection Dialog
+* Choose_Font -> Display the Font Selection Dialog
+* Choose_Color -> Display the Color Selection Dialog
+* WIN_API_ENVIRONMENT
+* Open_File -> Displays the standard Open File dialog
+* Title -> The Title for the Dialog Box
+* (Default -> 'Open File')
+* StartDirectory -> Where the dialog should start from
+* this should be in the format 'C:\TEMP'
+* (Default -> Windows Directory)
+* FileFilter -> Restrict the list of files. The filter string
+* should be in the format:
+* '<Description>|<filename>.<Extension>|'
+* typically this would be something like
+* 'All files(*.*)|*.*|' or 'Text files(*.txt)|*.txt|'
+* "All Files" is the Default
+* Modal -> Should the dialog be modal with respect to the
+* application?
+* default = TRUE
+* AdvancedFlags -> (See list in WIN_API header) This option allows
+* you to change the attributes of the Open File
+* dialog. Here are some of the Flags that might
+* be of interest:
+* OFN_HIDEREADONLY Hides the Read Only check box.
+* OFN_NONETWORKBUTTON Hides the Network Button
+* OFN_EXPLORER Display an Explorer style
+* Dialog rather than the conventional one.
+* See your Microsoft docmentation for details on
+* each flag.
+* To Set the Advanced_Flags varaible, just add the
+* required flags together. The default is:
+* WIN_API.OFN_PATHMUSTEXIST + WIN_API.OFN_FILEMUSTEXIST +
+* WIN_API.OFN_HIDEREADONLY + WIN_API.OFN_NOCHANGEDIR
+* RaiseExceptions -> TRUE of FALSE(Default) If set to true, then if the
+* command is not successful (e.g no filename is
+* returned) then the explicit exception
+* NO_DATA_FOUND will be raised.
+* Path and name of the selected file
+) RETURN VARCHAR2;
+* Open_FileEx -> Enhanced version of Open_File designed for use with
+* The OFN_ALLOWMULTISELECT flag. The existing Open_file
+* returns the list of selected files separated with a Space
+* This can cause problems if you have long filenames with spaces
+* so this version of Open_File allows you to specify the
+* Separator char, and defaults it to newline (chr(10))
+* Additionally as the main use of this version is to sele
+* Multiple files, the default flags are set to include the
+* OFN_ALLOWMULTISELECT flag.
+* Arguments: As Open_File, except to an extra single Character
+* Parameter SeperatorChar before the RaiseExceptions
+* Boolean
+FUNCTION Open_FileEx( Title IN VARCHAR2 DEFAULT 'Open File',
+* Save_File -> Displays the standard Save File dialog
+* SampleName -> The Example name for the file to display in
+* the Save Window
+* (Default -> 'Save File As')
+* You can specify the Windows and Temp directories by
+* using the Shorthand $WINDIR$ and $TEMP$ respectively
+* The function will then Ask the O/S for the relevant
+* locations
+* RaiseExceptions -> TRUE or FALSE(Default) If set to true, then if the
+* Select_Printer -> Displays the standard Printer Selection dialog.
+* PrinterName -> The Name of the Printer the user Chooses
+* Port -> The Port for the above printer
+* command is not successful (e.g no Printer is
+* selected) then the explicit exception
+* Choose_Printer -> ** Do Not Use **
+* This is an internal function that should not be used.
+* It is only exposed because it is shared with WIN_API_ENVIRONMENT
+* SELECT_PRINTER is the public implimetation of this Procedure.
+RaiseExceptions IN BOOLEAN );
+* Choose_Font -> Displays the standard Font Selection dialog.
+* (These arguments are all declared as IN OUT so that you can initialise
+* the selection dialog with the current values)
+* Face -> The Name of the Font (IN OUT)
+* PointSize -> How Large?
+* Bold -> TRUE|FALSE
+* Italic -> TRUE|FALSE
+* RaiseExceptions -> BOOLEAN -> Raise NO_DATA_FOUND if no font was selected
+* Choose_Color -> Displays the standard Color selection dialog.
+* Red
+-> Value between 0 - 255 for Redness
+* Green
+-> Value between 0 - 255 for Greenness
+* Blue
+-> Value between 0 - 255 for Blueness
+* RaiseExceptions -> BOOLEAN -> Raise NO_DATA_FOUND if no color was selected
+*-------------------------------------------------------------------------
+* Return Value: Integer representing the combined RGB color code
+* or -1 if no color was selected
+FUNCTION Choose_Color ( Red IN OUT PLS_INTEGER,
+Blue IN OUT PLS_INTEGER,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN PLS_INTEGER;
+END WIN_API_DIALOG;
+/D2KWUTIL/WIN_API
+"WIN_API_DIALOG"OPEN_FILE"TITLE"STARTDIRECTORY"FILEFILTE
+PACKAGE WIN_API_ENVIRONMENT IS
+/*-----------------------------------------------------------------------------------*\
+* WIN_API_ENVIRONMENT -> This package is concerned with reading from and
+* writing to either INI files or the Win95/WinNT Registry.
+* Or gleaning other useful nuggets of information from the system
+* Read_INI_File -> Gets a Value from an INI file
+* Write_INI_File -> Sets a Value in an INI file
+* Get_Windows_Username -> Login of current Windows User
+* Get_Windows_Version -> Returns the O/S being used
+* Get_Environment_string -> Expands Environment Vars e.g %path%
+* Get_Windows_Directory -> Gets the Working Windows Dir
+* Get_Temp_Directory -> Gets the Temp Dir
+* Get_Net_Connection -> Expand Drive Letter into a Network Path
+* Read_Registry -> Reads a value from the Registry
+* Write_Registry -> Writes a value to the Registry in REG_SZ fmt
+* Write_RegistryEx -> Extended version of Write_Registry which allows
+* You to choose which format to Write in
+* Create_Registry_Key -> Creates a new subkey in the registry
+* Delete_Registry_Key -> Removes a subkey from the registry
+* Get_Working_Directory -> Get the name of the "Start In" / Current Directory
+* For this runtime
+* Set_Working_Directory -> Alter the Working directory
+* Get_Computer_Name -> Get the name of this PC if defined
+* Get_Default_Drinter -> Returns the Name and Port of your default printer
+* WIN_API_DIALOG
+\*------------------------------------------------------------------------------------*/
+* Read_INI_File -> Read a Value from a named INI file
+* If you need to read the ORACLE.INI file
+* use TOOL_ENV.GETVAR() instead of this
+* package.
+* If using 32bit Developer/2000 you would
+* probably rather use
+* WIN_API_PROFILES.READ_REGISTRY() instead
+* FileName -> Name of INI file e.g. WIN.INI. If the full
+* path is not supplied with this argument
+* then the DOS PATH will be searched for the
+* Specified INI file
+* Section -> Section in INI file where the entry is.
+* This will be delimited using square brackets
+* e.g. [printers]
+* Entry -> Name of Variable to read e.g. load (from win.ini)
+* requested variable is not found the explicit exception
+* Value -> A VARCHAR2 value containing the
+* string (or number as a string) that the
+* entry contains.
+* If the Entry is not found NULL is returned in
+* the return value. (see RaiseExceptions above)
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return VARCHAR2;
+* Write_INI_File -> Write a Value to a named INI file
+* WIN_API_PROFILES.WRITE_REGISTRY_XXXX()
+* path is n
+ot supplied with this argument
+* e.g. [printers]. No need to supply the brackets
+* for the argument though
+* Entry -> Name of Variable to write e.g. load (from win.ini)
+* Value -> Value of the variable to write as a string.
+* RaiseExceptions -> Set to TRUE or FALSE (default). If this is set
+* to TRUE, then errors such as not finding the
+* INI file will raise NO_DATA_FOUND
+* If FALSE then all errors will be handled quietly
+* (NONE)
+* Get_Windows_Username -> The Username Supplied to log into Windows
+* to TRUE, then Not finding the Username (or
+* exceeding the buffer size) will raise
+* NO_DATA_FOUND
+* UserName -> Varchar2
+FUNCTION Get_Windows_Username ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2;
+* Get_Windows_Version -> The Version of Windows Being used.
+* NONE
+* Version -> Varchar2 one of the following strings:
+* Windows95
+* Windows98
+* WindowsNT
+FUNCTION Get_Windows_Version RETURN VARCHAR2;
+* Get_Environment_String -> Expands a named environment variable
+* VariableName -> Name of the variable e.g. PATH
+* to TRUE, then Not finding the Variable (or
+* Expanded String -> Varchar2
+FUNCTION Get_Environment_string (VariableName IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2;
+* Get_Windows_Directory -> Obtains the path to the windows directory
+* on the machine
+* to TRUE, then Not finding the directory (or
+* Path -> Varchar2
+FUNCTION Get_Windows_Directory ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2;
+* Get_Temp_Directory -> Obtains the path to the directory that
+* Windows is using for temp files
+to TRUE, then Not finding the directory (or
+FUNCTION Get_Temp_Directory ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2;
+* Get_Net_Connection -> Expands an attached drive letter to it's
+* full network address
+* DriveLetter -> Letter of the Drive to expand e.g. 'F'
+* to TRUE, then Not finding the Drive (or
+* Expanded Connection String -> Varchar2
+FUNCTION Get_Net_Connection (DriveLetter IN VARCHAR2,
+* Read_Registry -> Read the value of a particular entry in the
+* Win95/NT Registry
+* It wil read Registry Values Stored in the
+* Following Formats
+* REG_EXPAND_SZ, REG_SZ, REG_DWORD
+* RegPath -> The Full path in the registry to the required
+* value e.g. HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE
+* RegEntry -> Name of the entry to read e.g. ORACLE_PATH
+* to TRUE, then failing to find the entry raises
+* NO_DATA_FOUND. obtaining an entry of a datatype
+* that is not a string or a number raises
+* VALUE_ERRROR.
+* Value -> Both Number and String entries returned
+* as Varchar2.
+* NOTE:
+* If you read a registry entry of type REG_EXPAND_SZ, this call will now
+* automatically attempt to expand any variables included in the string
+* such as %path%. If the total length of the expanded string exceeds 2000
+* bytes then the unexpanded tring will be returned.
+* To totally supress the expansion of such strings set the
+* WIN_API.COMPAT_EXPAND_REG_VALUES flag to FALSE at runtime.
+* Write_Registry -> Set the value of a particular entry in the
+* Win95/NT Registry in REG_EXPAND_SZ format
+* NOTE: The Path to the entry must already Exist
+* RegEntry -> Name of the entry to set e.g. ORACLE_PATH
+* RegValue -> Value to set
+* to TRUE, then failing to set the entry raises
+* NO_DATA_FOUND.
+* Write_RegistryEx -> Set the value of a par
+ticular entry in the
+* Win95/NT Registry Specifying the Format
+* RegFormat -> Format for Setting Supported Values REG_SZ, REG_EXPAND_SZ,
+* REG_DWORD
+* Create_Registry_Key -> Create a new subkey on the Registry
+* NOTE: If this key already exists this call will
+* be harmless and Will Suceed.
+* value e.g. HKEY_LOCAL_MACHINE\SOFTWARE\D2KWUTIL
+* to TRUE, then failing to create key raises
+* Delete_Registry_Key -> Removes a subkey and all it's children from
+* the Registry
+* NOTE: **** THIS CALL IS VERY DANGEROUS - YOU COULD SERIOUSLY ****
+* **** DAMAGE YOUR SYSTEM USING THIS FUNCTION ****
+* **** EXERCISE CAUTION ****
+* RegPath -> The Full path in the registry to be deleted
+* to TRUE, then failing to delete the entry raises
+* Get_Working_Directory -> Obtains the path of the current directory
+FUNCTION Get_Working_Directory ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2;
+* Set_Working_Directory -> Changes the path of the current directory
+* WorkingDirectory -> VARCHAR2
+* to TRUE, then Not finding
+PACKAGE WIN_API_FILE IS
+* WIN_API_FILE -> This package is concerned with getting information
+* about and Manipulating files.
+* Created_Date -> Obtain the date on which a file
+* was created
+* Accessed_Date -> Obtain the date on which a file
+* was last Accessed NTFS & FAT32 Only
+* Modified_Date -> Obtain the date on which a file
+* was last changed
+* File_Size -> Obtain the Size of the file in bytes
+* File_Atttributes -> Obtain the various file attributes
+* Open_File -> Opens a Binary file for Reading and Writing
+* Close_File -> Closes a Binary File.
+* Rewind_file -> Positions the File pointer to the start of the
+* file
+* Flush_File_Buffer-> Forces the data in the file buffer to file
+* Read_Data -> Read data from a file
+* Write_Data -> Write data to a file
+* Temp_File -> Creates a temporary file that can be written to
+* and is automatically cleaned up on close.
+* Get_Pointer -> Get the current position of the file pointer
+* Set_Pointer -> Set the current position of the file pointer
+* End_Of_File -> Returns True if the End-Of-File marker has been Reached.
+* Created_Date -> The date/time that the File was created
+* FileName -> The location and name of the file to check
+* ReturnDate -> Oracle Date variable containing the date
+* requested.
+* ReturnMS -> Returns the Milliseconds portion of the date
+* that is not covered in the Normal date format
+* command is not successful (e.g the file does
+* not exist) then the explicit exception
+* Accessed_Date -> The date/time that the File was last Accessed
+* (NTFS & FAT32 only)
+PROCEDURE Accessed_Date( FileName IN VARCHAR2,
+* Modified_Date -> The date/time that the File was last changed
+requested.
+PROCEDURE Modified_Date ( FileName IN VARCHAR2,
+* File_Size -> The Size in Bytes of the named file
+* Size of the File in Bytes
+FUNCTION File_Size ( FileName IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return NUMBER;
+* File_Attributes -> Attributes of the named file
+* Archive -> Boolean
+* Compressed -> Boolean
+* Hidden -> Boolean
+* ReadOnly -> Boolean
+* System -> Boolean
+* Temporary -> Boolean
+PROCEDURE File_Attributes ( FileName IN VARCHAR2,
+Archive OUT BOOLEAN,
+Compressed OUT BOOLEAN,
+Hidden OUT BOOLEAN,
+ReadOnly OUT BOOLEAN,
+System OUT BOOLEAN,
+Temporary OUT BOOLEAN,
+* Open_File -> Opens a Binary File to allow reading and writing
+* Filename -> Name of the file to open
+* FileMode -> One of the following Indicators
+* "r" opens an existing file for Reading
+* "W" opens new file for Writing. If the file already exists
+* its contents will be destroyed
+* "a" opens new or existing file for Appending
+* (EOF marker not removed)
+* All writes occur at the end of the file existing data cannot
+* be overwritten
+* "r+" opens existing file for Reading and Writing
+* "w+" opens new file for Reading and Writing
+* "a+" opens new or existing file for Reading and Appending
+* (EOF marker is removed)
+* NOTE: If reading and writing at the same time you must ensure that
+* you reposition the file pointer before switching between
+* the read and write operations.
+* RaiseExceptions-> TRUE of FALSE(Default) I
+PACKAGE win_api_session IS
+* WIN_API_SESSION -> This package is concerned with altering/interacting
+* with the MDI session as a whole
+* One_Session -> Allows you to restrict the number
+* of copies of a product running
+* e.g. only allow 1 runform session
+* FindAppWindow -> Returns the top level application window.
+* Find3rdPartyApp -> Checks for processes already running.
+* Change_MDI_Icon -> Lets you change the icon for the Runform
+* MDI window
+* TimeOut -> A Three part call that allows you
+* to detect that the User has been
+* idle for a certain amount of time
+* One_Session -> Checks for processes already running.
+* WindowTitle -> MDI Window Title to Check for
+* ModuleName -> Name of executable module eg 'F45RUN32.EXE'
+* ** Caution ** when you run from the Form Builder
+* the executable will be for the Debug Runtime
+* not the normal Runtime
+* MatchType -> Looks for other applications which match on
+* window title only, module name only or both.
+* Values 'WINDOW', 'MODULE', 'BOTH'.
+* Activate -> Activates the other session if found. Values
+* TRUE or FALSE.
+* Class -> Window Class of MDI window (find in SPY++) Defaults
+* for Developer/2000 products, though you will have to
+* change this for other products
+* to TRUE, then finding another instance of the application
+* will raise NO_DATA_FOUND
+* BOOLEAN TRUE for only session, otherwise FALSE...
+FUNCTION One_Session ( WindowTitle IN VARCHAR2,
+* to TRUE, then not being able to Find the app Window
+* Window Handle
+FUNCTION FindAppWindow (WindowTitle IN VARCHAR2,
+Class
+IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN number;
+* BOOLEAN TRUE is Found
+FUNCTION Find3rdPartyApp ( WindowTitle IN VARCHAR2,
+* Find3rdPartyAppEx -> Checks for processes already running.
+* Minimize -> If the other session is Activated then minimise it.
+* Change_MDI_Icon -> Changes the MDI Window Icon
+* MDIWindow -> Handle to the MDI window
+* IconFile -> File which contains the icon - can be
+* exe, dll or ico file
+* IconIndex -> Index of icon to retrieve - zero returns
+* first
+* NOTE: If the specified icon is not located, the default Windows Flag icon will
+* be used.
+* (None)
+PROCEDURE Change_MDI_Icon ( MDIWindow IN PLS_INTEGER,
+IconIndex IN PLS_INTEGER DEFAULT 0);
+/*---------------------------------------
+----------------------------------*\
+* Timeout -> Allows you to detect inactivity by
+* the user. Consists of Three Separate
+* Program units.
+* Typical Usage:
+* When-New-Form-Instance:
+* declare
+* hWind PLS_INTEGER;
+* CheckTimer TIMER;
+* begin
+* hWind := get_window_property(FORMS_MDI_WINDOW,WINDOW_HANDLE);
+* Win_API_Session.Timeout_Start_Timer(hWind);
+* CheckTimer := Create_Timer('CheckTimeout',1000,repeat);
+* end;
+* When-Timer-Expired:
+* if upper(get_application_property(TIMER_NAME)) = 'CHECKTIMEOUT' then
+* if Win_API_Session.Timeout_get_inactive_time > 100000 then
+* -- Logout after 100 secs of idle
+* Win_API_Session.timout_delete_timer;
+* exit_form (NO_VALIDATE);
+* end if;
+*-------------------------------------------------------------------------*
+* Timeout Program Unit 1:
+* Timeout_Start_Timer -> Switches on the timier mechanism
+* WindowHandle -> Handle to the Window that you want to
+* check for activity in e.g. Handle for
+* the Forms MDI window
+PROCEDURE Timeout_Start_Timer (WindowHandle in NUMBER);
+* Timeout Program Unit 2:
+* Timeout_Get_Inactive_Time -> Reports how long this application has
+* been inactive for in Seconds
+* Number -> Inactive time in Milliseconds
+FUNCTION Timeout_Get_Inactive_Time return number;
+* Timeout Program Unit 3:
+* Timeout_Delete_Timer -> Is used to clean up the Timout
+* process and should be called as
+* your application exits.
+PROCEDURE Timeout_Delete_Timer;
+END win_api_session;
+"WIN_API_SESSION"ONE_SESSION"WINDOWTITLE"MODULENAME"MATCHTYPE"ACTIVATE"CLASS"RAISEEXCEPTIONS"FINDAPPWINDOW"FIND3RDPARTYAPP"FIND3RDPARTYAPPEX"MINIMIZE"CHANGE_MDI_ICON"MDIWINDOW"ICONFILE"ICONINDEX"TIMEOUT_START_TIMER"WINDOWHANDLE"TIMEOUT_GET_INACTIVE_TIME"TIMEOUT_DELETE_TIMER""
+PACKAGE WIN_API_Shell IS
+* WIN_API_SHELL -> This package is concerned with accesssing common
+* Shell functions such as WinExec and Help
+* WinExec -> Excutes the specified command
+* StartFile -> Emulates the "Start" command in the Command shell
+* WinHelp -> Access MS/Windows Help file by Keyword
+* Search or Topic Number.
+* WinHelpEx -> Extended version of Winhelp which allows positioning
+* of the help window
+* MousePosition -> Get the X/Y coords of the mouse
+* SendMessage -> Hook into the Windows Message Queue
+* SendKeys -> Simulate keystrokes
+ShellExecute
+-> A better version of Startfile.
+* **** Bonus Procedure ****
+* Start_Or_Restore -> Will check to see if the named program is already
+* Running, if so it will activate it, otherwise
+* WinExec will be used to start it.
+* WinExec -> Execute a command string as if you
+* had used the Run Option from Program Manager or
+* the Start Menu.
+* Command -> The Command String Just as you would issue it from
+* the shell
+* WindowStyle -> Use the constants defined in WIN_API
+* For this Purpose use:
+* SW_SHOWNORMAL -> Start up with applications default
+* SW_SHOWNOACTIVATE -> Starts as SW_SHOWNORMAL but
+* does not have Focus
+* SW_SHOWMINIMIZED -> Will Start Iconised or on
+* but will still be
+* the active Application
+* SW_SHOWMINNOACTIVE -> Starts Iconised without
+* focus
+* SW_SHOWMAXIMIZED -> Starts Maximised
+* command is not successful the explicit exception
+* StartFile -> Given the name of a document file this procedure
+* will work out what executable should be used to open it and
+* run that executable passing the specified file as an argument
+* DocumentFile -> The file you want to open
+* WindowStyle -> Use the same arguments as for WinExec
+* WinHelp -> Hook into the Windows Help mechanism for
+* Your own Help Files
+* HelpFile -> Name (and path) of your .HLP file
+* Target -> Either the Search String if HELP_KEY
+* or HELP_PARTIALKEY is being used
+* or the number of the required Topic
+* (in a string)
+* HelpStyle -> Use the constants defined in WIN_API
+* HELP_CONTEXT -> Requires the number of a topic
+* in the help file
+The Help Author would be able to
+* Provide this
+* HELP_INDEX -> Display the Contents of the help file
+* no value for Target is required
+* HELP_KEY -> Supply a string containing the required
+* keyword.
+* HELP_PARTIALKEY -> Supply a string containing the required
+* keyword (or portion of it) Similar to
+* choosing HELP->SEARCH
+* HELP_SETCONTENTS -> Switch to the contents screen. You must
+* supply the topic number of the contents
+* topic as the target
+* HELP_SETINDEX -> Switch to the Index screen. You must
+* supply the topic number of the Index
+* help file or topic is not found then
+* WinHelpEx -> An extended version of the WinHelp call which will
+* Allow you to define the position and size of the
+* Help window.
+* You must know the name of the Help Window to use this.
+PROCEDURE WinHelpEx(HelpFile IN VARCHAR2,
+* MousePosition -> Procedure that will give you the Mouse X
+* and Y coordinates at any Time (not just
+* in Mouse related Triggers
+* Useful for detecting if the mouse has been
+* moved since you last checked, Ideal for
+* implimenting timeouts
+* XPos -> X position of the mouse cursor in Pixels
+* YPos -> Y position of the mouse cursor in Pixels
+Ypos OUT NUMBER);
+* SendMessage -> Send any message to the Windows Message
+* queue. Valid messages and parameters
+* Are documented in your Microsoft Documentation
+* Target -> Window Handle of the recipient of the
+* message
+* MessageCode -> Message Number (see WIN_API header
+* for some of the more common messages)
+* Param1 -> Message parameter 1 depends on Message
+* Param2 -> Message parameter 2 depends on Message
+* RaiseExceptions -> If a non zero return code comes back from
+* sendmessage then raise NO_DATA_FOUND
+* default = FALSE
+* NOTE: Some Messages will Return a Non
+* Zero return code to indicate
+* success. e.g. TRUE = 1
+* Treat on a message by message
+* basis.
+Para
+m2 IN PLS_INTEGER DEFAULT 0,
+* hWnd -> Window Handle of the recipient of the
+* Keys -> Keys to be actioned - see help for format
+PROCEDURE SendKeys ( hWnd IN PLS_INTEGER,
+* Start_or_Restore -> Wrapper for WinExec and Find3rdPartyApp
+* combined.
+* ShellExecute -> Emulates Right Mouse click options on a file
+allows you to open, print or explore.
+* Window -> Window Handle of the MDI window
+* Operation
+-> 'Open', 'Print' or 'Explore'
+* File -> File to open or print. If executable then Open will
+* run it. If this argument is a directory name then
+* it can be Opened or Explored
+* Parameters -> Parameters if File is an executable
+* Directory -> Working Directory
+* RaiseExceptions -> If the ShellExecute odes not work
+* then NO_DATA_FOUND will be raised
+PROCEDURE ShellExecute
+Window
+PLS_INTEGER,
+RaiseExceptions IN
+BOOLEAN DEFAULT FALSE);
+END WIN_API_SHELL;
+"WIN_API_SHELL"WINEXEC"COMMAND"WINDOWSTYLE"RAISEEXCEPTIONS"STARTFILE"DOCUMENTFILE"WINHELP"HELPFILE"TARGET"HELPTYPE"WINHELPEX"XPOS"YPOS"WIDTH"HEIGHT"WINDOW"MOUSEPOSITION"SENDMESSAGE"MESSAGECODE"PARAM1"PARAM2"SENDKEYS"HWND"KEYS"START_OR_RESTORE"EXECUTABLE"ARGS"WINDOWCLASS"ACTIVATIONSTYLE"SHELLEXECUTE"OPERATION"FILE"PARAMETERS"DIRECTORY""
+/TOOL_PLSQL
+PL/SQL DEx
+-DE_ATTACHED_LIBS
+DE Attached Libs
+ROSATTRIBS
+class attributes
+ROSLFDESC
+ros lf descrip
+ROSOBJMAP
+ros name->id
+ROSSTRINGS
+tk2 uiStrings
+ROSSTRUCTS
+struct types
+ROSTK2RESV
+tk2 reserved
+TOOL_MODULE
+Tools Modules
+'FUTOOL_PLSQL
+Tools PLSQL
+#p$ *
+/DE_ATTACHED_LIBS
+MODID
+OWNER
+#p$ ,
+1DE_ATTACHED_LIBS
+LIBNAME
+ITEMID
+#p$ .
+3DE_ATTACHED_LIBS
+LOCATION
+-TOOL_MODULE
+PRODUCT
+MODTYPE
++TOOL_MODULE
+MODNAME
+TCS_VER
+1TOOL_MODULE
+NEXT_ITEMID
+CREATOR
+CREATE_DATE
+/TOOL_MODULE
+CREATE_VER
+MODIFIER
+MOD_DATE
+MOD_VER
+COPYRIGHT
+REQ_ROLE
+VGS_VER
+DE_VER
+ROS_VER
+)TOOL_PLSQL
+NAME
+TYPE
++TOOL_PLSQL
+PLSLFID_EP
+EAKPOINTS |
+TRIGGERS
+SHOW
+Packages:
+Package Bodies:
+Package Specs:
+Subprograms:
+Subprogram Bodies:
+Subprogram Specs:
+Procedures:
+Procedure Bodies:
+Procedure Specs:
+Functions:
+Function Bodies:
+Function Specs:
+Program Units:
+Program Unit Bodies:
+Program Unit Specs:
+Debug Actions:
+Breakpoints:
+#%d (Breakpoint: %s %s, line %d)
+Attached Libraries:
+Local Parameters and Variables:
+Parameters:
+Local Variables:
+Triggers:
+#%d (Trigger: %s %s, line %d)
+#%d (Trigger: Every Statement)
+#%d (Trigger: Debug Entry)
+Stored Packages:
+Stored Package Bodies:
+Stored Package Specs:
+Stored Subprograms:
+)*PACKAGE WIN_API_UTILITY IS
+* WIN_API_UTILITY -> This package is concerned Helpful utility functions
+* Delete_File -> Erases an O/S file
+* Move_File -> Moves an O/S file
+* Copy_File -> Copies an O/S file
+* Create_Directory -> Creates an O/S Directory
+* Delete_Directory -> Deletes an EMPTY O/S Directory
+* Generate_Temp_Filename -> The "official" way of getting a
+* Temporary filename.
+* Get_Active_Window -> Useful for getting Window Handles
+* when not in Forms (which supplies them
+* for you)
+* Get_Parent_Window -> Returns the Window handle of the Specified
+* Window's Parent Window, or the top level window
+* handle for the app if the recursive option is used.
+* Play_WAV -> Plays a Sound file
+* Sleep -> Suspends the application
+* InterruptCheck -> Check for "Cancel" Mouse Click in tight loops
+* DebugString -> Sends a string via the OutputDebugString API call
+* You'll need a windows Debugger to view this output
+* Get_Tick_Count -> Number of Miliseconds since the machine was last
+* re-booted
+* Delete_File -> Deletes the specified file
+* FileName -> The location and name of the file to delete
+not exist) then the explicit exception
+* Move_File -> Moves the specified file
+* OldFileName -> The location and name of the file to Move
+* NewFileName -> The new location and name for the file
+* Copy_File -> Copies the specified file
+* OldFileName -> The location and name of the file to Copy
+* NewFileName -> The new location and name for the copy of the file
+* AllowOverWrite -> TRUE or FALSE(Default) If FALSE, then if the NewFileName
+* already exists then the move will fail. If TRUE the existing
+* file will just be overwritten.
+* Create_Directory -> Creates a Directory
+* DirectoryPath -> The location for the new directory
+command is not successful then the explicit exception
+NO_DATA_FOUND will be raised.
+* Delete_Directory -> Deletes a Directory
+* DirectoryPath -> The location of the directory to delete
+* This directory MUSt be empty or the command will fail
+* Generate_Temp_Filename-> Asks windows to generate a filename for you
+* The filename will take the format of a prefix
+* (Which you can supply) and a generated number
+* with a .TMP extension
+* NOTE: Windows will also create the file
+* for you, but it will be empty.
+* Path -> The location you want for the file
+* NULL ==> Working Directory is the default
+* To automatically use the Defined Temp dircetory
+* for the PC then just specify '$TEMP$'
+* Prefix -> A root for the name e.g. 'D2K'(Default)
+* only the first 3 chars will be used.
+* Generated Filename
+FUNCTION Generate_Temp_Filename(Path IN VARCHAR2 DEFAULT NULL,
+* Get_Active_Window -> Returns the Windows Window handle to the
+* Active Window
+* command is not successful then the explicit exception
+* Integer Window Handle
+FUNCTION Get_Active_Window (RaiseExceptions IN BOOLEAN DEFAULT FALSE ) RETURN PLS_INTEGER;
+* Get_Parent_Window -> Returns the Windows Window handle to the
+* Window_Handle -> Window to get the parent for
+* Recursive -> TRUE of FALSE(Default) If set to true, then the function
+* will traverse up the window hierachy for the specified
+* window until the top level window is found.
+* Integer Window Handle (or Zero if this Window has no Parent)
+\*---------------------------
+TH);
+DLL_PATH := DLL_PATH||'\bin';
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL loaded from %ORACLE_HOME%/bin');
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL not found in %ORACLE_HOME%/bin');
+Win_API_Debug.DebugLog(99,'Win_API(init)','Variable ORACLE_HOME not set, Aborting');
+-- Final Double Check
+if not ora_ffi.is_null_ptr(DLL_HANDLE) then
+WIN_API_DEBUG.DEBUG_API_ENABLED := TRUE;
+Win_API_Debug.DebugLog(99,'Win_API(init)','DLL Found and Loaded');
+EXCEPTION
+Win_API.Add_error('D2KWUTIL (Init)',Win_API.NoAPI);
+add_error('D2KWUTIL (Init)', 'Unexpected error '||add_external_errors);
+END Win_API; /* End Package Body Win API */
+/D2KWUTIL/WIN_API_DEBUG
+TOOL_ERR
+PLITBLM
+TEXT_IO
+TOOL_ENV
+"WIN_API"DLL_LOAD_COUNT"IPRELOADCOUNT"VCTESTPATH"FUNCTIONLOAD"ATTEMPT_DLL_LOAD"TARGETPATH"TARGETDLL"LOADCOUNT"HANDLE"TRANSLATETYPE"DATATYPE"D2KWUTIL_VERSION"HFUNC"VERSION"PRELOAD"RAISEEXCEPTIONS"VCVERSION"DLLVERSION"CLEAN_ERROR_STACK"ADD_ERROR"CALLINGFUNCTION"SETERRORTEXT"ADD_EXTERNAL_ERRORS"ICOUNTER"VCERRBUFF"REGISTER_FUNCTION_CALL"FUNCTIONID"FUNCTIONNAME"FUNCTIONRETURN"FUNCTIONARGS"VCARGS"VCFRAG"IOFFSET"HDLL"HFILE"VCTYPE"IRC"STRIPDIRSEP"INPATH"VCPATH"GETRESOURCE"RESOURCENAME""
+Searching For DLL (
+Win_API(init)
+DLL loaded from Preload Location:
+DLL failed to load from Preload Location:
+Preload location not set
+_PATH
+DLL loaded from D2KWUTIL
+_PATH (
+DLL failed to load from D2KWUTIL
+Variable D2KWUTIL
+_PATH not set
+D2KWUTIL_PATH
+DLL loaded from D2KWUTIL_PATH
+DLL failed to load from D2KWUTIL_PATH
+Variable D2KWUTIL_PATH not set, Searching O/S PATH
+DLL loaded from O/S Path
+%PATH%
+DLL not found in O/S Path or Working Directory
+..\bin
+DLL loaded
+bIsRunning BOOLEAN;
+vcExec VARCHAR2(256);
+vcExecName VARCHAR2(256);
+Win_API_Debug.DebugLog(99,'Start_or_Restore','Args: Executable="'||Executable||'", Args="'||Args||'", WindowClass="'||WindowClass||'", ActivationStyle='||to_char(ActivationStyle)||', RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+vcExec := Executable;
+if instr(upper(vcExec),'.',-1) = 0 then
+vcExecName := vcExec||'.EXE';
+iLoc := instr(vcExecName,'\');
+if iLoc > 0 then
+vcExecName := substr(vcExecName,(iLoc+1));
+bIsRunning := win_api_session.find3rdpartyapp('*',vcExecName,'WINDOW',TRUE,WindowClass,FALSE);
+-- Find (and activate) Exec if running
+if bIsRunning then
+-- So app is running lets send it a message to ensure that it is normalised.
+hWinHandle := win_api_session.FindAppWindow('*',vcExecName,'WINDOW',WindowClass,TRUE);
+-- Get the correct message to send to the window based on the ActivationStyle
+if ActivationStyle = WIN_API.SW_SHOWMAXIMIZED then
+iRestoreMsg := WIN_API.SC_MAXIMIZE;
+elsif ActivationStyle = WIN_API.SW_SHOWMINIMIZED then
+iRestoreMsg := WIN_API.SC_MINIMIZE;
+iRestoreMsg := WIN_API.SC_RESTORE;
+win_api_shell.sendmessage(hWinHandle,WIN_API.WM_SYSCOMMAND,iRestoreMsg,0);
+else /* Start app */
+win_api_shell.winexec(vcExec||' '||Args,ActivationStyle,TRUE);
+end Start_or_Restore;
+( Window
+BOOLEAN DEFAULT FALSE) IS
+vcBuff1 varchar2(256) := Operation;
+vcBuff2 varchar2(256) := File;
+vcBuff3 varchar2(256) := Parameters;
+vcBuff4 varchar2(256) := Directory;
+Win_API_Debug.DebugLog(99,'ShellExecute','Args: Operation="'||Operation||'", File="'||file||'", Parameters="'||Parameters||'", Directory="'||Directory||'", WindowStyle='||to_char(WindowStyle)||', RaiseExceptions='||Win_API_Debug.BoolToChar(RaiseExceptions));
+win_api.Register_function_call(iShellExecute,'d2kwutil_ShellExecute','INT','INT,*CHAR,*CHAR,*CHAR,*CHAR,INT');
+iRC := d2kwutil_ShellExecute(win_api.FunctionHandle(iShellExecute),Window,vcBuff1,vcBuff2,vcBuff3,vcBuff4,WindowStyle);
+Win_API_Debug.DebugLog(99,'ShellExecute','Result: RC='||to_char(iRC));
+Win_API.Add_error('ShellExecute','Unable to execute '||Operation||':'||File||'(RC='||to_char(iRC)||')');
+Win_API.Add_error('ShellExecute',Win_API.NoAPI);
+Win_API.Add_error('ShellExecute',Win_API.UError||WIN_API.Add_External_errors);
+END ShellExecute;
+/D2KWUTIL/WIN_API_SHELL
+/D2KWUTIL/WIN_API_ENVIRONMENT
+/D2KWUTIL/WIN_API_FILE
+/D2KWUTIL/WIN_API_UTILITY
+/D2KWUTIL/WIN_API_SESSION
+"WIN_API_SHELL"IWINEXEC"IWINHELP"IMOUSE_X_Y"ISENDMSG"ISENDKEYS"ISHELLEXECUTE"D2KWUTIL_WINEXEC"HFUNC"HANDLE"COMMA
+ND"WINDOWSTYLE"D2KWUTIL_WINHELP"FILENAME"HELPSTYLE"OWNERWIN"POSSET"XPOS"YPOS"WIDTH"HEIGHT"WINDOWNAME"TOPICTARGET"SEARCHTARGET"D2KWUTIL_MOUSE_X_Y"D2KWUTIL_SENDMSG"HWND"UMSG"WPARAM"LPARAM"D2KWUTIL_SENDKEYS"KEYS"D2KWUTIL_SHELLEXECUTE"OPERATION"FILE"PARAMETERS"DIRECTORY"WRAP_WINHELP"CALLEDBY"HELPFILE"TARGET"HELPTYPE"SETPOS"HELPXPOS"HELPYPOS"HELPWIDTH"HELPHEIGHT"HELPWINDOW"RAISEEXCEPTIONS"WINEXEC"IRC"VCBUFF1"STARTFILE"DOCUMENTFILE"VCEXTENSION"VCCLASS"VCCMD"WINHELP"WINHELPEX"WINDOW"IHLPTEST"VCBUFF2"VCBUFF3"IBUFF1"IBUFF2"MOUSEPOSITION"SENDMESSAGE"MESSAGECODE"PARAM1"PARAM2"SENDKEYS"START_OR_RESTORE"EXECUTABLE"ARGS"WINDOWCLASS"ACTIVATIONSTYLE"HWINHANDLE"ILOC"IRESTOREMSG"BISRUNNING"VCEXEC"VCEXECNAME"SHELLEXECUTE"VCBUFF4""
+HELP_SETCONTENTS"HELP_CONTEXTPOPUP"HELP_FORCEFILE"HELP_KEY"HELP_COMMAND"HELP_PARTIALKEY"HELP_MULTIKEY"HELP_SETWINPOS"HELP_CONTEXTMENU"HELP_FINDER"HELP_WM_HELP"HELP_SETPOPUP_POS"WM_SYSCOMMAND"WM_MDITILE"WM_MDICASCADE"WM_MDIICONARRANGE"SC_RESTORE"SC_MINIMIZE"SC_MAXIMIZE"OFN_READONLY"OFN_OVERWRITEPROMPT"OFN_HIDEREADONLY"OFN_NOCHANGEDIR"OFN_SHOWHELP"OFN_NOVALIDATE"OFN_ALLOWMULTISELECT"OFN_EXTENSIONDIFFERENT"OFN_PATHMUSTEXIST"OFN_FILEMUSTEXIST"OFN_CREATEPROMPT"OFN_SHAREAWARE"OFN_NOREADONLYRETURN"OFN_NOTESTFILECREATE"OFN_NONETWORKBUTTON"OFN_NOLONGNAMES"OFN_EXPLORER"OFN_NODEREFERENCELINKS"OFN_LONGNAMES"OFN_FLAG_DEFAULT"REG_EXPAND_SZ"REG_SZ"REG_DWORD"COMPAT_EXPAND_REG_VALUES"ERROR_ENCOUNTERED"ERROR_STACK"API_ENABLED"DLL_HANDLE"HANDLE"FUNCTIONHANDLE"UERROR"NOAPI"MAXDWORD"MAXWORD"MAXBYTE"MINBOUND"MAXBOUND"NULLARG"PRELOAD"RAISEEXCEPTIONS"DLLVERSION"CLEAN_ERROR_STACK"ADD_ERROR"CALLINGFUNCTION"SETERRORTEXT"ADD_EXTERNAL_ERRORS"REGISTER_FUNCTION_CALL"FUNCTIONID"FUNCTIONNAME"FUNCTIONRETURN"FUNCTIONARGS"STRIPDIRSEP"INPATH"GETRESOURCE"RESOURCENAME""
+"PACKAGE"WIN_API"WIN_API_VERSION"CONSTANT"VARCHAR2"30"6.0.6.0 Production"DLL_NAME"12"D2KWUT60.DLL"DLL_PATH"256"WINCLASS_DEVELOPER_2000_V1"15"ui23MDIroot_W32"WINCLASS_DEVELOPER_2000_V2"ui25MDIroot_W32"WINCLASS_DEVELOPER_2000_V6"ui60MDIroot_W32"D2K_WINDOW_CLASS"WINCLASS_INTEROFFICE_40"28"Afx:10000000:b:10008:6:5023b"WINCLASS_INTEROFFICE_41"Afx:10000000:b:1496:6:3a17"WINCLASS_SQLPLUS"13"SqlplusWClass"WINCLASS_REPORTSSERVER_V1"R25SRV_WINCLASS"WINCLASS_REPORTSSERVER_V2"R30SRV_WINCLASS"WINCLASS_REPORTSSERVER_V6"14"RWRBE_WINCLASS"WINCLASS_MSWORD_97"7"OpusApp"WINCLASS_MSEXCEL_97"6"XLMAIN"WINCLASS_MSPOWERPOINT_97"PP97FrameClass"WINCLASS_MSWORD_7"WINCLASS_MSEXCEL_7"WINCLASS_MSPOWERPOINT_7"PP7FrameClass"WINCLASS_MSSCHEDULE_7"23"MS Schedule+ 32 Panesdi"WINCLASS_MSEXCHANGE_4"29"Microsoft Exchange 4.0 Viewer"WINCLASS_INETEXPLORER"IEFrame"WINCLASS_OUTLOOK_EXPRESS"Outlook Express Browser Class"WINCLASS_EXPLORER"ExploreWClass"WINCLASS_MYCOMPUTER"CabinetWClass"WINCLASS_CALCULATOR"SciCalc"WINCLASS_NOTEPAD"Notepad"WINCLASS_WORDPAD"WordPadClass"WINCLASS_DOS"18"ConsoleWindowClass"WINCLASS_NETSCAPE_3"27"Afx:40000000:b:150e:6:38cfe"WINCLASS_NETSCAPE_4"Afx:40000000:b:10008:6:6063e"WINCLASS_PFE_7"11"PFE32_Frame"WINCLASS_REGEDIT"RegEdit_RegEdit"SW_HIDE"PLS_INTEGER"0"SW_SHOWNORMAL"1"SW_SHOWMINIMIZED"2"SW_SHOWMAXIMIZED"3"SW_SHOWNOACTIVATE"4"SW_SHOW"5"SW_MINIMIZE"SW_SHOWMINNOACTIVE"SW_SHOWNA"8"SW_RESTORE"9"SW_SHOWDEFAULT"10"HELP_CONTEXT"HELP_QUIT"HELP_INDEX"HELP_CONTENTS"HELP_HELPONHELP"HELP_SETINDEX"HELP_SETCONTENTS"HELP_CONTEXTPOPUP"HELP_FORCEFILE"HELP_KEY"257"HELP_COMMAND"258"HELP_PARTIALKEY"261"HELP_MULTIKEY"513"HELP_SETWINPOS"515"HELP_CONTEXTMENU"HELP_FINDER"HELP_WM_HELP"HELP_SETPOPUP_POS"WM_SYSCOMMAND"274"WM_MDITILE"550"WM_MDICASCADE"551"WM_MDIICONARRANGE"552"SC_RESTORE"61728"SC_MINIMIZE"61472"SC_MAXIMIZE"61488"OFN_READONLY"OFN_OVERWRITEPROMPT"OFN_HIDEREADONLY"OFN_NOCHANGEDIR"OFN_SHOWHELP"16"OFN_NOVALIDATE"OFN_ALLOWMULTISELECT"512"OFN_EXTENSIONDIFFERENT"1024"OFN_PATHMUSTEXIST"2048"OFN_FILEMUSTEXIST"4096"OFN_CREATEPROMPT"8192"OFN_SHAREAWARE"16384"OFN_NOREADONLYRETURN"32768"OFN_NOTESTFILECREATE"65536"OFN_NONETWORKBUTTON"131072"OFN_NOLONGNAMES"262144"OFN_EXPLORER"524288"OFN_NODEREFERENCELINKS"1048576"OFN_LONGNAMES"2097152"OFN_FLAG_DEFAULT"530444"REG_EXPAND_SZ"REG_SZ"REG_DWORD"COMPAT_EXPAND_REG_VALUES"BOOLEAN"TRUE"TYPE"AFUNCTIONHANDLE"ORA_FFI"FUNCHANDLETYPE"BINARY_INTEGER"SUBTYPE"FILE_TYPE"ERROR_ENCOUNTERED"FALSE"ERROR_STACK"2000"API_ENABLED"DLL_HANDLE"LIBHANDLETYPE"FUNCTIONHANDLE"NOT_AVAILABLE"UERROR" Caused an unexpected error: "NOAPI"31"API Functions are not Available"MAXDWORD"33"Integer Argument exceeds 32 bits "MAXWORD"Integer Argument exceeds 16 bits "MAXBYTE"32"Integer Argument exceeds 8 bits "MINBOUND"Integer Argument too Small "MAXBOUND"Integer Argument too Large "NULLARG"24"Argument cannot be NULL "PRELOAD"RAISEEXCEPTIONS"FUNCTION"DLLVERSION"RETURN"CLEAN_ERROR_STACK"ADD_ERROR"CALLINGFUNCTION"SETERRORTEXT"ADD_EXTERNAL_ERRORS"REGISTER_FUNCTION_CALL"FUNCTIONID"FUNCTIONNAME"FUNCTIONRETURN"FUNCTIONARGS"STRIPDIRSEP"INPATH"GETRESOURCE"RESOURCENAME""
+6.0.6.0 Production
+D2KWUT60.DLL
+ui23MDIroot_W32
+ui25MDIroot_W32
+ui60MDIroot_W32
+Afx:10000000:b:10008:6:5023b
+Afx:10000000:b:1496:6:3a17
+SqlplusWClass
+R25SRV_WINCLASS
+R30SRV_WINCLASS
+RWRBE_WINCLASS
+OpusApp
+XLMAIN
+PP97FrameClass
+PP7FrameClass
+MS Schedule+ 32 Panesdi
+Microsoft Exchange 4.0 Viewer
+IEFrame
+Outlook Express Browser Class
+ExploreWClass
+CabinetWClass
+SciCalc
+Notepad
+WordPadClass
+ConsoleWindowClass
+Afx:40000000:b:150e:6:38cfe
+Afx:40000000:b:10008:6:6063e
+PFE32_Frame
+RegEdit_RegEdit
+Caused an unexpected error:
+API Functions are not Available
+Integer Argument exceeds 32 bits
+Integer Argument exceeds 16 bits
+Integer Argument exceeds 8 bits
+Integer Argument too Small
+Integer Argument too La
+the directory (or
+PROCEDURE Set_Working_Directory (WorkingDirectory in VARCHAR2, RaiseExceptions IN BOOLEAN DEFAULT FALSE);
+* Get_Computer_name -> Obtains the name of the running PC
+* to TRUE, then Not finding the name (or
+* Computer name -> Varchar2
+FUNCTION Get_Computer_Name ( RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN VARCHAR2;
+* Get_Default_Printer -> Obtains the name and port of the current default
+* Printer
+* Printer -> A varchar2 variable of 512 chars long to accept the
+* name of the Printer.
+* Port -> A varchar2 variable of 512 chars long to accept the
+* name of the Port the printer is on.
+* None
+PROCEDURE Get_Default_Printer ( PrinterName OUT VARCHAR2,
+END WIN_API_ENVIRONMENT;
+"WIN_API_ENVIRONMENT"READ_INI_FILE"FILENAME"SECTION"ENTRY"RAISEEXCEPTIONS"WRITE_INI_FILE"VALUE"GET_WINDOWS_USERNAME"GET_WINDOWS_VERSION"GET_ENVIRONMENT_STRING"VARIABLENAME"GET_WINDOWS_DIRECTORY"GET_TEMP_DIRECTORY"GET_NET_CONNECTION"DRIVELETTER"READ_REGISTRY"REGPATH"REGENTRY"WRITE_REGISTRY"REGVALUE"WRITE_REGISTRYEX"REGFORMAT"CREATE_REGISTRY_KEY"DELETE_REGISTRY_KEY"GET_WORKING_DIRECTORY"SET_WORKING_DIRECTORY"WORKINGDIRECTORY"GET_COMPUTER_NAME"GET_DEFAULT_PRINTER"PRINTERNAME"PORT""
+"PACKAGE"WIN_API_ENVIRONMENT"FUNCTION"READ_INI_FILE"FILENAME"VARCHAR2"SECTION"ENTRY"RAISEEXCEPTIONS"BOOLEAN"FALSE"RETURN"WRITE_INI_FILE"VALUE"GET_WINDOWS_USERNAME"GET_WINDOWS_VERSION"GET_ENVIRONMENT_STRING"VARIABLENAME"GET_WINDOWS_DIRECTORY"GET_TEMP_DIRECTORY"GET_NET_CONNECTION"DRIVELETTER"READ_REGISTRY"REGPATH"REGENTRY"WRITE_REGISTRY"REGVALUE"WRITE_REGISTRYEX"REGFORMAT"PLS_INTEGER"CREATE_REGISTRY_KEY"DELETE_REGISTRY_KEY"GET_WORKING_DIRECTORY"SET_WORKING_DIRECTORY"WORKINGDIRECTORY"GET_COMPUTER_NAME"GET_DEFAULT_PRINTER"PRINTERNAME"OUT"PORT""
+READ_INI_FILE
+WRITE_INI_FILE
+GET_WINDOWS_USERNAME
+GET_WINDOWS_VERSION
+GET_ENVIRONMENT_STRING
+GET_WINDOWS_DIRECTORY
+GET_TEMP_DIRECTORY
+GET_NET_CONNECTION
+"PACKAGE"WIN_API_SESSION"FUNCTION"ONE_SESSION"WINDOWTITLE"VARCHAR2"MODULENAME"MATCHTYPE"ACTIVATE"BOOLEAN"CLASS"WIN_API"D2K_WINDOW_CLASS"RAISEEXCEPTIONS"FALSE"RETURN"FINDAPPWINDOW"NUMBER"FIND3RDPARTYAPP"FIND3RDPARTYAPPEX"MINIMIZE"CHANGE_MDI_ICON"MDIWINDOW"PLS_INTEGER"ICONFILE"ICONINDEX"0"TIMEOUT_START_TIMER"WINDOWHANDLE"TIMEOUT_GET_INACTIVE_TIME"TIMEOUT_DELETE_TIMER""
+"PACKAGE"WIN_API_SHELL"WINEXEC"COMMAND"VARCHAR2"WINDOWSTYLE"PLS_INTEGER"WIN_API"SW_SHOWNORMAL"RAISEEXCEPTIONS"BOOLEAN"FALSE"STARTFILE"DOCUMENTFILE"WINHELP"HELPFILE"TARGET"HELPTYPE"WINHELPEX"XPOS"YPOS"WIDTH"HEIGHT"WINDOW"MOUSEPOSITION"OUT"NUMBER"SENDMESSAGE"MESSAGECODE"PARAM1"0"PARAM2"SENDKEYS"HWND"KEYS"START_OR_RESTORE"EXECUTABLE"ARGS"WINDOWCLASS"ACTIVATIONSTYLE"SHELLEXECUTE"OPERATION"FILE"PARAMETERS"DIRECTORY""
+WINEXEC
+STARTFILE
+WINHELP
+WINHELPEX
+MOUSEPOSITION
+SENDMESSAGE
+SENDKEYS
+START_OR_RESTORE
+SHELLEXECUTE
+----------------------------------------------*/
+FUNCTION Get_Parent_Window (Window_Handle IN PLS_INTEGER, Recursive IN BOOLEAN DEFAULT FALSE, RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN PLS_INTEGER;
+* Play_WAV -> Plays a Windows WAV file
+* FileName -> Path and Name of WAV file to play
+* Asynchronous -> BOOLEAN set to TRUE or FALSE(Default)
+* Setting to TRUE, control will return to
+* PL/SQL immediatly, FALSE will wait until
+* the sound has finished
+* RaiseExceptions -> If The Sound File is Not Found or the PC
+* has no Sound capability then raise
+* NO_DATA_FOUND (if TRUE)
+PROCEDURE Play_WAV ( FileName IN VARCHAR2,
+Asynchronous IN BOOLEAN DEFAULT FALSE,
+* Sleep -> Sleeps for specified time.
+* SleepTime -> Sleep time in milliseconds
+PROCEDURE Sleep ( SleepTime IN PLS_INTEGER);
+* InterruptCheck -> Allows you to check to see if a button
+* has been pressed even in a tight PL/SQL
+* Loop, or whilst looping through a cursor
+* ButtonHandle -> Handle to a "Cancel" Button
+* TRUE if button has been clicked with the mouse.
+FUNCTION InterruptCheck ( ButtonHandle IN PLS_INTEGER) RETURN BOOLEAN;
+* Get_Tick_Count -> Returns the number of Milliseconds since the
+* machine was re-booted
+* Useful in Random number generation and for doing
+* performance Timings
+* PLS_INTEGER
+FUNCTION Get_Tick_Count RETURN PLS_INTEGER;
+END WIN_API_UTILITY;
+"WIN_API_UTILITY"DELETE_FILE"FILENAME"RAISEEXCEPTIONS"MOVE_FILE"OLDFILENAME"NEWFILENAME"COPY_FILE"ALLOWOVERWRITE"CREATE_DIRECTORY"DIRECTORYPATH"DELETE_DIRECTORY"GENERATE_TEMP_FILENAME"PATH"PREFIX"GET_ACTIVE_WINDOW"GET_PARENT_WINDOW"WINDOW_HANDLE"RECURSIVE"PLAY_WAV"ASYNCHRONOUS"SLEEP"SLEEPTIME"INTERRUPTCHECK"BUTTONHANDLE"GET_TICK_COUNT""
+"PACKAGE"WIN_API_UTILITY"DELETE_FILE"FILENAME"VARCHAR2"RAISEEXCEPTIONS"BOOLEAN"FALSE"MOVE_FILE"OLDFILENAME"NEWFILENAME"COPY_FILE"ALLOWOVERWRITE"CREATE_DIRECTORY"DIRECTORYPATH"DELETE_DIRECTORY"FUNCTION"GENERATE_TEMP_FILENAME"PATH"PREFIX"D2K"RETURN"GET_ACTIVE_WINDOW"PLS_INTEGER"GET_PARENT_WINDOW"WINDOW_HANDLE"RECURSIVE"PLAY_WAV"ASYNCHRONOUS"SLEEP"SLEEPTIME"INTERRUPTCHECK"BUTTONHANDLE"GET_TICK_COUNT""
+FUNCTION D2KWUTIL RETURN varchar2 IS
+-- Returns the Version number of this Library & the DLL
+Return 'D2KWUTIL.PLL Version '||Win_API.WIN_API_VERSION||chr(10)||win_api.DLLVersion;
+END;
+"PKG INIT"D2KWUTIL""
+"FUNCTION"D2KWUTIL"RETURN"VARCHAR2"D2KWUTIL.PLL Version "||"WIN_API"WIN_API_VERSION"CHR"10"DLLVERSION""
+D2KWUTIL.PLL Version
+end ExtractWord_Wrapper;
+Win_API_Debug.DebugLog(99,'ExtractByte_Wrapper','Args: Callby="'||CallBy||'", X="'||to_char(X)||'", Opt="'||to_char(Opt)||'"');
+BoundsCheck(X,0,MAX_WORD,'Arg1');
+win_api.Register_function_call(iExtractByte,'d2kwutil_ExtractByte','BYTE','SHORT,INT');
+iResult := d2kwutil_ExtractByte(win_api.FunctionHandle(iExtractByte),X,Opt);
+Win_API_Debug.DebugLog(99,'ExtractByte_Wrapper','Result: RC="'||to_char(iResult)||'"');
+end ExtractByte_Wrapper;
+/D2KWUTIL/WIN_API_BITOP
+"WIN_API_BITOP"MAX_DWORD"MAX_PLS_INT"SIGN_BIT_VALUE"MAX_WORD"MAX_BYTE"IBITWISE"IEXTRACTWORD"IEXTRACTBYTE"IMAKELONG"IMAKEWORD"ITOBITSTRING"ITOHEXSTRING"IFROMBITSTRING"IFROMHEXSTRING"LASTERROR"D2KWUTIL_BITWISE"HFUNC"HANDLE"X"XSIGNBIT"Y"YSIGNBIT"OPT"OVERFLOW"D2KWUTIL_EXTRACTWORD"D2KWUTIL_EXTRACTBYTE"D2KWUTIL_MAKELONG"D2KWUTIL_MAKEWORD"D2KWUTIL_TOBITSTRING"BITS"RESULT"D2KWUTIL_TOHEXSTRING"D2KWUTIL_FROMBITSTRING"SRC"D2KWUTIL_FROMHEXSTRING"BITWISE_WRAPPER"CALLBY"EXTRACTWORD_WRAPPER"EXTRACTBYTE_WRAPPER"NUM2PLS"SIGNBIT"PLS2NUM"BOUNDSCHECK"LOWERBOUND"UPPERBOUND"ARGNAME"IRC"BITWISE_OR"BITWISE_XOR"BITWISE_AND"BITWISE_SHIFT_RIGHT"STEPS"BITWISE_SHIFT_LEFT"HIWORD"LOWORD"HIBYTE"LOBYTE"MAKELONG"IOVERFLOW"IRESULT"MAKEWORD"TO_BITSTRING"VCBUFFER"TO_HEXSTRING"BITSTRING_TO_NUMBER"HEXSTRING_TO_NUMBER""
+4! 8
++_aI`
+01%1
+D2KWUTIL_BITWISE
+D2KWUTIL_EXTRACTWORD
+D2KWUTIL_EXTRACTBYTE
+D2KWUTIL_MAKELONG
+D2KWUTIL_MAKEWORD
+D2KWUTIL_TOBITSTRING
+D2KWUTIL_TOHEXSTRING
+D2KWUTIL_FROMBITSTRING
+D2KWUTIL_FROMHEXSTRING
+BITWISE_WRAPPER
+EXTRACTWORD_WRAPPER
+EXTRACTBYTE_WRAPPER
+NUM2PLS
+PLS2NUM
+BOUNDSCHECK
+is NULL]
+BITWISE_OR
+Bitwise_OR
+BITWISE_XOR
+Bitwise_XOR
+BITWISE_AND
+Bitwise_And
+BITWISE_SHIFT_RIGHT
+Bitwise_Shift_Right
+BITWISE_SHIFT_LEFT
+Bitwise_Shift_Left
+HIWORD
+HiWord
+LOWORD
+LoWord
+HIBYTE
+HiByte
+LOBYTE
+LoByte
+MAKELONG
+Args: X="
+", Y="
+keLong
+d2kwutil_MakeLong
+LONG
+SHORT,SHORT,*INT
+Result: RC="
+", OverFlow="
+", Result="
+MAKEWORD
+MakeWord
+d2kwutil_MakeWord
+BYTE,BYTE
+TO_BITSTRING
+", Bits="
+To_BitString
+Arg1
+Bits
+d2kwutil_ToBitString
+VOID
+LONG,INT,INT,*CHAR
+To_Bitstring
+TO_HEXSTRING
+To_HexString
+d2kwutil_ToHexString
+LONG,INT,*CHAR
+BITSTRING_TO_NUMBER
+Args: Src="
+BitString_to_Number
+Source String
+d2kwutil_FromBitString
+*CHAR,*INT
+BitString_To_Number
+Bit String to convert must be 32 characters in length or less (min = 1)
+Bit String to convert must be 1 character in length or more (max = 32)
+Bit String can only contain "1" and "0" characters
+HEXSTRING_TO_NUMBER
+HexString_to_Number
+1234567890ABCDEFabcdef
+1111111111111111111111
+d2kwutil_FromHexString
+HexString_To_Number
+String to convert must be between 1 and 8 characters in length
+Hex String can only contain the following characters "1234567890ABCDEF"
+Args: Callby="
+", X="
+", Opt="
+BitWise_Wrapper
+Bits to Shift
+Arg2
+d2kwutil_Bitwise
+LONG,INT,LONG,INT,INT,*INT
+Bitwise_Wrapper
+You cannot shift by more than 32
+places
+ExtractWord_Wrapper
+d2kwutil_ExtractWord
+LONG,INT,INT
+ExtractByte_Wrapper
+d2kwutil_ExtractByte
+BYTE
+SHORT,INT
+WUTIL_E
+PLS2NU
+"PACKAGE"WIN_API_BITOP"FUNCTION"BITWISE_OR"X"NUMBER"Y"RETURN"BITWISE_XOR"BITWISE_AND"BITWISE_SHIFT_RIGHT"STEPS"BITWISE_SHIFT_LEFT"HIWORD"LOWORD"HIBYTE"LOBYTE"MAKELONG"MAKEWORD"TO_BITSTRING"BITS"PLS_INTEGER"32"VARCHAR2"TO_HEXSTRING"BITSTRING_TO_NUMBER"SRC"HEXSTRING_TO_NUMBER""
+tString',win_api.MaxBound||LastError);
+Win_API.Add_error('To_BitString',win_api.MinBound||LastError);
+win_api.Register_function_call(iToHexString,'d2kwutil_ToHexString','VOID'
+char(iBuff2)||', Italic='||to_char(iBuff3));
+Win_API.Add_error('Choose_Font','No Font selection was made');
+Face := vcBuff1;
+PointSize := iBuff1/10;
+Bold := (iBuff2>=700);
+Italic := (iBuff3<>0);
+Win_API.Add_error('Choose_Font',Win_API.NoAPI);
+Win_API.Add_error('Choose_Font',Win_API.UError||WIN_API.Add_External_errors);
+end Choose_Font;
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN PLS_INTEGER IS
+PLS_INTEGER := -1;
+iBuff4
+Win_API_Debug.DebugLog(99,'Choose_Color','Args: Red='||to_char(Red)||', Green='||to_char(Green)||', Blue='||to_char(Blue));
+win_api.Register_function_call(iChooseColor,'d2kwutil_ChooseColor','INT','INT,*INT,*INT,*INT,*INT');
+iBuff2 := nvl(Red,0);
+iBuff3 := nvl(Green,0);
+iBuff4 := nvl(Blue,0);
+iBuff1 := (iBuff2 + (iBuff3*256) + (iBuff4*65536));
+iRC := d2kwutil_ChooseColor(win_api.FunctionHandle(iChoosecolor),hwndOwner,iBuff1,iBuff2,iBuff3,iBuff4);
+Win_API_Debug.DebugLog(99,'Choose_Color','Result: RC='||to_char(iRC)||', Combined='||to_char(iBuff1)||',Red='||to_char(iBuff2)||',Green='||to_char(iBuff3)||',Blue='||to_char(iBuff4));
+Win_API.Add_error('Choose_Color','No Color selection was made');
+iBuff1 := -1;
+:= iBuff2;
+Green := iBuff3;
+Blue := iBuff4;
+return iBuff1;
+Win_API.Add_error('Choose_Color',Win_API.NoAPI);
+Win_API.Add_error('Choose_Color',Win_API.UError||WIN_API.Add_External_errors);
+End Choose_color;
+/D2KWUTIL/WIN_API_DIALOG
+"WIN_API_DIALOG"ICHOOSEFILE"ICHOOSEPRINTER"ICHOOSEFONT"ICHOOSECOLOR"CHOOSEFILE"CALLEDBY"MODAL"SZTITLE"SZINITDIR"SZFILEFILTER"FLAGS"SEPCHAR"SZBUFFER"D2KWUTIL_CHOOSEFILE"HFUNC"HANDLE"DIALOG_TYPE"HWNDOWNER"ADVANCEDFLAGS"D2KWUTIL_CHOOSEPRINTER"HWIN"PRINTERNAME"PORT"OPT"D2KWUTIL_CHOOSEFONT"HWND"FACE"POINTSIZE"BOLD"ITALIC"D2KWUTIL_CHOOSECOLOR"COMBINED"RED"GREEN"BLUE"OPEN_FILE"TITLE"STARTDIRECTORY"FILEFILTER"RAISEEXCEPTIONS"VCRETURNEDFILE"ILRC"OPEN_FILEEX"SEPARATORCHAR"SAVE_FILE"SAMPLENAME"IBUFF1"IBUFF2"IRC"VCBUFF1"VCBUFF2"VCBUFF3"VCBUFF4"VCBUFF5"SELECT_PRINTER"CHOOSEPRINTER"CHOOSE_FONT"IBUFF3"CHOOSE_COLOR"IBUFF4""
+R"MODAL"ADVANCEDFLAGS"RAISEEXCEPTIONS"OPEN_FILEEX"SEPARATORCHAR"SAVE_FILE"SAMPLENAME"SELECT_PRINTER"PRINTERNAME"PORT"CHOOSEPRINTER"CALLEDBY"OPT"CHOOSE_FONT"FACE"POINTSIZE"BOLD"ITALIC"CHOOSE_COLOR"RED"GREEN"BLUE""
+"PACKAGE"WIN_API_DIALOG"FUNCTION"OPEN_FILE"TITLE"VARCHAR2"Open File"STARTDIRECTORY"$WINDIR$"FILEFILTER"All files(*.*)|*.*|"MODAL"BOOLEAN"TRUE"ADVANCEDFLAGS"PLS_INTEGER"WIN_API"OFN_FLAG_DEFAULT"RAISEEXCEPTIONS"FALSE"RETURN"OPEN_FILEEX"+"OFN_ALLOWMULTISELECT"SEPARATORCHAR"CHR"10"SAVE_FILE"SAMPLENAME"Save File As"SELECT_PRINTER"PRINTERNAME"OUT"PORT"CHOOSEPRINTER"CALLEDBY"OPT"CHOOSE_FONT"FACE"POINTSIZE"BOLD"ITALIC"CHOOSE_COLOR"RED"GREEN"BLUE""
+OPEN_FILE
+PI.API_ENABLED then
+win_api.Register_function_call(iGetWindowsVersion,'d2kwutil_GetWindowsVersion','INT','*CHAR,*CHAR');
+iRC := d2kwutil_GetWindowsVersion(win_api.FunctionHandle(iGetWindowsVersion),vcBuff1,vcBuff2);
+Win_API_Debug.DebugLog(99,'Get_Windows_Version','Result: RC='||to_char(iRC)||', vcBuff1="'||vcBuff1||'", vcBuff2="'||vcBuff2||'"');
+if iRC = 1 and vcBuff2 = '1998' then
+rcBuff := 'Windows98';
+elsif iRC = 1 then
+rcBuff := 'Windows95';
+elsif iRC = 2 and substr(vcBuff1,1,1) = '5' then
+rcBuff := 'Windows2000';
+elsif iRC = 2 then
+rcBuff := 'WindowsNT';
+rcBuff := 'Unknown Type: '||to_char(iRC)||' BuildInfo: '||vcBuff1;
+return rcBuff;
+Win_API.Add_error('Get_Windows_Version',Win_API.NoAPI);
+Win_API.Add_error('Get_Windows_Version',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Windows_Version;
+Win_API_Dialog.ChoosePrinter('Get_Default_Printer',vcBuff1, vcBuff2,1,RaiseExceptions);
+end Get_Default_Printer;
+"WIN_API_ENVIRONMENT"IREADINIFILE"IWRITEINIFILE"IGETREGKEY"ISETREGKEY"IGETWINUSER"IGETDOSENV"IWINDIR"ITMPDIR"IWNETGETCONNECTION"IGETWORKINGDIRECTORY"ISETWORKINGDIRECTORY"IGETCOMPUTERNAME"IGETWINDOWSVERSION"IMAINTREGKEY"WRAP_WRITE_REGISTRY"CALLEDBY"REGPATH"REGENTRY"REGVALUE"REGFORMAT"RAISEEXCEPTIONS"WRAP_MAINT_REGISTRY"OPT"D2KWUTIL_READINIFILE"HFUNC"HANDLE"FILENAME"SECTION"ENTRY"BUFFER"DEFAULTVAL"INBUFFLEN"D2KWUTIL_WRITEINIFILE"D2KWUTIL_GETWINUSER"USERNAME"D2KWUTIL_GETDOSENV"SOURCESTR"EXPANDSTR"D2KWUTIL_WINDIR"WINDOWSDIR"D2KWUTIL_TMPDIR"TEMPDIR"D2KWUTIL_WNETGETCONNECTION"DRIVELETTER"OUTBUFFLEN"D2KWUTIL_GETREGKEY"REGROOT"REGVALUELENGTH"REGDONTEXPAND"D2KWUTIL_SETREGKEY"REGENTRYTYPE"REGVALUEDWORD"REGNULLIND"D2KWUTIL_GETWORKINGDIRECTORY"WORKINGDIR"D2KWUTIL_SETWORKINGDIRECTORY"WORKINGDIRECT"D2KWUTIL_GETCOMPUTERNAME"COMPUTERNAME"D2KWUTIL_GETWINDOWSVERSION"BUILDINFO"BUILDLOWORD"D2KWUTIL_MAINTREGKEY"READ_INI_FILE"DEFAULT_PLACEHOLDER"VCBUFF1"VCBUFF2"VCBUFF3"VCBUFF4"VCBUFF5"IRC"WRITE_INI_FILE"VALUE"GET_WINDOWS_USERNAME"GET_WINDOWS_DIRECTORY"GET_TEMP_DIRECTORY"GET_ENVIRONMENT_STRING"VARIABLENAME"IBUFF1"GET_NET_CONNECTION"READ_REGISTRY"VCROOT"IBUFF2"IBUFF3"INULLIND"WRITE_REGISTRY"WRITE_REGISTRYEX"VCOP"CREATE_REGISTRY_KEY"DELETE_REGISTRY_KEY"GET_WORKING_DIRECTORY"SET_WORKING_DIRECTORY"WORKINGDIRECTORY"GET_COMPUTER_NAME"GET_WINDOWS_VERSION"RCBUFF"GET_DEFAULT_PRINTER"PRINTERNAME"PORT""
+WRAP_WRITE_REGISTRY
+WRAP_MAINT_REGISTRY
+D2KWUTIL_READINIFILE
+D2KWUTIL_WRITEINIFILE
+D2KWUTIL_GETWINUSER
+D2KWUTIL_GETDOSENV
+D2KWUTIL_WINDIR
+D2KWUTIL_TMPDIR
+D2KWUTIL_WNETGETCONNECTION
+D2KWUTIL_GETREGKEY
+D2KWUTIL_SETREGKEY
+D2KWUTIL_GETWORKINGDIRECTORY
+D2KWUTIL_SETWORKINGDIRECTORY
+D2KWUTIL_GETCOMPUTERNAME
+D2KWUTIL_GETWINDOWSVERSION
+D2KWUTIL_MAINTREGKEY
+D2KWUTIL_EMPTY
+Args: FileName="
+", Section="
+", Entry="
+", RaiseExceptions=
+Read_INI_File
+d2kwutil_ReadINIFile
+*CHAR,*CHAR,*CHAR,*CHAR,*CHAR,INT
+Result: RC=
+, vcBuff4="
+Unable to obtain
+from the [
+] section of
+", Value="
+Write_INI_File
+d2kwutil_WriteINIFile
+*CHAR,*CHAR,*CHAR,*CHAR
+Unable to set the value of
+in the [
+Args: RaiseExceptions=
+Get_Windows_Username
+d2kwutil_GetWinuser
+*CHAR,INT
+, vcBuff1="
+No Value Returned
+Get_Windows_Directory
+d2kwutil_WinDir
+Get_Temp_Directory
+d2kwutil_TmpDir
+Args: VariableName="
+Get_Environment_String
+d2kwutil_GetDOSEnv
+*CHAR,*CHAR,LONG
+Result: Value Length=
+, Value=
+Unable to get the value of the variable
+Args: DriveLetter="
+Get_Net_Connection
+d2kwutil_WNetGetConnection
+*CHAR,*CHAR,*LONG
+, vcBuff2="
+Unable to expand "
+" into a network path (Return Code=
+READ_REGISTRY
+Args: RegPath="
+", RegEntry="
+Read_Registry
+d2kwutil_GetRegKey
+INT,*CHAR,*CHAR,*CHAR,INT,INT
+HKEY_LOCAL_MACHINE
+HKEY_CLASSES_ROOT
+HKEY_CURRENT_USER
+HKEY_USERS
+HKEY_CURRENT_CONFIG
+Invalid Registry Key
+Compatibility: Reg Value expansion supressed
+, vcBuff3="
+Cannot read entry
+is an unsupported datatype
+is longer than
+Bytes
+Failed to expand environment string
+Args: CalledBy="
+", RegPath="
+", RegValue="
+", RegFormat=
+, RaiseExceptions=
+Wrap_Write_Registry
+d2kwutil_SetRegKey
+INT,*CHAR,*CHAR,INT,*CHAR,LONG,INT
+NULL value passed.
+Cannot set Registry Entry
+The value being set exceeded the maximum for a DWORD (4,294,967,295)
+WRITE_REGISTRY
+Write_Registry
+WRITE_REGISTRYEX
+Write_RegistryEx
+", Opt=
+Wrap_Maint_Registry
+d2kwutil_MaintRegKey
+INT,*CHAR,INT
+Create
+Delete
+You Probably don't want to delete something this high in the Registry hierachy:
+Cannot
+Registry Key
+(Error code =
+CREATE_REGISTRY_KEY
+Create_Registry_Key
+DELETE_REGISTRY_KEY
+Delete_Registry_Key
+GET_WORKING_DIRECTORY
+Get_Working_Directory
+d2kwutil_GetWorkingDirectory
+SET_WORKING_DIRECTORY
+Args: WorkingDirectory="
+Set_Working_Directory
+d2kwutil_SetWorkingDirectory
+*CHAR
+Failed to set directory to
+GET_COMPUTER_NAME
+Get_Computer_Name
+d2kwutil_GetComputerName
+*CHAR,*LONG
+GetComputer_Name
+Get_Windows_Version
+Args: <No Arguments>
+d2kwutil_GetWindowsVersion
+*CHAR,*CHAR
+", vcBuff2="
+1998
+Windows98
+Windows95
+Windows2000
+WindowsNT
+Unknown Type:
+BuildInfo:
+GET_DEFAULT_PRINTER
+Get_Default_Printer
+iteIN
+iseE
+_ENV
+ecti
+EY_USE
+RYEX
+lete
+TE_REG
+try_
+GET_PRINTER_SHARE_NAME
+If set to true, then if the
+PROCEDURE Accessed_Date(FileName IN VARCHAR2,
+PROCEDURE Modified_Date(FileName IN VARCHAR2,
+* FileSize -> Out variable for the File Size
+* CompressedFileSize-> Out variable for the Compressed Size of the
+File_Info('Created_Date',Filename,1,1,RaiseExceptions);
+ReturnDate := to_date(to_char(iBuff3,'0999')||to_char(iBuff4,'09')||to_char(iBuff5,'09')||to_char(iBuff6,'09')||to_char(iBuff7,'09')||to_char(iBuff8,'09'),'YYYYMMDDHH24MISS');
+ReturnMS := iBuff9;
+end Created_Date;
+PROCEDURE Accessed_Date ( FileName IN VARCHAR2,
+File_Info('Accessed_Date',Filename,1,2,RaiseExceptions);
+end Accessed_Date;
+File_Info('Modified_Date',Filename,1,3,RaiseExceptions);
+end Modified_Date;
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return NUMBER is
+File_Info('File_Size',Filename,2,0,RaiseExceptions);
+RETURN iBuff3;
+end File_Size;
+PROCEDURE File_Attributes( FileName IN VARCHAR2,
+File_Info('File_Attributes',Filename,3,0,RaiseExceptions);
+Archive := (iBuff3 != 0);
+Compressed := (iBuff4 != 0);
+/*IsDirectory := (iBuff5 != 0); */
+Hidden := (iBuff6 != 0);
+ReadOnly := (iBuff7 != 0);
+System := (iBuff8 != 0);
+Temporary := (iBuff9 != 0);
+end File_Attributes;
+Function Open_File (FileName IN VARCHAR2,
+FileMode IN VARCHAR2,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return WIN_API.FILE_TYPE is
+ptrHandle WIN_API.FILE_TYPE := 0;
+vcBuff1 VARCHAR2(256) := rpad(FileName,256,chr(0));
+Win_API_Debug.DebugLog(99,'Open_File','Args: FileName="'||FileName||'", FileMode="'||FileMode||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFileOpen,'d2kwutil_FileOpen','LONG','*CHAR,*CHAR');
+vcBuff2 := lower(FileMode)||'b';
+if FileName is NULL or replace(FileName,' ',NULL) is NULL then
+WIN_API.Add_error('Open_File','You must supply the name of the file to open');
+ptrHandle := d2kwutil_FileOpen(win_api.FunctionHandle(iFileOpen),vcBuff1,vcBuff2);
+Win_API_Debug.DebugLog(99,'Open_File','Result: File_Handle='||to_char(ptrHandle));
+if ptrHandle = 0 then
+WIN_API.Add_error('Open_File','Cannot open file '||FileName||' with mode "'||FileMode||'"');
+return ptrHandle;
+Win_API.Add_error('Open_File',Win_API.NoAPI);
+Win_API.Add_error('Open_File', Win_API.UError||WIN_API.Add_External_errors);
+Procedure Close_
+File(FileHandle IN WIN_API.FILE_TYPE,
+Win_API_Debug.DebugLog(99,'Close_File','Args: FileHandle='||to_char(FileHandle)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+CheckFileHandle('Close_File',FileHandle);
+win_api.Register_function_call(iFileClose,'d2kwutil_FileClose','INT','LONG');
+iRC := d2kwutil_FileClose(win_api.FunctionHandle(iFileClose),FileHandle);
+Win_API_Debug.DebugLog(99,'Close_File','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Close_File','Cannot Close File');
+Win_API.Add_error('Close_File',Win_API.NoAPI);
+Win_API.Add_error('Close_File', Win_API.UError||WIN_API.Add_External_errors);
+Procedure Rewind_File (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE) is
+Win_API_Debug.DebugLog(99,'Rewind_File','Args: FileHandle='||to_char(FileHandle)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+CheckFileHandle('Rewind_File',FileHandle);
+win_api.Register_function_call(iFileRewind,'d2kwutil_FileRewind','NULL','LONG');
+d2kwutil_FileRewind(win_api.FunctionHandle(iFileRewind),FileHandle);
+Win_API_Debug.DebugLog(99,'Rewind_File','No Return');
+Win_API.Add_error('Rewind_File',Win_API.NoAPI);
+Win_API.Add_error('Rewind_File', Win_API.UError||WIN_API.Add_External_errors);
+Function Read_Data(FileHandle IN WIN_API.FILE_TYPE,
+DataBuffer IN OUT VARCHAR2,
+BytesRequired IN PLS_INTEGER,
+IgnoreNulls IN BOOLEAN DEFAULT FALSE,
+BytesRead IN OUT PLS_INTEGER,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return BOOLEAN is
+bRC BOOLEAN := TRUE;
+NullMask VARCHAR2(16384);
+iOffset PLS_INTEGER := 0;
+iEOF PLS_INTEGER := 0;
+iPtr PLS_INTEGER;
+vcEsc VARCHAR2(2);
+Win_API_Debug.DebugLog(99,'Read_Data','Args: FileHandle='||to_char(FileHandle)||', Bytes='||to_char(BytesRequired)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+CheckFileHandle('Read_Data',FileHandle);
+win_api.Register_function_call(iFileRead,'d2kwutil_FileRead','INT','LONG,*CHAR,INT,*CHAR,INT,*INT');
+--Check Size and Prepare the buffer
+if BytesRequired > 16165 then
+WIN_API.Add_error('Read_Data','The maximum number of bytes that can be read is 16165');
+DataBuffer := rpad(' ',BytesRequired,' ');
+NullMask := rpad('0',BytesRequired,'0');
+iRC := d2kwutil_FileRead(win_api.FunctionHandle(iFileRead),FileHandle,DataBuffer,BytesRequired,NullMask,46,iEOF);
+NullMask := substr(NullMask,1,BytesRequired);
+Win_API_Debug.DebugLog(99,'Read_Data','Result: RC='||to_char(iRC)||' EOF='||to_char(iEOF));
+WIN_API.Add_error('Read_Data','Cannot Read File');
+DataBuffer := substr(DataBuffer,1,iRC);
+NullMask := substr(NullMask,1,iRC);
+-- Process the NullMask and convert any NULLs marked t
+ar(MDIWindow)||', IconFile="'||IconFile||'", IconIndex='||IconIndex);
+win_api.Register_function_call(iChangeMDIIcon,'d2kwutil_ChangeMDIIcon','INT','INT,*CHAR,INT,*CHAR,INT');
+vcBuff1 := rpad(IconFile,255,chr(0));
+vcBuff2 := rpad(IconFile,255,chr(0));
+iBuff1 := MDIWindow;
+iBuff2 := IconIndex;
+iBuff3 := IconIndex;
+iRC := d2kwutil_ChangeMDIIcon(win_api.FunctionHandle(iChangeMDIIcon),iBuff1,vcBuff1,iBuff2,vcBuff2,iBuff3);
+Win_API_Debug.DebugLog(99,'Change_MDI_Icon','Result: RC='||to_char(iRC));
+Win_API.Add_error('Change_MDI_Icon',Win_API.NoAPI);
+Win_API.Add_error('Change_MDI_Icon',Win_API.UError||WIN_API.Add_External_errors);
+END Change_MDI_Icon;
+procedure Timeout_Start_Timer ( WindowHandle IN NUMBER) IS
+iBuff1 number;
+Win_API_Debug.DebugLog(99,'Timeout_Start_Timer','Args: WindowHandle='||to_char(WindowHandle));
+win_api.Register_function_call(iTimeOutInit,'d2kwutil_TimeOutInit','INT','DOUBLE');
+iBuff1 := WindowHandle;
+if iBuff1 is NULL or iBuff1 = 0 then
+iRC := d2kwutil_TimeOutInit(win_api.FunctionHandle(iTimeOutInit),iBuff1);
+Win_API_Debug.DebugLog(99,'Timeout_Start_Timer','Result: RC='||to_char(iRC));
+Win_API.Add_error('Timeout_Start_Timer','A NULL Window Handle to attach the Timer to was specified');
+Win_API.Add_error('Timeout_Start_Timer',Win_API.NoAPI);
+Win_API.Add_error('Timeout_Start_Timer',Win_API.UError||WIN_API.Add_External_errors);
+END Timeout_Start_Timer;
+function Timeout_Get_Inactive_Time return NUMBER IS
+iRC number;
+Win_API_Debug.DebugLog(99,'Timeout_Get_Inactive_Time','Args: <No Arguments>');
+win_api.Register_function_call(iTimeOutLastEvent,'d2kwutil_TimeOutLastEvent','DOUBLE',NULL);
+iRC := d2kwutil_TimeOutLastEvent(win_api.FunctionHandle(iTimeOutLastEvent));
+Win_API_Debug.DebugLog(99,'Timeout_Get_Inactive_Time','Result: RC='||to_char(iRC));
+return(iRC);
+Win_API.Add_error('Timeout_Get_Inactive_Time',Win_API.NoAPI);
+Win_API.Add_error('Timeout_Get_Inactive_Time',Win_API.UError||WIN_API.Add_External_errors);
+END Timeout_Get_Inactive_Time;
+procedure Timeout_Delete_Timer IS
+Win_API_Debug.DebugLog(99,'Timeout_Delete_Timer','Args: <No Arguments>');
+win_api.Register_function_call(iTimeOutUnHook,'d2kwutil_TimeOutUnHook','INT',NULL);
+iRC := d2kwutil_TimeOutUnHook(win_api.FunctionHandle(iTimeOutUnHook));
+Win_API_Debug.DebugLog(99,'Timeout_Delete_Timer','Result: RC='||to_char(iRC));
+Win_API.Add_error('Timeout_Delete_Timer',Win_API.NoAPI);
+Win_API.Add_error('Timeout_Delete_Timer', Win_API.UError||WIN_API.Add_External_errors);
+END Timeout_Delete_Timer;
+-- Private Bodies
+iBuff1 IN OUT PLS_INTEGER) is
+-- Check Correct O/S
+IF MatchType <> 'WINDOW' and Win_API_Environment.Get_Windows_Version = 'WindowsNT' then
+Raise NOT_VALID_ON_NT;
+IF MatchType = 'MODULE' THEN
+ibuff1 := 1;
+ELSIF MatchType = 'WINDOW' THEN
+ibuff1 := 2;
+ELSE
+ibuff1 := 3;
+END IF;
+IF Activate THEN
+ibuff1 := ibuff1 + 3;
+IF Minimize THEN
+vcBuff1 := nvl(WindowTitle,'*');
+vcBuff2 := nvl(ModuleName,'*');
+vcBuff3 := nvl(Class,'*');
+"WIN_API_SESSION"IONESESSION"IFINDAPPWINDOW"IFIND3RDPARTYAPP"ICHANGEMDIICON"ITIMEOUTINIT"ITIMEOUTLASTEVENT"ITIMEOUTUNHOOK"D2KWUTIL_ONESESSION"HFUNC"HANDLE"WINDOWTITLE"MODULENAME"CLASS"ACTIVATE"D2KWUTIL_FINDAPPWINDOW"D2KWUTIL_FIND3RDPARTYAPP"D2KWUTIL_CHANGEMDIICON"HWND"ICONFILE"ICONINDEX"ICONFILESM"ICONINDEXSM"D2KWUTIL_TIMEOUTINIT"D2KWUTIL_TIMEOUTLASTEVENT"FFUNC"D2KWUTIL_TIMEOUTUNHOOK"WRAP_FIND3RDPARTYAPP"CALLEDBY"MATCHTYPE"MINIMIZE"RAISEEXCEPTIONS"PROCESSOPTIONS"VCBUFF1"VCBUFF2"VCBUFF3"IBUFF1"ONE_SESSION"IRC"FINDAPPWINDOW"FIND3RDPARTYAPP"FIND3RDPARTYAPPEX"CHANGE_MDI_ICON"MDIWINDOW"IBUFF2"IBUFF3"TIMEOUT_START_TIMER"WINDOWHANDLE"TIMEOUT_GET_INACTIVE_TIME"TIMEOUT_DELETE_TIMER""
+Win_API.Add_error('Generate_Temp_Filename',Win_API.NoAPI);
+Win_API.Add_error('Generate_Temp_Filename',Win_API.UError||WIN_API.Add_External_errors);
+end Generate_Temp_Filename;
+FUNCTION Get_Active_Window (RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN PLS_INTEGER is
+Win_API_Debug.DebugLog(99,'Get_Active_Window','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iActiveWin,'d2kwutil_ActiveWin','INT',NULL);
+iRC := d2kwutil_ActiveWin(win_api.FunctionHandle(iActiveWin));
+Win_API_Debug.DebugLog(99,'Get_Active_Window','Result: RC='||to_char(iRC));
+Win_API.Add_error('Get_Active_Window','Unable to obtain active window handle');
+Win_API.Add_error('Get_Active_Window',Win_API.NoAPI);
+Win_API.Add_error('Get_Active_Window',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Active_window;
+FUNCTION Get_Parent_Window (Window_Handle IN PLS_INTEGER, Recursive IN BOOLEAN DEFAULT FALSE, RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN PLS_INTEGER is
+Win_API_Debug.DebugLog(99,'Get_Parent_Window','Args: Window_Handle ='||to_char(Window_Handle)||', Recursive='||win_api_debug.booltochar(Recursive)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+if Recursive then
+win_api.Register_function_call(iParentWin,'d2kwutil_ParentWin','INT','INT,INT');
+iRC := d2kwutil_ParentWin(win_api.FunctionHandle(iParentWin),Window_handle,iBuff1);
+Win_API_Debug.DebugLog(99,'Get_Parent_Window','Result: RC='||to_char(iRC));
+Win_API.Add_error('Get_Parent_Window','Unable to obtain parent window handle');
+Win_API.Add_error('Get_Parent_Window',Win_API.NoAPI);
+Win_API.Add_error('Get_Parent_Window',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Parent_Window;
+Win_API_Debug.DebugLog(99,'Play_Wav','Args: FileName="'||FileName||'", Asynchronous='||win_api_debug.booltochar(Asynchronous)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iPlaySound,'d2kwutil_PlaySound','INT','*CHAR,LONG');
+vcBuff1 := Filename;
+if Asynchronous then
+iBuff1 := 1; /* SND_ASYNC -> MMSYSTEM.H */
+iBuff1 := 0; /* SND_SYNC -> MMSYSTEM.H */
+iRC := d2kwutil_PlaySound(win_api.FunctionHandle(iPlaySound),vcBuff1,iBuff1);
+Win_API_Debug.DebugLog(99,'Play_WAV','Result: RC='||to_char(iRC));
+Win_API.Add_error('Play_WAV','Unable to find Sound file '||FileName||', or this system cannot play sounds');
+Win_API.Add_error('Play_WAV',Win_API.NoAPI);
+Win_API.Add_error('Play_WAV',Win_API.UError||WIN_API.Add_External_errors);
+end Play_WAV;
+PROCEDURE Sleep ( SleepTime IN PLS_INTEGER) is
+Win_API_Debug.DebugLog(99,'Sleep','Args: SleepTime='||SleepTime);
+win_api.Register_function_call(iSleep,'d2kwutil_Sleep',NULL,'LONG');
+d2kwutil_Sleep(win_api.FunctionHandle(iSleep),SleepTime);
+Win_API_Debug.DebugLog(99,'Sleep','Result: <NONE>');
+Win_API.Add_error('Sleep',Win_API.NoAPI);
+Win_API.Add_error('Sleep',Win_API.UError||WIN_API.Add_External_errors);
+end Sleep;
+FUNCTION InterruptCheck ( ButtonHandle IN PLS_INTEGER)
+RETURN BOOLEAN is
+Win_API_Debug.DebugLog(99,'InterruptCheck','Args: ButtonHandle='||ButtonHandle);
+win_api.Register_function_call(iPeekButtonClick,'d2kwutil_PeekButtonClick','INT','INT');
+iRC := d2kwutil_PeekButtonClick(win_api.FunctionHandle(iPeekButtonClick),ButtonHandle);
+Win_API_Debug.DebugLog(99,'InteruptCheck','Result: RC='||to_char(iRC));
+return FALSE;
+Win_API.Add_error('InterruptCheck',Win_API.NoAPI);
+Win_API.Add_error('InterruptCheck',Win_API.UError||WIN_API.Add_External_errors);
+end InterruptCheck;
+FUNCTION Get_Tick_Count RETURN PLS_INTEGER is
+Win_API_Debug.DebugLog(99,'Get_Tick_Count','Args: <None>');
+win_api.Register_function_call(iGetTickCount,'d2kwutil_GetTickCount','LONG',NULL);
+iRC := d2kwutil_GetTickCount(win_api.FunctionHandle(iGetTickCount));
+Win_API_Debug.DebugLog(99,'Get_Tick_Count','Result: RC='||to_char(iRC));
+Win_API.Add_error('Get_Tick_Count',Win_API.NoAPI);
+Win_API.Add_error('Get_Tick_Count',Win_API.UError||WIN_API.Add_External_errors);
+end Get_Tick_Count;
+"WIN_API_UTILITY"IDELFILE"IMOVEFILE"ICOPYFILE"ICREATEDIR"IDELETEDIR"ITMPFILE"IACTIVEWIN"IPARENTWIN"IPLAYSOUND"ISLEEP"IPEEKBUTTONCLICK"IGETTICKCOUNT"D2KWUTIL_DELFILE"HFUNC"HANDLE"FILENAME"D2KWUTIL_MOVEFILE"OLDFILENAME"NEWFILENAME"D2KWUTIL_COPYFILE"FLAGS"D2KWUTIL_CREATEDIR"DIRECTORYPATH"D2KWUTIL_DELETEDIR"D2KWUTIL_TMPFILE"PATH"PREFIX"D2KWUTIL_ACTIVEWIN"D2KWUTIL_PARENTWIN"WND"RECURSIVE"D2KWUTIL_PLAYSOUND"D2KWUTIL_SLEEP"SLEEPTIME"D2KWUTIL_PEEKBUTTONCLICK"HBTN"D2KWUTIL_GETTICKCOUNT"DELETE_FILE"RAISEEXCEPTIONS"IRC"VCBUFF1"MOVE_FILE"VCBUFF2"COPY_FILE"ALLOWOVERWRITE"IBUFF1"CREATE_DIRECTORY"DELETE_DIRECTORY"GENERATE_TEMP_FILENAME"VCBUFF3"GET_ACTIVE_WINDOW"GET_PARENT_WINDOW"WINDOW_HANDLE"PLAY_WAV"ASYNCHRONOUS"SLEEP"INTERRUPTCHECK"BUTTONHANDLE"GET_TICK_COUNT""
+f set to true, then if the file
+* could not be opened, the exception NO_DATA_FOUND will be
+* raised.
+* Return Value: Handle to the opened file of type WIN_API.FILE_TYPE
+Function Open_File (FileName IN VARCHAR2, FileMode IN VARCHAR2, RaiseExceptions IN BOOLEAN DEFAULT FALSE) return WIN_API.FILE_TYPE;
+* Close_File -> Closes a Binary File that was opened with Open_File
+* FileHandle -> Variable of Type WIN_API.FILE_TYPE for the file to close.
+* RaiseExceptions-> TRUE of FALSE(Default) If set to true, then if the file
+* could not be closed, the exception NO_DATA_FOUND will be
+Procedure Close_File (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE);
+* Rewind_File -> Repositions the File pointer to the beginning of the file
+* FileHandle -> Variable of Type WIN_API.FILE_TYPE for the file.
+* RaiseExceptions-> TRUE of FALSE(Default) If set to true, then if an empty
+* file handle is passed NO_DATA_FOUND will be raised.
+Procedure Rewind_File (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE);
+* Read_Data -> Reads up to c.16k of data from the current position
+* of the File Pointer
+* DataBuffer -> A VARCHAR2 variable long enough to take the requested
+* amount of data. You should make this twice the length
+* of the number of bytes that will be returned.
+* If the IgnoreNulls boolean is set to FALSE any
+* NULLs that are read from the file will be translated
+* into "\0" in the databuffer and likewise any "\" characters
+* will be translated into "\\"
+* Otherwise NULLs will be converted to "." and "\"
+* will remain as a single "\"
+* BytesRequired -> The Number of Bytes that you want to read. Max value is 16165 bytes
+* IgnoreNulls -> Control the representation of NULL characters.
+* BytesRead -> The number of bytes actually read. This may be less that the
+* number requested if the End-Of-File Marker was encountered
+* before the full number of bytes was read.
+* If the Number of Bytes returned is less than the length of
+* the databuffer after the function has returned, this
+* indicates that there are NULLs or "\" characters that have
+* escaped using "\0" and "\\" respectively.
+* RaiseExceptions-> TRUE of FALSE(Default) If set to true, then if there
+* is a read error then NO_DATA_FOUND will be raised.
+* Return Value: Boolean, Returns TRUE if you have not yet encountered
+* the end of file marker. Returns FALSE if the EOF was
+* encountered during this read.
+from relative bin (..\bin\)
+DLL not found in relative bin
+ORACLE_HOME
+\bin
+DLL loaded from %ORACLE_HOME%/bin
+DLL not found in %ORACLE_HOME%/bin
+Variable ORACLE_HOME not set, Aborting
+DLL Found and Loaded
+D2KWUTIL (Init)
+Unexpected error
+ATTEMPT_DLL_LOAD
+TRANSLATETYPE
+D2KWUTIL_VERSION
+PRELOAD
+PreLoad
+Args: (None)
+D2KWUTIL (Pre-Load)
+DLLVERSION
+DLLVersion
+d2kwutil_Version
+Result: Version=
+CLEAN_ERROR_STACK
+ADD_ERROR
+Add_Error
+ADD_EXTERNAL_ERRORS
+REGISTER_FUNCTION_CALL
+not found.
+d2kwutil_DebugString
+Ftn="
+", DLL Count=
+, Initial Reg
+Register_Function_Call
+, Re-Registration Count =
+VOID,
+not found in the specified location of "
+Attempt_DLL_LOAD
+CHAR
+*INT
+*LONG
+*SHORT
+*BYTE
+SHORT
+*DOUBLE
+DOUBLE
+*VOID
+STRIPDIRSEP
+GETRESOURCE
+Argument cannot be NULL
+PACKAGE BODY Win_API_Debug IS
+-- Debug has an index of 2
+iDebugString CONSTANT PLS_INTEGER := 2;
+iDebugState PLS_INTEGER := 0;
+iDebugLevel PLS_INTEGER := 98;
+vcDebugFile VARCHAR2(256);
+bDebugTimeStamp BOOLEAN := FALSE;
+bDebugType2Required BOOLEAN := FALSE;
+bDebugPaused BOOLEAN := FALSE;
+PROCEDURE d2kwutil_DebugString ( hFunc IN ORA_FFI.funcHandleType,
+Text IN VARCHAR2);
+PRAGMA INTERFACE(C,d2kwutil_DebugString, 11265);
+PROCEDURE SetDebug( DebugType IN PLS_INTEGER,
+DebugFile IN VARCHAR2 DEFAULT NULL,
+DebugLevel IN PLS_INTEGER DEFAULT 98,
+TimeStamp IN BOOLEAN DEFAULT FALSE) is
+bDebugTimeStamp := TimeStamp;
+vcDebugFile := DebugFile;
+iDebugLevel := DebugLevel;
+if DebugType = 1 then
+iDebugState := 1;
+DebugLog(0,'SetDebug','Logging to File '||DebugFile);
+elsif DebugType = 2 then
+iDebugState := 2;
+DebugLog(0,'SetDebug','Logging Started');
+DebugLog(0,'SetDebug','Logging Stopped');
+iDebugState := 0;
+end SetDebug;
+PROCEDURE DebugLog (DebugLevel IN PLS_INTEGER,
+LoggingCall IN VARCHAR2,
+LogString IN VARCHAR2) is
+vcDateStamp VARCHAR2(10);
+vcDebugString VARCHAR2(2000);
+if iDebugState = 0 then
+elsif bDebugPaused then
+elsif DebugLevel > iDebugLevel then
+-- Sort out the Datestamp
+if bDebugTimeStamp then
+vcDateStamp := to_char(SYSDATE,'HH24:MI:SS')||'> ';
+-- Construct the final String
+vcDebugString := '<'||lpad(to_char(DebugLevel),2,0)||'> '||vcDateStamp||rpad(LoggingCall||':',30);
+vcDebugString := vcDebugString||substr(LogString,1,(2000-length(vcDebugString)));
+if iDebugState = 2 then
+if DEBUG_API_ENABLED then
+win_api_debug.WinDebug(vcDebugString);
+-- Can't use API calls if the API functions aren't there
+-- So Switch to File Logging to d2kwut$.log
+SetDebug(1,nvl(vcDebugFile,'d2kwutil.log'),iDebugLevel,bDebugTimeStamp);
+DebugLog(0,'DebugLog','Unable to Log to Debugger Switching to File');
+DebugLog(DebugLevel,LoggingCall,LogString);
+bDebugType2Required := TRUE;
+if bDebugType2Required and DEBUG_API_ENABLED then
+-- API now Available - Reinstate Debugging to Debugger
+SetDebug(2,vcDebugFile,iDebugLevel,bDebugTimeStamp);
+DebugLog(0,'DebugLog','Restoring Logging to Debugger');
+bDebugType2Required := FALSE;
+DebugLog(Debuglevel,LoggingCall,LogString);
+hFile := TEXT_IO.FOPEN(vcDebugFile,'A');
+TEXT_IO.PUT_LINE(hFile,vcDebugString);
+-- Don't let the debugging cause Problems of it's own
+end DebugLog;
+PROCEDURE DebugPause(LogPause in BOOLEAN := FALSE) is
+if LogPause then
+DebugLog(0,'DebugPause','Pausing Debug output');
+bDebugPaused := TRUE;
+end DebugPause;
+PROCEDURE DebugResume(LogResume in BOOLEAN := FALSE) is
+bDebugPaused := FALSE;
+if LogResume then
+DebugLog(0,'DebugResume','Resuming Debug output');
+end DebugResume;
+PROCEDURE WinDebug ( Text IN VARCHAR2) is
+vcBuff1 VARCHAR2(2000) := Text||chr(10);
+--WIN_API.Clean_Error_Stack;
+win_api.Register_function_call(iDebugString,'d2kwutil_DebugString',NULL,'*CHAR');
+d2kwutil_DebugString(win_api.FunctionHandle(iDebugString),vcBuff1);
+Win_API.Add_error('WinDebug',Win_API.N
+oAPI);
+Win_API.Add_error('WinDebug',Win_API.UError||WIN_API.Add_External_errors);
+end WinDebug;
+FUNCTION BoolToChar(ThisBoolean IN BOOLEAN) return VARCHAR2 is
+if ThisBoolean then
+RETURN 'TRUE';
+RETURN 'FALSE';
+end BoolToChar;
+"WIN_API_DEBUG"IDEBUGSTRING"IDEBUGSTATE"IDEBUGLEVEL"VCDEBUGFILE"BDEBUGTIMESTAMP"BDEBUGTYPE2REQUIRED"BDEBUGPAUSED"D2KWUTIL_DEBUGSTRING"HFUNC"HANDLE"TEXT"SETDEBUG"DEBUGTYPE"DEBUGFILE"DEBUGLEVEL"TIMESTAMP"DEBUGLOG"LOGGINGCALL"LOGSTRING"VCDATESTAMP"VCDEBUGSTRING"HFILE"DEBUGPAUSE"LOGPAUSE"DEBUGRESUME"LOGRESUME"WINDEBUG"VCBUFF1"BOOLTOCHAR"THISBOOLEAN""
+PACKAGE Win_API_Debug IS
+* Debugging Functions
+* SetDebug -> Enables/Disables the D2kwutil Internal Debugging
+* You can Also use this for Debugging your own apps
+* DebugType 0 = Normal State - No Debugging
+* 1 = Log to File named in DebugFile (Name up to 256 chars long)
+* 2 = Log to a Windows Debugger
+* DebugFile The Name of the file that you want to write DebugInfo.
+* DebugLevel A numberical argument that allows you to impose "levels" of
+* Debugging within a App. Use Values < 99. Level 99 will switch
+* on the Debug Calls in D2kwutil.
+* During Dubugging all messages with a level < DebugLevel will
+* be processed. Higher Debug levels will be ignored.
+* TimeStamp Defines if the Logged messages should be prefixed with
+* the current time.
+*----------------------------------------------------------------------------
+* Notes:
+* If you specify Type 2 Debugging (Log to Windows Debugger) rather than
+* file, and for some reason the Debug API call is not available e.g.
+* d2kwutil is not instanciated yet, then the output will get sent to the
+* specified file in Debug file (or to the file d2kwutil.log if no file
+* is specified)
+* If the Debug API subsequently becomes available the output will switch
+* to it.
+* Generally, however, you would call WIN_API.PRELOAD *before* switching
+* on Debugging unless you are trying to debug a problem with d2kwutil
+* instanciation.
+TimeStamp IN BOOLEAN DEFAULT FALSE);
+* DebugLog -> Logs the Debug Output either to a Text File (appends)
+* Or to a Windows Debugger - Depending on the
+* value set by SetDebug
+LogString IN VARCHAR2);
+* DebugPause -> If you are debugging this just switches it off
+* use DebugResume to restart.
+* Using Pause and Resume, it doesn't matter if you are actually
+* Debugging or not. It'll only take effect if you are
+* Currently Debugging.
+* The LogPause argument just allows you to put the fact that you
+* are pausing into the debug log.
+* If this is FALSE then you'll never know that debugging was
+* paused.
+PROCEDURE DebugPause(LogPause in BOOLEAN := FALSE);
+* DebugResume -> Resumes Debugging
+* The LogResume argument just allows you to put the fact that you
+* are resuming into the debug log.
+* resumed.
+\*-------------------------------------------------------------------------
+ring) that the
+* path is not supplied with thi
+D2KWUTIL_WINEXEC
+D2KWUTIL_WINHELP
+D2KWUTIL_MOUSE_X_Y
+D2KWUTIL_SENDMSG
+D2KWUTIL_SENDKEYS
+D2KWUTIL_SHELLEXECUTE
+WRAP_WINHELP
+Args: Command="
+", WindowStyle=
+WinExec
+d2kwutil_WinExec
+Unable to execute
+(RC=
+Args: DocumentFile="
+StartFile
+HKEY_CLASSES_ROOT\
+Files of Type "
+" do not have an associated application.
+\shell\open\command
+Files of Class "
+" do not have an associated shell open command.
+WinHelp
+WinHelpEx
+", HelpFile="
+", Target="
+", HelpType=
+, SetPos=
+, HelpXPos=
+, HelpYPos=
+, HelpWidth=
+, HelpHeight=
+, HelpWindow="
+Wrap_WinHelp
+d2kwutil_WinHelp
+*CHAR,INT,INT,INT,INT,INT,INT,INT,*CHAR,LONG,*CHAR
+Unable to locate Help file:
+Unable to locate WINHELP.EXE
+When accessing Help a string was supplied in place of a Topic number
+MousePosition
+d2kwutil_Mouse_x_y
+*INT,*INT
+Result: XPos=
+, YPos=
+Args: Target=
+, MessageCode=
+, Param1=
+, Param2=
+SendMessage
+d2kwutil_SendMsg
+INT,INT,INT,INT
+with parameters
+to window
+, returned a Non-Zero return code (
+Args: Hwnd=
+, Keys="
+SendKeys
+No Keystrokes Specified (Keys parameter is NULL)
+d2kwutil_SendKeys
+INT,*CHAR
+Missing close brace } in key string
+Invalid Key in key string
+Missing Close Parenthesis ) in key string
+Invalid count in key string
+Key string too long -
+Can't install hook
+Unknown error message =
+Args: Executable="
+", Args="
+", WindowClass="
+", ActivationStyle=
+Start_or_Restore
+.EXE
+WINDOW
+Args: Operation="
+", File="
+", Parameters="
+", Directory="
+d2kwutil_ShellExecute
+,*CHAR,*CHAR,*CHAR,*CHAR,INT
+tion
+---*/
+PROCEDURE DebugResume(LogResume in BOOLEAN := FALSE);
+* BoolToChar -> A utility function for use when outputting Debug Strings
+* Converts a Boolean Value to it's String equivilent e.g.
+* TRUE becomes 'TRUE'
+FUNCTION BoolToChar(ThisBoolean IN BOOLEAN) return VARCHAR2;
+* WinDebug -> Sends a debug message to a windows Debugger
+* Text -> String to send
+PROCEDURE WinDebug ( Text IN VARCHAR2);
+* DEBUG_API_ENABLED - Do no alter this variable it is used internally by
+* d2kwutil.
+DEBUG_API_ENABLED BOOLEAN := FALSE;
+"WIN_API_DEBUG"SETDEBUG"DEBUGTYPE"DEBUGFILE"DEBUGLEVEL"TIMESTAMP"DEBUGLOG"LOGGINGCALL"LOGSTRING"DEBUGPAUSE"LOGPAUSE"DEBUGRESUME"LOGRESUME"BOOLTOCHAR"THISBOOLEAN"WINDEBUG"TEXT"DEBUG_API_ENABLED""
+"PACKAGE"WIN_API_DEBUG"SETDEBUG"DEBUGTYPE"PLS_INTEGER"DEBUGFILE"VARCHAR2"DEBUGLEVEL"98"TIMESTAMP"BOOLEAN"FALSE"DEBUGLOG"LOGGINGCALL"LOGSTRING"DEBUGPAUSE"LOGPAUSE"DEBUGRESUME"LOGRESUME"FUNCTION"BOOLTOCHAR"THISBOOLEAN"RETURN"WINDEBUG"TEXT"DEBUG_API_ENABLED""
+D2KWUTIL_ONESESSION
+D2KWUTIL_FINDAPPWINDOW
+D2KWUTIL_FIND3RDPARTYAPP
+D2KWUTIL_CHANGEMDIICON
+D2KWUTIL_TIMEOUTINIT
+D2KWUTIL_TIMEOUTLASTEVENT
+D2KWUTIL_TIMEOUTUNHOOK
+WRAP_FIND3RDPARTYAPP
+PROCESSOPTIONS
+ONE_SESSION
+Args: WindowTitle="
+", ModuleName="
+", MatchType="
+", Activate=
+, Class="
+One_Session
+d2kwutil_OneSession
+*CHAR,*CHAR,*CHAR,INT
+No Matching Session Found
+Only matching on "WINDOW" is allowed on NT
+FINDAPPWINDOW
+FindAppWindow
+d2kwutil_FindAppWindow
+No matching application was found
+d2kwutil_Find3rdPartyApp
+Application not found
+FIND3RDPARTYAPP
+Find3rdPartyApp
+FIND3RDPARTYAPPEX
+Find3rdPartyAppEx
+CHANGE_MDI_ICON
+Args: MDIWindow=
+, IconFile="
+", IconIndex=
+Change_MDI_Icon
+d2kwutil_ChangeMDIIcon
+INT,*CHAR,INT,*CHAR,INT
+TIMEOUT_START_TIMER
+Args: WindowHandle=
+Timeout_Start_Timer
+d2kwutil_TimeOutInit
+A NULL Window Handle to attach the Timer to was specified
+TIMEOUT_GET_INACTIVE_TIME
+Timeout_Get_Inactive_Time
+d2kwutil_TimeOutLastEvent
+TIMEOUT_DELETE_TIMER
+Timeout_Delete_Timer
+d2kwutil_TimeOutUnHook
+MODULE
+D2KWUTIL_DELFILE
+D2KWUTIL_MOVEFILE
+D2KWUTIL_COPYFILE
+D2KWUTIL_CREATEDIR
+D2KWUTIL_DELETEDIR
+D2KWUTIL_TMPFILE
+D2KWUTIL_ACTIVEWIN
+D2KWUTIL_DEBUGSTRING
+SETDEBUG
+Logging to File
+SetDebug
+Logging Started
+Logging Stopped
+DEBUGLOG
+HH24:MI:SS
+d2kwutil.log
+DebugLog
+Unable to Log to Debugger Switching to File
+Restoring Logging to Debugger
+DEBUGPAUSE
+DebugPause
+Pausing Debug output
+DEBUGRESUME
+DebugResume
+Resuming Debug output
+WINDEBUG
+WinDebug
+BOOLTOCHAR
+TRUE
+FALSE
+contain the following characters "1234567890ABCDEF"
+You cannot shift by more than 32 places
+Bitw
+KWUTIL_PARENTWIN
+D2KWUTIL_PLAYSOUND
+D2KWUTIL_SLEEP
+D2KWUTIL_PEEKBUTTONCLICK
+D2KWUTIL_GETTICKCOUNT
+DELETE_FILE
+Delete_File
+d2kwutil_DelFile
+Could not delete the file
+MOVE_FILE
+Args: OldFileName="
+", NewFileName="
+Move_File
+d2kwutil_MoveFile
+Could not Move the file
+COPY_FILE
+", AllowOverWrite=
+Copy_File
+d2kwutil_CopyFile
+*CHAR,*CHAR,INT
+Could not copy the file
+CREATE_DIRECTORY
+Args: DirectoryPath="
+Create_Directory
+Directory Path is too Long (Max length 260)
+d2kwutil_CreateDir
+Could not Create the Directory
+DELETE_DIRECTORY
+Delete_Directory
+d2kwutil_DeleteDir
+Could not Delete the Directory
+. The directory may contain files or may not exist
+GENERATE_TEMP_FILENAME
+Args: Path="
+", Prefix="
+Generate_Temp_Filename
+d2kwutil_TmpFile
+*CHAR,*CHAR,*CHAR
+$TEMP$
+vcBuff3="
+Returned no value
+GET_ACTIVE_WINDOW
+Get_Active_Window
+d2kwutil_ActiveWin
+Unable to obtain active window handle
+GET_PARENT_WINDOW
+Args: Window_Handle =
+, Recursive=
+Get_Parent_Window
+d2kwutil_ParentWin
+INT,INT
+Unable to obtain parent window handle
+PLAY_WAV
+", Asynchronous=
+Play_Wav
+d2kwutil_PlaySound
+*CHAR,LONG
+Play_WAV
+Unable to find Sound file
+, or this system cannot play sounds
+SLEEP
+Args: SleepTime=
+Sleep
+d2kwutil_Sleep
+Result: <NONE>
+INTERRUPTCHECK
+Args: ButtonHandle=
+InterruptCheck
+d2kwutil_PeekButtonClick
+InteruptCheck
+GET_TICK_COUNT
+Get_Tick_Count
+Args: <None>
+d2kwutil_GetTickCount
+CTIV
+CHOOSEFILE
+D2KWUTIL_CHOOSEFILE
+D2KWUTIL_CHOOSEPRINTER
+D2KWUTIL_CHOOSEFONT
+D2KWUTIL_CHOOSECOLOR
+Open_File
+No file was selected
+OPEN_FILEEX
+Open_FileEx
+SAVE_FILE
+Save_File
+, Modal=
+, szTitle="
+", szInitDir="
+", szFileFilter="
+", Flags=
+, SepChar="
+", szBuffer="
+ChooseFile
+d2kwutil_ChooseFile
+INT,SHORT,*CHAR,*CHAR,*CHAR,LONG,CHAR,*CHAR
+$WINDIR$
+All files(*.*)|*.*|
+, szBuffer="
+SELECT_PRINTER
+Select_Printer
+CHOOSEPRINTER
+ChoosePrinter
+d2kwutil_ChoosePrinter
+INT,*CHAR,*CHAR,INT
+, PrinterName="
+", Port="
+No Printer Selected
+CHOOSE_FONT
+Args: Face="
+", PointSize=
+, Bold=
+, Italic=
+Choose_Font
+d2kwutil_ChooseFont
+INT,*CHAR,*INT,*INT,*INT
+, Face="
+" PointSize=
+No Font selection was made
+CHOOSE_COLOR
+Args: Red=
+, Green=
+, Blue=
+Choose_Color
+d2kwutil_ChooseColor
+INT,*INT,*INT,*INT,*INT
+, Combined=
+,Red=
+,Green=
+,Blue=
+No Color selection was made
+d FunctionReturn is not NULL then
+/*----------------------------------
+o '\0', also convert '\' to '\\'
+if not IgnoreNulls then
+iPtr := instr(NullMask,'1');
+while iPtr > 0 LOOP
+if substr(DataBuffer,(iPtr+iOffset),1) = '.' then
+vcEsc := '\0';
+vcEsc := '\\';
+DataBuffer := substr(DataBuffer,1,(iPtr+iOffset-1))||vcEsc||substr(DataBuffer,(iPtr+iOffset+1));
+iOffset := iOffset + 1;
+iPtr := instr(NullMask,'1',iPtr+1);
+BytesRead := iRC;
+if iEOF = 1 then
+bRC := FALSE;
+return bRC;
+WIN_API.Add_error('Read_Data','VALUE_ERROR');
+Win_API.Add_error('Read_Data',Win_API.NoAPI);
+Win_API.Add_error('Read_Data', Win_API.UError||WIN_API.Add_External_errors);
+PROCEDURE Write_Data( FileHandle IN WIN_API.FILE_TYPE,
+DataBuffer IN VARCHAR2,
+iBytes
+NullMask VARCHAR2(32767) := rpad('0',length(DataBuffer),'0');
+vcBuff VARCHAR2(32767) := DataBuffer;
+iPtr PLS_INTEGER := 0;
+vcPair VARCHAR2(2);
+vcRep VARCHAR2(1);
+Win_API_Debug.DebugLog(99,'Write_Data','Args: FileHandle='||to_char(FileHandle)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+CheckFileHandle('Write_Data',FileHandle);
+win_api.Register_function_call(iFileWrite,'d2kwutil_FileWrite','INT','LONG,*CHAR,INT,*CHAR,');
+-- Check & Prepare the buffer
+if vcBuff is NULL then
+WIN_API.Add_error('Write_Data','Write Buffer contains no data');
+iPtr := instr(vcBuff,'\');
+vcPair := substr(vcBuff,iPtr,2);
+if vcPair = '\0' then
+vcRep := '.';
+NullMask := substr(NullMask,1,iPtr-1)||'1'||substr(NullMask,iPtr+2);
+elsif vcPair = '\\' then
+vcRep := '\';
+elsif vcPair = '\n' or vcPair = '\N' then
+vcRep := chr(10);
+elsif vcPair = '\t' or vcPair = '\T' then
+vcRep := chr(09);
+WIN_API.Add_error('Write_Data','Unknown escape pair "'||vcPair||'"');
+Raise VALUE_ERROR;
+vcBuff := substr(vcBuff,1,(iPtr-1))||vcRep||substr(vcBuff,(iPtr+2));
+iPtr := instr(vcBuff,'\',iPtr+1);
+iBytes := length(vcBuff);
+if iBytes > 16165 then
+WIN_API.Add_error('Write_Data','Only 16165 bytes or less can be written in a single operation');
+NullMask := substr(NullMask,1,iBytes);
+iRC := d2kwutil_FileWrite(win_api.FunctionHandle(iFileWrite),FileHandle,vcBuff,iBytes,NullMask);
+Win_API_Debug.DebugLog(99,'Write_Data','Result: RC='||to_char(iRC));
+if iRC <> iBytes then
+WIN_API.Add_error('Write_Data','Only '||to_char(iRC)||' bytes out of '||to_char(iBytes)||' were written');
+Win_API.Add_error('Write_Data',Win_API.NoAPI);
+Win_API.Add_error('Write_Data', Win_API.UError||WIN_API.Add_External_errors);
+Function Get_Pointer(FileHandle IN WIN_API.FILE_TYPE,
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return PLS_INTEGER is
+Win_API_Debug.DebugLog(99,'Get_Pointer','Args: FileHandle='||to_char(FileHandle)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+CheckFileHandle('Get_Pointer',FileHandle);
+win_api.Register_function_call(iFileTell,'d2kwutil_FileTell','LONG','LONG');
+iRC := d2kwutil_FileTell(win_api.FunctionHandle(iFileTell),FileHandle);
+Win_API.Add_error('Get_Pointer',Win_API.NoAPI);
+Win_API.Add_error('Get_Pointer', Win_API.UError||WIN_API.Add_External_errors);
+Procedure Set_Pointer(FileHandle IN WIN_API.FILE_TYPE,
+StartPos IN VARCHAR2,
+Offset IN PLS_INTEGER,
+iOrigin PLS_INTEGER;
+Win_API_Debug.DebugLog(99,'Set_Pointer','Args: FileHandle='||to_char(FileHandle)||', StartPos="'||StartPos||'", Offset='||to_char(Offset)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+CheckFileHandle('Set_Pointer',FileHandle);
+win_api.Register_function_call(iFileSeek,'d2kwutil_FileSeek','LONG','LONG,LONG,INT');
+if upper(StartPos) = 'START' then
+iOrigin := 0;
+elsif upper(StartPos) = 'END' then
+iOrigin := 2;
+elsif upper(StartPos) = 'CURRENT' then
+iOrigin := 1;
+Win_API.Add_error('Set_Pointer','Invalid StartPos: valid Values are START, END or CURRENT');
+iRC := d2kwutil_FileSeek(win_api.FunctionHandle(iFileSeek),FileHandle,Offset,iOrigin);
+Win_API.Add_error('Set_Pointer','Set_Pointer failed RC='||to_char(iRC));
+Win_API.Add_error('Set_Pointer',Win_API.NoAPI);
+Win_API.Add_error('Set_Pointer', Win_API.UError||WIN_API.Add_External_errors);
+Function Temp_File (RaiseExceptions IN BOOLEAN DEFAULT FALSE) return WIN_API.FILE_TYPE is
+Win_API_Debug.DebugLog(99,'Temp_File','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFileTemp,'d2kwutil_FileTemp','LONG',NULL);
+ptrHandle := d2kwutil_FileTemp(win_api.FunctionHandle(iFileTemp));
+Win_API_Debug.DebugLog(99,'Temp_File','Result: File_Handle='||to_char(ptrHandle));
+WIN_API.Add_error('Temp_File','Cannot create Temp file');
+Win_API.Add_error('Temp_File',Win_API.NoAPI);
+Win_API.Add_error('Temp_File', Win_API.UError||WIN_API.Add_External_errors);
+Procedure Flush_File_Buffer (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE) is
+Win_API_Debug.DebugLog(99,'Flush_File_Buffer','Args: FileHandle='||to_char(FileHandle)||', RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFileFlush,'d2kwutil_FileFlush','INT','LONG');
+CheckFileHandle('Flush_File_Buffer',FileHandle);
+iRC := d2kwutil_FileFlush(win_api.FunctionHandle(iFileFlush),FileHandle);
+Win_API_Debug.DebugLog(99,'Flush_File_Buffer','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Flush_File_Buffer','Error
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return BOOLEAN;
+* Write_Data -> Writes up to c.16k of data from the current position
+* of the File Pointer (or the end of file if operating in
+* Append Mode)
+* DataBuffer -> A VARCHAR2 variable containing the Data to Write
+* you can write up to 16165 bytes in a single operation
+* If your data contains NULL characters 0x00 then you must
+* encode it as \0, To specify a "\" character (0x5C -
+* decimal value 92) you must escape it with another "\"
+* character, thus \0 == NULL and \\ == \
+* For convenience the function will also translate the
+* escapes \n and \t into newline and tab respectivly
+* is a write error then NO_DATA_FOUND will be raised.
+Procedure Write_Data(FileHandle IN WIN_API.FILE_TYPE,
+* Flush_File_Buffer -> Forces the file buffer to be flushed
+* to disk.
+* You need to make this call when switching
+* modes on a Read / Write file.
+Procedure Flush_File_Buffer (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE);
+* Temp_File -> Creates and Opens a Temporary file reading and writing
+* The File is opened in w+ mode.
+* The file is automatically deleted on close or exit.
+Function Temp_File (RaiseExceptions IN BOOLEAN DEFAULT FALSE) return WIN_API.FILE_TYPE;
+* Get_Pointer -> Returns the current position of the file pointer
+* RaiseExceptions-> TRUE of FALSE(Default) If set to true, then if the
+* file handle is invalid then NO_DATA_FOUND will be
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) return PLS_INTEGER;
+* Set_Pointer -> Sets the current position of the file pointer
+* StartPos -> Varchar2 string containin
+Flushing Buffer to Disk - Write Failure');
+Win_API.Add_error('Flush_File_Buffer',Win_API.NoAPI);
+Win_API.Add_error('Flush_File_Buffer', Win_API.UError||WIN_API.Add_External_errors);
+Function End_of_File (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE) return BOOLEAN is
+bRC BOOLEAN;
+Win_API_Debug.DebugLog(99,'End_Of_File','Args: RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFileEOF,'d2kwutil_FileEOF','INT','LONG');
+CheckFileHandle('End_Of_File',FileHandle);
+iRC := d2kwutil_FileEOF(win_api.FunctionHandle(iFileEOF),FileHandle);
+Win_API_Debug.DebugLog(99,'End_Of_File','Result: RC='||to_char(iRC));
+WIN_API.Add_error('Flush_File_Buffer','Last Read operation reached the End-of-File marker ');
+bRC := TRUE;
+Win_API.Add_error('End_Of_File',Win_API.NoAPI);
+Win_API.Add_error('End_Of_File', Win_API.UError||WIN_API.Add_External_errors);
+END WIN_API_FILE;
+"WIN_API_FILE"IFILEINFO"IFILEOPEN"IFILECLOSE"IFILEREWIND"IFILEREAD"IFILEWRITE"IFILETELL"IFILESEEK"IFILETEMP"IFILEFLUSH"IFILEEOF"IBUFF1"IBUFF2"IBUFF3"IBUFF4"IBUFF5"IBUFF6"IBUFF7"IBUFF8"IBUFF9"FILE_INFO"CALLEDBY"FILENAME"OPTION1"OPTION2"RAISEEXCEPTIONS"CHECKFILEHANDLE"FILEHANDLE"D2KWUTIL_FILEINFO"HFUNC"HANDLE"DWOUT1"DWOUT2"DWOUT3"DWOUT4"DWOUT5"DWOUT6"DWOUT7"D2KWUTIL_FILEOPEN"FILEMODE"D2KWUTIL_FILECLOSE"D2KWUTIL_FILEREWIND"D2KWUTIL_FILEREAD"BUFFER"BYTES"NULLMASK"NULLCHAR"EOF"D2KWUTIL_FILEWRITE"D2KWUTIL_FILETELL"D2KWUTIL_FILESEEK"ORIGIN"OFFSET"D2KWUTIL_FILETEMP"D2KWUTIL_FILEFLUSH"D2KWUTIL_FILEEOF"VCBUFF1"IRC"CREATED_DATE"RETURNDATE"RETURNMS"ACCESSED_DATE"MODIFIED_DATE"FILE_SIZE"FILE_ATTRIBUTES"ARCHIVE"COMPRESSED"HIDDEN"READONLY"SYSTEM"TEMPORARY"OPEN_FILE"PTRHANDLE"VCBUFF2"CLOSE_FILE"REWIND_FILE"READ_DATA"DATABUFFER"BYTESREQUIRED"IGNORENULLS"BYTESREAD"BRC"IOFFSET"IEOF"IPTR"VCESC"WRITE_DATA"IBYTES"VCBUFF"VCPAIR"VCREP"GET_POINTER"SET_POINTER"STARTPOS"IORIGIN"TEMP_FILE"FLUSH_FILE_BUFFER"END_OF_FILE""
+g one of the following
+* START|END|CURRENT
+* Defines where the offset value should be calculated
+* from
+* Offset -> Number of Bytes from StartPos to move the Pointer
+* file handle is invalid or the set_pos fails
+* then NO_DATA_FOUND will be raised.
+* End_Of_File -> Checks to see if the End-of-File marker has been reached
+* on the specified file.
+* handle is invalid, the exception NO_DATA_FOUND will be
+* Return Value: BOOLEAN TRUE if the EOF has been reached.
+Function End_of_File (FileHandle IN WIN_API.FILE_TYPE, RaiseExceptions IN BOOLEAN DEFAULT FALSE) return BOOLEAN;
+"WIN_API_FILE"CREATED_DATE"FILENAME"RETURNDATE"RETURNMS"RAISEEXCEPTIONS"ACCESSED_DATE"MODIFIED_DATE"FILE_SIZE"FILE_ATTRIBUTES"ARCHIVE"COMPRESSED"HIDDEN"READONLY"SYSTEM"TEMPORARY"OPEN_FILE"FILEMODE"CLOSE_FILE"FILEHANDLE"REWIND_FILE"READ_DATA"DATABUFFER"BYTESREQUIRED"IGNORENULLS"BYTESREAD"WRITE_DATA"FLUSH_FILE_BUFFER"TEMP_FILE"GET_POINTER"SET_POINTER"STARTPOS"OFFSET"END_OF_FILE""
+(! 4
+"PACKAGE"WIN_API_FILE"CREATED_DATE"FILENAME"VARCHAR2"RETURNDATE"OUT"DATE"RETURNMS"NUMBER"RAISEEXCEPTIONS"BOOLEAN"FALSE"ACCESSED_DATE"MODIFIED_DATE"FUNCTION"FILE_SIZE"RETURN"FILE_ATTRIBUTES"ARCHIVE"COMPRESSED"HIDDEN"READONLY"SYSTEM"TEMPORARY"OPEN_FILE"FILEMODE"WIN_API"FILE_TYPE"CLOSE_FILE"FILEHANDLE"REWIND_FILE"READ_DATA"DATABUFFER"BYTESREQUIRED"PLS_INTEGER"IGNORENULLS"BYTESREAD"WRITE_DATA"FLUSH_FILE_BUFFER"TEMP_FILE"GET_POINTER"SET_POINTER"STARTPOS"OFFSET"END_OF_FILE""
+CREATED_DATE
+ACCESSED_DATE
+MODIFIED_DATE
+FILE_SIZE
+FILE_ATTRIBUTES
+FILE_INFO
+CHECKFILEHANDLE
+D2KWUTIL_FILEINFO
+D2KWUTIL_FILEOPEN
+D2KWUTIL_FILECLOSE
+D2KWUTIL_FILEREWIND
+D2KWUTIL_FILEREAD
+D2KWUTIL_FILEWRITE
+D2KWUTIL_FILETELL
+D2KWUTIL_FILESEEK
+D2KWUTIL_FILETEMP
+D2KWUTIL_FILEFLUSH
+D2KWUTIL_FILEEOF
+", FileName="
+", Option1=
+, Option2=
+File_Info
+d2kwutil_FileInfo
+*CHAR,INT,INT,*LONG,*LONG,*LONG,*LONG,*LONG,*LONG,*LONG
+, iBuff1=
+, iBuff2=
+, iBuff3=
+, iBuff4=
+, iBuff5=
+, iBuff6=
+, iBuff7=
+, iBuff8=
+, iBuff9=
+does not exist
+Gathering Information about
+generated system error
+File Handle is Invalid
+Created_Date
+0999
+YYYYMMDDHH24MISS
+Accessed_Date
+Modified_Date
+File_Size
+File_Attributes
+", FileMode="
+d2kwutil_FileOpen
+You must supply the name of the file to open
+Result: File_Handle=
+Cannot open file
+with mode "
+CLOSE_FILE
+Args: FileHandle=
+Close_File
+d2kwutil_FileClose
+Cannot Close File
+REWIND_FILE
+Rewind_File
+d2kwutil_FileRewind
+NULL
+No Return
+READ_DATA
+, Bytes=
+Read_Data
+d2kwutil_FileRead
+LONG,*CHAR,INT,*CHAR,INT,*INT
+The maximum number of bytes that can be read is 16165
+EOF=
+Cannot Read File
+VALUE_ERROR
+WRITE_DATA
+Write_Data
+d2kwutil_FileWrite
+LONG,*CHAR,INT,*CHAR,
+Write Buffer contains no data
+Unknown escape pair "
+Only 16165 bytes or less can be written in a single operation
+Only
+bytes out of
+were written
+GET_POINTER
+Get_Pointer
+d2kwutil_FileTell
+SET_POINTER
+, StartPos="
+", Offset=
+Set_Pointer
+d2kwutil_FileSeek
+LONG,LONG,INT
+START
+CURRENT
+Invalid StartPos: valid Values are START, END or CURRENT
+Set_Pointer failed RC=
+TEMP_FILE
+Temp_File
+d2kwutil_FileTemp
+Cannot create Temp file
+FLUSH_FILE_BUFFER
+Flush_File_Buffer
+d2kwutil_FileFlush
+Error Flushing Buffer to Disk - Write Failure
+END_OF_FILE
+End_Of_File
+d2kwutil_FileEOF
+WUT3
+Last Read operation reached the End-of-File marker
+", O
+,INT,IN
+, iB
+@pt iBuff7
+ECKF
+Resu
+mode "
+Retur
+er('Bitwise_And',X,Y,2);
+"PACKAGE"WIN_API_SHELL"WINEXEC"COMMAND"VARCHAR2"WINDOWSTYLE"PLS_INTEGER"WIN_API"SW_SHOWNORMAL"RAISEEXCEPTIONS"BOOLEAN"FALSE"STARTFILE"DOCUMENTFILE"WINHELP"HELPFILE"TARGET"HELPTYPE"WINHELPEX"XPOS"YPOS"WIDTH"HEIGHT"WINDOW"MOUSEPOSITION"OUT"NUMBER"SENDMESSAGE"MESSAGECODE"PARAM1"0"PARAM2"SENDKEYS"HWND"KEYS"START_OR_RESTORE"EXECUTABLE"ARGS"WINDOWCLASS"ACTIVATIONSTYLE"
+* WIN_API_PRELOAD -> This package allows you to override the DLL searching
+* Within WIN_API by explicitly Defining the location of the DLL
+PACKAGE WIN_API_PRELOAD IS
+PROCEDURE SET_LOAD_LOC (Location IN VARCHAR2);
+FUNCTION GET_LOAD_LOC RETURN VARCHAR2;
+"WIN_API_PRELOAD"SET_LOAD_LOC"LOCATION"GET_LOAD_LOC""
+"PACKAGE"WIN_API_PRELOAD"SET_LOAD_LOC"LOCATION"VARCHAR2"FUNCTION"GET_LOAD_LOC"RETURN""
+/*--------------------------------------------------------------------
+Win_API_Debug.DebugLog(99,'Read_INI_File','Args: FileName="'||Filename||'", Section="'||Se
+PACKAGE BODY WIN_API_DIRECTORY_LIST is
+-- Directory_List has indexes in the range 800 - 899
+iFirstFile CONSTANT PLS_INTEGER := 800;
+iNextFile
+CONSTANT PLS_INTEGER := 801;
+iCloseSearch CONSTANT PLS_INTEGER := 802;
+FUNCTION d2kwutil_dirlist_first( hFunc IN ORA_FFI.funcHandleType,
+path
+IN OUT VARCHAR2,
+result
+Directory IN OUT PLS_INTEGER) return PLS_INTEGER;
+FUNCTION d2kwutil_dirlist_next ( hFunc IN ORA_FFI.funcHandleType,
+hSearch
+PROCEDURE d2kwutil_dirlist_close( hFunc IN ORA_FFI.funcHandleType,
+PLS_INTEGER);
+PRAGMA INTERFACE(C,d2kwutil_Dirlist_first, 11265);
+PRAGMA INTERFACE(C,d2kwutil_Dirlist_next, 11265);
+PRAGMA INTERFACE(C,d2kwutil_Dirlist_close, 11265);
+FUNCTION
+FirstFile
+( SearchFor
+FileName
+IsDirectory
+BOOLEAN,
+bIsDir
+BOOLEAN := FALSE;
+Win_API_Debug.DebugLog(99,'FirstFile','Args: SearchFor="'||SearchFor||'", RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iFirstFile,'d2kwutil_dirlist_first','LONG','*CHAR,*CHAR,*INT');
+vcBuff1
+:= SearchFor;
+vcBuff2
+:= RPAD(' ',512,'.');
+iRC := d2kwutil_dirlist_first(win_api.FunctionHandle(iFirstFile),vcBuff1,vcBuff2,iBuff1);
+Win_API_Debug.DebugLog(99,'FirstFile','Result: RC='||to_char(iRC)||',File="'||vcBuff2||'", isDir='||iBuff1);
+FileName := NULL;
+WIN_API.Add_error('FirstFile','No matching files for '||SearchFor);
+FileName := vcBuff2;
+if iBuff1 = 16 then
+IsDirectory := TRUE;
+IsDirectory := FALSE;
+Win_API.Add_error('FirstFile',Win_API.NoAPI);
+Win_API.Add_error('FirstFile',Win_API.UError||WIN_API.Add_External_errors);
+end FirstFile;
+PROCEDURE NextFile
+( SearchHandle
+Win_API_Debug.DebugLog(99,'NextFile','Args: SearchHandle='||to_char(SearchHandle)||',RaiseExceptions='||win_api_debug.booltochar(RaiseExceptions));
+win_api.Register_function_call(iNextFile,'d2kwutil_dirlist_next','INT','LONG,*CHAR,*INT');
+iRC := d2kwutil_dirlist_next(win_api.FunctionHandle(iNextFile),SearchHandle,vcBuff1,iBuff1);
+Win_API_Debug.DebugLog(99,'NextFile','Result: RC='||to_char(iRC)||',File="'||vcBuff1||'", isDir='||iBuff1);
+WIN_API.Add_error('NextFile','No further matching files');
+if RaiseEx
+ceptions then
+FileName := vcBuff1;
+Win_API.Add_error('NextFile',Win_API.NoAPI);
+Win_API.Add_error('NextFile',Win_API.UError||WIN_API.Add_External_errors);
+end NextFile;
+PROCEDURE CloseSearch
+PLS_INTEGER) is
+Win_API_Debug.DebugLog(99,'CloseSearch','Args: SearchHandle='||to_char(SearchHandle));
+win_api.Register_function_call(iCloseSearch,'d2kwutil_dirlist_close','VOID','LONG');
+d2kwutil_dirlist_close(win_api.FunctionHandle(iCloseSearch), SearchHandle);
+Win_API_Debug.DebugLog(99,'CloseSearch','Has no RC');
+Win_API.Add_error('CloseSearch',Win_API.NoAPI);
+Win_API.Add_error('CloseSearch',Win_API.UError||WIN_API.Add_External_errors);
+end CloseSearch;
+END WIN_API_DIRECTORY_LIST;
+/D2KWUTIL/WIN_API_DIRECTORY_LIST
+"WIN_API_DIRECTORY_LIST"IFIRSTFILE"INEXTFILE"ICLOSESEARCH"D2KWUTIL_DIRLIST_FIRST"HFUNC"HANDLE"PATH"RESULT"DIRECTORY"D2KWUTIL_DIRLIST_NEXT"HSEARCH"D2KWUTIL_DIRLIST_CLOSE"FIRSTFILE"SEARCHFOR"FILENAME"ISDIRECTORY"RAISEEXCEPTIONS"IRC"VCBUFF1"VCBUFF2"IBUFF1"BISDIR"NEXTFILE"SEARCHHANDLE"CLOSESEARCH""
+D2KWUTIL_DIRLIST_FIRST
+D2KWUTIL_DIRLIST_NEXT
+D2KWUTIL_DIRLIST_CLOSE
+FIRSTFILE
+Args: SearchFor="
+d2kwutil_dirlist_first
+*CHAR,*CHAR,*INT
+,File="
+", isDir=
+No matching files for
+NEXTFILE
+Args: SearchHandle=
+,RaiseExceptions=
+NextFile
+d2kwutil_dirlist_next
+LONG,*CHAR,*INT
+No further matching files
+CLOSESEARCH
+CloseSearch
+d2kwutil_dirlist_close
+Has no RC
+PACKAGE WIN_API_DIRECTORY_LIST IS
+* WIN_API_DIRECTORY_LIST -> This package cn be used to obtain lists of files
+* in a particular directory
+* FirstFile
+-> Starts a "Search" and returns the name of
+* The first file that matches the name/pattern
+supplied
+* NextFile
+-> Get the next file from the search
+* CloseSearch
+-> Cleans up the search
+-> Defines a File listing search and returns the
+first matching file.
+* SearchFor -> The path and name of the file(s) to search for
+can contain wildcards.
+e.g. C:\TEMP\*.FMB will return all Forms
+* in the Temp Directory
+-> The First File found by the search. If the file found
+is actually a directory the IsDirectory boolean will
+* be set.
+If no files match the search criteria, this will be
+* NULL.
+-> This will be set to TRUE if the file returned is
+actually a directory
+* NUMBER
+-> The Handle For the search, this will be needed for
+passing to NextFile and CloseSearch.
+If the Function fails this will be set to -1.
+If you do a global search (e.g. *.*) the directories
+* "." and ".." will be returned as the first two hits
+-> The Next "Hit" in the current search
+* This will return NULL if there are no more files
+* and raise the Exception NO_DATA_FOUND if RaiseExceptions
+* is set to TRUE.
+SearchHandle
+-> The handle returned by FirstFile
+-> The Next File found by the search. If the file found
+If no further files match the search criteria, this
+* will be NULL.
+* command is not successful (e.g no more matching files)
+* then the explicit exception NO_DATA_FOUND will be raised.
+*-------------------------------------------------------------------------*/
+-> Cleans up the search - You should call this if you end
+* a search before you reach the end of the list of files.
+* normally if you keep calling NextFiles unt
+il the end
+* it will automatically close the search.
+"WIN_API_DIRECTORY_LIST"FIRSTFILE"SEARCHFOR"FILENAME"ISDIRECTORY"RAISEEXCEPTIONS"NEXTFILE"SEARCHHANDLE"CLOSESEARCH""
+"PACKAGE"WIN_API_DIRECTORY_LIST"FUNCTION"FIRSTFILE"SEARCHFOR"VARCHAR2"FILENAME"OUT"ISDIRECTORY"BOOLEAN"RAISEEXCEPTIONS"FALSE"RETURN"PLS_INTEGER"NEXTFILE"SEARCHHANDLE"CLOSESEARCH""
+------------------------------------------*/
+* Write_RegistryEx -> Set the value of a particular entry in the
+"APPLICATIONINFO"REGISTERFORM"PVCAPPLICATION"PVCFORMNAME"FORMFOCUS"LOGACTION"PVCACTION""
+N VARCHAR2,
+Y WIN_API_DIRECTORY_LIST is
+Directory IN OUT PLS_INTEGER) return NUMBER;
+NUMBER,
+NUMBER);
+RaiseExceptions IN BOOLEAN DEFAULT FALSE) RETURN NUMBER IS
+iRC NUMBER := 0;
+begin break;
+rais
+:<>@
+%(.19?BHKQT\bekntw
+178>
+AGHNOW]
+(+.1368
+;>ADFHKM
+':OWZ]
+%(./7=
+@FIOPX^
+jpsyz
+*0258@F
+RXY_`fiksy
+PRUX
+filn
+;<COe}
+&)/28;ADLRSY\^d
+gmpvy
+"%')+-/1368;
+HMOQSU
+X]_b
+ejloruxz
+=GWd|
+#'+/37;?CGKOSW[_cgkosw{
+!")158;@DELTX[^cghow{~
+cQnj
+!!!!!
+!!"""""
+""#####
+##$$$$$
+$$%%%%%
+%%&&&&&
+&&'''''
+''(((((
+((+++++
+++,,,,,
+,,-----
+--11111
+1122222
+2233333
+3344444
+4455555
+5599999
+::::
+::;;;;;
+;;<<<<<
+<<=====
+==>>>>>
+>>?????
+??@@@@@
+@@CCCCC
+CCDDDDD
+DDEEEEE
+EEFFFFF
+FFNNNNNNOOOOOOPPPPPPQQQQQQRRRRRRSSSSSSTTTTTTUUUUUUVVVVVVWWWWWWXXXXXX]]]]]]^^^^^^______``````aaaaaabbbbbbccccccddddddeeeeeeffffffgggggghhhhhhiiiiiijjjjjjllllllmmmmmmnnnnnnoooooovvvvvvwwwwwwxxxxxxyyyyyyzzzzzz{{{{{{||||||
+D$$$,
+,666F
+%&&&4&&&6&&&8&&&6
+'/7?GOW_gow
+mst|
+JMPR
+VY\_
+behkm
+!'+4:@IUaou{
+!156;<DHMNVZ_`hlqrz~
+========>>>>????@@@@@@ZZZZZZZZ[[[[\\\\]]]]^^^^^kkkkkkkkkkxxxxx
+!!!7GV
+!"""8"""8HW
+"""8HW
+!!!6!!!6F
+!"""6@@@Vf
+!!!6!!!6!!!6F
+62;=>
+E6JL
+S=XZ[
+]Abde
+gEln
+uLz|
+6@ES]gu
+!%)-1
+////////0000111122223333333444444NNNNNNNNOOOOPPPPQQQQRRRRRRjjjjjjjjkkkkllllmmmmnnnnoooooo
+.G?G
+!"""2
+B/GI
+`Beg
+,048<
+FJNRVZ
+dhlptx|
+"%')+-/2
+:<>@B
+MPSVX
+[]`cfik
+49DLZ
+!156;<DHMNVZ]aejksw{
+44444444555555566666EEEEEEEEFFFFFFFGGGGGllllllllmmmmnnnnoooooxxxxxxxxyyyyzzzz{{{{||||}}}}~~~~
+)E=E
++G?G
+0LDL
+5QIQ
+/!46
+D.IK
+mJrt
+/Dmy
+37;?
+HLPTX\`dh
+%&.4
+@FGOU
+aghnow}
+*-02
+;=?A
+#)5:CKNS
+!156;<DHMNVZ^brvw|}
+--------.....========>>>>?????QQQQQQQQRRRRSSSSSTTTTTbbbbbbbbcccccqqqqqqqqrrrrr
+!!!6G!!!6G!!!5ES
+/<<<IY```s
+%!*,
+;.@B
+H5MO
+U<Z\]
+iFnpq
+sJxz
+#$(357;@DEJNOTXY^aeinrsv{~
++#+<<<@MMEM
+&)/28;ADJMSV\_ehnqwz
+$)+-/135
+8=?AC
+FKMO
+RWY[]
+`egi
+lqsuw
+#7EQ_kz
+&+05:AHPV\
+))))))))*****2222222233333<<<<<<<<=====GGGGGGGGHHHHHSSSSSSSSTTTTT^^^^^^^^^hhhhhhhhhrrrrrrrrr{{{{{{{{{
+"""-"""-<
+!!!,!!!,;
+!"""/A
+!!&(
+.(35
+;/@B
+H6MO
+Q:VX
+Z>_a
+cBhj
+lFqs
+!.;HQZcly
+&)/2:@
+CIJP
+eknt
+%*,.1479<?
+BGILOQ
+TY[^`bd
+glnprtv
+178>AGHN
+"$')
+-0369;=?
+LORUW
+Z]_ac
+fhjln
+,BKYe
+!156;<DHMRS[_dijrv{
+:::::::::;;;;;<<<<<=====>>>>>>>?????@RRRRRRRRRSSSSSTTTTTUUUUUVVVVVVVVVVVVVVWWWWWWWWXXXXXY
+,IAI
+,@AYAIAIbZb
+,@@@D
+!!!9!!!9!!!9!!!9!!!9
+`9eg
+05:?DRZ
+dhmrw|
+#&),.
+1479
+<ADGJMPR
+UZ]`cf
+inqs
+0;Thu
+&)/28;ADJMU[\begm
+%*-035
+8=@CFH
+KPRUWZ\
+$7J^hpx
+',/2
+5:=@B
+[`cfi
+ty{}
+&4DOZks
+&)/2
+39:@AGHPVW]`bh
+ksy|
+&<?BJ
+(.178@FIO
+[cijrxy
+!156;<DHMNVZ[`aimpuv~
+########$$$$$%%%%%&&&&&--------....////<<<<<<<<<EEEEEEEEELLLLLLLLLWWWWWWWW^^^^^^
+."356
+$ASfx
+7&<>?
+@*EG
+I.NP
+.7@IQ
+%;HUis
+)-16
+%&,/56>D
+GMNTW]^fl
+ouv|
+*-/13579
+<?BD
+QSVXZ\^
+,/246
+?DGIKMOQSUWY
+\adg
++8>[is{
+!#%')
+!);FKP`hmry
+!156;<DHMNTX]^dhmnvz~
+111111112222333344444GGGGGGGGHHHHIIIIJJJJJ]]]]]]]]^^^^____`````nnnnnnnnoooooo
+",,,8BBBUess{
+&&.999L\
+''/:::M]
+66>III\l
+)9GGO
+&&.999L\j
+1-68
+F:KM
+TAY[
+1FTy
+59=A
+X\`dhlpt
+49DL
+!156;<DHL\`aegik
+&)178>ACI
+U[^dgouv|
+1479;
+LNQS
+(0K]
+=?CGI
+(./56<?GMPV
+Y_`fgou
+--------....////000000GGGGGGGGHHHHIIIIJJJJJXXXXXXXX
+2!79
+!%)-

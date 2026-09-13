@@ -1,0 +1,191 @@
+ROS.60050
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+No namespace was supplied.
+No file was supplied.
+Operation aborted by user.
+File %[1]s is not a valid PL/SQL source file.
+A library with this name already exists. Overwrite it?
+Debug Actions
+- Displays detailed information about the specified debug action.
+Libraries
+- Displays detailed information about an attached library.
+Tables
+- Displays detailed information about database tables.
+Views
+- Displays detailed information about database views.
+Load Path
+- Displays detailed information about the current load path.
+Locals
+- Displays the name, type and value of a variable or parameter that is
+local to the current scope location.
+Program Units
+- Displays detailed information about a specific program unit instance.
+The information displayed includes the program unit name, its type,
+whether it is compiled, whether it is open for editing, and cross
+reference information.
+Version
+- Displays version information about the development environment.
+DESCRIBE <object>
+<object> ::=
+<program-unit> |
+<library> |
+<table> |
+<view> |
+<debug-action> |
+<local> |
+LOADPATH |
+VERSION |
+NAMESPACE
+<program-unit> ::= <pu-name-spec> [ SPECIFICATION | BODY ]
+<pu-name-spec> ::=
+{ PROGRAMUNIT <programunit-name> } |
+{ SUBPROGRAM <subprogram-name> } |
+{ FUNCTION <function-name> } |
+{ PROCEDURE <procedure-name> }
+{ PACKAGE <package-name> }
+<library> := { LIBRARY <library-name> }
+<table> := { TABLE <table-name> }
+<view> := { VIEW <view-name> }
+<debug-action> ::=
+{ ACTION <debug-action-id> } |
+{ BREAKPOINT <debug-action-id> } |
+{ TRIGGER <debug-action-id> }
+<local> ::=
+{ LOCAL <param-or-var-name> } |
+{ PARAMETER <param-name> } |
+{ VARIABLE <var-name> }
+DESCRIBE
+Breakpoint: %d
+Program Unit: %[1]s %[2]s
+Line: %d
+%[1]s: %[2]s
+Compiled: YES
+Compiled: NO
+Open: YES
+Open: NO
+References:
+%[1]s %[2]s
+IN/OUT
+NUMBER
+DATE
+CHAR(%d)
+UNKNOWN
+Bind Var :%[1]s %[2]s %[3]s
+Library: %s
+Mode: Attached (READONLY)
+Mode: Open (READWRITE)
+Contents:
+External Location: %s
+Current Directory
+Current DB Connection
+External Location: INTERPRETER
+Referenced by:
+Load Path:
+DE_ATTACHED_LIBS
+DE Attached Libs
+ROSATTRIBS
+class attributes
+ROSLFDESC
+ros lf descrip
+ROSOBJMAP
+ros name->id
+ROSSTRINGS
+tk2 uiStrings
+ROSSTRUCTS
+struct types
+ROSTK2RESV
+tk2 reserved
+TOOL_MODULE
+Tools Modules
+TOOL_PLSQL
+Tools PLSQL
+#p$ *
+/DE_ATTACHED_LIBS
+MODID
+OWNER
+#p$ ,
+1DE_ATTACHED_LIBS
+LIBNAME
+ITEMID
+#p$ .
+3DE_ATTACHED_LIBS
+LOCATION
+-TOOL_MODULE
+PRODUCT
+MODTYPE
++TOOL_MODULE
+MODNAME
+TCS_VER
+1TOOL_MODULE
+NEXT_ITEMID
+CREATOR
+CREATE_DATE
+/TOOL_MODULE
+CREATE_VER
+MODIFIER
+MOD_DATE
+MOD_VER
+COPYRIGHT
+REQ_ROLE
+VGS_VER
+DE_VER
+ROS_VER
+)TOOL_PLSQL
+NAME
+TYPE
++TOOL_PLSQL
+/TOOL_PLSQL
+PLSLFID_EP
+PLSLFID_ST
+PL/SQL DE
+PL/SQL Library
+MINGUS
+TMP33g
+p @*
+DATE_LOV
+/TMP33/DATE_LOV
+STANDARD
+SQLFORMS
+FORMS4C
+FORMS40
+FORMS4W
+"DATE_LOV"SET_DAY_LABELS"DISPLAY_CAL"DISPLAY_DATE"FIRST_DATE"FIRST_DOW"LAST_DOM"LOOP_BEGIN"LOOP_END"CURRENT_DATE"DAY_LABEL"I"GET_DATE"RETURN_ITEM"V_X_POS"V_Y_POS"V_TITLE"V_OK"V_CANCEL"V_HIGHLIGHT"V_AUTOCONFIRM"V_AUTOSKIP"DATE_WINDOW"ID"DATE_CLICK""
+SET_DAY_LABELS
+11/08/1996
+mm/dd/yyyy
+11/04/1996
+date_control_block.day_label1
+11/05/1996
+date_control_block.day_label2
+11/06/1996
+date_control_block.day_label3
+11/07/1996
+date_control_block.day_label4
+date_control_block.day_label5
+11/09/1996
+date_control_block.day_label6
+11/10/1996
+date_control_block.day_label7
+11/03/1996
+DISPLAY_CAL
+mon-yyyy
+dd-mon-yyyy
+fmMonth YYYY
+date_control_block.display_mon_year
+date_button
+FALSE
+date_selected_va
+date_weekend_va
+date_normal_va
+GET_DATE
+date_lov_window
+date_control_block.ok_button
+date_control_block.cancel_button
+date_control_block
+DATE_CLICK
+system.trigger_item
+"DATE_LOV"LAST_LOV_DATE"CURRENT_LOV_DATE"DATE_LOV_RETURN_ITEM"LOV_TITLE"LOV_AUTO_CONFIRM"LOV_AUTO_SKIP"WEEKEND_HIGHLIGHT"WEEKEND_DAY1"WEEKEND_DAY2"DISPLAY_CAL"DISPLAY_DATE"DATE_CLICK"GET_DATE"RETURN_ITEM"V_X_POS"V_Y_POS"V_TITLE"V_OK"V_CANCEL"V_HIGHLIGHT"V_AUTOCONFIRM"V_AUTOSKIP""
+$%+,25;>DGMPVY_bhkqtz}
+!#%(+.02
+4:;ABHIORX[cijrz
+"%'),/246
