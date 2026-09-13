@@ -172,6 +172,17 @@ export async function getCatalogSources() {
     catalogCount: 1490,
     runtimeContractCount: 1490,
     fieldEvidenceCatalogCount: 1490,
+    midoIntegration: {
+      repository: "aldalistor/mido",
+      repositoryCommit: "873bcda",
+      meedoRepository: "aldalistor/Meedo-2",
+      formsInventoryCount: 1490,
+      oracleTablesImported: 936,
+      oracleViewsImported: 200,
+      oracleSequencesImported: 13,
+      businessModules: ["accounting", "invoices", "inventory", "receivables", "period-close", "reports", "permissions"],
+      status: "integrated-reference-layer",
+    },
     sourceFiles: [
       "legacy-source/window_catalog.csv",
       "legacy-source/window_runtime_contracts.csv",
@@ -182,6 +193,9 @@ export async function getCatalogSources() {
       "database-source/nodes_enriched.csv",
       "database-source/nodes_catalog_links.csv",
       "legacy-source/all_window_specs/*.rebuild.md",
+      "legacy-source/MIDO_INTEGRATION_STATUS_AR.md",
+      "legacy-source/mido/modules/*.js",
+      "legacy-source/mido/oracle/migrations/*.sql",
     ],
   };
 }

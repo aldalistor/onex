@@ -60,6 +60,9 @@ describe("Onyx rebuild contracts", () => {
     expect(sources.catalogCount).toBe(1490);
     expect(sources.specificationCount).toBe(1490);
     expect(sources.sourceFiles).toContain("database-source/nodes_catalog_links.csv");
+    expect(sources.midoIntegration.repository).toBe("aldalistor/mido");
+    expect(sources.midoIntegration.formsInventoryCount).toBe(1490);
+    expect(sources.midoIntegration.oracleTablesImported).toBe(936);
   });
 
   it("supports demo atomic create, post, and reversal lifecycle", async () => {
