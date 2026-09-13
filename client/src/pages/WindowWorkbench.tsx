@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Archive, BarChart3, BookOpen, Calculator, ChevronDown, ChevronLeft, CircleHelp, FileBarChart, FilePlus2, FolderTree, LayoutDashboard, Menu, Package, PanelLeft, Printer, Receipt, Search, Settings2, ShieldCheck, ShoppingCart, Users, X } from "lucide-react";
 import { WindowManagerProvider, type WindowAction, type WindowRecord, useWindowManager } from "@/window-runtime/WindowManager";
 import { WindowToolbar, WindowTitleBar } from "@/window-runtime/WindowToolbar";
+import { getLegacyContract, type LegacyField } from "@/window-runtime/legacyContracts";
 
 type ModuleKey = "admin" | "finance" | "sales" | "purchasing" | "inventory" | "hr" | "pos" | "reports";
 type RuntimeWindow = WindowRecord & { module: ModuleKey };
@@ -21,9 +22,15 @@ const modules: Array<{ id: ModuleKey; label: string; code: string; icon: typeof 
 ];
 const kindLabel = { transaction: "معاملة", inquiry: "استعلام", report: "تقرير" };
 
+function FieldControl({ field, onChange }: { field: LegacyField; onChange: () => void }) {
+  if (field.type === "select") return <select defaultValue="all" onChange={onChange}><option value="all">الكل</option><option>الرئيسي</option><option>فرع صنعاء</option></select>;
+  return <input type={field.type} required={field.required} onChange={onChange} placeholder={field.id} />;
+}
+
 function WindowBody({ window, onAction, records }: { window: RuntimeWindow; onAction: (action: WindowAction) => void; records: Array<{ docNo?: string; status?: string; grandTotal?: number | string }> }) {
-  const rows = window.kind === "report" ? ["الفترة", "الفرع", "الحساب / المجموعة", "طريقة العرض"] : ["رقم المستند", "التاريخ", "الحالة", "ملاحظات"];
-  return <div className="legacy-window-body"><div className="legacy-form-caption"><span>{window.label}</span><code>{window.id}.fmx</code></div><div className="legacy-form-fields">{rows.map((label, index) => <label key={label}><span>{label}</span>{index === 2 ? <select defaultValue="all"><option value="all">الكل</option><option>الرئيسي</option><option>فرع صنعاء</option></select> : <input onChange={() => onAction("query")} placeholder={index === 0 ? `${window.id}-000001` : index === 1 ? "2026/09/13" : ""} />}</label>)}</div><div className="legacy-grid"><div className="legacy-grid-head"><span>#</span><span>البيان</span><span>القيمة</span><span>الحالة</span></div>{["السجل الأساسي", "التفاصيل والقيود", "الأثر المحاسبي"].map((item, i) => <div className="legacy-grid-row" key={item}><span>{i + 1}</span><span>{item}</span><span>{i === 2 ? "0.00" : "—"}</span><span className="state-ready">جاهز</span></div>)}{records.slice(0, 3).map((record, i) => <div className="legacy-grid-row" key={`${record.docNo}-${i}`}><span>R{i + 1}</span><span>{record.docNo || "سجل"}</span><span>{record.grandTotal ?? "0.00"}</span><span className="state-ready">{record.status || "DRAFT"}</span></div>)}</div><div className="legacy-form-footer"><span>F6 جديد</span><span>F7 استعلام</span><span>F10 حفظ</span><span>Esc إلغاء</span><strong>دورة النافذة: تهيئة ← إدخال ← تحقق ← حفظ ← تدقيق</strong></div></div>;
+  const contract = getLegacyContract(window.id);
+  const fields: LegacyField[] = contract?.fields ?? ["رقم المستند", "التاريخ", "الحالة", "ملاحظات"].map((label) => ({ id: label, label, type: "text" as const, evidence: "inferred" as const }));
+  return <div className="legacy-window-body"><div className="legacy-form-caption"><span>{window.label}</span><code>{window.id}.fmx</code></div><div className="contract-field-note">عقد FMX: {contract ? `${contract.source.namespace} · ${contract.fields.filter((field) => field.evidence === "extracted").length} حقول مستخرجة` : "لا يوجد عقد تفصيلي بعد"}</div><div className="legacy-form-fields">{fields.map((field) => <label key={field.id}><span>{field.label}{field.required ? " *" : ""}</span><FieldControl field={field} onChange={() => onAction("query")} /></label>)}</div><div className="legacy-grid"><div className="legacy-grid-head"><span>#</span><span>البيان</span><span>القيمة</span><span>الحالة</span></div>{(contract?.source.procedures.slice(0, 3) ?? ["تهيئة النافذة", "التحقق قبل الحفظ", "الأثر المحاسبي"]).map((item, i) => <div className="legacy-grid-row" key={item}><span>{i + 1}</span><span>{item}</span><span>{i === 2 ? "0.00" : "—"}</span><span className="state-ready">مربوط</span></div>)}{records.slice(0, 3).map((record, i) => <div className="legacy-grid-row" key={`${record.docNo}-${i}`}><span>R{i + 1}</span><span>{record.docNo || "سجل"}</span><span>{record.grandTotal ?? "0.00"}</span><span className="state-ready">{record.status || "DRAFT"}</span></div>)}</div><div className="legacy-form-footer"><span>F6 جديد</span><span>F7 استعلام</span><span>F10 حفظ</span><span>Esc إلغاء</span><strong>{contract?.notes ?? "دورة النافذة: تهيئة ← إدخال ← تحقق ← حفظ ← تدقيق"}</strong></div></div>;
 }
 
 function WorkbenchContent() {
@@ -40,11 +47,12 @@ function WorkbenchContent() {
   const filteredModules = useMemo(() => modules.map((module) => ({ ...module, windows: module.windows.filter((w) => `${w.id} ${w.label}`.toLowerCase().includes(query.toLowerCase())) })).filter((module) => module.windows.length || module.label.includes(query)), [query]);
 
   const openWindow = async (window: RuntimeWindow) => {
+    const contract = getLegacyContract(window.id);
     const ok = await manager.openWindow(window, {
-      beforeOpen: () => { toast.info(`فتح ${window.id} · فحص الصلاحيات والسياق`); },
-      onInit: () => { toast.success(`تمت تهيئة ${window.id}`); },
-      afterCommit: () => { toast.success(`تم حفظ ${window.id} وتسجيل أثر التدقيق`); },
-      onClose: () => { toast.info(`إغلاق ${window.id}`); },
+      beforeOpen: () => { toast.info(`فتح ${window.id} · ${contract?.source.namespace ?? "GENERIC"} · فحص الصلاحيات والسياق`); },
+      onInit: () => { toast.success(`تمت تهيئة ${window.id} · ${contract?.source.procedures[0] ?? "ON_INIT"}`); },
+      afterCommit: () => { toast.success(`تم حفظ ${window.id} · POST_FORMS_COMMIT_PRC · تسجيل أثر التدقيق`); },
+      onClose: () => { toast.info(`إغلاق ${window.id} · ${contract?.source.procedures.at(-1) ?? "EXIT_PROC"}`); },
     });
     if (!ok) toast.error(`تعذر فتح ${window.id}`);
   };
