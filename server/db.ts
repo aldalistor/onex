@@ -88,7 +88,8 @@ function fallbackTree(rows = loadFallbackWindows()) {
 }
 
 export async function getDb() {
-  if (process.env.NODE_ENV === "test" || process.env.VITEST || process.env.ONEX_DEMO_MODE === "1") return null;
+  // Git catalog mode is the safe default. Enable a real database explicitly with ONEX_USE_DATABASE=1.
+  if (process.env.NODE_ENV === "test" || process.env.VITEST || process.env.ONEX_DEMO_MODE === "1" || process.env.ONEX_USE_DATABASE !== "1") return null;
   if (!_db && process.env.DATABASE_URL) {
     _db = drizzle(process.env.DATABASE_URL);
   }
