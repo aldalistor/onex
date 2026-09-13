@@ -1,0 +1,40 @@
+f_sys,sys_no,form_no,parent_no,file_name,bt_priv,inactive,order_no,scr_type,doc_type,name_ar,name_en,name_lang2,name_lang3,catalog_match,catalog_file,catalog_category
+ARS,60,823,64,COMS001,1,1,116,1,,Commission Customer Encoding,,Commission Customer Encoding,,True,COMS001.fmx,other
+ARS,60,824,64,COMS002,1,1,117,1,,Commission SalesMan Encoding,,Commission SalesMan Encoding,,True,COMS002.fmx,other
+ARS,60,826,64,COMS003,1,1,118,1,,Commission Collectors Encoding,,Commission Collectors Encoding,,True,COMS003.fmx,other
+ARS,60,827,64,COMS004,1,1,119,1,,,,,,True,COMS004.fmx,other
+ARS,60,828,139,COMT001,1,1,160,1,57,Commission Customer Calculation,,Commission Customer Calculation,,True,COMT001.fmx,other
+ARS,60,829,139,COMT002,1,1,161,1,58,Commission SalesMan Calculation,,Commission SalesMan Calculation,,True,COMT002.fmx,other
+ARS,60,830,139,COMT003,1,1,162,1,137,Commission Collectors Calculation,,Commission Collectors Calculation,,True,COMT003.fmx,other
+ARS,60,831,139,COMT004,1,1,163,1,138,,,,,True,COMT004.fmx,other
+ARS,60,832,140,COMR001,0,1,261,1,,Commission Customer Reports,,Commission Customer Reports,,True,COMR001.fmx,other
+ARS,60,833,140,COMR002,0,1,262,1,,Commission SalesMan Reports,,Commission SalesMan Reports,,False,,
+ARS,60,834,140,COMR003,0,1,263,1,,Commission Collectors Reports,,Commission Collectors Reports,,False,,
+ARS,60,835,140,COMR004,0,1,264,1,,,,,,False,,
+ARS,60,813,138,ARSI018,1,1,96,2,,Medical Network Details,,Medical Network Details,,True,ARSI018.fmx,AR/accounts-receivable
+ARS,60,814,138,ARSI019,1,1,97,2,,The Beneficiaries Of The Insurance,,The Beneficiaries Of The Insurance,,True,ARSI019.fmx,AR/accounts-receivable
+ARS,60,815,138,ARSI020,1,1,98,2,,Insurance Company Details,,Insurance Company Details,,True,ARSI020.fmx,AR/accounts-receivable
+ARS,60,816,138,ARSI021,1,1,99,2,,Insurance Details For Joint,,Insurance Details For Joint,,True,ARSI021.fmx,AR/accounts-receivable
+ARS,60,817,139,ARST021,1,1,159,4,,Insurances Company Claim,,Insurances Company Claim,,True,ARST021.fmx,AR/accounts-receivable
+ARS,60,820,64,ARSS011,1,1,51,1,,Return Sales Request Types,,Return Sales Request Types,,True,ARSS011.fmx,AR/accounts-receivable
+SAL,61,821,345,ARST023,1,1,139,3,136,Sale Return Requst,,Sale Return Requst,,True,ARST023.fmx,AR/accounts-receivable
+SAL,61,822,346,ARSR023,0,1,254,4,,Sales Return Order Invoice,,Sales Return Order Invoice,,True,ARSR023.fmx,AR/accounts-receivable
+BGT,35,465,75,BGTR004,1,0,31,4,,Budget Approvel Reports,,Budget Approvel Reports,,True,BGTR004.fmx,other
+STN,185,1600,360,,0,0,70,0,,Oil Stations System,,Oil Stations System,,False,,
+STN,185,1601,1600,,0,0,1601,0,,Configuration,,Configuration,Configuration,False,,
+STN,185,1602,1601,STNS002,1,0,1602,1,,Periods Setup,,Periods Setup,,True,STNS002.fmx,other
+STN,185,1603,1601,STNS003,1,0,1603,1,,Fuel Types,,Fuel Types,Types de carburants,True,STNS003.fmx,other
+STN,185,1604,1601,STNS004,1,0,1604,1,,Counters Setup,,Counters Setup,Configuration compteurs,True,STNS004.fmx,other
+STN,185,1650,1600,,0,0,1650,0,,Inputs,,Inputs,Saisie,False,,
+STN,185,1700,1600,,0,0,1700,0,,Operations,,Operations,,False,,
+STN,185,1750,1600,,0,0,1700,0,,Reports,,Reports,Rapports,False,,
+STN,185,1651,1650,STNI001,1,0,1650,2,,Coupon Details,,Coupon Details,Codification coupons,True,STNI001.fmx,other
+STN,185,1701,1700,STNT001,1,0,1701,3,,Exchange Credit Card Bills,,Exchange Credit Card Bills,,True,STNT001.fmx,other
+STN,185,1702,1700,STNT002,1,0,1702,3,,Coupon Sales,,Coupon Sales,Vente des coupons,True,STNT002.fmx,other
+STN,185,1703,1700,STNT003,1,0,1703,3,,Employee Sales,,Employee Sales,,True,STNT003.fmx,other
+STN,185,1751,1750,STNR001,0,0,1751,4,,Counters Reports,,Counters Reports,Rapports des compteurs,True,STNR001.fmx,other
+STN,185,1752,1750,STNR002,0,0,1752,4,,Coupon Reports,,Coupon Reports,Rapports des coupons,True,STNR002.fmx,other
+STN,185,1753,1750,STNR003,0,0,1753,4,,Exchange Credit Card Bills Reports,,Exchange Credit Card Bills Reports,,True,STNR003.fmx,other
+STN,185,1754,1750,STNR004,0,0,1754,4,,Coupon Sales Reports,,Coupon Sales Reports,Rapports-ventes des coupons,True,STNR004.fmx,other
+STN,185,1755,1750,STNR005,0,0,1755,4,,Employee Sales Reports,,Employee Sales Reports,,True,STNR005.fmx,other
+STN,185,1704,1700,STNT004,1,0,1704,3,,Post To Onyx System,,Post To Onyx System,,True,STNT004.fmx,other

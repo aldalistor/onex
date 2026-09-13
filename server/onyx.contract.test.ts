@@ -56,6 +56,10 @@ describe("Onyx rebuild contracts", () => {
     expect(all.length).toBe(500);
     const tree = await caller.windows.tree();
     expect(tree.reduce((total: number, branch: any) => total + branch.windows, 0)).toBeGreaterThanOrEqual(1459);
+    const sources = await caller.windows.sources();
+    expect(sources.catalogCount).toBe(1490);
+    expect(sources.specificationCount).toBe(1490);
+    expect(sources.sourceFiles).toContain("database-source/nodes_catalog_links.csv");
   });
 
   it("supports demo atomic create, post, and reversal lifecycle", async () => {

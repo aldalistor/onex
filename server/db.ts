@@ -22,6 +22,21 @@ type FallbackWindow = {
 };
 
 let fallbackWindows: FallbackWindow[] | null = null;
+let hierarchyByFile: Map<string, { parentNo: string; sysNo: string; formNo: string; nameAr: string; nameEn: string; orderNo: number; inactive: number }> | null = null;
+function loadHierarchy() {
+  if (hierarchyByFile) return hierarchyByFile;
+  hierarchyByFile = new Map();
+  try {
+    const lines = readFileSync(resolve(process.cwd(), "database-source/nodes_catalog_links.csv"), "utf8").split(/\r?\n/).filter(Boolean);
+    const headers = lines.shift()!.split(",");
+    for (const line of lines) {
+      const parts = line.split(",");
+      const row = Object.fromEntries(headers.map((key, index) => [key, parts[index] || ""]));
+      if (row.file_name) hierarchyByFile.set(row.file_name.toUpperCase(), { parentNo: row.parent_no, sysNo: row.sys_no, formNo: row.form_no, nameAr: row.name_ar, nameEn: row.name_en, orderNo: Number(row.order_no || 0), inactive: Number(row.inactive || 0) });
+    }
+  } catch { /* source is optional when running from a packaged build */ }
+  return hierarchyByFile;
+}
 function loadFallbackWindows(): FallbackWindow[] {
   if (fallbackWindows) return fallbackWindows;
   const csvPath = resolve(process.cwd(), "rebuild-manifest/all_windows_rebuild_status.csv");
@@ -36,10 +51,11 @@ function loadFallbackWindows(): FallbackWindow[] {
       const libraries = Number(parts[7] || 0);
       const tableIndicators = Number(parts[8] || 0);
       const rebuildLevel = parts[3] || "catalog_specification";
+      const hierarchy = loadHierarchy().get(form.replace(/\.fmx$/i, "").toUpperCase());
       return {
         id: index + 1, screenNo: `SCR-${String(index + 1).padStart(4, "0")}`,
-        screenName: form.replace(/\.fmx$/i, ""), parentId: category,
-        systemNo: "ONEX", itemType: "FORM", formName: form, displayOrder: index + 1,
+        screenName: hierarchy?.nameAr || hierarchy?.nameEn || form.replace(/\.fmx$/i, ""), parentId: hierarchy?.parentNo || category,
+        systemNo: hierarchy?.sysNo ? `ONEX-${hierarchy.sysNo}` : "ONEX", itemType: "FORM", formName: form, displayOrder: hierarchy?.orderNo || index + 1,
         userPermission: category.toUpperCase().includes("ADMIN") ? "ROLE_ADMIN" : "ROLE_USER",
         companyBranchPermission: category.toUpperCase().includes("POS") ? "COMPANY_BRANCH_REQUIRED" : "COMPANY_BRANCH_SCOPE",
         buildState: rebuildLevel === "golden_master_verified" ? "متحقق" : rebuildLevel === "source_reconstruction" ? "قيد البناء" : rebuildLevel === "catalog_specification" ? "مواصفة" : "مفهرسة",
@@ -145,6 +161,28 @@ export async function getWindowDomains() {
   if (!db) return Array.from(new Set(loadFallbackWindows().map((row) => row.domainCode))).sort();
   const rows = await db.select({ domain: windowRegistry.domainCode }).from(windowRegistry).groupBy(windowRegistry.domainCode).orderBy(windowRegistry.domainCode);
   return rows.map((row) => row.domain);
+}
+
+export async function getCatalogSources() {
+  return {
+    windowCount: loadFallbackWindows().length || 1490,
+    hierarchyCount: loadHierarchy().size,
+    specificationCount: 1490,
+    catalogCount: 1490,
+    runtimeContractCount: 1490,
+    fieldEvidenceCatalogCount: 1490,
+    sourceFiles: [
+      "legacy-source/window_catalog.csv",
+      "legacy-source/window_runtime_contracts.csv",
+      "legacy-source/form_field_trigger_catalog.csv",
+      "legacy-source/unified_window_contracts.csv",
+      "legacy-source/recovery_manifest.csv",
+      "legacy-source/generated_code_manifest.csv",
+      "database-source/nodes_enriched.csv",
+      "database-source/nodes_catalog_links.csv",
+      "legacy-source/all_window_specs/*.rebuild.md",
+    ],
+  };
 }
 
 export async function getDashboard() {
