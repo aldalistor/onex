@@ -37,6 +37,30 @@ function loadHierarchy() {
   } catch { /* source is optional when running from a packaged build */ }
   return hierarchyByFile;
 }
+
+const csvCache = new Map<string, string[][]>();
+function parseCsv(text: string) {
+  const rows: string[][] = []; let row: string[] = []; let value = ""; let quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i]; const next = text[i + 1];
+    if (char === '"' && quoted && next === '"') { value += '"'; i++; continue; }
+    if (char === '"') { quoted = !quoted; continue; }
+    if (char === ',' && !quoted) { row.push(value); value = ""; continue; }
+    if ((char === '\n' || char === '\r') && !quoted) { if (char === '\r' && next === '\n') i++; row.push(value); value = ""; if (row.some(Boolean)) rows.push(row); row = []; continue; }
+    value += char;
+  }
+  if (value || row.length) { row.push(value); rows.push(row); }
+  return rows;
+}
+function catalogRow(relativePath: string, key: string, keyColumn = 0) {
+  try {
+    if (!csvCache.has(relativePath)) csvCache.set(relativePath, parseCsv(readFileSync(resolve(process.cwd(), relativePath), "utf8")));
+    const rows = csvCache.get(relativePath)!; const header = rows[0] || [];
+    const target = key.toUpperCase().replace(/\.FMX$/, "");
+    const found = rows.slice(1).find((item) => (item[keyColumn] || "").toUpperCase().replace(/\.FMX$/, "") === target);
+    return found ? Object.fromEntries(header.map((name, index) => [name, found[index] || ""])) : undefined;
+  } catch { return undefined; }
+}
 function loadFallbackWindows(): FallbackWindow[] {
   if (fallbackWindows) return fallbackWindows;
   const csvPath = resolve(process.cwd(), "rebuild-manifest/all_windows_rebuild_status.csv");
@@ -197,6 +221,26 @@ export async function getCatalogSources() {
       "legacy-source/mido/modules/*.js",
       "legacy-source/mido/oracle/migrations/*.sql",
     ],
+  };
+}
+
+export async function getWindowContract(legacyForm: string) {
+  const form = legacyForm.replace(/\.fmx$/i, "");
+  const runtime = catalogRow("legacy-source/window_runtime_contracts.csv", form);
+  const fields = catalogRow("legacy-source/form_field_trigger_catalog.csv", form);
+  const unified = catalogRow("legacy-source/unified_window_contracts.csv", form, 1);
+  const manifest = catalogRow("legacy-source/window_catalog.csv", `${form}.fmx`);
+  const row = loadFallbackWindows().find((item) => item.legacyForm.replace(/\.fmx$/i, "").toUpperCase() === form.toUpperCase());
+  const domain = row?.domainCode || runtime?.domain || "OTHER";
+  const moduleByDomain: Record<string, string[]> = { AR: ["receivables-core.js", "commercial-invoice-core.js", "invoice-posting-core.js", "document-cycle-core.js"], AP: ["business-operations-core.js", "commercial-invoice-core.js", "document-cycle-core.js"], GL: ["accounting-core.js", "commercial-accounting-core.js", "chart-of-accounts-core.js", "period-close-core.js"], INVENTORY: ["business-operations-core.js", "invoice-posting-core.js"], POS: ["business-operations-core.js", "commercial-invoice-core.js"], HR: ["business-operations-core.js"] };
+  const actions = unified?.actions?.split("|").filter(Boolean) || ["initialize", "query", "new", "validate", "save", "update", "delete", "approve", "post", "reverse", "print", "refresh", "exit"];
+  return {
+    legacyForm: `${form}.fmx`, screenName: row?.screenName || form, domain, parentId: row?.parentId || "ROOT",
+    source: { manifest: Boolean(manifest), runtime: Boolean(runtime), fields: Boolean(fields), unified: Boolean(unified), specification: `legacy-source/all_window_specs/${form}.rebuild.md` },
+    counts: { fields: Number(fields?.fields || unified?.window_field_evidence_count || runtime?.observed_field_count || 0), procedures: Number(manifest?.procedures || runtime?.observed_procedure_count || row?.observedProcedures || 0), triggers: Number(manifest?.triggers || runtime?.observed_trigger_count || row?.observedTriggers || 0), tables: Number(manifest?.tables || runtime?.observed_table_count || row?.observedTableIndicators || 0) },
+    actions, coreApi: unified?.core_api || runtime?.core_api || `ONEX_${domain.replace(/[^A-Z]/gi, "_")}_WINDOW_API`,
+    midoModules: moduleByDomain[domain.split("/")[0].toUpperCase()] || ["business-operations-core.js", "document-cycle-core.js"],
+    status: unified?.production_status || "NOT_READY_FOR_PRODUCTION", specificationPath: `legacy-source/all_window_specs/${form}.rebuild.md`,
   };
 }
 

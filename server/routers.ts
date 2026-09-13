@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
-import { createInvoice, getCatalogSources, getDashboard, getMasterData, getSystemTree, getWindowCatalog, getWindowDomains, postInvoice, reverseInvoice } from "./db";
+import { createInvoice, getCatalogSources, getDashboard, getMasterData, getSystemTree, getWindowCatalog, getWindowContract, getWindowDomains, postInvoice, reverseInvoice } from "./db";
 
 const invoiceLine = z.object({ itemId: z.number().int().positive(), quantity: z.string().min(1), unitPrice: z.string().min(1), taxAmount: z.string().default("0") });
 
@@ -21,6 +21,7 @@ export const appRouter = router({
     domains: publicProcedure.query(() => getWindowDomains()),
     tree: publicProcedure.query(() => getSystemTree()),
     sources: publicProcedure.query(() => getCatalogSources()),
+    contract: publicProcedure.input(z.object({ legacyForm: z.string().min(1).max(160) })).query(({ input }) => getWindowContract(input.legacyForm)),
   }),
   ai: router({
     assist: publicProcedure.input(z.object({

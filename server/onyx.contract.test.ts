@@ -65,6 +65,16 @@ describe("Onyx rebuild contracts", () => {
     expect(sources.midoIntegration.oracleTablesImported).toBe(936);
   });
 
+  it("builds a runtime contract for every selected legacy form", async () => {
+    const caller = appRouter.createCaller(ctx);
+    const contract = await caller.windows.contract({ legacyForm: "ERP_LOGIN.fmx" });
+    expect(contract.legacyForm).toBe("ERP_LOGIN.fmx");
+    expect(contract.source.manifest).toBe(true);
+    expect(contract.actions.length).toBeGreaterThan(5);
+    expect(contract.midoModules.length).toBeGreaterThan(0);
+    expect(contract.specificationPath).toContain("all_window_specs");
+  });
+
   it("supports demo atomic create, post, and reversal lifecycle", async () => {
     const caller = appRouter.createCaller(ctx);
     const created = await caller.invoices.create({ docNo: `ATOMIC-${Date.now()}`, customerId: 1, warehouseId: 1, actor: "test", lines: [{ itemId: 1, quantity: "2", unitPrice: "100", taxAmount: "15" }] });
