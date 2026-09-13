@@ -24,4 +24,22 @@ describe("Onyx rebuild contracts", () => {
     const result = await caller.windows.list({ search: "ARST004", domain: "AR", limit: 80 });
     expect(result.length).toBeLessThanOrEqual(80);
   });
+
+  it("exposes a hierarchical system tree with screen contract fields", async () => {
+    const caller = appRouter.createCaller(ctx);
+    const tree = await caller.windows.tree();
+    expect(Array.isArray(tree)).toBe(true);
+    if (tree.length > 0 && tree[0].groups.length > 0 && tree[0].groups[0].windows.length > 0) {
+      expect(tree[0].groups[0].windows[0]).toMatchObject({
+        screenNo: expect.any(String),
+        screenName: expect.any(String),
+        systemNo: "ONEX",
+        itemType: "FORM",
+        formName: expect.any(String),
+        displayOrder: expect.any(Number),
+        userPermission: expect.any(String),
+        companyBranchPermission: expect.any(String),
+      });
+    }
+  });
 });

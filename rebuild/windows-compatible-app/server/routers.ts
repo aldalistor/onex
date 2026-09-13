@@ -3,7 +3,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
-import { createInvoice, getDashboard, getMasterData, getWindowCatalog, getWindowDomains, postInvoice, reverseInvoice } from "./db";
+import { createInvoice, getDashboard, getMasterData, getSystemTree, getWindowCatalog, getWindowDomains, postInvoice, reverseInvoice } from "./db";
 
 const invoiceLine = z.object({ itemId: z.number().int().positive(), quantity: z.string().min(1), unitPrice: z.string().min(1), taxAmount: z.string().default("0") });
 
@@ -18,6 +18,7 @@ export const appRouter = router({
   windows: router({
     list: publicProcedure.input(z.object({ search: z.string().optional(), domain: z.string().optional(), limit: z.number().int().min(1).max(500).default(80) }).optional()).query(({ input }) => getWindowCatalog(input?.search, input?.domain, input?.limit ?? 80)),
     domains: publicProcedure.query(() => getWindowDomains()),
+    tree: publicProcedure.query(() => getSystemTree()),
   }),
   invoices: router({
     create: publicProcedure.input(z.object({ docNo: z.string().min(1), customerId: z.number().int().positive(), warehouseId: z.number().int().positive(), lines: z.array(invoiceLine).min(1), actor: z.string().default("demo.user") })).mutation(({ input }) => createInvoice(input)),

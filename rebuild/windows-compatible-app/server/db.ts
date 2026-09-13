@@ -41,6 +41,32 @@ export async function getWindowCatalog(search?: string, domain?: string, limit =
   return db.select().from(windowRegistry).where(filters.length ? and(...filters) : undefined).orderBy(windowRegistry.domainCode, windowRegistry.legacyForm).limit(limit);
 }
 
+export async function getSystemTree() {
+  const db = await getDb();
+  if (!db) return [];
+  const rows = await db.select().from(windowRegistry).orderBy(windowRegistry.domainCode, windowRegistry.legacyForm);
+  const categoryLabels: Record<string, string> = {
+    'AR/ACCOUNTS-RECEIVABLE': 'الذمم المدينة والمبيعات', 'AP/PURCHASING': 'المشتريات والدائنون', 'GL/FINANCE': 'الحسابات العامة والمالية',
+    'INVENTORY/STOCK': 'المخزون والمستودعات', 'MRP/TREASURY': 'التخطيط والخزينة', 'POS': 'نقاط البيع', 'HR': 'الموارد البشرية',
+    'ADMIN/SYSTEM': 'الإدارة وإعدادات النظام', 'ASSETS/MAINTENANCE': 'الأصول والصيانة', 'OTHER-FINANCE/OPERATIONS': 'العمليات المالية', 'REPORTS': 'التقارير', 'OTHER': 'نوافذ أخرى'
+  };
+  const groups = new Map<string, { id: string; label: string; domain: string; windows: typeof rows }>();
+  for (const row of rows) {
+    const domain = row.domainCode;
+    const base = row.legacyForm.replace(/\.fmx$/i, '');
+    const prefix = base.match(/^[A-Za-z]+/)?.[0]?.toUpperCase() || 'MISC';
+    const key = `${domain}::${prefix}`;
+    if (!groups.has(key)) groups.set(key, { id: key, label: prefix, domain, windows: [] });
+    groups.get(key)!.windows.push(row);
+  }
+  const tree = new Map<string, { id: string; label: string; domain: string; groups: { id: string; label: string; windows: typeof rows }[] }>();
+  for (const group of Array.from(groups.values())) {
+    if (!tree.has(group.domain)) tree.set(group.domain, { id: group.domain, label: categoryLabels[group.domain] || group.domain, domain: group.domain, groups: [] });
+    tree.get(group.domain)!.groups.push(group);
+  }
+  return Array.from(tree.values()).map((branch) => ({ ...branch, windows: branch.groups.reduce((sum: number, group: any) => sum + group.windows.length, 0), groups: branch.groups.sort((a: any, b: any) => a.label.localeCompare(b.label)).map((group: any) => ({ ...group, count: group.windows.length, windows: group.windows.map((win: any) => ({ ...win, screenNo: `SCR-${String(win.id).padStart(4, '0')}`, screenName: win.legacyForm.replace(/\.fmx$/i, ''), parentId: group.id, systemNo: 'ONEX', itemType: 'FORM', formName: win.legacyForm, displayOrder: win.id, userPermission: win.domainCode === 'ADMIN/SYSTEM' ? 'ROLE_ADMIN' : 'ROLE_USER', companyBranchPermission: win.domainCode === 'POS' ? 'COMPANY_BRANCH_REQUIRED' : 'COMPANY_BRANCH_SCOPE', buildState: win.status === 'in_progress' ? 'قيد البناء' : win.status === 'verified' ? 'متحقق' : win.status === 'spec_only' ? 'مواصفة' : 'مفهرس' })) })) }));
+}
+
 export async function getWindowDomains() {
   const db = await getDb();
   if (!db) return [];

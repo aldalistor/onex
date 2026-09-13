@@ -15,6 +15,13 @@
       "when": 1789296078907,
       "tag": "0001_fair_queen_noir",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1789297057373,
+      "tag": "0002_sloppy_zombie",
+      "breakpoints": true
     }
   ]
 }

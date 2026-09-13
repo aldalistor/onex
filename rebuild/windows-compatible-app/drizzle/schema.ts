@@ -14,6 +14,16 @@ export const users = mysqlTable("users", {
 
 export const windowRegistry = mysqlTable("window_registry", {
   id: int("id").autoincrement().primaryKey(),
+  screenNo: varchar("screenNo", { length: 40 }).notNull().default("SYS-0000"),
+  screenName: varchar("screenName", { length: 240 }).notNull().default("Legacy Window"),
+  parentId: varchar("parentId", { length: 160 }),
+  systemNo: varchar("systemNo", { length: 40 }).notNull().default("ONEX"),
+  itemType: varchar("itemType", { length: 40 }).notNull().default("FORM"),
+  formName: varchar("formName", { length: 160 }).notNull().default("LEGACY.fmx"),
+  displayOrder: int("displayOrder").notNull().default(0),
+  userPermission: varchar("userPermission", { length: 120 }).notNull().default("ROLE_USER"),
+  companyBranchPermission: varchar("companyBranchPermission", { length: 160 }).notNull().default("COMPANY_BRANCH_SCOPE"),
+  buildState: varchar("buildState", { length: 40 }).notNull().default("INDEXED"),
   legacyForm: varchar("legacyForm", { length: 160 }).notNull().unique(),
   domainCode: varchar("domainCode", { length: 40 }).notNull(),
   capability: varchar("capability", { length: 100 }).notNull(),
