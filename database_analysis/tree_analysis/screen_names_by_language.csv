@@ -1,0 +1,579 @@
+form_no,lang2_name,lang3_name
+1,Setup System,
+2,Admin System,
+3,General Ledger System,
+4,Inventory Management System,
+5,Accounts Payable System,
+6,Accounts Receviable System,
+7,Inputs,Saisie du grand livre
+8,Transactions,
+9,Reports,Rapports du grand livre
+10,,Plan comptable
+14,,Soldes d'ouverture
+15,,Caisses
+16,,Banques
+18,,Relier les cpts aux centres
+19,,Demande d'ouverture de cpt
+20,,Ecritures comptables
+21,,Bon de paiement
+28,,Ajustement bancaire
+29,,Autres garanties
+30,,Prolongation de garantie
+31,,Annulation/confiscation de garantie
+33,,Audit des docs
+34,,Configuration limites
+37,Assistance System,
+40,,Report
+41,Accounting System,
+42,Inventory System,
+43,Vendors System,
+44,Customers System,
+60,,Configuration commune
+61,,Configuration du grand livre
+62,,Configuration du stock
+63,,Configuration des fournisseurs
+64,,Configuration des clients
+65,,Codification des annexes
+66,,Composants des annexes
+68,,Configuration des projets
+69,,Types d'inventaires
+70,,Variables du grand livre
+72,,Configuration des monnaies
+73,,Configuration du plan comptable
+75,,Gestion des cpts
+77,,Gestion du stock
+78,,Types de docs
+79,,Types de garanties
+80,,Types d'avis
+83,,Zones internationales
+84,,Gestion fournisseurs & achats
+85,,Gestion clients & ventes
+86,,Groupes de banques
+88,,Variables du stock
+90,,Types d'articles
+91,Item Levels,Niveaux d'articles
+92,Incoming Types,Types d'approvmt
+93,Outgoing Types,Types de sortie de stock
+94,Transfer Types,Types de transfert
+95,Request Types,Types de demandes
+96,Pricing Levels,Niveaux de tarification
+97,AP. Parameters,
+98,Vendor Class,Types de fournisseurs
+99,Vendor Degree,Niveaux des fournisseurs
+100,User Login Details,Identification de l'utilisateur
+101,User Details,
+103,Transaction Privilege,
+104,Unpost,Annulation du report
+105,Auditing,
+106,Branch Details,
+110,Period Locking,
+111,Period Closing,
+112,AP_Inputs,Saisie des fournisseurs
+113,AP-Transactions,
+114,AP-Reports,Rapports-fournisseurs
+115,Vendor Groups,Groupe de fournisseurs
+116,Vendors Deatils,
+117,Vendor Item Details,
+118,Vendor Open Bal,Soldes d'ouverture fournisseurs
+119,Lc. Opening Balance,Soldes d'ouverture LC
+120,Purchase Plan,Plans d'achats
+121,Delegate Purchase,
+122,Automatic Purchase Request,Demande d'achat auto
+123,Contract Details,
+124,Purchase Invoice,Facture d'achat
+125,Purchase Request,Demandes d'achat
+126,Purchase Order,Ordres d'achat
+127,Local Goods Received,Autorisation d'approvmt local
+128,Local Purchase Invoice,Facture d'achats locaux
+129,Documentary Credits,
+130,Foreign Purchase Invoice,Facture d'achats externes
+131,Foreign Good Received,Autorisation d'approvmt externe
+132,Foreign Purchasing Cost,
+133,Purchase Return Invoice,Facture d'avoir d'achat
+134,,Remises suppls sur achat
+137,,Bon de paiement
+138,,Saisie des clients
+140,,Rapports des clients
+144,,Soldes d'ouverture des clients
+149,,Types de structures administratives
+151,,Plan de recouvrement
+152,,Demandes d'ouverture de cpt
+153,,Tarifs des articles
+154,,Offres promotionnelles
+155,,Offres de prix
+156,,Cmds des clients
+158,,Factures des ventes
+159,,Autorisation d'envoi de facture
+160,,Factures des retours des ventes
+161,,Aurorisation de restitution facture de retours
+165,,Calcul commissions des clients
+167,,Ordres de travail
+169,,Configuration des achats
+173,,Types de factures d'achat
+177,,Types de clients
+178,,Niveaux des clients
+180,,Types de cartes visa
+181,,Types d'offres de prix
+182,,Types de cmds des clients
+183,,Charges des ventes
+185,,Codification de la remise
+186,,Types de charges des achats
+187,,Types de demandes d'achats
+189,,Codification commissions des clients
+190,,Types d'ordres d'achats
+191,,Types d'ordre de travail
+192,,Types d'appareils
+194,,Codification de remise sur achats
+195,,Relier les comptes des ordres de sortie
+196,,Types de factures des ventes
+197,,Types d'autorisations d'approvmt locaux
+199,,Plans des ventes
+202,,Rapports du stock
+212,,Tarifs d'articles
+213,,Stock d'ouverture
+215,,Relier articles aux annexes
+217,Detail Groups,
+218,Management For Stock Transfer,Gestion de la rotations de stock
+219,Conn. Inv. Acc. By Gl.,Relier les cpts du stock au grand livre
+220,Evaluation Standard,
+221,Items Reevaluation,Evaluation des articles
+222,Stock Adjustment Types,Types d'ajustement de stock
+223,Batch No Coding,
+224,Good Received,
+225,Request out Transfer,
+226,Incoming Stock,
+227,Outgoing Stock,Ordre de sortie de stock
+228,Warehouse Transfer,Transfert de stock
+229,Stk_Adjustment,Ajustement de stock
+230,Manual Inventory,Inventaire manuel
+231,Repair Order,
+232,Expire Order,
+233,Assemble_kit,
+234,DisAssemble kit,
+235,Warehouse Trns. Received,
+238,Reserve Items Qty.,
+239,Batch No Contents,
+240,Item Serial Desc.Coding,
+241,Items Classification,Classification des articles
+242,Outgoing Plan,Plan de sortie de stock
+243,Request Mod. Price,Demande modification prix
+244,Reports- Group Details,
+245,reports- Item Details,
+246,reports- Bin Details,Rapports-emplacement articles
+247,Reports- Pricing Details,Rapports-tarifs des articles
+248,Reports- Open Stock,Rapports-stock d'ouverture
+249,Reports- Request Out/Transfer,Rapports-demandes de sortie/transfert
+250,Reports- Incoming Stock,
+251,,Rapports-ordres de sortie de stock
+253,,Rapports-ajustement de stock
+254,,Rapports-stock
+255,,Rapports-mouvmt de stock
+256,,Rapports-taux de rotation
+257,,Rapports-limites des articles
+258,,Rapports-inventaire manuel
+261,,Rapports-autorisation d'approvmt
+262,,Rapports-plan comptable
+266,,Rapports-soldes d'ouverture
+269,,Rapports-bon de paiement
+271,,Rapports-notifications
+273,,Rapports-guide des projets
+276,,Rapports-mouvmts des caisses
+279,,Rapports-balance des cpts
+280,,Rapports-bilan
+281,,Rapports-profits & pertes
+282,,Rapports-soldes
+283,,Configuration des ventes
+284,Purchase Return Invoice Type,
+285,,Rapports-titres perdus
+286,,Rapports-cpts sans mouvmt
+287,,Rapports-ajustement bancaire
+291,Report - Guarantee Issue,Rapports-lettres de garanties
+292,Report - Guarantee Increase,Rapports-prolongation de garantie
+293,Report - Cash and Banks,Rapports-caisses & banques
+294,Report - Bank Move.,Rapports-mouvmts des banques
+295,Report - Limit Accounts. And Balance,Rapports-limites cpts & des soldes
+298,,Demandes de journaux
+299,,Demandes de bons de paiement
+301,,Rapports-demandes journaux
+307,,Rapports-soldes d'ouverture fournisseurs
+309,,Ajustement des versements fournisseurs
+310,,Rapports-soldes mensuels des fournisseurs
+311,,Rapports-demandes bon de paiement
+312,,Types de demandes
+314,,Rapports - soldes d'ouverture LC
+316,,Rapprochement des soldes
+318,,Rapports-demandes d'achat
+319,,Rapports-ordres d'achats
+320,,Rapports-autorisation d'approvmt local
+321,,Rapports-autorisation d'approvmt externe
+322,,Rapports-factures d'achat
+324,,Rapports-retours d'achat
+325,,Rapports-chargement
+326,,Offres de prix
+328,,Rapports-offres de prix
+329,,Rapports-TVA
+330,,Rapports-bons de paiement
+331,Purchase Plan Reports,Rapports-plans d'achats
+332,Add Discount Reports For Purchase,Rapports-remises suppls sur achats
+333,Contract Report,Rapports-contrats
+334,Purchase Order Check,
+335,Purchase Order Check Report,
+336,Bill Of Exchange Reports,
+337,Purchase System,
+338,Sales System,
+339,Credit Letter System,
+340,Inputs,Saisie
+341,Transaction,
+342,Reports,Rapports
+343,DataBase Admin.,
+344,Inputs,Saisie
+345,Transaction,
+346,Reports,Rapports
+347,Common Setup,Configuration
+348,Input,Saisie
+349,Databse Parameters,
+350,Storage Details,
+351,Net Purchase Reports,Rapports-net des ventes
+352,Alert System,
+356,Stocking cutomer,Inventaire du stock du client
+360,Special System,
+370,Cheques Books,
+400,SalesMan Types,
+401,StockTaking System,
+402,Translate Caption,Traduction des textes
+403,Activities Setup,
+404,General Setting,
+405,Background Screen,
+406,Approvals Levels,
+454,Banks Guarantees,Garanties bancaires
+455,Extend Banks Guarantees,Prolongation garanties bancaires
+456,Canceled/Expropriated Banks Guarantees,Annulation/confiscation garanties bancaires
+457,Banks Guarantees Reports,Rapports-garanties bancaires
+458,Exchange Currency,Echange de monnaie
+459,link the Doc Type With Accounts,Relier les types de docs aux cpts
+460,Edit Estimation Budget,
+461,Transformation,Mutation
+462,Budget Approvel,
+463,Movements on Budget Reports,
+464,Link accounts with Projects,
+465,Budget Approvel Reports,
+466,Branches Groups,
+500,Add Discount Request Types For Sales Invoices,
+501,Add Discount Types For Sales Invoices,
+550,Move Data Between Accounting Units,
+551,Update Database,
+553,Create New Accounting Unit,
+554,Restore,Restaurer
+556,Change Password,Changer de mot de passe
+557,Privileges Reports,
+558,Privileges,
+560,Backup,Copie de sauvegarde
+574,Annual Closing,
+575,Unclose Months,
+576,User Group,Groupe d'utilisateurs
+577,Signature,Signature
+579,Approving Movement,
+580,Heading By User,
+581,Favorite Screen,
+582,Report - Auditing,
+583,Managment Hirarchy,Structures administratives
+584,Employee Details,
+590,Prvilege And Safty,
+591,Closing and Locking,
+593,Company Details,
+594,Archiving System,
+595,Input Privilege,
+596,Screen Privileges,
+597,Daily Closing Accounts,
+601,Reports- Compound Items,
+602,Reports- Item Serial No.,
+604,Items Barcode Printing,Impression codes barres des articles
+605,Reports- Bill Of Entry,
+608,Reports- Attachment Movement,Rapports-stock des accessoires
+609,Reports- Attachment,Rapports-annexes
+610,Reports- Item Stock Aging,
+611,,Rapports-endettement fournisseurs
+613,,Rapports administratifs
+614,,Rapports-mouvmt du stock - filiales
+615,,Report
+616,,Report de l'ordre d'approvmt
+617,,Report de l'ordre de sortie
+618,,Report du transfert de stock
+620,,Report d'ajustement de stock
+630,,Anl report
+631,,Anl report-ordre d'approvmt
+632,,Anl report-ordre de sortie
+633,,Anl report-transfert de stock
+635,,Anl report-ajustement de stock
+638,,Transfert de stock multiple
+639,,Inventaire des machines
+644,,Champs obligatoires
+645,,Rapports-plan de sortie de stock
+656,,Rapports-soldes d'ouverture des clients
+659,,Rapports-soldes mensuels des clients
+660,,Rapports administratifs
+662,,Rapports-ordres de travail
+663,,Rapports-chargement
+665,,Rapports-plan mensuel des ventes
+667,,Rapports-offres de prix
+668,,Rapports-cmds clients
+670,,Rapports-factures des ventes
+671,,Types de retours des ventes
+672,Sales Return Reasons,Motifs des retours des ventes
+675,,Rapports-retours des ventes
+676,,Rapports-net des ventes
+678,,Rapports-charges des ventes
+679,,Rapports-autorisation de paiement de facture
+680,,Rapports-autorisation de restitution de factures d'avoir
+681,,Rapports-TVA
+683,,Rapports-recouvrement
+684,Insurances Company Claim Reports,
+686,,Rapports-promotions
+687,,Rapports-endettement des clients
+688,,Graphe
+699,,Ajustement des versements des clients
+700,,Remises suppls sur factures des ventes
+702,,Rapports-versements
+704,Others Charg Pur.,Charges d'achat
+705,Purchase Return Requst,Demande de retours d'achat
+706,Purchase Return Requst Report,Rapports-demande de retours d'achat
+710,Add Discount Request Sales Invoices,
+804,,Evaluation des niveaux de clients
+805,,Rapports-plan de recouvrement
+806,,Rapports-remises suppls
+807,,Carte de garantie des articles
+808,Item Garanty Card Reports,Rapports-cartes de garantie des articles
+809,Paid,Paiement
+810,Receive,Livraison
+811,Receipt Document Type,
+812,Promoter Details,
+813,Medical Network Details,
+814,The Beneficiaries Of The Insurance,
+815,Insurance Company Details,
+816,Insurance Details For Joint,
+817,Insurances Company Claim,
+818,,Demandes de prix
+819,Data Beneficiaries,
+820,Return Sales Request Types,
+821,Sale Return Requst,
+822,Sales Return Order Invoice,
+823,Commission Customer Encoding,
+824,Commission SalesMan Encoding,
+825,Request Add Discount Reports,
+826,Commission Collectors Encoding,
+827,,
+828,Commission Customer Calculation,
+829,Commission SalesMan Calculation,
+830,Commission Collectors Calculation,
+831,,
+832,Commission Customer Reports,
+833,Commission SalesMan Reports,
+834,Commission Collectors Reports,
+835,,
+1173,Debit Aging,
+1174,Reports net sales,
+1175,Audit reports,
+1301,,Configuration
+1303,,Groupe d'articles concurrentiels
+1308,,Types de prix des articles concurrentiels
+1350,,Saisie
+1406,,Inventaire du stock du client
+1450,,Rapports
+1459,,Rapports-inventaire du stock du client
+1600,Oil Stations System,
+1601,Configuration,Configuration
+1602,Periods Setup,
+1603,Fuel Types,Types de carburants
+1604,Counters Setup,Configuration compteurs
+1650,Inputs,Saisie
+1651,Coupon Details,Codification coupons
+1700,Operations,
+1701,Exchange Credit Card Bills,
+1702,Coupon Sales,Vente des coupons
+1703,Employee Sales,
+1704,Post To Onyx System,
+1750,Reports,Rapports
+1751,Counters Reports,Rapports des compteurs
+1752,Coupon Reports,Rapports des coupons
+1753,Exchange Credit Card Bills Reports,
+1754,Coupon Sales Reports,Rapports-ventes des coupons
+1755,Employee Sales Reports,
+1800,Assistant Screen,
+1805,Favorite Accounts,Comptes favoris
+1806,Users Messages,Messages des utilisateurs
+1808,Contact Details,Carnet d'adresses
+1809,Users Notes,Agenda
+1820,Help,
+1900,Systems Control,
+1901,Language,Codification des langues
+1902,Labels,Textes
+1903,Messages,Messages
+1904,Form Details,
+1905,System Flags,
+2007,,Codification remises des clients
+2008,,Tarif des poids de la charge
+2013,Airway Bill No,Facturation
+2014,Airway  pripaid Bills  Reports,
+2015,Airway Bill No Reports,Rapport-facturation
+2100,Financial connect with external System,
+2101,The Veriables,Variables
+2102,External Documents and Analysis types,Docs externes et types analytiques
+2103,Link Accounts Carrencies and Sub Directories,
+2104,Import Fainantial Journals - Journals_Docs.,
+2105,Import Fainantial Journals - Posting,
+2106,Import Fainantial Journals - Journals_Docs.Reports,
+2107,Import Fainantial Journals - Posting Reports,
+2200,Management Information System,
+2201,Management System Reports,
+2202,Management General Ledger Reports,Rapports-gestion du grand livre
+2203,Management Inventory Reports,Rapports-gestion du stock
+2204,Management Purchase Reports,Rapports-gestion des achats
+2205,Management Sales Reports,Rapports-gestion des ventes
+2500,Alert System,
+2501,Parameter Alert,
+2502,Message Screen,Messages directs
+2503,Account Alert,Alertes des cpts
+2504,Customer Alert,Alertes des clients
+2505,Cheque Alert,
+2510,Show Messages,Affichege messages
+3003,,Saisie
+3005,,Rapports
+3006,,Variables
+3007,,Types de docs des actifs
+3008,,Localisations des actifs
+3010,,Classification des actifs
+3012,,Activation des actifs
+3013,,Rajouts d'actifs
+3014,,Exclusion d'actifs
+3015,,Transfert d'actifs
+3016,,Amortissement des actifs
+3017,,Inventaire d'actifs
+3018,,Ajustement d'actifs
+3019,,Evaluation des actifs
+3020,,Fusion d'actifs
+3021,,Entretien d'actifs
+3024,,Soldes d'ouverture
+3026,,Types de localisation des actifs
+3051,,Localisations des actifs
+3053,,Classification d'actifs
+3055,,Rapports de rajouts
+3056,,Rapports d'exclusion
+3057,,Rapports-transfert
+3059,,Rapports d'inventaire
+3060,,Mouvmt des actifs
+3061,,Amortissemt des actifs
+3062,,Rapports d'ajustement
+3064,,Rapports de fusion
+4003,,Saisie
+4005,,Rapports
+4012,,Codification de la structure adminv
+4016,,Codification clauses du salaire
+4018,,Codification autorisations
+4021,,Codification types de l'apurement d'avance
+4025,,Codification dispositif financier
+4027,,Codification solde de tout compte
+4035,,Concepteur rapports du bulletin de paie
+4036,,Concepteur rapports des quittances de paie
+4059,,Datails des garantis
+4080,,Demandes des clauses variables
+4081,,Attribution ou modification des clauses permanentes
+4082,,Attribution ou modification des clauses variables
+4087,,Demande d'autorisation
+4088,,Accord d'autorisation
+4120,,Calcul du salaire net
+4411,,Datails des garantis
+4414,,Mouvmts des clauses
+4415,,Debut du travail
+4416,,Demande d'autorisation
+4417,,Accord d'autorisation
+4420,,Demande d'avance
+4421,,Accord d'avance
+4422,,Apurement d'une avance
+4429,,Quittances de paie
+4560,,Infractions & sanctions
+4561,,Codification infractions administratives
+4563,,Codifications primes & sanctions administratives
+4565,,Dispositif des infractions administratives
+4568,,Infractions administratives
+4570,,Primes & sanctions administratives
+4575,,Rapports
+4580,,Allocations des voyages et billets
+4585,,Dispositif des allocations de voyage
+4590,,Chemin des billets d'avion
+4600,,Paiement des billets d'avion
+4603,,Paiement des allocations de voyage
+4606,,Rapports-paiement des billets d'avion
+4608,,Rapports-paiement des allocations de voyage
+4650,,Formation et qualification
+4658,,Codification cycles de formation
+4665,,Plan de formation
+4675,,Besoins en formation
+4677,,Enregistrement cycles de formation
+4682,,Evaluation des cycles de formation
+4700,,Rapports-plan de formation
+4720,,Mouvmts administratifs
+4727,,Mouvmts administratifs
+4741,,Rapports-mouvmts administratives
+4760,,Augmentations et promotions
+4770,,Mouvmts des augmentations
+4775,,Mouvmts des promotions
+4780,,Rapports-mouvmts des augmentations
+4785,,Rapports-mouvmts des promotions
+4808,,Codification autorisations
+4810,,Codification clauses des empreintes
+4831,,Saisie
+4835,,Politique du travail
+4836,,Indentification des pointeuses digitales
+4866,,Patrouilles changeantes
+4867,,Demande d'autorisation
+4868,,Accord d'autorisation
+4872,,Extras
+4877,,Enregistrement des visiteurs
+4911,,Rapports
+4916,,Politique du travail
+4918,,Patrouilles variables
+4919,,Demande d'autorisation
+4920,,Accord d'autorisation
+4922,,Accord d'autorisation
+4924,,Extras
+4927,,Rapports-incidents d'empreintes
+4929,,Rapports-enregistrement visiteurs
+5001,,Configuration
+5004,,Types de services
+5100,,Saisie
+5105,,Groupe clients
+5110,,Groupe fournisseurs
+5201,,Contrat de location
+5202,,Contrat de vente
+5203,,Prolongation du contrat
+5204,,Contrat d'achat
+5210,,Annulation du contrat de location
+5214,,Avis aux locataires
+5220,,Factures de prestation
+5222,,Demandes de maintenance
+5224,,Alertes des contrats de location
+5350,,Rapports
+5353,,Rapports-immobiliers
+5358,,Rapports-contrats de location
+5360,,Rapports-paiements
+5361,,Rapports-contrats de vente
+5362,,Rapports-versements
+5363,,Rapports-avis des locataires
+5370,,Rapports-factures de maintenance
+5372,,Rapports-demandes de maintenance
+5373,,Total du revenu des immeubles
+5374,,Revenu mensuel de la location de l'immobilier
+7001,,Configuration des projets
+7005,,Enregistrement des conditions des projets
+7007,,Codification travaux des projets
+7008,,Codification des projets
+7020,,Saisie des projets
+7022,,Etapes des projets
+7023,,Planification des projets
+7070,,Limitation des travaux des projets
+7072,,Enregistrement du blocage des projets
+7075,,Enregistrement de la fin du blocage des projets
+7125,,Rapports des projets
+7126,,Rapport des conditions des projets
+7127,,Rapport des travaux des projets
+7132,,Rapport de limitation des travaux des projets
