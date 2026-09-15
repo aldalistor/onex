@@ -10,7 +10,10 @@
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "test": "vitest run",
-    "db:push": "drizzle-kit generate && drizzle-kit migrate"
+    "db:push": "drizzle-kit generate && drizzle-kit migrate",
+    "electron:dev": "pnpm build && electron electron/main.cjs",
+    "electron:dir": "pnpm build && electron-builder --dir",
+    "electron:win": "pnpm build && electron-builder --win portable"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.693.0",
@@ -91,6 +94,8 @@
     "add": "^2.0.6",
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.31.4",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.0",
     "esbuild": "^0.25.0",
     "pnpm": "^10.15.1",
     "postcss": "^8.4.47",
@@ -101,7 +106,8 @@
     "typescript": "5.9.3",
     "vite": "^7.1.7",
     "vite-plugin-manus-runtime": "0.0.59",
-    "vitest": "^2.1.4"
+    "vitest": "^2.1.4",
+    "wait-on": "^8.0.0"
   },
   "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
   "pnpm": {
@@ -110,6 +116,50 @@
     },
     "overrides": {
       "tailwindcss>nanoid": "3.3.7"
+    },
+    "ignoredBuiltDependencies": [
+      "electron-winstaller",
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "electron"
+    ]
+  },
+  "build": {
+    "appId": "com.onex.erp.workbench",
+    "productName": "Onex ERP Workbench",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "node_modules/**/*",
+      "database-source/**/*",
+      "legacy-source/**/*",
+      "rebuild-manifest/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Onex-ERP-Workbench-${version}-portable.${ext}"
+    },
+    "linux": {
+      "target": [
+        "dir"
+      ]
     }
-  }
+  },
+  "main": "electron/main.cjs",
+  "description": "Onex ERP Workbench Windows test application",
+  "author": "Onex"
 }
