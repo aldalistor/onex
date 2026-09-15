@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS _onex_migration_log (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE, appliedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS companies (id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT NOT NULL UNIQUE, name TEXT NOT NULL, baseCurrency TEXT NOT NULL DEFAULT 'SAR');
+CREATE TABLE IF NOT EXISTS branches (id INTEGER PRIMARY KEY AUTOINCREMENT, companyId INTEGER NOT NULL, code TEXT NOT NULL, name TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1, UNIQUE(companyId, code));
+CREATE TABLE IF NOT EXISTS warehouses (id INTEGER PRIMARY KEY AUTOINCREMENT, companyId INTEGER NOT NULL, code TEXT NOT NULL, name TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1, UNIQUE(companyId, code));
+CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, companyId INTEGER NOT NULL, code TEXT NOT NULL, name TEXT NOT NULL, itemType TEXT NOT NULL DEFAULT 'STOCK', unitCode TEXT NOT NULL DEFAULT 'EA', active INTEGER NOT NULL DEFAULT 1, UNIQUE(companyId, code));
+CREATE TABLE IF NOT EXISTS stock_balances (id INTEGER PRIMARY KEY AUTOINCREMENT, itemId INTEGER NOT NULL, warehouseId INTEGER NOT NULL, quantity TEXT NOT NULL DEFAULT '0', unitCost TEXT NOT NULL DEFAULT '0', totalCost TEXT NOT NULL DEFAULT '0', versionNo INTEGER NOT NULL DEFAULT 1, UNIQUE(itemId, warehouseId));
+CREATE TABLE IF NOT EXISTS roles (id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT NOT NULL UNIQUE, name TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1);
+CREATE TABLE IF NOT EXISTS permissions (id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT NOT NULL UNIQUE, windowCode TEXT, actionCode TEXT NOT NULL, description TEXT);
+CREATE TABLE IF NOT EXISTS accounts (id INTEGER PRIMARY KEY AUTOINCREMENT, companyId INTEGER NOT NULL, code TEXT NOT NULL, name TEXT NOT NULL, accountType TEXT NOT NULL, parentCode TEXT, currencyCode TEXT NOT NULL DEFAULT 'SAR', active INTEGER NOT NULL DEFAULT 1, UNIQUE(companyId, code));
+CREATE TABLE IF NOT EXISTS fiscal_periods (id INTEGER PRIMARY KEY AUTOINCREMENT, companyId INTEGER NOT NULL, code TEXT NOT NULL, startsOn TEXT NOT NULL, endsOn TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'OPEN', UNIQUE(companyId, code));
+INSERT OR IGNORE INTO companies(id, code, name, baseCurrency) VALUES (1, 'ONEX', 'ONEX ERP', 'SAR');
+INSERT OR IGNORE INTO branches(id, companyId, code, name, active) VALUES (1, 1, 'MAIN', 'Main Branch', 1);
+INSERT OR IGNORE INTO warehouses(id, companyId, code, name, active) VALUES (1, 1, 'MAIN', 'Main Warehouse', 1);
+INSERT OR IGNORE INTO roles(code, name, active) VALUES ('ADMIN', 'System Administrator', 1), ('ACCOUNTANT', 'Accountant', 1), ('SALES', 'Sales', 1), ('INVENTORY', 'Inventory', 1);
+INSERT OR IGNORE INTO accounts(companyId, code, name, accountType, currencyCode, active) VALUES (1, '1100', 'Cash', 'ASSET', 'SAR', 1), (1, '1300', 'Inventory', 'ASSET', 'SAR', 1), (1, '4100', 'Sales Revenue', 'REVENUE', 'SAR', 1), (1, '5100', 'Cost of Sales', 'EXPENSE', 'SAR', 1);
+INSERT OR IGNORE INTO fiscal_periods(companyId, code, startsOn, endsOn, status) VALUES (1, '2026-01', '2026-01-01 00:00:00', '2026-01-31 23:59:59', 'OPEN');
+INSERT OR IGNORE INTO _onex_migration_log(name) VALUES ('0001_initial');

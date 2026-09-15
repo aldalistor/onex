@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "onex-workbench",
+  "main": "./worker.mjs",
+  "compatibility_date": "2026-09-15",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "ONEX_DB",
+      "database_name": "onex-production",
+      "database_id": "72195b2f-df9e-49b0-81f5-cbf31daa829f",
+      "migrations_dir": "./d1"
+    }
+  ]
+}
