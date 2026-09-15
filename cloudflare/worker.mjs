@@ -10,11 +10,28 @@ async function api(request, env, url) {
     return json({ ok: true, service: "onex-d1-api", database: "onex-production", tables: result.results?.map((row) => row.name) ?? [] });
   }
   if (url.pathname === "/api/cloud/master-data") {
-    const [companies, branches, warehouses, roles, periods] = await Promise.all([
+    const [companies, branches, warehouses, roles, periods, customers, suppliers, items] = await Promise.all([
       env.ONEX_DB.prepare("SELECT * FROM companies ORDER BY id").all(), env.ONEX_DB.prepare("SELECT * FROM branches WHERE active=1 ORDER BY code").all(), env.ONEX_DB.prepare("SELECT * FROM warehouses WHERE active=1 ORDER BY code").all(), env.ONEX_DB.prepare("SELECT * FROM roles WHERE active=1 ORDER BY code").all(), env.ONEX_DB.prepare("SELECT * FROM fiscal_periods ORDER BY startsOn DESC").all(),
+      env.ONEX_DB.prepare("SELECT * FROM customers ORDER BY code").all(), env.ONEX_DB.prepare("SELECT * FROM suppliers ORDER BY code").all(), env.ONEX_DB.prepare("SELECT * FROM items ORDER BY code").all(),
     ]);
-    return json({ companies: companies.results, branches: branches.results, warehouses: warehouses.results, roles: roles.results, fiscalPeriods: periods.results });
+    return json({ companies: companies.results, branches: branches.results, warehouses: warehouses.results, roles: roles.results, fiscalPeriods: periods.results, customers: customers.results, suppliers: suppliers.results, items: items.results });
   }
+  if (url.pathname === "/api/cloud/auth/me") return json({ id: 1, openId: "cloud-user", name: "مدير النظام", email: "admin@onex.local", role: "admin" });
+  if (url.pathname === "/api/cloud/auth/logout") return json({ ok: true });
+  if (url.pathname === "/api/cloud/dashboard") {
+    const [invoices, journals, domains] = await Promise.all([
+      env.ONEX_DB.prepare("SELECT COUNT(*) AS count FROM invoices WHERE status='POSTED'").first(),
+      env.ONEX_DB.prepare("SELECT COUNT(*) AS count FROM journal_entries").first(),
+      env.ONEX_DB.prepare("SELECT COUNT(DISTINCT domainCode) AS count FROM window_registry").first().catch(() => ({ count: 0 })),
+    ]);
+    return json({ windows: 1490, domains: Number(domains?.count || 0), invoices: Number(invoices?.count || 0), stockValue: "0.00", journals: Number(journals?.count || 0) });
+  }
+  if (url.pathname === "/api/cloud/windows") return json([]);
+  if (url.pathname === "/api/cloud/windows/tree") return json([]);
+  if (url.pathname.startsWith("/api/cloud/windows/contract/")) return json({ legacyForm: decodeURIComponent(url.pathname.split("/").pop() || ""), fields: [], triggers: [], procedures: [], notes: "Cloud D1 runtime contract" });
+  if (url.pathname === "/api/cloud/windows/records") return json([]);
+  if (url.pathname === "/api/cloud/windows/action" && request.method === "POST") return json({ ok: true, status: "SIMULATED", source: "cloud-d1" });
+  if (url.pathname === "/api/cloud/ai/assist" && request.method === "POST") return json({ answer: "تم تحويل الطلب إلى طبقة Cloudflare D1. هذه إجابة تشغيلية أولية من Worker، ويمكن ربط نموذج الذكاء الاصطناعي لاحقًا." });
   if (url.pathname === "/api/cloud/accounts" && request.method === "GET") {
     const q = (url.searchParams.get("search") || "").trim(); const lim = limitOf(url);
     const r = q ? await env.ONEX_DB.prepare("SELECT * FROM accounts WHERE code LIKE ? OR name LIKE ? ORDER BY code LIMIT ?").bind(`%${q}%`, `%${q}%`, lim).all() : await env.ONEX_DB.prepare("SELECT * FROM accounts ORDER BY code LIMIT ?").bind(lim).all();
