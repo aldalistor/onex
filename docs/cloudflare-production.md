@@ -6,6 +6,18 @@ The Cloudflare account contains the `onex-production` D1 database (`72195b2f-df9
 
 The Worker exposes `GET /__health`, which queries D1 and returns the initialized table list. It also applies baseline security headers to proxied Workbench responses.
 
+The first Cloudflare-native API surface is available under `/api/cloud/`:
+
+| Route | Purpose |
+|---|---|
+| `/api/cloud/health` | D1 connectivity and table inspection |
+| `/api/cloud/master-data` | Companies, branches, warehouses, roles, and periods |
+| `/api/cloud/accounts` | Chart-of-accounts query and upsert |
+| `/api/cloud/items` | Inventory item query |
+| `/api/cloud/customers` | Customer query |
+| `/api/cloud/reports/accounts` | Chart-of-accounts report |
+| `/api/cloud/reports/inventory` | Inventory valuation report |
+
 ## Reproducible deployment
 
 From the repository root:
@@ -14,6 +26,8 @@ From the repository root:
 npx wrangler d1 migrations apply onex-production --remote --config cloudflare/wrangler.jsonc
 npx wrangler deploy --config cloudflare/wrangler.jsonc
 ```
+
+The current remote database was initialized through the Cloudflare API. The repository now contains the reproducible `0001_initial.sql` and `0002_api_tables.sql` migrations for new environments.
 
 The Worker preview URL is `https://onex-workbench.raghabatstore.workers.dev/` and the health URL is `/__health`.
 
